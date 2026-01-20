@@ -45,6 +45,55 @@
     .notice { border:1px solid rgba(17,24,39,.10); margin-bottom:12px; }
     .small { font-size:12px; color:#6b7280; }
     code { background:#f3f4f6; padding:2px 6px; border-radius:8px; }
+	
+	.linksBox{
+  background:#fff;
+  border:1px solid rgba(17,24,39,.08);
+  border-radius:14px;
+  padding:14px;
+  margin: 0 0 14px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.06);
+}
+.linksTop{
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.linksTitle{
+  font-weight: 700;
+  font-size: 15px;
+}
+.linksHint{
+  color:#6b7280;
+  font-size: 12px;
+}
+.linksList{
+  display:flex;
+  gap:10px;
+  flex-wrap: wrap;
+}
+.linkChip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(17,24,39,.12);
+  background:#fff;
+  color:#111827;
+  text-decoration:none;
+  font-size:13px;
+}
+.linkChip:hover{ background:#f9fafb; }
+.linkChip .dot{
+  width:8px; height:8px; border-radius:999px;
+  background: rgba(17,24,39,.35);
+}
+
+	
   </style>
 </head>
 <body>
@@ -78,9 +127,19 @@
     <div id="count"></div>
     <div class="small">Included if description contains “Dvar Torah Parshas”.</div>
   </div>
-
+ 
   <div id="grid" class="grid"></div>
-  <div id="empty" class="empty" style="display:none;">No videos match your filters.</div>
+
+ 
+<div id="linksBox" class="linksBox" style="display:none;">
+  <div class="linksTop">
+    <div class="linksTitle" id="linksTitle">Links</div>
+    <div class="linksHint" id="linksHint"></div>
+  </div>
+  <div id="linksList" class="linksList"></div>
+</div> 
+
+ <div id="empty" class="empty" style="display:none;">No videos match your filters.</div>
 </main>
 
 <script>
@@ -103,7 +162,7 @@
 
 //Order by Parsha
 const PARSHA_ORDER = [
-  "Bereishis","Noach","Lech Lecha","Vayeira","Chayei Sarah","Toldos",
+  "Bereishis","Noach","Lech Licha","Vayeira","Chayei Sarah","Toldos",
   "Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi",
 
   "Shemos","Vaera","Bo","Beshalach","Yisro","Mishpatim",
@@ -130,6 +189,33 @@ const PARSHA_ORDER = [
   const q = $("q");
   const sort = $("sort");
   const parshaSel = $("parsha");
+  
+  const linksBox = $("linksBox");
+const linksList = $("linksList");
+const linksTitle = $("linksTitle");
+const linksHint = $("linksHint");
+
+
+// Per-Parsha extra links shown when a Parsha is selected.
+// Add as many as you want per Parsha.
+const PARSHA_LINKS = {
+  "Noach": [
+    { label: "Parsha page (Google Site)", url: "https://sites.google.com/VIEW/NOACH" },
+    { label: "Source sheet (PDF)", url: "https://YOURDOMAIN.com/sources/noach.pdf" },
+    { label: "Audio playlist", url: "https://YOURDOMAIN.com/audio/noach" }
+  ],
+  "Bereishis": [
+    { label: "Parsha page (Google Site)", url: "https://sites.google.com/VIEW/BEREISHIS" }
+  ]
+};
+
+// Optional: links shown when "All Parshios" is selected (site-wide links)
+const GLOBAL_LINKS = [
+  { label: "Back to Parshios index", url: "https://sites.google.com/VIEW/PARSHIOS" },
+  { label: "TorahMoment YouTube", url: "https://youtube.com/@torahmoment" }
+];
+
+  
   const clearBtn = $("clear");
   const count = $("count");
   const statusText = $("statusText");
@@ -257,6 +343,49 @@ const PARSHA_ORDER = [
     if ([...parshaSel.options].some(o => o.value === current)) parshaSel.value = current;
   }
 
+
+function escapeAttr(s){
+  return String(s ?? "").replace(/"/g, "&quot;");
+}
+
+function renderLinks() {
+  const selected = parshaSel.value;
+
+  // Show GLOBAL_LINKS always? Choose behavior:
+  // - If you want global links always visible, set includeGlobal = true.
+  // - If you want links only when a Parsha is selected, set false.
+  const includeGlobal = true;
+
+  const items = [];
+  if (includeGlobal && Array.isArray(GLOBAL_LINKS)) items.push(...GLOBAL_LINKS);
+
+  if (selected && PARSHA_LINKS[selected]) {
+    items.push(...PARSHA_LINKS[selected]);
+    linksTitle.textContent = `Links for ${selected}`;
+    linksHint.textContent = `(${PARSHA_LINKS[selected].length} item${PARSHA_LINKS[selected].length === 1 ? "" : "s"})`;
+  } else {
+    linksTitle.textContent = "Links";
+    linksHint.textContent = "";
+  }
+
+  // If you only want the box to show when something exists:
+  if (!items.length) {
+    linksBox.style.display = "none";
+    linksList.innerHTML = "";
+    return;
+  }
+
+  linksBox.style.display = "block";
+  linksList.innerHTML = items.map(l => `
+    <a class="linkChip" href="${escapeAttr(l.url)}" target="_blank" rel="noopener">
+      <span class="dot"></span>
+      <span>${escapeHtml(l.label)}</span>
+    </a>
+  `).join("");
+}
+
+
+
   function applyFilters() {
     const term = q.value.trim().toLowerCase();
     const selectedParsha = parshaSel.value;
@@ -362,6 +491,9 @@ const PARSHA_ORDER = [
 
       buildParshaDropdown();
 
+renderLinks();
+
+
       setStatus("Done", `Loaded ${parshaVideos.length} Parsha videos across ${parshaList.length} Parshios.`);
       applyFilters();
     } catch (e) {
@@ -375,11 +507,18 @@ const PARSHA_ORDER = [
   // Events
   q.addEventListener("input", applyFilters);
   sort.addEventListener("change", applyFilters);
-  parshaSel.addEventListener("change", applyFilters);
+  parshaSel.addEventListener("change", () => {
+  renderLinks();
+  applyFilters();
+});
+
   clearBtn.addEventListener("click", () => {
     q.value = "";
     sort.value = "new";
     parshaSel.value = "";
+
+	renderLinks();
+
     applyFilters();
     q.focus();
   });
