@@ -101,6 +101,26 @@
   // "Dvar Torah Parshas Vayeira" -> "Vayeira"
   const PARSHA_EXTRACT_RE = /dvar torah parshas\s+(.+?)(?:\s+-\s+|$)/i;
 
+//Order by Parsha
+const PARSHA_ORDER = [
+  "Bereishis","Noach","Lech Lecha","Vayeira","Chayei Sarah","Toldos",
+  "Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi",
+
+  "Shemos","Vaera","Bo","Beshalach","Yisro","Mishpatim",
+  "Terumah","Tetzaveh","Ki Sisa","Vayakhel","Pekudei",
+
+  "Vayikra","Tzav","Shemini","Tazria","Metzora",
+  "Achrei Mos","Kedoshim","Emor","Behar","Bechukosai",
+
+  "Bamidbar","Naso","Behaaloscha","Shelach","Korach",
+  "Chukas","Balak","Pinchas","Matos","Masei",
+
+  "Devarim","Vaeschanan","Eikev","Reeh","Shoftim",
+  "Ki Seitzei","Ki Savo","Nitzavim","Vayeilech",
+  "Haazinu","Vezos Haberacha"
+];
+
+
   // =============================
   // Helpers
   // =============================
@@ -324,7 +344,21 @@
         .filter(v => !!v.id);
 
       parshaList = Array.from(new Set(parshaVideos.map(v => v.parsha).filter(Boolean)))
-        .sort((a,b) => a.localeCompare(b));
+  .sort((a, b) => {
+    const ia = PARSHA_ORDER.indexOf(a);
+    const ib = PARSHA_ORDER.indexOf(b);
+
+    // Known parshios → Torah order
+    if (ia !== -1 && ib !== -1) return ia - ib;
+
+    // Known comes before unknown
+    if (ia !== -1) return -1;
+    if (ib !== -1) return 1;
+
+    // Fallback alphabetical
+    return a.localeCompare(b);
+  });
+
 
       buildParshaDropdown();
 
