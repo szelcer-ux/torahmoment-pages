@@ -70,29 +70,116 @@
   color:#6b7280;
   font-size: 12px;
 }
-.linksList{
-  display:flex;
-  gap:10px;
-  flex-wrap: wrap;
-}
-.linkChip{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid rgba(17,24,39,.12);
-  background:#fff;
-  color:#111827;
-  text-decoration:none;
-  font-size:13px;
-}
-.linkChip:hover{ background:#f9fafb; }
-.linkChip .dot{
-  width:8px; height:8px; border-radius:999px;
-  background: rgba(17,24,39,.35);
+
+
+
+
+ 
+
+.audioIcon{
+  font-size:16px;
+  opacity:0.75;
 }
 
+
+
+ .linksList{
+  display:flex;
+  flex-direction: column;
+  gap: 0;                 /* dividers handle spacing */
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,.10);
+  background: #fff;
+}
+
+/* Each row */
+.audioLink{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 12px;
+  text-decoration:none;
+  color:#111827;
+  font-size:14px;
+  background:#fff;
+  transition: background .12s ease, transform .08s ease;
+}
+
+/* Subtle divider between rows */
+.audioLink + .audioLink{
+  border-top: 1px solid rgba(17,24,39,.08);
+}
+
+/* Hover/focus = “media player” feel */
+.audioLink:hover{
+  background:#f9fafb;
+}
+.audioLink:active{
+  transform: translateY(1px);
+}
+.audioLink:focus-visible{
+  outline: 2px solid rgba(17,24,39,.25);
+  outline-offset: -2px;
+}
+
+/* Play button in a circle */
+.playBtn{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f3f4f6;
+  border: 1px solid rgba(17,24,39,.10);
+  flex: 0 0 auto;
+}
+
+.playIcon{
+  width: 0;
+  height: 0;
+  border-left: 9px solid #111827;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  opacity: 0.75;
+  margin-left: 2px; /* optical centering inside circle */
+}
+
+/* Title text */
+.audioTitle{
+  min-width: 0;               /* enables ellipsis */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right-side meta: duration + badge */
+.audioMeta{
+  margin-left: auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:#6b7280;
+  flex: 0 0 auto;
+}
+
+.audioBadge{
+  padding:3px 8px;
+  border-radius:999px;
+  border:1px solid rgba(17,24,39,.15);
+  background:#f3f4f6;
+  font-size:11px;
+  color:#111827;
+  white-space: nowrap;
+}
+
+
+
+.linksBox {
+  margin-top: 24px;
+}
 	
   </style>
 </head>
@@ -200,9 +287,7 @@ const linksHint = $("linksHint");
 // Add as many as you want per Parsha.
 const PARSHA_LINKS = {
   "Noach": [
-    { label: "Parsha page (Google Site)", url: "https://sites.google.com/VIEW/NOACH" },
-    { label: "Source sheet (PDF)", url: "https://YOURDOMAIN.com/sources/noach.pdf" },
-    { label: "Audio playlist", url: "https://YOURDOMAIN.com/audio/noach" }
+    { label: "How petty theft sealed the fate of the dor hamabul", url: "https://5minutesoftorah.buzzsprout.com/1899789/episodes/16010930", duration: "5:42"}
   ],
   "Bereishis": [
     { label: "Parsha page (Google Site)", url: "https://sites.google.com/VIEW/BEREISHIS" }
@@ -376,12 +461,21 @@ function renderLinks() {
   }
 
   linksBox.style.display = "block";
-  linksList.innerHTML = items.map(l => `
-    <a class="linkChip" href="${escapeAttr(l.url)}" target="_blank" rel="noopener">
-      <span class="dot"></span>
-      <span>${escapeHtml(l.label)}</span>
-    </a>
-  `).join("");
+ linksList.innerHTML = items.map(l => `
+  <a class="audioLink" href="${escapeAttr(l.url)}" target="_blank" rel="noopener">
+    <span class="playBtn" aria-hidden="true"><span class="playIcon"></span></span>
+
+    <span class="audioTitle">${escapeHtml(l.label)}</span>
+
+    <span class="audioMeta">
+      ${l.duration ? `<span>(${escapeHtml(l.duration)})</span>` : ""}
+      <span class="audioBadge">Audio only</span>
+    </span>
+  </a>
+`).join("");
+
+
+
 }
 
 
