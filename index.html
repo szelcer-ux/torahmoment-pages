@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Parsha Divrei Torah</title>
+  <style>
+    :root { --radius: 14px; --shadow: 0 10px 28px rgba(0,0,0,.08); }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:#f6f7fb; color:#111827; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(246,247,251,.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(17,24,39,.08); }
+    .wrap { max-width: 1150px; margin: 0 auto; padding: 18px 16px; }
+    h1 { margin: 0; font-size: 24px; letter-spacing: -.02em; }
+    .sub { margin: 6px 0 0; color:#6b7280; font-size: 14px; }
+
+    .controls { display:grid; grid-template-columns: 1fr 220px 220px 140px; gap:10px; margin-top:14px; }
+    input, select, button { width:100%; border:1px solid rgba(17,24,39,.12); border-radius:12px; padding:10px 12px; font-size:14px; background:#fff; }
+    button { cursor:pointer; background:#111827; color:#fff; }
+    button:hover { filter: brightness(1.05); }
+    @media (max-width: 900px){ .controls{ grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px){ .controls{ grid-template-columns: 1fr; } }
+
+    main { padding: 18px 0 40px; }
+    .bar { display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:12px; color:#6b7280; font-size:13px; }
+    .grid { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:14px; }
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card { background:#fff; border:1px solid rgba(17,24,39,.08); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); transition: transform .12s ease, box-shadow .12s ease; text-decoration:none; color:inherit; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,.10); }
+    .thumb { display:block; width:100%; aspect-ratio: 16/9; background:#e5e7eb; position:relative; overflow:hidden; }
+    .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .play { position:absolute; inset:0; display:grid; place-items:center; background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0)); opacity:.95; }
+    .play svg { width:62px; height:62px; filter: drop-shadow(0 6px 10px rgba(0,0,0,.35)); }
+
+    .meta { padding:12px 12px 14px; }
+    .meta h3 { margin:0 0 6px; font-size:16px; line-height:1.25; }
+    .meta .date { margin:0; color:#6b7280; font-size:13px; }
+    .meta .desc { margin:8px 0 0; color:#6b7280; font-size:13px; line-height:1.35; }
+    .pillrow { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
+    .pill { display:inline-block; font-size:12px; padding:6px 9px; border-radius:999px; background:#f3f4f6; border:1px solid rgba(17,24,39,.08); color:#111827; }
+
+    .empty, .notice { background:#fff; border-radius: var(--radius); padding:16px; color:#6b7280; text-align:center; }
+    .empty { border:1px dashed rgba(17,24,39,.25); }
+    .notice { border:1px solid rgba(17,24,39,.10); margin-bottom:12px; }
+    .small { font-size:12px; color:#6b7280; }
+    code { background:#f3f4f6; padding:2px 6px; border-radius:8px; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Parsha Divrei Torah</h1>
+    <p class="sub">Parsha-only library filtered from your channel by description lines like <code>Dvar Torah Parshas Noach - ...</code></p>
+
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search within Parsha videos..." />
+      <select id="parsha">
+        <option value="">All Parshios</option>
+      </select>
+      <select id="sort">
+        <option value="new">Newest first</option>
+        <option value="old">Oldest first</option>
+        <option value="title">Title A–Z</option>
+      </select>
+      <button id="clear">Clear</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="notice">
+    <div><strong>Status:</strong> <span id="statusText">Ready</span></div>
+    <div class="small" id="statusSmall"></div>
+  </div>
+
+  <div class="bar">
+    <div id="count"></div>
+    <div class="small">Included if description contains “Dvar Torah Parshas”.</div>
+  </div>
+
+  <div id="grid" class="grid"></div>
+  <div id="empty" class="empty" style="display:none;">No videos match your filters.</div>
+</main>
+
+<script>
+  // =============================
+  // CONFIG — EDIT THIS
+  // =============================
+  const API_KEY    = "AIzaSyDbJnY2cPtyyVya7YNzxG0hCju7ikBUWsU";
+  const CHANNEL_ID = "UCzx1pweEHKhsIfPkQZbRH4w";
+  const MAX_TO_FETCH = 5000;
+
+  // Your descriptions include: "Dvar Torah Parshas Noach - Living mercifully"
+  const PARSHA_DESC_NEEDLE = "dvar torah parshas";
+
+  // Extract the Parsha name from the description.
+  // Captures up to the first " - " (or end of line)
+  // Examples:
+  // "Dvar Torah Parshas Noach - Living mercifully" -> "Noach"
+  // "Dvar Torah Parshas Vayeira" -> "Vayeira"
+  const PARSHA_EXTRACT_RE = /dvar torah parshas\s+(.+?)(?:\s+-\s+|$)/i;
+
+  // =============================
+  // Helpers
+  // =============================
+  const $ = (id) => document.getElementById(id);
+  const grid = $("grid");
+  const empty = $("empty");
+  const q = $("q");
+  const sort = $("sort");
+  const parshaSel = $("parsha");
+  const clearBtn = $("clear");
+  const count = $("count");
+  const statusText = $("statusText");
+  const statusSmall = $("statusSmall");
+
+  const ytWatch = (id) => `https://www.youtube.com/watch?v=${id}`;
+  const fmtDate = (iso) => {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+    } catch { return ""; }
+  };
+  const escapeHtml = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+  const normalizeWs = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+
+  function setStatus(main, small="") {
+    statusText.textContent = main;
+    statusSmall.textContent = small;
+  }
+
+  async function api(url) {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(`HTTP ${r.status} from YouTube API`);
+    return r.json();
+  }
+
+  async function getUploadsPlaylistId() {
+    const url =
+      `https://www.googleapis.com/youtube/v3/channels` +
+      `?part=contentDetails&id=${encodeURIComponent(CHANNEL_ID)}` +
+      `&key=${encodeURIComponent(API_KEY)}`;
+    const j = await api(url);
+    const pid = j.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
+    if (!pid) throw new Error("Could not find uploads playlist id.");
+    return pid;
+  }
+
+  async function getAllVideoIdsFromPlaylist(playlistId) {
+    let ids = [];
+    let pageToken = "";
+    while (true) {
+      const url =
+        `https://www.googleapis.com/youtube/v3/playlistItems` +
+        `?part=contentDetails&maxResults=50&playlistId=${encodeURIComponent(playlistId)}` +
+        (pageToken ? `&pageToken=${encodeURIComponent(pageToken)}` : "") +
+        `&key=${encodeURIComponent(API_KEY)}`;
+
+      const j = await api(url);
+      const chunk = (j.items || []).map(it => it.contentDetails?.videoId).filter(Boolean);
+      ids.push(...chunk);
+
+      setStatus("Loading…", `Fetched ${ids.length} video IDs`);
+      if (ids.length >= MAX_TO_FETCH) break;
+
+      pageToken = j.nextPageToken;
+      if (!pageToken) break;
+    }
+    return ids;
+  }
+
+  async function getVideoDetails(videoIds) {
+    const out = [];
+    for (let i = 0; i < videoIds.length; i += 50) {
+      const batch = videoIds.slice(i, i + 50);
+      const url =
+        `https://www.googleapis.com/youtube/v3/videos` +
+        `?part=snippet&id=${encodeURIComponent(batch.join(","))}` +
+        `&key=${encodeURIComponent(API_KEY)}`;
+      const j = await api(url);
+
+      for (const it of (j.items || [])) {
+        const s = it.snippet || {};
+        const thumbs = s.thumbnails || {};
+        out.push({
+          id: it.id,
+          title: s.title || "",
+          publishedAt: s.publishedAt || "",
+          description: s.description || "",
+          thumb:
+            thumbs.maxres?.url ||
+            thumbs.standard?.url ||
+            thumbs.high?.url ||
+            thumbs.medium?.url ||
+            thumbs.default?.url ||
+            ""
+        });
+      }
+      setStatus("Loading…", `Loaded details for ${Math.min(i + 50, videoIds.length)} / ${videoIds.length}`);
+    }
+    return out;
+  }
+
+  function isParshaVideo(desc) {
+    return (desc || "").toLowerCase().includes(PARSHA_DESC_NEEDLE);
+  }
+
+  function extractParsha(desc) {
+    const firstLine = normalizeWs(String(desc || "").split("\n")[0] || "");
+    const m = firstLine.match(PARSHA_EXTRACT_RE);
+    if (!m) return "";
+    // Title-case-ish cleanup
+    return normalizeWs(m[1]);
+  }
+
+  // =============================
+  // State + UI
+  // =============================
+  let parshaVideos = []; // all parsha videos
+  let parshaList = [];   // unique parsha names
+
+  function buildParshaDropdown() {
+    // Keep current selection if possible
+    const current = parshaSel.value;
+
+    parshaSel.innerHTML = `<option value="">All Parshios</option>`;
+    for (const p of parshaList) {
+      const opt = document.createElement("option");
+      opt.value = p;
+      opt.textContent = p;
+      parshaSel.appendChild(opt);
+    }
+    // restore if still valid
+    if ([...parshaSel.options].some(o => o.value === current)) parshaSel.value = current;
+  }
+
+  function applyFilters() {
+    const term = q.value.trim().toLowerCase();
+    const selectedParsha = parshaSel.value;
+
+    let list = parshaVideos.slice();
+
+    if (selectedParsha) {
+      list = list.filter(v => v.parsha === selectedParsha);
+    }
+
+    if (term) {
+      list = list.filter(v => (v.title + " " + v.description + " " + v.parsha).toLowerCase().includes(term));
+    }
+
+    const mode = sort.value;
+    if (mode === "new") list.sort((a,b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
+    if (mode === "old") list.sort((a,b) => (a.publishedAt || "").localeCompare(b.publishedAt || ""));
+    if (mode === "title") list.sort((a,b) => (a.title || "").localeCompare(b.title || ""));
+
+    render(list);
+  }
+
+  function render(list) {
+    grid.innerHTML = "";
+    empty.style.display = list.length ? "none" : "block";
+    count.textContent = `${list.length} video${list.length === 1 ? "" : "s"} shown`;
+
+    for (const v of list) {
+      const a = document.createElement("a");
+      a.className = "card";
+      a.href = ytWatch(v.id);
+      a.target = "_blank";
+      a.rel = "noopener";
+
+      const desc = normalizeWs((v.description || "").split("\n")[0] || "");
+      const shortDesc = desc.length > 110 ? (desc.slice(0, 110) + "…") : desc;
+
+      a.innerHTML = `
+        <span class="thumb">
+          <img loading="lazy" src="${escapeHtml(v.thumb)}" alt="${escapeHtml(v.title)} thumbnail" />
+          <span class="play" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="28" fill="rgba(255,255,255,.90)"/>
+              <path d="M27 22.5V41.5L43 32L27 22.5Z" fill="rgba(17,24,39,.95)"/>
+            </svg>
+          </span>
+        </span>
+        <div class="meta">
+          <h3>${escapeHtml(v.title)}</h3>
+          <p class="date">${escapeHtml(fmtDate(v.publishedAt))}</p>
+          ${shortDesc ? `<p class="desc">${escapeHtml(shortDesc)}</p>` : ""}
+          <div class="pillrow">
+            ${v.parsha ? `<span class="pill">${escapeHtml(v.parsha)}</span>` : `<span class="pill">Parsha</span>`}
+            <span class="pill">YouTube</span>
+          </div>
+        </div>
+      `;
+      grid.appendChild(a);
+    }
+  }
+
+  async function load() {
+    if (!API_KEY || API_KEY === "PASTE_YOUR_API_KEY_HERE") {
+      setStatus("Missing API key", "Paste your key into API_KEY at the top of this file.");
+      grid.innerHTML = "";
+      empty.style.display = "block";
+      count.textContent = "";
+      return;
+    }
+
+    try {
+      setStatus("Starting…", "Finding uploads playlist");
+      const uploadsPlaylistId = await getUploadsPlaylistId();
+
+      setStatus("Loading…", "Fetching all video IDs");
+      const ids = await getAllVideoIdsFromPlaylist(uploadsPlaylistId);
+
+      setStatus("Loading…", `Found ${ids.length}. Fetching details…`);
+      const details = await getVideoDetails(ids);
+
+      setStatus("Filtering…", "Keeping Parsha videos (by description)");
+      parshaVideos = details
+        .filter(v => isParshaVideo(v.description))
+        .map(v => ({ ...v, parsha: extractParsha(v.description) }))
+        .filter(v => !!v.id);
+
+      parshaList = Array.from(new Set(parshaVideos.map(v => v.parsha).filter(Boolean)))
+        .sort((a,b) => a.localeCompare(b));
+
+      buildParshaDropdown();
+
+      setStatus("Done", `Loaded ${parshaVideos.length} Parsha videos across ${parshaList.length} Parshios.`);
+      applyFilters();
+    } catch (e) {
+      setStatus("Error", e.message || String(e));
+      grid.innerHTML = "";
+      empty.style.display = "block";
+      count.textContent = "";
+    }
+  }
+
+  // Events
+  q.addEventListener("input", applyFilters);
+  sort.addEventListener("change", applyFilters);
+  parshaSel.addEventListener("change", applyFilters);
+  clearBtn.addEventListener("click", () => {
+    q.value = "";
+    sort.value = "new";
+    parshaSel.value = "";
+    applyFilters();
+    q.focus();
+  });
+
+  load();
+</script>
+</body>
+</html>
