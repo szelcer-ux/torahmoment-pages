@@ -140,25 +140,8 @@ playerToggle.addEventListener("click", () => {
   }
 });
 
-audioEl.addEventListener("loadedmetadata", () => {
-  playerDur.textContent = fmtTime(audioEl.duration);
-});
+ 
 
-audioEl.addEventListener("timeupdate", () => {
-  playerCur.textContent = fmtTime(audioEl.currentTime);
-});
-
-audioEl.addEventListener("pause", () => {
-  playerToggle.textContent = "Play";
-});
-
-audioEl.addEventListener("play", () => {
-  playerToggle.textContent = "Pause";
-});
-
-audioEl.addEventListener("ended", () => {
-  playerToggle.textContent = "Play";
-});
 
 
 
@@ -614,7 +597,34 @@ audioEl.addEventListener("ended", () => {
 
 .audioLink{ cursor:pointer; }
 
-	
+/* --- Make the play button show ONLY the text icon --- */
+.playIcon{
+  /* kill any existing triangle/border icon technique */
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  background: none !important;
+}
+
+.playIcon::before{
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Default: play */
+.audioLink .playIcon::before{ content: "▶"; }
+
+/* Playing: pause */
+.audioLink.isPlaying .playIcon::before{ content: "⏸"; }
+
+/* Paused: play */
+.audioLink.isPaused .playIcon::before{ content: "▶"; }
+
+	.playBtn{
+  background: none !important;
+}
+
   </style>
 </head>
 <body>
@@ -671,7 +681,7 @@ audioEl.addEventListener("ended", () => {
     <div class="playerTime">
       <span id="playerCur">0:00</span>
       /
-      <span id="playerDur">0:00</span>
+     <span id="playerDur">—</span>
     </div>
   </div>
   <audio id="audioEl" preload="metadata"></audio>
@@ -1313,6 +1323,16 @@ playerToggle.addEventListener("click", () => {
     playerToggle.textContent = "Play";
   }
 });
+
+audioEl.addEventListener("pause", () => {
+  playerToggle.textContent = "Play";
+});
+
+audioEl.addEventListener("play", () => {
+  playerToggle.textContent = "Pause";
+});
+
+ 
 
 audioEl.addEventListener("loadedmetadata", () => {
   playerDur.textContent = fmtTime(audioEl.duration);
