@@ -460,7 +460,8 @@ function setFiltersOpen(isOpen){
 
   controlsWrap.classList.toggle("is-open", isOpen);
   filtersBtn.setAttribute("aria-expanded", String(isOpen));
-  filtersBtn.textContent = isOpen ? "Hide filters" : "Filters";
+ filtersBtn.textContent = isOpen ? "Filters ▲" : "Filters ▼";
+
 }
 
 if (filtersBtn && controlsWrap) {
