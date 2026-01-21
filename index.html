@@ -235,8 +235,13 @@
 
 
 #audioEl{
-  display:none !important;           /* prevent the audio element from affecting layout */
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
 }
+
 
 #playerBar{
   display:none;                      /* JS will set to flex */
@@ -1048,13 +1053,20 @@ document.addEventListener("click", async (e) => {
       currentHref = href;
     }
 
-    await audioEl.play();
+    const p = audioEl.play();
+if (p && typeof p.catch === "function") {
+  p.catch(err => {
+    console.error("INLINE AUDIO FAILED:", err.name, err.message, href);
+    // window.open(href, "_blank", "noopener");
+  });
+}
+
 
     clearRowStates();
     a.classList.add("isPlaying");
   } catch (err) {
     console.error("Inline audio failed:", err);
-    window.open(href, "_blank", "noopener");
+   // window.open(href, "_blank", "noopener");
   }
 });
 
