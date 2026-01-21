@@ -237,6 +237,14 @@
   const CHANNEL_ID = "UCzx1pweEHKhsIfPkQZbRH4w";
   const MAX_TO_FETCH = 5000;
 
+const PARSHA_AUDIO = {
+  // Example:
+  // "Noach": [
+  //   { label: "Living mercifully", url: "https://audio.site/noach1", duration: "5:42" }
+  // ]
+};
+
+
   // Your descriptions include: "Dvar Torah Parshas Noach - Living mercifully"
   const PARSHA_DESC_NEEDLE = "dvar torah parshas";
 
@@ -246,7 +254,7 @@
   // "Dvar Torah Parshas Noach - Living mercifully" -> "Noach"
   // "Dvar Torah Parshas Vayeira" -> "Vayeira"
   const PARSHA_EXTRACT_RE = /dvar torah parshas\s+(.+?)(?:\s+-\s+|$)/i;
-
+ 
 
 
 //Order by Parsha
@@ -464,9 +472,10 @@ function renderLinks() {
   const selected = parshaSel.value;
 
   // Only show audio when a Parsha is selected
-  const items = selected && PARSHA_AUDIO[selected]
-    ? PARSHA_AUDIO[selected]
-    : [];
+const items = selected && (typeof PARSHA_AUDIO !== "undefined") && PARSHA_AUDIO[selected]
+  ? PARSHA_AUDIO[selected]
+  : [];
+
 
   if (!items.length) {
     linksBox.style.display = "none";
@@ -503,11 +512,38 @@ function getParshaFromURL() {
 function normParsha(s) {
   return String(s || "")
     .toLowerCase()
-    .replace(/[\u2019']/g, "")     // remove apostrophes (’ and ')
-    .replace(/[^a-z0-9]+/g, " ")   // punctuation -> spaces
+    .replace(/[\u2019']/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
     .trim()
-    .replace(/\s+/g, " ");        // collapse spaces
+    .replace(/\s+/g, " ");
 }
+
+function applyFilters() {
+  const term = q.value.trim().toLowerCase();
+  const selectedParsha = parshaSel.value;
+
+  let list = parshaVideos.slice();
+
+  // ✅ Filter by parsha selection
+  if (selectedParsha) {
+    const wanted = normParsha(selectedParsha);
+    list = list.filter(v => normParsha(v.parsha) === wanted);
+  }
+
+  // Search filter
+  if (term) {
+    list = list.filter(v => (v.title + " " + v.description + " " + v.parsha).toLowerCase().includes(term));
+  }
+
+  // Sort
+  const mode = sort.value;
+  if (mode === "new") list.sort((a,b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
+  if (mode === "old") list.sort((a,b) => (a.publishedAt || "").localeCompare(b.publishedAt || ""));
+  if (mode === "title") list.sort((a,b) => (a.title || "").localeCompare(b.title || ""));
+
+  render(list);
+}
+
 
 function selectParshaFromURL() {
   const wantedRaw = getParshaFromURL();
@@ -697,4 +733,3 @@ renderLinks();
 </script>
 </body>
 </html>
-
