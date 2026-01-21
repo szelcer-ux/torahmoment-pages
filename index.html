@@ -186,7 +186,7 @@
 <body>
 <header>
   <div class="wrap">
-    <h1>Parsha Divrei Torah</h1>
+   <h1 id="pageH1">Parsha Divrei Torah</h1>
     <p class="sub">Parsha-only library filtered from your channel by description lines like <code>Dvar Torah Parshas Noach - ...</code></p>
 
     <div class="controls">
@@ -246,6 +246,9 @@
   // "Dvar Torah Parshas Noach - Living mercifully" -> "Noach"
   // "Dvar Torah Parshas Vayeira" -> "Vayeira"
   const PARSHA_EXTRACT_RE = /dvar torah parshas\s+(.+?)(?:\s+-\s+|$)/i;
+
+const pageH1 = $("pageH1");
+
 
 //Order by Parsha
 const PARSHA_ORDER = [
@@ -398,8 +401,13 @@ const GLOBAL_LINKS = [
 function setPageTitle() {
   const base = "Parsha Divrei Torah";
   const p = parshaSel.value;
-  document.title = p ? `${base} – ${p}` : base;
+
+  const full = p ? `${base} – ${p}` : base;
+
+  document.title = full;
+  if (pageH1) pageH1.textContent = full;
 }
+
 
 function updateURLFromSelection() {
   const url = new URL(window.location.href);
