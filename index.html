@@ -249,6 +249,51 @@
     display:grid;
   } 
 
+/* Hide status/debug info on mobile */
+@media (max-width: 780px){
+  .notice{
+    display: none;
+  }
+}
+
+/* Header row: title + filters */
+.headerRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Filters button: default (desktop) stays hidden as before */
+.filtersBtn{
+  display: none;
+}
+
+/* Mobile-only adjustments */
+@media (max-width: 780px){
+
+  /* Show Filters button inline with title */
+  .filtersBtn{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;          /* smaller */
+    font-size: 13px;
+    border-radius: 999px;       /* pill shape */
+    border: 1px solid rgba(17,24,39,.15);
+    background: #f9fafb;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* Make sure title doesn’t wrap awkwardly */
+  #pageH1{
+    font-size: 18px;
+    margin: 0;
+  }
+}
+
+
   /* Optional: reduce the notice box padding if you have it */
   .notice{
     padding: 12px;
@@ -261,10 +306,15 @@
 <body>
 <header>
   <div class="wrap">
-   <h1 id="pageH1">Parsha Divrei Torah</h1>
- <button id="filtersBtn" class="filtersBtn" type="button" aria-expanded="false" aria-controls="controlsWrap">
-  Filters
-</button>
+<div class="headerRow">
+  <h1 id="pageH1">Parsha Divrei Torah</h1>
+
+  <button id="filtersBtn" class="filtersBtn" type="button"
+          aria-expanded="false" aria-controls="controlsWrap">
+    Filters ▾
+  </button>
+</div>
+
 
     <div class="controls" id="controlsWrap">
       <input id="q" type="search" placeholder="Search within Parsha videos..." />
