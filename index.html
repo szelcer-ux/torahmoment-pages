@@ -993,20 +993,6 @@ renderLinks();
    ========================= */
 
 const audioEl = document.getElementById("audioEl");
-if (!audioEl) {
-  console.error("audioEl not found in DOM");
-}
-
-/* Track currently loaded audio */
-let currentHref = "";
-
-function clearRowStates(){
-  document.querySelectorAll(".audioLink").forEach(x => {
-    x.classList.remove("isPlaying", "isPaused");
-  });
-}
-
-const audioEl = document.getElementById("audioEl");
 let currentHref = "";
 
 function clearRowStates(){
