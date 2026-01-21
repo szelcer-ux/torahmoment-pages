@@ -478,6 +478,11 @@ function renderLinks() {
 
 }
 
+function getParshaFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const p = params.get("parsha");
+  return p ? p.trim() : "";
+}
 
 
   function applyFilters() {
@@ -584,6 +589,13 @@ function renderLinks() {
 
 
       buildParshaDropdown();
+
+const parshaFromURL = getParshaFromURL();
+if (parshaFromURL && [...parshaSel.options].some(o => o.value === parshaFromURL)) {
+  parshaSel.value = parshaFromURL;
+}
+
+ 
 
 renderLinks();
 
