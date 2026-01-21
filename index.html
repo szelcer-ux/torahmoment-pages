@@ -93,6 +93,68 @@
   background: #fff;
 }
 
+linksList.addEventListener("click", async (e) => {
+  const a = e.target.closest("a.audioLink");
+  if (!a) return;
+
+  e.preventDefault(); // we’ll try inline play first
+
+  const href = a.getAttribute("href");
+  const title = a.dataset.title || "Audio";
+
+  try {
+    // Show player bar
+    playerBar.style.display = "flex";
+    playerTitle.textContent = title;
+
+    // Load if new track
+    if (audioEl.src !== href) {
+      audioEl.src = href;
+    }
+
+    currentlyPlayingHref = href;
+    updatePlayingRow();
+
+    await audioEl.play();             // allowed because user clicked
+    playerToggle.textContent = "Pause";
+  } catch (err) {
+    // If browser blocks or host refuses, fall back to new tab
+    window.open(href, "_blank", "noopener");
+  }
+});
+
+playerToggle.addEventListener("click", () => {
+  if (audioEl.paused) {
+    audioEl.play().catch(()=>{});
+    playerToggle.textContent = "Pause";
+  } else {
+    audioEl.pause();
+    playerToggle.textContent = "Play";
+  }
+});
+
+audioEl.addEventListener("loadedmetadata", () => {
+  playerDur.textContent = fmtTime(audioEl.duration);
+});
+
+audioEl.addEventListener("timeupdate", () => {
+  playerCur.textContent = fmtTime(audioEl.currentTime);
+});
+
+audioEl.addEventListener("pause", () => {
+  playerToggle.textContent = "Play";
+});
+
+audioEl.addEventListener("play", () => {
+  playerToggle.textContent = "Pause";
+});
+
+audioEl.addEventListener("ended", () => {
+  playerToggle.textContent = "Play";
+});
+
+
+
 /* Each row */
 .audioLink{
   display:flex;
@@ -310,6 +372,50 @@
   }
 }
 
+.playerBar{
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(17,24,39,.10);
+  border-radius: 12px;
+  background: #fff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.playerBtn{
+  border:1px solid rgba(17,24,39,.12);
+  border-radius:10px;
+  padding:8px 10px;
+  background:#111827;
+  color:#fff;
+  cursor:pointer;
+  flex: 0 0 auto;
+}
+
+.playerInfo{ min-width:0; flex: 1 1 auto; }
+.playerTitle{
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.playerTime{
+  margin-top:4px;
+  font-size:12px;
+  color:#6b7280;
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+
+.playerSep{ opacity: .7; }
+
+.audioLink.isPlaying{
+  background:#eef2ff;
+}
+
 
   /* Optional: reduce the notice box padding if you have it */
   .notice{
@@ -368,6 +474,21 @@
     <div class="linksHint" id="linksHint"></div>
   </div>
   <div id="linksList" class="linksList"></div>
+  <div id="playerBar" class="playerBar" style="display:none;">
+  <button id="playerToggle" class="playerBtn" type="button">Play</button>
+
+  <div class="playerInfo">
+    <div id="playerTitle" class="playerTitle"></div>
+    <div class="playerTime">
+      <span id="playerCur">0:00</span>
+      <span class="playerSep">/</span>
+      <span id="playerDur">0:00</span>
+    </div>
+  </div>
+
+  <audio id="audioEl" preload="metadata"></audio>
+</div>
+
 </div> 
 
  <div id="empty" class="empty" style="display:none;">No videos match your filters.</div>
@@ -384,6 +505,14 @@
  const filtersBtn = document.getElementById("filtersBtn");
 const controlsWrap = document.getElementById("controlsWrap");
 
+const audioEl = document.getElementById("audioEl");
+const playerBar = document.getElementById("playerBar");
+const playerToggle = document.getElementById("playerToggle");
+const playerTitle = document.getElementById("playerTitle");
+const playerCur = document.getElementById("playerCur");
+const playerDur = document.getElementById("playerDur");
+
+let currentlyPlayingHref = "";
 
 
   // Your descriptions include: "Dvar Torah Parshas Noach - Living mercifully"
@@ -573,6 +702,21 @@ if (filtersBtn && controlsWrap) {
     return out;
   }
 
+function fmtTime(sec){
+  if (!isFinite(sec) || sec < 0) return "0:00";
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+function updatePlayingRow(){
+  document.querySelectorAll(".audioLink").forEach(a => {
+    a.classList.toggle("isPlaying", a.getAttribute("href") === currentlyPlayingHref);
+  });
+}
+
+
+
 function setPageTitle() {
   const base = "Parsha Divrei Torah";
   const p = parshaSel.value;
@@ -656,7 +800,7 @@ const items = selected && (typeof PARSHA_AUDIO !== "undefined") && PARSHA_AUDIO[
   linksHint.textContent = `${items.length} track${items.length === 1 ? "" : "s"}`;
 
   linksList.innerHTML = items.map(l => `
-    <a class="audioLink" href="${escapeAttr(l.url)}" target="_blank" rel="noopener">
+    <a class="audioLink" href="${escapeAttr(l.url)}" target="_blank" rel="noopener"  data-title="${escapeAttr(l.label)}">
       <span class="playBtn" aria-hidden="true">
         <span class="playIcon"></span>
       </span>
