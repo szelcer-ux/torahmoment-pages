@@ -546,6 +546,57 @@ audioEl.addEventListener("ended", () => {
   color:#6b7280 !important;
   white-space:nowrap !important;
 }
+
+/* === INLINE AUDIO PLAYER: FINAL OVERRIDES === */
+#playerBar{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:12px !important;
+  flex-wrap:nowrap !important;
+  width:100% !important;
+  box-sizing:border-box !important;
+}
+
+/* Hide the real <audio> element so it never affects layout */
+#playerBar audio{
+  display:none !important;
+}
+
+/* Stop ANY button in the bar from stretching full width */
+#playerBar button{
+  width:auto !important;
+  flex:0 0 auto !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  white-space:nowrap !important;
+}
+
+/* Prevent any text container from overflowing to the right */
+#playerBar > *{
+  min-width:0 !important;
+}
+
+/* The “info” area should shrink with ellipsis instead of pushing out */
+#playerBar .playerInfo,
+#playerTitle,
+#playerTime{
+  min-width:0 !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+/* Title stays on one line */
+#playerTitle{
+  white-space:nowrap !important;
+}
+
+/* Time stays on one line */
+#playerTime{
+  white-space:nowrap !important;
+}
+
 	
   </style>
 </head>
