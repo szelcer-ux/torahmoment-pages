@@ -186,7 +186,6 @@
 /* Filters button (hidden on desktop) */
 .filtersBtn{
   display:none;
-  width: auto;
   border:1px solid rgba(17,24,39,.12);
   border-radius: 12px;
   padding:10px 12px;
@@ -301,6 +300,13 @@
   #pageH1{
     font-size: 18px;
     margin: 0;
+  }
+}
+
+@media (max-width: 780px){
+  .filtersBtn{
+    width: fit-content !important;   /* 🔥 kills width:100% */
+    flex: 0 0 auto !important;        /* 🔥 prevents flex stretching */
   }
 }
 
