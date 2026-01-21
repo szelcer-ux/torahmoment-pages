@@ -484,6 +484,36 @@ function getParshaFromURL() {
   return p ? p.trim() : "";
 }
 
+function normParsha(s) {
+  return String(s || "")
+    .toLowerCase()
+    .replace(/[\u2019']/g, "")     // remove apostrophes (’ and ')
+    .replace(/[^a-z0-9]+/g, " ")   // punctuation -> spaces
+    .trim()
+    .replace(/\s+/g, " ");        // collapse spaces
+}
+
+function selectParshaFromURL() {
+  const wantedRaw = getParshaFromURL();
+  if (!wantedRaw) return false;
+
+  const wanted = normParsha(wantedRaw);
+
+  // Build a lookup of normalized option value -> real option value
+  const map = new Map();
+  for (const opt of parshaSel.options) {
+    if (!opt.value) continue;
+    map.set(normParsha(opt.value), opt.value);
+  }
+
+  const actual = map.get(wanted);
+  if (!actual) return false;
+
+  parshaSel.value = actual;
+  return true;
+}
+
+
 
   function applyFilters() {
     const term = q.value.trim().toLowerCase();
@@ -588,7 +618,16 @@ function getParshaFromURL() {
   });
 
 
-      buildParshaDropdown();
+
+buildParshaDropdown();
+
+selectParshaFromURL();   // ← THIS is the important line
+
+renderLinks();
+applyFilters();
+
+
+
 
 const parshaFromURL = getParshaFromURL();
 if (parshaFromURL && [...parshaSel.options].some(o => o.value === parshaFromURL)) {
