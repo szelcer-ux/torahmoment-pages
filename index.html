@@ -597,6 +597,23 @@ audioEl.addEventListener("ended", () => {
   white-space:nowrap !important;
 }
 
+/* Default: play */
+.audioLink .playIcon::before{
+  content: "▶";
+}
+
+/* Playing */
+.audioLink.isPlaying .playIcon::before{
+  content: "⏸";
+}
+
+/* Paused */
+.audioLink.isPaused .playIcon::before{
+  content: "▶";
+}
+
+.audioLink{ cursor:pointer; }
+
 	
   </style>
 </head>
@@ -648,17 +665,18 @@ audioEl.addEventListener("ended", () => {
     <div class="linksHint" id="linksHint"></div>
   </div>
   <div id="linksList" class="linksList"></div>
-  <div id="playerBar" style="display:none;">
-  <button id="playerToggle" type="button">Play</button>
-  <div>
-    <div id="playerTitle"></div>
-    <div id="playerTime">
-      <span id="playerCur">0:00</span> /
+ <div id="playerBar" class="playerBar" style="display:none;">
+  <div class="playerInfo">
+    <div id="playerTitle" class="playerTitle"></div>
+    <div class="playerTime">
+      <span id="playerCur">0:00</span>
+      /
       <span id="playerDur">0:00</span>
     </div>
   </div>
   <audio id="audioEl" preload="metadata"></audio>
 </div>
+
 
 
 </div> 
@@ -1249,32 +1267,42 @@ document.addEventListener("click", async (e) => {
   const a = e.target.closest("a.audioLink");
   if (!a) return;
 
-  console.log("AUDIO CLICK:", a.getAttribute("href"));
-
   e.preventDefault();
 
   const href = a.getAttribute("href");
-  const title = a.getAttribute("data-title") || a.textContent.trim() || "Audio";
+  const title = a.getAttribute("data-title") || a.textContent.trim();
 
+  // Same track clicked again → toggle play/pause
+  if (audioEl.src === href && !audioEl.paused) {
+    audioEl.pause();
+    a.classList.remove("isPlaying");
+    a.classList.add("isPaused");
+    return;
+  }
+
+  // Play new (or paused) track
   try {
     playerBar.style.display = "flex";
     playerTitle.textContent = title;
 
-    if (audioEl.getAttribute("src") !== href) {
-      audioEl.setAttribute("src", href);
+    if (audioEl.src !== href) {
+      audioEl.src = href;
       audioEl.load();
     }
 
-    currentlyPlayingHref = href;
-    updatePlayingRow();
-
     await audioEl.play();
-    playerToggle.textContent = "Pause";
+
+    // Update row states
+    document.querySelectorAll(".audioLink").forEach(x => {
+      x.classList.remove("isPlaying", "isPaused");
+    });
+
+    a.classList.add("isPlaying");
   } catch (err) {
-    console.error("INLINE AUDIO FAILED:", err);
     window.open(href, "_blank", "noopener");
   }
 });
+
 
 playerToggle.addEventListener("click", () => {
   if (audioEl.paused) {
