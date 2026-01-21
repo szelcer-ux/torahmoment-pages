@@ -271,20 +271,23 @@
 
 /* Mobile-only adjustments */
 @media (max-width: 780px){
-
-  /* Show Filters button inline with title */
   .filtersBtn{
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 10px;          /* smaller */
+    padding: 6px 10px;
     font-size: 13px;
-    border-radius: 999px;       /* pill shape */
+    line-height: 1;
+    font-weight: 600;
+    border-radius: 999px;
     border: 1px solid rgba(17,24,39,.15);
     background: #f9fafb;
+    color: #111827;            /* ✅ makes text visible */
     cursor: pointer;
     white-space: nowrap;
   }
+}
+
 
   /* Make sure title doesn’t wrap awkwardly */
   #pageH1{
@@ -311,7 +314,7 @@
 
   <button id="filtersBtn" class="filtersBtn" type="button"
           aria-expanded="false" aria-controls="controlsWrap">
-    Filters ▾
+    Filters
   </button>
 </div>
 
