@@ -800,19 +800,23 @@ const items = selected && (typeof PARSHA_AUDIO !== "undefined") && PARSHA_AUDIO[
   linksHint.textContent = `${items.length} track${items.length === 1 ? "" : "s"}`;
 
   linksList.innerHTML = items.map(l => `
-    <a class="audioLink" href="${escapeAttr(l.url)}" target="_blank" rel="noopener"  data-title="${escapeAttr(l.label)}">
-      <span class="playBtn" aria-hidden="true">
-        <span class="playIcon"></span>
-      </span>
+  <a class="audioLink"
+     href="${escapeAttr(l.url)}"
+     data-title="${escapeAttr(l.label)}">
 
-      <span class="audioTitle">${escapeHtml(l.label)}</span>
+    <span class="playBtn" aria-hidden="true">
+      <span class="playIcon"></span>
+    </span>
 
-      <span class="audioMeta">
-        ${l.duration ? `<span>(${escapeHtml(l.duration)})</span>` : ""}
-        <span class="audioBadge">Audio only</span>
-      </span>
-    </a>
-  `).join("");
+    <span class="audioTitle">${escapeHtml(l.label)}</span>
+
+    <span class="audioMeta">
+      <span>(${escapeHtml(l.duration)})</span>
+      <span class="audioBadge">Audio only</span>
+    </span>
+  </a>
+`).join("");
+
 }
 
 function getParshaFromURL() {
