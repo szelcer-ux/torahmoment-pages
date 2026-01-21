@@ -464,24 +464,11 @@ function escapeAttr(s){
 function renderLinks() {
   const selected = parshaSel.value;
 
-  // Show GLOBAL_LINKS always? Choose behavior:
-  // - If you want global links always visible, set includeGlobal = true.
-  // - If you want links only when a Parsha is selected, set false.
-  const includeGlobal = true;
+  // Only show audio when a Parsha is selected
+  const items = selected && PARSHA_AUDIO[selected]
+    ? PARSHA_AUDIO[selected]
+    : [];
 
-  const items = [];
-  if (includeGlobal && Array.isArray(GLOBAL_LINKS)) items.push(...GLOBAL_LINKS);
-
-  if (selected && PARSHA_LINKS[selected]) {
-    items.push(...PARSHA_LINKS[selected]);
-    linksTitle.textContent = `Links for ${selected}`;
-    linksHint.textContent = `(${PARSHA_LINKS[selected].length} item${PARSHA_LINKS[selected].length === 1 ? "" : "s"})`;
-  } else {
-    linksTitle.textContent = "Links";
-    linksHint.textContent = "";
-  }
-
-  // If you only want the box to show when something exists:
   if (!items.length) {
     linksBox.style.display = "none";
     linksList.innerHTML = "";
@@ -489,21 +476,23 @@ function renderLinks() {
   }
 
   linksBox.style.display = "block";
- linksList.innerHTML = items.map(l => `
-  <a class="audioLink" href="${escapeAttr(l.url)}" target="_blank" rel="noopener">
-    <span class="playBtn" aria-hidden="true"><span class="playIcon"></span></span>
+  linksTitle.textContent = `Audio playlist for ${selected}`;
+  linksHint.textContent = `${items.length} track${items.length === 1 ? "" : "s"}`;
 
-    <span class="audioTitle">${escapeHtml(l.label)}</span>
+  linksList.innerHTML = items.map(l => `
+    <a class="audioLink" href="${escapeAttr(l.url)}" target="_blank" rel="noopener">
+      <span class="playBtn" aria-hidden="true">
+        <span class="playIcon"></span>
+      </span>
 
-    <span class="audioMeta">
-      ${l.duration ? `<span>(${escapeHtml(l.duration)})</span>` : ""}
-      <span class="audioBadge">Audio only</span>
-    </span>
-  </a>
-`).join("");
+      <span class="audioTitle">${escapeHtml(l.label)}</span>
 
-
-
+      <span class="audioMeta">
+        ${l.duration ? `<span>(${escapeHtml(l.duration)})</span>` : ""}
+        <span class="audioBadge">Audio only</span>
+      </span>
+    </a>
+  `).join("");
 }
 
 function getParshaFromURL() {
