@@ -481,6 +481,71 @@ audioEl.addEventListener("ended", () => {
   }
 }
 
+#audioEl{
+  display:none !important;           /* prevent the audio element from affecting layout */
+}
+
+#playerBar{
+  display:none;                      /* JS will set to flex */
+  align-items:center !important;
+  gap:12px !important;
+  width:100% !important;
+  box-sizing:border-box !important;
+
+  margin-top:12px !important;
+  padding:10px 12px !important;
+
+  border:1px solid rgba(17,24,39,.10) !important;
+  border-radius:12px !important;
+  background:#fff !important;
+}
+
+/* When shown by JS */
+#playerBar[style*="display: flex"],
+#playerBar[style*="display:flex"]{
+  display:flex !important;
+}
+
+/* KILL the huge full-width button */
+#playerToggle{
+  flex:0 0 auto !important;
+  width:auto !important;
+  min-width:0 !important;
+  max-width:none !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  padding:8px 10px !important;
+  border-radius:10px !important;
+  border:1px solid rgba(17,24,39,.12) !important;
+  background:#111827 !important;
+  color:#fff !important;
+  cursor:pointer !important;
+  white-space:nowrap !important;
+}
+
+/* Title/time container (the div right after the button) */
+#playerToggle + div{
+  flex:1 1 auto !important;
+  min-width:0 !important;            /* critical: prevents overflow to the right */
+}
+
+/* Title */
+#playerTitle{
+  font-weight:600 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+/* Time line */
+#playerTime{
+  margin-top:4px !important;
+  font-size:12px !important;
+  color:#6b7280 !important;
+  white-space:nowrap !important;
+}
 	
   </style>
 </head>
@@ -1182,73 +1247,9 @@ audioEl.addEventListener("ended", () => {
   playerToggle.textContent = "Play";
 });
 
- /* === INLINE PLAYER: FORCE LAYOUT (ID-BASED) === */
+ 
 
-#audioEl{
-  display:none !important;           /* prevent the audio element from affecting layout */
-}
 
-#playerBar{
-  display:none;                      /* JS will set to flex */
-  align-items:center !important;
-  gap:12px !important;
-  width:100% !important;
-  box-sizing:border-box !important;
-
-  margin-top:12px !important;
-  padding:10px 12px !important;
-
-  border:1px solid rgba(17,24,39,.10) !important;
-  border-radius:12px !important;
-  background:#fff !important;
-}
-
-/* When shown by JS */
-#playerBar[style*="display: flex"],
-#playerBar[style*="display:flex"]{
-  display:flex !important;
-}
-
-/* KILL the huge full-width button */
-#playerToggle{
-  flex:0 0 auto !important;
-  width:auto !important;
-  min-width:0 !important;
-  max-width:none !important;
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-
-  padding:8px 10px !important;
-  border-radius:10px !important;
-  border:1px solid rgba(17,24,39,.12) !important;
-  background:#111827 !important;
-  color:#fff !important;
-  cursor:pointer !important;
-  white-space:nowrap !important;
-}
-
-/* Title/time container (the div right after the button) */
-#playerToggle + div{
-  flex:1 1 auto !important;
-  min-width:0 !important;            /* critical: prevents overflow to the right */
-}
-
-/* Title */
-#playerTitle{
-  font-weight:600 !important;
-  white-space:nowrap !important;
-  overflow:hidden !important;
-  text-overflow:ellipsis !important;
-}
-
-/* Time line */
-#playerTime{
-  margin-top:4px !important;
-  font-size:12px !important;
-  color:#6b7280 !important;
-  white-space:nowrap !important;
-}
  
 </script>
 </body>
