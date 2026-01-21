@@ -395,6 +395,26 @@ const GLOBAL_LINKS = [
     return out;
   }
 
+function setPageTitle() {
+  const base = "Parsha Divrei Torah";
+  const p = parshaSel.value;
+  document.title = p ? `${base} – ${p}` : base;
+}
+
+function updateURLFromSelection() {
+  const url = new URL(window.location.href);
+
+  if (parshaSel.value) {
+    url.searchParams.set("parsha", parshaSel.value);
+  } else {
+    url.searchParams.delete("parsha");
+  }
+
+  // Update address bar without reloading the page
+  history.replaceState({}, "", url.toString());
+}
+
+
   function isParshaVideo(desc) {
     return (desc || "").toLowerCase().includes(PARSHA_DESC_NEEDLE);
   }
@@ -620,11 +640,14 @@ function selectParshaFromURL() {
 
 
 buildParshaDropdown();
+selectParshaFromURL();
 
-selectParshaFromURL();   // ← THIS is the important line
+setPageTitle();              // ✅ new
+updateURLFromSelection();    // ✅ new (normalizes URL)
 
 renderLinks();
 applyFilters();
+
 
 
 
@@ -652,21 +675,27 @@ renderLinks();
   // Events
   q.addEventListener("input", applyFilters);
   sort.addEventListener("change", applyFilters);
-  parshaSel.addEventListener("change", () => {
+ parshaSel.addEventListener("change", () => {
+  updateURLFromSelection();  // ✅ new
+  setPageTitle();            // ✅ new
   renderLinks();
   applyFilters();
 });
 
+
   clearBtn.addEventListener("click", () => {
-    q.value = "";
-    sort.value = "new";
-    parshaSel.value = "";
+  q.value = "";
+  sort.value = "new";
+  parshaSel.value = "";
 
-	renderLinks();
+  updateURLFromSelection();  // ✅ new
+  setPageTitle();            // ✅ new
 
-    applyFilters();
-    q.focus();
-  });
+  renderLinks();
+  applyFilters();
+  q.focus();
+});
+
 
   load();
 </script>
