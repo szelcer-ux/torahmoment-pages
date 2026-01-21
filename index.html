@@ -182,6 +182,20 @@
 }
 
 /* Mobile: prevent the header from taking over the screen (esp inside Google Sites embeds) */
+
+/* Filters button (hidden on desktop) */
+.filtersBtn{
+  display:none;
+  width:100%;
+  border:1px solid rgba(17,24,39,.12);
+  border-radius: 12px;
+  padding:10px 12px;
+  font-size:14px;
+  background:#fff;
+  cursor:pointer;
+  text-align:left;
+}
+
 @media (max-width: 780px){
 
   /* Turn off sticky header on mobile */
@@ -218,6 +232,23 @@
     border-radius: 10px;
   }
 
+/* Mobile behavior */
+@media (max-width: 780px){
+  .filtersBtn{ display:block; margin-top:10px; }
+  
+ /* collapsed by default */
+  .controls{
+    display:none;
+    margin-top:10px;
+    grid-template-columns: 1fr; /* in case you use grid */
+    gap:8px;
+  }
+
+  /* when expanded */
+  .controls.is-open{
+    display:grid;
+  } 
+
   /* Optional: reduce the notice box padding if you have it */
   .notice{
     padding: 12px;
@@ -231,8 +262,11 @@
 <header>
   <div class="wrap">
    <h1 id="pageH1">Parsha Divrei Torah</h1>
- 
-    <div class="controls">
+ <button id="filtersBtn" class="filtersBtn" type="button" aria-expanded="false" aria-controls="controlsWrap">
+  Filters
+</button>
+
+    <div class="controls" id="controlsWrap">
       <input id="q" type="search" placeholder="Search within Parsha videos..." />
       <select id="parsha">
         <option value="">All Parshios</option>
@@ -280,7 +314,9 @@
   const CHANNEL_ID = "UCzx1pweEHKhsIfPkQZbRH4w";
   const MAX_TO_FETCH = 5000;
 
- 
+ const filtersBtn = document.getElementById("filtersBtn");
+const controlsWrap = document.getElementById("controlsWrap");
+
 
 
   // Your descriptions include: "Dvar Torah Parshas Noach - Living mercifully"
@@ -365,6 +401,32 @@ const GLOBAL_LINKS = [
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   }[c]));
   const normalizeWs = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
+
+function setFiltersOpen(isOpen){
+  if (!controlsWrap || !filtersBtn) return;
+
+  controlsWrap.classList.toggle("is-open", isOpen);
+  filtersBtn.setAttribute("aria-expanded", String(isOpen));
+  filtersBtn.textContent = isOpen ? "Hide filters" : "Filters";
+}
+
+if (filtersBtn && controlsWrap) {
+  // Start collapsed on mobile, open on desktop
+  const mq = window.matchMedia("(max-width: 780px)");
+  setFiltersOpen(!mq.matches);
+
+  filtersBtn.addEventListener("click", () => {
+    const open = controlsWrap.classList.contains("is-open");
+    setFiltersOpen(!open);
+  });
+
+  // If user rotates phone / resizes window, adapt
+  mq.addEventListener("change", (e) => {
+    setFiltersOpen(!e.matches); // mobile => collapsed, desktop => open
+  });
+}
+
+
 
   function setStatus(main, small="") {
     statusText.textContent = main;
@@ -750,6 +812,11 @@ renderLinks();
   setPageTitle();            // ✅ new
   renderLinks();
   applyFilters();
+  
+   if (window.matchMedia("(max-width: 780px)").matches) {
+    setFiltersOpen(false);
+  }
+  
 });
 
 
