@@ -423,6 +423,57 @@ audioEl.addEventListener("ended", () => {
   background:#eef2ff;
 }
 
+/* --- Inline audio player: compact + no overflow --- */
+.playerBar{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+
+  margin-top: 12px;
+  padding: 10px 12px;
+
+  border: 1px solid rgba(17,24,39,.10);
+  border-radius: 12px;
+  background: #fff;
+}
+
+/* Make sure the play button doesn't stretch */
+.playerBtn{
+  flex: 0 0 auto;
+  width: auto !important;
+  max-width: none !important;
+
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(17,24,39,.12);
+  background: #111827;
+  color: #fff;
+}
+
+/* Let the info take remaining space and wrap safely */
+.playerInfo{
+  flex: 1 1 auto;
+  min-width: 0; /* CRUCIAL: allows ellipsis instead of overflow */
+}
+
+/* Keep title tidy */
+.playerTitle{
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Time stays on one line */
+.playerTime{
+  margin-top: 4px;
+  font-size: 12px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
 
   /* Optional: reduce the notice box padding if you have it */
   .notice{
