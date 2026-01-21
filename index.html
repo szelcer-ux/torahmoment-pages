@@ -186,7 +186,7 @@
 /* Filters button (hidden on desktop) */
 .filtersBtn{
   display:none;
-  width:100%;
+  width: auto;
   border:1px solid rgba(17,24,39,.12);
   border-radius: 12px;
   padding:10px 12px;
@@ -275,18 +275,25 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 4px 8px;          /* 🔽 smaller */
-    font-size: 12px;           /* 🔽 smaller text */
+
+    width: auto;              /* ✅ override old width:100% */
+    max-width: none;          /* ✅ safety */
+    
+    padding: 4px 8px;
+    font-size: 12px;
     line-height: 1;
     font-weight: 600;
+
     border-radius: 999px;
     border: 1px solid rgba(17,24,39,.18);
     background: #f9fafb;
     color: #111827;
+
     cursor: pointer;
     white-space: nowrap;
   }
 }
+
 
 
 
