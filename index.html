@@ -180,6 +180,50 @@
 .linksBox {
   margin-top: 24px;
 }
+
+/* Mobile: prevent the header from taking over the screen (esp inside Google Sites embeds) */
+@media (max-width: 780px){
+
+  /* Turn off sticky header on mobile */
+  header{
+    position: static;
+    backdrop-filter: none;
+  }
+
+  /* Tighten spacing */
+  .wrap{
+    padding: 10px 10px;
+  }
+
+  h1{
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  .sub{
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
+  /* Controls: stack + reduce padding */
+  .controls{
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  input, select, button{
+    padding: 9px 10px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  /* Optional: reduce the notice box padding if you have it */
+  .notice{
+    padding: 12px;
+  }
+}
+
 	
   </style>
 </head>
@@ -728,7 +772,3 @@ renderLinks();
 </script>
 </body>
 </html>
-
-
-
-
