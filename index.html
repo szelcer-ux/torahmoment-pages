@@ -81,6 +81,13 @@
   opacity:0.75;
 }
 
+.audioLink{
+  color: inherit !important;
+  text-decoration: none !important;
+}
+.audioLink:hover{
+  text-decoration: none !important;
+}
 
 
  .linksList{
@@ -1051,6 +1058,88 @@ renderLinks();
 
 
   load();
+  
+  /* =========================
+   INLINE AUDIO PLAYER
+   ========================= */
+
+const audioEl = document.getElementById("audioEl");
+const playerBar = document.getElementById("playerBar");
+const playerToggle = document.getElementById("playerToggle");
+const playerTitle = document.getElementById("playerTitle");
+const playerCur = document.getElementById("playerCur");
+const playerDur = document.getElementById("playerDur");
+
+let currentlyPlayingHref = "";
+
+function fmtTime(sec){
+  if (!isFinite(sec) || sec < 0) return "0:00";
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+function updatePlayingRow(){
+  document.querySelectorAll("a.audioLink").forEach(a => {
+    a.classList.toggle("isPlaying", a.getAttribute("href") === currentlyPlayingHref);
+  });
+}
+
+/* 🔥 THIS IS THE IMPORTANT PART 🔥 */
+document.addEventListener("click", async (e) => {
+  const a = e.target.closest("a.audioLink");
+  if (!a) return;
+
+  console.log("AUDIO CLICK:", a.getAttribute("href"));
+
+  e.preventDefault();
+
+  const href = a.getAttribute("href");
+  const title = a.getAttribute("data-title") || a.textContent.trim() || "Audio";
+
+  try {
+    playerBar.style.display = "flex";
+    playerTitle.textContent = title;
+
+    if (audioEl.getAttribute("src") !== href) {
+      audioEl.setAttribute("src", href);
+      audioEl.load();
+    }
+
+    currentlyPlayingHref = href;
+    updatePlayingRow();
+
+    await audioEl.play();
+    playerToggle.textContent = "Pause";
+  } catch (err) {
+    console.error("INLINE AUDIO FAILED:", err);
+    window.open(href, "_blank", "noopener");
+  }
+});
+
+playerToggle.addEventListener("click", () => {
+  if (audioEl.paused) {
+    audioEl.play().catch(()=>{});
+    playerToggle.textContent = "Pause";
+  } else {
+    audioEl.pause();
+    playerToggle.textContent = "Play";
+  }
+});
+
+audioEl.addEventListener("loadedmetadata", () => {
+  playerDur.textContent = fmtTime(audioEl.duration);
+});
+
+audioEl.addEventListener("timeupdate", () => {
+  playerCur.textContent = fmtTime(audioEl.currentTime);
+});
+
+audioEl.addEventListener("ended", () => {
+  playerToggle.textContent = "Play";
+});
+
+  
 </script>
 </body>
 </html>
