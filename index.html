@@ -1128,18 +1128,6 @@ document.addEventListener("click", async (e) => {
   }
 });
 
-
-playerToggle.addEventListener("click", () => {
-  if (audioEl.paused) {
-    audioEl.play().catch(()=>{});
-    playerToggle.textContent = "Pause";
-  } else {
-    audioEl.pause();
-    playerToggle.textContent = "Play";
-  }
-});
-
-
 </script>
 </body>
 </html>
