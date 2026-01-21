@@ -1006,45 +1006,50 @@ function clearRowStates(){
   });
 }
 
-/* Row click handler */
-document.addEventListener("click", async (e) => {
+const audioEl = document.getElementById("audioEl");
+let currentHref = "";
+
+function clearRowStates(){
+  document.querySelectorAll(".audioLink").forEach(row => {
+    row.classList.remove("isPlaying", "isPaused");
+  });
+}
+
+document.addEventListener("click", (e) => {
   const a = e.target.closest("a.audioLink");
   if (!a) return;
 
   e.preventDefault();
-
   const href = a.getAttribute("href");
 
-  try {
-    if (currentHref === href && !audioEl.paused) {
+  // SAME audio clicked again → toggle
+  if (currentHref === href) {
+    if (audioEl.paused) {
+      audioEl.play();
+      clearRowStates();
+      a.classList.add("isPlaying");
+    } else {
       audioEl.pause();
       a.classList.remove("isPlaying");
       a.classList.add("isPaused");
-      return;
     }
-
-    if (currentHref !== href) {
-      audioEl.src = href;
-      audioEl.load();
-      currentHref = href;
-    }
-
-    const p = audioEl.play();
-if (p && typeof p.catch === "function") {
-  p.catch(err => {
-    console.error("INLINE AUDIO FAILED:", err.name, err.message, href);
-    // window.open(href, "_blank", "noopener");
-  });
-}
-
-
-    clearRowStates();
-    a.classList.add("isPlaying");
-  } catch (err) {
-    console.error("Inline audio failed:", err);
-   // window.open(href, "_blank", "noopener");
+    return;
   }
+
+  // DIFFERENT audio clicked
+  audioEl.pause();
+  audioEl.src = href;
+  audioEl.load();
+  currentHref = href;
+
+  audioEl.play();
+  clearRowStates();
+  a.classList.add("isPlaying");
 });
+
+// When audio ends, reset UI
+audioEl.addEventListener("ended", clearRowStates);
+
 
 /* Reset state when audio ends */
 audioEl.addEventListener("ended", () => {
@@ -1064,45 +1069,7 @@ function updatePlayingRow(){
   });
 }
 
-/* 🔥 THIS IS THE IMPORTANT PART 🔥 */
-document.addEventListener("click", async (e) => {
-  const a = e.target.closest("a.audioLink");
-  if (!a) return;
 
-  e.preventDefault();
-
-  const href = a.getAttribute("href");
-  const title = a.getAttribute("data-title") || a.textContent.trim();
-
-  // Same track clicked again → toggle play/pause
-  if (audioEl.src === href && !audioEl.paused) {
-    audioEl.pause();
-    a.classList.remove("isPlaying");
-    a.classList.add("isPaused");
-    return;
-  }
-
-  // Play new (or paused) track
-  try {
-   
-
-    if (audioEl.src !== href) {
-      audioEl.src = href;
-      audioEl.load();
-    }
-
-    await audioEl.play();
-
-    // Update row states
-    document.querySelectorAll(".audioLink").forEach(x => {
-      x.classList.remove("isPlaying", "isPaused");
-    });
-
-    a.classList.add("isPlaying");
-  } catch (err) {
-    window.open(href, "_blank", "noopener");
-  }
-});
 
 </script>
 </body>
