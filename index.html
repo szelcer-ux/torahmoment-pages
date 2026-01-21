@@ -1012,13 +1012,56 @@ renderLinks();
    ========================= */
 
 const audioEl = document.getElementById("audioEl");
-const playerBar = document.getElementById("playerBar");
-const playerToggle = document.getElementById("playerToggle");
-const playerTitle = document.getElementById("playerTitle");
-const playerCur = document.getElementById("playerCur");
-const playerDur = document.getElementById("playerDur");
+if (!audioEl) {
+  console.error("audioEl not found in DOM");
+}
 
-let currentlyPlayingHref = "";
+/* Track currently loaded audio */
+let currentHref = "";
+
+function clearRowStates(){
+  document.querySelectorAll(".audioLink").forEach(x => {
+    x.classList.remove("isPlaying", "isPaused");
+  });
+}
+
+/* Row click handler */
+document.addEventListener("click", async (e) => {
+  const a = e.target.closest("a.audioLink");
+  if (!a) return;
+
+  e.preventDefault();
+
+  const href = a.getAttribute("href");
+
+  try {
+    if (currentHref === href && !audioEl.paused) {
+      audioEl.pause();
+      a.classList.remove("isPlaying");
+      a.classList.add("isPaused");
+      return;
+    }
+
+    if (currentHref !== href) {
+      audioEl.src = href;
+      audioEl.load();
+      currentHref = href;
+    }
+
+    await audioEl.play();
+
+    clearRowStates();
+    a.classList.add("isPlaying");
+  } catch (err) {
+    console.error("Inline audio failed:", err);
+    window.open(href, "_blank", "noopener");
+  }
+});
+
+/* Reset state when audio ends */
+audioEl.addEventListener("ended", () => {
+  clearRowStates();
+});
 
 function fmtTime(sec){
   if (!isFinite(sec) || sec < 0) return "0:00";
@@ -1053,8 +1096,7 @@ document.addEventListener("click", async (e) => {
 
   // Play new (or paused) track
   try {
-   // playerBar.style.display = "flex";
-    playerTitle.textContent = title;
+   
 
     if (audioEl.src !== href) {
       audioEl.src = href;
@@ -1085,32 +1127,7 @@ playerToggle.addEventListener("click", () => {
   }
 });
 
-audioEl.addEventListener("pause", () => {
-  playerToggle.textContent = "Play";
-});
 
-audioEl.addEventListener("play", () => {
-  playerToggle.textContent = "Pause";
-});
-
- 
-
-audioEl.addEventListener("loadedmetadata", () => {
-  playerDur.textContent = fmtTime(audioEl.duration);
-});
-
-audioEl.addEventListener("timeupdate", () => {
-  playerCur.textContent = fmtTime(audioEl.currentTime);
-});
-
-audioEl.addEventListener("ended", () => {
-  playerToggle.textContent = "Play";
-});
-
- 
-
-
- 
 </script>
 </body>
 </html>
