@@ -220,6 +220,11 @@
     .tm-note-row:hover{
   background: #eef2ff;
 }
+
+.tm-link-row .tm-play{
+  color: #dc2626; /* subtle red hint = YouTube */
+}
+
     
     audio{
       width:100%;
@@ -679,25 +684,28 @@ if (type === "note") {
 
 
 
-      // YOUTUBE
-      if (type === "youtube") {
-        const id = getYouTubeId(url);
-        const embed = id ? `https://www.youtube.com/embed/${id}` : "";
-        return `
-          <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
-            <div class="item-meta">
-              <div class="item-title">${title}</div>
-              <div class="item-note">${note}</div>
-            </div>
-            ${
-              embed
-                ? `<div class="video-wrap"><iframe src="${embed}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`
-                : `<div class="empty">Invalid YouTube link.</div>`
-            }
-            <a class="link" href="${escapeHtml(url)}" target="_blank" rel="noopener">Open on YouTube</a>
+     // YOUTUBE – playlist row style (uniform with audio)
+if (type === "youtube") {
+  return `
+    <div class="item">
+      <div class="tm-row tm-link-row" data-url="${escapeHtml(item.url)}">
+        <button class="tm-play" type="button" aria-label="Open YouTube">▶</button>
+
+        <div class="tm-main">
+          <div class="tm-title-row">
+            <div class="tm-title">${title}</div>
+            ${item.note ? `<div class="tm-note">${escapeHtml(item.note)}</div>` : ``}
           </div>
-        `;
-      }
+        </div>
+
+        <div class="tm-right">
+          <div class="tm-dur">(YouTube)</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 
       // FALLBACK: link
       return `
@@ -786,7 +794,7 @@ if (type === "note") {
       tmWirePlaylistRows();
 enableMobileTitleExpand();
 wireNoteRows();
-
+wireYouTubeRows();
 
       if (!q) {
         resultChip.textContent = `Showing all (${totalAll} item${totalAll === 1 ? "" : "s"})`;
@@ -877,6 +885,14 @@ function wireNoteRows(){
   });
 }
 
+function wireYouTubeRows(){
+  document.querySelectorAll(".tm-link-row").forEach(row => {
+    row.addEventListener("click", () => {
+      const url = row.getAttribute("data-url");
+      if (url) window.open(url, "_blank", "noopener");
+    });
+  });
+}
     
 function tmWirePlaylistRows(){
   const rows = document.querySelectorAll(".tm-row");
