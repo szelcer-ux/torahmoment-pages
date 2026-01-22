@@ -261,7 +261,7 @@
       const playlistUrl = `https://www.youtube.com/playlist?list=${encodeURIComponent(PLAYLIST_ID)}`;
       $("ytPlaylistLink").href = playlistUrl;
 
-      if (!API_KEY || API_KEY === "AIzaSyDbJnY2cPtyyVya7YNzxG0hCju7ikBUWsU") {
+      if (!API_KEY || API_KEY === "PASTE_YOUR_API_KEY_HERE") {
         $("notice").style.display = "block";
         $("notice").innerHTML = `Missing API key. Set <code>API_KEY</code> at the top of the script.`;
         $("status").textContent = "Status: missing API key";
