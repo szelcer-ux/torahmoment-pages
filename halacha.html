@@ -282,8 +282,16 @@
 }
 
 .tm-title{
-  font-weight: 800;
+  font-weight: 650;
   font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+   cursor: default;
+}
+.tm-title::after{
+  content: attr(title);
+  display: none;
 }
 
 .tm-note{
@@ -547,7 +555,8 @@
       
       <!-- Topic / title ABOVE player -->
    <div class="tm-title-row">
-  <div class="tm-title">${title}</div>
+  <div class="tm-title" title="${title}">${title}</div>
+
   ${item.note ? `<div class="tm-note">${escapeHtml(item.note)}</div>` : ``}
 </div>
 
