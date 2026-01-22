@@ -191,6 +191,36 @@
       font-size: 12px;
     }
 
+.tm-note-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px dashed var(--line);
+  background:#f8fafc;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tm-note-row .icon{
+  font-size: 18px;
+}
+
+.tm-note-row a{
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.tm-note-row a:hover{
+  text-decoration: underline;
+}
+
+    .tm-note-row:hover{
+  background: #eef2ff;
+}
+    
     audio{
       width:100%;
       margin-top: 6px;
@@ -598,6 +628,24 @@ function enableMobileTitleExpand(){
       const url = item.url || "";
       const type = (item.type || "audio").toLowerCase();
 
+// NOTE / LINK ITEM (entire row clickable)
+if (type === "note") {
+  return `
+    <div class="item">
+      <div class="tm-note-row" data-url="${escapeHtml(item.url)}">
+        <div class="icon">ℹ️</div>
+        <div>
+          ${escapeHtml(item.text)}
+          <span style="margin-left:6px; font-weight:600; color:var(--accent);">
+            ${escapeHtml(item.linkText || "Learn more")} →
+          </span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+      
       // AUDIO
  if (type === "audio") {
   const pid = "tm_" + Math.random().toString(36).slice(2);
@@ -738,6 +786,7 @@ function enableMobileTitleExpand(){
 //tmWirePlayers();
       tmWirePlaylistRows();
 enableMobileTitleExpand();
+wireNoteRows();
 
 
       if (!q) {
@@ -818,6 +867,18 @@ function tmFmtTime(sec){
   return `${m}:${String(s).padStart(2,"0")}`;
 }
 
+function wireNoteRows(){
+  document.querySelectorAll(".tm-note-row").forEach(row => {
+    row.addEventListener("click", () => {
+      const url = row.getAttribute("data-url");
+      if (url) {
+        window.open(url, "_blank", "noopener");
+      }
+    });
+  });
+}
+
+    
 function tmWirePlaylistRows(){
   const rows = document.querySelectorAll(".tm-row");
 
