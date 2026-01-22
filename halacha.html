@@ -100,13 +100,13 @@
 
     details.category > summary{
       list-style:none;
-      cursor:pointer;
       padding: 16px 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 12px;
       user-select:none;
+      cursor: default; /* not clicky */
     }
 
     details.category > summary::-webkit-details-marker{display:none}
@@ -148,7 +148,6 @@
     }
     details.subcat > summary{
       list-style:none;
-      cursor:pointer;
       padding: 12px 12px;
       display:flex;
       justify-content:space-between;
@@ -157,15 +156,16 @@
       user-select:none;
       font-weight: 650;
       color:#0f3f7a;
+      cursor: default; /* not clicky */
     }
     details.subcat > summary::-webkit-details-marker{display:none}
 
-    .audios{
+    .items{
       border-top: 1px solid var(--line);
       padding: 10px 12px 12px;
     }
 
-    .audio-item{
+    .item{
       border:1px solid var(--line);
       background:#fff;
       border-radius: 12px;
@@ -173,7 +173,7 @@
       margin: 8px 0;
     }
 
-    .audio-meta{
+    .item-meta{
       display:flex;
       justify-content:space-between;
       gap:10px;
@@ -182,11 +182,11 @@
       margin-bottom: 6px;
     }
 
-    .audio-title{
+    .item-title{
       font-weight: 700;
       font-size: 14px;
     }
-    .audio-note{
+    .item-note{
       color: var(--muted);
       font-size: 12px;
     }
@@ -211,6 +211,25 @@
       padding: 8px 0 0;
     }
 
+    /* Responsive YouTube embed */
+    .video-wrap{
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #000;
+      margin-top: 8px;
+    }
+    .video-wrap iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
     footer{
       text-align:center;
       color: var(--muted);
@@ -224,15 +243,15 @@
   <header>
     <h1>Halacha/Hashkafah</h1>
     <p>
-      Tap a category to expand. Use the search box to filter by title or notes.
-      Add as many audios as you want under any section.
+      This page supports inline MP3 audio (Buzzsprout direct .mp3 links) and embedded YouTube videos.
+      Use the search box to filter by title or notes.
     </p>
   </header>
 
   <div class="container">
     <div class="topbar">
       <div class="search">
-        <input id="searchInput" type="text" placeholder="Search audios (e.g., Shema, Purim, Tzedakah)..." />
+        <input id="searchInput" type="text" placeholder="Search (e.g., Shema, Purim, Tzedakah)..." />
       </div>
       <div class="chip" id="resultChip">Showing all</div>
     </div>
@@ -241,46 +260,56 @@
     <!-- DATA (Edit here only) -->
     <!-- ===================== -->
     <script>
-      // HOW TO ADD AUDIO:
-      // 1) Find the right section below.
-      // 2) Add an object like this:
-      //    { title: "My Audio Title", url: "https://.../file.mp3", note: "Optional note (date, speaker, etc.)" }
+      // HOW TO ADD ITEMS:
+      // Add objects inside any "items: []" list.
       //
-      // If the url is NOT an mp3 (e.g. a page link), set urlType: "link"
-      // Example:
-      //    { title: "Listen on site", url: "https://example.com/page", urlType: "link", note: "External" }
+      // AUDIO (inline player):
+      // { type:"audio", title:"Title", url:"https://...mp3", note:"Optional" }
+      //
+      // YOUTUBE (embedded):
+      // { type:"youtube", title:"Title", url:"https://www.youtube.com/watch?v=VIDEOID", note:"Optional" }
 
       const PAGE_DATA = [
         {
           category: "Tefilah",
           subcategories: [
-            { name: 'Talis/Tefilin', audios: [] },
-            { name: 'Shema', audios: [] },
-            { name: 'Shmoneh Esrei', audios: [] },
-            { name: 'Chazaras Hashat"z', audios: [] },
-            { name: 'Krias Hatorah', audios: [] },
-            { name: 'Kadish', audios: [] },
-            { name: 'Kiddush Levana', audios: [] },
-            { name: 'Tefilas Haderech', audios: [] },
-            { name: 'Conduct', audios: [] },
-            { name: 'Machneesei Rachamim', audios: [] },
+            {
+              name: 'Talis/Tefilin',
+              items: [
+                {
+                  type: "audio",
+                  title: "Double Black Tefilin",
+                  url: "https://www.buzzsprout.com/1899789/episodes/18540770-1-20-2025-shloimy-zelcer-double-black-tefilin.mp3",
+                  note: "Jan 20, 2025"
+                }
+              ]
+            },
+            { name: 'Shema', items: [] },
+            { name: 'Shmoneh Esrei', items: [] },
+            { name: 'Chazaras Hashat"z', items: [] },
+            { name: 'Krias Hatorah', items: [] },
+            { name: 'Kadish', items: [] },
+            { name: 'Kiddush Levana', items: [] },
+            { name: 'Tefilas Haderech', items: [] },
+            { name: 'Conduct', items: [] },
+            { name: 'Machneesei Rachamim', items: [] },
           ]
         },
 
         {
           category: "Yom Tov",
           subcategories: [
-            { name: 'Elul', audios: [] },
-            { name: 'Sukkos', audios: [] },
-            { name: 'Chanukah', audios: [] },
-            { name: 'Purim', audios: [] },
-            { name: 'Lag Baomer', audios: [] },
+            { name: 'Elul', items: [] },
+            { name: 'Sukkos', items: [] },
+            { name: 'Chanukah', items: [] },
+            { name: 'Purim', items: [] },
+            { name: 'Lag Baomer', items: [] },
           ]
         },
 
-        { category: "Tzedakah", audios: [] },
-        { category: "Talmud Torah", audios: [] },
-        { category: "MISC.", audios: [] },
+        { category: "Tzedakah", items: [] },
+        { category: "Talmud Torah", items: [] },
+        { category: "MISC.", items: [] },
       ];
     </script>
 
@@ -305,71 +334,115 @@
       }[m]));
     }
 
-    function countAudiosInCategory(cat){
-      if (Array.isArray(cat.subcategories)) {
-        return cat.subcategories.reduce((sum, s) => sum + (s.audios?.length || 0), 0);
+    function getYouTubeId(url){
+      if(!url) return "";
+      try{
+        const u = new URL(url);
+        if (u.hostname.includes("youtu.be")) return u.pathname.replace("/", "");
+        if (u.searchParams.get("v")) return u.searchParams.get("v");
+        const parts = u.pathname.split("/").filter(Boolean);
+        const embedIndex = parts.indexOf("embed");
+        if (embedIndex >= 0 && parts[embedIndex+1]) return parts[embedIndex+1];
+        const shortsIndex = parts.indexOf("shorts");
+        if (shortsIndex >= 0 && parts[shortsIndex+1]) return parts[shortsIndex+1];
+        return parts[parts.length - 1] || "";
+      } catch {
+        return "";
       }
-      return cat.audios?.length || 0;
     }
 
-    function audioMatches(audio, q){
-      const blob = `${audio.title || ""} ${audio.note || ""}`.toLowerCase();
+    function itemMatches(item, q){
+      const blob = `${item.title || ""} ${item.note || ""}`.toLowerCase();
       return blob.includes(q);
     }
 
-    function renderAudioItem(audio){
-      const title = escapeHtml(audio.title || "Audio");
-      const note = escapeHtml(audio.note || "");
-      const url = audio.url || "";
+    function countItemsInCategory(cat){
+      if (Array.isArray(cat.subcategories)) {
+        return cat.subcategories.reduce((sum, s) => sum + (s.items?.length || 0), 0);
+      }
+      return cat.items?.length || 0;
+    }
 
-      const isLink = (audio.urlType === "link") || (!url.toLowerCase().endsWith(".mp3") && !url.toLowerCase().includes(".mp3?"));
+    function renderItem(item){
+      const title = escapeHtml(item.title || "Item");
+      const note = escapeHtml(item.note || "");
+      const url = item.url || "";
+      const type = (item.type || "audio").toLowerCase();
 
-      return `
-        <div class="audio-item" data-search="${escapeHtml((audio.title||"") + " " + (audio.note||""))}">
-          <div class="audio-meta">
-            <div class="audio-title">${title}</div>
-            <div class="audio-note">${note}</div>
+      // AUDIO
+      if (type === "audio") {
+        return `
+          <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
+            <div class="item-meta">
+              <div class="item-title">${title}</div>
+              <div class="item-note">${note}</div>
+            </div>
+            <audio controls preload="none" src="${escapeHtml(url)}"></audio>
+            <a class="link" href="${escapeHtml(url)}" target="_blank" rel="noopener">Open MP3</a>
           </div>
+        `;
+      }
 
-          ${
-            isLink
-              ? `<a class="link" href="${escapeHtml(url)}" target="_blank" rel="noopener">Open link</a>`
-              : `<audio controls preload="none" src="${escapeHtml(url)}"></audio>`
-          }
+      // YOUTUBE
+      if (type === "youtube") {
+        const id = getYouTubeId(url);
+        const embed = id ? `https://www.youtube.com/embed/${id}` : "";
+        return `
+          <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
+            <div class="item-meta">
+              <div class="item-title">${title}</div>
+              <div class="item-note">${note}</div>
+            </div>
+            ${
+              embed
+                ? `<div class="video-wrap"><iframe src="${embed}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`
+                : `<div class="empty">Invalid YouTube link.</div>`
+            }
+            <a class="link" href="${escapeHtml(url)}" target="_blank" rel="noopener">Open on YouTube</a>
+          </div>
+        `;
+      }
+
+      // FALLBACK: link
+      return `
+        <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
+          <div class="item-meta">
+            <div class="item-title">${title}</div>
+            <div class="item-note">${note}</div>
+          </div>
+          <a class="link" href="${escapeHtml(url)}" target="_blank" rel="noopener">Open link</a>
         </div>
       `;
     }
 
     function renderEmpty(){
-      return `<div class="empty">No audios yet. Add items in the PAGE_DATA block.</div>`;
+      return `<div class="empty">No items yet. Add to the items: [] list in the PAGE_DATA block.</div>`;
     }
 
     function render(){
       const q = (searchInput.value || "").trim().toLowerCase();
-
       let totalShown = 0;
       let totalAll = 0;
 
       const html = PAGE_DATA.map(cat => {
-        const totalCat = countAudiosInCategory(cat);
+        const totalCat = countItemsInCategory(cat);
         totalAll += totalCat;
 
         // With subcategories
         if (Array.isArray(cat.subcategories)) {
           const subHtml = cat.subcategories.map(sub => {
-            const allAudios = sub.audios || [];
-            const filtered = q ? allAudios.filter(a => audioMatches(a, q)) : allAudios;
-
+            const allItems = sub.items || [];
+            const filtered = q ? allItems.filter(i => itemMatches(i, q)) : allItems;
             totalShown += filtered.length;
 
             return `
-              <details class="subcat" ${q && filtered.length ? "open" : ""}>
+              <details class="subcat" open>
                 <summary>
                   <span>${escapeHtml(sub.name)}</span>
-                  <span class="count">${filtered.length}/${allAudios.length}</span>
+                  <span class="count">${filtered.length}/${allItems.length}</span>
                 </summary>
-                <div class="audios">
-                  ${filtered.length ? filtered.map(renderAudioItem).join("") : renderEmpty()}
+                <div class="items">
+                  ${filtered.length ? filtered.map(renderItem).join("") : renderEmpty()}
                 </div>
               </details>
             `;
@@ -380,7 +453,7 @@
               <details class="category" open>
                 <summary>
                   <div class="cat-title">${escapeHtml(cat.category)}</div>
-                  <div class="count">${q ? "filtered" : "total"}: ${totalCat}</div>
+                  <div class="count">${q ? "matches" : "total"}: ${q ? "" : ""}${totalCat}</div>
                 </summary>
                 <div class="content">
                   <div class="subgrid">
@@ -393,8 +466,8 @@
         }
 
         // Flat category
-        const allAudios = cat.audios || [];
-        const filtered = q ? allAudios.filter(a => audioMatches(a, q)) : allAudios;
+        const allItems = cat.items || [];
+        const filtered = q ? allItems.filter(i => itemMatches(i, q)) : allItems;
         totalShown += filtered.length;
 
         return `
@@ -402,10 +475,10 @@
             <details class="category" open>
               <summary>
                 <div class="cat-title">${escapeHtml(cat.category)}</div>
-                <div class="count">${filtered.length}/${allAudios.length}</div>
+                <div class="count">${filtered.length}/${allItems.length}</div>
               </summary>
               <div class="content">
-                ${filtered.length ? filtered.map(renderAudioItem).join("") : renderEmpty()}
+                ${filtered.length ? filtered.map(renderItem).join("") : renderEmpty()}
               </div>
             </details>
           </div>
@@ -415,7 +488,7 @@
       app.innerHTML = html;
 
       if (!q) {
-        resultChip.textContent = `Showing all (${totalAll} audio${totalAll === 1 ? "" : "s"})`;
+        resultChip.textContent = `Showing all (${totalAll} item${totalAll === 1 ? "" : "s"})`;
       } else {
         resultChip.textContent = `Matches: ${totalShown}`;
       }
