@@ -703,23 +703,28 @@ if (type === "note") {
 if (type === "youtube") {
   return `
     <div class="item">
+
+      <!-- Title + note ABOVE (same as audio) -->
+      <div class="tm-title-row">
+        <div class="tm-title">${title}</div>
+        ${item.note ? `<div class="tm-note">${escapeHtml(item.note)}</div>` : ``}
+      </div>
+
       <div class="tm-row tm-link-row tm-youtube" data-url="${escapeHtml(item.url)}">
-        <button class="tm-play" type="button" aria-label="Open YouTube">▶</button>
+        <button class="tm-play" type="button" aria-label="Open YouTube">↗</button>
 
         <div class="tm-main">
-          <div class="tm-title-row">
-            <div class="tm-title">${title}</div>
-            ${item.note ? `<div class="tm-note">${escapeHtml(item.note)}</div>` : ``}
-          </div>
+          <!-- empty on purpose for uniform spacing -->
         </div>
 
         <div class="tm-right">
-         <div class="tm-badge">🎥 YouTube</div>
+          <div class="tm-badge">🎥 YouTube</div>
         </div>
       </div>
     </div>
   `;
 }
+
 
 
       // FALLBACK: link
