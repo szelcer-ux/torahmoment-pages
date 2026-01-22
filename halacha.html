@@ -739,6 +739,17 @@ if (type === "youtube") {
       `;
     }
 
+function applyMobileCollapsedDefaults(){
+  // Mobile only
+  if (window.innerWidth > 767) return;
+
+  // Close all categories + subcategories
+  document.querySelectorAll("details.category, details.subcat").forEach(d => {
+    d.removeAttribute("open");
+  });
+}
+
+    
     function renderEmpty(){
       return `<div class="empty">No items yet. Add to the items: [] list in the PAGE_DATA block.</div>`;
     }
@@ -810,7 +821,7 @@ if (type === "youtube") {
       }).join("");
 
       app.innerHTML = html;
-//tmWirePlayers();
+applyMobileCollapsedDefaults();
       tmWirePlaylistRows();
 enableMobileTitleExpand();
 wireNoteRows();
