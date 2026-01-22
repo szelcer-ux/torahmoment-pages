@@ -294,6 +294,25 @@
   display: none;
 }
 
+/* Mobile title expand */
+.tm-title{
+  cursor: pointer;
+}
+
+.tm-title.expanded{
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+/* Only allow tap-to-expand on small screens */
+@media (min-width: 768px){
+  .tm-title{
+    cursor: default;
+  }
+}
+
+
 .tm-note{
   color: var(--muted);
   font-size: 12px;
@@ -511,6 +530,18 @@
       }[m]));
     }
 
+function enableMobileTitleExpand(){
+  document.querySelectorAll(".tm-title").forEach(el => {
+    el.addEventListener("click", (e) => {
+      // Only toggle on mobile-sized screens
+      if (window.innerWidth >= 768) return;
+      e.stopPropagation(); // don't trigger play/pause
+      el.classList.toggle("expanded");
+    });
+  });
+}
+
+    
     function getYouTubeId(url){
       if(!url) return "";
       try{
@@ -685,6 +716,7 @@
       app.innerHTML = html;
 //tmWirePlayers();
       tmWirePlaylistRows();
+enableMobileTitleExpand();
 
 
       if (!q) {
