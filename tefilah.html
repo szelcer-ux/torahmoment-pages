@@ -198,61 +198,41 @@
       return out;
     }
 
-    function render(items) {
-      const q = $("q").value.trim().toLowerCase();
-      const sort = $("sort").value;
+  function render(items) {
+  $("count").textContent = String(items.length);
 
-      let list = items.slice();
+  const html = items.map(it => {
+    const vid = it?.contentDetails?.videoId || it?.snippet?.resourceId?.videoId;
+    if (!vid) return "";
 
-      // filter
-      if (q) {
-        list = list.filter(it => {
-          const s = (it?.snippet?.title || "") + " " + (it?.snippet?.description || "");
-          return s.toLowerCase().includes(q);
-        });
-      }
+    const title = it?.snippet?.title || "Video";
+    const desc  = it?.snippet?.description || "";
+    const date  = isoToDate(it?.contentDetails?.videoPublishedAt || it?.snippet?.publishedAt);
+    const thumb = ytThumb(it);
 
-      // sort
-      if (sort === "title") {
-        list.sort((a,b) => (a?.snippet?.title || "").localeCompare((b?.snippet?.title || ""), undefined, { sensitivity:"base" }));
-      } else if (sort === "old") {
-        list.sort((a,b) => new Date(a?.contentDetails?.videoPublishedAt || a?.snippet?.publishedAt || 0) - new Date(b?.contentDetails?.videoPublishedAt || b?.snippet?.publishedAt || 0));
-      } else {
-        // new
-        list.sort((a,b) => new Date(b?.contentDetails?.videoPublishedAt || b?.snippet?.publishedAt || 0) - new Date(a?.contentDetails?.videoPublishedAt || a?.snippet?.publishedAt || 0));
-      }
+    return `
+      <a class="card" href="${ytWatchUrl(vid)}" target="_blank" rel="noopener">
+        <span class="thumb">
+          ${thumb ? `<img src="${escapeHtml(thumb)}" alt="${escapeHtml(title)}">` : ``}
+          <span class="playOverlay" aria-hidden="true">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="26" fill="rgba(255,255,255,.85)"/>
+              <path d="M28 22.5V41.5L43.5 32L28 22.5Z" fill="#111827"/>
+            </svg>
+          </span>
+        </span>
+        <div class="meta">
+          <h3>${escapeHtml(title)}</h3>
+          ${date ? `<p class="date">${escapeHtml(date)}</p>` : ``}
+          ${desc ? `<p class="desc">${escapeHtml(desc)}</p>` : ``}
+        </div>
+      </a>
+    `;
+  }).join("");
 
-      $("count").textContent = String(list.length);
+  $("grid").innerHTML = html || `<div class="notice">No videos found.</div>`;
+}
 
-      const html = list.map(it => {
-        const vid = it?.contentDetails?.videoId || it?.snippet?.resourceId?.videoId;
-        const title = it?.snippet?.title || "Video";
-        const desc = it?.snippet?.description || "";
-        const date = isoToDate(it?.contentDetails?.videoPublishedAt || it?.snippet?.publishedAt);
-        const thumb = ytThumb(it);
-
-        return `
-          <a class="card" href="${ytWatchUrl(vid)}" target="_blank" rel="noopener">
-            <span class="thumb">
-              ${thumb ? `<img src="${escapeHtml(thumb)}" alt="${escapeHtml(title)}">` : ``}
-              <span class="playOverlay" aria-hidden="true">
-                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="32" cy="32" r="26" fill="rgba(255,255,255,.85)"/>
-                  <path d="M28 22.5V41.5L43.5 32L28 22.5Z" fill="#111827"/>
-                </svg>
-              </span>
-            </span>
-            <div class="meta">
-              <h3>${escapeHtml(title)}</h3>
-              <p class="date">${escapeHtml(date)}</p>
-              ${desc ? `<p class="desc">${escapeHtml(desc)}</p>` : ``}
-            </div>
-          </a>
-        `;
-      }).join("");
-
-      $("grid").innerHTML = html || `<div class="notice">No videos match your search.</div>`;
-    }
 
     async function load() {
       $("pageH1").textContent = PAGE_TITLE;
