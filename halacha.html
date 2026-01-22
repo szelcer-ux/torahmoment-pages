@@ -291,8 +291,94 @@
   font-size: 12px;
 }
 
+/* --- Playlist-row player (matches your screenshot style) --- */
+.item{
+  padding: 0;
+  border: 0;
+  background: transparent;
+  margin: 10px 0;
+}
+
+.tm-row{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.tm-play{
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight: 900;
+  color: var(--accent2);
+  flex: 0 0 auto;
+}
+
+.tm-main{
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.tm-title{
+  font-weight: 650;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tm-right{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.tm-dur{
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tm-pill{
+  border: 1px solid var(--line);
+  background: #f9fafb;
+  color: #374151;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Optional: thin progress line like a modern playlist */
+.tm-progress{
+  height: 3px;
+  background: #eef2f7;
+  border-radius: 999px;
+  margin-top: 8px;
+  overflow:hidden;
+}
+.tm-progress > div{
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+
     
   </style>
+  
 </head>
 
 <body>
@@ -432,25 +518,34 @@
       const type = (item.type || "audio").toLowerCase();
 
       // AUDIO
-   if (type === "audio") {
+  if (type === "audio") {
   const pid = "tm_" + Math.random().toString(36).slice(2);
+
+  // label defaults to "Audio only" unless you override with item.pill
+  const pill = escapeHtml(item.pill || "Audio only");
 
   return `
     <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
-      <div class="tm-meta">
-        <div class="tm-title">${title}</div>
-        <div class="tm-note">${note}</div>
-      </div>
+      <div class="tm-row" data-audio-id="${pid}">
+        <button class="tm-play" type="button" aria-label="Play/Pause">▶</button>
 
-      <div class="tm-player" data-audio-id="${pid}">
-        <button class="tm-btn" type="button" aria-label="Play/Pause">▶</button>
-        <input class="tm-seek" type="range" min="0" max="1000" value="0" />
-        <div class="tm-time">0:00 / 0:00</div>
-        <audio id="${pid}" preload="none" src="${escapeHtml(url)}"></audio>
+        <div class="tm-main">
+          <div class="tm-title">${title}</div>
+          ${item.note ? `<div class="item-note">${escapeHtml(item.note)}</div>` : ``}
+          <div class="tm-progress"><div></div></div>
+        </div>
+
+        <div class="tm-right">
+          <div class="tm-dur">(0:00)</div>
+          <div class="tm-pill">${pill}</div>
+        </div>
+
+        <audio id="${pid}" preload="metadata" src="${escapeHtml(url)}"></audio>
       </div>
     </div>
   `;
 }
+
 
 
       // YOUTUBE
@@ -556,7 +651,9 @@
       }).join("");
 
       app.innerHTML = html;
-tmWirePlayers();
+//tmWirePlayers();
+      tmWirePlaylistRows();
+
 
       if (!q) {
         resultChip.textContent = `Showing all (${totalAll} item${totalAll === 1 ? "" : "s"})`;
@@ -629,6 +726,72 @@ function tmWirePlayers(){
   });
 }
 
+function tmFmtTime(sec){
+  if (!isFinite(sec) || sec < 0) return "0:00";
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${String(s).padStart(2,"0")}`;
+}
+
+function tmWirePlaylistRows(){
+  const rows = document.querySelectorAll(".tm-row");
+
+  rows.forEach(row => {
+    const audio = row.querySelector("audio");
+    const btn = row.querySelector(".tm-play");
+    const durEl = row.querySelector(".tm-dur");
+    const bar = row.querySelector(".tm-progress > div");
+
+    if (!audio || !btn || !durEl || !bar) return;
+
+    const pauseOthers = () => {
+      document.querySelectorAll(".tm-row audio").forEach(a => {
+        if (a !== audio) a.pause();
+      });
+    };
+
+    const updateBtn = () => {
+      btn.textContent = audio.paused ? "▶" : "⏸";
+    };
+
+    const updateDur = () => {
+      if (audio.duration) durEl.textContent = `(${tmFmtTime(audio.duration)})`;
+    };
+
+    const updateProgress = () => {
+      if (!audio.duration) { bar.style.width = "0%"; return; }
+      const pct = (audio.currentTime / audio.duration) * 100;
+      bar.style.width = `${Math.max(0, Math.min(100, pct))}%`;
+    };
+
+    btn.addEventListener("click", async () => {
+      pauseOthers();
+      if (audio.paused) {
+        try { await audio.play(); } catch {}
+      } else {
+        audio.pause();
+      }
+      updateBtn();
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      updateDur();
+      updateProgress();
+      updateBtn();
+    });
+
+    audio.addEventListener("timeupdate", updateProgress);
+    audio.addEventListener("play", updateBtn);
+    audio.addEventListener("pause", updateBtn);
+    audio.addEventListener("ended", () => {
+      updateBtn();
+      bar.style.width = "0%";
+    });
+
+    // initial
+    updateBtn();
+  });
+}
 
     
     searchInput.addEventListener("input", render);
