@@ -309,6 +309,14 @@
   padding: 12px 14px;
 }
 
+.tm-row{
+  cursor: pointer;
+}
+.tm-row:hover{
+  box-shadow: 0 6px 16px rgba(0,0,0,.05);
+}
+
+    
 .tm-play{
   width: 42px;
   height: 42px;
@@ -350,15 +358,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-.tm-pill{
-  border: 1px solid var(--line);
-  background: #f9fafb;
-  color: #374151;
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
 
 /* Optional: thin progress line like a modern playlist */
 .tm-progress{
@@ -518,26 +517,28 @@
       const type = (item.type || "audio").toLowerCase();
 
       // AUDIO
-  if (type === "audio") {
+ if (type === "audio") {
   const pid = "tm_" + Math.random().toString(36).slice(2);
-
-  // label defaults to "Audio only" unless you override with item.pill
-  const pill = escapeHtml(item.pill || "Audio only");
 
   return `
     <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
+      
+      <!-- Topic / title ABOVE player -->
+      <div class="tm-title" style="margin-bottom:6px;">
+        ${title}
+      </div>
+
+      ${item.note ? `<div class="item-note" style="margin-bottom:6px;">${escapeHtml(item.note)}</div>` : ``}
+
       <div class="tm-row" data-audio-id="${pid}">
         <button class="tm-play" type="button" aria-label="Play/Pause">▶</button>
 
         <div class="tm-main">
-          <div class="tm-title">${title}</div>
-          ${item.note ? `<div class="item-note">${escapeHtml(item.note)}</div>` : ``}
           <div class="tm-progress"><div></div></div>
         </div>
 
         <div class="tm-right">
           <div class="tm-dur">(0:00)</div>
-          <div class="tm-pill">${pill}</div>
         </div>
 
         <audio id="${pid}" preload="metadata" src="${escapeHtml(url)}"></audio>
@@ -545,6 +546,7 @@
     </div>
   `;
 }
+
 
 
 
@@ -741,6 +743,7 @@ function tmWirePlaylistRows(){
     const btn = row.querySelector(".tm-play");
     const durEl = row.querySelector(".tm-dur");
     const bar = row.querySelector(".tm-progress > div");
+    const progressWrap = row.querySelector(".tm-progress");
 
     if (!audio || !btn || !durEl || !bar) return;
 
@@ -764,7 +767,9 @@ function tmWirePlaylistRows(){
       bar.style.width = `${Math.max(0, Math.min(100, pct))}%`;
     };
 
-    btn.addEventListener("click", async () => {
+    // Play button click
+    btn.addEventListener("click", async (e) => {
+      e.stopPropagation(); // don't also trigger row click
       pauseOthers();
       if (audio.paused) {
         try { await audio.play(); } catch {}
@@ -773,6 +778,33 @@ function tmWirePlaylistRows(){
       }
       updateBtn();
     });
+
+    // Whole row click (toggle play/pause)
+    row.addEventListener("click", async (e) => {
+      // If they clicked the progress bar, let the progress handler handle it
+      if (e.target.closest(".tm-progress")) return;
+
+      pauseOthers();
+      if (audio.paused) {
+        try { await audio.play(); } catch {}
+      } else {
+        audio.pause();
+      }
+      updateBtn();
+    });
+
+    // Click-to-seek on the progress bar
+    if (progressWrap) {
+      progressWrap.addEventListener("click", (e) => {
+        e.stopPropagation(); // prevent row toggle
+        if (!audio.duration) return;
+
+        const rect = progressWrap.getBoundingClientRect();
+        const x = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+        const pct = x / rect.width;
+        audio.currentTime = pct * audio.duration;
+      });
+    }
 
     audio.addEventListener("loadedmetadata", () => {
       updateDur();
@@ -788,10 +820,11 @@ function tmWirePlaylistRows(){
       bar.style.width = "0%";
     });
 
-    // initial
+    // Initial state
     updateBtn();
   });
 }
+
 
     
     searchInput.addEventListener("input", render);
