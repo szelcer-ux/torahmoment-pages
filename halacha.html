@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Halacha/Hashkafah</title>
+
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#0b63ce;
+      --accent2:#0752ad;
+      --chip:#eef2ff;
+      --shadow: 0 10px 25px rgba(0,0,0,.06);
+      --radius: 16px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header{
+      padding: 28px 18px 10px;
+      text-align:center;
+    }
+    header h1{
+      margin:0;
+      font-size: 2rem;
+      letter-spacing: .2px;
+      color: var(--accent2);
+    }
+    header p{
+      margin: 10px auto 0;
+      max-width: 880px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .container{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .topbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:center;
+      margin: 12px 0 22px;
+    }
+
+    .search{
+      flex: 1 1 420px;
+      max-width: 560px;
+      position: relative;
+    }
+    .search input{
+      width:100%;
+      padding: 12px 14px;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      outline:none;
+      font-size: 15px;
+      background: #fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+    }
+
+    .chip{
+      background: var(--chip);
+      color: var(--accent2);
+      border: 1px solid #dbe3ff;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      margin-bottom: 14px;
+    }
+
+    details.category{
+      padding: 0;
+    }
+
+    details.category > summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 16px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      user-select:none;
+    }
+
+    details.category > summary::-webkit-details-marker{display:none}
+
+    .cat-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent2);
+    }
+
+    .count{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: #fafafa;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .content{
+      border-top: 1px solid var(--line);
+      padding: 14px 16px 16px;
+    }
+
+    .subgrid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    details.subcat{
+      background: #fbfcff;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      overflow:hidden;
+    }
+    details.subcat > summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 12px 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+      user-select:none;
+      font-weight: 650;
+      color:#0f3f7a;
+    }
+    details.subcat > summary::-webkit-details-marker{display:none}
+
+    .audios{
+      border-top: 1px solid var(--line);
+      padding: 10px 12px 12px;
+    }
+
+    .audio-item{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius: 12px;
+      padding: 10px 10px;
+      margin: 8px 0;
+    }
+
+    .audio-meta{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items: baseline;
+      flex-wrap:wrap;
+      margin-bottom: 6px;
+    }
+
+    .audio-title{
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .audio-note{
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    audio{
+      width:100%;
+      margin-top: 6px;
+    }
+
+    .link{
+      display:inline-block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .link:hover{ text-decoration: underline; }
+
+    .empty{
+      color: var(--muted);
+      font-size: 13px;
+      padding: 8px 0 0;
+    }
+
+    footer{
+      text-align:center;
+      color: var(--muted);
+      padding: 18px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Halacha/Hashkafah</h1>
+    <p>
+      Tap a category to expand. Use the search box to filter by title or notes.
+      Add as many audios as you want under any section.
+    </p>
+  </header>
+
+  <div class="container">
+    <div class="topbar">
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="Search audios (e.g., Shema, Purim, Tzedakah)..." />
+      </div>
+      <div class="chip" id="resultChip">Showing all</div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- DATA (Edit here only) -->
+    <!-- ===================== -->
+    <script>
+      // HOW TO ADD AUDIO:
+      // 1) Find the right section below.
+      // 2) Add an object like this:
+      //    { title: "My Audio Title", url: "https://.../file.mp3", note: "Optional note (date, speaker, etc.)" }
+      //
+      // If the url is NOT an mp3 (e.g. a page link), set urlType: "link"
+      // Example:
+      //    { title: "Listen on site", url: "https://example.com/page", urlType: "link", note: "External" }
+
+      const PAGE_DATA = [
+        {
+          category: "Tefilah",
+          subcategories: [
+            { name: 'Talis/Tefilin', audios: [] },
+            { name: 'Shema', audios: [] },
+            { name: 'Shmoneh Esrei', audios: [] },
+            { name: 'Chazaras Hashat"z', audios: [] },
+            { name: 'Krias Hatorah', audios: [] },
+            { name: 'Kadish', audios: [] },
+            { name: 'Kiddush Levana', audios: [] },
+            { name: 'Tefilas Haderech', audios: [] },
+            { name: 'Conduct', audios: [] },
+            { name: 'Machneesei Rachamim', audios: [] },
+          ]
+        },
+
+        {
+          category: "Yom Tov",
+          subcategories: [
+            { name: 'Elul', audios: [] },
+            { name: 'Sukkos', audios: [] },
+            { name: 'Chanukah', audios: [] },
+            { name: 'Purim', audios: [] },
+            { name: 'Lag Baomer', audios: [] },
+          ]
+        },
+
+        { category: "Tzedakah", audios: [] },
+        { category: "Talmud Torah", audios: [] },
+        { category: "MISC.", audios: [] },
+      ];
+    </script>
+
+    <!-- ===================== -->
+    <!-- RENDER TARGET         -->
+    <!-- ===================== -->
+    <div id="app"></div>
+
+    <footer>
+      torahmoment.com • Halacha/Hashkafah
+    </footer>
+  </div>
+
+  <script>
+    const app = document.getElementById("app");
+    const searchInput = document.getElementById("searchInput");
+    const resultChip = document.getElementById("resultChip");
+
+    function escapeHtml(str){
+      return (str ?? "").replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[m]));
+    }
+
+    function countAudiosInCategory(cat){
+      if (Array.isArray(cat.subcategories)) {
+        return cat.subcategories.reduce((sum, s) => sum + (s.audios?.length || 0), 0);
+      }
+      return cat.audios?.length || 0;
+    }
+
+    function audioMatches(audio, q){
+      const blob = `${audio.title || ""} ${audio.note || ""}`.toLowerCase();
+      return blob.includes(q);
+    }
+
+    function renderAudioItem(audio){
+      const title = escapeHtml(audio.title || "Audio");
+      const note = escapeHtml(audio.note || "");
+      const url = audio.url || "";
+
+      const isLink = (audio.urlType === "link") || (!url.toLowerCase().endsWith(".mp3") && !url.toLowerCase().includes(".mp3?"));
+
+      return `
+        <div class="audio-item" data-search="${escapeHtml((audio.title||"") + " " + (audio.note||""))}">
+          <div class="audio-meta">
+            <div class="audio-title">${title}</div>
+            <div class="audio-note">${note}</div>
+          </div>
+
+          ${
+            isLink
+              ? `<a class="link" href="${escapeHtml(url)}" target="_blank" rel="noopener">Open link</a>`
+              : `<audio controls preload="none" src="${escapeHtml(url)}"></audio>`
+          }
+        </div>
+      `;
+    }
+
+    function renderEmpty(){
+      return `<div class="empty">No audios yet. Add items in the PAGE_DATA block.</div>`;
+    }
+
+    function render(){
+      const q = (searchInput.value || "").trim().toLowerCase();
+
+      let totalShown = 0;
+      let totalAll = 0;
+
+      const html = PAGE_DATA.map(cat => {
+        const totalCat = countAudiosInCategory(cat);
+        totalAll += totalCat;
+
+        // With subcategories
+        if (Array.isArray(cat.subcategories)) {
+          const subHtml = cat.subcategories.map(sub => {
+            const allAudios = sub.audios || [];
+            const filtered = q ? allAudios.filter(a => audioMatches(a, q)) : allAudios;
+
+            totalShown += filtered.length;
+
+            return `
+              <details class="subcat" ${q && filtered.length ? "open" : ""}>
+                <summary>
+                  <span>${escapeHtml(sub.name)}</span>
+                  <span class="count">${filtered.length}/${allAudios.length}</span>
+                </summary>
+                <div class="audios">
+                  ${filtered.length ? filtered.map(renderAudioItem).join("") : renderEmpty()}
+                </div>
+              </details>
+            `;
+          }).join("");
+
+          return `
+            <div class="card">
+              <details class="category" open>
+                <summary>
+                  <div class="cat-title">${escapeHtml(cat.category)}</div>
+                  <div class="count">${q ? "filtered" : "total"}: ${totalCat}</div>
+                </summary>
+                <div class="content">
+                  <div class="subgrid">
+                    ${subHtml}
+                  </div>
+                </div>
+              </details>
+            </div>
+          `;
+        }
+
+        // Flat category
+        const allAudios = cat.audios || [];
+        const filtered = q ? allAudios.filter(a => audioMatches(a, q)) : allAudios;
+        totalShown += filtered.length;
+
+        return `
+          <div class="card">
+            <details class="category" open>
+              <summary>
+                <div class="cat-title">${escapeHtml(cat.category)}</div>
+                <div class="count">${filtered.length}/${allAudios.length}</div>
+              </summary>
+              <div class="content">
+                ${filtered.length ? filtered.map(renderAudioItem).join("") : renderEmpty()}
+              </div>
+            </details>
+          </div>
+        `;
+      }).join("");
+
+      app.innerHTML = html;
+
+      if (!q) {
+        resultChip.textContent = `Showing all (${totalAll} audio${totalAll === 1 ? "" : "s"})`;
+      } else {
+        resultChip.textContent = `Matches: ${totalShown}`;
+      }
+    }
+
+    searchInput.addEventListener("input", render);
+    render();
+  </script>
+</body>
+</html>
