@@ -225,6 +225,11 @@
   color: #dc2626; /* subtle red hint = YouTube */
 }
 
+    .tm-row.tm-youtube{
+  border-style: dashed;
+  background: #fcfcff;
+}
+
     
     audio{
       width:100%;
@@ -272,6 +277,17 @@
       font-size: 12px;
     }
 
+.tm-badge{
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #f8fafc;
+  color: #374151;
+  white-space: nowrap;
+}
+
+    
 /* --- TorahMoment-style custom audio player --- */
 .tm-player{
   display:flex;
@@ -683,12 +699,11 @@ if (type === "note") {
 
 
 
-
      // YOUTUBE – playlist row style (uniform with audio)
 if (type === "youtube") {
   return `
     <div class="item">
-      <div class="tm-row tm-link-row" data-url="${escapeHtml(item.url)}">
+      <div class="tm-row tm-link-row tm-youtube" data-url="${escapeHtml(item.url)}">
         <button class="tm-play" type="button" aria-label="Open YouTube">▶</button>
 
         <div class="tm-main">
@@ -699,7 +714,7 @@ if (type === "youtube") {
         </div>
 
         <div class="tm-right">
-          <div class="tm-dur">(YouTube)</div>
+         <div class="tm-badge">🎥 YouTube</div>
         </div>
       </div>
     </div>
