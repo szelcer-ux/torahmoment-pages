@@ -236,6 +236,62 @@
       padding: 18px;
       font-size: 12px;
     }
+
+/* --- TorahMoment-style custom audio player --- */
+.tm-player{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid var(--line);
+  background:#f9fafb;
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.tm-btn{
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  cursor:pointer;
+  font-weight:800;
+  color: var(--accent2);
+}
+
+.tm-seek{
+  flex:1;
+  height: 4px;
+}
+
+.tm-time{
+  min-width: 96px;
+  text-align:right;
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.tm-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items: baseline;
+  flex-wrap:wrap;
+  margin-bottom: 8px;
+}
+
+.tm-title{
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.tm-note{
+  color: var(--muted);
+  font-size: 12px;
+}
+
+    
   </style>
 </head>
 
@@ -376,18 +432,26 @@
       const type = (item.type || "audio").toLowerCase();
 
       // AUDIO
-      if (type === "audio") {
-        return `
-          <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
-            <div class="item-meta">
-              <div class="item-title">${title}</div>
-              <div class="item-note">${note}</div>
-            </div>
-            <audio controls preload="none" src="${escapeHtml(url)}"></audio>
-            <a class="link" href="${escapeHtml(url)}" target="_blank" rel="noopener">Open MP3</a>
-          </div>
-        `;
-      }
+   if (type === "audio") {
+  const pid = "tm_" + Math.random().toString(36).slice(2);
+
+  return `
+    <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
+      <div class="tm-meta">
+        <div class="tm-title">${title}</div>
+        <div class="tm-note">${note}</div>
+      </div>
+
+      <div class="tm-player" data-audio-id="${pid}">
+        <button class="tm-btn" type="button" aria-label="Play/Pause">▶</button>
+        <input class="tm-seek" type="range" min="0" max="1000" value="0" />
+        <div class="tm-time">0:00 / 0:00</div>
+        <audio id="${pid}" preload="none" src="${escapeHtml(url)}"></audio>
+      </div>
+    </div>
+  `;
+}
+
 
       // YOUTUBE
       if (type === "youtube") {
@@ -492,6 +556,7 @@
       }).join("");
 
       app.innerHTML = html;
+tmWirePlayers();
 
       if (!q) {
         resultChip.textContent = `Showing all (${totalAll} item${totalAll === 1 ? "" : "s"})`;
@@ -500,6 +565,72 @@
       }
     }
 
+function tmFmtTime(sec){
+  if (!isFinite(sec) || sec < 0) return "0:00";
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${String(s).padStart(2,"0")}`;
+}
+
+function tmWirePlayers(){
+  const players = document.querySelectorAll(".tm-player");
+
+  players.forEach(p => {
+    const audio = p.querySelector("audio");
+    const btn = p.querySelector(".tm-btn");
+    const seek = p.querySelector(".tm-seek");
+    const time = p.querySelector(".tm-time");
+
+    if (!audio || !btn || !seek || !time) return;
+
+    const update = () => {
+      const dur = audio.duration || 0;
+      const cur = audio.currentTime || 0;
+
+      time.textContent = `${tmFmtTime(cur)} / ${dur ? tmFmtTime(dur) : "0:00"}`;
+
+      if (dur) {
+        seek.value = Math.floor((cur / dur) * 1000);
+      } else {
+        seek.value = 0;
+      }
+
+      btn.textContent = audio.paused ? "▶" : "⏸";
+    };
+
+    const pauseOthers = () => {
+      document.querySelectorAll(".tm-player audio").forEach(a => {
+        if (a !== audio) a.pause();
+      });
+    };
+
+    btn.addEventListener("click", async () => {
+      pauseOthers();
+      if (audio.paused) {
+        try { await audio.play(); } catch {}
+      } else {
+        audio.pause();
+      }
+      update();
+    });
+
+    seek.addEventListener("input", () => {
+      const dur = audio.duration || 0;
+      if (dur) audio.currentTime = (seek.value / 1000) * dur;
+    });
+
+    audio.addEventListener("loadedmetadata", update);
+    audio.addEventListener("timeupdate", update);
+    audio.addEventListener("play", update);
+    audio.addEventListener("pause", update);
+    audio.addEventListener("ended", update);
+
+    update();
+  });
+}
+
+
+    
     searchInput.addEventListener("input", render);
     render();
   </script>
