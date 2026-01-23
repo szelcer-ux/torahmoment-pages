@@ -1250,7 +1250,8 @@ renderParshaExtras(selectedParsha);
 
 const audioEl = document.getElementById("audioEl");
 // ===== Progress bar + seeking support (row-embedded scrubber) =====
-let currentRow = null;
+let currentHref = "";
+	let currentRow = null;
 
 function fmtTime(sec){
   sec = Math.max(0, Math.floor(sec || 0));
@@ -1383,6 +1384,7 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
 
