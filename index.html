@@ -96,6 +96,44 @@
   background: #fff;
 }
 
+/* Layout: allow title + (optional) scrubber */
+.audioMain{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-width:0;
+  flex:1 1 auto;
+}
+
+/* Scrubber hidden unless row is active */
+.audioScrub{ display:none; }
+.audioLink.isPlaying .audioScrub,
+.audioLink.isPaused  .audioScrub{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Range slider should not stretch weirdly */
+.audioProgress{
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 420px;
+  height: 4px;
+  padding: 0;
+  margin: 0;
+  accent-color: #111827; /* uses your theme */
+}
+
+/* Time text compact */
+.audioTime{
+  font-size:12px;
+  color:#6b7280;
+  white-space:nowrap;
+}
+.audioSep{ opacity:.7; }
+
+	  
 /* Each row */
 .audioLink{
   display:flex;
@@ -690,8 +728,32 @@ function renderAudioList(containerId, items){
 
   el.innerHTML = (items || []).map(it => `
     <a class="audioLink" href="${escapeAttr(it.url)}" data-title="${escapeAttr(it.label)}">
-      <span class="playBtn"><span class="playIcon"></span></span>
-      <span class="audioTitle">${escapeHtml(it.label)}</span>
+      <span class="playBtn">
+        <span class="playIcon"></span>
+      </span>
+
+      <span class="audioMain">
+        <span class="audioTitle">${escapeHtml(it.label)}</span>
+
+        <!-- Progress bar + time (hidden unless active) -->
+        <span class="audioScrub">
+          <input
+            class="audioProgress"
+            type="range"
+            min="0"
+            max="1000"
+            value="0"
+            step="1"
+            aria-label="Audio progress"
+          />
+          <span class="audioTime">
+            <span class="audioCur">0:00</span>
+            <span class="audioSep"> / </span>
+            <span class="audioDur">0:00</span>
+          </span>
+        </span>
+      </span>
+
       <span class="audioMeta">
         ${it.duration ? `<span class="audioDuration">${escapeHtml(it.duration)}</span>` : ``}
         <span class="audioBadge">Audio</span>
@@ -699,6 +761,7 @@ function renderAudioList(containerId, items){
     </a>
   `).join("");
 }
+
 
 function renderPdfList(containerId, items){
   const el = document.getElementById(containerId);
@@ -1186,7 +1249,69 @@ renderParshaExtras(selectedParsha);
 //renderParshaExtras("Noach");
 
 const audioEl = document.getElementById("audioEl");
-let currentHref = "";
+// ===== Progress bar + seeking support (row-embedded scrubber) =====
+let currentRow = null;
+
+function fmtTime(sec){
+  sec = Math.max(0, Math.floor(sec || 0));
+  const m = Math.floor(sec / 60);
+  const s = String(sec % 60).padStart(2, "0");
+  return `${m}:${s}`;
+}
+
+// Call this whenever you mark a row as active (playing/paused)
+function setActiveRow(row){
+  currentRow = row;
+
+  // Initialize scrub UI for this row
+  const prog = row?.querySelector(".audioProgress");
+  const cur  = row?.querySelector(".audioCur");
+  const dur  = row?.querySelector(".audioDur");
+
+  if (prog) prog.value = 0;
+  if (cur) cur.textContent = "0:00";
+  if (dur) dur.textContent = "0:00";
+}
+
+// Update scrubber as audio plays
+audioEl.addEventListener("timeupdate", () => {
+  if (!currentRow) return;
+
+  const prog = currentRow.querySelector(".audioProgress");
+  const cur  = currentRow.querySelector(".audioCur");
+  const dur  = currentRow.querySelector(".audioDur");
+
+  const d = audioEl.duration || 0;
+  const t = audioEl.currentTime || 0;
+
+  if (cur) cur.textContent = fmtTime(t);
+  if (dur) dur.textContent = d ? fmtTime(d) : "0:00";
+
+  if (prog && d) prog.value = String(Math.round((t / d) * 1000));
+});
+
+// Set duration once metadata is known
+audioEl.addEventListener("loadedmetadata", () => {
+  if (!currentRow) return;
+  const dur = currentRow.querySelector(".audioDur");
+  if (dur) dur.textContent = audioEl.duration ? fmtTime(audioEl.duration) : "0:00";
+});
+
+// Dragging the slider seeks (event delegation so it works after re-render)
+document.addEventListener("input", (e) => {
+  const r = e.target.closest(".audioProgress");
+  if (!r || !currentRow) return;
+
+  // Only seek if slider belongs to the active row
+  if (!currentRow.contains(r)) return;
+
+  const d = audioEl.duration || 0;
+  if (!d) return;
+
+  const pct = Number(r.value) / 1000;
+  audioEl.currentTime = pct * d;
+});
+
 
 function clearRowStates(){
   document.querySelectorAll(".audioLink").forEach(row => {
@@ -1195,6 +1320,7 @@ function clearRowStates(){
 }
 
 document.addEventListener("click", (e) => {
+	if (e.target.closest(".audioProgress")) return; // don't treat slider drag like a play click
   const a = e.target.closest("a.audioLink");
   if (!a) return;
 
@@ -1207,6 +1333,8 @@ document.addEventListener("click", (e) => {
       audioEl.play();
       clearRowStates();
       a.classList.add("isPlaying");
+		setActiveRow(a);
+
     } else {
       audioEl.pause();
       a.classList.remove("isPlaying");
@@ -1224,6 +1352,8 @@ document.addEventListener("click", (e) => {
   audioEl.play();
   clearRowStates();
   a.classList.add("isPlaying");
+	setActiveRow(a);
+
 });
 
 // When audio ends, reset UI
@@ -1253,6 +1383,7 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
 
