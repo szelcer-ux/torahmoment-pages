@@ -376,6 +376,63 @@
   background: none !important;
 }
 
+/* Hide real audio element but keep present for mobile browsers */
+#audioEl{
+  position:absolute;
+  left:-9999px;
+  width:1px;
+  height:1px;
+  opacity:0;
+}
+
+/* PDF list */
+.pdfList{
+  display:flex;
+  flex-direction:column;
+  border-radius: 12px;
+  overflow:hidden;
+  border: 1px solid rgba(17,24,39,.10);
+  background:#fff;
+}
+.pdfLink{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 12px;
+  text-decoration:none;
+  color:#111827;
+  font-size:14px;
+  background:#fff;
+  transition: background .12s ease, transform .08s ease;
+}
+.pdfLink + .pdfLink{
+  border-top: 1px solid rgba(17,24,39,.08);
+}
+.pdfLink:hover{ background:#f9fafb; }
+.pdfLink:active{ transform: translateY(1px); }
+
+.pdfIcon{
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f3f4f6;
+  border:1px solid rgba(17,24,39,.10);
+  flex:0 0 auto;
+  font-weight:700;
+  font-size:12px;
+  color:#111827;
+}
+.pdfTitle{
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+	  
   </style>
 </head>
 <body>
@@ -434,6 +491,34 @@
 
   <audio id="audioEl" preload="metadata"></audio>
  <div id="empty" class="empty" style="display:none;">No videos match your filters.</div>
+
+	<section id="secAudioShort" class="linksBox" style="display:none;">
+  <div class="linksTop">
+    <div class="linksTitle">Short Audio Insights</div>
+    <div class="linksHint">5–7 minute Torah thoughts on this Parsha</div>
+  </div>
+  <div id="audioShortList" class="linksList"></div>
+</section>
+
+<section id="secAudioLong" class="linksBox" style="display:none;">
+  <div class="linksTop">
+    <div class="linksTitle">In-Depth Shiurim</div>
+    <div class="linksHint">Full-length shiurim for deeper study (≈60 minutes)</div>
+  </div>
+  <div id="audioLongList" class="linksList"></div>
+</section>
+
+<section id="secPdfs" class="linksBox" style="display:none;">
+  <div class="linksTop">
+    <div class="linksTitle">In the Name of the Parsha</div>
+    <div class="linksHint">PDF learning sheets and written insights</div>
+  </div>
+  <div id="pdfList" class="pdfList"></div>
+</section>
+
+<audio id="audioEl" preload="metadata"></audio>
+
+
 </main>
 
 <script>
@@ -536,6 +621,22 @@ const PARSHA_AUDIO = {
   ]
 };
 
+const PARSHA_INDEPTH = {
+  "Noach": [
+    // { label: "Full shiur on ...", url: "https://...mp3", duration: "1:02:18" }
+  ],
+  // ...
+};
+
+	const PARSHA_PDFS = {
+  "Noach": [
+    // { label: "In the Name of the Parsha – Noach", url: "https://drive.google.com/.../view" }
+  ],
+  // ...
+};
+
+
+	
 // Optional: links shown when "All Parshios" is selected (site-wide links)
 const GLOBAL_LINKS = [
   { label: "Back to Parshios index", url: "https://sites.google.com/VIEW/PARSHIOS" },
@@ -560,6 +661,68 @@ const GLOBAL_LINKS = [
   }[c]));
   const normalizeWs = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
 
+function escapeHtml(s){
+  return String(s ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+function escapeAttr(s){ return escapeHtml(s); }
+
+function setSectionVisible(sectionId, hasItems){
+  const sec = document.getElementById(sectionId);
+  if (!sec) return;
+  sec.style.display = hasItems ? "block" : "none";
+}
+
+function renderAudioList(containerId, items){
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  el.innerHTML = (items || []).map(it => `
+    <a class="audioLink" href="${escapeAttr(it.url)}" data-title="${escapeAttr(it.label)}">
+      <span class="playBtn"><span class="playIcon"></span></span>
+      <span class="audioTitle">${escapeHtml(it.label)}</span>
+      <span class="audioMeta">
+        ${it.duration ? `<span class="audioDuration">${escapeHtml(it.duration)}</span>` : ``}
+        <span class="audioBadge">Audio</span>
+      </span>
+    </a>
+  `).join("");
+}
+
+function renderPdfList(containerId, items){
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  el.innerHTML = (items || []).map(it => `
+    <a class="pdfLink" href="${escapeAttr(it.url)}" target="_blank" rel="noopener">
+      <span class="pdfIcon">PDF</span>
+      <span class="pdfTitle">${escapeHtml(it.label)}</span>
+    </a>
+  `).join("");
+}
+
+function renderParshaExtras(parsha){
+  const shortItems = (PARSHA_AUDIO && PARSHA_AUDIO[parsha]) ? PARSHA_AUDIO[parsha] : [];
+  const longItems  = (PARSHA_INDEPTH && PARSHA_INDEPTH[parsha]) ? PARSHA_INDEPTH[parsha] : [];
+  const pdfItems   = (PARSHA_PDFS && PARSHA_PDFS[parsha]) ? PARSHA_PDFS[parsha] : [];
+
+  setSectionVisible("secAudioShort", shortItems.length > 0);
+  setSectionVisible("secAudioLong",  longItems.length > 0);
+  setSectionVisible("secPdfs",       pdfItems.length > 0);
+
+  renderAudioList("audioShortList", shortItems);
+  renderAudioList("audioLongList",  longItems);
+  renderPdfList("pdfList",          pdfItems);
+
+  clearAudioRowStates(); // reset playing UI when parsha changes
+}
+
+
+	
 function setFiltersOpen(isOpen){
   if (!controlsWrap || !filtersBtn) return;
 
@@ -958,6 +1121,7 @@ updateURLFromSelection();    // ✅ new (normalizes URL)
 renderLinks();
 applyFilters();
 
+		
 
 
 
@@ -970,6 +1134,7 @@ if (parshaFromURL && [...parshaSel.options].some(o => o.value === parshaFromURL)
  
 
 renderLinks();
+renderParshaExtras(selectedParsha);
 
 
       setStatus("Done", `Loaded ${parshaVideos.length} Parsha videos across ${parshaList.length} Parshios.`);
@@ -1086,3 +1251,4 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
