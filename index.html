@@ -1148,7 +1148,8 @@ renderParshaExtras(selectedParsha);
   setPageTitle();            // ✅ new
   renderLinks();
   applyFilters();
-  
+  renderParshaExtras(selectedParsha);   // ✅ HERE
+	 
    if (window.matchMedia("(max-width: 780px)").matches) {
     setFiltersOpen(false);
   }
@@ -1244,5 +1245,6 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
