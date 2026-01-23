@@ -1116,9 +1116,9 @@ selectParshaFromURL();
 setPageTitle();              // ✅ new
 updateURLFromSelection();    // ✅ new (normalizes URL)
 
-renderLinks();
+//renderLinks();
 applyFilters();
-
+renderParshaExtras();
 		
 
 
@@ -1131,7 +1131,7 @@ if (parshaFromURL && [...parshaSel.options].some(o => o.value === parshaFromURL)
 
  
 
-renderLinks();
+//renderLinks();
 renderParshaExtras();
 
 
@@ -1151,7 +1151,7 @@ renderParshaExtras();
  parshaSel.addEventListener("change", () => {
   updateURLFromSelection();  // ✅ new
   setPageTitle();            // ✅ new
-  renderLinks();
+//  renderLinks();
   applyFilters();
   renderParshaExtras();   // ✅ HERE
 	 
@@ -1170,7 +1170,8 @@ renderParshaExtras();
   updateURLFromSelection();  // ✅ new
   setPageTitle();            // ✅ new
 
-  renderLinks();
+ // renderLinks();
+	  renderParshaExtras();
   applyFilters();
   q.focus();
 });
