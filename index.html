@@ -1118,7 +1118,7 @@ updateURLFromSelection();    // ✅ new (normalizes URL)
 
 //renderLinks();
 applyFilters();
-renderParshaExtras();
+renderParshaExtras(selectedParsha);
 		
 
 
@@ -1132,7 +1132,7 @@ if (parshaFromURL && [...parshaSel.options].some(o => o.value === parshaFromURL)
  
 
 //renderLinks();
-renderParshaExtras();
+renderParshaExtras(selectedParsha);
 
 
       setStatus("Done", `Loaded ${parshaVideos.length} Parsha videos across ${parshaList.length} Parshios.`);
@@ -1153,7 +1153,7 @@ renderParshaExtras();
   setPageTitle();            // ✅ new
 //  renderLinks();
   applyFilters();
-  renderParshaExtras();   // ✅ HERE
+  renderParshaExtras(selectedParsha);   // ✅ HERE
 	 
    if (window.matchMedia("(max-width: 780px)").matches) {
     setFiltersOpen(false);
@@ -1171,7 +1171,7 @@ renderParshaExtras();
   setPageTitle();            // ✅ new
 
  // renderLinks();
-	  renderParshaExtras();
+	  renderParshaExtras(selectedParsha);
   applyFilters();
   q.focus();
 });
@@ -1182,7 +1182,7 @@ renderParshaExtras();
   /* =========================
    INLINE AUDIO PLAYER
    ========================= */
-renderParshaExtras("Noach");
+//renderParshaExtras("Noach");
 
 const audioEl = document.getElementById("audioEl");
 let currentHref = "";
@@ -1252,6 +1252,7 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
 
