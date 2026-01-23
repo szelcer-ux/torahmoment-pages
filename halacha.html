@@ -134,6 +134,14 @@
       padding: 14px 16px 16px;
     }
 
+.helper-text{
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+    
     .subgrid{
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -488,9 +496,9 @@
 <body>
   <header>
     <h1>Halacha/Hashkafah</h1>
-    <p>
-      Please note that nothing on this page should be taken as psak din and all questions should be addressed to a trusted Rabbi.
-    </p>
+    <div id="helperText" class="helper-text">
+ Please note that nothing on this page should be taken as psak din and all questions should be addressed to a trusted Rabbi.
+</div>
   </header>
 
   <div class="container">
