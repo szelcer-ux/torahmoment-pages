@@ -661,14 +661,7 @@ const GLOBAL_LINKS = [
   }[c]));
   const normalizeWs = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
 
-function escapeHtml(s){
-  return String(s ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
+
 function escapeAttr(s){ return escapeHtml(s); }
 
 function setSectionVisible(sectionId, hasItems){
@@ -1251,4 +1244,5 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
