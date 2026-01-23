@@ -635,6 +635,15 @@ const PARSHA_INDEPTH = {
   // ...
 };
 
+function getCurrentParsha() {
+  const sel = document.getElementById("parsha");
+  if (sel && sel.value) return sel.value;
+
+  const p = new URLSearchParams(location.search).get("parsha");
+  if (p) return p;
+
+  return "Noach"; // safe fallback
+}
 
 	
 // Optional: links shown when "All Parshios" is selected (site-wide links)
@@ -1118,25 +1127,17 @@ updateURLFromSelection();    // ✅ new (normalizes URL)
 
 //renderLinks();
 applyFilters();
+//renderParshaExtras(selectedParsha);
+	const selectedParsha = parshaSel.value || getParshaFromURL() || "Noach";
 renderParshaExtras(selectedParsha);
-		
-
-
-
-
-const parshaFromURL = getParshaFromURL();
-if (parshaFromURL && [...parshaSel.options].some(o => o.value === parshaFromURL)) {
-  parshaSel.value = parshaFromURL;
-}
-
- 
+	 
 
 //renderLinks();
-renderParshaExtras(selectedParsha);
+//renderParshaExtras(selectedParsha);
 
 
       setStatus("Done", `Loaded ${parshaVideos.length} Parsha videos across ${parshaList.length} Parshios.`);
-      applyFilters();
+    //  applyFilters();
     } catch (e) {
       setStatus("Error", e.message || String(e));
       grid.innerHTML = "";
@@ -1153,7 +1154,7 @@ renderParshaExtras(selectedParsha);
   setPageTitle();            // ✅ new
 //  renderLinks();
   applyFilters();
-  renderParshaExtras(selectedParsha);   // ✅ HERE
+  renderParshaExtras(parshaSel.value);
 	 
    if (window.matchMedia("(max-width: 780px)").matches) {
     setFiltersOpen(false);
@@ -1252,6 +1253,7 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
 
