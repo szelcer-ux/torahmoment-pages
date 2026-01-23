@@ -1320,6 +1320,24 @@ function clearRowStates(){
   });
 }
 
+// Prevent the <a> from navigating when user interacts with the progress slider
+document.addEventListener("pointerdown", (e) => {
+  const slider = e.target.closest(".audioProgress");
+  if (!slider) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+}, { passive: false });
+
+document.addEventListener("click", (e) => {
+  const slider = e.target.closest(".audioProgress");
+  if (!slider) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+});
+
+	
 document.addEventListener("click", (e) => {
 	if (e.target.closest(".audioProgress")) return; // don't treat slider drag like a play click
   const a = e.target.closest("a.audioLink");
@@ -1384,6 +1402,7 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
 
