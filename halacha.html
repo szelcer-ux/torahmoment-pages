@@ -755,6 +755,32 @@ if (type === "youtube") {
   `;
 }
 
+function applyCollapseLogic(hasSearch){
+  const isMobile = window.innerWidth <= 767;
+
+  document.querySelectorAll("details.category, details.subcat").forEach(d => {
+    if (hasSearch) {
+      // Searching: close everything first
+      d.removeAttribute("open");
+    } else if (isMobile) {
+      // Mobile + no search: collapsed by default
+      d.removeAttribute("open");
+    } else {
+      // Desktop + no search: open by default
+      d.setAttribute("open", "");
+    }
+  });
+}
+
+      function openMatchingSections(){
+  document.querySelectorAll(".item").forEach(item => {
+    const detailsSub = item.closest("details.subcat");
+    const detailsCat = item.closest("details.category");
+
+    if (detailsSub) detailsSub.setAttribute("open", "");
+    if (detailsCat) detailsCat.setAttribute("open", "");
+  });
+}
 
 
       // FALLBACK: link
@@ -769,19 +795,39 @@ if (type === "youtube") {
       `;
     }
 
-function applyMobileCollapsedDefaults(){
-  // Mobile only
-  if (window.innerWidth > 767) return;
 
-  // Close all categories + subcategories
+
+function applyCollapseLogic(hasSearch){
+  const isMobile = window.innerWidth <= 767;
+
   document.querySelectorAll("details.category, details.subcat").forEach(d => {
-    d.removeAttribute("open");
+    if (hasSearch) {
+      // Searching: close everything first
+      d.removeAttribute("open");
+    } else if (isMobile) {
+      // Mobile + no search: collapsed by default
+      d.removeAttribute("open");
+    } else {
+      // Desktop + no search: open by default
+      d.setAttribute("open", "");
+    }
   });
 }
 
+ function openMatchingSections(){
+  document.querySelectorAll(".item").forEach(item => {
+    // If item is visible, open its parent sections
+    const detailsSub = item.closest("details.subcat");
+    const detailsCat = item.closest("details.category");
+
+    if (detailsSub) detailsSub.setAttribute("open", "");
+    if (detailsCat) detailsCat.setAttribute("open", "");
+  });
+}
+   
     
     function renderEmpty(){
-      return `<div class="empty">No items yet. Add to the items: [] list in the PAGE_DATA block.</div>`;
+      return `<div class="empty">No results</div>`;
     }
 
     function render(){
@@ -851,11 +897,19 @@ function applyMobileCollapsedDefaults(){
       }).join("");
 
       app.innerHTML = html;
-applyMobileCollapsedDefaults();
+
+      const hasSearch = q.length > 0;
+      
+      applyCollapseLogic(hasSearch);
+      
+      if (hasSearch) {
+        openMatchingSections();
+      }
+      
       tmWirePlaylistRows();
-enableMobileTitleExpand();
-wireNoteRows();
-wireYouTubeRows();
+      enableMobileTitleExpand();
+      wireNoteRows();
+      wireYouTubeRows();
 
       if (!q) {
         resultChip.textContent = `Showing all (${totalAll} item${totalAll === 1 ? "" : "s"})`;
