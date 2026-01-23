@@ -661,6 +661,11 @@ const GLOBAL_LINKS = [
   }[c]));
   const normalizeWs = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
 
+function clearAudioRowStates(){
+  document.querySelectorAll(".audioLink").forEach(row => {
+    row.classList.remove("isPlaying", "isPaused");
+  });
+}
 
 function escapeAttr(s){ return escapeHtml(s); }
 
@@ -1245,6 +1250,7 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
 
