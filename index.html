@@ -1329,12 +1329,20 @@ document.addEventListener("pointerdown", (e) => {
   e.stopPropagation();
 }, { passive: false });
 
-document.addEventListener("click", (e) => {
-  const slider = e.target.closest(".audioProgress");
-  if (!slider) return;
+// Slider interactions should not trigger the <a> row click handler.
+// We do NOT preventDefault on mousedown (so dragging works on desktop).
+document.addEventListener("mousedown", (e) => {
+  if (e.target.closest(".audioProgress")) {
+    e.stopPropagation();
+  }
+});
 
-  e.preventDefault();
-  e.stopPropagation();
+// Prevent the anchor from navigating if the slider is clicked
+document.addEventListener("click", (e) => {
+  if (e.target.closest(".audioProgress")) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
 });
 
 	
@@ -1402,6 +1410,7 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
 
