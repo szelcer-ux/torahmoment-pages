@@ -727,25 +727,16 @@ function renderAudioList(containerId, items){
   if (!el) return;
 
   el.innerHTML = (items || []).map(it => `
-    <a class="audioLink" href="${escapeAttr(it.url)}" data-title="${escapeAttr(it.label)}">
-      <span class="playBtn">
-        <span class="playIcon"></span>
-      </span>
+    <div class="audioLink" role="button" tabindex="0"
+         data-href="${escapeAttr(it.url)}"
+         data-title="${escapeAttr(it.label)}">
+      <span class="playBtn"><span class="playIcon"></span></span>
 
       <span class="audioMain">
         <span class="audioTitle">${escapeHtml(it.label)}</span>
 
-        <!-- Progress bar + time (hidden unless active) -->
         <span class="audioScrub">
-          <input
-            class="audioProgress"
-            type="range"
-            min="0"
-            max="1000"
-            value="0"
-            step="1"
-            aria-label="Audio progress"
-          />
+          <input class="audioProgress" type="range" min="0" max="1000" value="0" step="1" aria-label="Audio progress" />
           <span class="audioTime">
             <span class="audioCur">0:00</span>
             <span class="audioSep"> / </span>
@@ -758,9 +749,10 @@ function renderAudioList(containerId, items){
         ${it.duration ? `<span class="audioDuration">${escapeHtml(it.duration)}</span>` : ``}
         <span class="audioBadge">Audio</span>
       </span>
-    </a>
+    </div>
   `).join("");
 }
+
 
 
 function renderPdfList(containerId, items){
@@ -1348,11 +1340,11 @@ document.addEventListener("click", (e) => {
 	
 document.addEventListener("click", (e) => {
 	if (e.target.closest(".audioProgress")) return; // don't treat slider drag like a play click
-  const a = e.target.closest("a.audioLink");
+  const a = e.target.closest(".audioLink");
   if (!a) return;
 
   e.preventDefault();
-  const href = a.getAttribute("href");
+  const href = a.dataset.href;
 
   // SAME audio clicked again → toggle
   if (currentHref === href) {
@@ -1410,6 +1402,7 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
 
