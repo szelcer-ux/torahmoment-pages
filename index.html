@@ -1246,7 +1246,9 @@ renderParshaExtras(selectedParsha);
 
 const audioEl = document.getElementById("audioEl");
 // ===== Progress bar + seeking support (row-embedded scrubber) =====
-let currentHref = "";
+let isScrubbing = false;
+
+	let currentHref = "";
 	let currentRow = null;
 
 function fmtTime(sec){
@@ -1273,6 +1275,7 @@ function setActiveRow(row){
 // Update scrubber as audio plays
 audioEl.addEventListener("timeupdate", () => {
   if (!currentRow) return;
+  if (isScrubbing) return; // ✅ don't fight the user's drag
 
   const prog = currentRow.querySelector(".audioProgress");
   const cur  = currentRow.querySelector(".audioCur");
@@ -1286,6 +1289,36 @@ audioEl.addEventListener("timeupdate", () => {
 
   if (prog && d) prog.value = String(Math.round((t / d) * 1000));
 });
+
+	document.addEventListener("pointerdown", (e) => {
+  const r = e.target.closest(".audioProgress");
+  if (!r) return;
+  isScrubbing = true;
+  e.stopPropagation();
+}, true);
+
+document.addEventListener("pointerup", (e) => {
+  if (!isScrubbing) return;
+  isScrubbing = false;
+}, true);
+
+// Seek while dragging (responsive). If you prefer only on release, tell me.
+document.addEventListener("input", (e) => {
+  const r = e.target.closest(".audioProgress");
+  if (!r || !currentRow) return;
+  if (!currentRow.contains(r)) return;
+
+  const d = audioEl.duration || 0;
+  if (!d) return;
+
+  const pct = Number(r.value) / 1000;
+  audioEl.currentTime = pct * d;
+
+  // update time text immediately while scrubbing
+  const cur = currentRow.querySelector(".audioCur");
+  if (cur) cur.textContent = fmtTime(audioEl.currentTime);
+});
+
 
 // Set duration once metadata is known
 audioEl.addEventListener("loadedmetadata", () => {
@@ -1397,6 +1430,7 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
 
