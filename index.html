@@ -114,6 +114,9 @@
   gap:10px;
 }
 
+.audioProgress { pointer-events: auto; }
+
+	  
 /* Range slider should not stretch weirdly */
 .audioProgress{
   flex: 1 1 auto;
@@ -755,6 +758,7 @@ function renderAudioList(containerId, items){
 
 
 
+
 function renderPdfList(containerId, items){
   const el = document.getElementById(containerId);
   if (!el) return;
@@ -1329,22 +1333,13 @@ document.addEventListener("mousedown", (e) => {
   }
 });
 
-// Prevent the anchor from navigating if the slider is clicked
-document.addEventListener("click", (e) => {
-  if (e.target.closest(".audioProgress")) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-});
-
 	
 document.addEventListener("click", (e) => {
 	if (e.target.closest(".audioProgress")) return; // don't treat slider drag like a play click
-  const a = e.target.closest(".audioLink");
-  if (!a) return;
+ const a = e.target.closest(".audioLink");
+if (!a) return;
 
-  e.preventDefault();
-  const href = a.dataset.href;
+const href = a.dataset.href;
 
   // SAME audio clicked again → toggle
   if (currentHref === href) {
@@ -1402,6 +1397,7 @@ function updatePlayingRow(){
 </script>
 </body>
 </html>
+
 
 
 
