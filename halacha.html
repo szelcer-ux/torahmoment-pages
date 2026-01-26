@@ -1030,6 +1030,10 @@ function tmWirePlaylistRows(){
   const rows = document.querySelectorAll(".tm-row");
 
   rows.forEach(row => {
+  // ✅ Prevent double-wiring (e.g., if tmWirePlaylistRows is called twice)
+  if (row.dataset.wired === "1") return;
+  row.dataset.wired = "1";
+    
     const audio = row.querySelector("audio");
     const btn = row.querySelector(".tm-play");
     const durEl = row.querySelector(".tm-dur");
