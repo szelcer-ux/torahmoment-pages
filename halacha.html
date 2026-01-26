@@ -766,15 +766,6 @@ if (type === "youtube") {
   `;
 }
 
-function applyCollapseLogic(hasSearch){
-  // Default state: CLOSED everywhere
-  document.querySelectorAll("details.category, details.subcat").forEach(d => {
-    d.removeAttribute("open");
-  });
-
-  // When searching, we'll re-open only matching sections elsewhere
-  // (so nothing else needed here)
-}
 
 
       function openMatchingSections(){
@@ -815,21 +806,15 @@ function scrollToFirstMatch(){
 
 
 function applyCollapseLogic(hasSearch){
-  const isMobile = window.innerWidth <= 767;
-
+  // Always start collapsed so only category names show
   document.querySelectorAll("details.category, details.subcat").forEach(d => {
-    if (hasSearch) {
-      // Searching: close everything first
-      d.removeAttribute("open");
-    } else if (isMobile) {
-      // Mobile + no search: collapsed by default
-      d.removeAttribute("open");
-    } else {
-      // Desktop + no search: open by default
-      d.setAttribute("open", "");
-    }
+    d.removeAttribute("open");
   });
+
+  // If searching, we'll re-open only the matching sections elsewhere
+  // (handled by openMatchingSections()).
 }
+
 
  function openMatchingSections(){
   document.querySelectorAll(".item").forEach(item => {
