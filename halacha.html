@@ -767,21 +767,15 @@ if (type === "youtube") {
 }
 
 function applyCollapseLogic(hasSearch){
-  const isMobile = window.innerWidth <= 767;
-
+  // Default state: CLOSED everywhere
   document.querySelectorAll("details.category, details.subcat").forEach(d => {
-    if (hasSearch) {
-      // Searching: close everything first
-      d.removeAttribute("open");
-    } else if (isMobile) {
-      // Mobile + no search: collapsed by default
-      d.removeAttribute("open");
-    } else {
-      // Desktop + no search: open by default
-      d.setAttribute("open", "");
-    }
+    d.removeAttribute("open");
   });
+
+  // When searching, we'll re-open only matching sections elsewhere
+  // (so nothing else needed here)
 }
+
 
       function openMatchingSections(){
   document.querySelectorAll(".item").forEach(item => {
@@ -793,7 +787,19 @@ function applyCollapseLogic(hasSearch){
   });
 }
 
+function scrollToFirstMatch(){
+  // First rendered match item (after filtering)
+  const first = document.querySelector("#app .item");
+  if (!first) return;
 
+  // Give the browser a tick after opening sections
+  requestAnimationFrame(() => {
+    first.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
+
+      
       // FALLBACK: link
       return `
         <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
@@ -916,7 +922,16 @@ function applyCollapseLogic(hasSearch){
       if (hasSearch) {
         openMatchingSections();
       }
-      
+
+const hasSearch = q.length > 0;
+
+applyCollapseLogic(hasSearch);
+
+if (hasSearch) {
+  openMatchingSections();
+  scrollToFirstMatch();
+}
+        
       tmWirePlaylistRows();
       enableMobileTitleExpand();
       wireNoteRows();
