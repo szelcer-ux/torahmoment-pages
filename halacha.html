@@ -238,6 +238,19 @@
   background: #fcfcff;
 }
 
+.tm-speed{
+  border: 1px solid var(--line);
+  background: #f9fafb;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+}
+
+
     
     audio{
       width:100%;
@@ -729,6 +742,7 @@ if (type === "note") {
         </div>
 
         <div class="tm-right">
+        <div class="tm-speed">1×</div>
           <div class="tm-dur">(0:00)</div>
         </div>
 
@@ -1021,6 +1035,7 @@ function tmWirePlaylistRows(){
     const durEl = row.querySelector(".tm-dur");
     const bar = row.querySelector(".tm-progress > div");
     const progressWrap = row.querySelector(".tm-progress");
+    const speedBtn = row.querySelector(".tm-speed");
 
     if (!audio || !btn || !durEl || !bar) return;
 
@@ -1102,6 +1117,27 @@ function tmWirePlaylistRows(){
   });
 }
 
+// Playback speed control
+if (speedBtn) {
+  const speeds = [1, 1.5, 2];
+  let speedIndex = 0;
+
+  speedBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // don't toggle play/pause
+
+    speedIndex = (speedIndex + 1) % speeds.length;
+    const newSpeed = speeds[speedIndex];
+
+    audio.playbackRate = newSpeed;
+    speedBtn.textContent = `${newSpeed}×`;
+  });
+
+  // Reset speed display on load
+  audio.addEventListener("loadedmetadata", () => {
+    audio.playbackRate = speeds[speedIndex];
+    speedBtn.textContent = `${speeds[speedIndex]}×`;
+  });
+}
 
     
     searchInput.addEventListener("input", render);
