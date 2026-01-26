@@ -912,21 +912,17 @@ function applyCollapseLogic(hasSearch){
         `;
       }).join("");
 
-      app.innerHTML = html;
+     app.innerHTML = html;
 
-    const hasSearch = q.length > 0;
-
+const hasSearch = q.length > 0;
 applyCollapseLogic(hasSearch);
+if (hasSearch) openMatchingSections();
 
-if (hasSearch) {
-  openMatchingSections();
-  scrollToFirstMatch();
-}
-        
-      tmWirePlaylistRows();
-      enableMobileTitleExpand();
-      wireNoteRows();
-      wireYouTubeRows();
+tmWirePlaylistRows();
+wireYouTubeRows();
+wireNoteRows();
+enableMobileTitleExpand();
+
 
       if (!q) {
         resultChip.textContent = `Showing all (${totalAll} item${totalAll === 1 ? "" : "s"})`;
