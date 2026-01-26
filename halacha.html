@@ -845,6 +845,7 @@ function applyCollapseLogic(hasSearch){
     function renderEmpty(){
       return `<div class="empty">No results</div>`;
     }
+let lastSearchWasEmpty = true;
 
     function render(){
       const q = (searchInput.value || "").trim().toLowerCase();
