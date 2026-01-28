@@ -512,7 +512,10 @@
 
   <div class="bar">
     <div id="count"></div>
-   
+   <div id="audioCountWrap" class="tm-stat">
+  <span id="totalAudioCount"></span>
+</div>
+
   </div>
  
   <div id="grid" class="grid"></div>
@@ -795,6 +798,12 @@ function renderPdfList(containerId, items){
   `).join("");
 }
 
+	function countAllItems(obj) {
+  if (!obj) return 0;
+  return Object.values(obj).reduce((sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0), 0);
+}
+
+	
 function renderParshaExtras(parsha){
   const shortItems = (PARSHA_AUDIO && PARSHA_AUDIO[parsha]) ? PARSHA_AUDIO[parsha] : [];
   const longItems  = (PARSHA_INDEPTH && PARSHA_INDEPTH[parsha]) ? PARSHA_INDEPTH[parsha] : [];
@@ -808,6 +817,28 @@ function renderParshaExtras(parsha){
   renderAudioList("audioLongList",  longItems);
   renderPdfList("pdfList",          pdfItems);
 
+  // ===== Audio count (All parshas vs selected parsha) =====
+  const wrap = document.getElementById("audioCountWrap");
+  const el   = document.getElementById("totalAudioCount");
+
+  if (wrap && el) {
+    const isAll = (parsha === "All Parshios");
+
+    const shortCount = isAll ? countAllItems(PARSHA_AUDIO)   : shortItems.length;
+    const longCount  = isAll ? countAllItems(PARSHA_INDEPTH) : longItems.length;
+    const total      = shortCount + longCount;
+
+    if (total === 0) {
+      wrap.style.display = "none";
+    } else {
+      wrap.style.display = "";
+      el.textContent = isAll
+        ? `Total audio shiurim: ${total.toLocaleString()}`
+        : `${parsha}: ${total.toLocaleString()} audio shiurim`;
+    }
+  }
+
+	
  clearAudioRowStates(); // reset playing UI when parsha changes
 }
 
@@ -1120,6 +1151,47 @@ function selectParshaFromURL() {
     render(list);
   }
 
+function countParshaAudio(data, parsha) {
+  if (!data) return 0;
+
+  // All Parshas selected
+  if (!parsha || parsha === "All") {
+    return Object.values(data).reduce(
+      (sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0),
+      0
+    );
+  }
+
+  // Single Parsha
+  return Array.isArray(data[parsha]) ? data[parsha].length : 0;
+}
+
+	function updateAudioCounter(selectedParsha) {
+  const shortCount = countParshaAudio(PARSHA_AUDIO, selectedParsha);
+  const longCount  = countParshaAudio(PARSHA_IN_DEPTH, selectedParsha);
+
+  const total = shortCount + longCount;
+
+  const wrap = document.getElementById("audioCountWrap");
+  const el   = document.getElementById("totalAudioCount");
+  if (!wrap || !el) return;
+
+  // Hide entirely if nothing to show
+  if (total === 0) {
+    wrap.style.display = "none";
+    return;
+  }
+
+  wrap.style.display = "";
+
+  if (!selectedParsha || selectedParsha === "All") {
+    el.textContent = `Total audio shiurim: ${total.toLocaleString()}`;
+  } else {
+    el.textContent = `${selectedParsha}: ${total.toLocaleString()} audio shiurim`;
+  }
+}
+
+	
   function render(list) {
     grid.innerHTML = "";
     empty.style.display = list.length ? "none" : "block";
@@ -1449,11 +1521,49 @@ function updatePlayingRow(){
   });
 }
 
+function countParshaAudio(data, parsha) {
+  if (!data) return 0;
+
+  if (!parsha || parsha === "All") {
+    return Object.values(data).reduce(
+      (sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0),
+      0
+    );
+  }
+
+  return Array.isArray(data[parsha]) ? data[parsha].length : 0;
+}
+
+function updateAudioCounterFromState() {
+  const parsha = getCurrentParsha();
+
+  const shortCount = countParshaAudio(PARSHA_AUDIO, parsha);
+  const longCount  = countParshaAudio(PARSHA_IN_DEPTH, parsha);
+  const total = shortCount + longCount;
+
+  const wrap = document.getElementById("audioCountWrap");
+  const el   = document.getElementById("totalAudioCount");
+  if (!wrap || !el) return;
+
+  if (total === 0) {
+    wrap.style.display = "none";
+    return;
+  }
+
+  wrap.style.display = "";
+
+  if (parsha === "All") {
+    el.textContent = `Total audio shiurim: ${total}`;
+  } else {
+    el.textContent = `${parsha}: ${total} audio shiurim`;
+  }
+}
 
 
 </script>
 </body>
 </html>
+
 
 
 
