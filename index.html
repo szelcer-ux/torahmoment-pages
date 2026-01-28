@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TorahMoment — Shloimy Zelcer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Torah videos and audio shiurim by Shloimy Zelcer" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f7f7f8;
+      color: #111;
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0 0 4px;
+      font-size: 1.6rem;
+    }
+
+    .subtle {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.07);
+      margin-top: 18px;
+    }
+
+    .video-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #000;
+    }
+
+    .video-title {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .video-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .watch {
+      margin-top: 6px;
+      color: #0b57d0;
+      font-size: 0.95rem;
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .nav-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #eef2ff;
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+    }
+
+    .nav-link span {
+      color: #555;
+      font-weight: normal;
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>TorahMoment</h1>
+      <div class="subtle">Shiurim by Shloimy Zelcer</div>
+    </header>
+
+    <!-- Latest Video -->
+    <section class="card">
+      <h2 style="margin-top:0">Latest video</h2>
+
+      <a id="latestVideoLink" class="video-link" href="#" target="_blank">
+        <img id="latestVideoThumb" class="video-thumb" alt="" />
+        <div id="latestVideoTitle" class="video-title">
+          Loading latest video…
+        </div>
+      </a>
+
+      <div class="watch">Watch on YouTube →</div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="card">
+      <h2 style="margin-top:0">Explore</h2>
+
+      <div class="links">
+        <a class="nav-link" href="/parsha.html">
+          <div>Parsha</div>
+          <span>Videos · Audio · PDFs →</span>
+        </a>
+
+        <a class="nav-link" href="/tefila.html">
+          <div>Tefila</div>
+          <span>Video shiurim →</span>
+        </a>
+
+        <a class="nav-link" href="/halacha.html">
+          <div>Halacha</div>
+          <span>Audio shiurim →</span>
+        </a>
+
+        <a class="nav-link" href="/one-minute-audio.html">
+          <div>One-Minute Audio</div>
+          <span>Short daily ideas →</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="yr"></span> TorahMoment.com
+    </footer>
+  </div>
+
+  <!-- Latest video loader -->
+  <script>
+    const API_KEY    = "YOUR_API_KEY_HERE";
+    const CHANNEL_ID = "YOUR_CHANNEL_ID_HERE";
+
+    async function loadLatestVideo() {
+      try {
+        const url =
+          `https://www.googleapis.com/youtube/v3/search` +
+          `?part=snippet` +
+          `&channelId=${CHANNEL_ID}` +
+          `&order=date` +
+          `&maxResults=1` +
+          `&type=video` +
+          `&key=${API_KEY}`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!data.items || !data.items.length) return;
+
+        const vid = data.items[0];
+        const id = vid.id.videoId;
+        const title = vid.snippet.title;
+        const thumb =
+          vid.snippet.thumbnails.high?.url ||
+          vid.snippet.thumbnails.medium.url;
+
+        document.getElementById("latestVideoLink").href =
+          `https://www.youtube.com/watch?v=${id}`;
+        document.getElementById("latestVideoThumb").src = thumb;
+        document.getElementById("latestVideoThumb").alt = title;
+        document.getElementById("latestVideoTitle").textContent = title;
+      } catch (e) {
+        document.getElementById("latestVideoTitle").textContent =
+          "Latest video";
+        console.warn("YouTube load failed", e);
+      }
+    }
+
+    loadLatestVideo();
+    document.getElementById("yr").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
