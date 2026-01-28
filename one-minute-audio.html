@@ -28,6 +28,39 @@ input{flex:1;min-width:240px;padding:10px 12px;border:1px solid #d0d5dd;border-r
 .controls .speedBtns button.active{font-weight:700}
 audio{width:100%}
 
+/* Compact mobile layout + tap-to-reveal speed buttons */
+@media (max-width: 600px){
+  body{padding:12px}
+  .bar{gap:8px}
+  input{width:100%; min-width:0}
+
+  #sortBtn{padding:6px 10px}
+  #count{padding:6px 10px}
+
+  .row{padding:10px; margin-bottom:8px}
+  .meta{font-size:12px; margin-bottom:4px}
+  .desc{font-size:15px; line-height:1.2}
+
+  /* Hide speed buttons by default on mobile */
+  .controls .speedBtns{display:none}
+
+  /* Show when row is opened */
+  .row.isOpen .controls .speedBtns{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+
+  .controls .speedBtns button{
+    padding:5px 8px;
+    font-size:13px;
+  }
+
+  audio{margin-top:6px}
+}
+
+  
 </style>
 </head>
 
@@ -75,7 +108,7 @@ function pauseAllExcept(current){
 function esc(s){return (s||"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
 function getSavedRate(){
-  return Number(localStorage.getItem("rate") || "1.5");
+  return Number(localStorage.getItem("rate") || "1");
 }
 function setSavedRate(r){
   localStorage.setItem("rate", String(r));
@@ -115,12 +148,26 @@ function render(){
 
     list.appendChild(row);
 
+row.addEventListener("click", (e) => {
+  // Don't toggle open/closed when clicking audio controls or speed buttons
+  if (e.target.closest("audio") || e.target.closest(".speedBtns")) return;
+  row.classList.toggle("isOpen");
+});
+
+    
     // apply default rate immediately to the audio element
     const audioEl = row.querySelector(`audio[data-audio-id="${it.id}"]`);
     audioEl.playbackRate = defaultRate;
-    audioEl.addEventListener("play", () => {
+   audioEl.addEventListener("play", () => {
   pauseAllExcept(audioEl);
+
+  // Open this row, close others (mobile UX)
+  document.querySelectorAll(".row.isOpen").forEach(r => {
+    if (r !== row) r.classList.remove("isOpen");
+  });
+  row.classList.add("isOpen");
 });
+
 
 });
     
