@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>One minute audio לע&quot;נ הרב אברהם נתנאל צוקער ז&quot;ל</title>
+
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#f6f7f9;margin:0;padding:18px;color:#111}
+.wrap{max-width:980px;margin:0 auto}
+h1{text-align:center;margin-bottom:4px}
+.subtitle{text-align:center;font-size:1.1rem;color:#555;margin-bottom:16px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0 14px}
+input{flex:1;min-width:240px;padding:10px 12px;border:1px solid #d0d5dd;border-radius:10px;font-size:16px}
+.pill{padding:8px 10px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;font-size:14px}
+.speed button{padding:6px 10px;border-radius:999px;border:1px solid #d0d5dd;background:#fff;cursor:pointer}
+.speed button.active{font-weight:700}
+.player{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:14px}
+.now{font-size:14px;color:#444;margin-bottom:8px}
+audio{width:100%}
+.row{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px;margin-bottom:10px;cursor:pointer}
+.row.playing{outline:2px solid #111}
+.meta{font-size:13px;color:#667085;margin-bottom:6px}
+.desc{font-size:16px}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<h1>One minute audio</h1>
+<div class="subtitle">לע״נ הרב אברהם נתנאל צוקער ז״ל</div>
+
+<div class="bar">
+  <input id="q" placeholder="Search…" />
+  <div class="pill" id="count">0 items</div>
+  <div class="speed pill" id="speedWrap">
+    Speed:
+    <button data-rate="1">1×</button>
+    <button data-rate="1.25">1.25×</button>
+    <button data-rate="1.5">1.5×</button>
+    <button data-rate="2">2×</button>
+  </div>
+</div>
+
+<div class="player">
+  <div class="now" id="now">Select an audio…</div>
+  <audio id="audio" controls preload="none"></audio>
+</div>
+
+<div id="list"></div>
+
+</div>
+
+<script>
+const DATA_URL = "./data.json";
+
+const q = document.getElementById("q");
+const list = document.getElementById("list");
+const count = document.getElementById("count");
+const audio = document.getElementById("audio");
+const now = document.getElementById("now");
+const speedWrap = document.getElementById("speedWrap");
+
+let items=[], filtered=[], current=null;
+
+function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+
+function render(){
+  list.innerHTML="";
+  count.textContent = filtered.length + " items";
+  filtered.forEach(it=>{
+    const d=document.createElement("div");
+    d.className="row"+(it.id===current?" playing":"");
+    d.innerHTML=`<div class=meta>${esc(it.date)}</div><div class=desc>${esc(it.description)}</div>`;
+    d.onclick=()=>play(it);
+    list.appendChild(d);
+  });
+}
+
+function play(it){
+  current=it.id;
+  audio.src=it.url;
+  audio.play();
+  now.textContent = it.date + " — " + it.description;
+  render();
+}
+
+function setRate(r){
+  audio.playbackRate=r;
+  localStorage.setItem("rate",r);
+  [...speedWrap.querySelectorAll("button")].forEach(b=>b.classList.toggle("active",b.dataset.rate==r));
+}
+
+speedWrap.onclick=e=>{
+  const b=e.target.closest("button");
+  if(b)setRate(b.dataset.rate);
+};
+
+q.oninput=()=>{
+  const v=q.value.toLowerCase();
+  filtered=items.filter(it=>it.description.toLowerCase().includes(v)||it.date.includes(v));
+  render();
+};
+
+fetch(DATA_URL,{cache:"no-store"})
+.then(r=>r.json())
+.then(d=>{
+  items=d;
+  filtered=d;
+  render();
+  setRate(localStorage.getItem("rate")||1.5);
+});
+</script>
+
+</body>
+</html>
