@@ -363,6 +363,7 @@
           </div>
 
           <div class="actions">
+             <a class="a primary" href="/one-minute-audio.html" target="_blank" rel="noopener">Website</a>
             <a class="a wa" href="https://bit.ly/3PnuqLB" target="_blank" rel="noopener">WhatsApp</a>
           </div>
         </article>
@@ -371,21 +372,6 @@
     </div>
   </main>
 
-  <script>
-    // Row click should open primary link, but never hijack chip clicks or text selection
-    document.addEventListener("click", (e) => {
-      const actionLink = e.target.closest("a.a");
-      if (actionLink) return;
-
-      const row = e.target.closest(".row");
-      if (!row) return;
-
-      const sel = window.getSelection && window.getSelection();
-      if (sel && String(sel).length > 0) return;
-
-      const stretched = row.querySelector("a.stretched");
-      if (stretched) stretched.click();
-    });
-  </script>
+ 
 </body>
 </html>
