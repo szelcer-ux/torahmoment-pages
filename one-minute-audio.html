@@ -84,13 +84,12 @@ function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt
 
 function sortItems(){
   filtered.sort((a,b)=>{
-    if (sortLatestFirst) {
-      return b.date.localeCompare(a.date); // newest first
-    } else {
-      return a.date.localeCompare(b.date); // oldest first
-    }
+    return sortLatestFirst
+      ? b._sortKey - a._sortKey   // newest first
+      : a._sortKey - b._sortKey;  // oldest first
   });
 }
+
 
   
 function render(){
@@ -135,8 +134,20 @@ q.oninput=()=>{
 fetch(DATA_URL,{cache:"no-store"})
 .then(r=>r.json())
 .then(d=>{
-  items = d;
-  filtered = d.slice();   // copy
+  items = d.map(x => {
+    // extract YYYYMMDD from filename
+    let ymd = "";
+    if (x.filename) {
+      const m = x.filename.match(/PTT-(\d{8})-WA/i);
+      if (m) ymd = m[1];
+    }
+    return {
+      ...x,
+      _sortKey: ymd ? Number(ymd) : 0   // numeric for correct sorting
+    };
+  });
+
+  filtered = items.slice();
   sortLatestFirst = true;
   render();
   setRate(localStorage.getItem("rate")||1.5);
