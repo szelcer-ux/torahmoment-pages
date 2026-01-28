@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Torah Learning Links</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#1a1a1a;
+      --muted:#555;
+      --accent:#0d9488;
+      --border:#e5e7eb;
+      --radius:14px;
+      --shadow:0 2px 6px rgba(0,0,0,0.06);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box;}
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP MARGIN so Google Sites won't visually cut off header */
+    body {
+      padding: 24px 16px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 940px;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    header{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:16px;
+      flex-wrap:wrap;
+    }
+    .logo{
+      width:56px;height:56px;border-radius:12px;
+      background:linear-gradient(135deg,#14b8a6,#06b6d4);
+      display:flex;align-items:center;justify-content:center;
+      color:white;font-weight:700;font-size:18px;flex-shrink:0;
+    }
+    h1{margin:0;font-size:20px;}
+    p.lead{margin:6px 0 0 0;color:var(--muted);font-size:13px;}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .card{
+      background:#fafafa;
+      border-radius:12px;
+      padding:12px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      transition:transform .12s ease, box-shadow .12s ease;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .card:hover{transform:translateY(-3px);box-shadow:0 6px 14px rgba(0,0,0,0.08);}
+    .card h3{margin:0;font-size:15px;}
+    .sub{color:var(--muted);font-size:13px;margin-top:2px;}
+
+    .links{
+      margin-top:auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:600;
+      font-size:14px;
+      color:white;
+      background:var(--accent);
+    }
+    .btn.ghost{
+      background:white;
+      color:var(--accent);
+      border:1px solid var(--accent);
+    }
+
+    .whatsapp{
+      background:linear-gradient(90deg,#25D366,#128C7E);
+      color:white;
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      font-size:14px;
+      gap:6px;
+    }
+    .whatsapp svg{
+      width:16px;
+      height:16px;
+      flex-shrink:0;
+    }
+
+    @media (max-width:520px){
+      body{
+        padding:20px 8px 12px;
+      }
+      .wrap{
+        padding:16px;
+      }
+      h1{font-size:18px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main" aria-label="Torah learning links">
+    <header>
+     
+      <div>
+        <h1>Torah Learning Links</h1>
+        <p class="lead">Weekly & Daily Torah study resources — WhatsApp share links</p>
+      </div>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <div>
+          <h3>Weekly Parsha Divrei Torah</h3>
+          <div class="sub">TorahMoment (video)</div>
+        </div>
+        <div class="links">
+          <a class="btn ghost" href="https://www.youtube.com/@torahmoment" target="_blank">YouTube</a>
+          <a class="btn ghost" href="https://www.torahmoment.com/video-divrie-torah" target="_blank">Website</a>
+          <a class="whatsapp" href="http://bit.ly/40nch7g" target="_blank">WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <h3>Mishna Yomis</h3>
+          <div class="sub">2mishnasaday.com — Shas</div>
+        </div>
+        <div class="links">
+          <a class="btn ghost" href="https://2mishnasaday.com/shas/" target="_blank">Website</a>
+          <a class="whatsapp" href="https://bit.ly/40bAOee" target="_blank">WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <h3>Nach Yomi</h3>
+          <div class="sub">2mishnasaday.com — Nach</div>
+        </div>
+        <div class="links">
+          <a class="btn ghost" href="https://2mishnasaday.com/nach/" target="_blank">Website</a>
+          <a class="whatsapp" href="https://bit.ly/407RbZf" target="_blank">WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <h3>Kitzur Shulchan Aruch Yomi</h3>
+          <div class="sub">KSA Index</div>
+        </div>
+        <div class="links">
+          <a class="btn ghost" href="https://2mishnasaday.com/wp-content/uploads/KSAINDEX-1.htm" target="_blank">Website</a>
+          <a class="whatsapp" href="https://bit.ly/4067t4x" target="_blank">WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <h3>5 Minutes of Torah</h3>
+          <div class="sub">Short daily teachings</div>
+        </div>
+        <div class="links">
+          <a class="btn ghost" href="https://5minutesoftorah.com/" target="_blank">Website</a>
+          <a class="whatsapp" href="https://bit.ly/4h0IV3L" target="_blank">WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <h3>One-minute Torah sound bites</h3>
+          <div class="sub">לע"נ הרב אברהם נתנאל צוקער ז"ל</div>
+        </div>
+        <div class="links">
+          <a class="whatsapp" href="https://bit.ly/3PnuqLB" target="_blank">WhatsApp</a>
+        </div>
+      </article>
+    </section>
+  </div>
+</body>
+</html>
