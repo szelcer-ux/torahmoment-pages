@@ -703,28 +703,18 @@ const PARSHA_INDEPTH = {
   // ...
 };
 
-//function getCurrentParsha() {
- // const sel = document.getElementById("parsha");
-  //if (sel && sel.value) return sel.value;
-//
- // const p = new URLSearchParams(location.search).get("parsha");
- // if (p) return p;
-//
- // return "Noach"; // safe fallback
-//}
+
 
 	function getCurrentParsha() {
   const sel = document.getElementById("parsha");
-  if (sel) {
-    const v = (sel.value || "").trim();
-    if (v) return v;
-  }
+  if (sel) return sel.value; // returns "" for All (good)
 
   const p = new URLSearchParams(location.search).get("parsha");
   if (p) return p;
 
-  return "All Parshios"; // ✅ make default match your dropdown
+  return ""; // default to All
 }
+
 
 	
 // Optional: links shown when "All Parshios" is selected (site-wide links)
@@ -813,46 +803,55 @@ function renderPdfList(containerId, items){
 
 	function countAllItems(obj) {
   if (!obj) return 0;
-  return Object.values(obj).reduce((sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0), 0);
+  return Object.values(obj).reduce(
+    (sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0),
+    0
+  );
 }
 
-	
-function renderParshaExtras(parsha){
-  const shortItems = (PARSHA_AUDIO && PARSHA_AUDIO[parsha]) ? PARSHA_AUDIO[parsha] : [];
-  const longItems  = (PARSHA_INDEPTH && PARSHA_INDEPTH[parsha]) ? PARSHA_INDEPTH[parsha] : [];
-  const pdfItems   = (PARSHA_PDFS && PARSHA_PDFS[parsha]) ? PARSHA_PDFS[parsha] : [];
 
-  setSectionVisible("secAudioShort", shortItems.length > 0);
-  setSectionVisible("secAudioLong",  longItems.length > 0);
-  setSectionVisible("secPdfs",       pdfItems.length > 0);
+	
+function renderParshaExtras(parsha) {
+
+  // ✅ Read dropdown; empty string means "All Parshios"
+  const sel = document.getElementById("parsha");
+  const selVal = sel ? sel.value : null;
+
+  const isAll = (selVal === ""); // because <option value="">All Parshios</option>
+
+  // If "All", don't try to index data by parsha name
+  const shortItems = (!isAll && PARSHA_AUDIO && PARSHA_AUDIO[parsha]) ? PARSHA_AUDIO[parsha] : [];
+  const longItems  = (!isAll && PARSHA_INDEPTH && PARSHA_INDEPTH[parsha]) ? PARSHA_INDEPTH[parsha] : [];
+  const pdfItems   = (!isAll && PARSHA_PDFS && PARSHA_PDFS[parsha]) ? PARSHA_PDFS[parsha] : [];
+
+  setSectionVisible("secAudioShort", isAll ? countAllItems(PARSHA_AUDIO)   > 0 : shortItems.length > 0);
+  setSectionVisible("secAudioLong",  isAll ? countAllItems(PARSHA_INDEPTH) > 0 : longItems.length  > 0);
+  setSectionVisible("secPdfs",       isAll ? false : pdfItems.length > 0); // PDFs off for All (optional)
 
   renderAudioList("audioShortList", shortItems);
   renderAudioList("audioLongList",  longItems);
   renderPdfList("pdfList",          pdfItems);
 
-  // ===== Audio count (All parshas vs selected parsha) =====
-// ===== Audio count (All vs selected parsha) =====
-const wrap = document.getElementById("audioCountWrap");
-const el   = document.getElementById("totalAudioCount");
+  clearAudioRowStates();
 
-if (wrap && el) {
-  const selVal = (document.getElementById("parsha")?.value || "").trim();
-  const currentParsha = selVal || parsha;
-  const isAll = ["All Parshios", "All Parshos", "All Parshas"].includes(currentParsha);
+  // ✅ Counter
+  const wrap = document.getElementById("audioCountWrap");
+  const el   = document.getElementById("totalAudioCount");
+  if (wrap && el) {
+    const shortCount = isAll ? countAllItems(PARSHA_AUDIO)   : shortItems.length;
+    const longCount  = isAll ? countAllItems(PARSHA_INDEPTH) : longItems.length;
+    const total      = shortCount + longCount;
 
-  const shortCount = isAll ? countAllItems(PARSHA_AUDIO)   : shortItems.length;
-  const longCount  = isAll ? countAllItems(PARSHA_INDEPTH) : longItems.length;
-  const total      = shortCount + longCount;
-
-  if (total === 0) {
-    wrap.style.display = "none";
-  } else {
-    wrap.style.display = "";
-    el.textContent = isAll
-      ? `Total audio shiurim: ${total.toLocaleString()}`
-      : `${currentParsha}: ${total.toLocaleString()} audio shiurim`;
+    wrap.style.display = total ? "" : "none";
+    if (total) {
+      el.textContent = isAll
+        ? `Total audio shiurim: ${total.toLocaleString()}`
+        : `${parsha}: ${total.toLocaleString()} audio shiurim`;
+    }
   }
 }
+
+
 
 
 	
@@ -1580,6 +1579,7 @@ function updateAudioCounterFromState() {
 </script>
 </body>
 </html>
+
 
 
 
