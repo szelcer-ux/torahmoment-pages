@@ -33,8 +33,13 @@ audio{width:100%}
 
 <div class="bar">
   <input id="q" placeholder="Search…" />
+
+  <button class="pill" id="sortBtn">Latest ↓</button>
+
   <div class="pill" id="count">0 items</div>
+
   <div class="speed pill" id="speedWrap">
+
     Speed:
     <button data-rate="1">1×</button>
     <button data-rate="1.25">1.25×</button>
@@ -62,13 +67,37 @@ const audio = document.getElementById("audio");
 const now = document.getElementById("now");
 const speedWrap = document.getElementById("speedWrap");
 
+const sortBtn = document.getElementById("sortBtn");
+
+sortBtn.onclick = () => {
+  sortLatestFirst = !sortLatestFirst;
+  sortBtn.textContent = sortLatestFirst ? "Latest ↓" : "Oldest ↑";
+  render();
+};
+
+  
+  let sortLatestFirst = true;
+
 let items=[], filtered=[], current=null;
 
 function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
+function sortItems(){
+  filtered.sort((a,b)=>{
+    if (sortLatestFirst) {
+      return b.date.localeCompare(a.date); // newest first
+    } else {
+      return a.date.localeCompare(b.date); // oldest first
+    }
+  });
+}
+
+  
 function render(){
+  sortItems();
   list.innerHTML="";
   count.textContent = filtered.length + " items";
+
   filtered.forEach(it=>{
     const d=document.createElement("div");
     d.className="row"+(it.id===current?" playing":"");
@@ -106,11 +135,13 @@ q.oninput=()=>{
 fetch(DATA_URL,{cache:"no-store"})
 .then(r=>r.json())
 .then(d=>{
-  items=d;
-  filtered=d;
+  items = d;
+  filtered = d.slice();   // copy
+  sortLatestFirst = true;
   render();
   setRate(localStorage.getItem("rate")||1.5);
 });
+
 </script>
 
 </body>
