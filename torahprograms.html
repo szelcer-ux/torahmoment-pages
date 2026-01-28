@@ -4,216 +4,388 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Torah Learning Links</title>
+
   <style>
     :root{
-      --bg:#ffffff;
-      --text:#1a1a1a;
-      --muted:#555;
-      --accent:#0d9488;
-      --border:#e5e7eb;
-      --radius:14px;
-      --shadow:0 2px 6px rgba(0,0,0,0.06);
+      --bg0:#070a14;
+      --bg1:#0b1020;
+
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.045);
+      --row:rgba(255,255,255,.055);
+
+      --border:rgba(255,255,255,.10);
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+
+      --accent:#38bdf8;   /* sky */
+      --accent2:#a78bfa;  /* violet */
+
+      --shadow:0 10px 28px rgba(0,0,0,.35);
+      --shadow2:0 16px 46px rgba(0,0,0,.42);
+      --ring:0 0 0 4px rgba(56,189,248,.18);
+
+      --radius:16px;
+
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
 
     *{box-sizing:border-box;}
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
+    html,body{height:100%;}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 12% 0%, rgba(56,189,248,.18), transparent 60%),
+        radial-gradient(1000px 700px at 92% 10%, rgba(167,139,250,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg0) 78%);
+      -webkit-font-smoothing:antialiased;
+      padding: 26px 14px 20px;
+      display:flex;
+      justify-content:center;
     }
 
-    /* TOP MARGIN so Google Sites won't visually cut off header */
-    body {
-      padding: 24px 16px 16px;
-      display: flex;
-      justify-content: center;
+    main{
+      width:100%;
+      max-width: 980px;
     }
 
-    .wrap {
-      width: 100%;
-      max-width: 940px;
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 20px;
+    .shell{
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
       border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 6px);
       box-shadow: var(--shadow);
+      overflow:hidden;
     }
 
     header{
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
       display:flex;
-      gap:12px;
-      align-items:center;
-      margin-bottom:16px;
+      align-items:flex-start;
+      gap:14px;
       flex-wrap:wrap;
     }
-    .logo{
-      width:56px;height:56px;border-radius:12px;
-      background:linear-gradient(135deg,#14b8a6,#06b6d4);
-      display:flex;align-items:center;justify-content:center;
-      color:white;font-weight:700;font-size:18px;flex-shrink:0;
-    }
-    h1{margin:0;font-size:20px;}
-    p.lead{margin:6px 0 0 0;color:var(--muted);font-size:13px;}
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:12px;
-      margin-top:14px;
-    }
-
-    .card{
-      background:#fafafa;
-      border-radius:12px;
-      padding:12px;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      transition:transform .12s ease, box-shadow .12s ease;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    .card:hover{transform:translateY(-3px);box-shadow:0 6px 14px rgba(0,0,0,0.08);}
-    .card h3{margin:0;font-size:15px;}
-    .sub{color:var(--muted);font-size:13px;margin-top:2px;}
-
-    .links{
-      margin-top:auto;
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      align-items:center;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      text-decoration:none;
-      padding:8px 12px;
-      border-radius:10px;
-      font-weight:600;
-      font-size:14px;
-      color:white;
-      background:var(--accent);
-    }
-    .btn.ghost{
-      background:white;
-      color:var(--accent);
-      border:1px solid var(--accent);
-    }
-
-    .whatsapp{
-      background:linear-gradient(90deg,#25D366,#128C7E);
-      color:white;
-      padding:8px 12px;
-      border-radius:10px;
-      font-weight:600;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      font-size:14px;
-      gap:6px;
-    }
-    .whatsapp svg{
-      width:16px;
-      height:16px;
+    .mark{
+      width:52px;height:52px;border-radius:14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#06121c;
+      display:grid;place-items:center;
+      font-weight:900;
+      letter-spacing:.6px;
+      user-select:none;
+      box-shadow: 0 12px 26px rgba(56,189,248,.16);
       flex-shrink:0;
     }
 
-    @media (max-width:520px){
-      body{
-        padding:20px 8px 12px;
-      }
-      .wrap{
-        padding:16px;
-      }
-      h1{font-size:18px;}
+    h1{
+      margin:0;
+      font-size:20px;
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .list{
+      padding: 14px 18px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .row{
+      position:relative;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      padding: 12px 12px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      overflow:hidden;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .row:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+      border-color: rgba(56,189,248,.25);
+    }
+    .row:focus-within{
+      box-shadow: var(--shadow2), var(--ring);
+      border-color: rgba(56,189,248,.35);
+    }
+
+    .left{
+      min-width: 0;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+
+    .dot{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      margin-top: 4px;
+      background: rgba(56,189,248,.75);
+      box-shadow: 0 0 0 4px rgba(56,189,248,.10);
+      flex-shrink:0;
+    }
+    .dot.daily{ background: rgba(167,139,250,.85); box-shadow: 0 0 0 4px rgba(167,139,250,.12); }
+    .dot.wa{ background: rgba(37,211,102,.85); box-shadow: 0 0 0 4px rgba(37,211,102,.12); }
+    .dot.halacha{ background: rgba(34,197,94,.85); box-shadow: 0 0 0 4px rgba(34,197,94,.12); }
+
+    .meta{
+      min-width: 0;
+    }
+    .name{
+      margin:0;
+      font-size: 15px;
+      line-height:1.2;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 560px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      justify-content:flex-end;
+      flex-shrink:0;
+    }
+
+    .a{
+      position:relative;
+      z-index:2;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing:.1px;
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(229,231,235,.95);
+      background: rgba(0,0,0,.18);
+      transition: transform .08s ease, border-color .12s ease, background .12s ease;
+    }
+    .a:hover{
+      transform: translateY(-1px);
+      border-color: rgba(56,189,248,.28);
+      background: rgba(56,189,248,.10);
+    }
+    .a:focus{ outline:none; box-shadow: var(--ring); }
+
+    .a.primary{
+      border-color: rgba(56,189,248,.35);
+      background: rgba(56,189,248,.12);
+    }
+    .a.wa{
+      border-color: rgba(37,211,102,.35);
+      background: linear-gradient(90deg, rgba(37,211,102,.18), rgba(18,140,126,.18));
+    }
+    .a.wa:hover{
+      border-color: rgba(37,211,102,.50);
+      background: linear-gradient(90deg, rgba(37,211,102,.24), rgba(18,140,126,.24));
+    }
+
+    .a svg{ width:16px; height:16px; flex-shrink:0; opacity:.95; }
+
+    /* whole-row primary click */
+    .row .stretched{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      border-radius: inherit;
+    }
+
+    ::selection{ background: rgba(56,189,248,.25); }
+
+    @media (max-width:640px){
+      body{ padding: 18px 10px 14px; }
+      header{ padding: 16px 14px 12px; }
+      .list{ padding: 12px 14px 14px; }
+      .sub{ max-width: 320px; }
+      .row{ align-items:flex-start; }
+      .actions{ justify-content:flex-start; }
     }
   </style>
 </head>
+
 <body>
-  <div class="wrap" role="main" aria-label="Torah learning links">
-    <header>
-     
-      <div>
-        <h1>Torah Learning Links</h1>
-        <p class="lead">Weekly & Daily Torah study resources — WhatsApp share links</p>
-      </div>
-    </header>
+  <main aria-label="Torah learning links">
+    <div class="shell">
 
-    <section class="grid">
-      <article class="card">
+      <header>
+        <div class="mark" aria-hidden="true">TM</div>
         <div>
-          <h3>Weekly Parsha Divrei Torah</h3>
-          <div class="sub">TorahMoment (video)</div>
+          <h1>Torah Learning Links</h1>
+          <p class="lead">All your programs in one place — website + WhatsApp share links</p>
         </div>
-        <div class="links">
-          <a class="btn ghost" href="https://www.youtube.com/@torahmoment" target="_blank">YouTube</a>
-          <a class="btn ghost" href="https://www.torahmoment.com/video-divrie-torah" target="_blank">Website</a>
-          <a class="whatsapp" href="http://bit.ly/40nch7g" target="_blank">WhatsApp</a>
-        </div>
-      </article>
+      </header>
 
-      <article class="card">
-        <div>
-          <h3>Mishna Yomis</h3>
-          <div class="sub">2mishnasaday.com — Shas</div>
-        </div>
-        <div class="links">
-          <a class="btn ghost" href="https://2mishnasaday.com/shas/" target="_blank">Website</a>
-          <a class="whatsapp" href="https://bit.ly/40bAOee" target="_blank">WhatsApp</a>
-        </div>
-      </article>
+      <section class="list" id="list" aria-label="Programs">
 
-      <article class="card">
-        <div>
-          <h3>Nach Yomi</h3>
-          <div class="sub">2mishnasaday.com — Nach</div>
-        </div>
-        <div class="links">
-          <a class="btn ghost" href="https://2mishnasaday.com/nach/" target="_blank">Website</a>
-          <a class="whatsapp" href="https://bit.ly/407RbZf" target="_blank">WhatsApp</a>
-        </div>
-      </article>
+        <!-- Weekly Parsha -->
+        <article class="row">
+          <a class="stretched" href="https://www.torahmoment.com/video-divrie-torah" target="_blank" rel="noopener"
+             aria-label="Open Weekly Parsha Divrei Torah website"></a>
 
-      <article class="card">
-        <div>
-          <h3>Kitzur Shulchan Aruch Yomi</h3>
-          <div class="sub">KSA Index</div>
-        </div>
-        <div class="links">
-          <a class="btn ghost" href="https://2mishnasaday.com/wp-content/uploads/KSAINDEX-1.htm" target="_blank">Website</a>
-          <a class="whatsapp" href="https://bit.ly/4067t4x" target="_blank">WhatsApp</a>
-        </div>
-      </article>
+          <div class="left">
+            <div class="dot" aria-hidden="true"></div>
+            <div class="meta">
+              <p class="name">Weekly Parsha Divrei Torah</p>
+              <p class="sub">TorahMoment (video)</p>
+            </div>
+          </div>
 
-      <article class="card">
-        <div>
-          <h3>5 Minutes of Torah</h3>
-          <div class="sub">Short daily teachings</div>
-        </div>
-        <div class="links">
-          <a class="btn ghost" href="https://5minutesoftorah.com/" target="_blank">Website</a>
-          <a class="whatsapp" href="https://bit.ly/4h0IV3L" target="_blank">WhatsApp</a>
-        </div>
-      </article>
+          <div class="actions" aria-label="Actions">
+            <a class="a" href="https://www.youtube.com/@torahmoment" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 8.5v7l7-3.5-7-3.5Z" fill="currentColor"/>
+                <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" stroke="currentColor" opacity=".55"/>
+              </svg>
+              YouTube
+            </a>
+            <a class="a primary" href="https://www.torahmoment.com/video-divrie-torah" target="_blank" rel="noopener">Website</a>
+            <a class="a wa" href="http://bit.ly/40nch7g" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </article>
 
-      <article class="card">
-        <div>
-          <h3>One-minute Torah sound bites</h3>
-          <div class="sub">לע"נ הרב אברהם נתנאל צוקער ז"ל</div>
-        </div>
-        <div class="links">
-          <a class="whatsapp" href="https://bit.ly/3PnuqLB" target="_blank">WhatsApp</a>
-        </div>
-      </article>
-    </section>
-  </div>
+        <!-- Mishna Yomis -->
+        <article class="row">
+          <a class="stretched" href="https://2mishnasaday.com/shas/" target="_blank" rel="noopener"
+             aria-label="Open Mishna Yomis website"></a>
+
+          <div class="left">
+            <div class="dot daily" aria-hidden="true"></div>
+            <div class="meta">
+              <p class="name">Mishna Yomis</p>
+              <p class="sub">2mishnasaday.com — Shas</p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a class="a primary" href="https://2mishnasaday.com/shas/" target="_blank" rel="noopener">Website</a>
+            <a class="a wa" href="https://bit.ly/40bAOee" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Nach Yomi -->
+        <article class="row">
+          <a class="stretched" href="https://2mishnasaday.com/nach/" target="_blank" rel="noopener"
+             aria-label="Open Nach Yomi website"></a>
+
+          <div class="left">
+            <div class="dot daily" aria-hidden="true"></div>
+            <div class="meta">
+              <p class="name">Nach Yomi</p>
+              <p class="sub">2mishnasaday.com — Nach</p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a class="a primary" href="https://2mishnasaday.com/nach/" target="_blank" rel="noopener">Website</a>
+            <a class="a wa" href="https://bit.ly/407RbZf" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- KSA -->
+        <article class="row">
+          <a class="stretched" href="https://2mishnasaday.com/wp-content/uploads/KSAINDEX-1.htm" target="_blank" rel="noopener"
+             aria-label="Open Kitzur Shulchan Aruch Yomi index"></a>
+
+          <div class="left">
+            <div class="dot halacha" aria-hidden="true"></div>
+            <div class="meta">
+              <p class="name">Kitzur Shulchan Aruch Yomi</p>
+              <p class="sub">KSA Index</p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a class="a primary" href="https://2mishnasaday.com/wp-content/uploads/KSAINDEX-1.htm" target="_blank" rel="noopener">Website</a>
+            <a class="a wa" href="https://bit.ly/4067t4x" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 5 Minutes -->
+        <article class="row">
+          <a class="stretched" href="https://5minutesoftorah.com/" target="_blank" rel="noopener"
+             aria-label="Open 5 Minutes of Torah website"></a>
+
+          <div class="left">
+            <div class="dot daily" aria-hidden="true"></div>
+            <div class="meta">
+              <p class="name">5 Minutes of Torah</p>
+              <p class="sub">Short daily teachings</p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a class="a primary" href="https://5minutesoftorah.com/" target="_blank" rel="noopener">Website</a>
+            <a class="a wa" href="https://bit.ly/4h0IV3L" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- One-minute -->
+        <article class="row">
+          <a class="stretched" href="https://bit.ly/3PnuqLB" target="_blank" rel="noopener"
+             aria-label="Open One-minute Torah sound bites WhatsApp link"></a>
+
+          <div class="left">
+            <div class="dot wa" aria-hidden="true"></div>
+            <div class="meta">
+              <p class="name">One-minute Torah sound bites</p>
+              <p class="sub">לע&quot;נ הרב אברהם נתנאל צוקער ז&quot;ל</p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a class="a wa" href="https://bit.ly/3PnuqLB" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </article>
+
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Row click should open primary link, but never hijack chip clicks or text selection
+    document.addEventListener("click", (e) => {
+      const actionLink = e.target.closest("a.a");
+      if (actionLink) return;
+
+      const row = e.target.closest(".row");
+      if (!row) return;
+
+      const sel = window.getSelection && window.getSelection();
+      if (sel && String(sel).length > 0) return;
+
+      const stretched = row.querySelector("a.stretched");
+      if (stretched) stretched.click();
+    });
+  </script>
 </body>
 </html>
