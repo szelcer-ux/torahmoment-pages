@@ -831,25 +831,29 @@ function renderParshaExtras(parsha){
   renderPdfList("pdfList",          pdfItems);
 
   // ===== Audio count (All parshas vs selected parsha) =====
-  const wrap = document.getElementById("audioCountWrap");
-  const el   = document.getElementById("totalAudioCount");
+// ===== Audio count (All vs selected parsha) =====
+const wrap = document.getElementById("audioCountWrap");
+const el   = document.getElementById("totalAudioCount");
 
-  if (wrap && el) {
-    const isAll = (parsha === "All Parshios");
+if (wrap && el) {
+  const selVal = (document.getElementById("parsha")?.value || "").trim();
+  const currentParsha = selVal || parsha;
+  const isAll = ["All Parshios", "All Parshos", "All Parshas"].includes(currentParsha);
 
-    const shortCount = isAll ? countAllItems(PARSHA_AUDIO)   : shortItems.length;
-    const longCount  = isAll ? countAllItems(PARSHA_INDEPTH) : longItems.length;
-    const total      = shortCount + longCount;
+  const shortCount = isAll ? countAllItems(PARSHA_AUDIO)   : shortItems.length;
+  const longCount  = isAll ? countAllItems(PARSHA_INDEPTH) : longItems.length;
+  const total      = shortCount + longCount;
 
-    if (total === 0) {
-      wrap.style.display = "none";
-    } else {
-      wrap.style.display = "";
-      el.textContent = isAll
-        ? `Total audio shiurim: ${total.toLocaleString()}`
-        : `${parsha}: ${total.toLocaleString()} audio shiurim`;
-    }
+  if (total === 0) {
+    wrap.style.display = "none";
+  } else {
+    wrap.style.display = "";
+    el.textContent = isAll
+      ? `Total audio shiurim: ${total.toLocaleString()}`
+      : `${currentParsha}: ${total.toLocaleString()} audio shiurim`;
   }
+}
+
 
 	
  clearAudioRowStates(); // reset playing UI when parsha changes
@@ -1576,6 +1580,7 @@ function updateAudioCounterFromState() {
 </script>
 </body>
 </html>
+
 
 
 
