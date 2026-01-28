@@ -703,14 +703,27 @@ const PARSHA_INDEPTH = {
   // ...
 };
 
-function getCurrentParsha() {
+//function getCurrentParsha() {
+ // const sel = document.getElementById("parsha");
+  //if (sel && sel.value) return sel.value;
+//
+ // const p = new URLSearchParams(location.search).get("parsha");
+ // if (p) return p;
+//
+ // return "Noach"; // safe fallback
+//}
+
+	function getCurrentParsha() {
   const sel = document.getElementById("parsha");
-  if (sel && sel.value) return sel.value;
+  if (sel) {
+    const v = (sel.value || "").trim();
+    if (v) return v;
+  }
 
   const p = new URLSearchParams(location.search).get("parsha");
   if (p) return p;
 
-  return "Noach"; // safe fallback
+  return "All Parshios"; // ✅ make default match your dropdown
 }
 
 	
@@ -1563,6 +1576,7 @@ function updateAudioCounterFromState() {
 </script>
 </body>
 </html>
+
 
 
 
