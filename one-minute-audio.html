@@ -17,11 +17,17 @@ input{flex:1;min-width:240px;padding:10px 12px;border:1px solid #d0d5dd;border-r
 .speed button.active{font-weight:700}
 .player{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:14px}
 .now{font-size:14px;color:#444;margin-bottom:8px}
-audio{width:100%}
+
 .row{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px;margin-bottom:10px;cursor:pointer}
 .row.playing{outline:2px solid #111}
 .meta{font-size:13px;color:#667085;margin-bottom:6px}
 .desc{font-size:16px}
+
+.controls{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:10px}
+.controls .speedBtns button{padding:6px 10px;border-radius:999px;border:1px solid #d0d5dd;background:#fff;cursor:pointer}
+.controls .speedBtns button.active{font-weight:700}
+audio{width:100%}
+
 </style>
 </head>
 
@@ -48,10 +54,7 @@ audio{width:100%}
   </div>
 </div>
 
-<div class="player">
-  <div class="now" id="now">Select an audio…</div>
-  <audio id="audio" controls preload="none"></audio>
-</div>
+
 
 <div id="list"></div>
 
@@ -63,79 +66,118 @@ const DATA_URL = "./data.json";
 const q = document.getElementById("q");
 const list = document.getElementById("list");
 const count = document.getElementById("count");
-const audio = document.getElementById("audio");
-const now = document.getElementById("now");
-const speedWrap = document.getElementById("speedWrap");
-
 const sortBtn = document.getElementById("sortBtn");
 
+let items = [];
+let filtered = [];
+let sortLatestFirst = true;
+
+function pauseAllExcept(current){
+  document.querySelectorAll("audio").forEach(a=>{
+    if (a !== current) a.pause();
+  });
+}
+
+  
+function esc(s){return (s||"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+
+function getSavedRate(){
+  return Number(localStorage.getItem("rate") || "1.5");
+}
+function setSavedRate(r){
+  localStorage.setItem("rate", String(r));
+}
+
+function sortItems(){
+  filtered.sort((a,b)=> sortLatestFirst ? (b._sortKey - a._sortKey) : (a._sortKey - b._sortKey));
+}
+
+function render(){
+  sortItems();
+  list.innerHTML = "";
+  count.textContent = filtered.length + " items";
+
+  const defaultRate = getSavedRate();
+
+  filtered.forEach(it=>{
+    const row = document.createElement("div");
+    row.className = "row";
+
+    const speeds = [1, 1.25, 1.5, 2];
+
+    row.innerHTML = `
+      <div class="meta">${esc(it.date)}</div>
+      <div class="desc">${esc(it.description)}</div>
+
+      <div class="controls">
+        <div class="speedBtns" data-id="${it.id}">
+          ${speeds.map(r => `<button type="button" data-rate="${r}" class="${r===defaultRate?'active':''}">${r}×</button>`).join("")}
+        </div>
+      </div>
+
+      <audio controls preload="none" data-audio-id="${it.id}">
+        <source src="${esc(it.url)}" type="audio/mpeg">
+      </audio>
+    `;
+
+    list.appendChild(row);
+
+    // apply default rate immediately to the audio element
+    const audioEl = row.querySelector(`audio[data-audio-id="${it.id}"]`);
+    audioEl.playbackRate = defaultRate;
+    audioEl.addEventListener("play", () => {
+  pauseAllExcept(audioEl);
+});
+
+  // one event handler for all speed buttons (event delegation)
+  list.querySelectorAll(".speedBtns").forEach(box => {
+    box.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-rate]");
+      if(!btn) return;
+
+      const id = box.getAttribute("data-id");
+      const rate = Number(btn.getAttribute("data-rate"));
+
+      // set this audio's rate
+      const audioEl = list.querySelector(`audio[data-audio-id="${id}"]`);
+      if(audioEl) audioEl.playbackRate = rate;
+
+      // remember globally (so new rows + future sessions match)
+      setSavedRate(rate);
+
+      // update active button styling for this row
+      box.querySelectorAll("button").forEach(b => b.classList.toggle("active", b===btn));
+    });
+  });
+}
+
+function applySearch(){
+  const v = (q.value||"").toLowerCase().trim();
+  if(!v){
+    filtered = items.slice();
+  } else {
+    filtered = items.filter(it =>
+      (it.description||"").toLowerCase().includes(v) ||
+      (it.date||"").toLowerCase().includes(v)
+    );
+  }
+  render();
+}
+
+// Sort toggle
 sortBtn.onclick = () => {
   sortLatestFirst = !sortLatestFirst;
   sortBtn.textContent = sortLatestFirst ? "Latest ↓" : "Oldest ↑";
   render();
 };
 
-  
-  let sortLatestFirst = true;
+q.oninput = applySearch;
 
-let items=[], filtered=[], current=null;
-
-function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-
-function sortItems(){
-  filtered.sort((a,b)=>{
-    return sortLatestFirst
-      ? b._sortKey - a._sortKey   // newest first
-      : a._sortKey - b._sortKey;  // oldest first
-  });
-}
-
-
-  
-function render(){
-  sortItems();
-  list.innerHTML="";
-  count.textContent = filtered.length + " items";
-
-  filtered.forEach(it=>{
-    const d=document.createElement("div");
-    d.className="row"+(it.id===current?" playing":"");
-    d.innerHTML=`<div class=meta>${esc(it.date)}</div><div class=desc>${esc(it.description)}</div>`;
-    d.onclick=()=>play(it);
-    list.appendChild(d);
-  });
-}
-
-function play(it){
-  current=it.id;
-  audio.src=it.url;
-  audio.play();
-  now.textContent = it.date + " — " + it.description;
-  render();
-}
-
-function setRate(r){
-  audio.playbackRate=r;
-  localStorage.setItem("rate",r);
-  [...speedWrap.querySelectorAll("button")].forEach(b=>b.classList.toggle("active",b.dataset.rate==r));
-}
-
-speedWrap.onclick=e=>{
-  const b=e.target.closest("button");
-  if(b)setRate(b.dataset.rate);
-};
-
-q.oninput=()=>{
-  const v=q.value.toLowerCase();
-  filtered=items.filter(it=>it.description.toLowerCase().includes(v)||it.date.includes(v));
-  render();
-};
-
-fetch(DATA_URL,{cache:"no-store"})
+fetch(DATA_URL, { cache:"no-store" })
 .then(r=>r.json())
 .then(d=>{
-  items = d.map(x => {
-    // extract YYYYMMDD from filename
+  items = d.map((x, idx) => {
+    // extract YYYYMMDD from filename if present; else fallback 0
     let ymd = "";
     if (x.filename) {
       const m = x.filename.match(/PTT-(\d{8})-WA/i);
@@ -143,17 +185,18 @@ fetch(DATA_URL,{cache:"no-store"})
     }
     return {
       ...x,
-      _sortKey: ymd ? Number(ymd) : 0   // numeric for correct sorting
+      id: x.id ?? idx,
+      _sortKey: ymd ? Number(ymd) : 0
     };
   });
 
   filtered = items.slice();
   sortLatestFirst = true;
+  sortBtn.textContent = "Latest ↓";
   render();
-  setRate(localStorage.getItem("rate")||1.5);
 });
-
 </script>
+
 
 </body>
 </html>
