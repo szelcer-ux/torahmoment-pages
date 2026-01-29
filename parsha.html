@@ -1647,11 +1647,21 @@ window.SITE_COUNTS.allShiurim.breakdown.parsha.video = (Array.isArray(parshaVide
   window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
 })();
 
+setTimeout(() => {
+  if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
+
+  window.SITE_COUNTS.allShiurim.breakdown.parsha.video =
+    Array.isArray(parshaVideos) ? parshaVideos.length : 0;
+
+  // TEMP: confirm it ran
+  console.log("Set parsha video count:", window.SITE_COUNTS.allShiurim.breakdown.parsha.video);
+}, 0);
 
 
 </script>
 </body>
 </html>
+
 
 
 
