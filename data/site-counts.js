@@ -9,4 +9,4 @@ window.SITE_COUNTS.allShiurim = window.SITE_COUNTS.allShiurim || {
     oneMinute: { audio: null }
   },
   updated: null
-};
+}; 
