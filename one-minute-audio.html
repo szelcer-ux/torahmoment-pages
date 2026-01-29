@@ -6,208 +6,57 @@
 <title>One minute audio לע&quot;נ הרב אברהם נתנאל צוקער ז&quot;ל</title>
 
 <style>
-  :root{
-    --bg:#f8fafc;
-    --panel:#ffffff;
-    --row:#ffffff;
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#f6f7f9;margin:0;padding:18px;color:#111}
+.wrap{max-width:980px;margin:0 auto}
+h1{text-align:center;margin-bottom:4px}
+.subtitle{text-align:center;font-size:1.1rem;color:#555;margin-bottom:16px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0 14px}
+input{flex:1;min-width:240px;padding:10px 12px;border:1px solid #d0d5dd;border-radius:10px;font-size:16px}
+.pill{padding:8px 10px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;font-size:14px}
+.speed button{padding:6px 10px;border-radius:999px;border:1px solid #d0d5dd;background:#fff;cursor:pointer}
+.speed button.active{font-weight:700}
+.player{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:14px}
+.now{font-size:14px;color:#444;margin-bottom:8px}
+audio{width:100%}
+.row{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px;margin-bottom:10px;cursor:pointer}
+.row.playing{outline:2px solid #111}
+.meta{font-size:13px;color:#667085;margin-bottom:6px}
+.desc{font-size:16px}
+</style>
 
-    --border:#e5e7eb;
-    --text:#0f172a;
-    --muted:#64748b;
+ /* Compact mobile layout + tap-to-reveal speed buttons */
+@media (max-width: 600px){
+  body{padding:12px}
+  .bar{gap:8px}
+  input{width:100%; min-width:0}
 
-    --accent:#2563eb;     /* blue */
-    --accent2:#38bdf8;    /* light blue */
+  #sortBtn{padding:6px 10px}
+  #count{padding:6px 10px}
 
-    --shadow:0 4px 12px rgba(0,0,0,.06);
-    --shadow2:0 10px 24px rgba(0,0,0,.10);
-    --ring:0 0 0 3px rgba(37,99,235,.18);
+  .row{padding:10px; margin-bottom:8px}
+  .meta{font-size:12px; margin-bottom:4px}
+  .desc{font-size:15px; line-height:1.2}
 
-    --radius:14px;
+  /* Hide speed buttons by default on mobile */
+  .controls .speedBtns{display:none}
 
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  }
-
-  *{box-sizing:border-box;}
-  html,body{height:100%;}
-
-  body{
-    margin:0;
-    background: var(--bg);
-    color:var(--text);
-    -webkit-font-smoothing:antialiased;
-    padding: 24px 14px 18px;
+  /* Show when row is opened */
+  .row.isOpen .controls .speedBtns{
     display:flex;
-    justify-content:center;
-  }
-
-  main{
-    width:100%;
-    max-width: 980px;
-  }
-
-  .shell{
-    background: var(--panel);
-    border:1px solid var(--border);
-    border-radius: calc(var(--radius) + 4px);
-    box-shadow: var(--shadow);
-    overflow:hidden;
-  }
-
-  header{
-    padding: 18px 18px 14px;
-    border-bottom: 1px solid var(--border);
-    display:flex;
-    gap:14px;
-    align-items:flex-start;
-    flex-wrap:wrap;
-  }
-
-  .mark{
-    width:48px;height:48px;border-radius:12px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color:white;
-    display:grid;place-items:center;
-    font-weight:800;
-    letter-spacing:.5px;
-    user-select:none;
-    flex-shrink:0;
-  }
-
-  h1{
-    margin:0;
-    font-size:20px;
-    line-height:1.15;
-  }
-
-  .lead{
-    margin:6px 0 0;
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.45;
-  }
-
-  .list{
-    padding: 14px 18px 18px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-  }
-
-  .row{
-    position:relative;
-    border-radius: var(--radius);
-    background: var(--row);
-    border:1px solid var(--border);
-    box-shadow: var(--shadow);
-    padding: 12px;
-    display:flex;
-    gap:12px;
-    align-items:center;
-    justify-content:space-between;
-    cursor:pointer;
-    transition: transform .12s ease, box-shadow .12s ease;
-  }
-
-  .row:hover{
-    transform: translateY(-2px);
-    box-shadow: var(--shadow2);
-  }
-
-  .left{
-    min-width:0;
-    display:flex;
-    gap:10px;
-    align-items:flex-start;
-  }
-
-  .dot{
-    width:10px;
-    height:10px;
-    border-radius:999px;
-    margin-top:5px;
-    background: var(--accent);
-    flex-shrink:0;
-  }
-  .dot.daily{ background:#8b5cf6; }
-  .dot.wa{ background:#22c55e; }
-  .dot.halacha{ background:#16a34a; }
-
-  .meta{
-    min-width:0;
-  }
-
-  .name{
-    margin:0;
-    font-size:15px;
-    line-height:1.25;
-  }
-
-  .sub{
-    margin:4px 0 0;
-    color:var(--muted);
-    font-size:13px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    max-width:560px;
-  }
-
-  .actions{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    align-items:center;
-    flex-shrink:0;
-  }
-
-  .a{
-    position:relative;
-    z-index:2;
-    display:inline-flex;
-    align-items:center;
     gap:6px;
-    text-decoration:none;
-    padding:8px 12px;
-    border-radius:999px;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+
+  .controls .speedBtns button{
+    padding:5px 8px;
     font-size:13px;
-    font-weight:700;
-    border:1px solid var(--border);
-    color:var(--text);
-    background:#f9fafb;
-    transition: background .12s ease, border-color .12s ease;
   }
 
-  .a:hover{
-    background:#f1f5f9;
-    border-color:#cbd5f5;
-  }
+  audio{margin-top:6px}
+}
 
-  .a.primary{
-    background: var(--accent);
-    border-color: var(--accent);
-    color:white;
-  }
-
-  .a.wa{
-    background:#22c55e;
-    border-color:#22c55e;
-    color:white;
-  }
-
-  .row .stretched{
-    position:absolute;
-    inset:0;
-    z-index:1;
-  }
-
-  @media (max-width:640px){
-    body{ padding: 18px 10px 14px; }
-    header{ padding: 16px 14px 12px; }
-    .list{ padding: 12px 14px 14px; }
-    .sub{ max-width: 300px; }
-    .row{ align-items:flex-start; }
-  }
 </style>
 
 </head>
