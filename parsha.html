@@ -1079,8 +1079,13 @@ function updateParshaCounts() {
   window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
   window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
 
+  // ✅ NEW: signal to the GitHub Action that Parsha counts are ready
+  window.__COUNTS_READY__ = window.__COUNTS_READY__ || {};
+  window.__COUNTS_READY__.parsha = true;
+
   console.log("✅ Updated Parsha counts:", window.SITE_COUNTS.allShiurim.breakdown.parsha);
 }
+
 
 	
   // =============================
@@ -1687,6 +1692,7 @@ setTimeout(() => {
 </script>
 </body>
 </html>
+
 
 
 
