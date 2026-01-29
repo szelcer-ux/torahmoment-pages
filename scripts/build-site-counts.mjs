@@ -7,7 +7,7 @@ const PORT = 4173;
 // Pages to probe. Adjust filenames to match your repo.
 const PAGES = [
   "/parsha.html",
-  "/tefila.html",
+  "/tefilah.html",
   "/halacha.html",
   "/one-minute-audio.html",
 ];
