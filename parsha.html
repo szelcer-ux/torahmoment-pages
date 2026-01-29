@@ -750,16 +750,37 @@ function clearAudioRowStates(){
 
 function countAllItems(obj) {
   if (!obj) return 0;
-
-  // ✅ arrays
   if (Array.isArray(obj)) return obj.length;
-
-  // ✅ object-of-arrays
   return Object.values(obj).reduce(
     (sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0),
     0
   );
 }
+
+setTimeout(() => {
+  if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
+
+  const audioShort = countAllItems(PARSHA_AUDIO);
+  const audioLong  = countAllItems(typeof PARSHA_INDEPTH !== "undefined" ? PARSHA_INDEPTH :
+                                   (typeof PARSHA_IN_DEPTH !== "undefined" ? PARSHA_IN_DEPTH : null));
+
+  const videoTotal = Array.isArray(parshaVideos) ? parshaVideos.length : 0;
+
+  window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioShort + audioLong;
+  window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
+
+  const b = window.SITE_COUNTS.allShiurim.breakdown;
+  const n = (x) => (typeof x === "number" ? x : 0);
+
+  window.SITE_COUNTS.allShiurim.total =
+    n(b.parsha.audio) + n(b.parsha.video) +
+    n(b.tefila.video) + n(b.halacha.audio) + n(b.oneMinute.audio);
+
+  window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
+
+  console.log("Updated parsha counts:", window.SITE_COUNTS.allShiurim.breakdown.parsha);
+}, 0);
+
 
 
 	
@@ -1611,7 +1632,8 @@ function updateAudioCounterFromState() {
 const videoTotal = parshaVideos.length; // ✅ since it's an array
 
 window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioTotal;
-window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
+window.SITE_COUNTS.allShiurim.breakdown.parsha.video = (Array.isArray(parshaVideos) ? parshaVideos.length : 0);
+
 
 
   // optional overall total (won’t hurt even if others still null)
@@ -1630,6 +1652,7 @@ window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
 </script>
 </body>
 </html>
+
 
 
 
