@@ -125,7 +125,17 @@
     </div>
   </main>
 
+ 
 <script src="/data/site-counts.js"></script>
+
+<script>
+  if (window.SITE_COUNTS?.allShiurim?.breakdown) {
+    window.SITE_COUNTS.allShiurim.breakdown.tefila.video = 20;
+
+    window.__COUNTS_READY__ = window.__COUNTS_READY__ || {};
+    window.__COUNTS_READY__.tefila = true;
+  }
+</script>
 
   
   <script>
