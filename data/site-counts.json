@@ -1,0 +1,21 @@
+{
+  "allShiurim": {
+    "total": 21,
+    "breakdown": {
+      "parsha": {
+        "audio": 21,
+        "video": 0
+      },
+      "tefila": {
+        "video": null
+      },
+      "halacha": {
+        "audio": null
+      },
+      "oneMinute": {
+        "audio": null
+      }
+    },
+    "updated": "2026-01-29"
+  }
+}
