@@ -308,6 +308,10 @@ render(items);
   } catch (e) {
     console.warn("Failed to fetch Tefila playlist count", e);
   }
+  if (window.SITE_COUNTS?.allShiurim?.breakdown) {
+  window.SITE_COUNTS.allShiurim.breakdown.tefila.video = 20;
+}
+
 })();
 </script>
 
