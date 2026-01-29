@@ -68,29 +68,52 @@ function safeNum(x) {
     oneMinute: { audio: null },
   };
 
-  for (const path of PAGES) {
-    const url = `http://127.0.0.1:${PORT}${path}`;
+for (const path of PAGES) {
+  const url = `http://127.0.0.1:${PORT}${path}`;
+
+  try {
+    await page.goto(url, { waitUntil: "load", timeout: 60000 });
+
+    // ✅ Wait a bit for inline JS / setTimeout / async init to populate SITE_COUNTS
+    // Don't fail the whole run if a page isn't wired yet.
     try {
-      await page.goto(url, { waitUntil: "load", timeout: 60000 });
+      await page.waitForFunction(() => {
+        const b = window.SITE_COUNTS?.allShiurim?.breakdown;
+        if (!b) return false;
 
-      const b = await page.evaluate(() => {
-        return window.SITE_COUNTS?.allShiurim?.breakdown || null;
-      });
+        // If this page is the Parsha page, wait until BOTH audio+video are numbers
+        if (b.parsha) {
+          return (typeof b.parsha.audio === "number" && typeof b.parsha.video === "number");
+        }
 
-      if (b?.parsha) {
-        if (typeof b.parsha.audio === "number") breakdown.parsha.audio = b.parsha.audio;
-        if (typeof b.parsha.video === "number") breakdown.parsha.video = b.parsha.video;
-      }
-      if (b?.tefila && typeof b.tefila.video === "number") breakdown.tefila.video = b.tefila.video;
-      if (b?.halacha && typeof b.halacha.audio === "number") breakdown.halacha.audio = b.halacha.audio;
-      if (b?.oneMinute && typeof b.oneMinute.audio === "number") breakdown.oneMinute.audio = b.oneMinute.audio;
+        // Otherwise, accept any page that has at least one numeric count
+        if (b.tefila && typeof b.tefila.video === "number") return true;
+        if (b.halacha && typeof b.halacha.audio === "number") return true;
+        if (b.oneMinute && typeof b.oneMinute.audio === "number") return true;
 
-    } catch (e) {
-      // If a page doesn't exist yet or errors, we just skip it.
-      // (Keeps this "slow" and non-breaking.)
-      console.warn("Skipping", path, String(e));
+        return false;
+      }, { timeout: 15000 });
+    } catch {
+      // ok — page might not be wired yet; we'll read whatever is present
     }
+
+    const b = await page.evaluate(() => {
+      return window.SITE_COUNTS?.allShiurim?.breakdown || null;
+    });
+
+    if (b?.parsha) {
+      if (typeof b.parsha.audio === "number") breakdown.parsha.audio = b.parsha.audio;
+      if (typeof b.parsha.video === "number") breakdown.parsha.video = b.parsha.video;
+    }
+    if (b?.tefila && typeof b.tefila.video === "number") breakdown.tefila.video = b.tefila.video;
+    if (b?.halacha && typeof b.halacha.audio === "number") breakdown.halacha.audio = b.halacha.audio;
+    if (b?.oneMinute && typeof b.oneMinute.audio === "number") breakdown.oneMinute.audio = b.oneMinute.audio;
+
+  } catch (e) {
+    console.warn("Skipping", path, String(e));
   }
+}
+
 
   await browser.close();
   server.close();
