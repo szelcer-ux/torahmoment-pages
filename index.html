@@ -204,5 +204,22 @@
     loadLatestVideo();
     document.getElementById("yr").textContent = new Date().getFullYear();
   </script>
+  <script src="/data/site-counts.js"></script>
+<script>
+  (function () {
+    const el = document.getElementById("allShiurimCount");
+    if (!el) return;
+
+    const total = window.SITE_COUNTS?.allShiurim?.total;
+
+    if (typeof total === "number") {
+      el.textContent = total.toLocaleString();
+    } else {
+      // placeholder until we wire up the real count
+      el.textContent = "—";
+    }
+  })();
+</script>
+
 </body>
 </html>
