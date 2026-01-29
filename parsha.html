@@ -765,6 +765,19 @@ function setSectionVisible(sectionId, hasItems){
   if (!sec) return;
   sec.style.display = hasItems ? "block" : "none";
 }
+function countAllItems(obj) {
+  if (!obj) return 0;
+  if (Array.isArray(obj)) return obj.length;
+  if (typeof obj === "object") {
+    return Object.values(obj).reduce((sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0), 0);
+  }
+  return 0;
+}
+
+function safeGet(name) {
+  try { return Function("return typeof " + name + " !== 'undefined' ? " + name + " : undefined")(); }
+  catch { return undefined; }
+}
 
 function renderAudioList(containerId, items){
   const el = document.getElementById(containerId);
@@ -1580,35 +1593,35 @@ function updateAudioCounterFromState() {
 (function updateParshaCounts() {
   if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
 
-  const audioShort = countAllItems(window.PARSHA_AUDIO);
-  const audioLong  = countAllItems(window.PARSHA_INDEPTH ?? window.PARSHA_IN_DEPTH); // supports either name
-  const audioTotal = audioShort + audioLong;
+  const audioShortObj = safeGet("PARSHA_AUDIO");
+  const audioLongObj  = safeGet("PARSHA_INDEPTH") ?? safeGet("PARSHA_IN_DEPTH");
 
-  // If your videos are a flat array: countAllItems works.
-  // If your videos are per-parsha object-of-arrays: also works.
-  const videoTotal = countAllItems(window.parshaVideos ?? window.PARSHA_VIDEOS ?? window.PARSHA_VIDEO);
+  const videoObj =
+    safeGet("parshaVideos") ?? safeGet("PARSHA_VIDEOS") ?? safeGet("PARSHA_VIDEO");
+
+  const audioTotal = countAllItems(audioShortObj) + countAllItems(audioLongObj);
+  const videoTotal = countAllItems(videoObj);
 
   window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioTotal;
   window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
 
-  // Optional: update overall total (for now it will just include whatever is filled in)
+  // optional overall total (won’t hurt even if others still null)
   const b = window.SITE_COUNTS.allShiurim.breakdown;
-  const safeNum = (n) => (typeof n === "number" ? n : 0);
+  const n = (x) => (typeof x === "number" ? x : 0);
 
   window.SITE_COUNTS.allShiurim.total =
-    safeNum(b.parsha.audio) + safeNum(b.parsha.video) +
-    safeNum(b.tefila.video) +
-    safeNum(b.halacha.audio) +
-    safeNum(b.oneMinute.audio);
+    n(b.parsha.audio) + n(b.parsha.video) +
+    n(b.tefila.video) + n(b.halacha.audio) + n(b.oneMinute.audio);
 
-  // Optional timestamp
   window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
 })();
+
 
 
 </script>
 </body>
 </html>
+
 
 
 
