@@ -1058,6 +1058,31 @@ function updateURLFromSelection() {
     return normalizeWs(m[1]);
   }
 
+function updateParshaCounts() {
+  if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
+
+  // audio
+  const countAllItems = (obj) => {
+    if (!obj) return 0;
+    if (Array.isArray(obj)) return obj.length;
+    return Object.values(obj).reduce((s, a) => s + (Array.isArray(a) ? a.length : 0), 0);
+  };
+
+  const audioShort = countAllItems(PARSHA_AUDIO);
+  const audioLong  = countAllItems(typeof PARSHA_INDEPTH !== "undefined" ? PARSHA_INDEPTH :
+                                   (typeof PARSHA_IN_DEPTH !== "undefined" ? PARSHA_IN_DEPTH : null));
+
+  // video (since parshaVideos is an array)
+  const videoTotal = Array.isArray(parshaVideos) ? parshaVideos.length : 0;
+
+  window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioShort + audioLong;
+  window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
+  window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
+
+  console.log("✅ Updated Parsha counts:", window.SITE_COUNTS.allShiurim.breakdown.parsha);
+}
+
+	
   // =============================
   // State + UI
   // =============================
@@ -1330,6 +1355,7 @@ function countParshaAudio(data, parsha) {
     return a.localeCompare(b);
   });
 
+updateParshaCounts();
 
 
 buildParshaDropdown();
@@ -1661,6 +1687,7 @@ setTimeout(() => {
 </script>
 </body>
 </html>
+
 
 
 
