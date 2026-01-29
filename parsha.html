@@ -750,12 +750,17 @@ function clearAudioRowStates(){
 
 function countAllItems(obj) {
   if (!obj) return 0;
+
+  // ✅ arrays
   if (Array.isArray(obj)) return obj.length;
+
+  // ✅ object-of-arrays
   return Object.values(obj).reduce(
     (sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0),
     0
   );
 }
+
 
 	
 function escapeAttr(s){ return escapeHtml(s); }
@@ -1599,11 +1604,15 @@ function updateAudioCounterFromState() {
   const videoObj =
     safeGet("parshaVideos") ?? safeGet("PARSHA_VIDEOS") ?? safeGet("PARSHA_VIDEO");
 
-  const audioTotal = countAllItems(audioShortObj) + countAllItems(audioLongObj);
-  const videoTotal = countAllItems(videoObj);
+  const audioTotal =
+  countAllItems(PARSHA_AUDIO) +
+  countAllItems(PARSHA_INDEPTH); // (or PARSHA_IN_DEPTH if that's your real name)
 
-  window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioTotal;
-  window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
+const videoTotal = parshaVideos.length; // ✅ since it's an array
+
+window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioTotal;
+window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
+
 
   // optional overall total (won’t hurt even if others still null)
   const b = window.SITE_COUNTS.allShiurim.breakdown;
@@ -1621,6 +1630,7 @@ function updateAudioCounterFromState() {
 </script>
 </body>
 </html>
+
 
 
 
