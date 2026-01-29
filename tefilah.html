@@ -125,6 +125,9 @@
     </div>
   </main>
 
+<script src="/data/site-counts.js"></script>
+
+  
   <script>
     // ====== CONFIG ======
     // Put your API key here (hostname restrictions recommended in Google Cloud Console)
@@ -275,5 +278,39 @@ render(items);
 
     load();
   </script>
+
+  <script>
+(async function updateTefilaPlaylistCount() {
+  if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
+
+  const API_KEY = "AIzaSyDbJnY2cPtyyVya7YNzxG0hCju7ikBUWsU";
+  const PLAYLIST_ID = "PLTG2oZQPntE6FFUBou7ie49LLnRoqScnt"; // looks like: PLxxxxxxx...
+
+  try {
+    // We only need metadata; pageInfo.totalResults gives playlist size
+    const url =
+      "https://www.googleapis.com/youtube/v3/playlistItems" +
+      `?part=id&playlistId=${encodeURIComponent(PLAYLIST_ID)}` +
+      `&maxResults=1&key=${encodeURIComponent(API_KEY)}`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const total = data?.pageInfo?.totalResults;
+
+    if (typeof total === "number" && total > 0) {
+      window.SITE_COUNTS.allShiurim.breakdown.tefila.video = total;
+      window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
+      console.log("✅ Updated Tefila playlist count:", total);
+    } else {
+      console.warn("Tefila playlist count not available:", data);
+    }
+  } catch (e) {
+    console.warn("Failed to fetch Tefila playlist count", e);
+  }
+})();
+</script>
+
+  
 </body>
 </html>
