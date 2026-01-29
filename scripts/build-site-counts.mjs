@@ -74,49 +74,61 @@ for (const path of PAGES) {
   try {
     await page.goto(url, { waitUntil: "load", timeout: 60000 });
 
-    // ✅ Wait until the page has populated SITE_COUNTS with real values
+    // ✅ Wait for the page to explicitly say "my counts are ready"
     try {
       await page.waitForFunction(() => {
-        const b = window.SITE_COUNTS?.allShiurim?.breakdown;
-        if (!b) return false;
+        const p = location.pathname.toLowerCase();
 
-        // Parsha page: wait until video is a POSITIVE number (not just "a number")
-        if (b.parsha) {
-          return (
-            typeof b.parsha.audio === "number" &&
-            typeof b.parsha.video === "number" &&
-            b.parsha.video > 0
-          );
+        if (p.includes("parsha")) {
+          return window.__COUNTS_READY__?.parsha === true;
         }
 
-        // Other pages: accept any positive number
-        if (b.tefila && typeof b.tefila.video === "number" && b.tefila.video > 0) return true;
-        if (b.halacha && typeof b.halacha.audio === "number" && b.halacha.audio > 0) return true;
-        if (b.oneMinute && typeof b.oneMinute.audio === "number" && b.oneMinute.audio > 0) return true;
+        if (p.includes("tefilah")) {
+          return window.__COUNTS_READY__?.tefila === true;
+        }
 
-        return false;
+        if (p.includes("halacha")) {
+          return window.__COUNTS_READY__?.halacha === true;
+        }
+
+        if (p.includes("one-minute")) {
+          return window.__COUNTS_READY__?.oneMinute === true;
+        }
+
+        return true;
       }, { timeout: 20000 });
     } catch {
-      // ok — page might not be wired yet; we'll read whatever is present
+      // Page may not be wired yet — continue anyway
     }
 
-    const b = await page.evaluate(() => window.SITE_COUNTS?.allShiurim?.breakdown || null);
+    const b = await page.evaluate(() =>
+      window.SITE_COUNTS?.allShiurim?.breakdown || null
+    );
 
-    // Optional: log what we read (shows in GitHub Action logs)
-    console.log("READ", path, JSON.stringify(b?.parsha || b?.tefila || b?.halacha || b?.oneMinute || null));
+    console.log("READ", path, JSON.stringify(b || null));
 
     if (b?.parsha) {
       if (typeof b.parsha.audio === "number") breakdown.parsha.audio = b.parsha.audio;
       if (typeof b.parsha.video === "number") breakdown.parsha.video = b.parsha.video;
     }
-    if (b?.tefila && typeof b.tefila.video === "number") breakdown.tefila.video = b.tefila.video;
-    if (b?.halacha && typeof b.halacha.audio === "number") breakdown.halacha.audio = b.halacha.audio;
-    if (b?.oneMinute && typeof b.oneMinute.audio === "number") breakdown.oneMinute.audio = b.oneMinute.audio;
+
+    if (b?.tefila && typeof b.tefila.video === "number") {
+      breakdown.tefila.video = b.tefila.video;
+    }
+
+    if (b?.halacha && typeof b.halacha.audio === "number") {
+      breakdown.halacha.audio = b.halacha.audio;
+    }
+
+    if (b?.oneMinute && typeof b.oneMinute.audio === "number") {
+      breakdown.oneMinute.audio = b.oneMinute.audio;
+    }
 
   } catch (e) {
     console.warn("Skipping", path, String(e));
   }
 }
+
 
 
 
