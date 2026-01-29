@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 233,
+    "total": 417,
     "breakdown": {
       "parsha": {
         "audio": 21,
@@ -13,7 +13,7 @@
         "audio": null
       },
       "oneMinute": {
-        "audio": null
+        "audio": 184
       }
     },
     "updated": "2026-01-29"
