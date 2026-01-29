@@ -13,3 +13,7 @@ window.SITE_COUNTS.allShiurim = {
   },
   updated: null           // e.g. "2026-01-29"
 };
+
+
+window.SITE_COUNTS.allShiurim.total = 1234;
+window.SITE_COUNTS.allShiurim.updated = "2026-01-29";
