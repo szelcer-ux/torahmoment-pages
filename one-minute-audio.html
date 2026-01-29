@@ -24,6 +24,8 @@ audio{width:100%}
 .meta{font-size:13px;color:#667085;margin-bottom:6px}
 .desc{font-size:16px}
 
+ <script src="/data/site-counts.js"></script>
+
 
  /* Compact mobile layout + tap-to-reveal speed buttons */
 @media (max-width: 600px){
@@ -122,6 +124,12 @@ function render(){
   sortItems();
   list.innerHTML = "";
   count.textContent = filtered.length + " items";
+ // ✅ Feed the site-wide counter (for the GitHub Action JSON build)
+if (window.SITE_COUNTS?.allShiurim?.breakdown) {
+  window.SITE_COUNTS.allShiurim.breakdown.oneMinute.audio = filtered.length;
+  window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
+}
+
 
   const defaultRate = getSavedRate();
 
@@ -237,6 +245,36 @@ fetch(DATA_URL, { cache:"no-store" })
   sortBtn.textContent = "Latest ↓";
   render();
 });
+</script>
+<script>
+(function updateOneMinuteCount() {
+  if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
+
+  // Helper: counts arrays, or objects-of-arrays
+  function countAllItems(obj) {
+    if (!obj) return 0;
+    if (Array.isArray(obj)) return obj.length;
+    if (typeof obj === "object") {
+      return Object.values(obj).reduce((sum, v) => sum + (Array.isArray(v) ? v.length : 0), 0);
+    }
+    return 0;
+  }
+
+  // ✅ CHANGE THIS LINE to your real data variable name:
+  // Examples: ONE_MINUTE_AUDIO, ONE_MINUTE_LIST, AUDIO_ITEMS, etc.
+  const oneMinuteItems =
+    (typeof ONE_MINUTE_AUDIO !== "undefined") ? ONE_MINUTE_AUDIO :
+    (typeof ONE_MINUTE_LIST !== "undefined") ? ONE_MINUTE_LIST :
+    (typeof AUDIO_ITEMS !== "undefined") ? AUDIO_ITEMS :
+    null;
+
+  const total = countAllItems(oneMinuteItems);
+
+  window.SITE_COUNTS.allShiurim.breakdown.oneMinute.audio = total;
+  window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0,10);
+
+  console.log("✅ Updated One-Minute count:", total);
+})();
 </script>
 
 
