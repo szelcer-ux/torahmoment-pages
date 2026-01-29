@@ -74,32 +74,36 @@ for (const path of PAGES) {
   try {
     await page.goto(url, { waitUntil: "load", timeout: 60000 });
 
-    // ✅ Wait a bit for inline JS / setTimeout / async init to populate SITE_COUNTS
-    // Don't fail the whole run if a page isn't wired yet.
+    // ✅ Wait until the page has populated SITE_COUNTS with real values
     try {
       await page.waitForFunction(() => {
         const b = window.SITE_COUNTS?.allShiurim?.breakdown;
         if (!b) return false;
 
-        // If this page is the Parsha page, wait until BOTH audio+video are numbers
+        // Parsha page: wait until video is a POSITIVE number (not just "a number")
         if (b.parsha) {
-          return (typeof b.parsha.audio === "number" && typeof b.parsha.video === "number");
+          return (
+            typeof b.parsha.audio === "number" &&
+            typeof b.parsha.video === "number" &&
+            b.parsha.video > 0
+          );
         }
 
-        // Otherwise, accept any page that has at least one numeric count
-        if (b.tefila && typeof b.tefila.video === "number") return true;
-        if (b.halacha && typeof b.halacha.audio === "number") return true;
-        if (b.oneMinute && typeof b.oneMinute.audio === "number") return true;
+        // Other pages: accept any positive number
+        if (b.tefila && typeof b.tefila.video === "number" && b.tefila.video > 0) return true;
+        if (b.halacha && typeof b.halacha.audio === "number" && b.halacha.audio > 0) return true;
+        if (b.oneMinute && typeof b.oneMinute.audio === "number" && b.oneMinute.audio > 0) return true;
 
         return false;
-      }, { timeout: 15000 });
+      }, { timeout: 20000 });
     } catch {
       // ok — page might not be wired yet; we'll read whatever is present
     }
 
-    const b = await page.evaluate(() => {
-      return window.SITE_COUNTS?.allShiurim?.breakdown || null;
-    });
+    const b = await page.evaluate(() => window.SITE_COUNTS?.allShiurim?.breakdown || null);
+
+    // Optional: log what we read (shows in GitHub Action logs)
+    console.log("READ", path, JSON.stringify(b?.parsha || b?.tefila || b?.halacha || b?.oneMinute || null));
 
     if (b?.parsha) {
       if (typeof b.parsha.audio === "number") breakdown.parsha.audio = b.parsha.audio;
@@ -113,6 +117,7 @@ for (const path of PAGES) {
     console.warn("Skipping", path, String(e));
   }
 }
+
 
 
   await browser.close();
