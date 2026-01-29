@@ -15,5 +15,4 @@ window.SITE_COUNTS.allShiurim = {
 };
 
 
-window.SITE_COUNTS.allShiurim.total = 1234;
-window.SITE_COUNTS.allShiurim.updated = "2026-01-29";
+
