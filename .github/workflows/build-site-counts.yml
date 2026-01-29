@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
   schedule:
-    - cron: "17 3 * * *" # daily, 3:17 UTC
+    - cron: "17 3 * * *"
 
 permissions:
   contents: write
@@ -14,15 +14,15 @@ concurrency:
   group: site-counts-json
   cancel-in-progress: true
 
-
 jobs:
   build-counts:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
@@ -30,13 +30,13 @@ jobs:
       - name: Install Playwright
         run: |
           npm init -y
-          npm i -D playwright
+          npm install -D playwright
           npx playwright install --with-deps chromium
 
-      - name: Build JSON counts
+      - name: Build site counts JSON
         run: node scripts/build-site-counts.mjs
 
-           - name: Commit site-counts.json if changed
+      - name: Commit site-counts.json if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -44,9 +44,7 @@ jobs:
           git add data/site-counts.json
           git diff --cached --quiet || git commit -m "Update site counts JSON"
 
-          # ✅ bring in any new commits that landed while this job was running
+          # 🔑 pull latest main in case it changed mid-run
           git pull --rebase origin main
 
-          # ✅ push our commit on top
           git push
-
