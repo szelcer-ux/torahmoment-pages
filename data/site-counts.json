@@ -3,8 +3,8 @@
     "total": 204,
     "breakdown": {
       "parsha": {
-        "audio": 0,
-        "video": 0
+        "audio": null,
+        "video": null
       },
       "tefila": {
         "video": 20
