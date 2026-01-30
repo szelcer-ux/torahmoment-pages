@@ -1303,6 +1303,21 @@ function countParshaAudio(data, parsha) {
     }
   }
 
+async function getThisWeeksParsha() {
+  // NYC / Diaspora (GeoNames ID 5128581)
+  const url = "https://www.hebcal.com/shabbat?cfg=json&geonameid=5128581";
+  const r = await fetch(url);
+  if (!r.ok) throw new Error("Hebcal fetch failed");
+
+  const j = await r.json();
+  const item = (j.items || []).find(it => it.category === "parashat");
+  if (!item?.title) return "";
+
+  // "Parashat Beshalach" → "Beshalach"
+  return item.title.replace(/^Parashat\s+/i, "").trim();
+}
+
+	
   async function load() {
     if (!API_KEY || API_KEY === "PASTE_YOUR_API_KEY_HERE") {
       setStatus("Missing API key", "Paste your key into API_KEY at the top of this file.");
@@ -1329,8 +1344,30 @@ if (cached && Date.now() - cached.t < ttlMs && Array.isArray(cached.data)) {
     });
 
   updateParshaCounts();
-  buildParshaDropdown();
+ buildParshaDropdown();
+
+// 1) URL wins if ?parsha= is present
+const fromUrl = getParshaFromURL();
+if (fromUrl) {
   selectParshaFromURL();
+} else {
+  // 2) Otherwise, try to default to this week's parsha
+  try {
+    const wk = await getThisWeeksParsha();
+
+    // Match against dropdown options (normalized)
+    const opt = [...parshaSel.options].find(
+      o => normParsha(o.value) === normParsha(wk)
+    );
+
+    if (opt) {
+      parshaSel.value = opt.value;
+    }
+  } catch (e) {
+    console.warn("Could not determine current parsha:", e);
+  }
+}
+
   setPageTitle();
   updateURLFromSelection();
   applyFilters();
@@ -1708,6 +1745,7 @@ setTimeout(() => {
 </script>
 </body>
 </html>
+
 
 
 
