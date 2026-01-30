@@ -572,7 +572,7 @@
   // =============================
   const API_KEY    = "AIzaSyDbJnY2cPtyyVya7YNzxG0hCju7ikBUWsU";
   const CHANNEL_ID = "UCzx1pweEHKhsIfPkQZbRH4w";
-  const MAX_TO_FETCH = 25;
+  const MAX_TO_FETCH = 300;
 
  const filtersBtn = document.getElementById("filtersBtn");
 const controlsWrap = document.getElementById("controlsWrap");
@@ -862,35 +862,26 @@ function renderPdfList(containerId, items){
 
 	
 function renderParshaExtras(parsha) {
+  // No selection => hide everything
+  if (!parsha) {
+    setSectionVisible("secAudioShort", false);
+    setSectionVisible("secAudioLong",  false);
+    setSectionVisible("secPdfs",       false);
 
-if (!parsha) {
-  setSectionVisible("secAudioShort", false);
-  setSectionVisible("secAudioLong",  false);
-  setSectionVisible("secPdfs",       false);
+    const wrap = document.getElementById("audioCountWrap");
+    if (wrap) wrap.style.display = "none";
 
-  // also hide the counter area
-  const wrap = document.getElementById("audioCountWrap");
-  if (wrap) wrap.style.display = "none";
+    clearAudioRowStates();
+    return;
+  }
 
-  clearAudioRowStates();
-  return;
-}
+  const shortItems = (PARSHA_AUDIO && PARSHA_AUDIO[parsha]) ? PARSHA_AUDIO[parsha] : [];
+  const longItems  = (PARSHA_INDEPTH && PARSHA_INDEPTH[parsha]) ? PARSHA_INDEPTH[parsha] : [];
+  const pdfItems   = (PARSHA_PDFS && PARSHA_PDFS[parsha]) ? PARSHA_PDFS[parsha] : [];
 
-	
-  // ✅ Read dropdown; empty string means "All Parshios"
-  const sel = document.getElementById("parsha");
-  const selVal = sel ? sel.value : null;
-
-  //const isAll = (selVal === ""); // because <option value="">All Parshios</option>
-
-  // If "All", don't try to index data by parsha name
-//  const shortItems = (!isAll && PARSHA_AUDIO && PARSHA_AUDIO[parsha]) ? PARSHA_AUDIO[parsha] : [];
-//  const longItems  = (!isAll && PARSHA_INDEPTH && PARSHA_INDEPTH[parsha]) ? PARSHA_INDEPTH[parsha] : [];
-//  const pdfItems   = (!isAll && PARSHA_PDFS && PARSHA_PDFS[parsha]) ? PARSHA_PDFS[parsha] : [];
-
-//  setSectionVisible("secAudioShort", isAll ? countAllItems(PARSHA_AUDIO)   > 0 : shortItems.length > 0);
-//  setSectionVisible("secAudioLong",  isAll ? countAllItems(PARSHA_INDEPTH) > 0 : longItems.length  > 0);
-//  setSectionVisible("secPdfs",       isAll ? false : pdfItems.length > 0); // PDFs off for All (optional)
+  setSectionVisible("secAudioShort", shortItems.length > 0);
+  setSectionVisible("secAudioLong",  longItems.length  > 0);
+  setSectionVisible("secPdfs",       pdfItems.length   > 0);
 
   renderAudioList("audioShortList", shortItems);
   renderAudioList("audioLongList",  longItems);
@@ -898,22 +889,16 @@ if (!parsha) {
 
   clearAudioRowStates();
 
-  // ✅ Counter
+  // Counter
   const wrap = document.getElementById("audioCountWrap");
   const el   = document.getElementById("totalAudioCount");
   if (wrap && el) {
-//    const shortCount = isAll ? countAllItems(PARSHA_AUDIO)   : shortItems.length;
-//    const longCount  = isAll ? countAllItems(PARSHA_INDEPTH) : longItems.length;
-//    const total      = shortCount + longCount;
-
+    const total = shortItems.length + longItems.length;
     wrap.style.display = total ? "" : "none";
-    if (total) {
-  //    el.textContent = isAll
-        ? `Total audio shiurim: ${total.toLocaleString()}`
-        : `${parsha}: ${total.toLocaleString()} audio shiurim`;
-    }
+    if (total) el.textContent = `${parsha}: ${total.toLocaleString()} audio shiurim`;
   }
 }
+
 
 	
 function setFiltersOpen(isOpen){
@@ -1179,56 +1164,7 @@ function normParsha(s) {
     .replace(/\s+/g, " ");
 }
 
-function applyFilters() {
 
-	const selectedParsha = parshaSel.value;
-
-// No selection yet => show empty state
-if (!selectedParsha) {
-  render([]);
-  empty.style.display = "block";
-  empty.textContent = "Pick a Parsha to begin.";
-  count.textContent = "";
-  return;
-}
-
-	
-  const term = q.value.trim().toLowerCase();
-//  const selectedParsha = parshaSel.value;
-
-  let list = parshaVideos.slice();
-
-// const selectedParsha = parshaSel.value;
-
-// If user hasn’t picked yet, show empty state and stop
-if (!selectedParsha) {
-  render([]); // clears grid + shows “empty”
-  count.textContent = "";
-  empty.style.display = "block";
-  empty.textContent = "Pick a Parsha to begin.";
-  return;
-}
-
-	
-  // ✅ Filter by parsha selection
-  if (selectedParsha) {
-    const wanted = normParsha(selectedParsha);
-    list = list.filter(v => normParsha(v.parsha) === wanted);
-  }
-
-  // Search filter
-  if (term) {
-    list = list.filter(v => (v.title + " " + v.description + " " + v.parsha).toLowerCase().includes(term));
-  }
-
-  // Sort
-  const mode = sort.value;
-  if (mode === "new") list.sort((a,b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
-  if (mode === "old") list.sort((a,b) => (a.publishedAt || "").localeCompare(b.publishedAt || ""));
-  if (mode === "title") list.sort((a,b) => (a.title || "").localeCompare(b.title || ""));
-
-  render(list);
-}
 
 
 function selectParshaFromURL() {
@@ -1253,40 +1189,39 @@ function selectParshaFromURL() {
 
 
 
-  function applyFilters() {
+ function applyFilters() {
+  const term = q.value.trim().toLowerCase();
+  const selectedParsha = parshaSel.value;
 
-	  const selectedParsha = parshaSel.value;
+  // If no selection allowed yet, show nothing
+  if (!selectedParsha) {
+    render([]);
+    empty.style.display = "block";
+    empty.textContent = "Pick a Parsha to begin.";
+    count.textContent = "";
+    return;
+  }
 
-// No selection yet => show empty state
-if (!selectedParsha) {
-  render([]);
-  empty.style.display = "block";
-  empty.textContent = "Pick a Parsha to begin.";
-  count.textContent = "";
-  return;
+  let list = parshaVideos.slice();
+
+  // ✅ normalized parsha filter
+  const wanted = normParsha(selectedParsha);
+  list = list.filter(v => normParsha(v.parsha) === wanted);
+
+  if (term) {
+    list = list.filter(v =>
+      (v.title + " " + v.description + " " + v.parsha).toLowerCase().includes(term)
+    );
+  }
+
+  const mode = sort.value;
+  if (mode === "new") list.sort((a,b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
+  if (mode === "old") list.sort((a,b) => (a.publishedAt || "").localeCompare(b.publishedAt || ""));
+  if (mode === "title") list.sort((a,b) => (a.title || "").localeCompare(b.title || ""));
+
+  render(list);
 }
 
-	  
-    const term = q.value.trim().toLowerCase();
- //   const selectedParsha = parshaSel.value;
-
-    let list = parshaVideos.slice();
-
-    if (selectedParsha) {
-      list = list.filter(v => v.parsha === selectedParsha);
-    }
-
-    if (term) {
-      list = list.filter(v => (v.title + " " + v.description + " " + v.parsha).toLowerCase().includes(term));
-    }
-
-    const mode = sort.value;
-    if (mode === "new") list.sort((a,b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
-    if (mode === "old") list.sort((a,b) => (a.publishedAt || "").localeCompare(b.publishedAt || ""));
-    if (mode === "title") list.sort((a,b) => (a.title || "").localeCompare(b.title || ""));
-
-    render(list);
-  }
 
 function countParshaAudio(data, parsha) {
   if (!data) return 0;
@@ -1772,6 +1707,7 @@ setTimeout(() => {
 </script>
 </body>
 </html>
+
 
 
 
