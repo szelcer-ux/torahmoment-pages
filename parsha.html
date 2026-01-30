@@ -884,9 +884,9 @@ if (!parsha) {
   //const isAll = (selVal === ""); // because <option value="">All Parshios</option>
 
   // If "All", don't try to index data by parsha name
-  const shortItems = (!isAll && PARSHA_AUDIO && PARSHA_AUDIO[parsha]) ? PARSHA_AUDIO[parsha] : [];
-  const longItems  = (!isAll && PARSHA_INDEPTH && PARSHA_INDEPTH[parsha]) ? PARSHA_INDEPTH[parsha] : [];
-  const pdfItems   = (!isAll && PARSHA_PDFS && PARSHA_PDFS[parsha]) ? PARSHA_PDFS[parsha] : [];
+//  const shortItems = (!isAll && PARSHA_AUDIO && PARSHA_AUDIO[parsha]) ? PARSHA_AUDIO[parsha] : [];
+//  const longItems  = (!isAll && PARSHA_INDEPTH && PARSHA_INDEPTH[parsha]) ? PARSHA_INDEPTH[parsha] : [];
+//  const pdfItems   = (!isAll && PARSHA_PDFS && PARSHA_PDFS[parsha]) ? PARSHA_PDFS[parsha] : [];
 
 //  setSectionVisible("secAudioShort", isAll ? countAllItems(PARSHA_AUDIO)   > 0 : shortItems.length > 0);
 //  setSectionVisible("secAudioLong",  isAll ? countAllItems(PARSHA_INDEPTH) > 0 : longItems.length  > 0);
@@ -902,13 +902,13 @@ if (!parsha) {
   const wrap = document.getElementById("audioCountWrap");
   const el   = document.getElementById("totalAudioCount");
   if (wrap && el) {
-    const shortCount = isAll ? countAllItems(PARSHA_AUDIO)   : shortItems.length;
-    const longCount  = isAll ? countAllItems(PARSHA_INDEPTH) : longItems.length;
-    const total      = shortCount + longCount;
+//    const shortCount = isAll ? countAllItems(PARSHA_AUDIO)   : shortItems.length;
+//    const longCount  = isAll ? countAllItems(PARSHA_INDEPTH) : longItems.length;
+//    const total      = shortCount + longCount;
 
     wrap.style.display = total ? "" : "none";
     if (total) {
-      el.textContent = isAll
+  //    el.textContent = isAll
         ? `Total audio shiurim: ${total.toLocaleString()}`
         : `${parsha}: ${total.toLocaleString()} audio shiurim`;
     }
@@ -1772,6 +1772,7 @@ setTimeout(() => {
 </script>
 </body>
 </html>
+
 
 
 
