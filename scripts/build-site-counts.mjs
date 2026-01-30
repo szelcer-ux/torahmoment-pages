@@ -4,7 +4,7 @@ import { chromium } from "playwright";
 
 const PORT = 4173;
 
-// Pages to probe. Adjust filenames to match your repo.
+// ✅ Filenames must match your repo
 const PAGES = [
   "/parsha.html",
   "/tefilah.html",
@@ -17,11 +17,9 @@ function startServer() {
   return new Promise((resolve) => {
     const server = http.createServer(async (req, res) => {
       try {
-        // Map URL to filesystem path
         const urlPath = decodeURIComponent(req.url.split("?")[0]);
         const path = urlPath === "/" ? "/index.html" : urlPath;
 
-        // Dynamic import of fs/promises only when needed
         const { readFile } = await import("node:fs/promises");
         const { extname } = await import("node:path");
 
@@ -54,6 +52,33 @@ function safeNum(x) {
   return typeof x === "number" ? x : 0;
 }
 
+async function waitForReadyFlag(page) {
+  // ✅ Wait for per-page ready flags (don’t hang forever)
+  try {
+    await page.waitForFunction(() => {
+      const p = location.pathname.toLowerCase();
+
+      if (p.includes("parsha")) {
+        return window.__COUNTS_READY__?.parsha === true;
+      }
+      if (p.includes("tefilah")) {
+        return window.__COUNTS_READY__?.tefila === true;
+      }
+      if (p.includes("halacha")) {
+        return window.__COUNTS_READY__?.halacha === true;
+      }
+      if (p.includes("one-minute")) {
+        return window.__COUNTS_READY__?.oneMinute === true;
+      }
+
+      // unknown page – don’t block
+      return true;
+    }, { timeout: 20000 });
+  } catch {
+    // Page may not be wired yet; proceed with whatever is present
+  }
+}
+
 (async function main() {
   const server = await startServer();
 
@@ -68,69 +93,48 @@ function safeNum(x) {
     oneMinute: { audio: null },
   };
 
-for (const path of PAGES) {
-  const url = `http://127.0.0.1:${PORT}${path}`;
+  for (const path of PAGES) {
+    const url = `http://127.0.0.1:${PORT}${path}`;
 
-  try {
-    await page.goto(url, { waitUntil: "load", timeout: 60000 });
-
-    // ✅ Wait for the page to explicitly say "my counts are ready"
     try {
-      await page.waitForFunction(() => {
-        const p = location.pathname.toLowerCase();
+      await page.goto(url, { waitUntil: "load", timeout: 60000 });
 
-        if (p.includes("parsha")) {
-          return window.__COUNTS_READY__?.parsha === true;
-        }
+      // ✅ Wait until the page says counts are ready
+      await waitForReadyFlag(page);
 
-        if (p.includes("tefilah")) {
-          return window.__COUNTS_READY__?.tefila === true;
-        }
+      // ✅ Snapshot everything we care about (helps debugging in Action logs)
+      const snap = await page.evaluate(() => ({
+        pathname: location.pathname,
+        ready: window.__COUNTS_READY__ || null,
+        parshaVideosLen: window.__PARSHAVIDEOS_LEN__ ?? null,
+        breakdown: window.SITE_COUNTS?.allShiurim?.breakdown || null,
+      }));
 
-        if (p.includes("halacha")) {
-          return window.__COUNTS_READY__?.halacha === true;
-        }
+      console.log("SNAP", path, JSON.stringify(snap));
 
-        if (p.includes("one-minute")) {
-          return window.__COUNTS_READY__?.oneMinute === true;
-        }
+      const b = snap.breakdown;
 
-        return true;
-      }, { timeout: 20000 });
-    } catch {
-      // Page may not be wired yet — continue anyway
+      if (b?.parsha) {
+        if (typeof b.parsha.audio === "number") breakdown.parsha.audio = b.parsha.audio;
+        if (typeof b.parsha.video === "number") breakdown.parsha.video = b.parsha.video;
+      }
+
+      if (b?.tefila && typeof b.tefila.video === "number") {
+        breakdown.tefila.video = b.tefila.video;
+      }
+
+      if (b?.halacha && typeof b.halacha.audio === "number") {
+        breakdown.halacha.audio = b.halacha.audio;
+      }
+
+      if (b?.oneMinute && typeof b.oneMinute.audio === "number") {
+        breakdown.oneMinute.audio = b.oneMinute.audio;
+      }
+
+    } catch (e) {
+      console.warn("Skipping", path, String(e));
     }
-
-    const b = await page.evaluate(() =>
-      window.SITE_COUNTS?.allShiurim?.breakdown || null
-    );
-
-    console.log("READ", path, JSON.stringify(b || null));
-
-    if (b?.parsha) {
-      if (typeof b.parsha.audio === "number") breakdown.parsha.audio = b.parsha.audio;
-      if (typeof b.parsha.video === "number") breakdown.parsha.video = b.parsha.video;
-    }
-
-    if (b?.tefila && typeof b.tefila.video === "number") {
-      breakdown.tefila.video = b.tefila.video;
-    }
-
-    if (b?.halacha && typeof b.halacha.audio === "number") {
-      breakdown.halacha.audio = b.halacha.audio;
-    }
-
-    if (b?.oneMinute && typeof b.oneMinute.audio === "number") {
-      breakdown.oneMinute.audio = b.oneMinute.audio;
-    }
-
-  } catch (e) {
-    console.warn("Skipping", path, String(e));
   }
-}
-
-
-
 
   await browser.close();
   server.close();
