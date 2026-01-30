@@ -2,6 +2,44 @@ import { writeFileSync } from "node:fs";
 import http from "node:http";
 import { chromium } from "playwright";
 
+async function countParshaVideosFromYouTube(apiKey) {
+  const PLAYLIST_ID = "UUzx1pweEHKhsIfPkQZbRH4w";
+  const SEARCH = "dvar torah parshas";
+
+  let count = 0;
+  let pageToken = "";
+
+  while (true) {
+    const url =
+      "https://www.googleapis.com/youtube/v3/playlistItems" +
+      `?part=snippet` +
+      `&playlistId=${PLAYLIST_ID}` +
+      `&maxResults=50` +
+      `&pageToken=${pageToken}` +
+      `&key=${apiKey}`;
+
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error(`YouTube API error ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    for (const item of data.items || []) {
+      const desc = (item.snippet?.description || "").toLowerCase();
+      if (desc.includes(SEARCH)) {
+        count++;
+      }
+    }
+
+    if (!data.nextPageToken) break;
+    pageToken = data.nextPageToken;
+  }
+
+  return count;
+}
+
+
 const PORT = 4173;
 
 // ✅ Filenames must match your repo
@@ -136,6 +174,20 @@ async function waitForReadyFlag(page) {
     }
   }
 
+// 🔒 Authoritative Parsha video count from YouTube API
+if (!safeNum(breakdown.parsha.video)) {
+  const apiKey = process.env.YOUTUBE_API_KEY;
+  if (!apiKey) {
+    throw new Error("Missing YOUTUBE_API_KEY secret");
+  }
+
+  const ytCount = await countParshaVideosFromYouTube(apiKey);
+  breakdown.parsha.video = ytCount;
+
+  console.log("YouTube Parsha video count:", ytCount);
+}
+
+  
   await browser.close();
   server.close();
 
