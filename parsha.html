@@ -863,20 +863,34 @@ function renderPdfList(containerId, items){
 	
 function renderParshaExtras(parsha) {
 
+if (!parsha) {
+  setSectionVisible("secAudioShort", false);
+  setSectionVisible("secAudioLong",  false);
+  setSectionVisible("secPdfs",       false);
+
+  // also hide the counter area
+  const wrap = document.getElementById("audioCountWrap");
+  if (wrap) wrap.style.display = "none";
+
+  clearAudioRowStates();
+  return;
+}
+
+	
   // ✅ Read dropdown; empty string means "All Parshios"
   const sel = document.getElementById("parsha");
   const selVal = sel ? sel.value : null;
 
-  const isAll = (selVal === ""); // because <option value="">All Parshios</option>
+  //const isAll = (selVal === ""); // because <option value="">All Parshios</option>
 
   // If "All", don't try to index data by parsha name
   const shortItems = (!isAll && PARSHA_AUDIO && PARSHA_AUDIO[parsha]) ? PARSHA_AUDIO[parsha] : [];
   const longItems  = (!isAll && PARSHA_INDEPTH && PARSHA_INDEPTH[parsha]) ? PARSHA_INDEPTH[parsha] : [];
   const pdfItems   = (!isAll && PARSHA_PDFS && PARSHA_PDFS[parsha]) ? PARSHA_PDFS[parsha] : [];
 
-  setSectionVisible("secAudioShort", isAll ? countAllItems(PARSHA_AUDIO)   > 0 : shortItems.length > 0);
-  setSectionVisible("secAudioLong",  isAll ? countAllItems(PARSHA_INDEPTH) > 0 : longItems.length  > 0);
-  setSectionVisible("secPdfs",       isAll ? false : pdfItems.length > 0); // PDFs off for All (optional)
+//  setSectionVisible("secAudioShort", isAll ? countAllItems(PARSHA_AUDIO)   > 0 : shortItems.length > 0);
+//  setSectionVisible("secAudioLong",  isAll ? countAllItems(PARSHA_INDEPTH) > 0 : longItems.length  > 0);
+//  setSectionVisible("secPdfs",       isAll ? false : pdfItems.length > 0); // PDFs off for All (optional)
 
   renderAudioList("audioShortList", shortItems);
   renderAudioList("audioLongList",  longItems);
@@ -1091,19 +1105,20 @@ function updateParshaCounts() {
   let parshaList = [];   // unique parsha names
 
   function buildParshaDropdown() {
-    // Keep current selection if possible
-    const current = parshaSel.value;
+  const current = parshaSel.value;
 
-    parshaSel.innerHTML = `<option value="">All Parshios</option>`;
-    for (const p of parshaList) {
-      const opt = document.createElement("option");
-      opt.value = p;
-      opt.textContent = p;
-      parshaSel.appendChild(opt);
-    }
-    // restore if still valid
-    if ([...parshaSel.options].some(o => o.value === current)) parshaSel.value = current;
+  parshaSel.innerHTML = `<option value="" selected disabled>Pick a Parsha…</option>`;
+  for (const p of parshaList) {
+    const opt = document.createElement("option");
+    opt.value = p;
+    opt.textContent = p;
+    parshaSel.appendChild(opt);
   }
+
+  // restore if still valid
+  if ([...parshaSel.options].some(o => o.value === current)) parshaSel.value = current;
+}
+
 
 
 function escapeAttr(s){
@@ -1165,11 +1180,36 @@ function normParsha(s) {
 }
 
 function applyFilters() {
+
+	const selectedParsha = parshaSel.value;
+
+// No selection yet => show empty state
+if (!selectedParsha) {
+  render([]);
+  empty.style.display = "block";
+  empty.textContent = "Pick a Parsha to begin.";
+  count.textContent = "";
+  return;
+}
+
+	
   const term = q.value.trim().toLowerCase();
   const selectedParsha = parshaSel.value;
 
   let list = parshaVideos.slice();
 
+const selectedParsha = parshaSel.value;
+
+// If user hasn’t picked yet, show empty state and stop
+if (!selectedParsha) {
+  render([]); // clears grid + shows “empty”
+  count.textContent = "";
+  empty.style.display = "block";
+  empty.textContent = "Pick a Parsha to begin.";
+  return;
+}
+
+	
   // ✅ Filter by parsha selection
   if (selectedParsha) {
     const wanted = normParsha(selectedParsha);
@@ -1214,6 +1254,19 @@ function selectParshaFromURL() {
 
 
   function applyFilters() {
+
+	  const selectedParsha = parshaSel.value;
+
+// No selection yet => show empty state
+if (!selectedParsha) {
+  render([]);
+  empty.style.display = "block";
+  empty.textContent = "Pick a Parsha to begin.";
+  count.textContent = "";
+  return;
+}
+
+	  
     const term = q.value.trim().toLowerCase();
     const selectedParsha = parshaSel.value;
 
@@ -1719,6 +1772,7 @@ setTimeout(() => {
 </script>
 </body>
 </html>
+
 
 
 
