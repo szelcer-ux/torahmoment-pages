@@ -572,7 +572,7 @@
   // =============================
   const API_KEY    = "AIzaSyDbJnY2cPtyyVya7YNzxG0hCju7ikBUWsU";
   const CHANNEL_ID = "UCzx1pweEHKhsIfPkQZbRH4w";
-  const MAX_TO_FETCH = 5000;
+  const MAX_TO_FETCH = 25;
 
  const filtersBtn = document.getElementById("filtersBtn");
 const controlsWrap = document.getElementById("controlsWrap");
@@ -940,16 +940,12 @@ if (filtersBtn && controlsWrap) {
     return r.json();
   }
 
-  async function getUploadsPlaylistId() {
-    const url =
-      `https://www.googleapis.com/youtube/v3/channels` +
-      `?part=contentDetails&id=${encodeURIComponent(CHANNEL_ID)}` +
-      `&key=${encodeURIComponent(API_KEY)}`;
-    const j = await api(url);
-    const pid = j.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
-    if (!pid) throw new Error("Could not find uploads playlist id.");
-    return pid;
-  }
+  const UPLOADS_PLAYLIST_ID = "UUzx1pweEHKhsIfPkQZbRH4w";
+
+async function getUploadsPlaylistId() {
+  return UPLOADS_PLAYLIST_ID;
+}
+
 
   async function getAllVideoIdsFromPlaylist(playlistId) {
     let ids = [];
@@ -1329,6 +1325,35 @@ function countParshaAudio(data, parsha) {
     }
 
     try {
+		const cacheKey = `parshaVideos_v1_${MAX_TO_FETCH}`;
+const ttlMs = 60 * 60 * 1000; // 1 hour
+
+const cached = JSON.parse(localStorage.getItem(cacheKey) || "null");
+if (cached && Date.now() - cached.t < ttlMs && Array.isArray(cached.data)) {
+  parshaVideos = cached.data;
+  parshaList = Array.from(new Set(parshaVideos.map(v => v.parsha).filter(Boolean)))
+    .sort((a,b) => {
+      const ia = PARSHA_ORDER.indexOf(a), ib = PARSHA_ORDER.indexOf(b);
+      if (ia !== -1 && ib !== -1) return ia - ib;
+      if (ia !== -1) return -1;
+      if (ib !== -1) return 1;
+      return a.localeCompare(b);
+    });
+
+  updateParshaCounts();
+  buildParshaDropdown();
+  selectParshaFromURL();
+  setPageTitle();
+  updateURLFromSelection();
+  applyFilters();
+
+  const selectedParsha = parshaSel.value || getParshaFromURL() || "Noach";
+  renderParshaExtras(selectedParsha);
+
+  setStatus("Done (cached)", `Loaded ${parshaVideos.length} Parsha videos across ${parshaList.length} Parshios.`);
+  return;
+}
+
       setStatus("Starting…", "Finding uploads playlist");
       const uploadsPlaylistId = await getUploadsPlaylistId();
 
@@ -1344,6 +1369,8 @@ function countParshaAudio(data, parsha) {
         .map(v => ({ ...v, parsha: extractParsha(v.description) }))
         .filter(v => !!v.id);
 
+localStorage.setItem(cacheKey, JSON.stringify({ t: Date.now(), data: parshaVideos }));
+		
       parshaList = Array.from(new Set(parshaVideos.map(v => v.parsha).filter(Boolean)))
   .sort((a, b) => {
     const ia = PARSHA_ORDER.indexOf(a);
@@ -1692,6 +1719,7 @@ setTimeout(() => {
 </script>
 </body>
 </html>
+
 
 
 
