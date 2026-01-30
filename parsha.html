@@ -1335,8 +1335,8 @@ if (cached && Date.now() - cached.t < ttlMs && Array.isArray(cached.data)) {
   updateURLFromSelection();
   applyFilters();
 
-  const selectedParsha = parshaSel.value || getParshaFromURL() || "Noach";
-  renderParshaExtras(selectedParsha);
+ renderParshaExtras(parshaSel.value || "");
+
 
   setStatus("Done (cached)", `Loaded ${parshaVideos.length} Parsha videos across ${parshaList.length} Parshios.`);
   return;
@@ -1387,8 +1387,8 @@ updateURLFromSelection();    // ✅ new (normalizes URL)
 //renderLinks();
 applyFilters();
 //renderParshaExtras(selectedParsha);
-	const selectedParsha = parshaSel.value || getParshaFromURL() || "Noach";
-renderParshaExtras(selectedParsha);
+renderParshaExtras(parshaSel.value || "");
+
 	 
 
 //renderLinks();
@@ -1431,7 +1431,8 @@ renderParshaExtras(selectedParsha);
   setPageTitle();            // ✅ new
 
  // renderLinks();
-	  renderParshaExtras(selectedParsha);
+	renderParshaExtras("");
+
   applyFilters();
   q.focus();
 });
@@ -1707,6 +1708,7 @@ setTimeout(() => {
 </script>
 </body>
 </html>
+
 
 
 
