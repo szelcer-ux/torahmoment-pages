@@ -870,6 +870,11 @@ function updateParshaCounts() {
   window.__COUNTS_READY__ = window.__COUNTS_READY__ || {};
   window.__COUNTS_READY__.parsha = (videoTotal > 0);
 
+window.addEventListener("load", () => {
+  try { updateParshaCounts(); } catch {}
+});
+
+	
   console.log("✅ Parsha counts set:", { audio: b.parsha.audio, video: b.parsha.video });
 }
 
