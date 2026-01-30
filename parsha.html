@@ -1056,7 +1056,6 @@ function updateURLFromSelection() {
 function updateParshaCounts() {
   if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
 
-  // audio
   const countAllItems = (obj) => {
     if (!obj) return 0;
     if (Array.isArray(obj)) return obj.length;
@@ -1067,19 +1066,34 @@ function updateParshaCounts() {
   const audioLong  = countAllItems(typeof PARSHA_INDEPTH !== "undefined" ? PARSHA_INDEPTH :
                                    (typeof PARSHA_IN_DEPTH !== "undefined" ? PARSHA_IN_DEPTH : null));
 
-  // video (since parshaVideos is an array)
   const videoTotal = Array.isArray(parshaVideos) ? parshaVideos.length : 0;
 
   window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioShort + audioLong;
   window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
   window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
 
-  // ✅ NEW: signal to the GitHub Action that Parsha counts are ready
+  // ✅ Only mark READY when videoTotal is real
   window.__COUNTS_READY__ = window.__COUNTS_READY__ || {};
-  window.__COUNTS_READY__.parsha = true;
+  if (videoTotal > 0) {
+    window.__COUNTS_READY__.parsha = true;
+  } else {
+    window.__COUNTS_READY__.parsha = false;
+  }
 
-  console.log("✅ Updated Parsha counts:", window.SITE_COUNTS.allShiurim.breakdown.parsha);
+  console.log("✅ Updated Parsha counts:", window.SITE_COUNTS.allShiurim.breakdown.parsha,
+              "READY:", window.__COUNTS_READY__.parsha);
 }
+
+// ✅ Keep trying until videos are populated (headless often needs this)
+(function ensureParshaCountsReady() {
+  updateParshaCounts();
+
+  // If not ready yet, retry a few times
+  if (!window.__COUNTS_READY__?.parsha) {
+    setTimeout(ensureParshaCountsReady, 250); // 0.25s
+  }
+})();
+
 
 
 	
@@ -1745,6 +1759,7 @@ setTimeout(() => {
 </script>
 </body>
 </html>
+
 
 
 
