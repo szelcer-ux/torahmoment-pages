@@ -1715,11 +1715,23 @@ function updateAudioCounterFromState() {
     el.textContent = `${parsha}: ${total} audio shiurim`;
   }
 }
-
-
 ;
-
 </script>
+
+	<script>
+  // Headless-safe: ensure counts run at least once after the page finishes loading
+  window.addEventListener("load", () => {
+    try {
+      if (typeof updateParshaCounts === "function") {
+        updateParshaCounts();
+      }
+    } catch (e) {
+      console.warn("updateParshaCounts failed:", e);
+    }
+  });
+</script>
+
+	
 </body>
 </html>
 
