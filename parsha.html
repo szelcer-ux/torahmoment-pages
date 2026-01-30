@@ -843,6 +843,36 @@ function renderAudioList(containerId, items){
   `).join("");
 }
 
+function updateParshaCounts() {
+  if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
+
+  const countAllItems = (obj) => {
+    if (!obj) return 0;
+    if (Array.isArray(obj)) return obj.length;
+    return Object.values(obj).reduce((s, a) => s + (Array.isArray(a) ? a.length : 0), 0);
+  };
+
+  const audioShort = countAllItems(PARSHA_AUDIO);
+  const audioLong  = countAllItems(typeof PARSHA_INDEPTH !== "undefined" ? PARSHA_INDEPTH :
+                                   (typeof PARSHA_IN_DEPTH !== "undefined" ? PARSHA_IN_DEPTH : null));
+
+  let videoTotal = 0;
+  try {
+    videoTotal = (typeof parshaVideos !== "undefined" && Array.isArray(parshaVideos)) ? parshaVideos.length : 0;
+  } catch {
+    videoTotal = 0;
+  }
+
+  window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioShort + audioLong;
+  window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
+  window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
+
+  window.__COUNTS_READY__ = window.__COUNTS_READY__ || {};
+  window.__COUNTS_READY__.parsha = (videoTotal > 0);
+
+  console.log("✅ Updated Parsha counts:", window.SITE_COUNTS.allShiurim.breakdown.parsha,
+              "READY:", window.__COUNTS_READY__.parsha);
+}
 
 
 
@@ -1060,56 +1090,10 @@ function updateURLFromSelection() {
     return normalizeWs(m[1]);
   }
 
-function updateParshaCounts() {
-  if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
 
-  const countAllItems = (obj) => {
-    if (!obj) return 0;
-    if (Array.isArray(obj)) return obj.length;
-    return Object.values(obj).reduce((s, a) => s + (Array.isArray(a) ? a.length : 0), 0);
-  };
-
-  const audioShort = countAllItems(PARSHA_AUDIO);
-  const audioLong  = countAllItems(typeof PARSHA_INDEPTH !== "undefined" ? PARSHA_INDEPTH :
-                                   (typeof PARSHA_IN_DEPTH !== "undefined" ? PARSHA_IN_DEPTH : null));
-
- let videoTotal = 0;
-try {
-  videoTotal = (typeof parshaVideos !== "undefined" && Array.isArray(parshaVideos)) ? parshaVideos.length : 0;
-} catch {
-  // parshaVideos not initialized yet (temporal dead zone) — treat as 0 for now
-  videoTotal = 0;
-}
-
-
-  window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioShort + audioLong;
-  window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
-  window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
-
-  // ✅ Only mark READY when videoTotal is real
-  window.__COUNTS_READY__ = window.__COUNTS_READY__ || {};
-  if (videoTotal > 0) {
-    window.__COUNTS_READY__.parsha = true;
-  } else {
-    window.__COUNTS_READY__.parsha = false;
-  }
-
-  console.log("✅ Updated Parsha counts:", window.SITE_COUNTS.allShiurim.breakdown.parsha,
-              "READY:", window.__COUNTS_READY__.parsha);
-}
 
 // ✅ Keep trying until videos are populated (headless often needs this)
-(function ensureParshaCountsReady() {
-  try {
-    updateParshaCounts();
-  } catch (e) {
-    // If anything else is not ready yet, keep trying
-  }
-
-  if (!window.__COUNTS_READY__?.parsha) {
-    setTimeout(ensureParshaCountsReady, 250);
-  }
-})();
+)();
 
 
 
@@ -1732,36 +1716,7 @@ function updateAudioCounterFromState() {
     el.textContent = `${parsha}: ${total} audio shiurim`;
   }
 }
-(function updateParshaCounts() {
-  if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
-
-  const audioShortObj = safeGet("PARSHA_AUDIO");
-  const audioLongObj  = safeGet("PARSHA_INDEPTH") ?? safeGet("PARSHA_IN_DEPTH");
-
-  const videoObj =
-    safeGet("parshaVideos") ?? safeGet("PARSHA_VIDEOS") ?? safeGet("PARSHA_VIDEO");
-
-  const audioTotal =
-  countAllItems(PARSHA_AUDIO) +
-  countAllItems(PARSHA_INDEPTH); // (or PARSHA_IN_DEPTH if that's your real name)
-
-const videoTotal = parshaVideos.length; // ✅ since it's an array
-
-window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioTotal;
-window.SITE_COUNTS.allShiurim.breakdown.parsha.video = (Array.isArray(parshaVideos) ? parshaVideos.length : 0);
-
-
-
-  // optional overall total (won’t hurt even if others still null)
-  const b = window.SITE_COUNTS.allShiurim.breakdown;
-  const n = (x) => (typeof x === "number" ? x : 0);
-
-  window.SITE_COUNTS.allShiurim.total =
-    n(b.parsha.audio) + n(b.parsha.video) +
-    n(b.tefila.video) + n(b.halacha.audio) + n(b.oneMinute.audio);
-
-  window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
-})();
+)();
 
 setTimeout(() => {
   if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
@@ -1773,10 +1728,15 @@ setTimeout(() => {
   console.log("Set parsha video count:", window.SITE_COUNTS.allShiurim.breakdown.parsha.video);
 }, 0);
 
+(function ensureParshaCountsReady() {
+  try { updateParshaCounts(); } catch {}
+  if (!window.__COUNTS_READY__?.parsha) setTimeout(ensureParshaCountsReady, 250);
+})();
 
 </script>
 </body>
 </html>
+
 
 
 
