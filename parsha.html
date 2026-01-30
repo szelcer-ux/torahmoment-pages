@@ -844,35 +844,64 @@ function renderAudioList(containerId, items){
 }
 
 function updateParshaCounts() {
-  if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
+  // SITE_COUNTS must already exist
+  if (!window.SITE_COUNTS || !window.SITE_COUNTS.allShiurim) return;
 
-  const countAllItems = (obj) => {
+  const breakdown = window.SITE_COUNTS.allShiurim.breakdown;
+  if (!breakdown) return;
+
+  // ---- helpers ----
+  function countAllItems(obj) {
     if (!obj) return 0;
     if (Array.isArray(obj)) return obj.length;
-    return Object.values(obj).reduce((s, a) => s + (Array.isArray(a) ? a.length : 0), 0);
-  };
-
-  const audioShort = countAllItems(PARSHA_AUDIO);
-  const audioLong  = countAllItems(typeof PARSHA_INDEPTH !== "undefined" ? PARSHA_INDEPTH :
-                                   (typeof PARSHA_IN_DEPTH !== "undefined" ? PARSHA_IN_DEPTH : null));
-
-  let videoTotal = 0;
-  try {
-    videoTotal = (typeof parshaVideos !== "undefined" && Array.isArray(parshaVideos)) ? parshaVideos.length : 0;
-  } catch {
-    videoTotal = 0;
+    if (typeof obj === "object") {
+      return Object.values(obj).reduce(
+        (sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0),
+        0
+      );
+    }
+    return 0;
   }
 
-  window.SITE_COUNTS.allShiurim.breakdown.parsha.audio = audioShort + audioLong;
-  window.SITE_COUNTS.allShiurim.breakdown.parsha.video = videoTotal;
-  window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
+  // ---- audio ----
+  const audioShort = countAllItems(window.PARSHA_AUDIO);
+
+  const audioLong = countAllItems(
+    typeof window.PARSHA_INDEPTH !== "undefined"
+      ? window.PARSHA_INDEPTH
+      : (typeof window.PARSHA_IN_DEPTH !== "undefined"
+          ? window.PARSHA_IN_DEPTH
+          : null)
+  );
+
+  // ---- video ----
+  let videoTotal = 0;
+
+  // IMPORTANT: guard against TDZ / early access
+  if (typeof window.parshaVideos !== "undefined" && Array.isArray(window.parshaVideos)) {
+    videoTotal = window.parshaVideos.length;
+  }
+
+  // ---- write counts ----
+  breakdown.parsha.audio = audioShort + audioLong;
+  breakdown.parsha.video = videoTotal;
+
+  window.SITE_COUNTS.allShiurim.updated =
+    new Date().toISOString().slice(0, 10);
+
+  // ---- expose deterministic flags for the GitHub Action ----
+  window.__PARSHAVIDEOS_LEN__ = videoTotal;
 
   window.__COUNTS_READY__ = window.__COUNTS_READY__ || {};
   window.__COUNTS_READY__.parsha = (videoTotal > 0);
 
-  console.log("✅ Updated Parsha counts:", window.SITE_COUNTS.allShiurim.breakdown.parsha,
-              "READY:", window.__COUNTS_READY__.parsha);
+  console.log(
+    "✅ Parsha counts set:",
+    { audio: breakdown.parsha.audio, video: breakdown.parsha.video },
+    "READY:", window.__COUNTS_READY__.parsha
+  );
 }
+
 
 
 
@@ -1728,6 +1757,7 @@ setTimeout(() => {
 </script>
 </body>
 </html>
+
 
 
 
