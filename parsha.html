@@ -1407,6 +1407,7 @@ if (fromUrl) {
         .filter(v => isParshaVideo(v.description))
         .map(v => ({ ...v, parsha: extractParsha(v.description) }))
         .filter(v => !!v.id);
+updateParshaCounts();
 
 localStorage.setItem(cacheKey, JSON.stringify({ t: Date.now(), data: parshaVideos }));
 		
