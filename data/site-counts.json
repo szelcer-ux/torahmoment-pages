@@ -10,7 +10,8 @@
         "video": 20
       },
       "halacha": {
-        "audio": null
+        "audio": null,
+        "totalAll": null
       },
       "oneMinute": {
         "audio": 184
