@@ -114,8 +114,11 @@ async function waitForReadyFlag(page) {
 }
 
 async function readHalachaTotalAllFromDom(page) {
-  // Wait a bit for your render() to run and set the attribute
-  await page.waitForSelector("#halachaTotalAll[data-total]", { timeout: 20000 });
+  // Wait for it to exist in the DOM (it is hidden, so don't wait for "visible")
+  await page.waitForSelector("#halachaTotalAll[data-total]", {
+    timeout: 20000,
+    state: "attached",
+  });
 
   const n = await page.locator("#halachaTotalAll").evaluate((el) => {
     const raw = el.getAttribute("data-total") || el.dataset.total || "0";
@@ -128,6 +131,7 @@ async function readHalachaTotalAllFromDom(page) {
 
   return n;
 }
+
 
 (async function main() {
   const server = await startServer();
