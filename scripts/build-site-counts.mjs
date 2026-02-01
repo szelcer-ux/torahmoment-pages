@@ -20,8 +20,10 @@ async function countParshaVideosFromYouTube(apiKey) {
 
     const res = await fetch(url);
     if (!res.ok) {
-      throw new Error(`YouTube API error ${res.status}`);
-    }
+  const body = await res.text().catch(() => "");
+  throw new Error(`YouTube API error ${res.status}: ${body.slice(0, 300)}`);
+}
+
 
     const data = await res.json();
 
