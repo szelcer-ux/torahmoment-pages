@@ -28,7 +28,7 @@ jobs:
           node-version: "20"
 
       - name: Install Playwright
-        run: |
+        run: | 
           npm init -y
           npm install -D playwright
           npx playwright install --with-deps chromium
