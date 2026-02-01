@@ -943,15 +943,19 @@ wireYouTubeRows();
 wireNoteRows();
 enableMobileTitleExpand();
 
+<span id="halachaTotalAll" data-total="0" hidden></span>
 
-    document.getElementById("halachaTotalAll")?.setAttribute("data-total", String(totalAll));
-  
+    
 
       if (!q) {
         resultChip.textContent = `Showing all (${totalAll} item${totalAll === 1 ? "" : "s"})`;
       } else {
         resultChip.textContent = `Matches: ${totalShown}`;
       }
+
+      document.getElementById("halachaTotalAll")?.setAttribute("data-total", String(totalAll));
+  document.querySelector("#halachaTotalAll")?.setAttribute("data-total", String(totalAll));
+
     }
 
 function tmFmtTime(sec){
