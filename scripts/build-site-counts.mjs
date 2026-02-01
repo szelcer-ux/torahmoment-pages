@@ -2,9 +2,6 @@ import { writeFileSync } from "node:fs";
 import http from "node:http";
 import { chromium } from "playwright";
 
-/**
- * Count Parsha videos from YouTube playlist items by matching description text.
- */
 async function countParshaVideosFromYouTube(apiKey) {
   const PLAYLIST_ID = "UUzx1pweEHKhsIfPkQZbRH4w";
   const SEARCH = "dvar torah parshas";
@@ -91,11 +88,9 @@ function safeNum(x) {
   return typeof x === "number" && Number.isFinite(x) ? x : 0;
 }
 
-/**
- * Wait for per-page ready flags (best-effort; won’t hang forever).
- * Your pages can set window.__COUNTS_READY__ = { halacha:true, ... }.
- */
 async function waitForReadyFlag(page) {
+  // ✅ Wait for per-page ready flags (best-effort)
+  // Note: halacha.html does NOT have this yet, so we skip waiting for it.
   try {
     await page.waitForFunction(() => {
       const p = location.pathname.toLowerCase();
@@ -106,9 +101,7 @@ async function waitForReadyFlag(page) {
       if (p.includes("tefilah")) {
         return window.__COUNTS_READY__?.tefila === true;
       }
-      if (p.includes("halacha")) {
-        return window.__COUNTS_READY__?.halacha === true;
-      }
+      // halacha: don't block
       if (p.includes("one-minute")) {
         return window.__COUNTS_READY__?.oneMinute === true;
       }
@@ -116,36 +109,24 @@ async function waitForReadyFlag(page) {
       return true;
     }, { timeout: 20000 });
   } catch {
-    // Not wired yet or slow; proceed with whatever is present.
+    // proceed
   }
 }
 
-/**
- * Read halacha totalAll in a robust way:
- * 1) Prefer window.SITE_COUNTS.allShiurim.breakdown.halacha.totalAll
- * 2) Fallback to window.__HALACHA_TOTALALL__
- * 3) Fallback to DOM: #halachaTotalAll[data-total]
- */
-async function readHalachaTotalAll(page) {
-  return await page.evaluate(() => {
-    // 1) Preferred (your existing pattern)
-    const v1 = window.SITE_COUNTS?.allShiurim?.breakdown?.halacha?.totalAll;
-    if (typeof v1 === "number" && Number.isFinite(v1)) return v1;
+async function readHalachaTotalAllFromDom(page) {
+  // Wait a bit for your render() to run and set the attribute
+  await page.waitForSelector("#halachaTotalAll[data-total]", { timeout: 20000 });
 
-    // 2) Alternate global
-    const v2 = window.__HALACHA_TOTALALL__;
-    if (typeof v2 === "number" && Number.isFinite(v2)) return v2;
-
-    // 3) DOM fallback
-    const el = document.querySelector("#halachaTotalAll");
-    if (el) {
-      const raw = el.getAttribute("data-total") || el.dataset.total;
-      const n = Number(raw);
-      if (Number.isFinite(n)) return n;
-    }
-
-    return null;
+  const n = await page.locator("#halachaTotalAll").evaluate((el) => {
+    const raw = el.getAttribute("data-total") || el.dataset.total || "0";
+    return Number(raw);
   });
+
+  if (!Number.isFinite(n) || n < 0) {
+    throw new Error(`Invalid halacha totalAll from DOM: ${n}`);
+  }
+
+  return n;
 }
 
 (async function main() {
@@ -154,11 +135,11 @@ async function readHalachaTotalAll(page) {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
-  // Collect breakdown values from pages that set window.SITE_COUNTS
+  // Collect breakdown values
   const breakdown = {
     parsha: { audio: null, video: null },
     tefila: { video: null },
-    halacha: { audio: null, totalAll: null },   // ✅ added totalAll
+    halacha: { totalAll: null },  // ✅ now halacha is totalAll-based
     oneMinute: { audio: null },
   };
 
@@ -168,21 +149,21 @@ async function readHalachaTotalAll(page) {
     try {
       await page.goto(url, { waitUntil: "load", timeout: 60000 });
 
-      // ✅ Wait until the page says counts are ready
+      // ✅ Wait until the page says counts are ready (except halacha)
       await waitForReadyFlag(page);
 
-      // ✅ Snapshot everything we care about (helps debugging in Action logs)
+      // ✅ Debug snapshot
       const snap = await page.evaluate(() => ({
         pathname: location.pathname,
         ready: window.__COUNTS_READY__ || null,
         breakdown: window.SITE_COUNTS?.allShiurim?.breakdown || null,
+        halachaDomTotal: document.querySelector("#halachaTotalAll")?.getAttribute("data-total") ?? null,
       }));
 
       console.log("SNAP", path, JSON.stringify(snap));
 
       const b = snap.breakdown;
 
-      // Existing wiring
       if (b?.parsha) {
         if (typeof b.parsha.audio === "number") breakdown.parsha.audio = b.parsha.audio;
         if (typeof b.parsha.video === "number") breakdown.parsha.video = b.parsha.video;
@@ -192,20 +173,13 @@ async function readHalachaTotalAll(page) {
         breakdown.tefila.video = b.tefila.video;
       }
 
-      if (b?.halacha) {
-        if (typeof b.halacha.audio === "number") breakdown.halacha.audio = b.halacha.audio;
-        // ✅ If you choose to expose totalAll via SITE_COUNTS on the page, this picks it up automatically:
-        if (typeof b.halacha.totalAll === "number") breakdown.halacha.totalAll = b.halacha.totalAll;
-      }
-
       if (b?.oneMinute && typeof b.oneMinute.audio === "number") {
         breakdown.oneMinute.audio = b.oneMinute.audio;
       }
 
-      // ✅ Extra: if we're on halacha.html and totalAll wasn't found above, try robust readers
-      if (path.includes("halacha") && breakdown.halacha.totalAll == null) {
-        const totalAll = await readHalachaTotalAll(page);
-        if (typeof totalAll === "number") breakdown.halacha.totalAll = totalAll;
+      // ✅ Halacha: read from DOM export
+      if (path.includes("halacha")) {
+        breakdown.halacha.totalAll = await readHalachaTotalAllFromDom(page);
         console.log("HALACHA totalAll:", breakdown.halacha.totalAll);
       }
 
@@ -228,12 +202,11 @@ async function readHalachaTotalAll(page) {
   await browser.close();
   server.close();
 
-  // ✅ Total: keep your original “allShiurim total” calculation unchanged
-  // If you want halacha.totalAll to REPLACE halacha.audio in the total, tell me and I’ll adjust.
+  // ✅ Total now uses halacha.totalAll (since that’s what you care about)
   const total =
     safeNum(breakdown.parsha.audio) + safeNum(breakdown.parsha.video) +
     safeNum(breakdown.tefila.video) +
-    safeNum(breakdown.halacha.audio) +
+    safeNum(breakdown.halacha.totalAll) +
     safeNum(breakdown.oneMinute.audio);
 
   const out = {
