@@ -34,7 +34,10 @@ jobs:
           npx playwright install --with-deps chromium
 
       - name: Build site counts JSON
-        run: node scripts/build-site-counts.mjs
+  env:
+    YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+  run: node scripts/build-site-counts.mjs
+
 
       - name: Commit site-counts.json if changed
         run: |
