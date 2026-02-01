@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 225,
+    "total": 438,
     "breakdown": {
       "parsha": {
         "audio": 21,
-        "video": 0
+        "video": 213
       },
       "tefila": {
         "video": 20
@@ -16,6 +16,6 @@
         "audio": 184
       }
     },
-    "updated": "2026-01-30"
+    "updated": "2026-02-01"
   }
 }
