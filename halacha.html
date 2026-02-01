@@ -797,6 +797,9 @@ if (type === "youtube") {
 }
 
 
+      <span id="halachaTotalAll" data-total="0" hidden></span>
+
+
 
       function openMatchingSections(){
   document.querySelectorAll(".item").forEach(item => {
@@ -940,6 +943,9 @@ wireYouTubeRows();
 wireNoteRows();
 enableMobileTitleExpand();
 
+
+    document.getElementById("halachaTotalAll")?.setAttribute("data-total", String(totalAll));
+  
 
       if (!q) {
         resultChip.textContent = `Showing all (${totalAll} item${totalAll === 1 ? "" : "s"})`;
