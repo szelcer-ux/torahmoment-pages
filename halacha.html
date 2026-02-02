@@ -883,30 +883,31 @@ const isCountable = (i) => i?.type === "audio" || i?.type === "youtube";
      //   totalAll += totalCat;
 
         // With subcategories
-     if (Array.isArray(cat.subcategories)) {
+if (Array.isArray(cat.subcategories)) {
 
-  let totalCat = 0; // ✅ recreate totalCat here
+  let totalCat = 0;
 
   const subHtml = cat.subcategories.map(sub => {
     const allItems = sub.items || [];
+
+    // ✅ what we SHOW (includes notes)
+    const displayFiltered = q ? allItems.filter(i => itemMatches(i, q)) : allItems;
+
+    // ✅ what we COUNT (audio + youtube only)
     const countableAll = allItems.filter(isCountable);
+    const countableFiltered = q ? countableAll.filter(i => itemMatches(i, q)) : countableAll;
 
-    totalCat += countableAll.length; // ✅ accumulate here
-
-    const filtered = q
-      ? countableAll.filter(i => itemMatches(i, q))
-      : countableAll;
-
-    totalShown += filtered.length;
+    totalCat += countableAll.length;
+    totalShown += countableFiltered.length;
 
     return `
       <details class="subcat" open>
         <summary>
           <span>${escapeHtml(sub.name)}</span>
-          <span class="count">${filtered.length}/${countableAll.length}</span>
+          <span class="count">${countableFiltered.length}/${countableAll.length}</span>
         </summary>
         <div class="items">
-          ${filtered.length ? filtered.map(renderItem).join("") : renderEmpty()}
+          ${displayFiltered.length ? displayFiltered.map(renderItem).join("") : renderEmpty()}
         </div>
       </details>
     `;
@@ -932,31 +933,34 @@ const isCountable = (i) => i?.type === "audio" || i?.type === "youtube";
 }
 
 
+
         // Flat category
-       const allItems = cat.items || [];
+const allItems = cat.items || [];
+
+// ✅ what we SHOW (includes notes)
+const displayFiltered = q ? allItems.filter(i => itemMatches(i, q)) : allItems;
+
+// ✅ what we COUNT (audio + youtube only)
 const countableAll = allItems.filter(isCountable);
+const countableFiltered = q ? countableAll.filter(i => itemMatches(i, q)) : countableAll;
 
-const filtered = q
-  ? countableAll.filter(i => itemMatches(i, q))
-  : countableAll;
+totalShown += countableFiltered.length;
+totalAll   += countableAll.length;
 
-totalShown += filtered.length;
-totalAll += countableAll.length;
+return `
+  <div class="card">
+    <details class="category" open>
+      <summary>
+        <div class="cat-title">${escapeHtml(cat.category)}</div>
+        <div class="count">${countableFiltered.length}/${countableAll.length}</div>
+      </summary>
+      <div class="content">
+        ${displayFiltered.length ? displayFiltered.map(renderItem).join("") : renderEmpty()}
+      </div>
+    </details>
+  </div>
+`;
 
-
-        return `
-          <div class="card">
-            <details class="category" open>
-              <summary>
-                <div class="cat-title">${escapeHtml(cat.category)}</div>
-                <div class="count">${filtered.length}/${allItems.length}</div>
-              </summary>
-              <div class="content">
-                ${filtered.length ? filtered.map(renderItem).join("") : renderEmpty()}
-              </div>
-            </details>
-          </div>
-        `;
       }).join("");
 
      app.innerHTML = html;
