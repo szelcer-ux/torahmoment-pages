@@ -1383,7 +1383,7 @@ if (cached && Date.now() - cached.t < ttlMs && Array.isArray(cached.data)) {
 // 1) URL wins if ?parsha= is present
 const fromUrl = getParshaFromURL();
 if (fromUrl) {
-1=1 //  selectParshaFromURL();
+   selectParshaFromURL();
 } else {
   // 2) Otherwise, try to default to this week's parsha
   try {
