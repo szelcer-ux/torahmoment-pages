@@ -734,7 +734,7 @@ async function setDefaultParshaOnEntry() {
 
   try {
     const wk = await getThisWeeksParsha(); // your Hebcal-based function
-    const opt = [...parshaSel.options].find(o => normParsha(o.value) === normParsha(wk));
+    const opt = [...parshaSel.options].find(o => normalizeParshaName(o.value) === normalizeParshaName(wk));
     if (opt) parshaSel.value = opt.value;
   } catch (e) {
     // leave placeholder selected
@@ -1202,6 +1202,39 @@ function normParsha(s) {
     .replace(/\s+/g, " ");
 }
 
+const PARSHA_ALIASES = {
+  // Yisro / Yitro
+  "yitro": "yisro",
+
+  // Beha'aloscha variations
+  "beha'aloscha": "behaaloscha",
+  "behaalotcha": "behaaloscha",
+  "beha aloscha": "behaaloscha",
+
+  // Tetzaveh variations
+  "tetzave": "tetzaveh",
+
+  // Ki Seitzei variations
+  "ki seitzei": "ki seitzei",
+  "ki seitze": "ki seitzei",
+  "ki seitzei": "ki seitzei",
+
+  // Vezos / V’zos variations
+  "vezos haberacha": "vezos haberacha",
+  "vezot haberacha": "vezos haberacha",
+  "vzos haberacha": "vezos haberacha",
+
+  // Chukas / Chukat
+  "chukat": "chukas",
+
+  // Metzora / Metzora
+  "metzorah": "metzora"
+};
+
+function normalizeParshaName(name) {
+  const n = normParsha(name); // already lowercase + cleaned
+  return PARSHA_ALIASES[n] || n;
+}
 
 
 
@@ -1395,7 +1428,7 @@ if (fromUrl) {
 
     // Match against dropdown options (normalized)
     const opt = [...parshaSel.options].find(
-      o => normParsha(o.value) === normParsha(wk)
+      o => normalizeParshaName(o.value) === normalizeParshaName(wk)
     );
 
     if (opt) {
