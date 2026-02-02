@@ -883,48 +883,54 @@ const isCountable = (i) => i?.type === "audio" || i?.type === "youtube";
      //   totalAll += totalCat;
 
         // With subcategories
-        if (Array.isArray(cat.subcategories)) {
-          const subHtml = cat.subcategories.map(sub => {
-            const allItems = sub.items || [];
-const countableAll = allItems.filter(isCountable);
+     if (Array.isArray(cat.subcategories)) {
 
-const filtered = q
-  ? countableAll.filter(i => itemMatches(i, q))
-  : countableAll;
+  let totalCat = 0; // ✅ recreate totalCat here
 
-totalShown += filtered.length;
-totalAll += countableAll.length;
+  const subHtml = cat.subcategories.map(sub => {
+    const allItems = sub.items || [];
+    const countableAll = allItems.filter(isCountable);
 
+    totalCat += countableAll.length; // ✅ accumulate here
 
-            return `
-              <details class="subcat" open>
-                <summary>
-                  <span>${escapeHtml(sub.name)}</span>
-                  <span class="count">${filtered.length}/${allItems.length}</span>
-                </summary>
-                <div class="items">
-                  ${filtered.length ? filtered.map(renderItem).join("") : renderEmpty()}
-                </div>
-              </details>
-            `;
-          }).join("");
+    const filtered = q
+      ? countableAll.filter(i => itemMatches(i, q))
+      : countableAll;
 
-          return `
-            <div class="card">
-              <details class="category" open>
-                <summary>
-                  <div class="cat-title">${escapeHtml(cat.category)}</div>
-                  <div class="count">${q ? "matches" : "total"}: ${q ? "" : ""}${totalCat}</div>
-                </summary>
-                <div class="content">
-                  <div class="subgrid">
-                    ${subHtml}
-                  </div>
-                </div>
-              </details>
-            </div>
-          `;
-        }
+    totalShown += filtered.length;
+
+    return `
+      <details class="subcat" open>
+        <summary>
+          <span>${escapeHtml(sub.name)}</span>
+          <span class="count">${filtered.length}/${countableAll.length}</span>
+        </summary>
+        <div class="items">
+          ${filtered.length ? filtered.map(renderItem).join("") : renderEmpty()}
+        </div>
+      </details>
+    `;
+  }).join("");
+
+  totalAll += totalCat;
+
+  return `
+    <div class="card">
+      <details class="category" open>
+        <summary>
+          <div class="cat-title">${escapeHtml(cat.category)}</div>
+          <div class="count">${q ? "matches" : "total"}: ${totalCat}</div>
+        </summary>
+        <div class="content">
+          <div class="subgrid">
+            ${subHtml}
+          </div>
+        </div>
+      </details>
+    </div>
+  `;
+}
+
 
         // Flat category
        const allItems = cat.items || [];
