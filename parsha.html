@@ -631,6 +631,9 @@ const PARSHA_ORDER = [
   "Haazinu","Vezos Haberacha"
 ];
 
+// Start with all Parshios in Torah order so the dropdown exists immediately
+parshaList = PARSHA_ORDER.slice();
+buildParshaDropdown();
 
   // =============================
   // Helpers
@@ -723,6 +726,23 @@ const PARSHA_INDEPTH = {
   // ...
 };
 
+async function setDefaultParshaOnEntry() {
+  // URL wins (if you support ?parsha=)
+  const fromUrl = getParshaFromURL();
+  if (fromUrl) {
+    selectParshaFromURL();
+    return;
+  }
+
+  try {
+    const wk = await getThisWeeksParsha(); // your Hebcal-based function
+    const opt = [...parshaSel.options].find(o => normParsha(o.value) === normParsha(wk));
+    if (opt) parshaSel.value = opt.value;
+  } catch (e) {
+    // leave placeholder selected
+    console.warn("Could not set default parsha:", e);
+  }
+}
 
 
 	function getCurrentParsha() {
@@ -1358,12 +1378,12 @@ if (cached && Date.now() - cached.t < ttlMs && Array.isArray(cached.data)) {
     });
 
   updateParshaCounts();
- buildParshaDropdown();
+// buildParshaDropdown();
 
 // 1) URL wins if ?parsha= is present
 const fromUrl = getParshaFromURL();
 if (fromUrl) {
-  selectParshaFromURL();
+1=1 //  selectParshaFromURL();
 } else {
   // 2) Otherwise, try to default to this week's parsha
   try {
@@ -1490,7 +1510,18 @@ renderParshaExtras(parshaSel.value || "");
 });
 
 
-  load();
+ (async () => {
+  await setDefaultParshaOnEntry();   // <-- picks this week's parsha (if possible)
+
+  // reflect it immediately on first entry (no refresh needed)
+  updateURLFromSelection();
+  setPageTitle();
+  renderParshaExtras(parshaSel.value || "");
+  applyFilters(); // will show empty/loading until videos arrive
+
+  load(); // your existing YouTube fetch
+})();
+
   
   /* =========================
    INLINE AUDIO PLAYER
