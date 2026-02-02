@@ -875,17 +875,26 @@ let lastSearchWasEmpty = true;
       const q = (searchInput.value || "").trim().toLowerCase();
       let totalShown = 0;
       let totalAll = 0;
+      // count only real shiurim
+const isCountable = (i) => i?.type === "audio" || i?.type === "youtube";
 
       const html = PAGE_DATA.map(cat => {
-        const totalCat = countItemsInCategory(cat);
-        totalAll += totalCat;
+      //  const totalCat = countItemsInCategory(cat);
+     //   totalAll += totalCat;
 
         // With subcategories
         if (Array.isArray(cat.subcategories)) {
           const subHtml = cat.subcategories.map(sub => {
             const allItems = sub.items || [];
-            const filtered = q ? allItems.filter(i => itemMatches(i, q)) : allItems;
-            totalShown += filtered.length;
+const countableAll = allItems.filter(isCountable);
+
+const filtered = q
+  ? countableAll.filter(i => itemMatches(i, q))
+  : countableAll;
+
+totalShown += filtered.length;
+totalAll += countableAll.length;
+
 
             return `
               <details class="subcat" open>
@@ -918,9 +927,16 @@ let lastSearchWasEmpty = true;
         }
 
         // Flat category
-        const allItems = cat.items || [];
-        const filtered = q ? allItems.filter(i => itemMatches(i, q)) : allItems;
-        totalShown += filtered.length;
+       const allItems = cat.items || [];
+const countableAll = allItems.filter(isCountable);
+
+const filtered = q
+  ? countableAll.filter(i => itemMatches(i, q))
+  : countableAll;
+
+totalShown += filtered.length;
+totalAll += countableAll.length;
+
 
         return `
           <div class="card">
