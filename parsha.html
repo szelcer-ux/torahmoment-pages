@@ -631,9 +631,7 @@ const PARSHA_ORDER = [
   "Haazinu","Vezos Haberacha"
 ];
 
-// Start with all Parshios in Torah order so the dropdown exists immediately
-parshaList = PARSHA_ORDER.slice();
-buildParshaDropdown();
+
 
   // =============================
   // Helpers
@@ -1117,11 +1115,17 @@ function updateURLFromSelection() {
   }
 
 
-  // =============================
-  // State + UI
-  // =============================
-  let parshaVideos = []; // all parsha videos
-  let parshaList = [];   // unique parsha names
+ 
+ // =============================
+// State + UI
+// =============================
+let parshaVideos = []; // all parsha videos
+let parshaList = [];   // unique parsha names
+
+// ✅ populate dropdown immediately (before load fetches videos)
+parshaList = PARSHA_ORDER.slice();
+buildParshaDropdown();
+
 
   function buildParshaDropdown() {
   const current = parshaSel.value;
