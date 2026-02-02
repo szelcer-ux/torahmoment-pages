@@ -1497,7 +1497,9 @@ renderParshaExtras(parshaSel.value || "");
   clearBtn.addEventListener("click", () => {
   q.value = "";
   sort.value = "new";
-  parshaSel.value = "";
+  //parshaSel.value = "";
+	  parshaSel.selectedIndex = 0; // back to "Pick a Parsha…"
+
 
   updateURLFromSelection();  // ✅ new
   setPageTitle();            // ✅ new
