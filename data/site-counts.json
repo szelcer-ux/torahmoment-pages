@@ -1,9 +1,9 @@
 {
   "allShiurim": {
-    "total": 484,
+    "total": 505,
     "breakdown": {
       "parsha": {
-        "audio": null,
+        "audio": 21,
         "video": 213
       },
       "tefila": {
