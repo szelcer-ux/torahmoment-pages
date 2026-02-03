@@ -48,6 +48,35 @@ const PAGES = [
   "/one-minute-audio.html",
 ];
 
+function parseMmDdYyyy(s) {
+  if (!s) return null;
+  const m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (!m) return null;
+  return new Date(Date.UTC(m[3], m[1]-1, m[2])).toISOString();
+}
+
+function flattenHalacha(data){
+  const out = [];
+  for (const cat of data || []) {
+    for (const sub of cat.subcategories || []) {
+      for (const it of sub.items || []) {
+        const date = parseMmDdYyyy(it.note);
+        if (!date) continue;
+
+        out.push({
+          type: "audio",
+          program: "Halacha",
+          title: it.title,
+          url: it.url,
+          date
+        });
+      }
+    }
+  }
+  return out;
+}
+
+
 // Simple static file server for the repo root
 function startServer() {
   return new Promise((resolve) => {
@@ -203,6 +232,47 @@ async function readHalachaTotalAllFromDom(page) {
     console.log("YouTube Parsha video count:", ytCount);
   }
 
+  // ---- BUILD RECENT LIST ----
+let recentHalacha = [];
+let recentOneMin = [];
+let recentParsha = [];
+
+try {
+  // Halacha (from PAGE_DATA)
+  await page.goto(`http://127.0.0.1:${PORT}/halacha.html`, { waitUntil: "load" });
+  const halachaData = await page.evaluate(() => window.HALACHA_DATA);
+  recentHalacha = flattenHalacha(halachaData);
+} catch {}
+
+try {
+  // One-Minute JSON
+  const res = await fetch(`http://127.0.0.1:${PORT}/data.json`);
+  const oneMin = await res.json();
+
+  const items = Array.isArray(oneMin) ? oneMin : (oneMin.items || []);
+  recentOneMin = items.map(x => ({
+    type: "audio",
+    program: "One-Minute",
+    title: x.title,
+    url: x.url || x.mp3,
+    date: x.date
+  })).filter(x => x.url && x.date);
+} catch {}
+
+try {
+  // Parsha videos (server-side only)
+  const apiKey = process.env.YOUTUBE_API_KEY;
+  if (apiKey) {
+    recentParsha = await getRecentParshaVideosFromYouTube(apiKey, 5);
+  }
+} catch {}
+
+const recent = [...recentHalacha, ...recentOneMin, ...recentParsha]
+  .filter(x => x.date)
+  .sort((a,b)=> new Date(b.date) - new Date(a.date))
+  .slice(0,5);
+
+  
   await browser.close();
   server.close();
 
@@ -214,12 +284,14 @@ async function readHalachaTotalAllFromDom(page) {
     safeNum(breakdown.oneMinute.audio);
 
   const out = {
-    allShiurim: {
-      total,
-      breakdown,
-      updated: new Date().toISOString().slice(0, 10),
-    },
-  };
+  allShiurim: {
+    total,
+    breakdown,
+    updated: new Date().toISOString().slice(0, 10),
+  },
+  recent
+};
+
 
   writeFileSync("./data/site-counts.json", JSON.stringify(out, null, 2) + "\n", "utf8");
   console.log("Wrote data/site-counts.json:", out.allShiurim);
