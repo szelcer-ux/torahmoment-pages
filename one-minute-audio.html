@@ -5,12 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>One minute audio לע&quot;נ הרב אברהם נתנאל צוקער ז&quot;ל</title>
 
-
 <style>
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#f6f7f9;margin:0;padding:18px;color:#111}
 .wrap{max-width:980px;margin:0 auto}
 h1{text-align:center;margin-bottom:4px}
 .subtitle{text-align:center;font-size:1.1rem;color:#555;margin-bottom:16px}
+
+/* ✅ Simple TorahMoment link under subtitle */
+.brand{
+  text-align:center;
+  margin-top:-10px;
+  margin-bottom:14px;
+  font-size:12px;
+  color:#888;
+}
+.brand a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px dotted #c7cbd1;
+}
+.brand a:hover{
+  color:#111;
+  border-bottom-color:#111;
+}
+
 .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0 14px}
 input{flex:1;min-width:240px;padding:10px 12px;border:1px solid #d0d5dd;border-radius:10px;font-size:16px}
 .pill{padding:8px 10px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;font-size:14px}
@@ -24,10 +42,19 @@ audio{width:100%}
 .meta{font-size:13px;color:#667085;margin-bottom:6px}
 .desc{font-size:16px}
 
- <script src="/data/site-counts.js"></script>
+/* ✅ Gentle “modern” feel without changing layout */
+.row{
+  transition: transform .06s ease, box-shadow .12s ease;
+}
+.row:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.08);
+}
+.row:active{
+  transform: scale(.99);
+}
 
-
- /* Compact mobile layout + tap-to-reveal speed buttons */
+/* Compact mobile layout + tap-to-reveal speed buttons */
 @media (max-width: 600px){
   body{padding:12px}
   .bar{gap:8px}
@@ -58,9 +85,7 @@ audio{width:100%}
 
   audio{margin-top:6px}
 }
-
 </style>
-
 </head>
 
 <body>
@@ -69,25 +94,23 @@ audio{width:100%}
 <h1>One minute audio</h1>
 <div class="subtitle">לע״נ הרב אברהם נתנאל צוקער זצ״ל</div>
 
+<!-- ✅ Step 6: simple branded link -->
+<div class="brand">
+  <a href="https://torahmoment.com" target="_blank" rel="noopener">TorahMoment.com</a>
+</div>
+
 <div class="bar">
   <input id="q" placeholder="Search…" />
-
   <button class="pill" id="sortBtn">Latest ↓</button>
-
   <div class="pill" id="count">0 items</div>
-
- 
 </div>
-
-
 
 <div id="list"></div>
-
 </div>
 
+<!-- ✅ Keep this ONCE (and in the right place) -->
 <script src="/data/site-counts.js"></script>
 
- 
 <script>
 const DATA_URL = "./data.json";
 
@@ -106,8 +129,9 @@ function pauseAllExcept(current){
   });
 }
 
-  
-function esc(s){return (s||"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function esc(s){
+  return (s||"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))
+}
 
 function getSavedRate(){
   return Number(localStorage.getItem("rate") || "1");
@@ -116,6 +140,7 @@ function setSavedRate(r){
   localStorage.setItem("rate", String(r));
 }
 
+/* ✅ Sort uses precomputed _sortKey */
 function sortItems(){
   filtered.sort((a,b)=> sortLatestFirst ? (b._sortKey - a._sortKey) : (a._sortKey - b._sortKey));
 }
@@ -124,12 +149,12 @@ function render(){
   sortItems();
   list.innerHTML = "";
   count.textContent = filtered.length + " items";
- // ✅ Feed the site-wide counter (for the GitHub Action JSON build)
-if (window.SITE_COUNTS?.allShiurim?.breakdown) {
-  window.SITE_COUNTS.allShiurim.breakdown.oneMinute.audio = filtered.length;
-  window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
-}
 
+  // ✅ Feed the site-wide counter (for the GitHub Action JSON build)
+  if (window.SITE_COUNTS?.allShiurim?.breakdown) {
+    window.SITE_COUNTS.allShiurim.breakdown.oneMinute.audio = filtered.length;
+    window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
+  }
 
   const defaultRate = getSavedRate();
 
@@ -156,29 +181,30 @@ if (window.SITE_COUNTS?.allShiurim?.breakdown) {
 
     list.appendChild(row);
 
-row.addEventListener("click", (e) => {
-  // Don't toggle open/closed when clicking audio controls or speed buttons
-  if (e.target.closest("audio") || e.target.closest(".speedBtns")) return;
-  row.classList.toggle("isOpen");
-});
+    // Tap to open speed buttons (mobile), but don't interfere with audio controls
+    row.addEventListener("click", (e) => {
+      if (e.target.closest("audio") || e.target.closest(".speedBtns")) return;
+      row.classList.toggle("isOpen");
+    });
 
-    
     // apply default rate immediately to the audio element
     const audioEl = row.querySelector(`audio[data-audio-id="${it.id}"]`);
     audioEl.playbackRate = defaultRate;
-   audioEl.addEventListener("play", () => {
-  pauseAllExcept(audioEl);
 
-  // Open this row, close others (mobile UX)
-  document.querySelectorAll(".row.isOpen").forEach(r => {
-    if (r !== row) r.classList.remove("isOpen");
+    audioEl.addEventListener("play", () => {
+      pauseAllExcept(audioEl);
+
+      // Open this row, close others (mobile UX)
+      document.querySelectorAll(".row.isOpen").forEach(r => {
+        if (r !== row) r.classList.remove("isOpen");
+      });
+      row.classList.add("isOpen");
+
+      // ✅ Nice simple UX: keep the playing row in view
+      row.scrollIntoView({behavior:"smooth", block:"center"});
+    });
   });
-  row.classList.add("isOpen");
-});
 
-
-});
-    
   // one event handler for all speed buttons (event delegation)
   list.querySelectorAll(".speedBtns").forEach(box => {
     box.addEventListener("click", (e) => {
@@ -223,29 +249,24 @@ sortBtn.onclick = () => {
 
 q.oninput = applySearch;
 
-fetch(DATA_URL, { cache:"no-store" })
-.then(r=>r.json())
-.then(d=>{
+// ✅ Sort by JSON date field like "9/8/2024"
 function dateToKey(mdy){
-  // expects "M/D/YYYY" or "MM/DD/YYYY"
   const m = String(mdy || "").trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
   if (!m) return 0;
-
   const mm = Number(m[1]);
   const dd = Number(m[2]);
   const yyyy = Number(m[3]);
-
-  // Use UTC midnight so timezones don't shift the date
   return Date.UTC(yyyy, mm - 1, dd);
 }
 
-items = d.map((x, idx) => ({
-  ...x,
-  id: x.id ?? idx,
-  _sortKey: dateToKey(x.date)   // ✅ sort by JSON date field
-}));
-
-
+fetch(DATA_URL, { cache:"no-store" })
+.then(r=>r.json())
+.then(d=>{
+  items = d.map((x, idx) => ({
+    ...x,
+    id: x.id ?? idx,
+    _sortKey: dateToKey(x.date)
+  }));
 
   filtered = items.slice();
   sortLatestFirst = true;
@@ -253,11 +274,13 @@ items = d.map((x, idx) => ({
   render();
 });
 </script>
+
+<!-- (Optional) You can remove this whole block if you don't use ONE_MINUTE_AUDIO vars.
+     Your main render() already updates SITE_COUNTS based on filtered.length -->
 <script>
 (function updateOneMinuteCount() {
   if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
 
-  // Helper: counts arrays, or objects-of-arrays
   function countAllItems(obj) {
     if (!obj) return 0;
     if (Array.isArray(obj)) return obj.length;
@@ -267,8 +290,6 @@ items = d.map((x, idx) => ({
     return 0;
   }
 
-  // ✅ CHANGE THIS LINE to your real data variable name:
-  // Examples: ONE_MINUTE_AUDIO, ONE_MINUTE_LIST, AUDIO_ITEMS, etc.
   const oneMinuteItems =
     (typeof ONE_MINUTE_AUDIO !== "undefined") ? ONE_MINUTE_AUDIO :
     (typeof ONE_MINUTE_LIST !== "undefined") ? ONE_MINUTE_LIST :
@@ -283,7 +304,6 @@ items = d.map((x, idx) => ({
   console.log("✅ Updated One-Minute count:", total);
 })();
 </script>
-
 
 </body>
 </html>
