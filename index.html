@@ -7,92 +7,196 @@
   <meta name="description" content="Torah videos and audio shiurim by Shloimy Zelcer" />
 
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f7f7f8;
-      color: #111;
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#666;
+      --border:#e7e7ee;
+      --accent:#0d9488;
+      --shadow:0 6px 22px rgba(0,0,0,0.07);
+      --radius:16px;
     }
 
-    .wrap {
-      max-width: 900px;
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .wrap{
+      max-width: 980px;
       margin: 0 auto;
       padding: 20px;
     }
 
-    h1 {
-      margin: 0 0 4px;
-      font-size: 1.6rem;
+    header{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 14px;
     }
 
-    .subtle {
-      color: #666;
+    h1{
+      margin:0 0 2px;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subtle{
+      color:var(--muted);
       font-size: 0.95rem;
+      line-height: 1.35;
     }
 
-    .card {
-      background: #fff;
-      border-radius: 16px;
+    .card{
+      background:var(--card);
+      border-radius: var(--radius);
       padding: 16px;
-      box-shadow: 0 6px 22px rgba(0,0,0,0.07);
+      box-shadow: var(--shadow);
       margin-top: 18px;
+      border: 1px solid rgba(0,0,0,0.02);
     }
 
-    .video-thumb {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
+    /* --- Stats row --- */
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .stat{
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 12px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+    }
+
+    .stat .label{
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+    }
+
+    .stat .value{
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .stat .hint{
+      margin-top: 4px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* --- Program cards --- */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .prog{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fbfbfd;
+      text-decoration:none;
+      color: var(--text);
+      transition: transform .08s ease, box-shadow .08s ease, border-color .08s ease;
+    }
+
+    .prog:hover{
+      transform: translateY(-1px);
+      border-color: rgba(13,148,136,0.35);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .icon{
+      width: 38px;
+      height: 38px;
       border-radius: 12px;
-      background: #000;
-      max-height: 280px;
+      background: rgba(13,148,136,0.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 auto;
+      font-size: 18px;
     }
 
-    .video-title {
-      margin-top: 10px;
-      font-weight: 600;
+    .prog h3{
+      margin: 0 0 3px;
       font-size: 1.05rem;
+      letter-spacing:-0.01em;
     }
 
-    .video-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
+    .prog .meta{
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.25;
     }
 
-    .watch {
-      margin-top: 6px;
-      color: #0b57d0;
-      font-size: 0.95rem;
+    .prog .counts{
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: #334155;
     }
 
-    .links {
-      display: grid;
-      gap: 14px;
-      
+    .prog .counts b{
+      font-weight: 700;
+      color: #0f172a;
     }
 
-    .nav-link {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 16px;
-      border-radius: 12px;
-      background: #f1f3ff; /* slightly lighter */
-      text-decoration: none;
-      color: #111;
-      font-weight: 500;
+    .prog .arrow{
+      margin-left:auto;
+      color:#64748b;
+      font-size: 18px;
+      padding-top: 2px;
     }
 
-    .nav-link span {
-      color: #555;
-      font-weight: normal;
+    .divider{
+      height:1px;
+      background:#e6e6ea;
+      margin: 22px 0;
     }
 
-    footer {
+    /* --- Recently Added link card --- */
+    .latestLink{
+      display:block;
+      padding:14px 16px;
+      border-radius:12px;
+      background:#eef6ff;
+      text-decoration:none;
+      color:#0b57d0;
+      font-weight:600;
+      text-align:center;
+      border: 1px solid rgba(11,87,208,0.12);
+    }
+    .latestLink:hover{
+      background:#e2eeff;
+    }
+
+    footer{
       margin-top: 30px;
-      text-align: center;
-      color: #777;
-      font-size: 0.9rem;
+      text-align:center;
+      color:#777;
+      font-size:0.9rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 820px){
+      header{ align-items:flex-start; flex-direction:column; }
+      .stats{ grid-template-columns: 1fr 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      .wrap{ padding: 16px; }
     }
   </style>
 </head>
@@ -100,136 +204,192 @@
 <body>
   <div class="wrap">
     <header>
-      <h1>TorahMoment</h1>
-      <div class="subtle">Shiurim by Shloimy Zelcer</div>
+      <div>
+        <h1>TorahMoment</h1>
+        <div class="subtle">Shiurim by Shloimy Zelcer</div>
+      </div>
     </header>
-    
-  
-<div class="tm-stat">
-  Total number of shiurim: <span id="allShiurimCount">—</span>
-</div>
 
-       <!-- Navigation -->
-    <section class="card">
-      
-      <div class="links">
-        <a class="nav-link" href="/parsha.html">
-          <div>Parsha</div>
-          <span>Videos · Audio · PDFs →</span>
-        </a>
+    <!-- Stats -->
+    <section class="stats" aria-label="Site stats">
+      <div class="stat">
+        <div class="label">Total shiurim</div>
+        <div class="value" id="statTotalShiurim">—</div>
+        <div class="hint">Across all programs</div>
+      </div>
 
-        <a class="nav-link" href="/halacha.html">
-          <div>Halacha/Hashkafa</div>
-          <span>Audio shiurim →</span>
-        </a>
+      <div class="stat">
+        <div class="label">Programs</div>
+        <div class="value" id="statPrograms">—</div>
+        <div class="hint">Parsha, Halacha, One-Minute, Tefila</div>
+      </div>
 
-        <a class="nav-link" href="/one-minute-audio.html">
-          <div>One-Minute Audio</div>
-          <span>Short daily ideas →</span>
-        </a>
-
-        <a class="nav-link" href="/tefilah.html">
-          <div>Biur Shemona Esrei</div>
-          <span>Video shiurim →</span>
-        </a>
-
-        <a class="nav-link" href="/torahprograms.html" style="background:#e9f7ef">
-
-  <div>Torah Programs</div>
-  <span>Learning initiatives & WhatsApp signups →</span>
-</a>
-
+      <div class="stat">
+        <div class="label">Last updated</div>
+        <div class="value" id="statUpdated">—</div>
+        <div class="hint">From site-counts.json</div>
       </div>
     </section>
-    <div style="height:1px;background:#e6e6ea;margin:26px 0"></div>
 
- <!-- Latest Video -->
+    <!-- Navigation (same destinations as your original) -->
     <section class="card">
-      <h2 style="margin-top:0">Recently added</h2>
-<div class="subtle">Latest video from the channel</div>
+      <div class="grid">
+        <a class="prog" href="/parsha.html">
+          <div class="icon">📖</div>
+          <div>
+            <h3>Parsha</h3>
+            <div class="meta">Videos · Audio · PDFs</div>
+            <div class="counts"><b data-site-count="parsha">—</b> items</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
 
+        <a class="prog" href="/halacha.html">
+          <div class="icon">📚</div>
+          <div>
+            <h3>Halacha / Hashkafa</h3>
+            <div class="meta">Audio shiurim</div>
+            <div class="counts"><b data-site-count="halacha">—</b> items</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
 
-      <a id="latestVideoLink" class="video-link" href="#" target="_blank">
-        <img id="latestVideoThumb" class="video-thumb" alt="" />
-        <div id="latestVideoTitle" class="video-title">
-          Loading latest video…
-        </div>
-      </a>
+        <a class="prog" href="/one-minute-audio.html">
+          <div class="icon">⏱️</div>
+          <div>
+            <h3>One-Minute Audio</h3>
+            <div class="meta">Short daily ideas</div>
+            <div class="counts"><b data-site-count="oneMinute">—</b> items</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
 
-      <div class="watch">Watch on YouTube →</div>
+        <a class="prog" href="/tefilah.html">
+          <div class="icon">🕍</div>
+          <div>
+            <h3>Biur Shemona Esrei</h3>
+            <div class="meta">Video shiurim</div>
+            <div class="counts"><b data-site-count="tefila">—</b> items</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="prog" href="/torahprograms.html" style="background:#eefaf3">
+          <div class="icon" style="background: rgba(34,197,94,0.12);">🤝</div>
+          <div>
+            <h3>Torah Programs</h3>
+            <div class="meta">Learning initiatives & WhatsApp signups</div>
+            <div class="counts"><b>Explore</b> →</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+      </div>
     </section>
+
+    <div class="divider"></div>
+
+    <!-- Recently Added (no API key; link to Parsha page) -->
+    <section class="card">
+      <h2 style="margin:0 0 6px;">Recently added</h2>
+      <div class="subtle" style="margin-bottom:12px;">
+        Latest Parsha video and newest shiurim
+      </div>
+
+      <a href="/parsha.html" class="latestLink">
+        ▶ Click here to view the latest content
+      </a>
+    </section>
+
     <footer>
       © <span id="yr"></span> TorahMoment.com
+      <div style="margin-top:6px; font-size:0.86rem;">
+        <a href="/dashboard.html" style="color:#0b57d0; text-decoration:none;">Stats</a>
+      </div>
     </footer>
   </div>
 
-  <!-- Latest video loader -->
   <script>
-    const API_KEY    = "AIzaSyDbJnY2cPtyyVya7YNzxG0hCju7ikBUWsU";
-  const CHANNEL_ID = "UCzx1pweEHKhsIfPkQZbRH4w";
+    document.getElementById("yr").textContent = new Date().getFullYear();
+  </script>
 
-    async function loadLatestVideo() {
+  <!-- Counts from /data/site-counts.json -->
+  <script>
+    function animateNumber(el, target, opts = {}) {
+      const duration = opts.duration ?? 650;
+      const start = 0;
+      const t0 = performance.now();
+
+      function tick(now) {
+        const p = Math.min(1, (now - t0) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = Math.round(start + (target - start) * eased);
+        el.textContent = val.toLocaleString();
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    async function loadCounts() {
       try {
-        const url =
-          `https://www.googleapis.com/youtube/v3/search` +
-          `?part=snippet` +
-          `&channelId=${CHANNEL_ID}` +
-          `&order=date` +
-          `&maxResults=1` +
-          `&type=video` +
-          `&key=${API_KEY}`;
-
-        const res = await fetch(url);
+        const res = await fetch("/data/site-counts.json", { cache: "no-store" });
+        if (!res.ok) throw new Error("site-counts.json not found");
         const data = await res.json();
 
-        if (!data.items || !data.items.length) return;
+        const totalShiurim = data?.allShiurim?.total;
+        const updatedStr   = data?.allShiurim?.updated;
+        const breakdown    = data?.allShiurim?.breakdown || {};
 
-        const vid = data.items[0];
-        const id = vid.id.videoId;
-        const title = vid.snippet.title;
-        const thumb =
-          vid.snippet.thumbnails.high?.url ||
-          vid.snippet.thumbnails.medium.url;
+        // Top stats
+        const elShiurim = document.getElementById("statTotalShiurim");
+        const elPrograms = document.getElementById("statPrograms");
+        const elUpdated = document.getElementById("statUpdated");
 
-        document.getElementById("latestVideoLink").href =
-          `https://www.youtube.com/watch?v=${id}`;
-        document.getElementById("latestVideoThumb").src = thumb;
-        document.getElementById("latestVideoThumb").alt = title;
-        document.getElementById("latestVideoTitle").textContent = title;
+        if (typeof totalShiurim === "number") animateNumber(elShiurim, totalShiurim);
+        else elShiurim.textContent = "—";
+
+        const programCount = Object.keys(breakdown).length || 0;
+        elPrograms.textContent = String(programCount);
+
+        if (updatedStr) {
+          const d = new Date(updatedStr + "T00:00:00");
+          elUpdated.textContent = isFinite(d) ? d.toLocaleDateString() : updatedStr;
+        } else {
+          elUpdated.textContent = "—";
+        }
+
+        // Per-program totals based on YOUR JSON schema
+        function programTotal(key) {
+          const b = breakdown?.[key];
+          if (!b) return null;
+
+          if (key === "parsha") {
+            return Number(b.audio || 0) + Number(b.video || 0);
+          }
+          if (key === "tefila") {
+            return Number(b.video || 0);
+          }
+          if (key === "halacha") {
+            return Number(b.totalAll ?? 0);
+          }
+          if (key === "oneMinute") {
+            return Number(b.audio || 0);
+          }
+          return null;
+        }
+
+        document.querySelectorAll("[data-site-count]").forEach(el => {
+          const key = el.dataset.siteCount;
+          const val = programTotal(key);
+          el.textContent = (typeof val === "number") ? val.toLocaleString() : "—";
+        });
+
       } catch (e) {
-        document.getElementById("latestVideoTitle").textContent =
-          "Latest video";
-        console.warn("YouTube load failed", e);
+        console.warn("Could not load /data/site-counts.json", e);
       }
     }
 
-    loadLatestVideo();
-    document.getElementById("yr").textContent = new Date().getFullYear();
+    loadCounts();
   </script>
-  <script src="/data/site-counts.js"></script>
-<script>
-(async function () {
-  const el = document.getElementById("allShiurimCount");
-  if (!el) return;
-
-  try {
-    const res = await fetch("/data/site-counts.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("site-counts.json not found");
-    const data = await res.json();
-
-    const total = data?.allShiurim?.total;
-    if (typeof total === "number") {
-      el.textContent = total.toLocaleString();
-    } else {
-      el.textContent = "—";
-    }
-  } catch (e) {
-    el.textContent = "—";
-    console.warn("Could not load /data/site-counts.json", e);
-  }
-})();
-</script>
-
 
 </body>
 </html>
