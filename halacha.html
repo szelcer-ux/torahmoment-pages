@@ -308,6 +308,17 @@
   white-space: nowrap;
 }
 
+    .tm-len.tm-short{
+  background:#ecfeff;
+  border-color:#a5f3fc;
+  color:#155e75;
+}
+.tm-len.tm-long{
+  background:#fff7ed;
+  border-color:#fed7aa;
+  color:#9a3412;
+}
+
     
 /* --- TorahMoment-style custom audio player --- */
 .tm-player{
@@ -937,6 +948,7 @@ if (type === "note") {
 
         <div class="tm-right">
         <div class="tm-speed">1×</div>
+        <div class="tm-badge tm-len" style="display:none"></div>
           <div class="tm-dur">(0:00)</div>
         </div>
 
@@ -1267,6 +1279,7 @@ function tmWirePlaylistRows(){
     const bar = row.querySelector(".tm-progress > div");
     const progressWrap = row.querySelector(".tm-progress");
     const speedBtn = row.querySelector(".tm-speed");
+    const lenBadge = row.querySelector(".tm-len");
 
     if (!audio || !btn || !durEl || !bar) return;
 
@@ -1280,9 +1293,21 @@ function tmWirePlaylistRows(){
       btn.textContent = audio.paused ? "▶" : "⏸";
     };
 
-    const updateDur = () => {
-      if (audio.duration) durEl.textContent = `(${tmFmtTime(audio.duration)})`;
-    };
+const updateDur = () => {
+  if (audio.duration) {
+    durEl.textContent = `(${tmFmtTime(audio.duration)})`;
+
+    // ✅ short vs long badge (10 min cutoff)
+    if (lenBadge) {
+      const isLong = audio.duration >= 600; // 10 minutes
+      lenBadge.textContent = isLong ? "Long" : "Short";
+      lenBadge.classList.toggle("tm-long", isLong);
+      lenBadge.classList.toggle("tm-short", !isLong);
+      lenBadge.style.display = "";
+    }
+  }
+};
+
 
     const updateProgress = () => {
       if (!audio.duration) { bar.style.width = "0%"; return; }
