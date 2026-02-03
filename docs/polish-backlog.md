@@ -5,7 +5,7 @@
 - [ ] Animate counts when page loads
 - [ ] Show "Last updated" date from site-counts.json
 - [ ] Consistent card style across all pages
-- [ ] Mobile spacing tweaks on halacha page
+- [x] Mobile spacing tweaks on halacha page
 
 ## 🔹 Counts System
 - [ ] Standardize data-site-count attribute for all pages
