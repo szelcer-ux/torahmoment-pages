@@ -226,40 +226,25 @@ q.oninput = applySearch;
 fetch(DATA_URL, { cache:"no-store" })
 .then(r=>r.json())
 .then(d=>{
-function parseDateToKey(raw){
-  if (!raw) return 0;
+function dateToKey(mdy){
+  // expects "M/D/YYYY" or "MM/DD/YYYY"
+  const m = String(mdy || "").trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (!m) return 0;
 
-  // If it's already a timestamp number
-  if (typeof raw === "number") return raw;
+  const mm = Number(m[1]);
+  const dd = Number(m[2]);
+  const yyyy = Number(m[3]);
 
-  const s = String(raw).trim();
-
-  // ISO like "2025-02-23" or "2025-02-23T14:30:00Z"
-  const t1 = Date.parse(s);
-  if (!Number.isNaN(t1)) return t1;
-
-  // US style "2/23/2025" or "02/23/2025"
-  const mdy = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
-  if (mdy) {
-    const mm = +mdy[1], dd = +mdy[2], yyyy = +mdy[3];
-    return new Date(yyyy, mm - 1, dd).getTime();
-  }
-
-  // Fallback: try YYYYMMDD (in case your date field is like 20250223)
-  const ymd = s.match(/^(\d{4})(\d{2})(\d{2})$/);
-  if (ymd) {
-    const yyyy = +ymd[1], mm = +ymd[2], dd = +ymd[3];
-    return new Date(yyyy, mm - 1, dd).getTime();
-  }
-
-  return 0;
+  // Use UTC midnight so timezones don't shift the date
+  return Date.UTC(yyyy, mm - 1, dd);
 }
 
 items = d.map((x, idx) => ({
   ...x,
   id: x.id ?? idx,
-  _sortKey: parseDateToKey(x.date)   // ✅ use JSON date field
+  _sortKey: dateToKey(x.date)   // ✅ sort by JSON date field
 }));
+
 
 
   filtered = items.slice();
