@@ -517,6 +517,68 @@
   border-bottom-color:#111;
 }
 
+    /* =========================
+   Mobile polish – halacha
+   ========================= */
+@media (max-width: 640px) {
+
+  /* tighter page padding */
+  body {
+    padding: 10px;
+  }
+
+  /* cards closer together */
+  .card {
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+  /* category header more compact */
+  .category > summary {
+    padding: 8px 10px;
+    font-size: 0.95rem;
+  }
+
+  /* subcategories less tall */
+  .subcat > summary {
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+
+  /* shrink item rows */
+  .items {
+    gap: 6px;
+  }
+
+  /* each shiur row tighter */
+  .item,
+  .row,
+  .audioRow,
+  .ytRow,
+  .noteRow {
+    padding: 6px 8px;
+    font-size: 0.92rem;
+  }
+
+  /* reduce title wrapping height */
+  .item-title,
+  .title {
+    line-height: 1.2;
+  }
+
+  /* smaller counters */
+  .count {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
+  /* result chip less bulky */
+  #resultChip {
+    font-size: 0.85rem;
+    padding: 6px 8px;
+  }
+}
+
     
   </style>
   
