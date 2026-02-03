@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 509,
+    "total": 440,
     "breakdown": {
       "parsha": {
         "audio": 21,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 69
+        "totalAll": 0
       },
       "oneMinute": {
         "audio": 186
