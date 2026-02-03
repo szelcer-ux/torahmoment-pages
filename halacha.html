@@ -671,11 +671,35 @@ header h1{
   width: 34px;
   height: 34px;
 }
+.tm-divider{ margin: 6px 2px; font-size: 11px; }
 
 }
 .chip{
   padding: 6px 10px;
   font-size: 12px;
+}
+
+    .tm-divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin: 10px 2px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  text-transform: uppercase;
+}
+.tm-divider::before,
+.tm-divider::after{
+  content:"";
+  height:1px;
+  background: var(--line);
+  flex: 1 1 auto;
+}
+.tm-divider span{
+  padding: 0 6px;
+  white-space: nowrap;
 }
 
     
@@ -786,11 +810,11 @@ header h1{
               {type: "audio",title: "Three lesser discussed halachos regarding Purim", url: "https://www.buzzsprout.com/1899789/episodes/10184217-3-3-2022-shloimy-zelcer.mp3", note: "3/3/2022"},
               { type:"youtube", title:"Purim thoughts", url:"https://youtu.be/4ZhRg40--g8", note:"Optional" }
             ] },
-            { name: 'Lag Baomer', items: [
+            { name: 'Yimei Sefirah', items: [
+              { type: "note", noteStyle: "divider", text: "Lag Ba'omer" },
               {type: "audio",title: "A Lesson from Lag Baomer", url: "https://www.buzzsprout.com/1899789/episodes/15124705-5-23-2024-shloimy-zelcer-a-lesson-from-lag-baomer.mp3", note: "5/23/2024"},
-              {type: "audio",title: "Customs of Lag Baomer", url: "https://2mishnasaday.com/wp-content/uploads/LagBaomerZoom.mp3", note: "5/21/2020"}
-            ] },
-            { name: 'Pesach', items: [
+              {type: "audio",title: "Customs of Lag Baomer", url: "https://2mishnasaday.com/wp-content/uploads/LagBaomerZoom.mp3", note: "5/21/2020"},
+              { type: "note", noteStyle: "divider", text: "Pesach" },
               {type: "audio",title: "Reframing the Pesach Seder", url: "https://2mishnasaday.com/wp-content/uploads/PESACHPRESHIUR.mp3", note: "4/10/2025"},
               {type: "audio",title: "Korban Pesach today", url: "https://2mishnasaday.com/wp-content/uploads/korbanpesachtoday.mp3", note: "4/7/2022"},
               {type: "audio",title: "Let my people go", url: "https://2mishnasaday.com/wp-content/uploads/letmypeoplego.mp3", note: "1/13/2022"},
@@ -907,6 +931,15 @@ function enableMobileTitleExpand(){
       const url = item.url || "";
       const type = (item.type || "audio").toLowerCase();
 
+if (type === "note" && item.noteStyle === "divider") {
+  return `
+    <div class="tm-divider">
+      <span>${escapeHtml(item.text || "")}</span>
+    </div>
+  `;
+}
+
+      
 // NOTE / LINK ITEM (entire row clickable)
 if (type === "note") {
   return `
