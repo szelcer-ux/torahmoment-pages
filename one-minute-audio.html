@@ -56,21 +56,30 @@ audio{width:100%}
 
 .head{
   display:flex;
-  gap:10px;
-  align-items:baseline;
+  align-items:center;
+  gap:8px;
+  flex-wrap:nowrap;      /* ✅ never wrap to second line */
+  width:100%;
 }
+
 .date{
   flex:0 0 auto;
   font-size:13px;
   color:#667085;
   white-space:nowrap;
 }
+
 .title{
   flex:1 1 auto;
-  font-size:16px;
-  line-height:1.2;
-  min-width:0;
+  min-width:0;          /* ✅ CRITICAL: allows shrinking */
+  font-size:15px;
+
+  /* optional but recommended */
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;   /* ✅ force single line */
 }
+
 
 @media (max-width: 420px){
   .head{flex-direction:column; gap:2px; align-items:flex-start}
