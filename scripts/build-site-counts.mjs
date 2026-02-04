@@ -250,13 +250,23 @@ try {
   const oneMin = await res.json();
 
   const items = Array.isArray(oneMin) ? oneMin : (oneMin.items || []);
-  recentOneMin = items.map(x => ({
-    type: "audio",
-    program: "One-Minute",
-    title: x.title,
-    url: x.url || x.mp3,
-    date: x.date
-  })).filter(x => x.url && x.date);
+function parseMmDdYyyyLocal(s) {
+  // supports "9/8/2024"
+  if (!s || typeof s !== "string") return null;
+  const m = s.match(/^\s*(\d{1,2})\/(\d{1,2})\/(\d{4})\s*$/);
+  if (!m) return null;
+  const mm = Number(m[1]), dd = Number(m[2]), yyyy = Number(m[3]);
+  const d = new Date(Date.UTC(yyyy, mm - 1, dd));
+  return Number.isFinite(d.getTime()) ? d.toISOString() : null;
+}
+
+recentOneMin = items.map(x => ({
+  type: "audio",
+  program: "One-Minute",
+  title: x.description || x.filename || "One-Minute Audio",
+  url: x.url,
+  date: parseMmDdYyyyLocal(x.date)
+})).filter(x => x.url && x.date);
 } catch {}
 
 try {
