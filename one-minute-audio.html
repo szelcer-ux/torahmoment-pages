@@ -81,11 +81,6 @@ audio{width:100%}
 }
 
 
-@media (max-width: 420px){
-  .head{flex-direction:column; gap:2px; align-items:flex-start}
-  .date{white-space:normal}
-}
-
   
 /* Compact mobile layout + tap-to-reveal speed buttons */
 @media (max-width: 600px){
@@ -142,6 +137,33 @@ audio{width:100%}
   font-weight:700;
   border-color:#111;
 }
+
+  .head{
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  align-items:center !important;
+  gap:8px !important;
+  width:100% !important;
+}
+
+.date{
+  flex:0 0 auto !important;
+  white-space:nowrap !important;
+  font-size:13px;
+  color:#667085;
+}
+
+.title{
+  flex:1 1 auto !important;
+  min-width:0 !important;          /* critical */
+  white-space:nowrap !important;   /* force single line */
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+ .row{padding:10px}
+audio{margin-top:6px}
 
   
 </style>
