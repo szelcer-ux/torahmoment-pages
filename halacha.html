@@ -721,6 +721,28 @@ header h1{
   }
 }
 
+    /* =========================
+   Desktop focus mode
+   ========================= */
+@media (min-width: 768px){
+
+  /* when open → full width focus */
+  details.subcat[open]{
+    grid-column: 1 / -1;
+  }
+
+  /* slightly highlight focused panel */
+  details.subcat[open]{
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    background: #fff;
+  }
+
+  /* show it's clickable */
+  details.subcat > summary{
+    cursor: pointer;
+  }
+}
+
     
   </style>
   
@@ -1218,6 +1240,7 @@ tmWirePlaylistRows();
 wireYouTubeRows();
 wireNoteRows();
 enableMobileTitleExpand();
+wireDesktopAccordion();
 
 
 
@@ -1310,6 +1333,35 @@ function tmWirePlayers(){
   });
 }
 
+function wireDesktopAccordion(){
+  if (!window.matchMedia("(min-width: 768px)").matches) return;
+
+  document.querySelectorAll("details.subcat").forEach(sub => {
+
+    // prevent double wiring
+    if (sub.dataset.accordionWired === "1") return;
+    sub.dataset.accordionWired = "1";
+
+    const summary = sub.querySelector("summary");
+
+    summary.addEventListener("click", (e) => {
+      e.preventDefault(); // we control toggle manually
+
+      const isOpen = sub.hasAttribute("open");
+
+      const parentCat = sub.closest("details.category");
+      const siblings = parentCat.querySelectorAll("details.subcat");
+
+      // close all siblings
+      siblings.forEach(s => s.removeAttribute("open"));
+
+      // toggle this one
+      if (!isOpen) {
+        sub.setAttribute("open", "");
+      }
+    });
+  });
+}
 
 
 function wireNoteRows(){
