@@ -16,20 +16,22 @@
         "audio": 186
       }
     },
-    "updated": "2026-02-03"
+    "updated": "2026-02-04"
   },
   "recent": [
     {
       "type": "audio",
       "program": "One-Minute",
+      "title": "Always think about others",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0029.mp3",
-      "date": "2/3/2026"
+      "date": "2026-02-03T00:00:00.000Z"
     },
     {
       "type": "audio",
       "program": "One-Minute",
+      "title": "No Torah without achdus",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0030.mp3",
-      "date": "2/2/2026"
+      "date": "2026-02-02T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -41,8 +43,9 @@
     {
       "type": "audio",
       "program": "One-Minute",
+      "title": "Appreciation through struggle",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260129-WA0017.mp3",
-      "date": "1/29/2026"
+      "date": "2026-01-29T00:00:00.000Z"
     },
     {
       "type": "audio",
