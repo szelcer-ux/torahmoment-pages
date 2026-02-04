@@ -37,7 +37,15 @@ input{flex:1;min-width:240px;padding:10px 12px;border:1px solid #d0d5dd;border-r
 .player{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:14px}
 .now{font-size:14px;color:#444;margin-bottom:8px}
 audio{width:100%}
-.row{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px;margin-bottom:10px;cursor:pointer}
+.row{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:8px 10px;     /* ✅ smaller */
+  margin-bottom:6px;    /* ✅ tighter spacing */
+  cursor:pointer;
+}
+
 .row.playing{outline:2px solid #111}
 .meta{font-size:13px;color:#667085;margin-bottom:6px}
 .desc{font-size:16px}
