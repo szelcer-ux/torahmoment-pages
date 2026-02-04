@@ -54,6 +54,30 @@ audio{width:100%}
   transform: scale(.99);
 }
 
+.head{
+  display:flex;
+  gap:10px;
+  align-items:baseline;
+}
+.date{
+  flex:0 0 auto;
+  font-size:13px;
+  color:#667085;
+  white-space:nowrap;
+}
+.title{
+  flex:1 1 auto;
+  font-size:16px;
+  line-height:1.2;
+  min-width:0;
+}
+
+@media (max-width: 420px){
+  .head{flex-direction:column; gap:2px; align-items:flex-start}
+  .date{white-space:normal}
+}
+
+  
 /* Compact mobile layout + tap-to-reveal speed buttons */
 @media (max-width: 600px){
   body{padding:12px}
@@ -85,6 +109,32 @@ audio{width:100%}
 
   audio{margin-top:6px}
 }
+
+/* ✅ Hide speed buttons by default everywhere */
+.controls .speedBtns{display:none}
+
+/* ✅ Show only when row is opened */
+.row.isOpen .controls .speedBtns{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+
+  .controls .speedBtns button{
+  padding:6px 10px;
+  font-size:13px;
+  border-radius:999px;           /* ✅ fully rounded */
+  border:1px solid #d0d5dd;
+  background:#fff;
+  cursor:pointer;
+}
+.controls .speedBtns button.active{
+  font-weight:700;
+  border-color:#111;
+}
+
+  
 </style>
 </head>
 
@@ -165,8 +215,11 @@ function render(){
     const speeds = [1, 1.25, 1.5, 2];
 
     row.innerHTML = `
-      <div class="meta">${esc(it.date)}</div>
-      <div class="desc">${esc(it.description)}</div>
+      <div class="head">
+        <div class="date">${esc(it.date)}</div>
+        <div class="title">${esc(it.description)}</div>
+    </div>
+
 
       <div class="controls">
         <div class="speedBtns" data-id="${it.id}">
