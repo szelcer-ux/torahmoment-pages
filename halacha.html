@@ -1358,6 +1358,11 @@ function wireDesktopAccordion(){
       // toggle this one
       if (!isOpen) {
         sub.setAttribute("open", "");
+        // ✅ auto-scroll opened panel into view (desktop only)
+        requestAnimationFrame(() => {
+          sub.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+
       }
     });
   });
