@@ -1,7 +1,7 @@
 # TorahMoment – Polish Backlog
 
 ## 🔹 UI / Visual
-- [ ] Breakdown cards on homepage (Halacha / Parsha / Tefilah / One-Minute)
+- [x] Breakdown cards on homepage (Halacha / Parsha / Tefilah / One-Minute)
 - [ ] Animate counts when page loads
 - [ ] Show "Last updated" date from site-counts.json
 - [ ] Consistent card style across all pages
@@ -21,9 +21,9 @@
 - [ ] Dark mode toggle
 - [ ] Search across all shiurim
 - [ ] "Random shiur" button
-- [ ] Recently added section
+- [x] Recently added section
 
 ## 🔹 Future ideas
-- [ ] TorahMoment dashboard page
+- [x] TorahMoment dashboard page
 - [ ] Stats graphs (shiurim per year)
 - [ ] Download all audio ZIP
