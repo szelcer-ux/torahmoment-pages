@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TorahMoment — Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="TorahMoment dashboard and stats" />
+
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#666;
+      --border:#e7e7ee;
+      --accent:#0d9488;
+      --shadow:0 6px 22px rgba(0,0,0,0.07);
+      --radius:16px;
+    }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .wrap{
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 14px;
+    }
+
+    h1{
+      margin:0 0 2px;
+      font-size: 1.65rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subtle{
+      color:var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
+
+    .topActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:#111;
+      text-decoration:none;
+      font-weight:600;
+      font-size:0.93rem;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+    }
+    .btn:hover{ border-color: rgba(13,148,136,0.35); }
+
+    .btn.primary{
+      background: rgba(13,148,136,0.12);
+      border-color: rgba(13,148,136,0.22);
+    }
+
+    .card{
+      background:var(--card);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    /* Stats grid */
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .stat{
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 12px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+      min-height: 74px;
+    }
+
+    .stat .label{
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+    }
+
+    .stat .value{
+      font-size: 1.25rem;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+    }
+
+    .stat .hint{
+      margin-top: 4px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Program cards */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .prog{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fbfbfd;
+      text-decoration:none;
+      color: var(--text);
+      transition: transform .08s ease, box-shadow .08s ease, border-color .08s ease;
+    }
+
+    .prog:hover{
+      transform: translateY(-1px);
+      border-color: rgba(13,148,136,0.35);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .icon{
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(13,148,136,0.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 auto;
+      font-size: 18px;
+    }
+
+    .prog h3{
+      margin: 0 0 3px;
+      font-size: 1.05rem;
+      letter-spacing:-0.01em;
+    }
+
+    .prog .meta{
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.25;
+    }
+
+    .prog .counts{
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: #334155;
+    }
+
+    .prog .counts b{
+      font-weight: 750;
+      color: #0f172a;
+    }
+
+    .prog .arrow{
+      margin-left:auto;
+      color:#64748b;
+      font-size: 18px;
+      padding-top: 2px;
+    }
+
+    /* Recent list */
+    .recentRow{
+      display:flex;
+      gap:10px;
+      padding:8px 10px;
+      border-radius:10px;
+      text-decoration:none;
+      color:#111;
+      align-items:center;
+    }
+    .recentRow:hover{ background:#f6f8fb; }
+    .rIcon{ width:20px; text-align:center; }
+    .rTitle{ flex:1; }
+    .rMeta{ color:#666; font-size:0.85rem; white-space:nowrap; }
+
+    .mutedBox{
+      border:1px dashed var(--border);
+      border-radius:12px;
+      padding:12px;
+      background:#fafafe;
+      color:var(--muted);
+      font-size:0.93rem;
+    }
+
+    footer{
+      margin-top: 28px;
+      text-align:center;
+      color:#777;
+      font-size:0.9rem;
+    }
+
+    @media (max-width: 980px){
+      .stats{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+    }
+    @media (max-width: 820px){
+      header{ align-items:flex-start; flex-direction:column; }
+      .topActions{ justify-content:flex-start; }
+      .grid{ grid-template-columns: 1fr; }
+      .wrap{ padding: 16px; }
+      .stats{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Dashboard</h1>
+        <div class="subtle">TorahMoment site stats and shortcuts</div>
+      </div>
+
+      <div class="topActions">
+        <a class="btn" href="/index.html">🏠 Home</a>
+        <a class="btn primary" href="/parsha.html">📖 Parsha</a>
+        <a class="btn" href="/halacha.html">📚 Halacha</a>
+        <a class="btn" href="/one-minute-audio.html">⏱️ One-Minute</a>
+        <a class="btn" href="/tefilah.html">🕍 Tefilah</a>
+      </div>
+    </header>
+
+    <!-- Top stats -->
+    <section class="stats" aria-label="Stats">
+      <div class="stat">
+        <div class="label">Total shiurim</div>
+        <div class="value" id="sTotal">—</div>
+        <div class="hint">All programs</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Last updated</div>
+        <div class="value" id="sUpdated">—</div>
+        <div class="hint">site-counts.json</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Programs</div>
+        <div class="value" id="sPrograms">—</div>
+        <div class="hint">Counted buckets</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Parsha total</div>
+        <div class="value" id="sParsha">—</div>
+        <div class="hint" id="sParshaHint">audio + video</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Halacha total</div>
+        <div class="value" id="sHalacha">—</div>
+        <div class="hint">totalAll</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">One-Minute total</div>
+        <div class="value" id="sOneMin">—</div>
+        <div class="hint">audio</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Tefilah total</div>
+        <div class="value" id="sTefilah">—</div>
+        <div class="hint">video</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Parsha videos</div>
+        <div class="value" id="sParshaV">—</div>
+        <div class="hint">video</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Parsha audio</div>
+        <div class="value" id="sParshaA">—</div>
+        <div class="hint">audio</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Health</div>
+        <div class="value" id="sHealth">—</div>
+        <div class="hint">Basic checks</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Tefilah videos</div>
+        <div class="value" id="sTefilahV">—</div>
+        <div class="hint">video</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Raw JSON</div>
+        <div class="value"><a href="/data/site-counts.json" style="color:#0b57d0;text-decoration:none;">Open</a></div>
+        <div class="hint">Debug</div>
+      </div>
+    </section>
+
+    <!-- Program shortcuts -->
+    <section class="card">
+      <h2 style="margin:0 0 10px;">Programs</h2>
+      <div class="grid">
+        <a class="prog" href="/parsha.html">
+          <div class="icon">📖</div>
+          <div>
+            <h3>Parsha</h3>
+            <div class="meta">Videos · Audio · PDFs</div>
+            <div class="counts"><b id="cParsha">—</b> items</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="prog" href="/halacha.html">
+          <div class="icon">📚</div>
+          <div>
+            <h3>Halacha / Hashkafa</h3>
+            <div class="meta">Audio shiurim</div>
+            <div class="counts"><b id="cHalacha">—</b> items</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="prog" href="/one-minute-audio.html">
+          <div class="icon">⏱️</div>
+          <div>
+            <h3>One-Minute Audio</h3>
+            <div class="meta">Short daily ideas</div>
+            <div class="counts"><b id="cOneMin">—</b> items</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="prog" href="/tefilah.html">
+          <div class="icon">🕍</div>
+          <div>
+            <h3>Biur Shemona Esrei</h3>
+            <div class="meta">Video shiurim</div>
+            <div class="counts"><b id="cTefilah">—</b> items</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="prog" href="/torahprograms.html" style="background:#eefaf3">
+          <div class="icon" style="background: rgba(34,197,94,0.12);">🤝</div>
+          <div>
+            <h3>Torah Programs</h3>
+            <div class="meta">Learning initiatives & WhatsApp signups</div>
+            <div class="counts"><b>Explore</b> →</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Recent -->
+    <section class="card">
+      <h2 style="margin:0 0 8px;">Recently added</h2>
+      <div class="subtle" style="margin-bottom:12px;">Latest 5 shiurim</div>
+      <div id="recentList" class="mutedBox">Loading…</div>
+    </section>
+
+    <footer>
+      © <span id="yr"></span> TorahMoment.com
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("yr").textContent = new Date().getFullYear();
+
+    function animateNumber(el, target, opts = {}) {
+      if (!el) return;
+      const duration = opts.duration ?? 650;
+      const start = 0;
+      const t0 = performance.now();
+
+      function tick(now) {
+        const p = Math.min(1, (now - t0) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = Math.round(start + (target - start) * eased);
+        el.textContent = val.toLocaleString();
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function safeNum(x){ return (typeof x === "number" && Number.isFinite(x)) ? x : 0; }
+
+    function renderRecent(items){
+      const wrap = document.getElementById("recentList");
+      if (!wrap) return;
+
+      if (!Array.isArray(items) || items.length === 0) {
+        wrap.innerHTML = `
+          <div style="text-align:center">
+            <a href="/parsha.html" style="color:#0b57d0;text-decoration:none;font-weight:650;">
+              ▶ View latest content
+            </a>
+          </div>`;
+        wrap.className = "mutedBox";
+        return;
+      }
+
+      wrap.className = "";
+      wrap.innerHTML = items.slice(0,5).map(x => `
+        <a class="recentRow" href="${x.url}" target="_blank" rel="noopener">
+          <span class="rIcon">${x.type === "audio" ? "🎧" : "📺"}</span>
+          <span class="rTitle">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
+          <span class="rMeta">${x.program || ""}</span>
+        </a>
+      `).join("");
+    }
+
+    async function loadDashboard(){
+      try{
+        const res = await fetch("/data/site-counts.json", { cache: "no-store" });
+        if (!res.ok) throw new Error("site-counts.json not found");
+        const data = await res.json();
+
+        const all = data?.allShiurim || {};
+        const b = all?.breakdown || {};
+
+        const total = all?.total;
+        const updatedStr = all?.updated;
+
+        // totals per program (matching your schema)
+        const parshaA = safeNum(b?.parsha?.audio);
+        const parshaV = safeNum(b?.parsha?.video);
+        const parshaT = parshaA + parshaV;
+
+        const oneMin = safeNum(b?.oneMinute?.audio);
+        const halacha = safeNum(b?.halacha?.totalAll);
+        const tefilahV = safeNum(b?.tefila?.video); // note: tefila in JSON
+
+        const programCount = Object.keys(b || {}).length || 0;
+
+        // Top stats
+        if (typeof total === "number") animateNumber(document.getElementById("sTotal"), total);
+        else document.getElementById("sTotal").textContent = "—";
+
+        document.getElementById("sPrograms").textContent = String(programCount);
+
+        if (updatedStr) {
+          const d = new Date(updatedStr + "T00:00:00");
+          document.getElementById("sUpdated").textContent = isFinite(d) ? d.toLocaleDateString() : updatedStr;
+        } else {
+          document.getElementById("sUpdated").textContent = "—";
+        }
+
+        animateNumber(document.getElementById("sParsha"), parshaT);
+        animateNumber(document.getElementById("sHalacha"), halacha);
+        animateNumber(document.getElementById("sOneMin"), oneMin);
+        animateNumber(document.getElementById("sTefilah"), tefilahV);
+
+        animateNumber(document.getElementById("sParshaV"), parshaV);
+        animateNumber(document.getElementById("sParshaA"), parshaA);
+        animateNumber(document.getElementById("sTefilahV"), tefilahV);
+
+        // Card counts
+        document.getElementById("cParsha").textContent = parshaT.toLocaleString();
+        document.getElementById("cHalacha").textContent = halacha.toLocaleString();
+        document.getElementById("cOneMin").textContent = oneMin.toLocaleString();
+        document.getElementById("cTefilah").textContent = tefilahV.toLocaleString();
+
+        // Health checks
+        const health = [];
+        if (!updatedStr) health.push("missing updated");
+        if (!Number.isFinite(total)) health.push("missing total");
+        if (programCount === 0) health.push("missing breakdown");
+        document.getElementById("sHealth").textContent = health.length ? "⚠" : "OK";
+
+        // Recent list (if present)
+        renderRecent(data?.recent || []);
+
+      } catch (e){
+        console.warn("Dashboard load failed", e);
+        document.getElementById("recentList").textContent = "Could not load dashboard data.";
+      }
+    }
+
+    loadDashboard();
+  </script>
+</body>
+</html>
