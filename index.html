@@ -191,32 +191,105 @@
       font-size:0.9rem;
     }
 
-    .recentRow{
-      display:flex;
-      gap:10px;
-      padding:8px 10px;
-      border-radius:8px;
-      text-decoration:none;
-      color:#111;
-      align-items:center;
-    }
-    .recentRow:hover{ background:#f6f8fb; }
+/* More subtle group headers */
+.recentGroup{
+  margin-top: 12px;
+  padding: 6px 2px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.65);
+  letter-spacing: 0.02em;
+  border-top: 1px solid rgba(231,231,238,0.9);
+}
+.recentGroup:first-child{
+  margin-top: 0;
+  border-top: none;
+}
 
-    .rIcon{ width:20px; text-align:center; }
-    .rMeta{ margin-left:auto; color:#666; font-size:0.85rem; white-space:nowrap; }
+/* Recent rows */
+.recentRow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 10px;
+  border-radius:10px;
+  text-decoration:none;
+  color:#111;
+}
+.recentRow:hover{ background:#f6f8fb; }
 
-    /* NEW: group headers for curated recent */
-    .recentGroup{
-      margin-top: 10px;
-      padding: 6px 10px;
-      font-size: 0.82rem;
-      font-weight: 750;
-      color: #334155;
-      background: #f1f5f9;
-      border: 1px solid #e7e7ee;
-      border-radius: 10px;
-    }
-    .recentGroup:first-child{ margin-top: 0; }
+.rIcon{ width:20px; text-align:center; }
+
+.rTitle{
+  font-weight: 600;
+}
+
+.rMeta{
+  color:#666;
+  font-size:0.85rem;
+  white-space:nowrap;
+}
+
+/* Date shown inline */
+.rDate{
+  margin-left:auto;
+  color:#666;
+  font-size:0.82rem;
+  white-space:nowrap;
+}
+
+/* Audio layout: title/date on one line, player to the right */
+.recentAudio{
+  background: transparent;
+}
+.recentAudio:hover{
+  background:#f6f8fb;
+}
+
+.rLeft{
+  flex: 1;
+  min-width: 0;
+}
+
+.rLine{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
+.rLine .rTitle{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.rSub{
+  margin-top:4px;
+  display:flex;
+  gap:10px;
+}
+
+.rPlayer{
+  width: 260px;
+  min-width: 220px;
+}
+
+/* Mobile: stack player under title */
+@media (max-width: 620px){
+  .recentAudio{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .rPlayer{
+    width: 100%;
+    min-width: 0;
+  }
+  .rDate{
+    margin-left: 8px;
+  }
+}
+
 
     /* Mobile */
     @media (max-width: 820px){
@@ -225,6 +298,40 @@
       .grid{ grid-template-columns: 1fr; }
       .wrap{ padding: 16px; }
     }
+
+/* speed buttons hidden by default */
+.speedBtns{
+  display:none;
+  gap:8px;
+  margin-left: 10px;
+  align-items:center;
+}
+
+.recentAudio.isActive .speedBtns{
+  display:inline-flex;
+}
+
+.speedBtn{
+  border:1px solid var(--border);
+  background:#fff;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:650;
+  font-size:0.85rem;
+  cursor:pointer;
+}
+
+.speedBtn:hover{
+  border-color: rgba(13,148,136,0.35);
+}
+
+.recentAudio .speedBtn.isOn{
+  background: rgba(13,148,136,0.12);
+  border-color: rgba(13,148,136,0.28);
+}
+
+
+    
   </style>
 </head>
 
@@ -377,44 +484,173 @@
     }
 
     // NEW: Curated recent renderer (2 + 2 + 1), grouped but in one spot
-    function renderRecentCurated(data){
-      const wrap = document.getElementById("recentList");
-      if (!wrap) return;
+function fmtShortDate(iso){
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (!Number.isFinite(d.getTime())) return "";
+  // Example: Feb 3, 2026
+  return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"numeric" });
+}
 
-      const by = data?.recentByProgram || {};
-      const one = Array.isArray(by.oneMinute) ? by.oneMinute : [];
-      const hal = Array.isArray(by.halacha) ? by.halacha : [];
-      const par = Array.isArray(by.parsha) ? by.parsha : [];
+function renderRecentCurated(data){
+  const wrap = document.getElementById("recentList");
+  if (!wrap) return;
 
-      const curated = [
-        ...one.slice(0, 3).map(x => ({ ...x, _group: "One-Minute" })),
-        ...hal.slice(0, 2).map(x => ({ ...x, _group: "Halacha" })),
-        ...par.slice(0, 1).map(x => ({ ...x, _group: "Parsha" })),
-      ].filter(x => x && x.url);
+  const by = data?.recentByProgram || {};
+  const one = Array.isArray(by.oneMinute) ? by.oneMinute : [];
+  const hal = Array.isArray(by.halacha) ? by.halacha : [];
+  const par = Array.isArray(by.parsha) ? by.parsha : [];
 
-      if (!curated.length){
-        wrap.innerHTML = `<a href="/parsha.html" class="latestLink">▶ View latest content</a>`;
-        return;
-      }
+  const curated = [
+    ...one.slice(0, 3).map(x => ({ ...x, _group: "One-Minute" })), // ✅ 3
+    ...hal.slice(0, 2).map(x => ({ ...x, _group: "Halacha" })),    // ✅ 2
+    ...par.slice(0, 1).map(x => ({ ...x, _group: "Parsha" })),     // ✅ 1
+  ].filter(x => x && x.url);
 
-      let lastGroup = null;
-      wrap.innerHTML = curated.map(x => {
-        const header = (x._group !== lastGroup)
-          ? `<div class="recentGroup">${x._group}</div>`
-          : "";
-        lastGroup = x._group;
+  if (!curated.length){
+    wrap.innerHTML = `<a href="/parsha.html" class="latestLink">▶ View latest content</a>`;
+    return;
+  }
 
-        return `
-          ${header}
-          <a class="recentRow" href="${x.url}" target="_blank" rel="noopener">
-            <span class="rIcon">${x.type === "audio" ? "🎧" : "📺"}</span>
-            <span>${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
-            <span class="rMeta">${x.program || ""}</span>
-          </a>
-        `;
-      }).join("");
+  let lastGroup = null;
+
+  wrap.innerHTML = curated.map(x => {
+    const header = (x._group !== lastGroup)
+      ? `<div class="recentGroup">${x._group}</div>`
+      : "";
+    lastGroup = x._group;
+
+    const dateLabel = fmtShortDate(x.date);
+
+    // Audio: inline player (no pop-out)
+if (x.type === "audio") {
+  const safeUrl = String(x.url || "");
+  return `
+    ${header}
+    <div class="recentRow recentAudio" data-kind="audio" data-url="${safeUrl}">
+      <div class="rLeft">
+        <div class="rLine">
+          <span class="rIcon">🎧</span>
+          <span class="rTitle">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
+          <span class="rDate">${dateLabel}</span>
+        </div>
+
+        <div class="rSub">
+          <span class="rMeta">${x.program || ""}</span>
+
+          <!-- speed buttons: hidden until row is "active" -->
+          <span class="speedBtns" aria-label="Playback speed">
+            <button type="button" class="speedBtn" data-speed="1">1x</button>
+            <button type="button" class="speedBtn" data-speed="1.5">1.5x</button>
+            <button type="button" class="speedBtn" data-speed="2">2x</button>
+          </span>
+        </div>
+      </div>
+
+      <audio class="rPlayer" controls preload="none" src="${safeUrl}"></audio>
+    </div>
+  `;
+}
+
+
+    // Video (Parsha): keep link behavior
+    return `
+      ${header}
+      <a class="recentRow recentVideo" href="${x.url}" target="_blank" rel="noopener">
+        <span class="rIcon">📺</span>
+        <span class="rTitle">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
+        <span class="rDate">${dateLabel}</span>
+        <span class="rMeta">${x.program || ""}</span>
+      </a>
+    `;
+  }).join("");
+}
+
+
+function setupRecentAudioBehavior(){
+  const list = document.getElementById("recentList");
+  if (!list) return;
+
+  function setActiveRow(row){
+    // deactivate others
+    list.querySelectorAll(".recentAudio.isActive").forEach(r => {
+      if (r !== row) r.classList.remove("isActive");
+    });
+    row.classList.add("isActive");
+  }
+
+  function pauseOthers(keepAudio){
+    list.querySelectorAll("audio.rPlayer").forEach(a => {
+      if (a !== keepAudio && !a.paused) a.pause();
+    });
+  }
+
+  function setSpeed(row, speed){
+    const audio = row.querySelector("audio.rPlayer");
+    if (!audio) return;
+
+    audio.playbackRate = speed;
+
+    // button UI state
+    row.querySelectorAll(".speedBtn").forEach(btn => {
+      const s = Number(btn.dataset.speed);
+      btn.classList.toggle("isOn", s === speed);
+    });
+  }
+
+  // Click behavior:
+  // - Clicking anywhere on the audio row activates it (shows speed)
+  // - Clicking a speed button sets the rate (and keeps row active)
+  list.addEventListener("click", (e) => {
+    const speedBtn = e.target.closest(".speedBtn");
+    if (speedBtn){
+      e.preventDefault();
+      e.stopPropagation();
+
+      const row = speedBtn.closest(".recentAudio");
+      if (!row) return;
+
+      setActiveRow(row);
+      const speed = Number(speedBtn.dataset.speed) || 1;
+      setSpeed(row, speed);
+      return;
     }
 
+    const row = e.target.closest(".recentAudio");
+    if (row){
+      // Don’t interfere with native audio controls (play/pause/seek)
+      if (e.target.closest("audio")) return;
+
+      setActiveRow(row);
+
+      // If no speed set yet, default to 1x and highlight it
+      const anyOn = row.querySelector(".speedBtn.isOn");
+      if (!anyOn) setSpeed(row, 1);
+    }
+  });
+
+  // When any audio starts playing, pause others and activate its row
+  list.addEventListener("play", (e) => {
+    const audio = e.target.closest("audio.rPlayer");
+    if (!audio) return;
+
+    pauseOthers(audio);
+
+    const row = audio.closest(".recentAudio");
+    if (row){
+      setActiveRow(row);
+
+      // Ensure default 1x highlight exists if user presses play first
+      const anyOn = row.querySelector(".speedBtn.isOn");
+      if (!anyOn){
+        audio.playbackRate = 1;
+        setSpeed(row, 1);
+      }
+    }
+  }, true);
+}
+
+    
     async function loadCounts() {
       try {
         const res = await fetch("/data/site-counts.json", { cache: "no-store" });
@@ -462,8 +698,9 @@
           el.textContent = (typeof val === "number") ? val.toLocaleString() : "—";
         });
 
-        // ✅ Use curated recent (2+2+1) from recentByProgram
+        // ✅ Use curated recent (3+2+1) from recentByProgram
         renderRecentCurated(data);
+        setupRecentAudioBehavior();
 
       } catch (e) {
         console.warn("Could not load /data/site-counts.json", e);
