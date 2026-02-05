@@ -323,7 +323,14 @@ const recent = [...recentHalacha, ...recentOneMin, ...recentParsha]
     breakdown,
     updated: new Date().toISOString().slice(0, 10),
   },
-  recent
+   recent,
+
+  // NEW (for dashboard curation)
+  recentByProgram: {
+    oneMinute: recentOneMin.slice(0, 10),
+    halacha: recentHalacha.slice(0, 10),
+    parsha: recentParsha.slice(0, 10)
+  }
 };
 
 
