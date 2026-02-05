@@ -46,6 +46,7 @@ const PAGES = [
   "/tefilah.html",
   "/halacha.html",
   "/one-minute-audio.html",
+  "/mishna.html",
 ];
 
 function parseMmDdYyyy(s) {
@@ -169,12 +170,16 @@ async function readHalachaTotalAllFromDom(page) {
   const page = await browser.newPage();
 
   // Collect breakdown values
-  const breakdown = {
-    parsha: { audio: null, video: null },
-    tefila: { video: null },
-    halacha: { totalAll: null },  // ✅ now halacha is totalAll-based
-    oneMinute: { audio: null },
-  };
+ const breakdown = {
+  parsha: { audio: null, video: null },
+  tefila: { video: null },
+  halacha: { totalAll: null },
+  oneMinute: { audio: null },
+  mishna: { audio: null },           // ✅ new
+  // optional if you want detail later:
+  // mishna: { audio: null, perMasechta: null },
+};
+
 
   for (const path of PAGES) {
     const url = `http://127.0.0.1:${PORT}${path}`;
@@ -191,7 +196,9 @@ async function readHalachaTotalAllFromDom(page) {
         ready: window.__COUNTS_READY__ || null,
         breakdown: window.SITE_COUNTS?.allShiurim?.breakdown || null,
         halachaDomTotal: document.querySelector("#halachaTotalAll")?.getAttribute("data-total") ?? null,
+        tmCounts: window.TM_COUNTS || null, // ✅ mishna exports this
       }));
+
 
       console.log("SNAP", path, JSON.stringify(snap));
 
@@ -216,6 +223,21 @@ async function readHalachaTotalAllFromDom(page) {
         console.log("HALACHA totalAll:", breakdown.halacha.totalAll);
       }
 
+      // ✅ Mishna: read from window.TM_COUNTS
+        if (path.includes("mishna")) {
+          const n = Number(snap.tmCounts?.total_items ?? 0);
+        
+          if (!Number.isFinite(n) || n < 0) {
+            throw new Error(`Invalid mishna total_items: ${snap.tmCounts?.total_items}`);
+          }
+        
+          breakdown.mishna.audio = n;
+        
+          console.log("MISHNA audio:", breakdown.mishna.audio);
+        }
+
+
+      
     } catch (e) {
       console.warn("Skipping", path, String(e));
     }
@@ -288,10 +310,12 @@ const recent = [...recentHalacha, ...recentOneMin, ...recentParsha]
 
   // ✅ Total now uses halacha.totalAll (since that’s what you care about)
   const total =
-    safeNum(breakdown.parsha.audio) + safeNum(breakdown.parsha.video) +
-    safeNum(breakdown.tefila.video) +
-    safeNum(breakdown.halacha.totalAll) +
-    safeNum(breakdown.oneMinute.audio);
+  safeNum(breakdown.parsha.audio) + safeNum(breakdown.parsha.video) +
+  safeNum(breakdown.tefila.video) +
+  safeNum(breakdown.halacha.totalAll) +
+  safeNum(breakdown.oneMinute.audio) +
+  safeNum(breakdown.mishna.audio);   // ✅ new
+
 
   const out = {
   allShiurim: {
