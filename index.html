@@ -291,7 +291,7 @@
         <a class="prog" href="/mishna.html">
           <div class="icon">📖</div>
           <div>
-            <h3>Mishna Audio</h3>
+            <h3>Mishnayos</h3>
             <div class="meta">2 Mishnas a Day • Audio shiurim</div>
             <div class="counts"><b data-site-count="mishna">—</b> items</div>
           </div>
@@ -410,8 +410,13 @@
           if (key === "oneMinute") {
             return Number(b.audio || 0);
           }
+          if (key === "mishna") {               // ✅ ADD THIS
+            return Number(b.audio || 0);
+          }
+
           return null;
         }
+else if (key === "mishna") val = (b.mishna?.audio || 0);
 
         document.querySelectorAll("[data-site-count]").forEach(el => {
           const key = el.dataset.siteCount;
