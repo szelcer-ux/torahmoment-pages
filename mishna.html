@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mishna Audio | TorahMoment</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --accent:#0d9488;
+      --border:#e5e7eb;
+      --card:#ffffff;
+      --shadow:0 2px 10px rgba(0,0,0,.06);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    header{
+      position:sticky; top:0; z-index:10;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .wrap{max-width:980px; margin:0 auto; padding:16px}
+    h1{margin:0; font-size:22px; letter-spacing:-.02em}
+    .sub{margin:6px 0 0; color:var(--muted); font-size:14px}
+
+    main .wrap{padding-top:18px}
+
+    .totalsBar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow);
+      margin:0 0 14px;
+    }
+    .totalsBar b{font-weight:700}
+    .pill{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:13px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .stack{display:flex; flex-direction:column; gap:12px}
+
+    details.card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    summary.cardHead{
+      list-style:none;
+      cursor:pointer;
+      user-select:none;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+
+      padding:14px 14px 10px;
+      border-bottom:1px solid var(--border);
+    }
+    summary::-webkit-details-marker{display:none}
+    .headLeft{
+      display:flex; align-items:center; gap:10px; min-width:0;
+    }
+    .chev{
+      width:28px; height:28px;
+      display:grid; place-items:center;
+      border:1px solid var(--border);
+      border-radius:10px;
+      color:var(--muted);
+      flex:0 0 auto;
+      transition:transform .15s ease;
+    }
+    details[open] .chev{ transform:rotate(90deg); }
+
+    .title{
+      font-weight:700;
+      letter-spacing:-.01em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .count{
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .list{padding:6px}
+
+    .row{
+      padding:10px 10px;
+      border-radius:12px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      transition:background .12s ease;
+    }
+    .row:hover{background:#f9fafb}
+    .row.isActive{
+      background: color-mix(in srgb, var(--accent) 6%, #fff);
+      border:1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+    }
+    .rowTop{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .label{
+      font-size:14px;
+      font-weight:600;
+      line-height:1.25;
+      cursor:pointer;
+    }
+
+    .controls{
+      display:none; /* hidden until active */
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .row.isActive .controls{display:flex}
+
+    audio{ width:100%; height:34px; }
+
+    .speed{
+      display:flex;
+      gap:6px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .spdBtn{
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--text);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:13px;
+      cursor:pointer;
+      line-height:1;
+    }
+    .spdBtn:hover{border-color:#cbd5e1}
+    .spdBtn.isActive{
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+      background: color-mix(in srgb, var(--accent) 10%, #fff);
+      color:#065f46;
+    }
+
+    .footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+      padding:10px 0 18px;
+    }
+    .footer a{color:var(--accent); text-decoration:none}
+    .footer a:hover{text-decoration:underline}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Mishna Audio</h1>
+      <p class="sub">Inline players • speed shows only when a shiur is selected • one plays at a time • collapsible masechtos</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="totalsBar" aria-live="polite">
+        <div id="totalsText" class="sub" style="margin:0;"></div>
+        <div id="totalsPill" class="pill"></div>
+      </div>
+
+      <div id="stack" class="stack"></div>
+
+      <div class="footer">
+        <div><a href="https://torahmoment.com">← Back to TorahMoment</a></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // ==========================================================
+    // DATA: each item here is ONE countable row (one audio shiur)
+    // ==========================================================
+    const MASECHTOS = [
+      {
+        name: "Maasros",
+        openByDefault: true,
+        items: [
+          { label: "Maasros 1:1-2", url: "https://2mishnasaday.com/wp-content/uploads/ms112.mp3" },
+          { label: "Maasros 1:3-4", url: "https://2mishnasaday.com/wp-content/uploads/ms134.mp3" },
+          { label: "Maasros 1:5-6", url: "https://2mishnasaday.com/wp-content/uploads/ms156.mp3" },
+          { label: "Maasros 1:7-8", url: "https://2mishnasaday.com/wp-content/uploads/ms178.mp3" },
+          { label: "Maasros 2:1-2", url: "https://2mishnasaday.com/wp-content/uploads/ms212.mp3" },
+          { label: "Maasros 2:3-4", url: "https://2mishnasaday.com/wp-content/uploads/ms234.mp3" },
+          { label: "Maasros 2:5-6", url: "https://2mishnasaday.com/wp-content/uploads/ms256.mp3" },
+          { label: "Maasros 2:7-8", url: "https://2mishnasaday.com/wp-content/uploads/ms278.mp3" },
+          { label: "Maasros 3:1-2", url: "https://2mishnasaday.com/wp-content/uploads/ms312.mp3" },
+          { label: "Maasros 3:3-4", url: "https://2mishnasaday.com/wp-content/uploads/ms334.mp3" },
+          { label: "Maasros 3:5-6", url: "https://2mishnasaday.com/wp-content/uploads/ms356.mp3" },
+          { label: "Maasros 3:7-8", url: "https://2mishnasaday.com/wp-content/uploads/ms378.mp3" },
+          { label: "Maasros 3:9-10", url: "https://2mishnasaday.com/wp-content/uploads/ms3910.mp3" },
+          { label: "Maasros 4:1-2", url: "https://2mishnasaday.com/wp-content/uploads/ms412.mp3" },
+          { label: "Maasros 4:3-4", url: "https://2mishnasaday.com/wp-content/uploads/ms434.mp3" },
+          { label: "Maasros 4:5-6", url: "https://2mishnasaday.com/wp-content/uploads/ms456.mp3" },
+          { label: "Maasros 5:1-2", url: "https://2mishnasaday.com/wp-content/uploads/ms512.mp3" },
+          { label: "Maasros 5:3-4", url: "https://2mishnasaday.com/wp-content/uploads/ms534.mp3" },
+          { label: "Maasros 5:5-6", url: "https://2mishnasaday.com/wp-content/uploads/ms556.mp3" },
+          { label: "Maasros 5:7-8", url: "https://2mishnasaday.com/wp-content/uploads/ms578.mp3" },
+        ]
+      },
+      {
+        name: "Eruvin",
+        openByDefault: false,
+        items: [
+          { label: "Eruvin 1:1-2", url: "https://2mishnasaday.com/wp-content/uploads/er112.mp3" },
+          { label: "Eruvin 1:3-4", url: "https://2mishnasaday.com/wp-content/uploads/er134.mp3" },
+          { label: "Eruvin 1:5-6", url: "https://2mishnasaday.com/wp-content/uploads/er156.mp3" },
+          { label: "Eruvin 1:7-8", url: "https://2mishnasaday.com/wp-content/uploads/er178.mp3" },
+          { label: "Eruvin 1:9-10", url: "https://2mishnasaday.com/wp-content/uploads/er1910.mp3" },
+          { label: "Eruvin 2:1-2", url: "https://2mishnasaday.com/wp-content/uploads/er212.mp3" },
+          { label: "Eruvin 2:3-4", url: "https://2mishnasaday.com/wp-content/uploads/er234.mp3" },
+          { label: "Eruvin 2:5-6", url: "https://2mishnasaday.com/wp-content/uploads/er256.mp3" },
+          { label: "Eruvin 3:1-2", url: "https://2mishnasaday.com/wp-content/uploads/er312.mp3" },
+          { label: "Eruvin 3:3-4", url: "https://2mishnasaday.com/wp-content/uploads/er334.mp3" },
+          { label: "Eruvin 3:5-6", url: "https://2mishnasaday.com/wp-content/uploads/er356.mp3" },
+          { label: "Eruvin 3:7-8", url: "https://2mishnasaday.com/wp-content/uploads/er378.mp3" },
+          { label: "Eruvin 3:9-4:1", url: "https://2mishnasaday.com/wp-content/uploads/er3941.mp3" },
+          { label: "Eruvin 4:2-3", url: "https://2mishnasaday.com/wp-content/uploads/er423.mp3" },
+          { label: "Eruvin 4:4-5", url: "https://2mishnasaday.com/wp-content/uploads/er445.mp3" },
+          { label: "Eruvin 4:6-7", url: "https://2mishnasaday.com/wp-content/uploads/er467.mp3" },
+          { label: "Eruvin 4:8-9", url: "https://2mishnasaday.com/wp-content/uploads/er489.mp3" },
+          { label: "Eruvin 4:10-11", url: "https://2mishnasaday.com/wp-content/uploads/er41011.mp3" },
+          { label: "Eruvin 5:1-2", url: "https://2mishnasaday.com/wp-content/uploads/er512.mp3" },
+          { label: "Eruvin 5:3-4", url: "https://2mishnasaday.com/wp-content/uploads/er534.mp3" },
+          { label: "Eruvin 5:5-6", url: "https://2mishnasaday.com/wp-content/uploads/er556.mp3" },
+          { label: "Eruvin 5:7-8", url: "https://2mishnasaday.com/wp-content/uploads/er578.mp3" },
+          { label: "Eruvin 5:9-6:1", url: "https://2mishnasaday.com/wp-content/uploads/er5961.mp3" },
+          { label: "Eruvin 6:2-3", url: "https://2mishnasaday.com/wp-content/uploads/er623.mp3" },
+          { label: "Eruvin 6:4-5", url: "https://2mishnasaday.com/wp-content/uploads/er645.mp3" },
+          { label: "Eruvin 6:6-7", url: "https://2mishnasaday.com/wp-content/uploads/er667.mp3" },
+          { label: "Eruvin 6:8-9", url: "https://2mishnasaday.com/wp-content/uploads/er689.mp3" },
+          { label: "Eruvin 6:10-7:1", url: "https://2mishnasaday.com/wp-content/uploads/er61071.mp3" },
+          { label: "Eruvin 7:2-3", url: "https://2mishnasaday.com/wp-content/uploads/er723.mp3" },
+          { label: "Eruvin 7:4-5", url: "https://2mishnasaday.com/wp-content/uploads/er745.mp3" },
+          { label: "Eruvin 7:6-7", url: "https://2mishnasaday.com/wp-content/uploads/er767.mp3" },
+          { label: "Eruvin 7:8-9", url: "https://2mishnasaday.com/wp-content/uploads/er789.mp3" },
+          { label: "Eruvin 7:10-11", url: "https://2mishnasaday.com/wp-content/uploads/er71011.mp3" },
+          { label: "Eruvin 8:1-2", url: "https://2mishnasaday.com/wp-content/uploads/er812.mp3" },
+          { label: "Eruvin 8:3-4", url: "https://2mishnasaday.com/wp-content/uploads/er834.mp3" },
+          { label: "Eruvin 8:5-6", url: "https://2mishnasaday.com/wp-content/uploads/er856.mp3" },
+          { label: "Eruvin 8:7-8", url: "https://2mishnasaday.com/wp-content/uploads/er878.mp3" },
+          { label: "Eruvin 8:9-10", url: "https://2mishnasaday.com/wp-content/uploads/er8910.mp3" },
+          { label: "Eruvin 8:11-9:1", url: "https://2mishnasaday.com/wp-content/uploads/er81191.mp3" },
+          { label: "Eruvin 9:2-3", url: "https://2mishnasaday.com/wp-content/uploads/er923.mp3" },
+          { label: "Eruvin 9:4-10:1", url: "https://2mishnasaday.com/wp-content/uploads/er94101.mp3" },
+          { label: "Eruvin 10:2-3", url: "https://2mishnasaday.com/wp-content/uploads/er1023.mp3" },
+          { label: "Eruvin 10:4-5", url: "https://2mishnasaday.com/wp-content/uploads/er1045.mp3" },
+          { label: "Eruvin 10:6-7", url: "https://2mishnasaday.com/wp-content/uploads/er1067.mp3" },
+          { label: "Eruvin 10:8-9", url: "https://2mishnasaday.com/wp-content/uploads/er1089.mp3" },
+          { label: "Eruvin 10:10-11", url: "https://2mishnasaday.com/wp-content/uploads/er101011.mp3" },
+          { label: "Eruvin 10:12-13", url: "https://2mishnasaday.com/wp-content/uploads/er101213.mp3" },
+          { label: "Eruvin 10:14-15", url: "https://2mishnasaday.com/wp-content/uploads/er101415.mp3" }
+        ]
+      },
+      {
+        name: "Moed Katan",
+        openByDefault: false,
+        items: [
+          { label: "Moed Katan 1:2-3", url: "https://2mishnasaday.com/wp-content/uploads/mk123.mp3" },
+          { label: "Moed Katan 1:4-5", url: "https://2mishnasaday.com/wp-content/uploads/mk145.mp3" },
+          { label: "Moed Katan 1:6-7", url: "https://2mishnasaday.com/wp-content/uploads/mk167.mp3" },
+          { label: "Moed Katan 1:8-9", url: "https://2mishnasaday.com/wp-content/uploads/mk189.mp3" },
+          { label: "Moed Katan 1:10-2:1", url: "https://2mishnasaday.com/wp-content/uploads/mk11021.mp3" },
+          { label: "Moed Katan 2:2-3", url: "https://2mishnasaday.com/wp-content/uploads/mk223.mp3" },
+          { label: "Moed Katan 2:4-5", url: "https://2mishnasaday.com/wp-content/uploads/mk245.mp3" },
+          { label: "Moed Katan 3:1-2", url: "https://2mishnasaday.com/wp-content/uploads/mk312.mp3" },
+          { label: "Moed Katan 3:3-4", url: "https://2mishnasaday.com/wp-content/uploads/mk334.mp3" },
+          { label: "Moed Katan 3:5-6", url: "https://2mishnasaday.com/wp-content/uploads/mk356.mp3" },
+          { label: "Moed Katan 3:7-8", url: "https://2mishnasaday.com/wp-content/uploads/mk378.mp3" },
+          { label: "Moed Katan 3:9-Chagiga 1:1", url: "https://2mishnasaday.com/wp-content/uploads/mk39cg11.mp3" }
+        ]
+      },
+      {
+        name: "Makkos",
+        openByDefault: false,
+        items: [
+          { label: "Makkos 1:2-3", url: "https://2mishnasaday.com/wp-content/uploads/mak123.mp3" },
+          { label: "Makkos 1:4-5", url: "https://2mishnasaday.com/wp-content/uploads/mak145.mp3" },
+          { label: "Makkos 1:6-7", url: "https://2mishnasaday.com/wp-content/uploads/mak167.mp3" },
+          { label: "Makkos 1:8-9", url: "https://2mishnasaday.com/wp-content/uploads/mak189.mp3" },
+          { label: "Makkos 1:10-2:1", url: "https://2mishnasaday.com/wp-content/uploads/mak11021.mp3" },
+          { label: "Makkos 2:2-3", url: "https://2mishnasaday.com/wp-content/uploads/mak223.mp3" },
+          { label: "Makkos 2:4-5", url: "https://2mishnasaday.com/wp-content/uploads/mak245.mp3" },
+          { label: "Makkos 2:6-7", url: "https://2mishnasaday.com/wp-content/uploads/mak267.mp3" },
+          { label: "Makkos 2:8-3:1", url: "https://2mishnasaday.com/wp-content/uploads/mak2831.mp3" },
+          { label: "Makkos 3:2-3", url: "https://2mishnasaday.com/wp-content/uploads/mak323.mp3" },
+          { label: "Makkos 3:4-5", url: "https://2mishnasaday.com/wp-content/uploads/mak345.mp3" },
+          { label: "Makkos 3:6-7", url: "https://2mishnasaday.com/wp-content/uploads/mak367.mp3" },
+          { label: "Makkos 3:8-9", url: "https://2mishnasaday.com/wp-content/uploads/mak389.mp3" },
+          { label: "Makkos 3:10-11", url: "https://2mishnasaday.com/wp-content/uploads/mak31011.mp3" },
+          { label: "Makkos 3:12-13", url: "https://2mishnasaday.com/wp-content/uploads/mak31213.mp3" },
+          { label: "Makkos 3:14-15", url: "https://2mishnasaday.com/wp-content/uploads/mak31415.mp3" }
+        ]
+      },
+      {
+        name: "Niddah",
+        openByDefault: false,
+        items: [
+          { label: "Niddah 1:2-3", url: "https://2mishnasaday.com/wp-content/uploads/Nid123.mp3" },
+          { label: "Niddah 1:4-5", url: "https://2mishnasaday.com/wp-content/uploads/Nid145.mp3" },
+          { label: "Niddah 1:6-7", url: "https://2mishnasaday.com/wp-content/uploads/Nid167.mp3" },
+          { label: "Niddah 2:1-2", url: "https://2mishnasaday.com/wp-content/uploads/Nid212.mp3" },
+          { label: "Niddah 2:3-4", url: "https://2mishnasaday.com/wp-content/uploads/Nid234.mp3" },
+          { label: "Niddah 2:5-6", url: "https://2mishnasaday.com/wp-content/uploads/Nid256.mp3" },
+          { label: "Niddah 2:7-3:1", url: "https://2mishnasaday.com/wp-content/uploads/Nid2731.mp3" },
+          { label: "Niddah 3:2-3", url: "https://2mishnasaday.com/wp-content/uploads/Nid323.mp3" },
+          { label: "Niddah 3:4-5", url: "https://2mishnasaday.com/wp-content/uploads/Nid345.mp3" },
+          { label: "Niddah 3:6-7", url: "https://2mishnasaday.com/wp-content/uploads/Nid367.mp3" },
+          { label: "Niddah 4:1-2", url: "https://2mishnasaday.com/wp-content/uploads/Nid412.mp3" },
+          { label: "Niddah 4:3-4", url: "https://2mishnasaday.com/wp-content/uploads/Nid434.mp3" },
+          { label: "Niddah 4:5-6", url: "https://2mishnasaday.com/wp-content/uploads/Nid456.mp3" },
+          { label: "Niddah 4:7-5:1", url: "https://2mishnasaday.com/wp-content/uploads/Nid4751.mp3" },
+          { label: "Niddah 5:2-3", url: "https://2mishnasaday.com/wp-content/uploads/Nid523.mp3" },
+          { label: "Niddah 5:4-5", url: "https://2mishnasaday.com/wp-content/uploads/Nid545.mp3" },
+          { label: "Niddah 5:6-7", url: "https://2mishnasaday.com/wp-content/uploads/Nid567.mp3" },
+          { label: "Niddah 5:8-9", url: "https://2mishnasaday.com/wp-content/uploads/Nid589.mp3" },
+          { label: "Niddah 6:1-2", url: "https://2mishnasaday.com/wp-content/uploads/Nid612.mp3" },
+          { label: "Niddah 6:3-4", url: "https://2mishnasaday.com/wp-content/uploads/Nid634.mp3" },
+          { label: "Niddah 6:5-6", url: "https://2mishnasaday.com/wp-content/uploads/Nid656.mp3" },
+          { label: "Niddah 6:7-8", url: "https://2mishnasaday.com/wp-content/uploads/Nid678.mp3" },
+          { label: "Niddah 6:9-10", url: "https://2mishnasaday.com/wp-content/uploads/Nid6910.mp3" },
+          { label: "Niddah 6:11-12", url: "https://2mishnasaday.com/wp-content/uploads/Nid61112.mp3" },
+          { label: "Niddah 6:13-14", url: "https://2mishnasaday.com/wp-content/uploads/Nid61314.mp3" },
+          { label: "Niddah 7:1-2", url: "https://2mishnasaday.com/wp-content/uploads/Nid712.mp3" },
+          { label: "Niddah 7:3-4", url: "https://2mishnasaday.com/wp-content/uploads/Nid734.mp3" },
+          { label: "Niddah 7:5-8:1", url: "https://2mishnasaday.com/wp-content/uploads/Nid7581.mp3" },
+          { label: "Niddah 8:2-3", url: "https://2mishnasaday.com/wp-content/uploads/Nid823.mp3" },
+          { label: "Niddah 8:4-9:1", url: "https://2mishnasaday.com/wp-content/uploads/Nid8491.mp3" },
+          { label: "Niddah 9:2-3", url: "https://2mishnasaday.com/wp-content/uploads/Nid923.mp3" },
+          { label: "Niddah 9:4-5", url: "https://2mishnasaday.com/wp-content/uploads/Nid945.mp3" },
+          { label: "Niddah 9:6-7", url: "https://2mishnasaday.com/wp-content/uploads/Nid967.mp3" },
+          { label: "Niddah 9:8-9", url: "https://2mishnasaday.com/wp-content/uploads/Nid989.mp3" },
+          { label: "Niddah 9:10-11", url: "https://2mishnasaday.com/wp-content/uploads/Nid91011.mp3" },
+          { label: "Niddah 10:1-2", url: "https://2mishnasaday.com/wp-content/uploads/Nid1012.mp3" },
+          { label: "Niddah 10:3-4", url: "https://2mishnasaday.com/wp-content/uploads/Nid1034.mp3" },
+          { label: "Niddah 10:5-6", url: "https://2mishnasaday.com/wp-content/uploads/Nid1056.mp3" },
+          { label: "Niddah 10:7-8", url: "https://2mishnasaday.com/wp-content/uploads/Nid1078.mp3" }
+        ]
+      }
+    ];
+
+    // ==========================================================
+    // Counts payload (for page + future build script integration)
+    // ==========================================================
+    function getCountsPayload(){
+      const perMasechta = Object.fromEntries(
+        MASECHTOS.map(m => [m.name, (m.items || []).length])
+      );
+      const total = Object.values(perMasechta).reduce((a,b)=>a+b,0);
+      return {
+        page: "mishna.html",
+        section: "Mishna Audio",
+        total_items: total,
+        per_masechta: perMasechta
+      };
+    }
+    window.TM_COUNTS = getCountsPayload();
+
+    // ==========================================================
+    // Behavior: pause others automatically
+    // ==========================================================
+    document.addEventListener("play", (e) => {
+      const a = e.target;
+      if (!(a instanceof HTMLAudioElement)) return;
+      document.querySelectorAll("audio").forEach(x => { if (x !== a) x.pause(); });
+    }, true);
+
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[m]));
+    }
+
+    function setActiveSpeed(rowEl, rate){
+      const audio = rowEl.querySelector("audio");
+      audio.playbackRate = rate;
+
+      rowEl.querySelectorAll(".spdBtn").forEach(btn => {
+        const r = Number(btn.getAttribute("data-rate"));
+        btn.classList.toggle("isActive", r === rate);
+      });
+    }
+
+    function setActiveRow(rowEl){
+      document.querySelectorAll(".row.isActive").forEach(r => {
+        if (r !== rowEl) r.classList.remove("isActive");
+      });
+      rowEl.classList.add("isActive");
+    }
+
+    function render(){
+      const stack = document.getElementById("stack");
+      const totalsText = document.getElementById("totalsText");
+      const totalsPill = document.getElementById("totalsPill");
+
+      const payload = getCountsPayload();
+      totalsText.innerHTML = `<b>Total shiurim on this page:</b> ${payload.total_items}`;
+      totalsPill.textContent = `Masechtos: ${MASECHTOS.length}`;
+
+      // removed 0.8 as requested
+      const speedRates = [1, 1.25, 1.5, 2];
+
+      stack.innerHTML = MASECHTOS.map(m => {
+        const items = m.items || [];
+        const openAttr = m.openByDefault ? "open" : "";
+        return `
+          <details class="card" ${openAttr} data-masechta="${escapeHtml(m.name)}">
+            <summary class="cardHead">
+              <div class="headLeft">
+                <div class="chev">›</div>
+                <div class="title">${escapeHtml(m.name)}</div>
+              </div>
+              <div class="count">${items.length} shiurim</div>
+            </summary>
+
+            <div class="list">
+              ${items.map((it) => `
+                <div class="row" data-item="1" tabindex="0">
+                  <div class="rowTop">
+                    <div class="label">${escapeHtml(it.label)}</div>
+                  </div>
+
+                  <div class="controls">
+                    <div class="speed" role="group" aria-label="Playback speed">
+                      ${speedRates.map(r => `
+                        <button type="button" class="spdBtn" data-rate="${r}">${r}×</button>
+                      `).join("")}
+                    </div>
+                  </div>
+
+                  <audio controls preload="none" src="${escapeHtml(it.url)}"></audio>
+                </div>
+              `).join("")}
+            </div>
+          </details>
+        `;
+      }).join("");
+
+      // Wire up speed buttons + default 1× + show controls only when row is selected
+      document.querySelectorAll(".row").forEach(row => {
+        const audio = row.querySelector("audio");
+        audio.playbackRate = 1;
+
+        // set initial active state for 1× button
+        row.querySelectorAll(".spdBtn").forEach(btn => {
+          const r = Number(btn.getAttribute("data-rate"));
+          if (r === 1) btn.classList.add("isActive");
+
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            setActiveRow(row);
+            setActiveSpeed(row, r);
+          });
+        });
+
+        // clicking the row (or its label) makes it active (reveals speed buttons)
+        row.addEventListener("click", (e) => {
+          // avoid toggling active when clicking a speed button (handled above)
+          if (e.target.closest(".spdBtn")) return;
+          setActiveRow(row);
+        });
+
+        // keyboard accessibility: Enter/Space selects row
+        row.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setActiveRow(row);
+          }
+        });
+
+        // if playback begins, also mark row active
+        audio.addEventListener("play", () => setActiveRow(row));
+
+        // if user changes playback rate via native controls/OS, reflect closest button
+        audio.addEventListener("ratechange", () => {
+          const current = audio.playbackRate;
+          const rates = Array.from(row.querySelectorAll(".spdBtn")).map(b => Number(b.dataset.rate));
+          let best = rates[0], bestDiff = Math.abs(current - best);
+          for (const rr of rates) {
+            const d = Math.abs(current - rr);
+            if (d < bestDiff) { best = rr; bestDiff = d; }
+          }
+          row.querySelectorAll(".spdBtn").forEach(b => b.classList.toggle("isActive", Number(b.dataset.rate) === best));
+        });
+      });
+    }
+
+    render();
+  </script>
+</body>
+</html>
