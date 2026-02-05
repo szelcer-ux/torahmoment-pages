@@ -198,13 +198,26 @@
       border-radius:8px;
       text-decoration:none;
       color:#111;
+      align-items:center;
     }
     .recentRow:hover{ background:#f6f8fb; }
-    
-    .rIcon{ width:20px; }
-    .rMeta{ margin-left:auto; color:#666; font-size:0.85rem; }
 
-    
+    .rIcon{ width:20px; text-align:center; }
+    .rMeta{ margin-left:auto; color:#666; font-size:0.85rem; white-space:nowrap; }
+
+    /* NEW: group headers for curated recent */
+    .recentGroup{
+      margin-top: 10px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      font-weight: 750;
+      color: #334155;
+      background: #f1f5f9;
+      border: 1px solid #e7e7ee;
+      border-radius: 10px;
+    }
+    .recentGroup:first-child{ margin-top: 0; }
+
     /* Mobile */
     @media (max-width: 820px){
       header{ align-items:flex-start; flex-direction:column; }
@@ -241,11 +254,10 @@
       <div class="stat">
         <div class="label">Last updated</div>
         <div class="value" id="statUpdated">—</div>
-        <!-- <div class="hint">From site-counts.json</div> -->
       </div>
     </section>
 
-    <!-- Navigation (same destinations as your original) -->
+    <!-- Navigation -->
     <section class="card">
       <div class="grid">
         <a class="prog" href="/parsha.html">
@@ -287,7 +299,7 @@
           </div>
           <div class="arrow">›</div>
         </a>
-        
+
         <a class="prog" href="/mishna.html">
           <div class="icon">📖</div>
           <div>
@@ -312,12 +324,12 @@
 
     <div class="divider"></div>
 
-    <!-- Recently Added (no API key; link to Parsha page) -->
+    <!-- Recently Added -->
     <section class="card">
-  <h2 style="margin:0 0 8px;">Recently added</h2>
-  <div id="recentList">Loading…</div>
-</section>
-
+      <h2 style="margin:0 0 8px;">Recently added</h2>
+      <div class="subtle">Latest: 2 One-Minute · 2 Halacha · 1 Parsha</div>
+      <div id="recentList" style="margin-top:12px;">Loading…</div>
+    </section>
 
     <footer>
       © <span id="yr"></span> TorahMoment.com
@@ -331,7 +343,6 @@
     document.getElementById("yr").textContent = new Date().getFullYear();
   </script>
 
-  <!-- Counts from /data/site-counts.json -->
   <script>
     function animateNumber(el, target, opts = {}) {
       const duration = opts.duration ?? 650;
@@ -348,15 +359,16 @@
       requestAnimationFrame(tick);
     }
 
+    // Keep your old renderer (unused now). You can delete later if you want.
     function renderRecent(items){
       const wrap = document.getElementById("recentList");
       if (!items?.length){
         wrap.innerHTML = `<a href="/parsha.html" class="latestLink">▶ View latest content</a>`;
         return;
       }
-    
+
       wrap.innerHTML = items.map(x => `
-        <a class="recentRow" href="${x.url}" target="_blank">
+        <a class="recentRow" href="${x.url}" target="_blank" rel="noopener">
           <span class="rIcon">${x.type==="audio"?"🎧":"📺"}</span>
           <span>${x.title}</span>
           <span class="rMeta">${x.program}</span>
@@ -364,7 +376,45 @@
       `).join("");
     }
 
-    
+    // NEW: Curated recent renderer (2 + 2 + 1), grouped but in one spot
+    function renderRecentCurated(data){
+      const wrap = document.getElementById("recentList");
+      if (!wrap) return;
+
+      const by = data?.recentByProgram || {};
+      const one = Array.isArray(by.oneMinute) ? by.oneMinute : [];
+      const hal = Array.isArray(by.halacha) ? by.halacha : [];
+      const par = Array.isArray(by.parsha) ? by.parsha : [];
+
+      const curated = [
+        ...one.slice(0, 2).map(x => ({ ...x, _group: "One-Minute" })),
+        ...hal.slice(0, 2).map(x => ({ ...x, _group: "Halacha" })),
+        ...par.slice(0, 1).map(x => ({ ...x, _group: "Parsha" })),
+      ].filter(x => x && x.url);
+
+      if (!curated.length){
+        wrap.innerHTML = `<a href="/parsha.html" class="latestLink">▶ View latest content</a>`;
+        return;
+      }
+
+      let lastGroup = null;
+      wrap.innerHTML = curated.map(x => {
+        const header = (x._group !== lastGroup)
+          ? `<div class="recentGroup">${x._group}</div>`
+          : "";
+        lastGroup = x._group;
+
+        return `
+          ${header}
+          <a class="recentRow" href="${x.url}" target="_blank" rel="noopener">
+            <span class="rIcon">${x.type === "audio" ? "🎧" : "📺"}</span>
+            <span>${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
+            <span class="rMeta">${x.program || ""}</span>
+          </a>
+        `;
+      }).join("");
+    }
+
     async function loadCounts() {
       try {
         const res = await fetch("/data/site-counts.json", { cache: "no-store" });
@@ -398,25 +448,13 @@
           const b = breakdown?.[key];
           if (!b) return null;
 
-          if (key === "parsha") {
-            return Number(b.audio || 0) + Number(b.video || 0);
-          }
-          if (key === "tefila") {
-            return Number(b.video || 0);
-          }
-          if (key === "halacha") {
-            return Number(b.totalAll ?? 0);
-          }
-          if (key === "oneMinute") {
-            return Number(b.audio || 0);
-          }
-          if (key === "mishna") {               // ✅ ADD THIS
-            return Number(b.audio || 0);
-          }
-
+          if (key === "parsha") return Number(b.audio || 0) + Number(b.video || 0);
+          if (key === "tefila") return Number(b.video || 0);
+          if (key === "halacha") return Number(b.totalAll ?? 0);
+          if (key === "oneMinute") return Number(b.audio || 0);
+          if (key === "mishna") return Number(b.audio || 0);
           return null;
         }
-
 
         document.querySelectorAll("[data-site-count]").forEach(el => {
           const key = el.dataset.siteCount;
@@ -424,11 +462,13 @@
           el.textContent = (typeof val === "number") ? val.toLocaleString() : "—";
         });
 
-        renderRecent(data.recent);
+        // ✅ Use curated recent (2+2+1) from recentByProgram
+        renderRecentCurated(data);
 
-    
       } catch (e) {
         console.warn("Could not load /data/site-counts.json", e);
+        const wrap = document.getElementById("recentList");
+        if (wrap) wrap.innerHTML = `<a href="/parsha.html" class="latestLink">▶ View latest content</a>`;
       }
     }
 
