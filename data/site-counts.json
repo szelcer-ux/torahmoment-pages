@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 648,
+    "total": 649,
     "breakdown": {
       "parsha": {
         "audio": 21,
@@ -13,7 +13,7 @@
         "totalAll": 71
       },
       "oneMinute": {
-        "audio": 186
+        "audio": 187
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-02-05"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Who runs the world",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260205-WA0029.mp3",
+      "date": "2026-02-05T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Appreciation through struggle",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260129-WA0017.mp3",
       "date": "2026-01-29T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Covering challah during kiddush Part 2",
-      "url": "https://www.buzzsprout.com/1899789/episodes/18577857-1-28-2026-shloimy-zelcer-covering-challah-during-kiddush-part-2.mp3",
-      "date": "2026-01-28T00:00:00.000Z"
     }
   ]
 }
