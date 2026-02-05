@@ -387,7 +387,7 @@
       const par = Array.isArray(by.parsha) ? by.parsha : [];
 
       const curated = [
-        ...one.slice(0, 2).map(x => ({ ...x, _group: "One-Minute" })),
+        ...one.slice(0, 3).map(x => ({ ...x, _group: "One-Minute" })),
         ...hal.slice(0, 2).map(x => ({ ...x, _group: "Halacha" })),
         ...par.slice(0, 1).map(x => ({ ...x, _group: "Parsha" })),
       ].filter(x => x && x.url);
