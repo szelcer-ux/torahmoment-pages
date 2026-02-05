@@ -331,6 +331,42 @@
   border-color: rgba(13,148,136,0.28);
 }
 
+/* Desktop only: align title+date and keep player in the whitespace */
+@media (min-width: 621px){
+  .recentAudio{
+    display:grid;                 /* overrides flex from .recentRow */
+    grid-template-columns: 1fr auto;
+    column-gap: 14px;
+    align-items: center;
+  }
+
+  .rLine{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+  }
+  .rTitle{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-weight:600;
+  }
+  .rDate{
+    margin-left:auto;            /* now aligns with title line */
+    color:#666;
+    font-size:0.82rem;
+    white-space:nowrap;
+  }
+
+  /* make the native control feel less heavy */
+  .rPlayer{
+    width: 210px;                /* try 200–230 */
+    min-width: 200px;
+    transform: scale(0.92);      /* visually smaller */
+    transform-origin: right center;
+  }
+}
 
     
   </style>
@@ -533,12 +569,10 @@ if (x.type === "audio") {
         <div class="rLine">
           <span class="rIcon">🎧</span>
           <span class="rTitle">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
+          <span class="rDate">${dateLabel}</span>
         </div>
 
         <div class="rSub">
-          <span class="rDate">${dateLabel}</span>
-
-          <!-- speed buttons: hidden until row is "active" -->
           <span class="speedBtns" aria-label="Playback speed">
             <button type="button" class="speedBtn" data-speed="1">1x</button>
             <button type="button" class="speedBtn" data-speed="1.5">1.5x</button>
@@ -551,6 +585,7 @@ if (x.type === "audio") {
     </div>
   `;
 }
+
 
 
 
