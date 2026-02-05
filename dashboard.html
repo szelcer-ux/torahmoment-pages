@@ -371,6 +371,16 @@
           </div>
           <div class="arrow">›</div>
         </a>
+     
+        <a class="prog" href="/mishna.html">
+      <div class="icon">📖</div>
+      <div>
+        <h3>Mishna Audio</h3>
+        <div class="meta">2 Mishnas a Day</div>
+        <div class="counts"><b id="cMishna">—</b> items</div>
+      </div>
+      <div class="arrow">›</div>
+    </a>
 
         <a class="prog" href="/torahprograms.html" style="background:#eefaf3">
           <div class="icon" style="background: rgba(34,197,94,0.12);">🤝</div>
@@ -489,14 +499,16 @@
         animateNumber(document.getElementById("sParshaV"), parshaV);
         animateNumber(document.getElementById("sParshaA"), parshaA);
         animateNumber(document.getElementById("sTefilahV"), tefilahV);
-        animateNumber(document.getElementById("smishnaA"), mishnaA); 
-        
+        animateNumber(document.getElementById("sMishnaA"), mishnaA);
+
         // Card counts
         document.getElementById("cParsha").textContent = parshaT.toLocaleString();
         document.getElementById("cHalacha").textContent = halacha.toLocaleString();
         document.getElementById("cOneMin").textContent = oneMin.toLocaleString();
         document.getElementById("cTefilah").textContent = tefilahV.toLocaleString();
         document.getElementById("cMishna").textContent = mishnaA.toLocaleString(); // ✅ new
+//const cM = document.getElementById("cMishna");
+//if (cM) cM.textContent = mishnaA.toLocaleString();
 
 
         // Health checks
