@@ -241,6 +241,7 @@
 /* Audio layout: title/date on one line, player to the right */
 .recentAudio{
   background: transparent;
+   align-items: center;   /* keeps player vertically aligned */
 }
 .recentAudio:hover{
   background:#f6f8fb;
@@ -271,8 +272,8 @@
 }
 
 .rPlayer{
-  width: 260px;
-  min-width: 220px;
+  width: 220px;          /* ← this is the key change */
+  min-width: 200px;
 }
 
 /* Mobile: stack player under title */
@@ -532,11 +533,10 @@ if (x.type === "audio") {
         <div class="rLine">
           <span class="rIcon">🎧</span>
           <span class="rTitle">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
-          <span class="rDate">${dateLabel}</span>
         </div>
 
         <div class="rSub">
-       
+          <span class="rDate">${dateLabel}</span>
 
           <!-- speed buttons: hidden until row is "active" -->
           <span class="speedBtns" aria-label="Playback speed">
@@ -551,6 +551,7 @@ if (x.type === "audio") {
     </div>
   `;
 }
+
 
 
     // Video (Parsha): keep link behavior
