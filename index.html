@@ -389,6 +389,25 @@
   color: #0d9488;
   white-space: nowrap;
 }
+
+/* Mobile: collapse long titles by default */
+@media (max-width: 620px){
+  .rTitle{
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+
+  /* Expanded title */
+  .recentAudio.isTitleOpen .rTitle{
+    white-space: normal;
+    overflow: visible;
+  }
+}
+
     
   </style>
 </head>
@@ -589,7 +608,7 @@ if (x.type === "audio") {
       <div class="rLeft">
         <div class="rLine">
           <span class="rIcon">🎧</span>
-          <span class="rTitle">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
+          <span class="rTitle rToggleTitle" role="button" tabindex="0">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
           <span class="longBadge" hidden>Long shiur</span>
           <span class="rDate">${dateLabel}</span>
         </div>
@@ -702,6 +721,30 @@ function markLongShiur(row){
     }
   });
 
+// Toggle title expand/collapse (mobile only)
+list.addEventListener("click", (e) => {
+  const title = e.target.closest(".rToggleTitle");
+  if (!title) return;
+
+  // Only on mobile
+  if (!window.matchMedia("(max-width: 620px)").matches) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const row = title.closest(".recentAudio");
+  if (!row) return;
+
+  // Close other open titles
+  list.querySelectorAll(".recentAudio.isTitleOpen").forEach(r => {
+    if (r !== row) r.classList.remove("isTitleOpen");
+  });
+
+  // Toggle this one
+  row.classList.toggle("isTitleOpen");
+});
+
+  
 list.querySelectorAll(".recentAudio").forEach(markLongShiur);
 
   
