@@ -192,21 +192,154 @@
       padding-top: 2px;
     }
 
-    /* Recent list */
+    /* --- RECENT (ported from index) --- */
+    .recentGroup{
+      margin-top: 12px;
+      padding: 6px 2px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(15, 23, 42, 0.65);
+      letter-spacing: 0.02em;
+      border-top: 1px solid rgba(231,231,238,0.9);
+    }
+    .recentGroup:first-child{
+      margin-top: 0;
+      border-top: none;
+    }
+
     .recentRow{
       display:flex;
       gap:10px;
-      padding:8px 10px;
+      padding:10px 10px;
       border-radius:10px;
       text-decoration:none;
       color:#111;
       align-items:center;
     }
     .recentRow:hover{ background:#f6f8fb; }
-    .rIcon{ width:20px; text-align:center; }
-    .rTitle{ flex:1; }
-    .rMeta{ color:#666; font-size:0.85rem; white-space:nowrap; }
 
+    .rIcon{ width:20px; text-align:center; }
+
+    /* title/date line */
+    .rLine{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .rTitle{
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      font-weight:600;
+    }
+    .rDate{
+      margin-left:auto;
+      color:#666;
+      font-size:0.82rem;
+      white-space:nowrap;
+    }
+
+    .rLeft{ flex: 1; min-width: 0; }
+    .rSub{
+      margin-top:4px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* speed buttons hidden by default */
+    .speedBtns{
+      display:none;
+      gap:8px;
+      align-items:center;
+    }
+    .recentAudio.isActive .speedBtns{
+      display:inline-flex;
+    }
+    .speedBtn{
+      border:1px solid var(--border);
+      background:#fff;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:650;
+      font-size:0.85rem;
+      cursor:pointer;
+    }
+    .speedBtn:hover{
+      border-color: rgba(13,148,136,0.35);
+    }
+    .recentAudio .speedBtn.isOn{
+      background: rgba(13,148,136,0.12);
+      border-color: rgba(13,148,136,0.28);
+    }
+
+    /* long shiur badge */
+    .longBadge{
+      margin-left: 8px;
+      padding: 2px 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border-radius: 999px;
+      background: rgba(13,148,136,0.12);
+      color: #0d9488;
+      white-space: nowrap;
+    }
+
+    /* Player */
+    .rPlayer{
+      width: 210px;
+      min-width: 200px;
+      transform: scale(0.92);
+      transform-origin: right center;
+    }
+
+    /* Desktop layout: keep player in its own column */
+    @media (min-width: 621px){
+      .recentAudio{
+        display:grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 14px;
+        align-items: center;
+      }
+
+      /* move speed buttons right, closer to the player */
+      .recentAudio .rSub{
+        display:flex;
+        justify-content:flex-end;
+        margin-top: 6px;
+      }
+      .recentAudio .speedBtns{
+        margin-left: auto;
+      }
+    }
+
+    /* Mobile: stack player under text */
+    @media (max-width: 620px){
+      .recentAudio{
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .rPlayer{
+        width: 100%;
+        min-width: 0;
+        transform: none;
+      }
+
+      /* Mobile title expand/collapse */
+      .rTitle{
+        display:inline-block;
+        max-width: 100%;
+        cursor:pointer;
+      }
+      .recentAudio.isTitleOpen .rTitle{
+        white-space: normal;
+        overflow: visible;
+      }
+    }
+
+    /* muted box stays for fallback */
     .mutedBox{
       border:1px dashed var(--border);
       border-radius:12px;
@@ -371,16 +504,16 @@
           </div>
           <div class="arrow">›</div>
         </a>
-     
+
         <a class="prog" href="/mishna.html">
-      <div class="icon">📖</div>
-      <div>
-        <h3>Mishna Audio</h3>
-        <div class="meta">2 Mishnas a Day</div>
-        <div class="counts"><b id="cMishna">—</b> items</div>
-      </div>
-      <div class="arrow">›</div>
-    </a>
+          <div class="icon">📖</div>
+          <div>
+            <h3>Mishna Audio</h3>
+            <div class="meta">2 Mishnas a Day</div>
+            <div class="counts"><b id="cMishna">—</b> items</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
 
         <a class="prog" href="/torahprograms.html" style="background:#eefaf3">
           <div class="icon" style="background: rgba(34,197,94,0.12);">🤝</div>
@@ -397,7 +530,7 @@
     <!-- Recent -->
     <section class="card">
       <h2 style="margin:0 0 8px;">Recently added</h2>
-      <div class="subtle" style="margin-bottom:12px;">Latest 5 shiurim</div>
+      <div class="subtle" style="margin-bottom:12px;">3 One-Minute · 2 Halacha · 1 Parsha</div>
       <div id="recentList" class="mutedBox">Loading…</div>
     </section>
 
@@ -427,29 +560,193 @@
 
     function safeNum(x){ return (typeof x === "number" && Number.isFinite(x)) ? x : 0; }
 
-    function renderRecent(items){
+    function fmtShortDate(iso){
+      if (!iso) return "";
+      const d = new Date(iso);
+      if (!Number.isFinite(d.getTime())) return "";
+      return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"numeric" });
+    }
+
+    function renderRecentCurated(data){
       const wrap = document.getElementById("recentList");
       if (!wrap) return;
 
-      if (!Array.isArray(items) || items.length === 0) {
+      const by = data?.recentByProgram || {};
+      const one = Array.isArray(by.oneMinute) ? by.oneMinute : [];
+      const hal = Array.isArray(by.halacha) ? by.halacha : [];
+      const par = Array.isArray(by.parsha) ? by.parsha : [];
+
+      const curated = [
+        ...one.slice(0, 3).map(x => ({ ...x, _group: "One-Minute" })),
+        ...hal.slice(0, 2).map(x => ({ ...x, _group: "Halacha", _isHalacha: true })),
+        ...par.slice(0, 1).map(x => ({ ...x, _group: "Parsha" })),
+      ].filter(x => x && x.url);
+
+      if (!curated.length){
+        wrap.className = "mutedBox";
         wrap.innerHTML = `
           <div style="text-align:center">
             <a href="/parsha.html" style="color:#0b57d0;text-decoration:none;font-weight:650;">
               ▶ View latest content
             </a>
           </div>`;
-        wrap.className = "mutedBox";
         return;
       }
 
       wrap.className = "";
-      wrap.innerHTML = items.slice(0,5).map(x => `
-        <a class="recentRow" href="${x.url}" target="_blank" rel="noopener">
-          <span class="rIcon">${x.type === "audio" ? "🎧" : "📺"}</span>
-          <span class="rTitle">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
-          <span class="rMeta">${x.program || ""}</span>
-        </a>
-      `).join("");
+
+      let lastGroup = null;
+      wrap.innerHTML = curated.map(x => {
+        const header = (x._group !== lastGroup)
+          ? `<div class="recentGroup">${x._group}</div>`
+          : "";
+        lastGroup = x._group;
+
+        const dateLabel = fmtShortDate(x.date);
+
+        if (x.type === "audio") {
+          const safeUrl = String(x.url || "");
+          return `
+            ${header}
+            <div class="recentRow recentAudio" data-kind="audio" data-url="${safeUrl}" ${x._isHalacha ? 'data-halacha="true"' : ''}>
+              <div class="rLeft">
+                <div class="rLine">
+                  <span class="rIcon">🎧</span>
+                  <span class="rTitle rToggleTitle" role="button" tabindex="0">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
+                  <span class="longBadge" hidden>Long shiur</span>
+                  <span class="rDate">${dateLabel}</span>
+                </div>
+
+                <div class="rSub">
+                  <span class="speedBtns" aria-label="Playback speed">
+                    <button type="button" class="speedBtn" data-speed="1">1x</button>
+                    <button type="button" class="speedBtn" data-speed="1.5">1.5x</button>
+                    <button type="button" class="speedBtn" data-speed="2">2x</button>
+                  </span>
+                </div>
+              </div>
+
+              <audio class="rPlayer" controls preload="metadata" src="${safeUrl}"></audio>
+            </div>
+          `;
+        }
+
+        // Video (Parsha): keep link behavior
+        return `
+          ${header}
+          <a class="recentRow recentVideo" href="${x.url}" target="_blank" rel="noopener">
+            <span class="rIcon">📺</span>
+            <span class="rTitle">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
+            <span class="rDate">${dateLabel}</span>
+          </a>
+        `;
+      }).join("");
+    }
+
+    function setupRecentAudioBehavior(){
+      const list = document.getElementById("recentList");
+      if (!list) return;
+
+      function setActiveRow(row){
+        list.querySelectorAll(".recentAudio.isActive").forEach(r => {
+          if (r !== row) r.classList.remove("isActive");
+        });
+        row.classList.add("isActive");
+      }
+
+      function pauseOthers(keepAudio){
+        list.querySelectorAll("audio.rPlayer").forEach(a => {
+          if (a !== keepAudio && !a.paused) a.pause();
+        });
+      }
+
+      function setSpeed(row, speed){
+        const audio = row.querySelector("audio.rPlayer");
+        if (!audio) return;
+
+        audio.playbackRate = speed;
+
+        row.querySelectorAll(".speedBtn").forEach(btn => {
+          const s = Number(btn.dataset.speed);
+          btn.classList.toggle("isOn", s === speed);
+        });
+      }
+
+      function markLongShiur(row){
+        if (row.dataset.halacha !== "true") return;
+
+        const audio = row.querySelector("audio.rPlayer");
+        const badge = row.querySelector(".longBadge");
+        if (!audio || !badge) return;
+
+        audio.addEventListener("loadedmetadata", () => {
+          if (Number.isFinite(audio.duration) && audio.duration > 10 * 60) {
+            badge.hidden = false;
+          }
+        }, { once: true });
+      }
+
+      // Mark long shiur badges ASAP (preload=metadata)
+      list.querySelectorAll(".recentAudio").forEach(markLongShiur);
+
+      // Speed buttons / activate row
+      list.addEventListener("click", (e) => {
+        const speedBtn = e.target.closest(".speedBtn");
+        if (speedBtn){
+          e.preventDefault();
+          e.stopPropagation();
+
+          const row = speedBtn.closest(".recentAudio");
+          if (!row) return;
+
+          setActiveRow(row);
+          const speed = Number(speedBtn.dataset.speed) || 1;
+          setSpeed(row, speed);
+          return;
+        }
+
+        // Title expand/collapse (mobile only)
+        const title = e.target.closest(".rToggleTitle");
+        if (title && window.matchMedia("(max-width: 620px)").matches){
+          e.preventDefault();
+          e.stopPropagation();
+
+          const row = title.closest(".recentAudio");
+          if (!row) return;
+
+          list.querySelectorAll(".recentAudio.isTitleOpen").forEach(r => {
+            if (r !== row) r.classList.remove("isTitleOpen");
+          });
+          row.classList.toggle("isTitleOpen");
+          return;
+        }
+
+        const row = e.target.closest(".recentAudio");
+        if (row){
+          if (e.target.closest("audio")) return; // don't hijack audio controls
+          setActiveRow(row);
+
+          // default speed highlight if user clicks row first
+          const anyOn = row.querySelector(".speedBtn.isOn");
+          if (!anyOn) setSpeed(row, 1);
+        }
+      });
+
+      // Pause others when playing
+      list.addEventListener("play", (e) => {
+        const audio = e.target.closest("audio.rPlayer");
+        if (!audio) return;
+
+        pauseOthers(audio);
+
+        const row = audio.closest(".recentAudio");
+        if (row){
+          setActiveRow(row);
+
+          const anyOn = row.querySelector(".speedBtn.isOn");
+          if (!anyOn) setSpeed(row, 1);
+        }
+      }, true);
     }
 
     async function loadDashboard(){
@@ -468,13 +765,11 @@
         const parshaA = safeNum(b?.parsha?.audio);
         const parshaV = safeNum(b?.parsha?.video);
         const parshaT = parshaA + parshaV;
-        
+
         const oneMin = safeNum(b?.oneMinute?.audio);
         const halacha = safeNum(b?.halacha?.totalAll);
         const tefilahV = safeNum(b?.tefila?.video);
-        
-        const mishnaA = safeNum(b?.mishna?.audio); // ✅ add here
-
+        const mishnaA = safeNum(b?.mishna?.audio);
 
         const programCount = Object.keys(b || {}).length || 0;
 
@@ -506,10 +801,7 @@
         document.getElementById("cHalacha").textContent = halacha.toLocaleString();
         document.getElementById("cOneMin").textContent = oneMin.toLocaleString();
         document.getElementById("cTefilah").textContent = tefilahV.toLocaleString();
-        document.getElementById("cMishna").textContent = mishnaA.toLocaleString(); // ✅ new
-//const cM = document.getElementById("cMishna");
-//if (cM) cM.textContent = mishnaA.toLocaleString();
-
+        document.getElementById("cMishna").textContent = mishnaA.toLocaleString();
 
         // Health checks
         const health = [];
@@ -518,12 +810,17 @@
         if (programCount === 0) health.push("missing breakdown");
         document.getElementById("sHealth").textContent = health.length ? "⚠" : "OK";
 
-        // Recent list (if present)
-        renderRecent(data?.recent || []);
+        // Recent (curated + inline players)
+        renderRecentCurated(data);
+        setupRecentAudioBehavior();
 
       } catch (e){
         console.warn("Dashboard load failed", e);
-        document.getElementById("recentList").textContent = "Could not load dashboard data.";
+        const box = document.getElementById("recentList");
+        if (box) {
+          box.className = "mutedBox";
+          box.textContent = "Could not load dashboard data.";
+        }
       }
     }
 
