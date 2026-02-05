@@ -44,17 +44,17 @@
       "date": "2026-02-02T00:00:00.000Z"
     },
     {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Lasting impact",
+      "url": "https://www.youtube.com/watch?v=g5Y84M_T21g",
+      "date": "2026-01-30T04:26:06Z"
+    },
+    {
       "type": "audio",
       "program": "Halacha",
       "title": "Standing for Aseres Hadibros",
       "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
-      "date": "2026-01-29T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Appreciation through struggle",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260129-WA0017.mp3",
       "date": "2026-01-29T00:00:00.000Z"
     }
   ],
@@ -63,75 +63,96 @@
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "Elul - removing the negative and adding the positive",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240906-WA0064.mp3",
-        "date": "2024-09-08T00:00:00.000Z"
+        "title": "Who runs the world",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260205-WA0029.mp3",
+        "date": "2026-02-05T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "שבתי בבית ה",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240908-WA0046.mp3",
-        "date": "2024-09-09T00:00:00.000Z"
+        "title": "Always think about others",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0029.mp3",
+        "date": "2026-02-03T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "Having the proper perspective",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0012.mp3",
-        "date": "2024-09-10T00:00:00.000Z"
+        "title": "No Torah without achdus",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0030.mp3",
+        "date": "2026-02-02T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "Something to think about while saying שְׁמַע יִשְׂרָאֵל",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0059.mp3",
-        "date": "2024-09-11T00:00:00.000Z"
+        "title": "Appreciation through struggle",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260129-WA0017.mp3",
+        "date": "2026-01-29T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "Praying for Israeli soldiers",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0061.mp3",
-        "date": "2024-09-12T00:00:00.000Z"
+        "title": "True emunah",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260128-WA0014.mp3",
+        "date": "2026-01-28T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "כי־תצא - Battling the Yetzer Harah",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240912-WA0047.mp3",
-        "date": "2024-09-13T00:00:00.000Z"
+        "title": "In Hashem we trust",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260126-WA0028.mp3",
+        "date": "2026-01-26T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "Teaching by example",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240906-WA0080.mp3",
-        "date": "2024-09-15T00:00:00.000Z"
+        "title": "Inspiration->action",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260122-WA0013.mp3",
+        "date": "2026-01-22T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "We can always do teshuva",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240906-WA0070.mp3",
-        "date": "2024-09-16T00:00:00.000Z"
+        "title": "Unity",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260120-WA0012.mp3",
+        "date": "2026-01-20T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "Preparing for the yom hadin with love",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0039.mp3",
-        "date": "2024-09-17T00:00:00.000Z"
+        "title": "New month/ new you",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260118-WA0099.mp3",
+        "date": "2026-01-19T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "Judging the entirety of the person",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240917-WA0008.mp3",
-        "date": "2024-09-18T00:00:00.000Z"
+        "title": "Look at yourself",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260115-WA0024.mp3",
+        "date": "2026-01-15T00:00:00.000Z"
       }
     ],
     "halacha": [
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Standing for Aseres Hadibros",
+        "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
+        "date": "2026-01-29T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Covering challah during kiddush Part 2",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18577857-1-28-2026-shloimy-zelcer-covering-challah-during-kiddush-part-2.mp3",
+        "date": "2026-01-28T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Covering challah during kiddush",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18577841-1-27-2026-shloimy-zelcer-covering-challah-during-kiddush.mp3",
+        "date": "2026-01-27T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "Halacha",
@@ -142,30 +163,23 @@
       {
         "type": "audio",
         "program": "Halacha",
-        "title": "Stripes on the Talis",
-        "url": "https://www.buzzsprout.com/1899789/episodes/16448331-1-16-2025-shloimy-zelcer-stripes-on-the-talis.mp3",
-        "date": "2025-01-16T00:00:00.000Z"
+        "title": "Daven to Hashem, not angels",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18285871-12-3-2025-shloimy-zelcer-daven-to-hashem-not-angels.mp3",
+        "date": "2025-12-03T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "Halacha",
-        "title": "History of techeiles",
-        "url": "https://2mishnasaday.com/wp-content/uploads/techeileshistory.mp3",
-        "date": "2021-08-05T00:00:00.000Z"
+        "title": "When Davening takes too long",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18082159-10-28-2025-shloimy-zelcer-when-davening-takes-too-long.mp3",
+        "date": "2025-10-28T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "Halacha",
-        "title": "Why don't people wear techeiles",
-        "url": "https://2mishnasaday.com/wp-content/uploads/techeileswhynot.mp3",
-        "date": "2021-07-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Standing up to say Krias Shema",
-        "url": "https://www.buzzsprout.com/1899789/episodes/17508580-7-15-2025-shloimy-zelcer-standing-up-to-say-kriyas-shema.mp3",
-        "date": "2025-07-15T00:00:00.000Z"
+        "title": "Parshas Nitzavim / Erev Rosh Hashana",
+        "url": "https://2mishnasaday.com/wp-content/uploads/Nitzavim.mp3",
+        "date": "2025-09-18T00:00:00.000Z"
       },
       {
         "type": "audio",
@@ -177,32 +191,89 @@
       {
         "type": "audio",
         "program": "Halacha",
-        "title": "Answering Baruch Hu Uvaruch Shemo",
-        "url": "https://www.buzzsprout.com/1899789/episodes/17240722-5-28-2025-shloimy-zelcer-answering-baruch-hu-uvaruch-shemo.mp3",
-        "date": "2025-05-28T00:00:00.000Z"
+        "title": "Standing up to say Krias Shema",
+        "url": "https://www.buzzsprout.com/1899789/episodes/17508580-7-15-2025-shloimy-zelcer-standing-up-to-say-kriyas-shema.mp3",
+        "date": "2025-07-15T00:00:00.000Z"
       },
       {
         "type": "audio",
         "program": "Halacha",
-        "title": "Answering Amen to גָּאַל יִשְׂרָאֵל",
-        "url": "https://www.buzzsprout.com/1899789/episodes/16829518-3-26-2025-shloimy-zelcer-answering-amen-to.mp3",
-        "date": "2025-03-26T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Asking a kohen to leave",
-        "url": "https://www.buzzsprout.com/1899789/episodes/16170138-11-25-2024-shloimy-zelcer-asking-a-kohen-to-leave.mp3",
-        "date": "2024-11-25T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Who gets the first aliyah when there is no kohen",
-        "url": "https://www.buzzsprout.com/1899789/episodes/16134190-11-19-2024-shloimy-zelcer-who-gets-the-first-aliyah-when-there-is-no-kohen.mp3",
-        "date": "2024-11-19T00:00:00.000Z"
+        "title": "Kiddush in middle of davening?",
+        "url": "https://www.buzzsprout.com/1899789/episodes/17430394-7-1-2025-shloimy-zelcer-kiddush-in-middle-of-davening.mp3",
+        "date": "2025-07-01T00:00:00.000Z"
       }
     ],
-    "parsha": []
+    "parsha": [
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Lasting impact",
+        "url": "https://www.youtube.com/watch?v=g5Y84M_T21g",
+        "date": "2026-01-30T04:26:06Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Judaism is for everyone",
+        "url": "https://www.youtube.com/watch?v=BGKKQnGoLrY",
+        "date": "2026-01-23T03:21:56Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Open your eyes!",
+        "url": "https://www.youtube.com/watch?v=myJ3x4yjbk4",
+        "date": "2026-01-16T02:44:45Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Us AND them",
+        "url": "https://www.youtube.com/watch?v=-dgBRtH-ei4",
+        "date": "2026-01-09T03:19:59Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "When to NOT rely on Hashem",
+        "url": "https://www.youtube.com/watch?v=oVzvwj8y3iI",
+        "date": "2026-01-02T02:38:26Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Being seen",
+        "url": "https://www.youtube.com/watch?v=DYC0tB9Nc78",
+        "date": "2025-12-26T10:36:00Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "The true meaning of modesty",
+        "url": "https://www.youtube.com/watch?v=U8EKiu5afdo",
+        "date": "2025-12-19T12:21:57Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Alone time",
+        "url": "https://www.youtube.com/watch?v=pF1KMPaOEkU",
+        "date": "2025-12-05T02:09:24Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Appreciating the ordinary",
+        "url": "https://www.youtube.com/watch?v=rkBWtb6sIDY",
+        "date": "2025-11-28T02:09:21Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Sensitivity in prayer",
+        "url": "https://www.youtube.com/watch?v=Xt2FwcOXax4",
+        "date": "2025-11-21T02:59:56Z"
+      }
+    ]
   }
 }
