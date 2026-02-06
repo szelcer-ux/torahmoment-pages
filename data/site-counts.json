@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 649,
+    "total": 650,
     "breakdown": {
       "parsha": {
         "audio": 21,
-        "video": 213
+        "video": 214
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-02-05"
+    "updated": "2026-02-06"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "How do YOU serve Hashem?",
+      "url": "https://www.youtube.com/watch?v=qhs0gvRnUxk",
+      "date": "2026-02-06T03:57:18Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Lasting impact",
       "url": "https://www.youtube.com/watch?v=g5Y84M_T21g",
       "date": "2026-01-30T04:26:06Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Standing for Aseres Hadibros",
-      "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
-      "date": "2026-01-29T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "How do YOU serve Hashem?",
+        "url": "https://www.youtube.com/watch?v=qhs0gvRnUxk",
+        "date": "2026-02-06T03:57:18Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Lasting impact",
         "url": "https://www.youtube.com/watch?v=g5Y84M_T21g",
         "date": "2026-01-30T04:26:06Z"
@@ -266,13 +273,6 @@
         "title": "Appreciating the ordinary",
         "url": "https://www.youtube.com/watch?v=rkBWtb6sIDY",
         "date": "2025-11-28T02:09:21Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Sensitivity in prayer",
-        "url": "https://www.youtube.com/watch?v=Xt2FwcOXax4",
-        "date": "2025-11-21T02:59:56Z"
       }
     ]
   }
