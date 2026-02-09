@@ -363,8 +363,17 @@ fetch(DATA_URL, { cache:"no-store" })
   filtered = items.slice();
   sortLatestFirst = true;
   sortBtn.textContent = "Latest ↓";
-  render();
+
+  // ✅ Apply ?q= from URL AFTER data loads
+  const urlQ = (new URLSearchParams(location.search).get("q") || "").trim();
+  if (urlQ) {
+    q.value = urlQ;
+    q.dispatchEvent(new Event("input", { bubbles:true }));
+  } else {
+    render();
+  }
 });
+
 </script>
 
 <!-- (Optional) You can remove this whole block if you don't use ONE_MINUTE_AUDIO vars.
