@@ -1,24 +1,279 @@
 {
   "allShiurim": {
-    "total": 476,
+    "total": 660,
     "breakdown": {
       "parsha": {
-        "audio": 0,
-        "video": 240
+        "audio": 22,
+        "video": 214
+      },
+      "tefila": {
+        "video": 20
       },
       "halacha": {
         "totalAll": 79
       },
       "oneMinute": {
-        "audio": 0
-      },
-      "tefila": {
-        "video": 20
+        "audio": 188
       },
       "mishna": {
         "audio": 137
       }
     },
     "updated": "2026-02-09"
+  },
+  "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Beis Yaakov first",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260209-WA0012.mp3",
+      "date": "2026-02-09T00:00:00.000Z"
+    },
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "How do YOU serve Hashem?",
+      "url": "https://www.youtube.com/watch?v=qhs0gvRnUxk",
+      "date": "2026-02-06T03:57:18Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Who runs the world",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260205-WA0029.mp3",
+      "date": "2026-02-05T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Always think about others",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0029.mp3",
+      "date": "2026-02-03T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "No Torah without achdus",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0030.mp3",
+      "date": "2026-02-02T00:00:00.000Z"
+    }
+  ],
+  "recentByProgram": {
+    "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Beis Yaakov first",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260209-WA0012.mp3",
+        "date": "2026-02-09T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Who runs the world",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260205-WA0029.mp3",
+        "date": "2026-02-05T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Always think about others",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0029.mp3",
+        "date": "2026-02-03T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "No Torah without achdus",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0030.mp3",
+        "date": "2026-02-02T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Appreciation through struggle",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260129-WA0017.mp3",
+        "date": "2026-01-29T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "True emunah",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260128-WA0014.mp3",
+        "date": "2026-01-28T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "In Hashem we trust",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260126-WA0028.mp3",
+        "date": "2026-01-26T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Inspiration->action",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260122-WA0013.mp3",
+        "date": "2026-01-22T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Unity",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260120-WA0012.mp3",
+        "date": "2026-01-20T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "New month/ new you",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260118-WA0099.mp3",
+        "date": "2026-01-19T00:00:00.000Z"
+      }
+    ],
+    "halacha": [
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Standing for Aseres Hadibros",
+        "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
+        "date": "2026-01-29T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Covering challah during kiddush Part 2",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18577857-1-28-2026-shloimy-zelcer-covering-challah-during-kiddush-part-2.mp3",
+        "date": "2026-01-28T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Covering challah during kiddush",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18577841-1-27-2026-shloimy-zelcer-covering-challah-during-kiddush.mp3",
+        "date": "2026-01-27T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Double Black Tefilin",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18540770-1-20-2025-shloimy-zelcer-double-black-tefilin.mp3",
+        "date": "2026-01-20T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Daven to Hashem, not angels",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18285871-12-3-2025-shloimy-zelcer-daven-to-hashem-not-angels.mp3",
+        "date": "2025-12-03T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "When Davening takes too long",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18082159-10-28-2025-shloimy-zelcer-when-davening-takes-too-long.mp3",
+        "date": "2025-10-28T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Parshas Nitzavim / Erev Rosh Hashana",
+        "url": "https://2mishnasaday.com/wp-content/uploads/Nitzavim.mp3",
+        "date": "2025-09-18T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Do you have to know what youre saying in davening?",
+        "url": "https://www.buzzsprout.com/1899789/episodes/17665749-8-13-2025-shloimy-zelcer-do-you-have-to-know-what-youre-saying-in-davening.mp3",
+        "date": "2025-08-13T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Standing up to say Krias Shema",
+        "url": "https://www.buzzsprout.com/1899789/episodes/17508580-7-15-2025-shloimy-zelcer-standing-up-to-say-kriyas-shema.mp3",
+        "date": "2025-07-15T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Kiddush in middle of davening?",
+        "url": "https://www.buzzsprout.com/1899789/episodes/17430394-7-1-2025-shloimy-zelcer-kiddush-in-middle-of-davening.mp3",
+        "date": "2025-07-01T00:00:00.000Z"
+      }
+    ],
+    "parsha": [
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "How do YOU serve Hashem?",
+        "url": "https://www.youtube.com/watch?v=qhs0gvRnUxk",
+        "date": "2026-02-06T03:57:18Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Lasting impact",
+        "url": "https://www.youtube.com/watch?v=g5Y84M_T21g",
+        "date": "2026-01-30T04:26:06Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Judaism is for everyone",
+        "url": "https://www.youtube.com/watch?v=BGKKQnGoLrY",
+        "date": "2026-01-23T03:21:56Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Open your eyes!",
+        "url": "https://www.youtube.com/watch?v=myJ3x4yjbk4",
+        "date": "2026-01-16T02:44:45Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Us AND them",
+        "url": "https://www.youtube.com/watch?v=-dgBRtH-ei4",
+        "date": "2026-01-09T03:19:59Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "When to NOT rely on Hashem",
+        "url": "https://www.youtube.com/watch?v=oVzvwj8y3iI",
+        "date": "2026-01-02T02:38:26Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Being seen",
+        "url": "https://www.youtube.com/watch?v=DYC0tB9Nc78",
+        "date": "2025-12-26T10:36:00Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "The true meaning of modesty",
+        "url": "https://www.youtube.com/watch?v=U8EKiu5afdo",
+        "date": "2025-12-19T12:21:57Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Alone time",
+        "url": "https://www.youtube.com/watch?v=pF1KMPaOEkU",
+        "date": "2025-12-05T02:09:24Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
+        "title": "Appreciating the ordinary",
+        "url": "https://www.youtube.com/watch?v=rkBWtb6sIDY",
+        "date": "2025-11-28T02:09:21Z"
+      }
+    ]
   }
 }
