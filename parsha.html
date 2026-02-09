@@ -1825,6 +1825,24 @@ function updateAudioCounterFromState() {
   });
 </script>
 
+	<script>
+(function(){
+  const q = (new URLSearchParams(location.search).get("q") || "").trim();
+  if(!q) return;
+
+  // try common search inputs used on your pages
+  const input =
+    document.querySelector("#searchInput") ||
+    document.querySelector("#q") ||
+    document.querySelector('input[type="search"]');
+
+  if(!input) return;
+
+  input.value = q;
+  input.dispatchEvent(new Event("input", { bubbles:true }));
+})();
+</script>
+
 	
 </body>
 </html>
