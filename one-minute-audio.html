@@ -421,23 +421,42 @@ fetch(DATA_URL, { cache:"no-store" })
   const q = (params.get("q") || "").trim();
   if (!q) return;
 
-  const inp = document.getElementById("q");
-  if (!inp) return;
+  function fire() {
+    const inp = document.getElementById("q");
+    if (!inp) return false;
 
-  inp.value = q;
+    inp.value = q;
 
-  // Fire a bunch of common events in case your page listens to a different one
-  inp.dispatchEvent(new Event("input",  { bubbles: true }));
-  inp.dispatchEvent(new Event("change", { bubbles: true }));
-  inp.dispatchEvent(new KeyboardEvent("keyup",   { bubbles: true, key: "a" }));
-  inp.dispatchEvent(new KeyboardEvent("keydown", { bubbles: true, key: "a" }));
-  inp.dispatchEvent(new KeyboardEvent("keypress",{ bubbles: true, key: "a" }));
+    // trigger your existing input listener
+    inp.dispatchEvent(new Event("input", { bubbles: true }));
+    inp.dispatchEvent(new Event("change", { bubbles: true }));
 
-  // If your page exposes a filter/render function, call it (safe no-op if missing)
-  if (typeof window.applyFilters === "function") window.applyFilters();
-  if (typeof window.render === "function") window.render();
+    // if your page has a known function, call it too (safe if missing)
+    if (typeof window.applyFilters === "function") window.applyFilters();
+    if (typeof window.render === "function") window.render();
+
+    return true;
+  }
+
+  // 1) try immediately
+  fire();
+
+  // 2) try after DOM is ready
+  window.addEventListener("DOMContentLoaded", () => {
+    fire();
+    setTimeout(fire, 100);
+    setTimeout(fire, 350);
+    setTimeout(fire, 800);
+  });
+
+  // 3) try after everything is loaded (JSON fetches etc. often finish by then)
+  window.addEventListener("load", () => {
+    fire();
+    setTimeout(fire, 150);
+  });
 })();
 </script>
+
 
 
   
