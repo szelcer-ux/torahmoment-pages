@@ -415,7 +415,7 @@ fetch(DATA_URL, { cache:"no-store" })
 })();
 </script>
 
-  <script>
+<script>
 (function applyGlobalSearchOneMinute(){
   const params = new URLSearchParams(location.search);
   const q = (params.get("q") || "").trim();
@@ -425,9 +425,20 @@ fetch(DATA_URL, { cache:"no-store" })
   if (!inp) return;
 
   inp.value = q;
-  inp.dispatchEvent(new Event("input", { bubbles: true }));
+
+  // Fire a bunch of common events in case your page listens to a different one
+  inp.dispatchEvent(new Event("input",  { bubbles: true }));
+  inp.dispatchEvent(new Event("change", { bubbles: true }));
+  inp.dispatchEvent(new KeyboardEvent("keyup",   { bubbles: true, key: "a" }));
+  inp.dispatchEvent(new KeyboardEvent("keydown", { bubbles: true, key: "a" }));
+  inp.dispatchEvent(new KeyboardEvent("keypress",{ bubbles: true, key: "a" }));
+
+  // If your page exposes a filter/render function, call it (safe no-op if missing)
+  if (typeof window.applyFilters === "function") window.applyFilters();
+  if (typeof window.render === "function") window.render();
 })();
 </script>
+
 
   
 </body>
