@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 659,
+    "total": 660,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -13,7 +13,7 @@
         "totalAll": 79
       },
       "oneMinute": {
-        "audio": 187
+        "audio": 188
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-02-09"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Beis Yaakov first",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260209-WA0012.mp3",
+      "date": "2026-02-09T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,17 +56,17 @@
       "title": "No Torah without achdus",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0030.mp3",
       "date": "2026-02-02T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Lasting impact",
-      "url": "https://www.youtube.com/watch?v=g5Y84M_T21g",
-      "date": "2026-01-30T04:26:06Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Beis Yaakov first",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260209-WA0012.mp3",
+        "date": "2026-02-09T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "New month/ new you",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260118-WA0099.mp3",
         "date": "2026-01-19T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Look at yourself",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260115-WA0024.mp3",
-        "date": "2026-01-15T00:00:00.000Z"
       }
     ],
     "halacha": [
