@@ -528,6 +528,17 @@
   <a href="https://torahmoment.com" rel="noopener">TorahMoment.com</a>
 </div>
 
+	  <script>
+  (function(){
+    const p = new URLSearchParams(location.search);
+    const q = (p.get("q") || "").trim();
+    if (q) {
+      window.__TM_GLOBAL_Q__ = q;
+      window.__TM_SKIP_HEBCAL_DEFAULT__ = true;
+    }
+  })();
+</script>
+
 
     <div class="controls" id="controlsWrap">
       <input id="q" type="search" placeholder="Search within Parsha videos..." />
@@ -749,21 +760,19 @@ const PARSHA_INDEPTH = {
 };
 
 async function setDefaultParshaOnEntry() {
-  // ✅ URL wins no matter what
-  const fromUrl = getParshaFromURL();
+  // URL parsha wins (if you support it)
+  const fromUrl = getParshaFromURL?.();
   if (fromUrl) {
-    selectParshaFromURL();
+    selectParshaFromURL?.();
     return;
   }
 
-  // ✅ If global search is present, skip the Hebcal default
-  if (window.__TM_SKIP_HEBCAL_DEFAULT__) {
-    return;
-  }
+  // Global search present → do NOT auto-pick current parsha
+  if (window.__TM_SKIP_HEBCAL_DEFAULT__) return;
 
-  // ✅ Otherwise, do your Hebcal default-parsha logic
+  // Otherwise: Hebcal default
   try {
-    const wk = await getThisWeeksParsha(); // your Hebcal-based function
+    const wk = await getThisWeeksParsha();
     const opt = [...parshaSel.options].find(
       o => normalizeParshaName(o.value) === normalizeParshaName(wk)
     );
@@ -772,6 +781,7 @@ async function setDefaultParshaOnEntry() {
     console.warn("Could not set default parsha:", e);
   }
 }
+
 
 
 	function getCurrentParsha() {
@@ -1865,6 +1875,41 @@ function updateAudioCounterFromState() {
 
   inp.value = q;
   inp.dispatchEvent(new Event("input", { bubbles: true }));
+})();
+</script>
+
+	<script>
+(function tmApplyGlobalSearchToParshaSafely(){
+  const params = new URLSearchParams(location.search);
+  const q = (params.get("q") || "").trim();
+  if (!q) return;
+
+  // try multiple times because parsha page may still be building the list / rendering
+  function tryApply() {
+    const inp = document.getElementById("q");
+    if (!inp) return false;
+
+    inp.value = q;
+
+    // trigger whatever your page listens to
+    inp.dispatchEvent(new Event("input", { bubbles:true }));
+    inp.dispatchEvent(new Event("change", { bubbles:true }));
+
+    // if your page has known functions, call them too (safe if missing)
+    if (typeof window.applyFilters === "function") window.applyFilters();
+    if (typeof window.renderLinks === "function") window.renderLinks();
+    if (typeof window.render === "function") window.render();
+
+    return true;
+  }
+
+  // immediate + delayed retries
+  tryApply();
+  setTimeout(tryApply, 50);
+  setTimeout(tryApply, 150);
+  setTimeout(tryApply, 350);
+  setTimeout(tryApply, 800);
+  setTimeout(tryApply, 1400);
 })();
 </script>
 
