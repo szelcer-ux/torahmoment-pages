@@ -415,6 +415,20 @@ fetch(DATA_URL, { cache:"no-store" })
 })();
 </script>
 
+  <script>
+(function applyGlobalSearchOneMinute(){
+  const params = new URLSearchParams(location.search);
+  const q = (params.get("q") || "").trim();
+  if (!q) return;
+
+  const inp = document.getElementById("q");
+  if (!inp) return;
+
+  inp.value = q;
+  inp.dispatchEvent(new Event("input", { bubbles: true }));
+})();
+</script>
+
   
 </body>
 </html>
