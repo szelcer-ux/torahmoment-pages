@@ -408,6 +408,30 @@
   }
 }
 
+    .tm-global-search{ margin:16px 0; }
+.tm-gs-box{
+  display:flex; gap:10px; align-items:center;
+  border:1px solid #e5e7eb; border-radius:14px;
+  padding:10px 12px; background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+#tmGlobalQ{ width:100%; border:0; outline:none; font-size:15px; background:transparent; }
+#tmGlobalClear{ border:0; background:transparent; cursor:pointer; color:#6b7280; padding:4px 6px; border-radius:10px; }
+#tmGlobalClear:hover{ background:rgba(0,0,0,.06); }
+
+.tm-gs-panel{
+  margin-top:10px; border:1px solid #e5e7eb; border-radius:14px;
+  background:#fff; overflow:hidden; box-shadow:0 8px 26px rgba(0,0,0,.08);
+}
+.tm-gs-meta{ padding:10px 12px; font-size:12px; color:#6b7280; border-bottom:1px solid #e5e7eb; }
+.tm-gs-results{ max-height:360px; overflow:auto; }
+.tm-gs-item{ display:block; padding:10px 12px; text-decoration:none; color:inherit; border-bottom:1px solid #e5e7eb; }
+.tm-gs-item:last-child{ border-bottom:0; }
+.tm-gs-item:hover{ background:rgba(13,148,136,.08); }
+.tm-gs-title{ font-size:14px; font-weight:650; }
+.tm-gs-sub{ margin-top:2px; font-size:12px; color:#6b7280; display:flex; gap:10px; flex-wrap:wrap; }
+.tm-pill{ padding:2px 8px; border-radius:999px; background:rgba(13,148,136,.12); color:#0d9488; font-weight:650; }
+
     
   </style>
 </head>
@@ -441,6 +465,19 @@
       </div>
     </section>
 
+<section class="tm-global-search">
+  <div class="tm-gs-box">
+    <input id="tmGlobalQ" type="search" placeholder="Search all shiurim…" autocomplete="off" />
+    <button id="tmGlobalClear" type="button" aria-label="Clear">✕</button>
+  </div>
+
+  <div id="tmGlobalPanel" class="tm-gs-panel" hidden>
+    <div id="tmGlobalMeta" class="tm-gs-meta"></div>
+    <div id="tmGlobalResults" class="tm-gs-results"></div>
+  </div>
+</section>
+
+    
     <!-- Navigation -->
     <section class="card">
       <div class="grid">
@@ -830,6 +867,114 @@ list.querySelectorAll(".recentAudio").forEach(markLongShiur);
 
     loadCounts();
   </script>
+<script>
+(async function(){
+  const input = document.getElementById("tmGlobalQ");
+  const clearBtn = document.getElementById("tmGlobalClear");
+  const panel = document.getElementById("tmGlobalPanel");
+  const meta = document.getElementById("tmGlobalMeta");
+  const resultsEl = document.getElementById("tmGlobalResults");
+
+  const INDEX_URL = "/data/search-index.json";   // <— key file your action generates
+  const MIN_CHARS = 2;
+  const MAX_RESULTS = 30;
+
+  let idx = [];
+
+  function showPanel(on){ panel.hidden = !on; }
+  function esc(s){
+    return String(s ?? "")
+      .replaceAll("&","&amp;").replaceAll("<","&lt;")
+      .replaceAll(">","&gt;").replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+  function fmtDate(iso){
+    if(!iso) return "";
+    const d = new Date(iso);
+    if(!isFinite(d)) return "";
+    return d.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"});
+  }
+
+  async function loadIndex(){
+    meta.textContent = "Loading…";
+    showPanel(true);
+    const res = await fetch(INDEX_URL, { cache:"no-store" });
+    if(!res.ok) throw new Error("search-index load failed: HTTP " + res.status);
+    idx = await res.json();
+    if(!Array.isArray(idx)) idx = [];
+    meta.textContent = `Search across ${idx.length.toLocaleString()} items`;
+  }
+
+  function filter(q){
+    const s = (q||"").trim().toLowerCase();
+    if(s.length < MIN_CHARS) return [];
+    const parts = s.split(/\s+/).filter(Boolean);
+
+    const out = idx.filter(it => {
+      const t = it.title_lc || (it.title||"").toLowerCase();
+      return parts.every(p => t.includes(p));
+    });
+
+    out.sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
+    return out.slice(0, MAX_RESULTS);
+  }
+
+  function render(list, q){
+    if(!q.trim()){ showPanel(false); resultsEl.innerHTML=""; return; }
+    showPanel(true);
+
+    if(q.trim().length < MIN_CHARS){
+      meta.textContent = `Type at least ${MIN_CHARS} characters…`;
+      resultsEl.innerHTML = "";
+      return;
+    }
+
+    meta.textContent = list.length ? `Results (${list.length})` : "No matches";
+
+    resultsEl.innerHTML = list.map(x => {
+      // ✅ IMPORTANT: link to the PAGE, not the mp3/youtube
+      const href = `${x.page}?q=${encodeURIComponent(q)}&from=global`;
+      return `
+        <a class="tm-gs-item" href="${esc(href)}">
+          <div class="tm-gs-title">${esc(x.title || "")}</div>
+          <div class="tm-gs-sub">
+            <span class="tm-pill">${esc(x.program || "")}</span>
+            ${x.type ? `<span>${esc(String(x.type).toUpperCase())}</span>` : ""}
+            ${x.date ? `<span>${esc(fmtDate(x.date))}</span>` : ""}
+          </div>
+        </a>
+      `;
+    }).join("");
+  }
+
+  // init
+  clearBtn.style.visibility = "hidden";
+
+  input.addEventListener("focus", async () => {
+    if(!idx.length){
+      try { await loadIndex(); } catch(e){ meta.textContent = "Failed to load search index."; console.warn(e); }
+    }
+  });
+
+  input.addEventListener("input", () => {
+    const q = input.value || "";
+    clearBtn.style.visibility = q ? "visible" : "hidden";
+    render(filter(q), q);
+  });
+
+  clearBtn.addEventListener("click", () => {
+    input.value = "";
+    clearBtn.style.visibility = "hidden";
+    showPanel(false);
+    resultsEl.innerHTML = "";
+    input.focus();
+  });
+
+  document.addEventListener("click", (e) => {
+    if(!e.target.closest(".tm-global-search")) showPanel(false);
+  });
+})();
+</script>
 
 </body>
 </html>
