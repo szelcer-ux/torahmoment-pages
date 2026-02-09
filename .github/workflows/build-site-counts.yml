@@ -44,7 +44,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add data/site-counts.json
+          git add data/*.json
           git diff --cached --quiet || git commit -m "Update site counts JSON"
 
           # 🔑 pull latest main in case it changed mid-run
