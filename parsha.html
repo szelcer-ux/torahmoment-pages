@@ -1396,6 +1396,7 @@ function applyFilters() {
   render(list);
 }
 
+window.applyFilters = applyFilters;
 
 
 
@@ -1481,7 +1482,7 @@ function render(list = []) {
     grid.appendChild(a);
   }
 }
-
+window.render = render;
 
 async function getThisWeeksParsha() {
   // NYC / Diaspora (GeoNames ID 5128581)
@@ -2021,7 +2022,70 @@ window.addEventListener("load", () => {
 });
 </script>
 
-	
+<script>
+(function(){
+  const urlQ = (new URLSearchParams(location.search).get("q") || "").trim();
+  if (!urlQ) return;
+
+  // Log whenever applyFilters runs (and what state it's seeing)
+  const origApply = window.applyFilters || (typeof applyFilters === "function" ? applyFilters : null);
+  if (origApply) {
+    window.applyFilters = function(){
+      console.log("[applyFilters]", {
+        q: (window.q && q.value) || null,
+        sel: (window.parshaSel && parshaSel.value) || null,
+        videos: (window.parshaVideos && parshaVideos.length) || null
+      });
+      return origApply.apply(this, arguments);
+    };
+  }
+
+  // Log whenever render runs and with what list size
+  const origRender = window.render || (typeof render === "function" ? render : null);
+  if (origRender) {
+    window.render = function(list){
+      console.log("[render]", Array.isArray(list) ? list.length : list, new Error().stack.split("\n").slice(0,6).join("\n"));
+      return origRender.apply(this, arguments);
+    };
+  }
+})();
+</script>
+
+	<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const urlQ = (params.get("q") || "").trim();
+  if (!urlQ) return;
+
+  // ✅ Hard lock: global search mode always uses ALL
+  function lockAll() {
+    try {
+      if (parshaSel && parshaSel.value !== "__ALL__") parshaSel.value = "__ALL__";
+    } catch {}
+  }
+
+  // Force correct state, then force filtering AFTER other init code runs
+  window.addEventListener("load", () => {
+    lockAll();
+    if (q) q.value = urlQ;
+
+    // Run a few times AFTER all other scripts have a chance to mess with state
+    setTimeout(() => { lockAll(); window.applyFilters?.(); }, 0);
+    setTimeout(() => { lockAll(); window.applyFilters?.(); }, 60);
+    setTimeout(() => { lockAll(); window.applyFilters?.(); }, 200);
+    setTimeout(() => { lockAll(); window.applyFilters?.(); }, 600);
+  });
+
+  // If anything tries to change the dropdown away from ALL, force it back
+  try {
+    parshaSel.addEventListener("change", () => {
+      lockAll();
+      window.applyFilters?.();
+    }, true); // capture = true, so we run before other handlers
+  } catch {}
+})();
+</script>
+
 </body>
 </html>
 
