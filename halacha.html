@@ -1028,13 +1028,14 @@ if (type === "note") {
 
       
       // AUDIO
-const isAudioPlayer = (type === "audio" || type === "audio-extra");
+const isAudioPlayer = (type === "audio" || type === "audio-extra" || type === "parsha");
 
 if (isAudioPlayer) {
   const pid = "tm_" + Math.random().toString(36).slice(2);
 
   // optional badge so you can SEE it’s the special type
-  const extraBadge = (type === "PARSHA")
+  
+  const extraBadge = (type === "parsha")
     ? `<div class="tm-badge">Extra</div>`
     : ``;
 
