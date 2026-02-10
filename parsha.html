@@ -1418,44 +1418,47 @@ function countParshaAudio(data, parsha) {
 }
 
 	
-  function render(list) {
-    grid.innerHTML = "";
-    empty.style.display = list.length ? "none" : "block";
-    count.textContent = `${list.length} video${list.length === 1 ? "" : "s"} shown`;
+function render(list = []) {
+  list = Array.isArray(list) ? list : [];
 
-    for (const v of list) {
-      const a = document.createElement("a");
-      a.className = "card";
-      a.href = ytWatch(v.id);
-      a.target = "_blank";
-      a.rel = "noopener";
+  grid.innerHTML = "";
+  empty.style.display = list.length ? "none" : "block";
+  count.textContent = `${list.length} video${list.length === 1 ? "" : "s"} shown`;
 
-      const desc = normalizeWs((v.description || "").split("\n")[0] || "");
-      const shortDesc = desc.length > 110 ? (desc.slice(0, 110) + "…") : desc;
+  for (const v of list) {
+    const a = document.createElement("a");
+    a.className = "card";
+    a.href = ytWatch(v.id);
+    a.target = "_blank";
+    a.rel = "noopener";
 
-      a.innerHTML = `
-        <span class="thumb">
-          <img loading="lazy" src="${escapeHtml(v.thumb)}" alt="${escapeHtml(v.title)} thumbnail" />
-          <span class="play" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="32" r="28" fill="rgba(255,255,255,.90)"/>
-              <path d="M27 22.5V41.5L43 32L27 22.5Z" fill="rgba(17,24,39,.95)"/>
-            </svg>
-          </span>
+    const desc = normalizeWs((v.description || "").split("\n")[0] || "");
+    const shortDesc = desc.length > 110 ? (desc.slice(0, 110) + "…") : desc;
+
+    a.innerHTML = `
+      <span class="thumb">
+        <img loading="lazy" src="${escapeHtml(v.thumb)}" alt="${escapeHtml(v.title)} thumbnail" />
+        <span class="play" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="28" fill="rgba(255,255,255,.90)"/>
+            <path d="M27 22.5V41.5L43 32L27 22.5Z" fill="rgba(17,24,39,.95)"/>
+          </svg>
         </span>
-        <div class="meta">
-          <h3>${escapeHtml(v.title)}</h3>
-          <p class="date">${escapeHtml(fmtDate(v.publishedAt))}</p>
-          ${shortDesc ? `<p class="desc">${escapeHtml(shortDesc)}</p>` : ""}
-          <div class="pillrow">
-            ${v.parsha ? `<span class="pill">${escapeHtml(v.parsha)}</span>` : `<span class="pill">Parsha</span>`}
-            <span class="pill">YouTube</span>
-          </div>
+      </span>
+      <div class="meta">
+        <h3>${escapeHtml(v.title)}</h3>
+        <p class="date">${escapeHtml(fmtDate(v.publishedAt))}</p>
+        ${shortDesc ? `<p class="desc">${escapeHtml(shortDesc)}</p>` : ""}
+        <div class="pillrow">
+          ${v.parsha ? `<span class="pill">${escapeHtml(v.parsha)}</span>` : `<span class="pill">Parsha</span>`}
+          <span class="pill">YouTube</span>
         </div>
-      `;
-      grid.appendChild(a);
-    }
+      </div>
+    `;
+    grid.appendChild(a);
   }
+}
+
 
 async function getThisWeeksParsha() {
   // NYC / Diaspora (GeoNames ID 5128581)
@@ -1940,7 +1943,7 @@ function updateAudioCounterFromState() {
     // if your page has known functions, call them too (safe if missing)
     if (typeof window.applyFilters === "function") window.applyFilters();
     if (typeof window.renderLinks === "function") window.renderLinks();
-    if (typeof window.render === "function") window.render();
+    if (typeof window.render === "function") window.render([]);
 
     return true;
   }
