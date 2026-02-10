@@ -1273,7 +1273,8 @@ function initAllResourcesUI(){
   const resParsha = document.getElementById("resParsha");
   const resQ = document.getElementById("resQ");
   const resClear = document.getElementById("resClear");
- 
+ const closeBtn = document.getElementById("resourcesCloseBtn");
+
   if (!details || !resParsha || !resQ || !resClear) return;
 
   buildParshaOptions(resParsha);
@@ -1289,10 +1290,21 @@ function initAllResourcesUI(){
     resQ.focus();
   });
 
+
   // Re-render when opened (in case data changes later)
   details.addEventListener("toggle", () => {
     if (details.open) renderAllResources();
   });
+
+	if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    details.open = false;
+
+    // Optional: scroll back to top of the section so it feels clean
+    details.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
 }
 
 // Initialize once DOM is ready
