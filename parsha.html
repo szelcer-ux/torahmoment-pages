@@ -1327,6 +1327,14 @@ function selectParshaFromURL() {
 
 
 function applyFilters() {
+  const urlQ = (new URLSearchParams(location.search).get("q") || "").trim();
+
+  // ✅ Coming from global search → always search across ALL parshiyos
+  if (urlQ && parshaSel.value !== "__ALL__") {
+    parshaSel.value = "__ALL__";
+    // NOTE: do NOT call updateURLFromSelection here
+  }
+
   const term = (q.value || "").trim().toLowerCase();
   const selectedParsha = parshaSel.value;
 
