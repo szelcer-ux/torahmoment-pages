@@ -774,14 +774,17 @@ const PARSHA_INDEPTH = {
 };
 
 async function setDefaultParshaOnEntry() {
-  // URL parsha wins (if you support it)
+  const hasQ = !!(new URLSearchParams(location.search).get("q") || "").trim();
+
+  // ✅ Global search present → do NOT let ?parsha= override anything
+  if (hasQ) return;
+
   const fromUrl = getParshaFromURL?.();
   if (fromUrl) {
     selectParshaFromURL?.();
     return;
   }
 
-  // Global search present → do NOT auto-pick current parsha
   if (window.__TM_SKIP_HEBCAL_DEFAULT__) return;
 
   // Otherwise: Hebcal default
@@ -1603,17 +1606,21 @@ renderParshaExtras(parshaSel.value || "");
   // Events
   q.addEventListener("input", applyFilters);
   sort.addEventListener("change", applyFilters);
- parshaSel.addEventListener("change", () => {
-  updateURLFromSelection();  // ✅ new
-  setPageTitle();            // ✅ new
-//  renderLinks();
+parshaSel.addEventListener("change", () => {
+  const hasQ = !!(new URLSearchParams(location.search).get("q") || "").trim();
+
+  // ✅ Don't push &parsha= into the URL while using global search
+  if (!hasQ) {
+    updateURLFromSelection();
+    setPageTitle();
+  }
+
   applyFilters();
   renderParshaExtras(parshaSel.value);
-	 
-   if (window.matchMedia("(max-width: 780px)").matches) {
+
+  if (window.matchMedia("(max-width: 780px)").matches) {
     setFiltersOpen(false);
   }
-  
 });
 
 
