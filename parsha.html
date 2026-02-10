@@ -1168,10 +1168,13 @@ parshaList = PARSHA_ORDER.slice();
 buildParshaDropdown();
 
 
-  function buildParshaDropdown() {
+function buildParshaDropdown() {
   const current = parshaSel.value;
 
-  parshaSel.innerHTML = `<option value="" selected disabled>Pick a Parsha…</option>`;
+  parshaSel.innerHTML =
+    `<option value="" selected disabled>Pick a Parsha…</option>` +
+    `<option value="__ALL__">All (Search)</option>`;
+
   for (const p of parshaList) {
     const opt = document.createElement("option");
     opt.value = p;
@@ -1182,6 +1185,7 @@ buildParshaDropdown();
   // restore if still valid
   if ([...parshaSel.options].some(o => o.value === current)) parshaSel.value = current;
 }
+
 
 
 
@@ -1302,6 +1306,30 @@ function selectParshaFromURL() {
 
 
  function applyFilters() {
+
+  const chosen = parshaSel.value;
+  const qText = (q.value || "").trim().toLowerCase();
+
+  // ✅ Allow "__ALL__" only when searching (prevents heavy render)
+  if (chosen === "__ALL__" && !qText) {
+    // clear results + show a friendly prompt
+    const container =
+      document.getElementById("results") ||
+      document.getElementById("items") ||
+      document.querySelector(".items") ||
+      document.querySelector("#cards") ||
+      document.querySelector("main");
+
+    if (container) {
+      container.innerHTML =
+        `<div class="empty" style="padding:14px;color:#6b7280;">
+           Type in the search box to search across all parshiyos…
+         </div>`;
+    }
+    return;
+  }
+
+	 
   const term = q.value.trim().toLowerCase();
   const selectedParsha = parshaSel.value;
 
@@ -1910,6 +1938,27 @@ function updateAudioCounterFromState() {
   setTimeout(tryApply, 350);
   setTimeout(tryApply, 800);
   setTimeout(tryApply, 1400);
+})();
+</script>
+
+	<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const qv = (params.get("q") || "").trim();
+  if (!qv) return;
+
+  // skip Hebcal default
+  window.__TM_SKIP_HEBCAL_DEFAULT__ = true;
+
+  const sel = document.getElementById("parshaSel");
+  const inp = document.getElementById("q");
+
+  if (sel) sel.value = "__ALL__";
+  if (inp) {
+    inp.value = qv;
+    inp.dispatchEvent(new Event("input", { bubbles:true }));
+  }
+  if (sel) sel.dispatchEvent(new Event("change", { bubbles:true }));
 })();
 </script>
 
