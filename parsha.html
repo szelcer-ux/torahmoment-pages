@@ -1,16 +1,19 @@
 <!doctype html> 
 <html lang="en">
 <head>
-	<script>
+<script>
   (function () {
     const p = new URLSearchParams(location.search);
     const q = (p.get("q") || "").trim();
     if (q) {
       window.__TM_SKIP_HEBCAL_DEFAULT__ = true;
       window.__TM_GLOBAL_Q__ = q;
+      window.__TM_FORCE_ALL__ = true;
     }
   })();
 </script>
+
+
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
