@@ -102,6 +102,30 @@
   gap:10px;
   margin: 10px 0 12px;
 }
+
+/* Bottom close button */
+.resourcesCloseWrap{
+  display:flex;
+  justify-content:center;
+  padding: 8px 0 12px;
+  border-top:1px solid rgba(17,24,39,.08);
+}
+
+.resourcesCloseBtn{
+  padding:6px 14px;
+  font-size:12px;
+  border-radius:999px;
+  border:1px solid rgba(17,24,39,.18);
+  background:#f9fafb;
+  color:#111827;
+  cursor:pointer;
+}
+
+.resourcesCloseBtn:hover{
+  background:#f3f4f6;
+}
+
+	  
 @media (max-width: 900px){
   .resourcesControls{ grid-template-columns: 1fr 1fr; }
 }
@@ -681,7 +705,13 @@
         </section>
       </div>
     </div>
+	   <div class="resourcesCloseWrap">
+      <button type="button" id="resourcesCloseBtn" class="resourcesCloseBtn">
+        Close
+      </button>
+    </div>
   </details>
+	
   <div class="notice">
     <div><strong>Status:</strong> <span id="statusText">Ready</span></div>
     <div class="small" id="statusSmall"></div>
