@@ -1957,32 +1957,7 @@ function updateAudioCounterFromState() {
   const q = (params.get("q") || "").trim();
   if (!q) return;
 
-  // try multiple times because parsha page may still be building the list / rendering
-  function tryApply() {
-    const inp = document.getElementById("q");
-    if (!inp) return false;
-
-    inp.value = q;
-
-    // trigger whatever your page listens to
-    inp.dispatchEvent(new Event("input", { bubbles:true }));
-    inp.dispatchEvent(new Event("change", { bubbles:true }));
-
-    // if your page has known functions, call them too (safe if missing)
-    if (typeof window.applyFilters === "function") window.applyFilters();
-    if (typeof window.renderLinks === "function") window.renderLinks();
-    if (typeof window.render === "function") window.render([]);
-
-    return true;
-  }
-
-  // immediate + delayed retries
-  tryApply();
-  setTimeout(tryApply, 50);
-  setTimeout(tryApply, 150);
-  setTimeout(tryApply, 350);
-  setTimeout(tryApply, 800);
-  setTimeout(tryApply, 1400);
+ 
 })();
 </script>
 
@@ -2086,6 +2061,22 @@ window.addEventListener("load", () => {
 })();
 </script>
 
+<script>
+window.addEventListener("load", () => {
+  const params = new URLSearchParams(location.search);
+  const urlQ = (params.get("q") || "").trim();
+  if (!urlQ) return;
+
+  // Set UI state
+  q.value = urlQ;
+  parshaSel.value = "__ALL__";
+
+  // Run real filter ONCE
+  applyFilters();
+});
+</script>
+
+	
 </body>
 </html>
 
