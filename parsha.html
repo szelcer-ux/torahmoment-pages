@@ -128,6 +128,14 @@
 .resourcesColTitle{ font-weight:700; font-size:13px; }
 .resourcesColHint{ color:#6b7280; font-size:12px; }
 
+ .resourcesBox > summary{
+  padding:10px 12px;
+}
+.resourcesBox{
+  box-shadow:none;
+  border:1px solid rgba(17,24,39,.08);
+}
+
 	  
 	.linksBox{
   background:#fff;
@@ -639,6 +647,41 @@
 </header>
 
 <main class="wrap">
+	 <!-- All resources drawer (moved up) -->
+  <details id="allResources" class="resourcesBox">
+    <summary>
+      <span class="resourcesSummaryTitle">All Parsha resources</span>
+      <span class="resourcesSummaryHint" id="resourcesSummaryHint"></span>
+    </summary>
+
+    <div class="resourcesInner">
+      <div class="resourcesControls">
+        <input id="resQ" type="search" placeholder="Search all audio + PDFs…" />
+        <select id="resParsha">
+          <option value="">All Parshiyos</option>
+        </select>
+        <button id="resClear" type="button">Clear</button>
+      </div>
+
+      <div class="resourcesCols">
+        <section class="resourcesCol">
+          <div class="resourcesColHead">
+            <div class="resourcesColTitle">Audio</div>
+            <div class="resourcesColHint" id="resAudioHint"></div>
+          </div>
+          <div id="resAudioList" class="linksList"></div>
+        </section>
+
+        <section class="resourcesCol">
+          <div class="resourcesColHead">
+            <div class="resourcesColTitle">PDFs</div>
+            <div class="resourcesColHint" id="resPdfHint"></div>
+          </div>
+          <div id="resPdfList" class="pdfList"></div>
+        </section>
+      </div>
+    </div>
+  </details>
   <div class="notice">
     <div><strong>Status:</strong> <span id="statusText">Ready</span></div>
     <div class="small" id="statusSmall"></div>
@@ -652,48 +695,11 @@
       <span id="totalAudioCount"></span>
     </div>
 
-    <!-- subtle resources toggle -->
-    <button id="resourcesJump" type="button" class="resourcesPill" style="width:auto;">
-      All audio + PDFs
-    </button>
+  
   </div>
 </div>
 
-<!-- ✅ NEW: subtle collapsible "All resources" section -->
-<details id="allResources" class="resourcesBox">
-  <summary>
-    <span class="resourcesSummaryTitle">All Parsha resources</span>
-    <span class="resourcesSummaryHint" id="resourcesSummaryHint"></span>
-  </summary>
 
-  <div class="resourcesInner">
-    <div class="resourcesControls">
-      <input id="resQ" type="search" placeholder="Search all audio + PDFs…" />
-      <select id="resParsha">
-        <option value="">All Parshiyos</option>
-      </select>
-      <button id="resClear" type="button">Clear</button>
-    </div>
-
-    <div class="resourcesCols">
-      <section class="resourcesCol">
-        <div class="resourcesColHead">
-          <div class="resourcesColTitle">Audio</div>
-          <div class="resourcesColHint" id="resAudioHint"></div>
-        </div>
-        <div id="resAudioList" class="linksList"></div>
-      </section>
-
-      <section class="resourcesCol">
-        <div class="resourcesColHead">
-          <div class="resourcesColTitle">PDFs</div>
-          <div class="resourcesColHint" id="resPdfHint"></div>
-        </div>
-        <div id="resPdfList" class="pdfList"></div>
-      </section>
-    </div>
-  </div>
-</details>
 
 <div id="grid" class="grid"></div>
 
@@ -1237,8 +1243,7 @@ function initAllResourcesUI(){
   const resParsha = document.getElementById("resParsha");
   const resQ = document.getElementById("resQ");
   const resClear = document.getElementById("resClear");
-  const jump = document.getElementById("resourcesJump");
-
+ 
   if (!details || !resParsha || !resQ || !resClear) return;
 
   buildParshaOptions(resParsha);
@@ -1253,15 +1258,6 @@ function initAllResourcesUI(){
     renderAllResources();
     resQ.focus();
   });
-
-  if (jump) {
-    jump.addEventListener("click", () => {
-      details.open = true;
-      // smooth scroll (subtle)
-      details.scrollIntoView({ behavior:"smooth", block:"start" });
-      setTimeout(() => resQ.focus(), 150);
-    });
-  }
 
   // Re-render when opened (in case data changes later)
   details.addEventListener("toggle", () => {
