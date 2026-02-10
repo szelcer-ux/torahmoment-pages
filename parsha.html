@@ -1327,18 +1327,25 @@ function selectParshaFromURL() {
 
 
 function applyFilters() {
-  // ✅ GLOBAL SEARCH OVERRIDE (must be first)
-  const urlQ = (new URLSearchParams(location.search).get("q") || "").trim();
+  // ✅ GLOBAL SEARCH VALUE (from URL)
+  const urlQ = (new URLSearchParams(location.search).get("q") || "").trim().toLowerCase();
+
+  // If coming from global search, force ALL
   if (urlQ && parshaSel.value !== "__ALL__") {
     parshaSel.value = "__ALL__";
-    // IMPORTANT: do NOT update the URL here
   }
 
-  const term = (q.value || "").trim().toLowerCase();
+  // ✅ Use input value OR urlQ (important!)
+  const term = ((q.value || "") || urlQ).trim().toLowerCase();
   const selectedParsha = parshaSel.value;
 
-  // ✅ "All" mode is ONLY allowed when searching
-  if (selectedParsha === "__ALL__" && !term && !urlQ) {
+  // Keep input in sync (only once)
+  if (urlQ && !q.value) {
+    q.value = urlQ;
+  }
+
+  // ✅ "All" mode only allowed when searching
+  if (selectedParsha === "__ALL__" && !term) {
     render([]);
     empty.style.display = "block";
     empty.textContent = "Type in the search box to search across all parshiyos…";
@@ -1346,7 +1353,7 @@ function applyFilters() {
     return;
   }
 
-  // If no selection allowed yet, show nothing
+  // Normal no-parsha state
   if (!selectedParsha) {
     render([]);
     empty.style.display = "block";
@@ -1357,26 +1364,28 @@ function applyFilters() {
 
   let list = (parshaVideos || []).slice();
 
-  // ✅ Apply parsha filter ONLY when a real parsha is selected
+  // Apply parsha filter only if not ALL
   if (selectedParsha !== "__ALL__") {
     const wanted = normParsha(selectedParsha);
     list = list.filter(v => normParsha(v.parsha) === wanted);
   }
 
-  // ✅ Text search filter
+  // Text search
   if (term) {
     list = list.filter(v =>
-      (String(v.title || "") + " " +
-       String(v.description || "") + " " +
+      (String(v.title || "") +
+       " " +
+       String(v.description || "") +
+       " " +
        String(v.parsha || ""))
         .toLowerCase()
         .includes(term)
     );
   }
 
-  // ✅ Safety cap in ALL-search mode (keeps it light)
+  // Safety cap
   if (selectedParsha === "__ALL__") {
-    list = list.slice(0, 80); // adjust as you like
+    list = list.slice(0, 80);
   }
 
   const mode = sort.value;
@@ -1386,6 +1395,7 @@ function applyFilters() {
 
   render(list);
 }
+
 
 
 
