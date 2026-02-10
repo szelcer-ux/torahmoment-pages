@@ -59,7 +59,76 @@
     .notice { border:1px solid rgba(17,24,39,.10); margin-bottom:12px; }
     .small { font-size:12px; color:#6b7280; }
     code { background:#f3f4f6; padding:2px 6px; border-radius:8px; }
-	
+
+/* === All Resources (subtle drawer) === */
+.resourcesPill{
+  padding:6px 10px !important;
+  font-size:12px !important;
+  border-radius:999px !important;
+  border:1px solid rgba(17,24,39,.14) !important;
+  background:#fff !important;
+  color:#111827 !important;
+}
+.resourcesPill:hover{ background:#f9fafb !important; }
+
+.resourcesBox{
+  margin: 6px 0 14px;
+  border:1px solid rgba(17,24,39,.10);
+  border-radius:14px;
+  background:#fff;
+  box-shadow: 0 10px 28px rgba(0,0,0,.05);
+  overflow:hidden;
+}
+.resourcesBox > summary{
+  cursor:pointer;
+  list-style:none;
+  padding:12px 14px;
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+}
+.resourcesBox > summary::-webkit-details-marker{ display:none; }
+
+.resourcesSummaryTitle{ font-weight:700; font-size:14px; }
+.resourcesSummaryHint{ color:#6b7280; font-size:12px; }
+
+.resourcesInner{
+  padding: 0 14px 14px;
+}
+.resourcesControls{
+  display:grid;
+  grid-template-columns: 1fr 220px 140px;
+  gap:10px;
+  margin: 10px 0 12px;
+}
+@media (max-width: 900px){
+  .resourcesControls{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px){
+  .resourcesControls{ grid-template-columns: 1fr; }
+}
+
+.resourcesCols{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap:14px;
+}
+@media (max-width: 900px){
+  .resourcesCols{ grid-template-columns: 1fr; }
+}
+
+.resourcesColHead{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+.resourcesColTitle{ font-weight:700; font-size:13px; }
+.resourcesColHint{ color:#6b7280; font-size:12px; }
+
+	  
 	.linksBox{
   background:#fff;
   border:1px solid rgba(17,24,39,.08);
@@ -575,11 +644,59 @@
     <div class="small" id="statusSmall"></div>
   </div>
 
-  <div class="bar">
-    <div id="count"></div>
-   <div id="audioCountWrap" class="tm-stat">
-  <span id="totalAudioCount"></span>
+<div class="bar">
+  <div id="count"></div>
+
+  <div style="display:flex; gap:10px; align-items:center;">
+    <div id="audioCountWrap" class="tm-stat">
+      <span id="totalAudioCount"></span>
+    </div>
+
+    <!-- subtle resources toggle -->
+    <button id="resourcesJump" type="button" class="resourcesPill" style="width:auto;">
+      All audio + PDFs
+    </button>
+  </div>
 </div>
+
+<!-- ✅ NEW: subtle collapsible "All resources" section -->
+<details id="allResources" class="resourcesBox">
+  <summary>
+    <span class="resourcesSummaryTitle">All Parsha resources</span>
+    <span class="resourcesSummaryHint" id="resourcesSummaryHint"></span>
+  </summary>
+
+  <div class="resourcesInner">
+    <div class="resourcesControls">
+      <input id="resQ" type="search" placeholder="Search all audio + PDFs…" />
+      <select id="resParsha">
+        <option value="">All Parshiyos</option>
+      </select>
+      <button id="resClear" type="button">Clear</button>
+    </div>
+
+    <div class="resourcesCols">
+      <section class="resourcesCol">
+        <div class="resourcesColHead">
+          <div class="resourcesColTitle">Audio</div>
+          <div class="resourcesColHint" id="resAudioHint"></div>
+        </div>
+        <div id="resAudioList" class="linksList"></div>
+      </section>
+
+      <section class="resourcesCol">
+        <div class="resourcesColHead">
+          <div class="resourcesColTitle">PDFs</div>
+          <div class="resourcesColHint" id="resPdfHint"></div>
+        </div>
+        <div id="resPdfList" class="pdfList"></div>
+      </section>
+    </div>
+  </div>
+</details>
+
+<div id="grid" class="grid"></div>
+
 
   </div>
  
@@ -625,7 +742,6 @@
   <div id="pdfList" class="pdfList"></div>
 </section>
 
-<audio id="audioEl" preload="metadata"></audio>
 
 
 </main>
@@ -1018,6 +1134,145 @@ function renderParshaExtras(parsha) {
   }
 }
 
+/* =========================
+   ALL RESOURCES (Audio + PDFs)
+   ========================= */
+
+function buildParshaOptions(selectEl){
+  if (!selectEl) return;
+  // Use your existing Torah order list
+  selectEl.innerHTML = `<option value="">All Parshiyos</option>` +
+    PARSHA_ORDER.map(p => `<option value="${escapeAttr(p)}">${escapeHtml(p)}</option>`).join("");
+}
+
+function flattenParshaMap(mapObj, kind){
+  // mapObj: { Parsha: [items...] }
+  const out = [];
+  if (!mapObj || typeof mapObj !== "object") return out;
+
+  for (const [parsha, arr] of Object.entries(mapObj)) {
+    if (!Array.isArray(arr)) continue;
+    for (const it of arr) {
+      out.push({
+        parsha,
+        kind, // "short" | "long" | "pdf"
+        label: it.label || "",
+        url: it.url || "",
+        duration: it.duration || ""
+      });
+    }
+  }
+  return out;
+}
+
+function matchesRes(item, term, parsha){
+  if (parsha && normalizeParshaName(item.parsha) !== normalizeParshaName(parsha)) return false;
+  if (!term) return true;
+
+  const hay = (item.parsha + " " + (item.label || "")).toLowerCase();
+  return hay.includes(term);
+}
+
+function renderAllResources(){
+  const details = document.getElementById("allResources");
+  if (!details) return;
+
+  const resQ = document.getElementById("resQ");
+  const resParsha = document.getElementById("resParsha");
+  const audioListEl = document.getElementById("resAudioList");
+  const pdfListEl = document.getElementById("resPdfList");
+
+  const audioHint = document.getElementById("resAudioHint");
+  const pdfHint = document.getElementById("resPdfHint");
+  const sumHint = document.getElementById("resourcesSummaryHint");
+
+  const term = (resQ?.value || "").trim().toLowerCase();
+  const p = (resParsha?.value || "").trim();
+
+  // ✅ merge short + long audio
+  const shortA = flattenParshaMap((typeof PARSHA_AUDIO !== "undefined" ? PARSHA_AUDIO : null), "short");
+  const longA  = flattenParshaMap((typeof PARSHA_INDEPTH !== "undefined" ? PARSHA_INDEPTH : null), "long");
+  const allAudio = [...shortA, ...longA].filter(it => it.url);
+
+  const allPdfs = flattenParshaMap((typeof PARSHA_PDFS !== "undefined" ? PARSHA_PDFS : null), "pdf").filter(it => it.url);
+
+  const filteredAudio = allAudio.filter(it => matchesRes(it, term, p));
+  const filteredPdfs  = allPdfs.filter(it => matchesRes(it, term, p));
+
+  // Summary hint (collapsed line)
+  if (sumHint) {
+    sumHint.textContent = `${allAudio.length} audio • ${allPdfs.length} PDFs`;
+  }
+
+  // Column hints
+  if (audioHint) audioHint.textContent = `${filteredAudio.length}/${allAudio.length}`;
+  if (pdfHint) pdfHint.textContent = `${filteredPdfs.length}/${allPdfs.length}`;
+
+  // Render Audio list using your existing renderAudioList
+  // (your renderAudioList expects {label,url,duration})
+  if (audioListEl) {
+    renderAudioList("resAudioList", filteredAudio.map(a => ({
+      label: `${a.parsha} — ${a.label}`,
+      url: a.url,
+      duration: a.duration
+    })));
+  }
+
+  // Render PDFs list
+  if (pdfListEl) {
+    renderPdfList("resPdfList", filteredPdfs.map(d => ({
+      label: `${d.parsha} — ${d.label}`,
+      url: d.url
+    })));
+  }
+
+  // If the drawer is open, ensure audio row states aren’t stale
+  if (details.open) {
+    try { clearAudioRowStates(); } catch {}
+  }
+}
+
+function initAllResourcesUI(){
+  const details = document.getElementById("allResources");
+  const resParsha = document.getElementById("resParsha");
+  const resQ = document.getElementById("resQ");
+  const resClear = document.getElementById("resClear");
+  const jump = document.getElementById("resourcesJump");
+
+  if (!details || !resParsha || !resQ || !resClear) return;
+
+  buildParshaOptions(resParsha);
+  renderAllResources();
+
+  resQ.addEventListener("input", renderAllResources);
+  resParsha.addEventListener("change", renderAllResources);
+
+  resClear.addEventListener("click", () => {
+    resQ.value = "";
+    resParsha.value = "";
+    renderAllResources();
+    resQ.focus();
+  });
+
+  if (jump) {
+    jump.addEventListener("click", () => {
+      details.open = true;
+      // smooth scroll (subtle)
+      details.scrollIntoView({ behavior:"smooth", block:"start" });
+      setTimeout(() => resQ.focus(), 150);
+    });
+  }
+
+  // Re-render when opened (in case data changes later)
+  details.addEventListener("toggle", () => {
+    if (details.open) renderAllResources();
+  });
+}
+
+// Initialize once DOM is ready
+window.addEventListener("load", () => {
+  try { initAllResourcesUI(); } catch(e){ console.warn(e); }
+});
 
 	
 function setFiltersOpen(isOpen){
