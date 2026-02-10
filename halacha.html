@@ -923,8 +923,7 @@ header h1{
           {type: "audio",title: "Religious Zionism", url: "https://2mishnasaday.com/wp-content/uploads/religiouszionism.mp3", note: "7/31/2019"}
         ] },
          { category: "PARSHA", items: [
-          {type: "PARSHA",title: "How petty theft sealed the fate of the dor hamabul", url: "https://www.buzzsprout.com/1899789/episodes/16010930-10-29-2024-shloimy-zelcer-how-petty-theft-sealed-the-fate-of-the-dor-hamabul.mp3", note: "NOACH"},
-        {type: "note", text: "How petty theft sealed the fate of the dor hamabul", linkText: "View link", url: "https://www.buzzsprout.com/1899789/episodes/16010930-10-29-2024-shloimy-zelcer-how-petty-theft-sealed-the-fate-of-the-dor-hamabul.mp3"}
+          {type: "PARSHA",title: "How petty theft sealed the fate of the dor hamabul", url: "https://www.buzzsprout.com/1899789/episodes/16010930-10-29-2024-shloimy-zelcer-how-petty-theft-sealed-the-fate-of-the-dor-hamabul.mp3", note: "NOACH"}
         ] },
       
       ];
@@ -1029,18 +1028,23 @@ if (type === "note") {
 
       
       // AUDIO
- if (type === "audio") {
+const isAudioPlayer = (type === "audio" || type === "audio-extra");
+
+if (isAudioPlayer) {
   const pid = "tm_" + Math.random().toString(36).slice(2);
+
+  // optional badge so you can SEE it’s the special type
+  const extraBadge = (type === "PARSHA")
+    ? `<div class="tm-badge">Extra</div>`
+    : ``;
 
   return `
     <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
-      
-      <!-- Topic / title ABOVE player -->
-   <div class="tm-title-row">
-  <div class="tm-title" title="${title}">${title}</div>
 
-  ${item.note ? `<div class="tm-note">${escapeHtml(item.note)}</div>` : ``}
-</div>
+      <div class="tm-title-row">
+        <div class="tm-title" title="${title}">${title}</div>
+        ${item.note ? `<div class="tm-note">${escapeHtml(item.note)}</div>` : ``}
+      </div>
 
       <div class="tm-row" data-audio-id="${pid}">
         <button class="tm-play" type="button" aria-label="Play/Pause">▶</button>
@@ -1050,8 +1054,9 @@ if (type === "note") {
         </div>
 
         <div class="tm-right">
-        <div class="tm-speed">1×</div>
-        <div class="tm-badge tm-len" style="display:none"></div>
+          <div class="tm-speed">1×</div>
+          ${extraBadge}
+          <div class="tm-badge tm-len" style="display:none"></div>
           <div class="tm-dur">(0:00)</div>
         </div>
 
@@ -1061,39 +1066,8 @@ if (type === "note") {
   `;
 }
 
-           // AUDIO
- if (type === "PARSHA") {
-  const pid = "tm_" + Math.random().toString(36).slice(2);
 
-  return `
-    <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
-      
-      <!-- Topic / title ABOVE player -->
-   <div class="tm-title-row">
-  <div class="tm-title" title="${title}">${title}</div>
-
-  ${item.note ? `<div class="tm-note">${escapeHtml(item.note)}</div>` : ``}
-</div>
-
-      <div class="tm-row" data-audio-id="${pid}">
-        <button class="tm-play" type="button" aria-label="Play/Pause">▶</button>
-
-        <div class="tm-main">
-          <div class="tm-progress"><div></div></div>
-        </div>
-
-        <div class="tm-right">
-        <div class="tm-speed">1×</div>
-        <div class="tm-badge tm-len" style="display:none"></div>
-          <div class="tm-dur">(0:00)</div>
-        </div>
-
-        <audio id="${pid}" preload="metadata" src="${escapeHtml(url)}"></audio>
-      </div>
-    </div>
-  `;
-}
-
+          
 
      // YOUTUBE – playlist row style (uniform with audio)
 if (type === "youtube") {
