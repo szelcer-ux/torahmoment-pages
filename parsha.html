@@ -2006,6 +2006,21 @@ function updateAudioCounterFromState() {
 })();
 </script>
 
+	<script>
+window.addEventListener("load", () => {
+  const params = new URLSearchParams(location.search);
+  const urlQ = (params.get("q") || "").trim();
+  if (!urlQ) return;
+
+  // Ensure the UI state is correct
+  if (typeof q !== "undefined" && q) q.value = urlQ;
+  if (typeof parshaSel !== "undefined" && parshaSel) parshaSel.value = "__ALL__";
+
+  // ✅ Force an initial filter pass (this is the missing step)
+  if (typeof applyFilters === "function") applyFilters();
+});
+</script>
+
 	
 </body>
 </html>
