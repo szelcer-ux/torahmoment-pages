@@ -1182,9 +1182,13 @@ function buildParshaDropdown() {
     parshaSel.appendChild(opt);
   }
 
-  // restore if still valid
-  if ([...parshaSel.options].some(o => o.value === current)) parshaSel.value = current;
+  if ([...parshaSel.options].some(o => o.value === current)) {
+    parshaSel.value = current;
+  } else {
+    parshaSel.value = "";
+  }
 }
+
 
 
 
@@ -1305,33 +1309,18 @@ function selectParshaFromURL() {
 
 
 
- function applyFilters() {
+function applyFilters() {
+  const term = (q.value || "").trim().toLowerCase();
+  const selectedParsha = parshaSel.value;
 
-  const chosen = parshaSel.value;
-  const qText = (q.value || "").trim().toLowerCase();
-
-  // ✅ Allow "__ALL__" only when searching (prevents heavy render)
-  if (chosen === "__ALL__" && !qText) {
-    // clear results + show a friendly prompt
-    const container =
-      document.getElementById("results") ||
-      document.getElementById("items") ||
-      document.querySelector(".items") ||
-      document.querySelector("#cards") ||
-      document.querySelector("main");
-
-    if (container) {
-      container.innerHTML =
-        `<div class="empty" style="padding:14px;color:#6b7280;">
-           Type in the search box to search across all parshiyos…
-         </div>`;
-    }
+  // ✅ Special "All" mode is ONLY allowed when searching
+  if (selectedParsha === "__ALL__" && !term) {
+    render([]);
+    empty.style.display = "block";
+    empty.textContent = "Type in the search box to search across all parshiyos…";
+    count.textContent = "";
     return;
   }
-
-	 
-  const term = q.value.trim().toLowerCase();
-  const selectedParsha = parshaSel.value;
 
   // If no selection allowed yet, show nothing
   if (!selectedParsha) {
@@ -1344,14 +1333,24 @@ function selectParshaFromURL() {
 
   let list = parshaVideos.slice();
 
-  // ✅ normalized parsha filter
-  const wanted = normParsha(selectedParsha);
-  list = list.filter(v => normParsha(v.parsha) === wanted);
+  // ✅ Apply parsha filter ONLY when a real parsha is selected
+  if (selectedParsha !== "__ALL__") {
+    const wanted = normParsha(selectedParsha);
+    list = list.filter(v => normParsha(v.parsha) === wanted);
+  }
 
+  // ✅ Search term filter
   if (term) {
     list = list.filter(v =>
-      (v.title + " " + v.description + " " + v.parsha).toLowerCase().includes(term)
+      (String(v.title || "") + " " + String(v.description || "") + " " + String(v.parsha || ""))
+        .toLowerCase()
+        .includes(term)
     );
+  }
+
+  // ✅ Optional safety cap in ALL-search mode (keeps it light)
+  if (selectedParsha === "__ALL__") {
+    list = list.slice(0, 80); // adjust to taste
   }
 
   const mode = sort.value;
@@ -1361,6 +1360,7 @@ function selectParshaFromURL() {
 
   render(list);
 }
+
 
 
 function countParshaAudio(data, parsha) {
