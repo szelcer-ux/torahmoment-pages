@@ -1327,19 +1327,18 @@ function selectParshaFromURL() {
 
 
 function applyFilters() {
+  // ✅ GLOBAL SEARCH OVERRIDE (must be first)
   const urlQ = (new URLSearchParams(location.search).get("q") || "").trim();
-
-  // ✅ Coming from global search → always search across ALL parshiyos
   if (urlQ && parshaSel.value !== "__ALL__") {
     parshaSel.value = "__ALL__";
-    // NOTE: do NOT call updateURLFromSelection here
+    // IMPORTANT: do NOT update the URL here
   }
 
   const term = (q.value || "").trim().toLowerCase();
   const selectedParsha = parshaSel.value;
 
-  // ✅ Special "All" mode is ONLY allowed when searching
-  if (selectedParsha === "__ALL__" && !term) {
+  // ✅ "All" mode is ONLY allowed when searching
+  if (selectedParsha === "__ALL__" && !term && !urlQ) {
     render([]);
     empty.style.display = "block";
     empty.textContent = "Type in the search box to search across all parshiyos…";
@@ -1356,7 +1355,7 @@ function applyFilters() {
     return;
   }
 
-  let list = parshaVideos.slice();
+  let list = (parshaVideos || []).slice();
 
   // ✅ Apply parsha filter ONLY when a real parsha is selected
   if (selectedParsha !== "__ALL__") {
@@ -1364,18 +1363,20 @@ function applyFilters() {
     list = list.filter(v => normParsha(v.parsha) === wanted);
   }
 
-  // ✅ Search term filter
+  // ✅ Text search filter
   if (term) {
     list = list.filter(v =>
-      (String(v.title || "") + " " + String(v.description || "") + " " + String(v.parsha || ""))
+      (String(v.title || "") + " " +
+       String(v.description || "") + " " +
+       String(v.parsha || ""))
         .toLowerCase()
         .includes(term)
     );
   }
 
-  // ✅ Optional safety cap in ALL-search mode (keeps it light)
+  // ✅ Safety cap in ALL-search mode (keeps it light)
   if (selectedParsha === "__ALL__") {
-    list = list.slice(0, 80); // adjust to taste
+    list = list.slice(0, 80); // adjust as you like
   }
 
   const mode = sort.value;
@@ -1385,6 +1386,7 @@ function applyFilters() {
 
   render(list);
 }
+
 
 
 
