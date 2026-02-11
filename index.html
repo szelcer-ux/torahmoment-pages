@@ -597,28 +597,43 @@
       `).join("");
     }
 
-function parseISODateAsLocal(iso){
-  if(!iso) return null;
+function parseISODateSmart(iso){
+  if (!iso) return null;
 
-  // If it's a plain date (YYYY-MM-DD), build a local Date to avoid UTC shifting
-  const m = String(iso).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  const s = String(iso);
+
+  // Case 1: plain date (YYYY-MM-DD)
+  const m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (m){
     const y = Number(m[1]), mo = Number(m[2]), d = Number(m[3]);
-    return new Date(y, mo - 1, d); // local midnight
+    return { date: new Date(y, mo - 1, d), useUTC: false };
   }
 
-  // Otherwise, fall back to normal parsing (for full timestamps)
-  const dt = new Date(iso);
-  return isFinite(dt) ? dt : null;
+  // Case 2: UTC timestamp (ends with Z)
+  const isUTC = /Z$/.test(s);
+  const dt = new Date(s);
+  if (!isFinite(dt)) return null;
+
+  return { date: dt, useUTC: isUTC };
 }
     
     // NEW: Curated recent renderer (2 + 2 + 1), grouped but in one spot
 function fmtShortDate(iso){
-  const d = parseISODateAsLocal(iso);
-  if(!d) return "";
-  return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"numeric" });
+  const parsed = parseISODateSmart(iso);
+  if (!parsed) return "";
+
+  return parsed.date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: parsed.useUTC ? "UTC" : undefined
+  });
 }
 
+function fmtDate(iso){
+  return fmtShortDate(iso);
+}
+    
 function renderRecentCurated(data){
   const wrap = document.getElementById("recentList");
   if (!wrap) return;
@@ -901,11 +916,7 @@ list.querySelectorAll(".recentAudio").forEach(markLongShiur);
       .replaceAll(">","&gt;").replaceAll('"',"&quot;")
       .replaceAll("'","&#039;");
   }
-  function fmtDate(iso){
-  const d = parseISODateAsLocal(iso);
-  if(!d) return "";
-  return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"numeric" });
-}
+  
 
   async function loadIndex(){
     meta.textContent = "Loading…";
