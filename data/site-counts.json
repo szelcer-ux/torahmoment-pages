@@ -131,7 +131,78 @@
         "date": "2026-01-20T00:00:00.000Z"
       }
     ],
-    "halacha": [],
+    "halacha": [
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Standing for Aseres Hadibros",
+        "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
+        "date": "2026-01-29T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Covering challah during kiddush Part 2",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18577857-1-28-2026-shloimy-zelcer-covering-challah-during-kiddush-part-2.mp3",
+        "date": "2026-01-28T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Covering challah during kiddush",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18577841-1-27-2026-shloimy-zelcer-covering-challah-during-kiddush.mp3",
+        "date": "2026-01-27T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Double Black Tefilin",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18540770-1-20-2025-shloimy-zelcer-double-black-tefilin.mp3",
+        "date": "2026-01-20T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Daven to Hashem, not angels",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18285871-12-3-2025-shloimy-zelcer-daven-to-hashem-not-angels.mp3",
+        "date": "2025-12-03T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "When Davening takes too long",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18082159-10-28-2025-shloimy-zelcer-when-davening-takes-too-long.mp3",
+        "date": "2025-10-28T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Parshas Nitzavim / Erev Rosh Hashana",
+        "url": "https://2mishnasaday.com/wp-content/uploads/Nitzavim.mp3",
+        "date": "2025-09-18T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Do you have to know what youre saying in davening?",
+        "url": "https://www.buzzsprout.com/1899789/episodes/17665749-8-13-2025-shloimy-zelcer-do-you-have-to-know-what-youre-saying-in-davening.mp3",
+        "date": "2025-08-13T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Standing up to say Krias Shema",
+        "url": "https://www.buzzsprout.com/1899789/episodes/17508580-7-15-2025-shloimy-zelcer-standing-up-to-say-kriyas-shema.mp3",
+        "date": "2025-07-15T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Kiddush in middle of davening?",
+        "url": "https://www.buzzsprout.com/1899789/episodes/17430394-7-1-2025-shloimy-zelcer-kiddush-in-middle-of-davening.mp3",
+        "date": "2025-07-01T00:00:00.000Z"
+      }
+    ],
     "parsha": [
       {
         "type": "video",

@@ -1890,6 +1890,456 @@
     "title_lc": "dont wait to start your life"
   },
   {
+    "id": "hal-0",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Double Black Tefilin",
+    "url": "https://www.buzzsprout.com/1899789/episodes/18540770-1-20-2025-shloimy-zelcer-double-black-tefilin.mp3",
+    "date": "2026-01-20T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "double black tefilin"
+  },
+  {
+    "id": "hal-1",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Stripes on the Talis",
+    "url": "https://www.buzzsprout.com/1899789/episodes/16448331-1-16-2025-shloimy-zelcer-stripes-on-the-talis.mp3",
+    "date": "2025-01-16T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "stripes on the talis"
+  },
+  {
+    "id": "hal-2",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Women and the mitzvah of Tefillin",
+    "url": "https://2mishnasaday.com/wp-content/uploads/womentefilin.mp3",
+    "date": "2022-06-30T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "women and the mitzvah of tefillin"
+  },
+  {
+    "id": "hal-3",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "History of techeiles",
+    "url": "https://2mishnasaday.com/wp-content/uploads/techeileshistory.mp3",
+    "date": "2021-08-05T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "history of techeiles"
+  },
+  {
+    "id": "hal-4",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Why don't people wear techeiles",
+    "url": "https://2mishnasaday.com/wp-content/uploads/techeileswhynot.mp3",
+    "date": "2021-07-29T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "why don't people wear techeiles"
+  },
+  {
+    "id": "hal-5",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Standing up to say Krias Shema",
+    "url": "https://www.buzzsprout.com/1899789/episodes/17508580-7-15-2025-shloimy-zelcer-standing-up-to-say-kriyas-shema.mp3",
+    "date": "2025-07-15T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "standing up to say krias shema"
+  },
+  {
+    "id": "hal-6",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Do you have to know what youre saying in davening?",
+    "url": "https://www.buzzsprout.com/1899789/episodes/17665749-8-13-2025-shloimy-zelcer-do-you-have-to-know-what-youre-saying-in-davening.mp3",
+    "date": "2025-08-13T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "do you have to know what youre saying in davening?"
+  },
+  {
+    "id": "hal-7",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Answering Baruch Hu Uvaruch Shemo",
+    "url": "https://www.buzzsprout.com/1899789/episodes/17240722-5-28-2025-shloimy-zelcer-answering-baruch-hu-uvaruch-shemo.mp3",
+    "date": "2025-05-28T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "answering baruch hu uvaruch shemo"
+  },
+  {
+    "id": "hal-8",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Answering Amen to גָּאַל יִשְׂרָאֵל",
+    "url": "https://www.buzzsprout.com/1899789/episodes/16829518-3-26-2025-shloimy-zelcer-answering-amen-to.mp3",
+    "date": "2025-03-26T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "answering amen to גָּאַל יִשְׂרָאֵל"
+  },
+  {
+    "id": "hal-9",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Asking a kohen to leave",
+    "url": "https://www.buzzsprout.com/1899789/episodes/16170138-11-25-2024-shloimy-zelcer-asking-a-kohen-to-leave.mp3",
+    "date": "2024-11-25T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "asking a kohen to leave"
+  },
+  {
+    "id": "hal-10",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Who gets the first aliyah when there is no kohen",
+    "url": "https://www.buzzsprout.com/1899789/episodes/16134190-11-19-2024-shloimy-zelcer-who-gets-the-first-aliyah-when-there-is-no-kohen.mp3",
+    "date": "2024-11-19T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "who gets the first aliyah when there is no kohen"
+  },
+  {
+    "id": "hal-11",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Standing for Aseres Hadibros",
+    "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
+    "date": "2026-01-29T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "standing for aseres hadibros"
+  },
+  {
+    "id": "hal-12",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Women saying Kadish",
+    "url": "https://www.buzzsprout.com/1899789/episodes/17345373-6-16-2025-shloimy-zelcer-women-saying-kadish.mp3",
+    "date": "2025-06-16T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "women saying kadish"
+  },
+  {
+    "id": "hal-13",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Daven to Hashem, not angels",
+    "url": "https://www.buzzsprout.com/1899789/episodes/18285871-12-3-2025-shloimy-zelcer-daven-to-hashem-not-angels.mp3",
+    "date": "2025-12-03T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "daven to hashem, not angels"
+  },
+  {
+    "id": "hal-14",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Tefilas Haderech",
+    "url": "https://www.buzzsprout.com/1899789/episodes/17012786-4-21-2025-shloimy-zelcer-tefilas-haderech.mp3",
+    "date": "2025-04-21T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "tefilas haderech"
+  },
+  {
+    "id": "hal-15",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "דָּוִד מֶלֶךְ יִשְׂרָאֵל חַי וְקַיָּם בקידוש לבנה",
+    "url": "https://www.buzzsprout.com/1899789/episodes/16554683-2-3-2025-shloimy-zelcer.mp3",
+    "date": "2025-02-03T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "דָּוִד מֶלֶךְ יִשְׂרָאֵל חַי וְקַיָּם בקידוש לבנה"
+  },
+  {
+    "id": "hal-16",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Why Don't women say Kiddush Levanah?",
+    "url": "https://2mishnasaday.com/wp-content/uploads/womenkiddushlevana.mp3",
+    "date": "2021-03-11T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "why don't women say kiddush levanah?"
+  },
+  {
+    "id": "hal-17",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "When Davening takes too long",
+    "url": "https://www.buzzsprout.com/1899789/episodes/18082159-10-28-2025-shloimy-zelcer-when-davening-takes-too-long.mp3",
+    "date": "2025-10-28T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "when davening takes too long"
+  },
+  {
+    "id": "hal-18",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Kiddush in middle of davening?",
+    "url": "https://www.buzzsprout.com/1899789/episodes/17430394-7-1-2025-shloimy-zelcer-kiddush-in-middle-of-davening.mp3",
+    "date": "2025-07-01T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "kiddush in middle of davening?"
+  },
+  {
+    "id": "hal-19",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Head covering during prayer",
+    "url": "https://www.buzzsprout.com/1899789/episodes/10438736-4-12-2022-shloimy-zelcer.mp3",
+    "date": "2022-04-12T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "head covering during prayer"
+  },
+  {
+    "id": "hal-20",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Praying with a minyan",
+    "url": "https://2mishnasaday.com/wp-content/uploads/minyanzoom.mp3",
+    "date": "2020-06-04T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "praying with a minyan"
+  },
+  {
+    "id": "hal-21",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Covering challah during kiddush Part 2",
+    "url": "https://www.buzzsprout.com/1899789/episodes/18577857-1-28-2026-shloimy-zelcer-covering-challah-during-kiddush-part-2.mp3",
+    "date": "2026-01-28T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "covering challah during kiddush part 2"
+  },
+  {
+    "id": "hal-22",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Covering challah during kiddush",
+    "url": "https://www.buzzsprout.com/1899789/episodes/18577841-1-27-2026-shloimy-zelcer-covering-challah-during-kiddush.mp3",
+    "date": "2026-01-27T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "covering challah during kiddush"
+  },
+  {
+    "id": "hal-23",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Parshas Nitzavim / Erev Rosh Hashana",
+    "url": "https://2mishnasaday.com/wp-content/uploads/Nitzavim.mp3",
+    "date": "2025-09-18T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "parshas nitzavim / erev rosh hashana"
+  },
+  {
+    "id": "hal-24",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Teshuva - returning home",
+    "url": "https://www.buzzsprout.com/1899789/episodes/15721287-9-9-2024-shloimy-zelcer-teshuva-returning-home.mp3",
+    "date": "2024-09-09T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "teshuva - returning home"
+  },
+  {
+    "id": "hal-25",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Teshuva like snow and laundry",
+    "url": "https://www.buzzsprout.com/1899789/episodes/14272565-1-8-2024-shloimy-zelcer.mp3",
+    "date": "2024-01-08T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "teshuva like snow and laundry"
+  },
+  {
+    "id": "hal-26",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Simanim of Rosh Hashana",
+    "url": "https://2mishnasaday.com/wp-content/uploads/simaneiroshhashanaMP3.mp3",
+    "date": "2020-09-16T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "simanim of rosh hashana"
+  },
+  {
+    "id": "hal-27",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Yom Kippur through the ages",
+    "url": "https://2mishnasaday.com/wp-content/uploads/yomkippurthroughtheages.mp3",
+    "date": "2020-09-23T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "yom kippur through the ages"
+  },
+  {
+    "id": "hal-28",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "The importance of the Aravos",
+    "url": "https://www.buzzsprout.com/1899789/episodes/15931239-10-15-2024-shloimy-zelcer-the-importance-of-the-aravos.mp3",
+    "date": "2024-10-15T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "the importance of the aravos"
+  },
+  {
+    "id": "hal-29",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Sukkah heals our wounds",
+    "url": "https://youtu.be/qI8KKe3om1c",
+    "date": "2023-09-28T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "sukkah heals our wounds"
+  },
+  {
+    "id": "hal-30",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "8 lesser known answers to the famous question of the Beis Yosef",
+    "url": "https://www.buzzsprout.com/1899789/episodes/11906323-12-20-2022-shloimy-zelcer.mp3",
+    "date": "2022-12-20T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "8 lesser known answers to the famous question of the beis yosef"
+  },
+  {
+    "id": "hal-31",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "A little at a time",
+    "url": "https://youtu.be/ScsMi-d0qHs",
+    "date": "2021-11-30T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "a little at a time"
+  },
+  {
+    "id": "hal-32",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Chanukah thought",
+    "url": "https://youtu.be/gzQiPo2JKT8",
+    "date": "2019-12-24T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "chanukah thought"
+  },
+  {
+    "id": "hal-33",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Three lesser discussed halachos regarding Purim",
+    "url": "https://www.buzzsprout.com/1899789/episodes/10184217-3-3-2022-shloimy-zelcer.mp3",
+    "date": "2022-03-03T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "three lesser discussed halachos regarding purim"
+  },
+  {
+    "id": "hal-34",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Purim thoughts",
+    "url": "https://youtu.be/4ZhRg40--g8",
+    "date": "2019-03-20T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "purim thoughts"
+  },
+  {
+    "id": "hal-35",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Reframing the Pesach Seder",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PESACHPRESHIUR.mp3",
+    "date": "2025-04-10T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "reframing the pesach seder"
+  },
+  {
+    "id": "hal-36",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "An alternate look at the 10 makkos",
+    "url": "https://2mishnasaday.com/wp-content/uploads/10makkosnewlight.mp3",
+    "date": "2023-03-23T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "an alternate look at the 10 makkos"
+  },
+  {
+    "id": "hal-37",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Korban Pesach today",
+    "url": "https://2mishnasaday.com/wp-content/uploads/korbanpesachtoday.mp3",
+    "date": "2022-04-07T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "korban pesach today"
+  },
+  {
+    "id": "hal-38",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Let my people go",
+    "url": "https://2mishnasaday.com/wp-content/uploads/letmypeoplego.mp3",
+    "date": "2022-01-13T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "let my people go"
+  },
+  {
+    "id": "hal-39",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Historical Perspective on the Five Sages in the Haggadah",
+    "url": "https://2mishnasaday.com/wp-content/uploads/5sageshagadah.mp3",
+    "date": "2021-03-18T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "historical perspective on the five sages in the haggadah"
+  },
+  {
+    "id": "hal-40",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "The perfect child",
+    "url": "https://youtu.be/hLOR9lvtuUE",
+    "date": "2019-04-17T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "the perfect child"
+  },
+  {
+    "id": "hal-41",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Evolution of the days of Sefirah",
+    "url": "https://2mishnasaday.com/wp-content/uploads/historyofsefirah.mp3",
+    "date": "2022-02-26T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "evolution of the days of sefirah"
+  },
+  {
+    "id": "hal-42",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "A Lesson from Lag Baomer",
+    "url": "https://www.buzzsprout.com/1899789/episodes/15124705-5-23-2024-shloimy-zelcer-a-lesson-from-lag-baomer.mp3",
+    "date": "2024-05-23T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "a lesson from lag baomer"
+  },
+  {
+    "id": "hal-43",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Customs of Lag Baomer",
+    "url": "https://2mishnasaday.com/wp-content/uploads/LagBaomerZoom.mp3",
+    "date": "2020-05-21T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "customs of lag baomer"
+  },
+  {
+    "id": "hal-44",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Staying awake all Shavuos night",
+    "url": "https://2mishnasaday.com/wp-content/uploads/stayingupshavuosnight.mp3",
+    "date": "2023-05-18T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "staying awake all shavuos night"
+  },
+  {
     "id": "par-qhs0gvRnUxk",
     "program": "Parsha",
     "type": "video",
