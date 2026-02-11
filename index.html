@@ -432,13 +432,14 @@
 .tm-gs-sub{ margin-top:2px; font-size:12px; color:#6b7280; display:flex; gap:10px; flex-wrap:wrap; }
 .tm-pill{ padding:2px 8px; border-radius:999px; background:rgba(13,148,136,.12); color:#0d9488; font-weight:650; }
 
-  .tm-topbar{
+.tm-topbar{
   width:100%;
   background:#ffffff;
   border-bottom:1px solid var(--border, #e7e7ee);
   position:sticky;
   top:0;
   z-index:1000;
+  overflow-x:hidden; /* prevents page-wide horizontal scroll */
 }
 
 .tm-topbar-inner{
@@ -447,48 +448,44 @@
   padding:10px 16px;
   display:flex;
   align-items:center;
-  overflow-x:auto;
+  flex-wrap:nowrap;          /* never wrap to a new line */
+  overflow-x:auto;           /* scroll inside the bar */
+  -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
 }
 
-.tm-topbar-inner::-webkit-scrollbar{
-  display:none;
-}
+.tm-topbar-inner::-webkit-scrollbar{ display:none; }
 
-/* links */
 .tm-topbar a{
   text-decoration:none;
   color:var(--muted, #555);
   font-size:14px;
   font-weight:500;
   white-space:nowrap;
-  padding:4px 10px;
-  position:relative;
-  transition:color .2s ease;
+  padding:4px 12px;
+  transition:color .2s ease, background .2s ease;
+  border-radius:10px;
 }
 
-/* subtle separator */
-.tm-topbar a:not(:last-child)::after{
-  content:"";
-  position:absolute;
-  right:-4px;
-  top:50%;
-  transform:translateY(-50%);
-  width:1px;
-  height:14px;
-  background:#e5e7eb;
+/* subtle separators (no pseudo-elements = no overflow bug) */
+.tm-topbar a + a{
+  border-left:1px solid #e5e7eb;
+  padding-left:14px; /* a little breathing room after the line */
+  margin-left:6px;   /* spacing before the line */
 }
 
-/* hover */
 .tm-topbar a:hover{
   color:var(--accent, #0d9488);
 }
 
-/* active page */
 .tm-topbar a.active{
   color:var(--accent, #0d9488);
   font-weight:600;
+  text-decoration:underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
 }
+
   
   </style>
 </head>
