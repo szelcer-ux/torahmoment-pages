@@ -506,12 +506,24 @@
   pointer-events:none;
   background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
 }
- 
+
+    .tm-topbar a,
+.tm-topbar a:visited{
+  color: var(--muted, #555);
+  text-decoration: none;
+}
+.tm-topbar a:hover{ color: var(--accent, #0d9488); }
+.tm-topbar a.active{
+  color: var(--accent, #0d9488);
+  font-weight: 600;
+  text-decoration: none; /* keep it clean */
+}
+
   </style>
 </head>
 
 <body>
-  <div class="tm-topbar">
+<div class="tm-topbar">
   <div class="tm-topbar-inner">
     <a href="https://torahmoment.com">Home</a>
     <a href="https://torahmoment.com/parsha.html">Parsha</a>
@@ -521,6 +533,7 @@
     <a href="https://torahmoment.com/tefilah.html">Tefila</a>
   </div>
 </div>
+
 
   <div class="wrap">
     <header>
