@@ -597,12 +597,25 @@
       `).join("");
     }
 
+function parseISODateAsLocal(iso){
+  if(!iso) return null;
+
+  // If it's a plain date (YYYY-MM-DD), build a local Date to avoid UTC shifting
+  const m = String(iso).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (m){
+    const y = Number(m[1]), mo = Number(m[2]), d = Number(m[3]);
+    return new Date(y, mo - 1, d); // local midnight
+  }
+
+  // Otherwise, fall back to normal parsing (for full timestamps)
+  const dt = new Date(iso);
+  return isFinite(dt) ? dt : null;
+}
+    
     // NEW: Curated recent renderer (2 + 2 + 1), grouped but in one spot
 function fmtShortDate(iso){
-  if (!iso) return "";
-  const d = new Date(iso);
-  if (!Number.isFinite(d.getTime())) return "";
-  // Example: Feb 3, 2026
+  const d = parseISODateAsLocal(iso);
+  if(!d) return "";
   return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"numeric" });
 }
 
@@ -889,11 +902,10 @@ list.querySelectorAll(".recentAudio").forEach(markLongShiur);
       .replaceAll("'","&#039;");
   }
   function fmtDate(iso){
-    if(!iso) return "";
-    const d = new Date(iso);
-    if(!isFinite(d)) return "";
-    return d.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"});
-  }
+  const d = parseISODateAsLocal(iso);
+  if(!d) return "";
+  return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"numeric" });
+}
 
   async function loadIndex(){
     meta.textContent = "Loading…";
