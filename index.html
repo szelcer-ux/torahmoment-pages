@@ -442,7 +442,7 @@
   overflow-x:hidden; /* prevents page-wide horizontal scroll */
 }
 
-.tm-topbar-inner{
+{
   max-width:1060px;
   margin:0 auto;
   padding:10px 12px;
@@ -462,6 +462,14 @@
   font-size:14px;
 }
 
+.tm-topbar-inner{
+  display:flex;
+  flex-wrap:nowrap;      /* never wrap */
+  overflow-x:auto;       /* scroll instead */
+  -webkit-overflow-scrolling:touch;
+}
+
+    
 /* separators without overflow risk */
 .tm-topbar a + a{
   border-left:1px solid #e5e7eb;
@@ -519,13 +527,49 @@
   text-decoration: none; /* keep it clean */
 }
 
+@media (max-width: 520px){
+
+  .tm-topbar-inner{
+    padding:8px 8px;
+  }
+
+  .tm-topbar a{
+    font-size:13px;     /* 1px smaller */
+    padding:3px 8px;    /* tighter horizontal */
+  }
+
+  .tm-topbar a + a{
+    margin-left:4px;    
+    padding-left:10px;  
+  }
+
+}
+
+    .tm-topbar .home-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 10px;
+}
+
+.tm-topbar .home-link svg{
+  width:18px;
+  height:18px;
+}
+
+    
   </style>
 </head>
 
 <body>
 <div class="tm-topbar">
   <div class="tm-topbar-inner">
-    <a href="https://torahmoment.com">Home</a>
+   <a href="https://torahmoment.com" aria-label="Home" class="home-link">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M3 10.5L12 3l9 7.5"/>
+    <path d="M5 10v10h14V10"/>
+  </svg>
+</a>
     <a href="https://torahmoment.com/parsha.html">Parsha</a>
     <a href="https://torahmoment.com/halacha.html">Halacha</a>
     <a href="https://torahmoment.com/one-minute-audio.html">One Minute</a>
