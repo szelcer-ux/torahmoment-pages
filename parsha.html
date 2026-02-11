@@ -627,6 +627,15 @@
   z-index:1000;
 }
 
+.tm-topbar a.active:not(.home-link),
+.tm-topbar a.active:not(.home-link):visited{
+  background: rgba(13,148,136,0.12);
+  color: var(--text, #111) !important;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+	  
 .tm-topbar-inner{
   max-width:980px;           /* match .wrap */
   margin:0 auto;
@@ -2496,20 +2505,22 @@ window.addEventListener("load", () => {
 });
 </script>
 
-	<script>
+<script>
 (function(){
-  const links = document.querySelectorAll(".tm-topbar a");
-  const current = window.location.pathname.replace(/\/+$/, "") || "/";
+  const links = document.querySelectorAll(".tm-topbar a[href]:not(.home-link)");
+  const raw = (location.pathname || "/").replace(/\/+$/, "") || "/";
+  const current = (raw === "/index.html") ? "/" : raw;
 
-  links.forEach(link => {
-    try{
-      const url = new URL(link.href);
-      const linkPath = url.pathname.replace(/\/+$/, "") || "/";
-      if (linkPath === current) link.classList.add("active");
-    }catch(e){}
+  links.forEach(a => {
+    const u = new URL(a.getAttribute("href"), location.href);
+    const lpRaw = (u.pathname || "/").replace(/\/+$/, "") || "/";
+    const lp = (lpRaw === "/index.html") ? "/" : lpRaw;
+
+    if (lp === current) a.classList.add("active");
   });
 })();
 </script>
+
 
 	
 </body>
