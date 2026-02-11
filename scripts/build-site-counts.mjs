@@ -349,9 +349,14 @@ async function readHalachaTotalAllFromDom(page) {
 
   try {
     await page.goto(`http://127.0.0.1:${PORT}/halacha.html`, { waitUntil: "load" });
-    const halachaData = await page.evaluate(
-      () => window.HALACHA_DATA || window.PAGE_DATA || null
-    );
+
+   const halachaData = await page.evaluate(() => {
+  if (window.HALACHA_DATA) return window.HALACHA_DATA;
+  // PAGE_DATA is a const global, not on window
+  if (typeof PAGE_DATA !== "undefined") return PAGE_DATA;
+  return null;
+});
+
     recentHalacha = flattenHalacha(halachaData);
   } catch (e) {
     console.warn("Recent Halacha failed:", String(e));
@@ -424,9 +429,13 @@ async function readHalachaTotalAllFromDom(page) {
   let allHalacha = [];
   try {
     await page.goto(`http://127.0.0.1:${PORT}/halacha.html`, { waitUntil: "load" });
-    const halachaData = await page.evaluate(
-      () => window.HALACHA_DATA || window.PAGE_DATA || null
-    );
+    const halachaData = await page.evaluate(() => {
+  if (window.HALACHA_DATA) return window.HALACHA_DATA;
+  // PAGE_DATA is a const global, not on window
+  if (typeof PAGE_DATA !== "undefined") return PAGE_DATA;
+  return null;
+});
+
     allHalacha = flattenHalacha(halachaData);
   } catch (e) {
     console.warn("Halacha index build failed:", String(e));
