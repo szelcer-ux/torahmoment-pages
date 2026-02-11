@@ -432,6 +432,7 @@
 .tm-gs-sub{ margin-top:2px; font-size:12px; color:#6b7280; display:flex; gap:10px; flex-wrap:wrap; }
 .tm-pill{ padding:2px 8px; border-radius:999px; background:rgba(13,148,136,.12); color:#0d9488; font-weight:650; }
 
+/* ===== TorahMoment Topbar ===== */
 .tm-topbar{
   width:100%;
   background:#ffffff;
@@ -439,123 +440,80 @@
   position:sticky;
   top:0;
   z-index:1000;
-  overflow-x:hidden; /* prevents page-wide horizontal scroll */
-}
-
-{
-  max-width:1060px;
-  margin:0 auto;
-  padding:10px 12px;
-  display:flex;
-  align-items:center;
-  flex-wrap:nowrap;          /* never wrap to a new line */
-  overflow-x:auto;           /* scroll inside the bar */
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-}
-
-.tm-topbar-inner::-webkit-scrollbar{ display:none; }
-
-.tm-topbar a{
-  white-space:nowrap;
-  padding:4px 10px;
-  font-size:14px;
 }
 
 .tm-topbar-inner{
+  max-width:980px;     /* match .wrap */
+  margin:0 auto;
+  padding:10px 20px;   /* match .wrap side padding */
   display:flex;
-  flex-wrap:nowrap;      /* never wrap */
-  overflow-x:auto;       /* scroll instead */
+  align-items:center;
+  flex-wrap:nowrap;
+  overflow-x:auto;
   -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  position:relative;
 }
 
-    
-/* separators without overflow risk */
-.tm-topbar a + a{
-  border-left:1px solid #e5e7eb;
-  margin-left:6px;
-  padding-left:12px;
-}
 
-.tm-topbar a:hover{
-  color:var(--accent, #0d9488);
-}
+.tm-topbar-inner::-webkit-scrollbar{ display:none; }
 
-.tm-topbar a.active{
-  color:var(--accent, #0d9488);
-  font-weight:600;
-  text-decoration:underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 2px;
-}
-
-    /* Mobile tighten */
-@media (max-width: 520px){
-  .tm-topbar-inner{ padding:8px 10px; }
-  .tm-topbar a{ padding:3px 8px; font-size:13px; }
-  .tm-topbar a + a{ margin-left:5px; padding-left:10px; }
-}
-
-   .tm-topbar{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#fff;
-  border-bottom:1px solid var(--border, #e7e7ee);
-}
-
-.tm-topbar::after{
+/* subtle "more to the right" fade */
+.tm-topbar-inner::after{
   content:"";
-  position:absolute;
+  position:sticky;
   right:0;
   top:0;
   width:26px;
   height:100%;
   pointer-events:none;
   background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+  margin-left:auto;
 }
 
-    .tm-topbar a,
+.tm-topbar a,
 .tm-topbar a:visited{
-  color: var(--muted, #555);
-  text-decoration: none;
+  text-decoration:none;
+  color:var(--muted, #555);
+  font-size:14px;
+  font-weight:500;
+  white-space:nowrap;
+  padding:4px 10px;
 }
-.tm-topbar a:hover{ color: var(--accent, #0d9488); }
+
+.tm-topbar a:hover{ color:var(--accent, #0d9488); }
+
 .tm-topbar a.active{
-  color: var(--accent, #0d9488);
-  font-weight: 600;
-  text-decoration: none; /* keep it clean */
+  color:var(--accent, #0d9488);
+  font-weight:600;
 }
 
-@media (max-width: 520px){
-
-  .tm-topbar-inner{
-    padding:8px 8px;
-  }
-
-  .tm-topbar a{
-    font-size:13px;     /* 1px smaller */
-    padding:3px 8px;    /* tighter horizontal */
-  }
-
-  .tm-topbar a + a{
-    margin-left:4px;    
-    padding-left:10px;  
-  }
-
+/* separators */
+.tm-topbar a + a{
+  border-left:1px solid #e5e7eb;
+  margin-left:6px;
+  padding-left:12px;
 }
 
-    .tm-topbar .home-link{
+/* home icon (optional) */
+.tm-topbar .home-link{
   display:flex;
   align-items:center;
   justify-content:center;
   padding:4px 10px;
 }
-
 .tm-topbar .home-link svg{
   width:18px;
   height:18px;
 }
+
+/* Mobile tighten */
+@media (max-width: 520px){
+  .tm-topbar-inner{ padding:8px 10px; }
+  .tm-topbar a, .tm-topbar a:visited{ font-size:13px; padding:3px 8px; }
+  .tm-topbar a + a{ margin-left:4px; padding-left:10px; }
+}
+
 
     
   </style>
