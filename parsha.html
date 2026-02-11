@@ -637,9 +637,9 @@
 
 	  
 .tm-topbar-inner{
-  max-width:980px;           /* match .wrap */
+  max-width: var(--tm-wrap-max, 980px);
+  padding:10px var(--tm-wrap-pad, 20px);
   margin:0 auto;
-  padding:10px 20px;         /* match .wrap side padding */
   display:flex;
   align-items:center;
   flex-wrap:nowrap;          /* never wrap */
@@ -647,6 +647,7 @@
   -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
   position:relative;         /* for fade overlay */
+  box-sizing: border-box;
 }
 
 .tm-topbar-inner::-webkit-scrollbar{ display:none; }
