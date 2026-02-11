@@ -432,11 +432,79 @@
 .tm-gs-sub{ margin-top:2px; font-size:12px; color:#6b7280; display:flex; gap:10px; flex-wrap:wrap; }
 .tm-pill{ padding:2px 8px; border-radius:999px; background:rgba(13,148,136,.12); color:#0d9488; font-weight:650; }
 
-    
+  .tm-topbar{
+  width:100%;
+  background:#ffffff;
+  border-bottom:1px solid var(--border, #e7e7ee);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.tm-topbar-inner{
+  max-width:1060px;
+  margin:0 auto;
+  padding:10px 16px;
+  display:flex;
+  align-items:center;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.tm-topbar-inner::-webkit-scrollbar{
+  display:none;
+}
+
+/* links */
+.tm-topbar a{
+  text-decoration:none;
+  color:var(--muted, #555);
+  font-size:14px;
+  font-weight:500;
+  white-space:nowrap;
+  padding:4px 10px;
+  position:relative;
+  transition:color .2s ease;
+}
+
+/* subtle separator */
+.tm-topbar a:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  right:-4px;
+  top:50%;
+  transform:translateY(-50%);
+  width:1px;
+  height:14px;
+  background:#e5e7eb;
+}
+
+/* hover */
+.tm-topbar a:hover{
+  color:var(--accent, #0d9488);
+}
+
+/* active page */
+.tm-topbar a.active{
+  color:var(--accent, #0d9488);
+  font-weight:600;
+}
+  
   </style>
 </head>
 
 <body>
+  <div class="tm-topbar">
+  <div class="tm-topbar-inner">
+    <a href="https://torahmoment.com">Home</a>
+    <a href="https://torahmoment.com/parsha.html">Parsha</a>
+    <a href="https://torahmoment.com/halacha.html">Halacha</a>
+    <a href="https://torahmoment.com/one-minute-audio.html">One Minute</a>
+    <a href="https://torahmoment.com/mishna.html">Mishna</a>
+    <a href="https://torahmoment.com/tefilah.html">Beur Tefila</a>
+  </div>
+</div>
+
   <div class="wrap">
     <header>
       <div>
@@ -999,5 +1067,25 @@ list.querySelectorAll(".recentAudio").forEach(markLongShiur);
 })();
 </script>
 
+<script>
+(function(){
+  const links = document.querySelectorAll(".tm-topbar a");
+  const current = window.location.pathname.replace(/\/+$/, "");
+
+  links.forEach(link => {
+    const url = new URL(link.href);
+    let linkPath = url.pathname.replace(/\/+$/, "");
+
+    // normalize homepage
+    if(linkPath === "") linkPath = "/";
+
+    if(current === linkPath){
+      link.classList.add("active");
+    }
+  });
+})();
+</script>
+
+  
 </body>
 </html>
