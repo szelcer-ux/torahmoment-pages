@@ -560,12 +560,42 @@
 
     function safeNum(x){ return (typeof x === "number" && Number.isFinite(x)) ? x : 0; }
 
-    function fmtShortDate(iso){
-      if (!iso) return "";
-      const d = new Date(iso);
-      if (!Number.isFinite(d.getTime())) return "";
-      return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"numeric" });
-    }
+function parseISODateSmart(iso){
+  if (!iso) return null;
+
+  const s = String(iso);
+
+  // Case 1: plain date (YYYY-MM-DD)
+  const m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (m){
+    const y = Number(m[1]), mo = Number(m[2]), d = Number(m[3]);
+    return { date: new Date(y, mo - 1, d), useUTC: false };
+  }
+
+  // Case 2: UTC timestamp (ends with Z)
+  const isUTC = /Z$/.test(s);
+  const dt = new Date(s);
+  if (!isFinite(dt)) return null;
+
+  return { date: dt, useUTC: isUTC };
+}
+
+function fmtShortDate(iso){
+  const parsed = parseISODateSmart(iso);
+  if (!parsed) return "";
+
+  return parsed.date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: parsed.useUTC ? "UTC" : undefined
+  });
+}
+
+function fmtDate(iso){
+  return fmtShortDate(iso);
+}
+
 
     function renderRecentCurated(data){
       const wrap = document.getElementById("recentList");
