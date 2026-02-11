@@ -2,8 +2,8 @@
 
 ## 🔹 UI / Visual
 - [x] Breakdown cards on homepage (Halacha / Parsha / Tefilah / One-Minute)
-- [ ] Animate counts when page loads
-- [ ] Show "Last updated" date from site-counts.json
+- [x] Animate counts when page loads
+- [x] Show "Last updated" date from site-counts.json
 - [ ] Consistent card style across all pages
 - [x] Mobile spacing tweaks on halacha page
 
@@ -19,7 +19,7 @@
 
 ## 🔹 Nice-to-haves
 - [ ] Dark mode toggle
-- [ ] Search across all shiurim
+- [x] Search across all shiurim
 - [ ] "Random shiur" button
 - [x] Recently added section
 
