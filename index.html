@@ -445,7 +445,7 @@
 .tm-topbar-inner{
   max-width:1060px;
   margin:0 auto;
-  padding:10px 16px;
+  padding:10px 12px;
   display:flex;
   align-items:center;
   flex-wrap:nowrap;          /* never wrap to a new line */
@@ -457,21 +457,16 @@
 .tm-topbar-inner::-webkit-scrollbar{ display:none; }
 
 .tm-topbar a{
-  text-decoration:none;
-  color:var(--muted, #555);
-  font-size:14px;
-  font-weight:500;
   white-space:nowrap;
-  padding:4px 12px;
-  transition:color .2s ease, background .2s ease;
-  border-radius:10px;
+  padding:4px 10px;
+  font-size:14px;
 }
 
-/* subtle separators (no pseudo-elements = no overflow bug) */
+/* separators without overflow risk */
 .tm-topbar a + a{
   border-left:1px solid #e5e7eb;
-  padding-left:14px; /* a little breathing room after the line */
-  margin-left:6px;   /* spacing before the line */
+  margin-left:6px;
+  padding-left:12px;
 }
 
 .tm-topbar a:hover{
@@ -486,7 +481,32 @@
   text-decoration-thickness: 2px;
 }
 
-  
+    /* Mobile tighten */
+@media (max-width: 520px){
+  .tm-topbar-inner{ padding:8px 10px; }
+  .tm-topbar a{ padding:3px 8px; font-size:13px; }
+  .tm-topbar a + a{ margin-left:5px; padding-left:10px; }
+}
+
+   .tm-topbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#fff;
+  border-bottom:1px solid var(--border, #e7e7ee);
+}
+
+.tm-topbar::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:0;
+  width:26px;
+  height:100%;
+  pointer-events:none;
+  background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+}
+ 
   </style>
 </head>
 
@@ -498,7 +518,7 @@
     <a href="https://torahmoment.com/halacha.html">Halacha</a>
     <a href="https://torahmoment.com/one-minute-audio.html">One Minute</a>
     <a href="https://torahmoment.com/mishna.html">Mishna</a>
-    <a href="https://torahmoment.com/tefilah.html">Beur Tefila</a>
+    <a href="https://torahmoment.com/tefilah.html">Tefila</a>
   </div>
 </div>
 
