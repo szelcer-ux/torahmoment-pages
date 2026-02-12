@@ -192,30 +192,16 @@
       padding-top: 2px;
     }
 
-
-    
     /* --- RECENT (ported from index) --- */
     .recentGroup{
-  margin-top:22px;
-  padding-top:16px;
-  border-top:1px solid var(--border);
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:#64748b;
-}
-
-.recentGroup:first-of-type{
-  margin-top:10px;
-  border-top:0;
-  padding-top:0;
-}
-
-    .recentItem{
-  padding:10px 0;
-}
-
+      margin-top: 12px;
+      padding: 6px 2px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(15, 23, 42, 0.65);
+      letter-spacing: 0.02em;
+      border-top: 1px solid rgba(231,231,238,0.9);
+    }
     .recentGroup:first-child{
       margin-top: 0;
       border-top: none;
@@ -234,89 +220,6 @@
 
     .rIcon{ width:20px; text-align:center; }
 
-
-/* Recently added container */
-#recentList{
-  padding: 8px 14px;
-}
-
-/* Group header (One-Minute / Halacha / Parsha) */
-#recentList .recentGroup{
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #64748b;
-}
-#recentList .recentGroup:first-child{
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-/* Each row */
-#recentList .recentItem{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 14px;
-  padding: 10px 6px;
-  border-radius: 12px;
-}
-#recentList .recentItem:hover{
-  background: rgba(0,0,0,0.02);
-}
-
-/* Left side: icon + title */
-#recentList .ri-left{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  min-width: 0;
-}
-#recentList .ri-title{
-  font-weight: 700;
-  color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-#recentList .ri-icon{
-  width: 18px;
-  text-align:center;
-  opacity: .8;
-}
-
-/* Right side: date + player */
-#recentList .ri-right{
-  display:flex;
-  align-items:center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-#recentList .ri-date{
-  font-size: 12px;
-  color: #64748b;
-  white-space: nowrap;
-}
-
-/* Optional badges */
-#recentList .badge{
-  display:inline-flex;
-  align-items:center;
-  padding: 3px 8px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 700;
-  background: rgba(13,148,136,.12);
-  color: #0d9488;
-  margin-left: 8px;
-}
-
-    
     /* title/date line */
     .rLine{
       display:flex;
@@ -463,140 +366,6 @@
       .wrap{ padding: 16px; }
       .stats{ grid-template-columns: repeat(2, minmax(0,1fr)); }
     }
-
-/* ===== Recently Added — style existing markup ===== */
-
-/* Container */
-#recentList{
-  padding: 8px 14px;
-}
-
-/* Group headers (One-Minute / Halacha / Parsha) */
-#recentList .recentGroup{
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #64748b;
-}
-#recentList .recentGroup:first-child{
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-/* Row base (both audio div + video link) */
-#recentList .recentRow{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 14px;
-  padding: 10px 6px;
-  border-radius: 12px;
-  text-decoration: none; /* for <a> rows */
-  color: inherit;
-}
-#recentList .recentRow:hover{
-  background: rgba(0,0,0,0.02);
-}
-
-/* Left layout */
-#recentList .rLeft{
-  display:flex;
-  flex-direction:column;
-  gap: 6px;
-  min-width: 0;
-  flex: 1 1 auto;
-}
-
-#recentList .rLine{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  min-width: 0;
-}
-
-#recentList .rIcon{
-  width: 18px;
-  text-align:center;
-  opacity: .85;
-  flex: 0 0 auto;
-}
-
-#recentList .rTitle{
-  font-weight: 700;
-  color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
-}
-
-/* Date sits to the right (keep it from squeezing title too early) */
-#recentList .rDate{
-  margin-left: auto;
-  font-size: 12px;
-  color: #64748b;
-  white-space: nowrap;
-  flex: 0 0 auto;
-}
-
-/* Player sizing */
-#recentList .rPlayer{
-  flex: 0 0 auto;
-  width: 250px;
-  max-width: 42vw; /* keeps it sane on narrower screens */
-}
-
-/* Speed buttons row */
-#recentList .speedBtns{
-  display:inline-flex;
-  gap: 6px;
-}
-#recentList .speedBtn{
-  border:1px solid var(--border);
-  background:#fff;
-  border-radius: 999px;
-  padding: 4px 8px;
-  font-weight: 700;
-  font-size: 12px;
-  cursor: pointer;
-}
-#recentList .speedBtn:hover{
-  border-color: rgba(13,148,136,.35);
-}
-
-/* Long badge (your existing element) */
-#recentList .longBadge{
-  display:inline-flex;
-  align-items:center;
-  padding: 3px 8px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 700;
-  background: rgba(13,148,136,.12);
-  color: #0d9488;
-}
-
-/* Mobile: stack date + player nicely */
-@media (max-width: 720px){
-  #recentList .recentAudio{
-    flex-direction: column;
-    align-items: stretch;
-  }
-  #recentList .rDate{
-    margin-left: 0;
-  }
-  #recentList .rPlayer{
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-    
   </style>
 </head>
 
