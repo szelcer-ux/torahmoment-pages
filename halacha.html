@@ -333,10 +333,12 @@
   color: #dc2626; /* subtle red hint = YouTube */
 }
 
-    .tm-row.tm-youtube{
-  border-style: dashed;
-  background: #fcfcff;
+.tm-row.tm-youtube{
+  border-style: solid;
+  border-color: var(--line);
+  background: #fff;
 }
+
 
 .tm-speed{
   border: 1px solid var(--line);
@@ -845,15 +847,7 @@ header h1{
     cursor: pointer;
   }
 }
-/* ===== Restore original "blue" desktop look ===== */
-@media (min-width: 768px){
-  .cat-title{
-    color: var(--accent2);
-  }
-  details.subcat > summary{
-    color:#0f3f7a;
-  }
-}
+
 
     
   </style>
