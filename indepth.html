@@ -279,8 +279,22 @@
     // ✅ READ YOUR EXPORTED GLOBALS
     // parsha.html: window.TM_PARSHA_INDEPTH = PARSHA_INDEPTH;
     // halacha.html: window.HALACHA_DATA = PAGE_DATA;
-    const PARSHA = frameParsha.contentWindow.TM_PARSHA_INDEPTH;
-    const HALACHA = frameHalacha.contentWindow.HALACHA_DATA;
+    const pw = frameParsha.contentWindow;
+const hw = frameHalacha.contentWindow;
+
+console.log("PARSHa iframe location:", pw.location.href);
+console.log("HALACHA iframe location:", hw.location.href);
+
+console.log("pw.TM_PARSHA_INDEPTH:", pw.TM_PARSHA_INDEPTH);
+console.log("hw.HALACHA_DATA:", hw.HALACHA_DATA);
+
+// also check if you accidentally exported under different names:
+console.log("pw.PARSHA_INDEPTH:", pw.PARSHA_INDEPTH);
+console.log("hw.TM_HALACHA_DATA:", hw.TM_HALACHA_DATA);
+
+const PARSHA = pw.TM_PARSHA_INDEPTH || pw.PARSHA_INDEPTH;
+const HALACHA = hw.HALACHA_DATA || hw.TM_HALACHA_DATA;
+
 
     // ---------- Parsha render ----------
     parshaListEl.innerHTML = "";
