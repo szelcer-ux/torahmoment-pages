@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TorahMoment — In-Depth Shiurim</title>
+
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#666;
+      --border:#e7e7ee;
+      --accent:#0d9488;
+      --shadow:0 6px 22px rgba(0,0,0,0.07);
+      --radius:16px;
+    }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:1060px;margin:0 auto;padding:22px;}
+    .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
+    h1{margin:0;font-size:28px;letter-spacing:-0.02em;}
+    .sub{color:var(--muted);margin-top:6px;font-size:14px;}
+
+    .pillbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+    .pill{
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:14px;
+      cursor:pointer;
+    }
+    .pill[aria-pressed="true"]{
+      border-color:rgba(13,148,136,.35);
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:14px;
+      margin-top:14px;
+    }
+    .sectionTitle{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+    .sectionTitle h2{margin:0;font-size:18px;}
+    .count{color:var(--muted);font-size:13px;}
+
+    .list{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 12px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:#fff;
+      text-decoration:none;
+      color:inherit;
+    }
+    .row:hover{transform:translateY(-1px);}
+    .left{min-width:0;}
+    .title{font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .meta{margin-top:3px;color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+    .badge{
+      font-size:12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:6px 10px;
+      background:#fff;
+      flex:0 0 auto;
+    }
+    .badgeLong{border-color:rgba(13,148,136,.35);}
+
+    .muted{color:var(--muted);}
+
+    .loader{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:14px;}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--muted);opacity:.35;animation:pulse 1.2s infinite;}
+    .dot:nth-child(2){animation-delay:.2s}
+    .dot:nth-child(3){animation-delay:.4s}
+    @keyframes pulse{0%,100%{opacity:.25}50%{opacity:.7}}
+
+    iframe{
+      position:absolute;
+      left:-9999px; top:-9999px;
+      width:1px; height:1px;
+      opacity:0;
+      pointer-events:none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>In-Depth Shiurim</h1>
+        <div class="sub">A single place for the more developed, full-length TorahMoment shiurim.</div>
+      </div>
+      <div class="muted" id="status">Loading…</div>
+    </div>
+
+    <div class="pillbar">
+      <button class="pill" id="tabAll" aria-pressed="true" type="button">All</button>
+      <button class="pill" id="tabParsha" aria-pressed="false" type="button">Parsha In-Depth</button>
+      <button class="pill" id="tabHalacha" aria-pressed="false" type="button">Halacha (10+ min)</button>
+    </div>
+
+    <div class="card" id="parshaCard" style="display:block;">
+      <div class="sectionTitle">
+        <h2>Parsha In-Depth</h2>
+        <div class="count" id="parshaCount"></div>
+      </div>
+      <div class="list" id="parshaList">
+        <div class="loader"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Loading Parsha in-depth…</div>
+      </div>
+    </div>
+
+    <div class="card" id="halachaCard" style="display:block;">
+      <div class="sectionTitle">
+        <h2>Halacha / Hashkafa — Long Shiurim</h2>
+        <div class="count" id="halachaCount"></div>
+      </div>
+      <div class="list" id="halachaList">
+        <div class="loader"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Scanning audio duration…</div>
+      </div>
+      <div class="sub" style="margin-top:10px;">
+        Long = 10 minutes or more. (Based on audio metadata.)
+      </div>
+    </div>
+
+    <!-- Hidden iframes to access your existing JS constants -->
+    <iframe id="frameParsha" src="/parsha.html"></iframe>
+    <iframe id="frameHalacha" src="/halacha.html"></iframe>
+  </div>
+
+<script>
+  const LONG_SEC = 600;
+
+  const elStatus = document.getElementById("status");
+  const parshaListEl = document.getElementById("parshaList");
+  const halachaListEl = document.getElementById("halachaList");
+  const parshaCountEl = document.getElementById("parshaCount");
+  const halachaCountEl = document.getElementById("halachaCount");
+
+  const parshaCard = document.getElementById("parshaCard");
+  const halachaCard = document.getElementById("halachaCard");
+
+  const tabAll = document.getElementById("tabAll");
+  const tabParsha = document.getElementById("tabParsha");
+  const tabHalacha = document.getElementById("tabHalacha");
+
+  function setTab(which){
+    const isAll = which === "all";
+    const isParsha = which === "parsha";
+    const isHalacha = which === "halacha";
+
+    tabAll.setAttribute("aria-pressed", String(isAll));
+    tabParsha.setAttribute("aria-pressed", String(isParsha));
+    tabHalacha.setAttribute("aria-pressed", String(isHalacha));
+
+    parshaCard.style.display = (isAll || isParsha) ? "block" : "none";
+    halachaCard.style.display = (isAll || isHalacha) ? "block" : "none";
+  }
+
+  tabAll.addEventListener("click", ()=>setTab("all"));
+  tabParsha.addEventListener("click", ()=>setTab("parsha"));
+  tabHalacha.addEventListener("click", ()=>setTab("halacha"));
+
+  function rowLink({title, meta, url, badgeText, badgeClass}){
+    const a = document.createElement("a");
+    a.className = "row";
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener";
+
+    const left = document.createElement("div");
+    left.className = "left";
+
+    const t = document.createElement("div");
+    t.className = "title";
+    t.textContent = title || "Untitled";
+
+    const m = document.createElement("div");
+    m.className = "meta";
+    m.textContent = meta || "";
+
+    left.appendChild(t);
+    left.appendChild(m);
+
+    const badge = document.createElement("div");
+    badge.className = "badge " + (badgeClass || "");
+    badge.textContent = badgeText || "";
+
+    a.appendChild(left);
+    a.appendChild(badge);
+    return a;
+  }
+
+  function flattenHalachaAudios(PAGE_DATA){
+    const out = [];
+    for (const cat of (PAGE_DATA || [])){
+      const catName = cat.category || "Halacha";
+      const subs = cat.subcategories || [];
+      for (const sub of subs){
+        const subName = sub.name || "";
+        const items = sub.items || [];
+        for (const it of items){
+          if (!it || it.type !== "audio" || !it.url) continue;
+          out.push({
+            title: it.title || "Untitled",
+            url: it.url,
+            meta: [catName, subName, it.note].filter(Boolean).join(" • ")
+          });
+        }
+      }
+    }
+    return out;
+  }
+
+  function parseParshaInDepth(obj){
+    // { "Noach": [ {label,url,duration}, ... ], ... }
+    const rows = [];
+    for (const [parshaName, arr] of Object.entries(obj || {})){
+      for (const it of (arr || [])){
+        rows.push({
+          title: it.label || "Untitled",
+          url: it.url,
+          meta: [parshaName, it.duration].filter(Boolean).join(" • "),
+          badge: "Parsha"
+        });
+      }
+    }
+    return rows;
+  }
+
+  function getAudioDurationSec(url){
+    return new Promise((resolve) => {
+      const audio = new Audio();
+      audio.preload = "metadata";
+      audio.src = url;
+
+      const done = (sec) => {
+        audio.removeEventListener("loadedmetadata", onMeta);
+        audio.removeEventListener("error", onErr);
+        resolve(sec);
+      };
+
+      const onMeta = () => done(isFinite(audio.duration) ? audio.duration : NaN);
+      const onErr = () => done(NaN);
+
+      audio.addEventListener("loadedmetadata", onMeta, { once: true });
+      audio.addEventListener("error", onErr, { once: true });
+    });
+  }
+
+  async function load(){
+    elStatus.textContent = "Loading sources…";
+
+    const frameParsha = document.getElementById("frameParsha");
+    const frameHalacha = document.getElementById("frameHalacha");
+
+    const waitFrame = (frame) => new Promise((resolve) => {
+      if (frame.contentWindow && frame.contentDocument?.readyState === "complete") return resolve();
+      frame.addEventListener("load", () => resolve(), { once: true });
+    });
+
+    await Promise.all([waitFrame(frameParsha), waitFrame(frameHalacha)]);
+
+    // ✅ READ YOUR EXPORTED GLOBALS
+    // parsha.html: window.TM_PARSHA_INDEPTH = PARSHA_INDEPTH;
+    // halacha.html: window.HALACHA_DATA = PAGE_DATA;
+    const PARSHA = frameParsha.contentWindow.TM_PARSHA_INDEPTH;
+    const HALACHA = frameHalacha.contentWindow.HALACHA_DATA;
+
+    // ---------- Parsha render ----------
+    parshaListEl.innerHTML = "";
+    const parshaRows = parseParshaInDepth(PARSHA);
+    parshaCountEl.textContent = parshaRows.length ? `${parshaRows.length} items` : "";
+
+    if (!parshaRows.length){
+      parshaListEl.innerHTML =
+        `<div class="muted">No Parsha in-depth items found. (Did you export window.TM_PARSHA_INDEPTH = PARSHA_INDEPTH?)</div>`;
+    } else {
+      for (const r of parshaRows){
+        parshaListEl.appendChild(rowLink({
+          title: r.title,
+          meta: r.meta,
+          url: r.url,
+          badgeText: "Parsha",
+          badgeClass: "badgeLong"
+        }));
+      }
+    }
+
+    // ---------- Halacha scan & render (10+ min only) ----------
+    halachaListEl.innerHTML = "";
+    const halachaAudios = flattenHalachaAudios(HALACHA);
+
+    if (!halachaAudios.length){
+      halachaListEl.innerHTML =
+        `<div class="muted">No Halacha audio items found. (Did you export window.HALACHA_DATA = PAGE_DATA?)</div>`;
+      halachaCountEl.textContent = "";
+    } else {
+      elStatus.textContent = "Scanning Halacha durations…";
+
+      const longOnes = [];
+      for (let i = 0; i < halachaAudios.length; i++){
+        const it = halachaAudios[i];
+        const sec = await getAudioDurationSec(it.url);
+        if (isFinite(sec) && sec >= LONG_SEC){
+          longOnes.push({ ...it, sec });
+        }
+        // lightweight progress indicator (doesn't spam UI)
+        if (i % 8 === 0){
+          halachaCountEl.textContent = `Scanning… found ${longOnes.length} long so far`;
+        }
+      }
+
+      halachaCountEl.textContent = longOnes.length ? `${longOnes.length} items` : "";
+
+      if (!longOnes.length){
+        halachaListEl.innerHTML = `<div class="muted">No Halacha items reached 10+ minutes.</div>`;
+      } else {
+        for (const it of longOnes){
+          halachaListEl.appendChild(rowLink({
+            title: it.title,
+            meta: it.meta,
+            url: it.url,
+            badgeText: "Long",
+            badgeClass: "badgeLong"
+          }));
+        }
+      }
+    }
+
+    elStatus.textContent = "Ready";
+  }
+
+  load().catch((e)=>{
+    console.error(e);
+    elStatus.textContent = "Error loading";
+    parshaListEl.innerHTML = `<div class="muted">Something went wrong. Check console.</div>`;
+    halachaListEl.innerHTML = ``;
+  });
+</script>
+</body>
+</html>
