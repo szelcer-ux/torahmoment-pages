@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 661,
+    "total": 662,
     "breakdown": {
       "parsha": {
         "audio": 22,
-        "video": 214
+        "video": 215
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-02-12"
+    "updated": "2026-02-13"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Carry forward",
+      "url": "https://www.youtube.com/watch?v=E-K3nDaVWFQ",
+      "date": "2026-02-13T03:38:21Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Who runs the world",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260205-WA0029.mp3",
       "date": "2026-02-05T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Always think about others",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0029.mp3",
-      "date": "2026-02-03T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Carry forward",
+        "url": "https://www.youtube.com/watch?v=E-K3nDaVWFQ",
+        "date": "2026-02-13T03:38:21Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "How do YOU serve Hashem?",
         "url": "https://www.youtube.com/watch?v=qhs0gvRnUxk",
         "date": "2026-02-06T03:57:18Z"
@@ -266,13 +273,6 @@
         "title": "Alone time",
         "url": "https://www.youtube.com/watch?v=pF1KMPaOEkU",
         "date": "2025-12-05T02:09:24Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Appreciating the ordinary",
-        "url": "https://www.youtube.com/watch?v=rkBWtb6sIDY",
-        "date": "2025-11-28T02:09:21Z"
       }
     ]
   }
