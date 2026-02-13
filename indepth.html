@@ -398,14 +398,21 @@
       }
     }
 
-    // Sort: Category → Subcategory → Title
-    longOnes.sort((a,b) => {
-      const ac = String(a.cat||"").localeCompare(String(b.cat||""));
-      if (ac) return ac;
-      const as = String(a.sub||"").localeCompare(String(b.sub||""));
-      if (as) return as;
-      return String(a.title||"").localeCompare(String(b.title||""));
-    });
+    function parseMDY(dateStr){
+  // expecting M/D/YYYY
+  if (!dateStr) return 0;
+  const parts = String(dateStr).trim().split("/");
+  if (parts.length !== 3) return 0;
+  const [m,d,y] = parts.map(Number);
+  if (!m || !d || !y) return 0;
+  return new Date(y, m-1, d).getTime();
+}
+
+// Sort: Newest first (date desc)
+longOnes.sort((a,b) => {
+  return parseMDY(b.note) - parseMDY(a.note);
+});
+
 
     halachaCountEl.textContent = longOnes.length ? `${longOnes.length} items` : "";
 
@@ -413,7 +420,7 @@
       halachaListEl.innerHTML = `<div class="muted">No Halacha items reached 10+ minutes.</div>`;
     } else {
       for (const it of longOnes){
-        const meta = [it.cat, it.sub, it.note].filter(Boolean).join(" • ");
+        const meta = [it.note, it.cat, it.sub].filter(Boolean).join(" • ");
         halachaListEl.appendChild(rowLink({
           title: it.title,
           meta,
