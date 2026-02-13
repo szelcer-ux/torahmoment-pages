@@ -16,86 +16,36 @@
       --shadow:0 6px 22px rgba(0,0,0,0.07);
       --radius:16px;
     }
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
     .wrap{max-width:1060px;margin:0 auto;padding:22px;}
     .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
     h1{margin:0;font-size:28px;letter-spacing:-0.02em;}
     .sub{color:var(--muted);margin-top:6px;font-size:14px;}
-
     .pillbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
-    .pill{
-      border:1px solid var(--border);
-      background:#fff;
-      border-radius:999px;
-      padding:8px 12px;
-      font-size:14px;
-      cursor:pointer;
-    }
-    .pill[aria-pressed="true"]{
-      border-color:rgba(13,148,136,.35);
-      box-shadow:0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:14px;
-      margin-top:14px;
-    }
+    .pill{border:1px solid var(--border);background:#fff;border-radius:999px;padding:8px 12px;font-size:14px;cursor:pointer;}
+    .pill[aria-pressed="true"]{border-color:rgba(13,148,136,.35);box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;margin-top:14px;}
     .sectionTitle{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
     .sectionTitle h2{margin:0;font-size:18px;}
     .count{color:var(--muted);font-size:13px;}
-
     .list{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
     .row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 12px;
-      border:1px solid var(--border);
-      border-radius:14px;
-      background:#fff;
-      text-decoration:none;
-      color:inherit;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:12px;border:1px solid var(--border);border-radius:14px;background:#fff;
+      text-decoration:none;color:inherit;
     }
     .row:hover{transform:translateY(-1px);}
     .left{min-width:0;}
     .title{font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
     .meta{margin-top:3px;color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
-    .badge{
-      font-size:12px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:6px 10px;
-      background:#fff;
-      flex:0 0 auto;
-    }
+    .badge{font-size:12px;border:1px solid var(--border);border-radius:999px;padding:6px 10px;background:#fff;flex:0 0 auto;}
     .badgeLong{border-color:rgba(13,148,136,.35);}
-
     .muted{color:var(--muted);}
-
     .loader{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:14px;}
     .dot{width:8px;height:8px;border-radius:50%;background:var(--muted);opacity:.35;animation:pulse 1.2s infinite;}
     .dot:nth-child(2){animation-delay:.2s}
     .dot:nth-child(3){animation-delay:.4s}
     @keyframes pulse{0%,100%{opacity:.25}50%{opacity:.7}}
-
-    iframe{
-      position:absolute;
-      left:-9999px; top:-9999px;
-      width:1px; height:1px;
-      opacity:0;
-      pointer-events:none;
-    }
   </style>
 </head>
 
@@ -104,7 +54,7 @@
     <div class="top">
       <div>
         <h1>In-Depth Shiurim</h1>
-        <div class="sub">A single place for the more developed, full-length TorahMoment shiurim.</div>
+        <div class="sub">One place for the more serious / developed TorahMoment shiurim.</div>
       </div>
       <div class="muted" id="status">Loading…</div>
     </div>
@@ -115,7 +65,7 @@
       <button class="pill" id="tabHalacha" aria-pressed="false" type="button">Halacha (10+ min)</button>
     </div>
 
-    <div class="card" id="parshaCard" style="display:block;">
+    <div class="card" id="parshaCard">
       <div class="sectionTitle">
         <h2>Parsha In-Depth</h2>
         <div class="count" id="parshaCount"></div>
@@ -125,23 +75,16 @@
       </div>
     </div>
 
-    <div class="card" id="halachaCard" style="display:block;">
+    <div class="card" id="halachaCard">
       <div class="sectionTitle">
         <h2>Halacha / Hashkafa — Long Shiurim</h2>
         <div class="count" id="halachaCount"></div>
       </div>
       <div class="list" id="halachaList">
-        <div class="loader"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Scanning audio duration…</div>
+        <div class="loader"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Loading Halacha data…</div>
       </div>
-      <div class="sub" style="margin-top:10px;">
-        Long = 10 minutes or more. (Based on audio metadata.)
-      </div>
+      <div class="sub" style="margin-top:10px;">Long = 10 minutes or more (metadata).</div>
     </div>
-
-    <!-- Hidden iframes to access your existing JS constants -->
-    <iframe id="frameParsha" src="./parsha.html"></iframe>
-    <iframe id="frameHalacha" src="./halacha.html"></iframe>
-
   </div>
 
 <script>
@@ -164,20 +107,17 @@
     const isAll = which === "all";
     const isParsha = which === "parsha";
     const isHalacha = which === "halacha";
-
     tabAll.setAttribute("aria-pressed", String(isAll));
     tabParsha.setAttribute("aria-pressed", String(isParsha));
     tabHalacha.setAttribute("aria-pressed", String(isHalacha));
-
     parshaCard.style.display = (isAll || isParsha) ? "block" : "none";
     halachaCard.style.display = (isAll || isHalacha) ? "block" : "none";
   }
-
   tabAll.addEventListener("click", ()=>setTab("all"));
   tabParsha.addEventListener("click", ()=>setTab("parsha"));
   tabHalacha.addEventListener("click", ()=>setTab("halacha"));
 
-  function rowLink({title, meta, url, badgeText, badgeClass}){
+  function rowLink({title, meta, url, badgeText}){
     const a = document.createElement("a");
     a.className = "row";
     a.href = url;
@@ -199,7 +139,7 @@
     left.appendChild(m);
 
     const badge = document.createElement("div");
-    badge.className = "badge " + (badgeClass || "");
+    badge.className = "badge badgeLong";
     badge.textContent = badgeText || "";
 
     a.appendChild(left);
@@ -207,10 +147,71 @@
     return a;
   }
 
+  // ---------- Robust extraction helpers ----------
+  function extractConstBlock(source, constName){
+    // Matches: const NAME = ...;  (including newlines)
+    // We capture from the '=' through the terminating ';' that ends the statement.
+    const re = new RegExp(`const\\s+${constName}\\s*=`, "m");
+    const m = source.match(re);
+    if (!m) return null;
+
+    const start = m.index + m[0].length;
+    // Now we need to find the end ';' of that const assignment while respecting braces/brackets/strings.
+    let i = start;
+    let depthObj = 0, depthArr = 0;
+    let inStr = null;
+    let escape = false;
+
+    for (; i < source.length; i++){
+      const ch = source[i];
+
+      if (inStr){
+        if (escape){ escape = false; continue; }
+        if (ch === "\\"){ escape = true; continue; }
+        if (ch === inStr){ inStr = null; continue; }
+        continue;
+      }
+
+      if (ch === '"' || ch === "'" || ch === "`"){ inStr = ch; continue; }
+      if (ch === "{") depthObj++;
+      else if (ch === "}") depthObj--;
+      else if (ch === "[") depthArr++;
+      else if (ch === "]") depthArr--;
+      else if (ch === ";" && depthObj === 0 && depthArr === 0){
+        // end of statement
+        return source.slice(start, i).trim();
+      }
+    }
+    return null;
+  }
+
+  function evalAsData(expr){
+    // expr is like "{...}" or "[...]" or could contain spaces/newlines
+    // Wrap in parens so object literals parse correctly.
+    // This is safe here because it's YOUR OWN site source.
+    return Function(`"use strict"; return (${expr});`)();
+  }
+
+  function parseParshaInDepth(obj){
+    const rows = [];
+    for (const [parshaName, arr] of Object.entries(obj || {})){
+      for (const it of (arr || [])){
+        rows.push({
+          title: it.label || "Untitled",
+          url: it.url,
+          meta: [parshaName, it.duration].filter(Boolean).join(" • ")
+        });
+      }
+    }
+    return rows;
+  }
+
   function flattenHalachaAudios(PAGE_DATA){
     const out = [];
     for (const cat of (PAGE_DATA || [])){
       const catName = cat.category || "Halacha";
+
+      // subcategories path
       const subs = cat.subcategories || [];
       for (const sub of subs){
         const subName = sub.name || "";
@@ -224,24 +225,19 @@
           });
         }
       }
-    }
-    return out;
-  }
 
-  function parseParshaInDepth(obj){
-    // { "Noach": [ {label,url,duration}, ... ], ... }
-    const rows = [];
-    for (const [parshaName, arr] of Object.entries(obj || {})){
-      for (const it of (arr || [])){
-        rows.push({
-          title: it.label || "Untitled",
+      // direct items path (some categories in your halacha file use this)
+      const directItems = cat.items || [];
+      for (const it of directItems){
+        if (!it || it.type !== "audio" || !it.url) continue;
+        out.push({
+          title: it.title || "Untitled",
           url: it.url,
-          meta: [parshaName, it.duration].filter(Boolean).join(" • "),
-          badge: "Parsha"
+          meta: [catName, it.note].filter(Boolean).join(" • ")
         });
       }
     }
-    return rows;
+    return out;
   }
 
   function getAudioDurationSec(url){
@@ -264,108 +260,88 @@
     });
   }
 
-  async function load(){
-    elStatus.textContent = "Loading sources…";
+  async function loadData(){
+    elStatus.textContent = "Fetching sources…";
+    const [parshaSrc, halachaSrc] = await Promise.all([
+      fetch("./parsha.html", { cache: "no-store" }).then(r => r.text()),
+      fetch("./halacha.html", { cache: "no-store" }).then(r => r.text()),
+    ]);
 
-    const frameParsha = document.getElementById("frameParsha");
-    const frameHalacha = document.getElementById("frameHalacha");
+    const parshaExpr = extractConstBlock(parshaSrc, "PARSHA_INDEPTH");
+    const halachaExpr = extractConstBlock(halachaSrc, "PAGE_DATA");
 
-    const waitFrame = (frame) => new Promise((resolve) => {
-      if (frame.contentWindow && frame.contentDocument?.readyState === "complete") return resolve();
-      frame.addEventListener("load", () => resolve(), { once: true });
-    });
+    if (!parshaExpr) throw new Error("Could not find const PARSHA_INDEPTH in parsha.html");
+    if (!halachaExpr) throw new Error("Could not find const PAGE_DATA in halacha.html");
 
-    await Promise.all([waitFrame(frameParsha), waitFrame(frameHalacha)]);
+    const PARSHA_INDEPTH = evalAsData(parshaExpr);
+    const PAGE_DATA = evalAsData(halachaExpr);
 
-    // ✅ READ YOUR EXPORTED GLOBALS
-    // parsha.html: window.TM_PARSHA_INDEPTH = PARSHA_INDEPTH;
-    // halacha.html: window.HALACHA_DATA = PAGE_DATA;
-    const pw = frameParsha.contentWindow;
-const hw = frameHalacha.contentWindow;
+    return { PARSHA_INDEPTH, PAGE_DATA };
+  }
 
-console.log("PARSHa iframe location:", pw.location.href);
-console.log("HALACHA iframe location:", hw.location.href);
+  async function main(){
+    const { PARSHA_INDEPTH, PAGE_DATA } = await loadData();
 
-console.log("pw.TM_PARSHA_INDEPTH:", pw.TM_PARSHA_INDEPTH);
-console.log("hw.HALACHA_DATA:", hw.HALACHA_DATA);
-
-// also check if you accidentally exported under different names:
-console.log("pw.PARSHA_INDEPTH:", pw.PARSHA_INDEPTH);
-console.log("hw.TM_HALACHA_DATA:", hw.TM_HALACHA_DATA);
-
-const PARSHA = pw.TM_PARSHA_INDEPTH || pw.PARSHA_INDEPTH;
-const HALACHA = hw.HALACHA_DATA || hw.TM_HALACHA_DATA;
-
-
-    // ---------- Parsha render ----------
+    // Parsha render
     parshaListEl.innerHTML = "";
-    const parshaRows = parseParshaInDepth(PARSHA);
+    const parshaRows = parseParshaInDepth(PARSHA_INDEPTH);
     parshaCountEl.textContent = parshaRows.length ? `${parshaRows.length} items` : "";
 
     if (!parshaRows.length){
-      parshaListEl.innerHTML =
-        `<div class="muted">No Parsha in-depth items found. (Did you export window.TM_PARSHA_INDEPTH = PARSHA_INDEPTH?)</div>`;
+      parshaListEl.innerHTML = `<div class="muted">No Parsha in-depth items found.</div>`;
     } else {
       for (const r of parshaRows){
         parshaListEl.appendChild(rowLink({
           title: r.title,
           meta: r.meta,
           url: r.url,
-          badgeText: "Parsha",
-          badgeClass: "badgeLong"
+          badgeText: "Parsha"
         }));
       }
     }
 
-    // ---------- Halacha scan & render (10+ min only) ----------
+    // Halacha render (scan durations)
     halachaListEl.innerHTML = "";
-    const halachaAudios = flattenHalachaAudios(HALACHA);
+    const halachaAudios = flattenHalachaAudios(PAGE_DATA);
 
     if (!halachaAudios.length){
-      halachaListEl.innerHTML =
-        `<div class="muted">No Halacha audio items found. (Did you export window.HALACHA_DATA = PAGE_DATA?)</div>`;
+      halachaListEl.innerHTML = `<div class="muted">No Halacha audio items found.</div>`;
       halachaCountEl.textContent = "";
+      elStatus.textContent = "Ready";
+      return;
+    }
+
+    elStatus.textContent = "Scanning durations…";
+    const longOnes = [];
+    for (let i=0; i<halachaAudios.length; i++){
+      const it = halachaAudios[i];
+      const sec = await getAudioDurationSec(it.url);
+      if (isFinite(sec) && sec >= LONG_SEC) longOnes.push(it);
+      if (i % 10 === 0) halachaCountEl.textContent = `Scanning… found ${longOnes.length} long so far`;
+    }
+
+    halachaCountEl.textContent = longOnes.length ? `${longOnes.length} items` : "";
+    if (!longOnes.length){
+      halachaListEl.innerHTML = `<div class="muted">No Halacha items reached 10+ minutes.</div>`;
     } else {
-      elStatus.textContent = "Scanning Halacha durations…";
-
-      const longOnes = [];
-      for (let i = 0; i < halachaAudios.length; i++){
-        const it = halachaAudios[i];
-        const sec = await getAudioDurationSec(it.url);
-        if (isFinite(sec) && sec >= LONG_SEC){
-          longOnes.push({ ...it, sec });
-        }
-        // lightweight progress indicator (doesn't spam UI)
-        if (i % 8 === 0){
-          halachaCountEl.textContent = `Scanning… found ${longOnes.length} long so far`;
-        }
-      }
-
-      halachaCountEl.textContent = longOnes.length ? `${longOnes.length} items` : "";
-
-      if (!longOnes.length){
-        halachaListEl.innerHTML = `<div class="muted">No Halacha items reached 10+ minutes.</div>`;
-      } else {
-        for (const it of longOnes){
-          halachaListEl.appendChild(rowLink({
-            title: it.title,
-            meta: it.meta,
-            url: it.url,
-            badgeText: "Long",
-            badgeClass: "badgeLong"
-          }));
-        }
+      for (const it of longOnes){
+        halachaListEl.appendChild(rowLink({
+          title: it.title,
+          meta: it.meta,
+          url: it.url,
+          badgeText: "Long"
+        }));
       }
     }
 
     elStatus.textContent = "Ready";
   }
 
-  load().catch((e)=>{
+  main().catch((e)=>{
     console.error(e);
-    elStatus.textContent = "Error loading";
-    parshaListEl.innerHTML = `<div class="muted">Something went wrong. Check console.</div>`;
-    halachaListEl.innerHTML = ``;
+    elStatus.textContent = "Error";
+    parshaListEl.innerHTML = `<div class="muted">Error: ${String(e.message || e)}</div>`;
+    halachaListEl.innerHTML = `<div class="muted">Check console for details.</div>`;
   });
 </script>
 </body>
