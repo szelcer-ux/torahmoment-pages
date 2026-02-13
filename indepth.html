@@ -21,13 +21,16 @@
     .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
     h1{margin:0;font-size:28px;letter-spacing:-0.02em;}
     .sub{color:var(--muted);margin-top:6px;font-size:14px;}
+
     .pillbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
     .pill{border:1px solid var(--border);background:#fff;border-radius:999px;padding:8px 12px;font-size:14px;cursor:pointer;}
     .pill[aria-pressed="true"]{border-color:rgba(13,148,136,.35);box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;margin-top:14px;}
     .sectionTitle{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
     .sectionTitle h2{margin:0;font-size:18px;}
     .count{color:var(--muted);font-size:13px;}
+
     .list{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
     .row{
       display:flex;align-items:center;justify-content:space-between;gap:12px;
@@ -35,12 +38,17 @@
       text-decoration:none;color:inherit;
     }
     .row:hover{transform:translateY(-1px);}
-    .left{min-width:0;}
+    .left{min-width:0;flex:1;}
     .title{font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
     .meta{margin-top:3px;color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-    .badge{font-size:12px;border:1px solid var(--border);border-radius:999px;padding:6px 10px;background:#fff;flex:0 0 auto;}
+
+    .right{display:flex;align-items:center;gap:8px;flex:0 0 auto;}
+    .badge{font-size:12px;border:1px solid var(--border);border-radius:999px;padding:6px 10px;background:#fff;}
     .badgeLong{border-color:rgba(13,148,136,.35);}
+    .badgeDur{color:var(--muted);}
+
     .muted{color:var(--muted);}
+
     .loader{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:14px;}
     .dot{width:8px;height:8px;border-radius:50%;background:var(--muted);opacity:.35;animation:pulse 1.2s infinite;}
     .dot:nth-child(2){animation-delay:.2s}
@@ -83,12 +91,23 @@
       <div class="list" id="halachaList">
         <div class="loader"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Loading Halacha data…</div>
       </div>
-      <div class="sub" style="margin-top:10px;">Long = 10 minutes or more (metadata).</div>
+      <div class="sub" style="margin-top:10px;">Long = 10 minutes or more (based on audio metadata).</div>
     </div>
   </div>
 
 <script>
   const LONG_SEC = 600;
+
+  // Parsha order (full Torah order)
+  const PARSHA_ORDER = [
+    "Bereishis","Noach","Lech Lecha","Vayeira","Chayei Sarah","Toldos","Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi",
+    "Shemos","Va'eira","Bo","Beshalach","Yisro","Mishpatim","Terumah","Tetzaveh","Ki Sisa","Vayakhel","Pekudei",
+    "Vayikra","Tzav","Shemini","Tazria","Metzora","Achrei Mos","Kedoshim","Emor","Behar","Bechukosai",
+    "Bamidbar","Naso","Beha'aloscha","Shelach","Korach","Chukas","Balak","Pinchas","Matos","Masei",
+    "Devarim","Va'eschanan","Eikev","Re'eh","Shoftim","Ki Seitzei","Ki Savo","Nitzavim","Vayeilech","Haazinu","Vezos Haberachah"
+  ];
+
+  const parshaOrderIndex = new Map(PARSHA_ORDER.map((p,i)=>[normalizeParshaKey(p), i]));
 
   const elStatus = document.getElementById("status");
   const parshaListEl = document.getElementById("parshaList");
@@ -98,7 +117,6 @@
 
   const parshaCard = document.getElementById("parshaCard");
   const halachaCard = document.getElementById("halachaCard");
-
   const tabAll = document.getElementById("tabAll");
   const tabParsha = document.getElementById("tabParsha");
   const tabHalacha = document.getElementById("tabHalacha");
@@ -117,7 +135,7 @@
   tabParsha.addEventListener("click", ()=>setTab("parsha"));
   tabHalacha.addEventListener("click", ()=>setTab("halacha"));
 
-  function rowLink({title, meta, url, badgeText}){
+  function rowLink({title, meta, url, badgeText, durText}){
     const a = document.createElement("a");
     a.className = "row";
     a.href = url;
@@ -138,25 +156,60 @@
     left.appendChild(t);
     left.appendChild(m);
 
+    const right = document.createElement("div");
+    right.className = "right";
+
+    if (durText){
+      const dur = document.createElement("div");
+      dur.className = "badge badgeDur";
+      dur.textContent = durText;
+      right.appendChild(dur);
+    }
+
     const badge = document.createElement("div");
     badge.className = "badge badgeLong";
     badge.textContent = badgeText || "";
+    right.appendChild(badge);
 
     a.appendChild(left);
-    a.appendChild(badge);
+    a.appendChild(right);
     return a;
+  }
+
+  // ---------- duration helpers ----------
+  function fmtHMS(sec){
+    sec = Math.round(sec);
+    const h = Math.floor(sec / 3600);
+    const m = Math.floor((sec % 3600) / 60);
+    const s = sec % 60;
+    const mm = String(m).padStart(h ? 2 : 1, "0");
+    const ss = String(s).padStart(2, "0");
+    return h ? `${h}:${mm}:${ss}` : `${m}:${ss}`;
+  }
+
+  function parseHMS(str){
+    const parts = String(str || "").trim().split(":").map(Number);
+    if (parts.some(n => !Number.isFinite(n))) return NaN;
+    if (parts.length === 2) return parts[0] * 60 + parts[1];
+    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+    return NaN;
+  }
+
+  function normalizeParshaKey(s){
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[\u2019']/g, "")   // apostrophes
+      .replace(/\s+/g, "")        // spaces
+      .replace(/-/g, "");         // dashes
   }
 
   // ---------- Robust extraction helpers ----------
   function extractConstBlock(source, constName){
-    // Matches: const NAME = ...;  (including newlines)
-    // We capture from the '=' through the terminating ';' that ends the statement.
     const re = new RegExp(`const\\s+${constName}\\s*=`, "m");
     const m = source.match(re);
     if (!m) return null;
 
     const start = m.index + m[0].length;
-    // Now we need to find the end ';' of that const assignment while respecting braces/brackets/strings.
     let i = start;
     let depthObj = 0, depthArr = 0;
     let inStr = null;
@@ -178,7 +231,6 @@
       else if (ch === "[") depthArr++;
       else if (ch === "]") depthArr--;
       else if (ch === ";" && depthObj === 0 && depthArr === 0){
-        // end of statement
         return source.slice(start, i).trim();
       }
     }
@@ -186,20 +238,25 @@
   }
 
   function evalAsData(expr){
-    // expr is like "{...}" or "[...]" or could contain spaces/newlines
-    // Wrap in parens so object literals parse correctly.
-    // This is safe here because it's YOUR OWN site source.
     return Function(`"use strict"; return (${expr});`)();
   }
 
+  // ---------- parse / flatten ----------
   function parseParshaInDepth(obj){
     const rows = [];
     for (const [parshaName, arr] of Object.entries(obj || {})){
       for (const it of (arr || [])){
+        const durText = it.duration || "";
+        const durSec = parseHMS(durText);
+        const key = normalizeParshaKey(parshaName);
         rows.push({
           title: it.label || "Untitled",
           url: it.url,
-          meta: [parshaName, it.duration].filter(Boolean).join(" • ")
+          parsha: parshaName,
+          parshaKey: key,
+          parshaIdx: parshaOrderIndex.has(key) ? parshaOrderIndex.get(key) : 9999,
+          durText,
+          durSec
         });
       }
     }
@@ -211,7 +268,7 @@
     for (const cat of (PAGE_DATA || [])){
       const catName = cat.category || "Halacha";
 
-      // subcategories path
+      // subcategories
       const subs = cat.subcategories || [];
       for (const sub of subs){
         const subName = sub.name || "";
@@ -221,19 +278,23 @@
           out.push({
             title: it.title || "Untitled",
             url: it.url,
-            meta: [catName, subName, it.note].filter(Boolean).join(" • ")
+            note: it.note || "",
+            cat: catName,
+            sub: subName
           });
         }
       }
 
-      // direct items path (some categories in your halacha file use this)
+      // direct items (some cats)
       const directItems = cat.items || [];
       for (const it of directItems){
         if (!it || it.type !== "audio" || !it.url) continue;
         out.push({
           title: it.title || "Untitled",
           url: it.url,
-          meta: [catName, it.note].filter(Boolean).join(" • ")
+          note: it.note || "",
+          cat: catName,
+          sub: ""
         });
       }
     }
@@ -282,9 +343,16 @@
   async function main(){
     const { PARSHA_INDEPTH, PAGE_DATA } = await loadData();
 
-    // Parsha render
+    // ---------- Parsha render (Parsha order) ----------
     parshaListEl.innerHTML = "";
-    const parshaRows = parseParshaInDepth(PARSHA_INDEPTH);
+    let parshaRows = parseParshaInDepth(PARSHA_INDEPTH);
+
+    // Sort: Parsha order, then label
+    parshaRows.sort((a,b) => {
+      if (a.parshaIdx !== b.parshaIdx) return a.parshaIdx - b.parshaIdx;
+      return String(a.title).localeCompare(String(b.title));
+    });
+
     parshaCountEl.textContent = parshaRows.length ? `${parshaRows.length} items` : "";
 
     if (!parshaRows.length){
@@ -293,14 +361,15 @@
       for (const r of parshaRows){
         parshaListEl.appendChild(rowLink({
           title: r.title,
-          meta: r.meta,
+          meta: r.parsha,
           url: r.url,
+          durText: r.durText || "",
           badgeText: "Parsha"
         }));
       }
     }
 
-    // Halacha render (scan durations)
+    // ---------- Halacha render (Long only; sort Cat → Sub → Title) ----------
     halachaListEl.innerHTML = "";
     const halachaAudios = flattenHalachaAudios(PAGE_DATA);
 
@@ -313,22 +382,43 @@
 
     elStatus.textContent = "Scanning durations…";
     const longOnes = [];
+
     for (let i=0; i<halachaAudios.length; i++){
       const it = halachaAudios[i];
       const sec = await getAudioDurationSec(it.url);
-      if (isFinite(sec) && sec >= LONG_SEC) longOnes.push(it);
-      if (i % 10 === 0) halachaCountEl.textContent = `Scanning… found ${longOnes.length} long so far`;
+      if (isFinite(sec) && sec >= LONG_SEC){
+        longOnes.push({
+          ...it,
+          durSec: sec,
+          durText: fmtHMS(sec)
+        });
+      }
+      if (i % 10 === 0){
+        halachaCountEl.textContent = `Scanning… found ${longOnes.length} long so far`;
+      }
     }
 
+    // Sort: Category → Subcategory → Title
+    longOnes.sort((a,b) => {
+      const ac = String(a.cat||"").localeCompare(String(b.cat||""));
+      if (ac) return ac;
+      const as = String(a.sub||"").localeCompare(String(b.sub||""));
+      if (as) return as;
+      return String(a.title||"").localeCompare(String(b.title||""));
+    });
+
     halachaCountEl.textContent = longOnes.length ? `${longOnes.length} items` : "";
+
     if (!longOnes.length){
       halachaListEl.innerHTML = `<div class="muted">No Halacha items reached 10+ minutes.</div>`;
     } else {
       for (const it of longOnes){
+        const meta = [it.cat, it.sub, it.note].filter(Boolean).join(" • ");
         halachaListEl.appendChild(rowLink({
           title: it.title,
-          meta: it.meta,
+          meta,
           url: it.url,
+          durText: it.durText || "",
           badgeText: "Long"
         }));
       }
