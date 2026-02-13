@@ -529,6 +529,71 @@
 
 }
 
+.advanced-wrap{
+  margin-top: 40px;
+}
+
+.advanced-label{
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.advanced-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:#fff;
+  text-decoration:none;
+  color:inherit;
+  transition:.18s ease;
+}
+
+.advanced-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(0,0,0,.06);
+}
+
+.advanced-left{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.advanced-icon{
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:#f3f4f6;
+  font-size:18px;
+}
+
+.advanced-title{
+  font-weight:700;
+  font-size:16px;
+  margin-bottom:4px;
+}
+
+.advanced-sub{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.advanced-arrow{
+  font-size:22px;
+  color:var(--muted);
+}
+
+
     
   </style>
 </head>
@@ -655,6 +720,24 @@
           <div class="arrow">›</div>
         </a>
       </div>
+      <div class="advanced-wrap">
+  <div class="advanced-label">Advanced Learning</div>
+
+  <a href="/indepth.html" class="advanced-card">
+    <div class="advanced-left">
+      <div class="advanced-icon">📖</div>
+      <div>
+        <div class="advanced-title">In-Depth Shiurim</div>
+        <div class="advanced-sub">
+          Longer, more developed TorahMoment shiurim — organized by Parsha and topic.
+        </div>
+      </div>
+    </div>
+
+    <div class="advanced-arrow">›</div>
+  </a>
+</div>
+
     </section>
 
     <div class="divider"></div>
