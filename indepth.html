@@ -158,6 +158,47 @@
   }
 }
 
+    .sectionToggle{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:none;
+  border:none;
+  padding:0;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  margin-bottom:10px;
+}
+
+.sectionChevron{
+  margin-left:auto;
+  transition: transform .2s ease;
+  font-size:16px;
+  color:var(--muted);
+}
+
+.sectionContent{
+  overflow:hidden;
+  transition: max-height .3s ease, opacity .2s ease;
+}
+
+.sectionContent.collapsed{
+  max-height:0;
+  opacity:0;
+  pointer-events:none;
+}
+
+.sectionContent.expanded{
+  max-height:2000px;
+  opacity:1;
+}
+
+.sectionChevron.rotated{
+  transform: rotate(180deg);
+}
+
     
   </style>
 </head>
@@ -195,27 +236,53 @@
       <button class="pill" id="tabHalacha" aria-pressed="false" type="button">Halacha (10+ min)</button>
     </div>
 
-    <div class="card" id="parshaCard">
-      <div class="sectionTitle">
-        <h2>Parsha In-Depth</h2>
-        <div class="count" id="parshaCount"></div>
-      </div>
-      <div class="list" id="parshaList">
-        <div class="loader"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Loading Parsha in-depth…</div>
+<div class="card" id="parshaCard">
+
+  <button class="sectionToggle" type="button">
+    <span>Parsha In-Depth</span>
+    <span class="sectionChevron">⌄</span>
+    <span class="count" id="parshaCount"></span>
+  </button>
+
+  <div class="sectionContent" id="parshaContent">
+
+    <div class="list" id="parshaList">
+      <div class="loader">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        Loading Parsha in-depth…
       </div>
     </div>
 
-    <div class="card" id="halachaCard">
-      <div class="sectionTitle">
-        <h2>Halacha / Hashkafa — Long Shiurim</h2>
-        <div class="count" id="halachaCount"></div>
+  </div>
+
+</div>
+
+
+<div class="card" id="halachaCard">
+
+  <button class="sectionToggle" type="button">
+    <span>Halacha / Hashkafa — Long Shiurim</span>
+    <span class="sectionChevron">⌄</span>
+    <span class="count" id="halachaCount"></span>
+  </button>
+
+  <div class="sectionContent" id="halachaContent">
+    <div class="list" id="halachaList">
+      <div class="loader">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        Loading Halacha data…
       </div>
-      <div class="list" id="halachaList">
-        <div class="loader"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Loading Halacha data…</div>
-      </div>
-      <div class="sub" style="margin-top:10px;">Long = 10 minutes or more (based on audio metadata).</div>
     </div>
   </div>
+
+  <div class="sub" style="margin-top:10px;">
+    Long = 10 minutes or more (based on audio metadata).
+  </div>
+
+</div>
+
 
 <script>
   const LONG_SEC = 600;
@@ -599,6 +666,38 @@ longOnes.sort((a,b) => {
 
     if (lp === current) a.classList.add("active");
   });
+})();
+</script>
+
+  <script>
+(function(){
+
+  const sections = [
+    { toggle: 0, content: "parshaContent" },
+    { toggle: 1, content: "halachaContent" }
+  ];
+
+  const toggles = document.querySelectorAll(".sectionToggle");
+
+  sections.forEach((s, i) => {
+    const toggle = toggles[i];
+    const content = document.getElementById(s.content);
+    const chevron = toggle.querySelector(".sectionChevron");
+
+    if (!toggle || !content) return;
+
+    // start expanded
+    content.classList.add("expanded");
+
+    toggle.addEventListener("click", () => {
+      const isExpanded = content.classList.contains("expanded");
+
+      content.classList.toggle("expanded", !isExpanded);
+      content.classList.toggle("collapsed", isExpanded);
+      chevron.classList.toggle("rotated", !isExpanded);
+    });
+  });
+
 })();
 </script>
 
