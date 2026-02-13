@@ -301,25 +301,47 @@
     return out;
   }
 
-  function getAudioDurationSec(url){
-    return new Promise((resolve) => {
-      const audio = new Audio();
-      audio.preload = "metadata";
-      audio.src = url;
+function getAudioDurationSec(url){
+  const CACHE_KEY = "TM_AUDIO_DUR_CACHE_v1";
 
-      const done = (sec) => {
-        audio.removeEventListener("loadedmetadata", onMeta);
-        audio.removeEventListener("error", onErr);
-        resolve(sec);
-      };
-
-      const onMeta = () => done(isFinite(audio.duration) ? audio.duration : NaN);
-      const onErr = () => done(NaN);
-
-      audio.addEventListener("loadedmetadata", onMeta, { once: true });
-      audio.addEventListener("error", onErr, { once: true });
-    });
+  let cache;
+  try {
+    cache = JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
+  } catch {
+    cache = {};
   }
+
+  if (cache[url] && Number.isFinite(cache[url])) {
+    return Promise.resolve(cache[url]);
+  }
+
+  return new Promise((resolve) => {
+    const audio = new Audio();
+    audio.preload = "metadata";
+    audio.src = url;
+
+    const done = (sec) => {
+      audio.removeEventListener("loadedmetadata", onMeta);
+      audio.removeEventListener("error", onErr);
+
+      if (Number.isFinite(sec)) {
+        cache[url] = sec;
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+        } catch {}
+      }
+
+      resolve(sec);
+    };
+
+    const onMeta = () => done(isFinite(audio.duration) ? audio.duration : NaN);
+    const onErr = () => done(NaN);
+
+    audio.addEventListener("loadedmetadata", onMeta, { once: true });
+    audio.addEventListener("error", onErr, { once: true });
+  });
+}
+
 
   async function loadData(){
     elStatus.textContent = "Fetching sources…";
