@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 662,
+    "total": 663,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -13,7 +13,7 @@
         "totalAll": 79
       },
       "oneMinute": {
-        "audio": 189
+        "audio": 190
       },
       "mishna": {
         "audio": 137
@@ -28,6 +28,13 @@
       "title": "Carry forward",
       "url": "https://www.youtube.com/watch?v=E-K3nDaVWFQ",
       "date": "2026-02-13T03:38:21Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "The purpose of mitzvos",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260213-WA0048.mp3",
+      "date": "2026-02-13T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -49,17 +56,17 @@
       "title": "How do YOU serve Hashem?",
       "url": "https://www.youtube.com/watch?v=qhs0gvRnUxk",
       "date": "2026-02-06T03:57:18Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Who runs the world",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260205-WA0029.mp3",
-      "date": "2026-02-05T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "The purpose of mitzvos",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260213-WA0048.mp3",
+        "date": "2026-02-13T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Inspiration->action",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260122-WA0013.mp3",
         "date": "2026-01-22T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Unity",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260120-WA0012.mp3",
-        "date": "2026-01-20T00:00:00.000Z"
       }
     ],
     "halacha": [
