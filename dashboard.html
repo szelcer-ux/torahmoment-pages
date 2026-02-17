@@ -475,6 +475,58 @@
   }
 }
 
+    @media (max-width: 820px){
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  .topActions{
+    width:100%;
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    gap:8px;
+    padding-bottom:4px;
+  }
+
+  .topActions::-webkit-scrollbar{
+    display:none;
+  }
+
+  .btn{
+    flex:0 0 auto;
+    padding:8px 10px;
+    font-size:0.85rem;
+  }
+}
+
+@media (max-width: 600px){
+  .stat{
+    padding:12px;
+    border-radius:14px;
+  }
+
+  .stat .value{
+    font-size:1.3rem;
+  }
+
+  .stat .label{
+    font-size:0.72rem;
+  }
+
+  .stat .hint{
+    font-size:0.72rem;
+  }
+}
+
+@media (max-width: 600px){
+  .stat.growth{
+    border-width:1px;
+  }
+}
     
   </style>
 </head>
