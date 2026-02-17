@@ -455,6 +455,57 @@
   }
 }
 
+/* --- Yearly adds chart (clean rows) --- */
+.chartHead{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+}
+.chartWrap{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.barRow{
+  display:grid;
+  grid-template-columns: 110px 1fr 110px;
+  gap: 12px;
+  align-items:center;
+  padding: 10px 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+.barLabel{
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.barTrack{
+  height: 12px;
+  border-radius: 999px;
+  background: #eef2f7;
+  overflow:hidden;
+}
+.barFill{
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: rgba(13,148,136,0.55);
+  box-shadow: inset 0 0 0 1px rgba(13,148,136,0.25);
+  transition: width 650ms cubic-bezier(.2,.9,.2,1);
+}
+.barMeta{
+  text-align:right;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 720px){
+  .barRow{ grid-template-columns: 1fr; gap:8px; }
+  .barMeta{ text-align:left; }
+}
+
     
   </style>
 </head>
@@ -562,6 +613,19 @@
         <div class="mutedBox">Loading chart…</div>
       </div>
     </section>
+
+    <section class="card" aria-label="Added per year">
+  <div class="chartHead">
+    <h2 style="margin:0;">Added per year</h2>
+    <div class="subtle" id="yearSub">Loading…</div>
+  </div>
+
+  <div id="yearRows" class="chartWrap">
+    <div class="mutedBox">Loading…</div>
+  </div>
+
+  <div class="subtle" style="margin-top:10px;" id="yearNote"></div>
+</section>
 
     
     <!-- Program shortcuts -->
@@ -936,6 +1000,117 @@ function renderBreakdownBars({ total, parshaT, oneMin, mishnaA, halacha, tefilah
   }
 }
 
+function yearFromISO(iso){
+  const parsed = parseISODateSmart(iso);
+  if (!parsed) return null;
+  return parsed.useUTC ? parsed.date.getUTCFullYear() : parsed.date.getFullYear();
+}
+
+function normProg(p){
+  const s = String(p || "").toLowerCase();
+  if (s.includes("parsha")) return "parsha";
+  if (s.includes("hal")) return "halacha";
+  if (s.includes("one")) return "oneMinute";
+  if (s.includes("mishna")) return "mishna";
+  if (s.includes("tefila") || s.includes("tefilah")) return "tefila";
+  return "other";
+}
+
+function renderAddedPerYear(yearCounts, tefilaManual){
+  const el = document.getElementById("yearRows");
+  const sub = document.getElementById("yearSub");
+  const note = document.getElementById("yearNote");
+  if (!el) return;
+
+  const years = Object.keys(yearCounts).map(Number).sort((a,b)=>b-a); // newest first
+  if (!years.length){
+    el.innerHTML = `<div class="mutedBox">No dated items found.</div>`;
+    if (sub) sub.textContent = "Dated items only (Mishna excluded)";
+    if (note) note.textContent = "";
+    return;
+  }
+
+  const items = years.map(y => ({ year: y, value: yearCounts[y] || 0 }));
+  const maxVal = Math.max(1, ...items.map(x => x.value));
+
+  el.innerHTML = items.map(x => {
+    const w = Math.round((x.value / maxVal) * 100);
+    return `
+      <div class="barRow" title="${x.year}: ${x.value}">
+        <div class="barLabel">${x.year}</div>
+        <div class="barTrack" aria-hidden="true">
+          <div class="barFill" data-w="${w}"></div>
+        </div>
+        <div class="barMeta"><b>${x.value.toLocaleString()}</b></div>
+      </div>
+    `;
+  }).join("");
+
+  requestAnimationFrame(() => {
+    el.querySelectorAll(".barFill").forEach(fill => {
+      fill.style.width = `${fill.getAttribute("data-w") || 0}%`;
+    });
+  });
+
+  const total = items.reduce((s,x)=>s+x.value,0);
+
+  if (sub){
+    sub.textContent = `Dated items only (Mishna excluded)`;
+  }
+  if (note){
+    note.textContent =
+      `Counts are based on dates in /data/search-index.json.` +
+      (tefilaManual ? ` Includes +${tefilaManual} Tefilah items added to 2023 (manual; Summer 2023).` : "") +
+      ` Total counted: ${total.toLocaleString()}.`;
+  }
+}
+
+async function loadAddedPerYear(tefilaManual){
+  try{
+    const res = await fetch("/data/search-index.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("search-index.json not found");
+    const items = await res.json();
+
+    const yearCounts = {};
+    let counted = 0;
+
+    (Array.isArray(items) ? items : []).forEach(it => {
+      const program = normProg(it?.program);
+
+      // ✅ exclude mishna entirely (your preference)
+      if (program === "mishna") return;
+
+      const y = yearFromISO(it?.date);
+      if (!y) return;
+
+      yearCounts[y] = (yearCounts[y] || 0) + 1;
+      counted++;
+    });
+
+    // ✅ manual seed: ALL tefilah videos are Summer 2023
+    const add = safeNum(tefilaManual);
+    if (add){
+      yearCounts[2023] = (yearCounts[2023] || 0) + add;
+    }
+
+    renderAddedPerYear(yearCounts, add);
+
+    const sub = document.getElementById("yearSub");
+    if (sub){
+      sub.textContent = `Dated items only (${counted.toLocaleString()} from index; +${add || 0} Tefilah in 2023)`;
+    }
+
+  } catch (e){
+    console.warn("Added-per-year load failed", e);
+    const el = document.getElementById("yearRows");
+    const sub = document.getElementById("yearSub");
+    const note = document.getElementById("yearNote");
+    if (el) el.innerHTML = `<div class="mutedBox">Could not load /data/search-index.json</div>`;
+    if (sub) sub.textContent = "";
+    if (note) note.textContent = "";
+  }
+}
+
     
     async function loadDashboard(){
       try{
@@ -961,6 +1136,8 @@ function renderBreakdownBars({ total, parshaT, oneMin, mishnaA, halacha, tefilah
 
         const programCount = Object.keys(b || {}).length || 0;
 
+        loadAddedPerYear(tefilahV);
+        
         renderBreakdownBars({
           total: safeNum(total),
           parshaT,
@@ -1011,6 +1188,8 @@ function renderBreakdownBars({ total, parshaT, oneMin, mishnaA, halacha, tefilah
         // Recent (curated + inline players)
         renderRecentCurated(data);
         setupRecentAudioBehavior();
+        // Yearly chart (tefilah seeded into 2023)
+        loadAddedPerYear(tefilahV);
 
       } catch (e){
         console.warn("Dashboard load failed", e);
