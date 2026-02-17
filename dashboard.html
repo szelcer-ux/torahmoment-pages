@@ -210,14 +210,21 @@
     .recentRow{
       display:flex;
       gap:10px;
-      padding:10px 10px;
+      padding:6px 10px;
       border-radius:10px;
       text-decoration:none;
       color:#111;
-      align-items:center;
+      align-items:flex-start;
     }
     .recentRow:hover{ background:#f6f8fb; }
 
+    .recentRow + .recentRow{
+  border-top:1px solid rgba(0,0,0,0.05);
+  margin-top:4px;
+  padding-top:6px;
+}
+
+    
     .rIcon{ width:20px; text-align:center; }
 
     /* title/date line */
@@ -232,9 +239,10 @@
       text-overflow:ellipsis;
       white-space:nowrap;
       font-weight:600;
+      line-height:1.15;
     }
     .rDate{
-      margin-left:auto;
+      margin-left:6px;
       color:#666;
       font-size:0.82rem;
       white-space:nowrap;
@@ -366,6 +374,14 @@
       .wrap{ padding: 16px; }
       .stats{ grid-template-columns: repeat(2, minmax(0,1fr)); }
     }
+
+@media (min-width: 821px){
+  .rPlayer{
+    height:30px;   /* default is ~36px */
+  }
+}
+
+    
   </style>
 </head>
 
