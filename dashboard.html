@@ -951,7 +951,7 @@ function renderBreakdownBars({ total, parshaT, oneMin, mishnaA, halacha, tefilah
   }
 }
 
-    function computeAddsFromIndex(items){
+function computeAddsFromIndex(items){
   const now = new Date();
   const currentYear = now.getFullYear();
   const thirtyDaysAgo = new Date(now);
@@ -960,7 +960,8 @@ function renderBreakdownBars({ total, parshaT, oneMin, mishnaA, halacha, tefilah
   let addedThisYear = 0;
   let addedLast30 = 0;
 
-  (Array.isArray(items) ? items : []).forEach(it => {
+  const arr = Array.isArray(items) ? items : (Array.isArray(items?.items) ? items.items : []);
+  arr.forEach(it => {
     const parsed = parseISODateSmart(it?.date);
     if (!parsed) return;
 
@@ -971,8 +972,9 @@ function renderBreakdownBars({ total, parshaT, oneMin, mishnaA, halacha, tefilah
     if (d >= thirtyDaysAgo) addedLast30++;
   });
 
-  return { addedThisYear, addedLast30 };
+  return { addedThisYear, addedLast30, totalIndexed: arr.length };
 }
+
 
     
     async function loadDashboard(){
@@ -1007,6 +1009,35 @@ function renderBreakdownBars({ total, parshaT, oneMin, mishnaA, halacha, tefilah
           halacha,
           tefilahV
         });
+
+        // Added this year / last 30 days (from search-index.json)
+        try{
+          const elY = document.getElementById("sThisYear");
+          const el30 = document.getElementById("sLast30");
+        
+          // show 0 instead of —
+          if (elY) elY.textContent = "0";
+          if (el30) el30.textContent = "0";
+        
+          // try /data first, then fallback to root
+          let r = await fetch("/data/search-index.json", { cache: "no-store" });
+          if (!r.ok) r = await fetch("/search-index.json", { cache: "no-store" });
+        
+          if (!r.ok) throw new Error("Could not load search-index.json");
+        
+          const idx = await r.json();
+          const { addedThisYear, addedLast30, totalIndexed } = computeAddsFromIndex(idx);
+        
+          if (elY) animateNumber(elY, addedThisYear);
+          if (el30) animateNumber(el30, addedLast30);
+        
+          // Optional: show a tiny hint in console so you know it worked
+          console.log("[adds]", { addedThisYear, addedLast30, totalIndexed });
+        
+        }catch(e){
+          console.warn("Adds calc failed", e);
+          // leave the 0s in place so it doesn't show —
+        }
 
         
         // Top stats
