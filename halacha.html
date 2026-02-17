@@ -1046,56 +1046,46 @@ header h1{
 
     window.HALACHA_DATA = PAGE_DATA;
 
-function openCategoryFromURL() {
+function openCategoryFromURL(){
   const params = new URLSearchParams(location.search);
-  const catRaw = (params.get("cat") || "").trim();
-  if (!catRaw) return;
+  const cat = (params.get("cat") || "").trim().toLowerCase();
+  const sub = (params.get("sub") || "").trim().toLowerCase(); // optional
 
-  const cat = catRaw.toLowerCase();
+  if (!cat) return;
 
-  // Run after everything on the page has had a chance to bind events
-  setTimeout(() => {
-    const toggles = Array.from(document.querySelectorAll("button.sectionToggle"));
+  // categories are <details class="category">
+  const cats = Array.from(document.querySelectorAll('details.category'));
 
-    // Find the toggle whose visible text contains the category
-    const btn = toggles.find(b => {
-      const t = (b.innerText || b.textContent || "").trim().toLowerCase();
-      return t.includes(cat);
+  // find matching category by its visible title
+  const match = cats.find(d => {
+    const titleEl = d.querySelector('.cat-title');
+    const title = (titleEl?.textContent || "").trim().toLowerCase();
+    return title === cat || title.includes(cat);
+  });
+
+  if (!match) {
+    console.warn("[openCategoryFromURL] category not found:", cat);
+    return;
+  }
+
+  // close others, open this one
+  cats.forEach(d => d.removeAttribute("open"));
+  match.setAttribute("open", "");
+
+  // optional: open a subcategory (details.subcat) inside it
+  if (sub) {
+    const subs = Array.from(match.querySelectorAll('details.subcat'));
+    const subMatch = subs.find(s => {
+      const txt = (s.querySelector("summary span")?.textContent || "").trim().toLowerCase();
+      return txt === sub || txt.includes(sub);
     });
+    if (subMatch) subMatch.setAttribute("open", "");
+  }
 
-    if (!btn) {
-      console.warn("[openCategoryFromURL] No matching sectionToggle for:", catRaw);
-      return;
-    }
-
-    // 1) Try the normal way: click to open
-    btn.click();
-
-    // 2) If your toggle relies on aria-expanded, ensure it's open
-    const expanded = btn.getAttribute("aria-expanded");
-    if (expanded === "false") btn.click();
-
-    // 3) Fallback: if there is a sibling .sectionContent, force it visible
-    const card = btn.closest(".card") || btn.parentElement;
-    const content =
-      (card && card.querySelector(".sectionContent")) ||
-      document.getElementById(btn.getAttribute("aria-controls") || "");
-
-    if (content) {
-      content.hidden = false;
-      content.style.display = ""; // clear any display:none
-      content.style.maxHeight = ""; // in case you use accordion max-height
-    }
-
-    // Nice UX: scroll to it
-    (card || btn).scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 50);
+  // scroll to it
+  match.scrollIntoView({ behavior:"smooth", block:"start" });
 }
 
-window.addEventListener("load", openCategoryFromURL);
-
-
-window.addEventListener("DOMContentLoaded", openCategoryFromURL);
 
       
     </script>
@@ -1427,6 +1417,8 @@ return `
       }).join("");
 
      app.innerHTML = html;
+      openCategoryFromURL();
+
 
 const hasSearch = q.length > 0;
 applyCollapseLogic(hasSearch);
