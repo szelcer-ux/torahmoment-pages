@@ -1046,6 +1046,29 @@ header h1{
 
     window.HALACHA_DATA = PAGE_DATA;
 
+    function openCategoryFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get("cat");
+  if (!cat) return;
+
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    const btn = card.querySelector(".sectionToggle span");
+    if (!btn) return;
+
+    if (btn.textContent.trim().toLowerCase() === cat.toLowerCase()) {
+      const toggle = card.querySelector(".sectionToggle");
+      if (toggle && !card.classList.contains("open")) {
+        toggle.click(); // simulate opening
+      }
+    }
+  });
+}
+
+window.addEventListener("DOMContentLoaded", openCategoryFromURL);
+
+      
     </script>
 
     <!-- ===================== -->
