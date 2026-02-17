@@ -90,77 +90,80 @@
     }
 
     /* --- Breakdown chart (bars) --- */
+/* --- Breakdown chart (tighter) --- */
 .chartHead{
   display:flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom: 8px;
 }
 
 .chartWrap{
   display:flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction:column;
+  gap: 8px;                 /* tighter */
 }
 
 .barRow{
   display:grid;
-  grid-template-columns: 140px 1fr 120px;
-  gap: 12px;
-  align-items: center;
-  padding: 10px 10px;
+  grid-template-columns: 120px 1fr 96px; /* tighter columns */
+  gap: 10px;
+  align-items:center;
+  padding: 8px 10px;        /* tighter */
   border: 1px solid var(--border);
-  border-radius: 14px;
-  background: #fff;
+  border-radius: 12px;      /* slightly tighter */
+  background:#fff;
   box-shadow: 0 1px 0 rgba(0,0,0,0.02);
 }
 
 .barLabel{
   font-weight: 650;
   letter-spacing: -0.01em;
+  font-size: 0.92rem;       /* slightly smaller */
   overflow:hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
 .barTrack{
-  height: 12px;
+  height: 10px;             /* tighter */
   border-radius: 999px;
-  background: #eef2f7;
+  background:#eef2f7;
   overflow:hidden;
-  position: relative;
 }
 
 .barFill{
-  height: 100%;
-  width: 0%;
-  border-radius: 999px;
+  height:100%;
+  width:0%;
+  border-radius:999px;
   background: rgba(13,148,136,0.55);
   box-shadow: inset 0 0 0 1px rgba(13,148,136,0.25);
-  transition: width 650ms cubic-bezier(.2,.9,.2,1);
+  transition: width 520ms cubic-bezier(.2,.9,.2,1); /* slightly snappier */
 }
 
 .barMeta{
-  text-align: right;
+  text-align:right;
   font-variant-numeric: tabular-nums;
-  color: #0f172a;
+  font-size: 0.92rem;       /* tighter */
+  color:#0f172a;
 }
 
 .barMeta .pct{
   color: var(--muted);
-  font-size: 0.85rem;
-  margin-left: 8px;
+  font-size: 0.82rem;
+  margin-left: 6px;
 }
 
 @media (max-width: 720px){
   .barRow{
     grid-template-columns: 1fr;
-    gap: 8px;
-    align-items: start;
+    gap: 6px;
+    padding: 9px 10px;
   }
-  .barMeta{ text-align: left; }
+  .barMeta{ text-align:left; }
 }
+
 
     
     /* Stats grid */
@@ -482,6 +485,18 @@
         <div class="label">Total shiurim</div>
         <div class="value" id="sTotal">—</div>
         <div class="hint">All programs</div>
+      </div>
+     
+      <div class="stat">
+        <div class="label">Added this year</div>
+        <div class="value" id="sThisYear">—</div>
+        <div class="hint">Dated items</div>
+      </div>
+      
+      <div class="stat">
+        <div class="label">Last 30 days</div>
+        <div class="value" id="sLast30">—</div>
+        <div class="hint">Dated items</div>
       </div>
 
       <div class="stat">
@@ -936,6 +951,29 @@ function renderBreakdownBars({ total, parshaT, oneMin, mishnaA, halacha, tefilah
   }
 }
 
+    function computeAddsFromIndex(items){
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const thirtyDaysAgo = new Date(now);
+  thirtyDaysAgo.setDate(now.getDate() - 30);
+
+  let addedThisYear = 0;
+  let addedLast30 = 0;
+
+  (Array.isArray(items) ? items : []).forEach(it => {
+    const parsed = parseISODateSmart(it?.date);
+    if (!parsed) return;
+
+    const d = parsed.date;
+    const y = parsed.useUTC ? d.getUTCFullYear() : d.getFullYear();
+
+    if (y === currentYear) addedThisYear++;
+    if (d >= thirtyDaysAgo) addedLast30++;
+  });
+
+  return { addedThisYear, addedLast30 };
+}
+
     
     async function loadDashboard(){
       try{
@@ -1014,6 +1052,21 @@ function renderBreakdownBars({ total, parshaT, oneMin, mishnaA, halacha, tefilah
         // Yearly chart (tefilah seeded into 2023)
         loadAddedPerYear(tefilahV);
 
+        // Added this year / last 30 days (from search-index.json)
+        try{
+          const r = await fetch("/data/search-index.json", { cache: "no-store" });
+          if (r.ok){
+            const idx = await r.json();
+            const { addedThisYear, addedLast30 } = computeAddsFromIndex(idx);
+        
+            animateNumber(document.getElementById("sThisYear"), addedThisYear);
+            animateNumber(document.getElementById("sLast30"), addedLast30);
+          }
+        }catch(e){
+          console.warn("Adds calc failed", e);
+        }
+
+        
       } catch (e){
         console.warn("Dashboard load failed", e);
         const box = document.getElementById("recentList");
