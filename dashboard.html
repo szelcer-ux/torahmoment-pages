@@ -167,39 +167,55 @@
 
     
     /* Stats grid */
-    .stats{
-      display:grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 14px;
-    }
+.stats{ gap: 10px; } /* slightly tighter than 12px */
 
-    .stat{
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 12px;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
-      min-height: 74px;
-    }
+.stat{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:10px 12px;
+  box-shadow:0 1px 0 rgba(0,0,0,0.02);
+  min-height: 66px;
+}
 
-    .stat .label{
-      color: var(--muted);
-      font-size: 0.82rem;
-      margin-bottom: 6px;
-    }
+.stat .label{
+  color:var(--muted);
+  font-size:0.78rem;
+  margin-bottom:4px;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
 
-    .stat .value{
-      font-size: 1.25rem;
-      font-weight: 750;
-      letter-spacing: -0.02em;
-    }
+.stat .value{
+  font-size:1.18rem;
+  font-weight:750;
+  letter-spacing:-0.02em;
+}
 
-    .stat .hint{
-      margin-top: 4px;
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
+.stat .hint{
+  margin-top:3px;
+  font-size:0.78rem;
+  color:var(--muted);
+}
+
+.stat.growth{
+  border-color: rgba(13,148,136,0.25);
+  background: rgba(13,148,136,0.04);
+}
+.stat.growth .value{
+  color: #0d9488;
+}
+
+/* optional: make total feel like the headline */
+.stat.total .value{
+  font-size: 1.45rem;
+}
+
+.miniBreak{
+  margin-top:4px;
+  font-size:0.82rem;
+  color:var(--muted);
+}
 
     /* Program cards */
     .grid{
@@ -480,91 +496,83 @@
     </header>
 
     <!-- Top stats -->
-    <section class="stats" aria-label="Stats">
-      <div class="stat">
-        <div class="label">Total shiurim</div>
-        <div class="value" id="sTotal">—</div>
-        <div class="hint">All programs</div>
-      </div>
-     
-      <div class="stat">
-        <div class="label">Added this year</div>
-        <div class="value" id="sThisYear">—</div>
-        <div class="hint">Dated items</div>
-      </div>
-      
-      <div class="stat">
-        <div class="label">Last 30 days</div>
-        <div class="value" id="sLast30">—</div>
-        <div class="hint">Dated items</div>
-      </div>
+<section class="stats" aria-label="Stats">
+  <!-- Row 1: Big picture -->
+  <div class="stat total">
+    <div class="label">Total shiurim</div>
+    <div class="value" id="sTotal">—</div>
+    <div class="hint">All programs</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">Last updated</div>
-        <div class="value" id="sUpdated">—</div>
-        <div class="hint">site-counts.json</div>
-      </div>
+  <div class="stat growth">
+    <div class="label">Added this year</div>
+    <div class="value" id="sThisYear">—</div>
+    <div class="hint">Dated items</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">Programs</div>
-        <div class="value" id="sPrograms">—</div>
-        <div class="hint">Counted buckets</div>
-      </div>
+  <div class="stat growth">
+    <div class="label">Last 30 days</div>
+    <div class="value" id="sLast30">—</div>
+    <div class="hint">Dated items</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">Parsha total</div>
-        <div class="value" id="sParsha">—</div>
-        <div class="hint" id="sParshaHint">audio + video</div>
-      </div>
+  <div class="stat">
+    <div class="label">Last updated</div>
+    <div class="value" id="sUpdated">—</div>
+    <div class="hint">site-counts.json</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">Halacha total</div>
-        <div class="value" id="sHalacha">—</div>
-        <div class="hint">totalAll</div>
-      </div>
+  <!-- Row 2: Program totals -->
+  <div class="stat">
+    <div class="label">Parsha total</div>
+    <div class="value" id="sParsha">—</div>
+    <div class="hint" id="sParshaHint">All Parsha content</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">One-Minute total</div>
-        <div class="value" id="sOneMin">—</div>
-        <div class="hint">audio</div>
-      </div>
+  <div class="stat">
+    <div class="label">Halacha total</div>
+    <div class="value" id="sHalacha">—</div>
+    <div class="hint">Audio shiurim</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">Tefilah total</div>
-        <div class="value" id="sTefilah">—</div>
-        <div class="hint">video</div>
-      </div>
+  <div class="stat">
+    <div class="label">One-Minute total</div>
+    <div class="value" id="sOneMin">—</div>
+    <div class="hint">Audio</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">Parsha videos</div>
-        <div class="value" id="sParshaV">—</div>
-        <div class="hint">video</div>
-      </div>
+  <div class="stat">
+    <div class="label">Tefilah total</div>
+    <div class="value" id="sTefilah">—</div>
+    <div class="hint">Video</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">Parsha audio</div>
-        <div class="value" id="sParshaA">—</div>
-        <div class="hint">audio</div>
-      </div>
+  <div class="stat">
+    <div class="label">Mishna shiurim</div>
+    <div class="value" id="sMishnaA">—</div>
+    <div class="hint">Audio</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">Health</div>
-        <div class="value" id="sHealth">—</div>
-        <div class="hint">Basic checks</div>
-      </div>
+  <!-- Row 3: Supporting -->
+  <div class="stat">
+    <div class="label">Programs</div>
+    <div class="value" id="sPrograms">—</div>
+    <div class="hint">Counted buckets</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">Mishna shiurim</div>
-        <div class="value" id="sMishnaA">—</div>
-        <div class="hint">audio</div>
-      </div>
+  <div class="stat">
+    <div class="label">Health</div>
+    <div class="value" id="sHealth">—</div>
+    <div class="hint">Basic checks</div>
+  </div>
 
-      <div class="stat">
-        <div class="label">Raw JSON</div>
-        <div class="value"><a href="/data/site-counts.json" style="color:#0b57d0;text-decoration:none;">Open</a></div>
-        <div class="hint">Debug</div>
-      </div>
-    </section>
+  <div class="stat">
+    <div class="label">Raw JSON</div>
+    <div class="value"><a href="/data/site-counts.json" style="color:#0b57d0;text-decoration:none;">Open</a></div>
+    <div class="hint">Debug</div>
+  </div>
+</section>
+
 
     <!-- Content breakdown chart -->
     <section class="card" aria-label="Content breakdown">
@@ -588,7 +596,13 @@
           <div>
             <h3>Parsha</h3>
             <div class="meta">Videos · Audio · PDFs</div>
-            <div class="counts"><b id="cParsha">—</b> items</div>
+            <div class="counts">
+            <b><span id="cParsha">—</span></b> items
+            <div class="miniBreak">
+              <span id="cParshaV">—</span> videos · <span id="cParshaA">—</span> audio
+            </div>
+          </div>
+
           </div>
           <div class="arrow">›</div>
         </a>
@@ -1058,8 +1072,6 @@ function computeAddsFromIndex(items){
         animateNumber(document.getElementById("sOneMin"), oneMin);
         animateNumber(document.getElementById("sTefilah"), tefilahV);
 
-        animateNumber(document.getElementById("sParshaV"), parshaV);
-        animateNumber(document.getElementById("sParshaA"), parshaA);
         animateNumber(document.getElementById("sTefilahV"), tefilahV);
         animateNumber(document.getElementById("sMishnaA"), mishnaA);
 
@@ -1070,6 +1082,10 @@ function computeAddsFromIndex(items){
         document.getElementById("cTefilah").textContent = tefilahV.toLocaleString();
         document.getElementById("cMishna").textContent = mishnaA.toLocaleString();
 
+        document.getElementById("cParshaV").textContent = parshaV.toLocaleString();
+        document.getElementById("cParshaA").textContent = parshaA.toLocaleString();
+
+        
         // Health checks
         const health = [];
         if (!updatedStr) health.push("missing updated");
