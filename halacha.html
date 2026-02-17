@@ -1219,7 +1219,8 @@ if (isAudioPlayer) {
           <div class="tm-dur">(0:00)</div>
         </div>
 
-        <audio id="${pid}" preload="metadata" src="${escapeHtml(url)}"></audio>
+        <audio id="${pid}" preload="none" data-src="${escapeHtml(url)}"></audio>
+
       </div>
     </div>
   `;
@@ -1324,6 +1325,71 @@ function applyCollapseLogic(hasSearch){
     }
 let lastSearchWasEmpty = true;
 
+function tmNorm(s){
+  return String(s || "").toLowerCase().trim();
+}
+
+function openFromURLParams(){
+  const p = new URLSearchParams(location.search);
+
+  // support a few param names so links are easy
+  const catQ = p.get("cat") || p.get("category") || "";
+  const subQ = p.get("sub") || p.get("subcategory") || "";
+
+  if (!catQ && !subQ) return;
+
+  const catNeed = tmNorm(decodeURIComponent(catQ));
+  const subNeed = tmNorm(decodeURIComponent(subQ));
+
+  // categories
+  const cats = Array.from(document.querySelectorAll('details.category'));
+  let openedSomething = false;
+
+  for (const d of cats){
+    const titleEl = d.querySelector(".cat-title");
+    const title = tmNorm(titleEl?.textContent);
+
+    // if cat was provided, require it to match
+    if (catNeed && title !== catNeed) continue;
+
+    d.setAttribute("open", "");
+    openedSomething = true;
+
+    // optionally open a subcategory inside it
+    if (subNeed){
+      const subs = Array.from(d.querySelectorAll("details.subcat"));
+      for (const sd of subs){
+        const subTitle = tmNorm(sd.querySelector("summary span")?.textContent);
+        if (subTitle === subNeed){
+          sd.setAttribute("open", "");
+          // scroll to the subcategory
+          requestAnimationFrame(() => sd.scrollIntoView({ behavior:"smooth", block:"start" }));
+          return;
+        }
+      }
+    }
+
+    // scroll to the category if we opened it
+    requestAnimationFrame(() => d.scrollIntoView({ behavior:"smooth", block:"start" }));
+    return;
+  }
+
+  // If only sub was provided (no cat), open the first matching sub anywhere
+  if (!openedSomething && subNeed){
+    const subs = Array.from(document.querySelectorAll("details.subcat"));
+    for (const sd of subs){
+      const subTitle = tmNorm(sd.querySelector("summary span")?.textContent);
+      if (subTitle === subNeed){
+        sd.setAttribute("open", "");
+        sd.closest("details.category")?.setAttribute("open", "");
+        requestAnimationFrame(() => sd.scrollIntoView({ behavior:"smooth", block:"start" }));
+        return;
+      }
+    }
+  }
+}
+
+    
     function render(){
       const q = (searchInput.value || "").trim().toLowerCase();
       let totalShown = 0;
@@ -1429,6 +1495,8 @@ wireYouTubeRows();
 wireNoteRows();
 enableMobileTitleExpand();
 wireDesktopAccordion();
+// If there is NO active search, honor deep-links like ?cat=...&sub=...
+if (!hasSearch) openFromURLParams();
 
 
 
@@ -1578,8 +1646,30 @@ function wireYouTubeRows(){
 }
     
 function tmWirePlaylistRows(){
-  const rows = document.querySelectorAll(".tm-row");
 
+  const rows = document.querySelectorAll(".tm-row");
+  // Lazy-load metadata when row enters viewport
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(({ isIntersecting, target }) => {
+    if (!isIntersecting) return;
+
+    const audio = target.querySelector("audio");
+    if (!audio) return;
+
+    if (!audio.getAttribute("src")) {
+      const ds = audio.getAttribute("data-src");
+      if (ds) {
+        audio.setAttribute("src", ds);
+        audio.preload = "metadata";
+        audio.load();
+      }
+    }
+
+    io.unobserve(target);
+  });
+}, { rootMargin: "250px" });
+
+  
   rows.forEach(row => {
   // ✅ Prevent double-wiring (e.g., if tmWirePlaylistRows is called twice)
   if (row.dataset.wired === "1") return;
@@ -1594,6 +1684,7 @@ function tmWirePlaylistRows(){
     const lenBadge = row.querySelector(".tm-len");
 
     if (!audio || !btn || !durEl || !bar) return;
+    io.observe(row);
 
     const pauseOthers = () => {
       document.querySelectorAll(".tm-row audio").forEach(a => {
