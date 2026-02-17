@@ -89,6 +89,80 @@
       border: 1px solid rgba(0,0,0,0.02);
     }
 
+    /* --- Breakdown chart (bars) --- */
+.chartHead{
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.chartWrap{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.barRow{
+  display:grid;
+  grid-template-columns: 140px 1fr 120px;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+
+.barLabel{
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.barTrack{
+  height: 12px;
+  border-radius: 999px;
+  background: #eef2f7;
+  overflow:hidden;
+  position: relative;
+}
+
+.barFill{
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: rgba(13,148,136,0.55);
+  box-shadow: inset 0 0 0 1px rgba(13,148,136,0.25);
+  transition: width 650ms cubic-bezier(.2,.9,.2,1);
+}
+
+.barMeta{
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #0f172a;
+}
+
+.barMeta .pct{
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-left: 8px;
+}
+
+@media (max-width: 720px){
+  .barRow{
+    grid-template-columns: 1fr;
+    gap: 8px;
+    align-items: start;
+  }
+  .barMeta{ text-align: left; }
+}
+
+    
     /* Stats grid */
     .stats{
       display:grid;
@@ -477,6 +551,19 @@
       </div>
     </section>
 
+    <!-- Content breakdown chart -->
+    <section class="card" aria-label="Content breakdown">
+      <div class="chartHead">
+        <h2>Content breakdown</h2>
+        <div class="subtle" id="chartSub">Loading…</div>
+      </div>
+    
+      <div id="breakdownChart" class="chartWrap">
+        <div class="mutedBox">Loading chart…</div>
+      </div>
+    </section>
+
+    
     <!-- Program shortcuts -->
     <section class="card">
       <h2 style="margin:0 0 10px;">Programs</h2>
@@ -795,6 +882,61 @@ function fmtDate(iso){
       }, true);
     }
 
+    function pct(n, total){
+  if (!Number.isFinite(n) || !Number.isFinite(total) || total <= 0) return 0;
+  return Math.round((n / total) * 100);
+}
+
+function renderBreakdownBars({ total, parshaT, oneMin, mishnaA, halacha, tefilahV }){
+  const el = document.getElementById("breakdownChart");
+  if (!el) return;
+
+  const items = [
+    { key: "Parsha", value: parshaT },
+    { key: "One-Minute", value: oneMin },
+    { key: "Mishna", value: mishnaA },
+    { key: "Halacha", value: halacha },
+    { key: "Tefilah", value: tefilahV },
+  ].filter(x => Number.isFinite(x.value));
+
+  // Sort biggest to smallest (feels more “dashboard”)
+  items.sort((a,b) => b.value - a.value);
+
+  const maxVal = Math.max(1, ...items.map(x => x.value));
+  const safeTotal = Number.isFinite(total) ? total : items.reduce((s,x)=>s+x.value,0);
+
+  el.innerHTML = items.map(x => {
+    const w = Math.round((x.value / maxVal) * 100);
+    const p = pct(x.value, safeTotal);
+    return `
+      <div class="barRow">
+        <div class="barLabel">${x.key}</div>
+        <div class="barTrack" aria-hidden="true">
+          <div class="barFill" data-w="${w}"></div>
+        </div>
+        <div class="barMeta">
+          <span class="count">${x.value.toLocaleString()}</span>
+          <span class="pct">${p}%</span>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  // animate widths after paint
+  requestAnimationFrame(() => {
+    el.querySelectorAll(".barFill").forEach(fill => {
+      const w = fill.getAttribute("data-w") || "0";
+      fill.style.width = `${w}%`;
+    });
+  });
+
+  const sub = document.getElementById("chartSub");
+  if (sub){
+    sub.textContent = `Share of total (${safeTotal.toLocaleString()} items)`;
+  }
+}
+
+    
     async function loadDashboard(){
       try{
         const res = await fetch("/data/site-counts.json", { cache: "no-store" });
@@ -819,6 +961,16 @@ function fmtDate(iso){
 
         const programCount = Object.keys(b || {}).length || 0;
 
+        renderBreakdownBars({
+          total: safeNum(total),
+          parshaT,
+          oneMin,
+          mishnaA,
+          halacha,
+          tefilahV
+        });
+
+        
         // Top stats
         if (typeof total === "number") animateNumber(document.getElementById("sTotal"), total);
         else document.getElementById("sTotal").textContent = "—";
