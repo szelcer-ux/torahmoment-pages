@@ -622,6 +622,39 @@ footer{
     grid-template-columns: 1fr !important;
   }
 }
+
+/* Bulletproof mobile stats: stays 2-up even with big font scaling */
+@media (max-width: 900px){
+  .stats{
+    display:grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap:10px !important;
+  }
+
+  .stat{
+    min-width:0 !important;
+    overflow:hidden !important;
+    padding:10px 10px !important;
+  }
+
+  .stat .label{
+    font-size:0.70rem !important;
+    letter-spacing:0.03em !important;
+  }
+
+  .stat .value{
+    font-size:1.02rem !important;
+    line-height:1.1 !important;
+  }
+
+  .stat.total .value{
+    font-size:1.15rem !important;
+  }
+}
+
+@media (max-width: 360px){
+  .stats{ grid-template-columns: 1fr !important; }
+}
   
 </style>
 </head>
