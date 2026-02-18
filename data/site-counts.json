@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 665,
+    "total": 666,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -13,7 +13,7 @@
         "totalAll": 79
       },
       "oneMinute": {
-        "audio": 192
+        "audio": 193
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-02-18"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Burning desire",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0077.mp3",
+      "date": "2026-02-18T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "The purpose of mitzvos",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260213-WA0048.mp3",
       "date": "2026-02-13T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Dont wait to start your life",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260210-WA0040.mp3",
-      "date": "2026-02-10T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Burning desire",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0077.mp3",
+        "date": "2026-02-18T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Appreciation through struggle",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260129-WA0017.mp3",
         "date": "2026-01-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "True emunah",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260128-WA0014.mp3",
-        "date": "2026-01-28T00:00:00.000Z"
       }
     ],
     "halacha": [
