@@ -295,6 +295,11 @@
       padding-top: 2px;
     }
 
+    .progBody{
+      flex: 1;
+      min-width: 0;
+    }
+    
     /* --- RECENT (ported from index) --- */
     .recentGroup{
       margin-top: 12px;
@@ -684,6 +689,67 @@
   }
 }
 
+/* Programs grid: make cards compact + even on phones */
+@media (max-width: 520px){
+
+  .prog{
+    padding: 12px 12px;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .icon{
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    font-size: 18px;
+  }
+
+  /* Keep titles from wrapping to 3+ lines */
+  .prog h3{
+    font-size: 1.0rem;
+    line-height: 1.1;
+    margin: 0 0 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Meta: clamp to 2 lines */
+  .prog .meta{
+    font-size: 0.88rem;
+    line-height: 1.15;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Counts: make the number + "items" sit nicely */
+  .prog .counts{
+    margin-top: 8px;
+    font-size: 0.88rem;
+    line-height: 1.15;
+  }
+
+  /* The mini breakdown line (Parsha): single line + subtle */
+  .miniBreak{
+    margin-top: 3px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Arrow: keep it aligned top-right, not floating mid-card */
+  .prog .arrow{
+    padding-top: 2px;
+    font-size: 18px;
+  }
+}
+    
 /* Very small phones: 1-up */
 @media (max-width: 340px){
   .stats{ grid-template-columns: 1fr !important; }
@@ -695,6 +761,8 @@
   .topActions{ padding-bottom: 2px !important; }
   .btn{ font-size: 0.85rem !important; }
 }   
+
+    
   </style>
 </head>
 
@@ -811,21 +879,24 @@
     <section class="card">
       <h2 style="margin:0 0 10px;">Programs</h2>
       <div class="grid">
-        <a class="prog" href="/parsha.html">
+       <a class="prog" href="/parsha.html">
           <div class="icon">📖</div>
-          <div>
+        
+          <div class="progBody">
             <h3>Parsha</h3>
-            <div class="meta">Videos · Audio · PDFs</div>
+            <div class="meta">Video · Audio</div>
+        
             <div class="counts">
-            <b><span id="cParsha">—</span></b> items
-            <div class="miniBreak">
-              <span id="cParshaV">—</span> videos · <span id="cParshaA">—</span> audio
+              <b><span id="cParsha">—</span></b> items
+              <div class="miniBreak">
+                <span id="cParshaV">—</span> v · 
+                <span id="cParshaA">—</span> a
+              </div>
             </div>
           </div>
-
-          </div>
+        
           <div class="arrow">›</div>
-        </a>
+</a>
 
         <a class="prog" href="/halacha.html">
           <div class="icon">📚</div>
