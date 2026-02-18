@@ -285,6 +285,99 @@
   padding:0 !important;
 }
 
+/* ===== Mishna polish: container + flat rows, behavior unchanged ===== */
+
+.listCard{
+  margin-top: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Masechta sections as clean dividers (still <details>) */
+#stack details.card{
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  margin: 0;
+}
+#stack details.card:last-child{ border-bottom: 0; }
+
+/* Summary header */
+#stack summary.cardHead{
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+}
+#stack summary.cardHead::-webkit-details-marker{ display:none; }
+
+#stack details.card[open] > summary.cardHead{
+  background: rgba(0,0,0,0.02);
+}
+
+/* Rows inside an open masechta */
+#stack .row{
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease;
+}
+@media (hover:hover){
+  #stack .row:hover{
+    background: rgba(0,0,0,0.02);
+    transform: translateY(-1px);
+  }
+}
+
+/* Label hierarchy */
+#stack .label{
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Audio */
+#stack .row audio{
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* Speed pills (keep your JS logic: only show when row.isActive) */
+#stack .controls .speed{
+  display: none;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 6px 0 10px;
+}
+#stack .row.isActive .controls .speed{
+  display: flex;
+}
+
+#stack .spdBtn{
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+#stack .spdBtn.isActive{
+  border-color: var(--accent);
+  background: rgba(13,148,136,0.10);
+  font-weight: 700;
+}
     
   </style>
 </head>
@@ -321,7 +414,9 @@
         <div id="totalsPill" class="pill"></div>
       </div>
 
-      <div id="stack" class="stack"></div>
+      <div class="listCard">
+  <div id="stack" class="stack"></div>
+</div>
 
       <div class="footer">
         <div><a href="https://torahmoment.com">← Back to TorahMoment</a></div>
