@@ -190,15 +190,9 @@ h1{
 }
 
 .stat .value{
-  font-size:1.18rem;
+  font-size:1.25rem;
   font-weight:750;
   letter-spacing:-0.02em;
-}
-
-.stat .hint{
-  margin-top:3px;
-  font-size:0.78rem;
-  color:var(--muted);
 }
 
 /* Growth highlight (subtle) */
@@ -534,10 +528,7 @@ footer{
 @media (max-width:360px){
   .stats{ grid-template-columns:1fr !important; }
 }
-@media (max-width:820px){
-  .stats{ outline: 3px solid red !important; }
-  .stat{ outline: 2px solid blue !important; }
-}
+
 /* Tiny phone tweaks (keep your smaller typography) */
 @media (max-width:520px){
   .stat{ min-width:0 !important; }
@@ -631,75 +622,75 @@ footer{
   <div class="stat total">
     <div class="label">Total shiurim</div>
     <div class="value" id="sTotal">—</div>
-    <div class="hint">All programs</div>
+   
   </div>
 
   <div class="stat growth">
     <div class="label">Added this year</div>
     <div class="value" id="sThisYear">—</div>
-    <div class="hint">Dated items</div>
+    
   </div>
 
   <div class="stat growth">
     <div class="label">Last 30 days</div>
     <div class="value" id="sLast30">—</div>
-    <div class="hint">Dated items</div>
+    
   </div>
 
   <div class="stat">
     <div class="label">Last updated</div>
     <div class="value" id="sUpdated">—</div>
-    <div class="hint">site-counts.json</div>
+    
   </div>
 
   <!-- Row 2: Program totals -->
   <div class="stat">
     <div class="label">Parsha total</div>
     <div class="value" id="sParsha">—</div>
-    <div class="hint" id="sParshaHint">All Parsha content</div>
+   
   </div>
 
   <div class="stat">
     <div class="label">Halacha total</div>
     <div class="value" id="sHalacha">—</div>
-    <div class="hint">Audio shiurim</div>
+    
   </div>
 
   <div class="stat">
     <div class="label">One-Minute total</div>
     <div class="value" id="sOneMin">—</div>
-    <div class="hint">Audio</div>
+    
   </div>
 
   <div class="stat">
     <div class="label">Tefilah total</div>
     <div class="value" id="sTefilah">—</div>
-    <div class="hint">Video</div>
+   
   </div>
 
   <div class="stat">
     <div class="label">Mishna shiurim</div>
     <div class="value" id="sMishnaA">—</div>
-    <div class="hint">Audio</div>
+   
   </div>
 
   <!-- Row 3: Supporting -->
   <div class="stat">
     <div class="label">Programs</div>
     <div class="value" id="sPrograms">—</div>
-    <div class="hint">Counted buckets</div>
+   
   </div>
 
   <div class="stat">
     <div class="label">Health</div>
     <div class="value" id="sHealth">—</div>
-    <div class="hint">Basic checks</div>
+    
   </div>
 
   <div class="stat">
     <div class="label">Raw JSON</div>
     <div class="value"><a href="/data/site-counts.json" style="color:#0b57d0;text-decoration:none;">Open</a></div>
-    <div class="hint">Debug</div>
+   
   </div>
 </section>
 
