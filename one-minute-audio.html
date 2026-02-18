@@ -57,14 +57,7 @@ input{flex:1;min-width:240px;padding:10px 12px;border:1px solid #d0d5dd;border-r
 .player{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:14px}
 .now{font-size:14px;color:#444;margin-bottom:8px}
 audio{width:100%}
-.row{
-  background:#fff;
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:8px 10px;     /* ✅ smaller */
-  margin-bottom:6px;    /* ✅ tighter spacing */
-  cursor:pointer;
-}
+
 
 .row.playing{outline:2px solid #111}
 .meta{font-size:13px;color:#667085;margin-bottom:6px}
@@ -74,10 +67,7 @@ audio{width:100%}
 .row{
   transition: transform .06s ease, box-shadow .12s ease;
 }
-.row:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(0,0,0,.08);
-}
+
 .row:active{
   transform: scale(.99);
 }
@@ -292,7 +282,152 @@ html, body{
   padding:0 !important;
 }
 
- 
+  .listCard{
+  margin-top: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden; /* makes row dividers look clean */
+}
+
+#list .row{
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+#list .row:last-child{
+  border-bottom: 0;
+}
+
+  
+
+#list .date{
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+#list .title{
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+ /* ===== Final row styling (rows are list items, NOT cards) ===== */
+#list .row{
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 14px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+#list .row:last-child{ border-bottom: 0; }
+
+@media (hover:hover){
+  #list .row:hover{
+    background: rgba(0,0,0,0.02);
+    transform: translateY(-1px);
+  }
+}
+
+#list .row:active{ transform: scale(.995); } 
+
+.controls .speedBtns button{
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 999px;
+}
+
+.controls .speedBtns button.active{
+  font-weight: 700;
+  border-color: var(--accent);
+  background: rgba(13,148,136,0.10);
+  color: var(--text);
+}
+
+/* ===== FINAL: One-line row layout inside listCard ===== */
+
+/* The outer card */
+.listCard{
+  margin-top: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Rows are NOT individual cards anymore */
+#list .row{
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 10px 12px;          /* compact but intentional */
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+#list .row:last-child{ border-bottom: 0; }
+
+@media (hover:hover){
+  #list .row:hover{
+    background: rgba(0,0,0,0.02);
+    transform: translateY(-1px);
+  }
+}
+
+#list .row:active{ transform: scale(.995); }
+
+/* One-line header: date + title */
+#list .head{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:nowrap;
+  width:100%;
+  margin-bottom: 6px;
+}
+
+#list .date{
+  flex:0 0 auto;
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space:nowrap;
+}
+
+#list .title{
+  flex:1 1 auto;
+  min-width:0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Speed buttons: pill + accent active */
+.controls .speedBtns button{
+  padding:6px 10px;
+  font-size:13px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  cursor:pointer;
+}
+
+.controls .speedBtns button.active{
+  font-weight:700;
+  border-color: var(--accent);
+  background: rgba(13,148,136,0.10);
+  color: var(--text);
+}
+  
 </style>
 </head>
 
@@ -327,7 +462,9 @@ html, body{
   <div class="pill" id="count">0 items</div>
 </div>
 
-<div id="list"></div>
+<div class="listCard">
+  <div id="list"></div>
+</div>
 </div>
 
 <!-- ✅ Keep this ONCE (and in the right place) -->
