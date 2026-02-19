@@ -919,7 +919,8 @@ longOnes.sort((a,b) => {
   
     elStatus.textContent = "Ready";
     // ✅ Wire the Halacha-style audio UI for all newly-rendered rows
-tmWireIndepthPlayers(); 
+      tmWireIndepthPlayers("#parshaList");
+      tmWireIndepthPlayers("#halachaList");
   }
 
   main().catch((e)=>{
