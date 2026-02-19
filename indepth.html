@@ -46,11 +46,7 @@
     .count{color:var(--muted);font-size:13px;}
 
     .list{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
-    .row{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      padding:12px;border:1px solid var(--border);border-radius:14px;background:#fff;
-      text-decoration:none;color:inherit;
-    }
+   
     .row:hover{transform:translateY(-1px);}
     .left{min-width:0;flex:1;}
     .title{font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -260,18 +256,7 @@
 .list {padding: 14px 16px;}    
 
 /* Rows now contain inline audio */
-.row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:14px 16px;
-  border:1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--card);
-  margin-bottom: 10px;
-  cursor:pointer;
-}
+
 
 .left{ min-width:0; }
 .title{ font-weight:600; }
@@ -379,7 +364,22 @@
   background: rgba(13,148,136,0.10);
   font-weight:700;
 }
+/* indepth: tighten spacing for tm-audio-ui rows */
+#parshaList .tm-row,
+#halachaList .tm-row{
+  margin: 0 0 10px; /* controls vertical spacing between rows */
+}
 
+/* if your list wrapper also adds spacing, this keeps it consistent */
+#parshaList, #halachaList{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* optional: slightly tighter inside the card */
+.tm-row{ padding: 12px 14px; }          /* overrides tm-audio-ui default if needed */
+.tm-meta{ margin-top: 4px; margin-bottom: 8px; }
     <style>
   /* indepth: when using tm-audio-ui, don't double-card each row */
   #parshaList .item,
@@ -403,7 +403,9 @@
   .tm-title-row{ margin-bottom: 4px !important; }
   .tm-meta{ margin: 0 0 8px !important; }
 </style>
-    
+
+
+  
   </style>
 </head>
 
