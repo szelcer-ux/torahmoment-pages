@@ -602,24 +602,24 @@ function getAudioDurationSec(url){
       fetch("./halacha.html", { cache: "no-store" }).then(r => r.text()),
     ]);
 
-    const parshaExpr = extractConstBlock(parshaSrc, "PARSHA_INDEPTH");
+    const parshaExpr = extractConstBlock(parshaSrc, "PARSHA_AUDIO");
     const halachaExpr = extractConstBlock(halachaSrc, "PAGE_DATA");
 
-    if (!parshaExpr) throw new Error("Could not find const PARSHA_INDEPTH in parsha.html");
+   if (!parshaExpr) throw new Error("Could not find const PARSHA_AUDIO in parsha.html");
     if (!halachaExpr) throw new Error("Could not find const PAGE_DATA in halacha.html");
 
-    const PARSHA_INDEPTH = evalAsData(parshaExpr);
+    const PARSHA_AUDIO = evalAsData(parshaExpr);
     const PAGE_DATA = evalAsData(halachaExpr);
 
-    return { PARSHA_INDEPTH, PAGE_DATA };
+    return { PARSHA_AUDIO, PAGE_DATA };
   }
 
   async function main(){
-    const { PARSHA_INDEPTH, PAGE_DATA } = await loadData();
+    const { PARSHA_AUDIO, PAGE_DATA } = await loadData();
 
     // ---------- Parsha render (Parsha order) ----------
     parshaListEl.innerHTML = "";
-    let parshaRows = parseParshaInDepth(PARSHA_INDEPTH);
+    let parshaRows = parseParshaInDepth(PARSHA_AUDIO);
 
     // Sort: Parsha order, then label
     parshaRows.sort((a,b) => {
@@ -630,7 +630,7 @@ function getAudioDurationSec(url){
     parshaCountEl.textContent = parshaRows.length ? `${parshaRows.length} items` : "";
 
     if (!parshaRows.length){
-      parshaListEl.innerHTML = `<div class="muted">No Parsha in-depth items found.</div>`;
+      parshaListEl.innerHTML = `<div class="muted">No Parsha audio items found.</div>`;
     } else {
       for (const r of parshaRows){
         parshaListEl.appendChild(rowItem({
