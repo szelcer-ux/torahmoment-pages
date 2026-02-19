@@ -103,19 +103,22 @@
     .count{ font-size: 0.8rem; color: var(--muted); }
 
     /* Collapsible content */
-    .sectionContent{
-      transition: max-height .3s ease, opacity .2s ease;
-      overflow: visible; /* IMPORTANT: prevents bottom clipping */
-    }
-    .sectionContent.collapsed{
-      max-height:0;
-      opacity:0;
-      pointer-events:none;
-    }
-    .sectionContent.expanded{
-      max-height:2000px;
-      opacity:1;
-    }
+      .sectionContent{
+        overflow: hidden;                /* keep clean animation */
+        transition: max-height .3s ease, opacity .2s ease;
+      }
+      
+      .sectionContent.collapsed{
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .sectionContent.expanded{
+        max-height: 5000px;              /* large enough to never clip */
+        opacity: 1;
+        padding-bottom: 24px;            /* space so last row isn't cut */
+      }
 
     /* ===== TorahMoment Topbar ===== */
     .tm-topbar{
@@ -213,7 +216,7 @@
     }
 
     .tm-title{ line-height:1.15; }
-    .tm-meta{ margin:2px 0 6px; line-height:1.15; }
+    /*.tm-meta{ margin:2px 0 6px; line-height:1.15; }*/
 
     .tm-player{ margin-top:6px; gap:10px; }
     .tm-play{ width:38px; height:38px; min-width:38px; }
@@ -227,7 +230,6 @@
   /* Keep the card rounded corners, but don't clip the section content */
   .card{ overflow: hidden; } /* keep */
   .sectionContent{
-    overflow: auto;                 /* KEY: prevents clipping */
     -webkit-overflow-scrolling: touch;
     padding-bottom: 26px !important; /* extra breathing room at bottom */
   }
@@ -257,6 +259,11 @@
     flex: 0 0 auto !important;
     white-space: nowrap !important;
   }
+    
+    .tm-inline-meta{
+  font-weight:400;
+  color: var(--muted);
+}
 </style>
 </head>
 
@@ -392,12 +399,14 @@ function rowItem({ title, meta, url, badgeText, durText }){
 
   wrap.innerHTML = `
     <div class="tm-main">
-      <div class="tm-title-row">
-        <div class="tm-title">${(title || "Untitled")}</div>
-        ${badgeText ? `<span class="tm-badge">${badgeText}</span>` : ``}
-      </div>
+     <div class="tm-title-row">
+  <div class="tm-title">
+    ${(title || "Untitled")}
+    ${meta ? `<span class="tm-inline-meta"> — ${meta}</span>` : ``}
+  </div>
 
-      ${meta ? `<div class="tm-meta">${meta}</div>` : ``}
+  ${badgeText ? `<span class="tm-badge">${badgeText}</span>` : ``}
+</div>
 
       <div class="tm-player">
         <button class="tm-play" type="button" aria-label="Play/Pause">►</button>
