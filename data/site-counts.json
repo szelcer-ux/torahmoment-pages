@@ -24,6 +24,13 @@
   "recent": [
     {
       "type": "audio",
+      "program": "Halacha",
+      "title": "Leaving a sefer open",
+      "url": "https://www.buzzsprout.com/1899789/episodes/18712806-2-19-2026-shloimy-zelcer-leaving-a-sefer-open.mp3",
+      "date": "2026-02-19T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
       "program": "One-Minute",
       "title": "Burning desire",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0077.mp3",
@@ -49,13 +56,6 @@
       "title": "Carry forward",
       "url": "https://www.youtube.com/watch?v=E-K3nDaVWFQ",
       "date": "2026-02-13T03:38:21Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "The purpose of mitzvos",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260213-WA0048.mp3",
-      "date": "2026-02-13T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Leaving a sefer open",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18712806-2-19-2026-shloimy-zelcer-leaving-a-sefer-open.mp3",
+        "date": "2026-02-19T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Standing for Aseres Hadibros",
         "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
         "date": "2026-01-29T00:00:00.000Z"
@@ -163,6 +170,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "History of Kollel",
+        "url": "https://2mishnasaday.com/wp-content/uploads/historyofkollel.mp3",
+        "date": "2025-12-25T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Daven to Hashem, not angels",
         "url": "https://www.buzzsprout.com/1899789/episodes/18285871-12-3-2025-shloimy-zelcer-daven-to-hashem-not-angels.mp3",
         "date": "2025-12-03T00:00:00.000Z"
@@ -184,23 +198,9 @@
       {
         "type": "audio",
         "program": "Halacha",
-        "title": "Do you have to know what youre saying in davening?",
-        "url": "https://www.buzzsprout.com/1899789/episodes/17665749-8-13-2025-shloimy-zelcer-do-you-have-to-know-what-youre-saying-in-davening.mp3",
-        "date": "2025-08-13T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Standing up to say Krias Shema",
-        "url": "https://www.buzzsprout.com/1899789/episodes/17508580-7-15-2025-shloimy-zelcer-standing-up-to-say-kriyas-shema.mp3",
-        "date": "2025-07-15T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Kiddush in middle of davening?",
-        "url": "https://www.buzzsprout.com/1899789/episodes/17430394-7-1-2025-shloimy-zelcer-kiddush-in-middle-of-davening.mp3",
-        "date": "2025-07-01T00:00:00.000Z"
+        "title": "3 lessons Lzehcer Harav Avrohom Nesanel ben Shlomo on his first Yahrtzeit",
+        "url": "https://www.buzzsprout.com/1899789/episodes/17866609-9-18-2025-shloimy-zelcer-3-lessons-lzehcer-nishmas-moireinu-harav-avrohom-nesanel-ben-shlomo-on-his-first-yahrtzeit.mp3",
+        "date": "2025-09-18T00:00:00.000Z"
       }
     ],
     "parsha": [
