@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TorahMoment — In-Depth Shiurim</title>
-
+<link rel="stylesheet" href="/css/tm-audio-ui.css">
   <style>
     html, body { margin:0; padding:0; }
 *, *::before, *::after { box-sizing:border-box; }
 
+     
     :root{
       --bg:#f7f7f8;
       --card:#ffffff;
@@ -22,6 +23,9 @@
       /* Example values below — change per page */
       --tm-wrap-max: 1060px;
       --tm-wrap-pad: 22px;
+      --accent:#0d9488;
+       --line: var(--border);
+       --accent2: var(--accent);
     }
 
     *, *::before, *::after{ box-sizing: border-box; }
@@ -912,8 +916,10 @@ longOnes.sort((a,b) => {
         }));
       }
     }
-
+  
     elStatus.textContent = "Ready";
+    // ✅ Wire the Halacha-style audio UI for all newly-rendered rows
+tmWireIndepthPlayers(); 
   }
 
   main().catch((e)=>{
@@ -972,6 +978,141 @@ longOnes.sort((a,b) => {
 })();
 </script>
 
+ <script>
+(function(){
+  const SPEEDS = [1, 1.25, 1.5, 2];
+
+  function fmtTime(sec){
+    if (!Number.isFinite(sec)) return "--:--";
+    sec = Math.max(0, Math.floor(sec));
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m}:${String(s).padStart(2,"0")}`;
+  }
+
+  function ensureSrc(audio){
+    if (!audio) return;
+    if (audio.getAttribute("src")) return;
+
+    const ds = audio.getAttribute("data-src");
+    if (ds){
+      audio.setAttribute("src", ds);
+      audio.preload = "metadata";
+      audio.load();
+    }
+  }
+
+  function pauseAllExcept(activeAudio){
+    document.querySelectorAll("audio").forEach(a => {
+      if (a !== activeAudio && !a.paused) a.pause();
+    });
+  }
+
+  function wireRow(row){
+    if (!row || row.dataset.wired === "1") return;
+    row.dataset.wired = "1";
+
+    const playBtn = row.querySelector(".tm-play");
+    const speedBtn = row.querySelector(".tm-speed");
+    const durEl   = row.querySelector(".tm-dur");
+    const audio   = row.querySelector("audio");
+    const prog    = row.querySelector(".tm-progress");
+    const fill    = prog ? prog.querySelector("div") : null;
+
+    if (!audio || !playBtn || !speedBtn || !durEl || !prog || !fill) return;
+
+    // lazy-load when row enters viewport
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(({isIntersecting, target}) => {
+        if (!isIntersecting) return;
+        const a = target.querySelector("audio");
+        ensureSrc(a);
+        io.unobserve(target);
+      });
+    }, { rootMargin: "250px" });
+    io.observe(row);
+
+    // duration display (once metadata is available)
+    audio.addEventListener("loadedmetadata", () => {
+      durEl.textContent = fmtTime(audio.duration);
+    });
+
+    // keep progress updated while playing
+    audio.addEventListener("timeupdate", () => {
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+      const pct = (audio.currentTime / audio.duration) * 100;
+      fill.style.width = `${pct}%`;
+    });
+
+    audio.addEventListener("ended", () => {
+      playBtn.textContent = "►";
+    });
+
+    audio.addEventListener("play", () => {
+      pauseAllExcept(audio);
+      playBtn.textContent = "❚❚";
+    });
+
+    audio.addEventListener("pause", () => {
+      playBtn.textContent = "►";
+    });
+
+    function togglePlay(){
+      ensureSrc(audio);
+      if (audio.paused) audio.play();
+      else audio.pause();
+    }
+
+    // play button
+    playBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      togglePlay();
+    });
+
+    // row click toggles (but don't steal clicks from controls)
+    row.addEventListener("click", (e) => {
+      if (e.target.closest(".tm-play, .tm-speed, .tm-progress")) return;
+      togglePlay();
+    });
+
+    // speed cycles
+    function setSpeed(next){
+      audio.playbackRate = next;
+      speedBtn.textContent = `${next}×`;
+    }
+
+    // initialize speed UI
+    setSpeed(1);
+
+    speedBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const cur = audio.playbackRate || 1;
+      const idx = SPEEDS.indexOf(cur);
+      const next = SPEEDS[(idx + 1) % SPEEDS.length];
+      setSpeed(next);
+    });
+
+    // click-to-seek
+    prog.addEventListener("click", (e) => {
+      e.stopPropagation();
+      ensureSrc(audio);
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+
+      const r = prog.getBoundingClientRect();
+      const x = Math.min(Math.max(0, e.clientX - r.left), r.width);
+      const pct = x / r.width;
+      audio.currentTime = pct * audio.duration;
+    });
+  }
+
+  // Public helper: wire all rows inside a container (or whole doc)
+  window.tmWireIndepthPlayers = function(containerSelector){
+    const scope = containerSelector ? document.querySelector(containerSelector) : document;
+    if (!scope) return;
+    scope.querySelectorAll(".tm-row").forEach(wireRow);
+  };
+})();
+</script>   
   
 </body>
 </html>
