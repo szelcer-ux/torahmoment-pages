@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Halacha/Hashkafah</title>
-
+<link rel="stylesheet" href="css/tm-audio-ui.css">
   <style>
 :root{
   --bg:#f6f7fb;
@@ -1484,6 +1484,7 @@ return `
       }).join("");
 
      app.innerHTML = html;
+      tmWireHalachaStylePlayers();
       openCategoryFromURL();
 
 
@@ -1802,54 +1803,28 @@ if (speedBtn) {
     render();
   </script>
 
+<script src="js/tm-audio-ui.js"></script>
+
 <script>
 (function(){
   const q = (new URLSearchParams(location.search).get("q") || "").trim();
   if(!q) return;
-
-  // try common search inputs used on your pages
-  const input =
-    document.querySelector("#searchInput") ||
-    document.querySelector("#q") ||
-    document.querySelector('input[type="search"]');
-
-  if(!input) return;
-
-  input.value = q;
-  input.dispatchEvent(new Event("input", { bubbles:true }));
+  ...
 })();
 </script>
 
-  <script>
+<script>
 (function applyGlobalSearchHalacha(){
-  const params = new URLSearchParams(location.search);
-  const q = (params.get("q") || "").trim();
-  if (!q) return;
-
-  const inp = document.getElementById("searchInput");
-  if (!inp) return;
-
-  inp.value = q;
-  inp.dispatchEvent(new Event("input", { bubbles: true }));
+  ...
 })();
 </script>
 
-  <script>
+<script>
 (function(){
   const links = document.querySelectorAll(".tm-topbar a[href]:not(.home-link)");
-  const raw = (location.pathname || "/").replace(/\/+$/, "") || "/";
-  const current = (raw === "/index.html") ? "/" : raw;
-
-  links.forEach(a => {
-    const u = new URL(a.getAttribute("href"), location.href);
-    const lpRaw = (u.pathname || "/").replace(/\/+$/, "") || "/";
-    const lp = (lpRaw === "/index.html") ? "/" : lpRaw;
-
-    if (lp === current) a.classList.add("active");
-  });
+  ...
 })();
 </script>
 
-  
 </body>
 </html>
