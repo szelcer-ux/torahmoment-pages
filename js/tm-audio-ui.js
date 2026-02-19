@@ -1,3 +1,4 @@
+console.log("tm-audio-ui.js loaded");
 // js/tm-audio-ui.js
 (function(){
   const SPEEDS = [1, 1.25, 1.5, 2];
