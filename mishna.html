@@ -703,7 +703,121 @@ function render(){
   // Wire the halacha-style players inside this page
   tmWireMishnaPlayers();
 }
+function tmWireMishnaPlayers(root=document){
+  const rows = root.querySelectorAll(".tm-row[data-audio-id]");
+  rows.forEach(row => {
+    if (row.__tmWired) return;
+    row.__tmWired = true;
 
+    const pid = row.getAttribute("data-audio-id");
+    const audio = row.querySelector(`audio#${CSS.escape(pid)}`) || row.querySelector("audio");
+    const playBtn = row.querySelector(".tm-play");
+    const speedBtn = row.querySelector(".tm-speed");
+    const durEl = row.querySelector(".tm-dur");
+    const progressWrap = row.querySelector(".tm-progress");
+    const bar = progressWrap ? progressWrap.querySelector("div") : null;
+
+    if (!audio || !playBtn || !speedBtn) return;
+
+    const speeds = [1, 1.25, 1.5, 2];
+    let speedIndex = 0;
+
+    const ensureSrc = () => {
+      if (!audio.getAttribute("src")) {
+        const ds = audio.getAttribute("data-src");
+        if (ds) audio.setAttribute("src", ds);
+      }
+    };
+
+    const pauseAllExcept = (me) => {
+      document.querySelectorAll(".tm-row audio").forEach(a => {
+        if (a !== me && !a.paused) a.pause();
+      });
+    };
+
+    const fmt = (sec) => {
+      if (!Number.isFinite(sec) || sec < 0) return "0:00";
+      sec = Math.floor(sec);
+      const h = Math.floor(sec/3600);
+      const m = Math.floor((sec%3600)/60);
+      const s = sec%60;
+      return h ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+               : `${m}:${String(s).padStart(2,'0')}`;
+    };
+
+    const updateBtn = () => { playBtn.textContent = audio.paused ? "▶" : "❚❚"; };
+
+    const updateProgress = () => {
+      if (!bar) return;
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+      bar.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+    };
+
+    const updateDur = () => {
+      if (!durEl) return;
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+      durEl.textContent = `(${fmt(audio.duration)})`;
+    };
+
+    playBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      ensureSrc();
+      if (audio.paused){
+        pauseAllExcept(audio);
+        audio.play().catch(()=>{});
+      } else {
+        audio.pause();
+      }
+    });
+
+    // clicking row toggles play/pause (like halacha)
+    row.addEventListener("click", (e) => {
+      if (e.target.closest(".tm-speed") || e.target.closest("audio")) return;
+      ensureSrc();
+      if (audio.paused){
+        pauseAllExcept(audio);
+        audio.play().catch(()=>{});
+      } else {
+        audio.pause();
+      }
+    });
+
+    // click-to-seek on progress bar
+    if (progressWrap){
+      progressWrap.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!audio.duration) return;
+        const rect = progressWrap.getBoundingClientRect();
+        const x = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+        audio.currentTime = (x / rect.width) * audio.duration;
+      });
+    }
+
+    // speed cycles
+    speedBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      speedIndex = (speedIndex + 1) % speeds.length;
+      const r = speeds[speedIndex];
+      audio.playbackRate = r;
+      speedBtn.textContent = `${r}×`;
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      updateDur();
+      updateProgress();
+      updateBtn();
+      audio.playbackRate = speeds[speedIndex];
+      speedBtn.textContent = `${speeds[speedIndex]}×`;
+    });
+
+    audio.addEventListener("timeupdate", updateProgress);
+    audio.addEventListener("play", () => { pauseAllExcept(audio); updateBtn(); });
+    audio.addEventListener("pause", updateBtn);
+    audio.addEventListener("ended", () => { updateBtn(); if (bar) bar.style.width = "0%"; });
+
+    updateBtn();
+  });
+}
     render();
   </script>
   <script>
