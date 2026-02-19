@@ -210,4 +210,100 @@
   };
 
   window.tmPauseAllExcept = pauseAllExcept;
+
+  window.tmWireHalachaStylePlayers = function(root=document){
+  const rows = root.querySelectorAll(".tm-row[data-audio-id]");
+  rows.forEach(row => {
+    if (row.__tmWired) return;
+    row.__tmWired = true;
+
+    const audioId = row.getAttribute("data-audio-id");
+    const audio = row.querySelector(`audio#${CSS.escape(audioId)}`) || row.querySelector("audio");
+    const playBtn = row.querySelector(".tm-play");
+    const speedBtn = row.querySelector(".tm-speed");
+    const durEl = row.querySelector(".tm-dur");
+    const progOuter = row.querySelector(".tm-progress");
+    const progInner = progOuter ? progOuter.querySelector("div") : null;
+
+    if (!audio || !playBtn || !speedBtn) return;
+
+    const SPEEDS = [1, 1.25, 1.5, 2];
+    const getSaved = () => {
+      const v = Number(localStorage.getItem("tm_rate") || "1");
+      return SPEEDS.includes(v) ? v : 1;
+    };
+    const setSaved = (v) => localStorage.setItem("tm_rate", String(v));
+
+    const ensureSrc = () => {
+      if (!audio.getAttribute("src")) {
+        const ds = audio.getAttribute("data-src");
+        if (ds) audio.setAttribute("src", ds);
+      }
+    };
+
+    const pauseAllExcept = (me) => {
+      document.querySelectorAll("audio").forEach(a => {
+        if (a !== me && !a.paused) a.pause();
+      });
+    };
+
+    let rate = getSaved();
+    speedBtn.textContent = `${rate}×`;
+
+    const applyRate = () => { audio.playbackRate = rate; };
+
+    const fmt = (sec) => {
+      if (!Number.isFinite(sec) || sec < 0) return "";
+      sec = Math.floor(sec);
+      const m = Math.floor(sec/60), s = sec%60;
+      return `${m}:${String(s).padStart(2,"0")}`;
+    };
+
+    const updateProgress = () => {
+      if (!progInner) return;
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+      const p = (audio.currentTime / audio.duration) * 100;
+      progInner.style.width = `${Math.max(0, Math.min(100, p))}%`;
+      if (durEl) durEl.textContent = `(${fmt(audio.duration)})`;
+    };
+
+    playBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      ensureSrc();
+      if (audio.paused) {
+        pauseAllExcept(audio);
+        applyRate();
+        audio.play().catch(()=>{});
+      } else {
+        audio.pause();
+      }
+    });
+
+    row.addEventListener("click", (e) => {
+      if (e.target.closest(".tm-speed") || e.target.closest("audio")) return;
+      ensureSrc();
+      if (audio.paused) {
+        pauseAllExcept(audio);
+        applyRate();
+        audio.play().catch(()=>{});
+      } else {
+        audio.pause();
+      }
+    });
+
+    speedBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const i = SPEEDS.indexOf(rate);
+      rate = SPEEDS[(i+1) % SPEEDS.length];
+      speedBtn.textContent = `${rate}×`;
+      setSaved(rate);
+      applyRate();
+    });
+
+    audio.addEventListener("play", () => playBtn.textContent = "❚❚");
+    audio.addEventListener("pause", () => playBtn.textContent = "▶");
+    audio.addEventListener("timeupdate", updateProgress);
+    audio.addEventListener("loadedmetadata", updateProgress);
+  });
+};
 })();
