@@ -4,81 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TorahMoment — In-Depth Shiurim</title>
-<link rel="stylesheet" href="/css/tm-audio-ui.css?v=in-depthgibberish">
-  <style>
-/* --- indepth compact mode for tm-audio-ui --- */
 
-/* spacing between rows */
-#parshaList, #halachaList{
-  display:flex !important;
-  flex-direction:column !important;
-  gap:8px !important;
-}
+  <!-- Shared Halacha/Mishna audio UI -->
+  <link rel="stylesheet" href="/css/tm-audio-ui.css?v=indepth-compact-20260219" />
 
-/* card padding */
-#parshaList .tm-row, #halachaList .tm-row{
-  margin:0 !important;
-  padding:10px 12px !important;
-}
-
-/* tighten text spacing */
-.tm-meta{
-  margin:2px 0 6px !important;
-  line-height:1.15 !important;
-}
-
-/* compact player strip */
-.tm-player{
-  margin-top:6px !important;
-  gap:10px !important;
-}
-
-.tm-play{
-  width:38px !important;
-  height:38px !important;
-  min-width:38px !important;
-}
-
-.tm-progress{
-  height:4px !important;
-}
-
-.tm-speed, .tm-dur{
-  font-size:12px !important;
-  padding:6px 10px !important;
-}
-</style>
-  <style>
-  /* PROVE this block is active */
-  .tm-row{ outline: 2px solid rgba(255,0,0,.35) !important; }
-
-  /* Tighten tm row padding and internal spacing */
-  .tm-row{
-    padding: 10px 12px !important;
-  }
-  .tm-meta{
-    margin: 2px 0 6px !important;
-    line-height: 1.15 !important;
-  }
-  .tm-player{
-    margin-top: 6px !important;
-  }
-
-  /* Control spacing between rows */
-  #parshaList, #halachaList{
-    display:flex !important;
-    flex-direction:column !important;
-    gap:10px !important;
-  }
-  #parshaList .tm-row, #halachaList .tm-row{
-    margin:0 !important; /* avoid double-spacing (gap handles it) */
-  }
-</style>
   <style>
     html, body { margin:0; padding:0; }
-*, *::before, *::after { box-sizing:border-box; }
+    *, *::before, *::after { box-sizing:border-box; }
 
-     
     :root{
       --bg:#f7f7f8;
       --card:#ffffff;
@@ -88,440 +21,205 @@
       --accent:#0d9488;
       --shadow:0 6px 22px rgba(0,0,0,0.07);
       --radius:16px;
-       /* Per-page layout alignment (set these to match THAT page’s .wrap) */
-      /* Example values below — change per page */
+
+      /* topbar alignment */
       --tm-wrap-max: 1060px;
       --tm-wrap-pad: 22px;
-      --accent:#0d9488;
-       --line: var(--border);
-       --accent2: var(--accent);
+
+      /* tm-audio-ui.css expectations */
+      --line: var(--border);
+      --accent2: var(--accent);
     }
 
-    *, *::before, *::after{ box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
 
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
-    .wrap{max-width:1060px;margin:0 auto;padding:22px;}
-    .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
-    h1{margin:0;font-size:28px;letter-spacing:-0.02em;}
-    .sub{color:var(--muted);margin-top:6px;font-size:14px;}
+    .wrap{ max-width:1060px; margin:0 auto; padding:22px; }
 
-    .pillbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
-    .pill{border:1px solid var(--border);background:#fff;border-radius:999px;padding:8px 12px;font-size:14px;cursor:pointer;}
-    .pill[aria-pressed="true"]{border-color:rgba(13,148,136,.35);box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      flex-wrap:wrap;
+    }
 
-    
-    .sectionTitle{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
-    .sectionTitle h2{margin:0;font-size:18px;}
-    .count{color:var(--muted);font-size:13px;}
+    h1{ margin:0; font-size:28px; letter-spacing:-0.02em; }
+    .sub{ color:var(--muted); margin-top:6px; font-size:14px; }
 
-    .list{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
-   
-    .row:hover{transform:translateY(-1px);}
-    .left{min-width:0;flex:1;}
-    .title{font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-    .meta{margin-top:3px;color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .pillbar{ display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+    .pill{
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:14px;
+      cursor:pointer;
+    }
+    .pill[aria-pressed="true"]{
+      border-color:rgba(13,148,136,.35);
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    }
 
-    .right{display:flex;align-items:center;gap:8px;flex:0 0 auto;}
-    .badge{font-size:12px;border:1px solid var(--border);border-radius:999px;padding:6px 10px;background:#fff;}
-    .badgeLong{border-color:rgba(13,148,136,.35);}
-    .badgeDur{color:var(--muted);}
+    .muted{ color:var(--muted); }
 
-    .muted{color:var(--muted);}
-
-    .loader{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:14px;}
-    .dot{width:8px;height:8px;border-radius:50%;background:var(--muted);opacity:.35;animation:pulse 1.2s infinite;}
-    .dot:nth-child(2){animation-delay:.2s}
-    .dot:nth-child(3){animation-delay:.4s}
-    @keyframes pulse{0%,100%{opacity:.25}50%{opacity:.7}}
-
-  /* ===== TorahMoment Topbar ===== */
-.tm-topbar{
-  width:100%;
-  background:#ffffff;
-  border-bottom:1px solid var(--border, #e7e7ee);
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-
-.tm-topbar-inner{
-  box-sizing: border-box; /* critical: match wrap sizing */
-  max-width: var(--tm-wrap-max, 980px);
-  margin:0 auto;
-  padding:10px var(--tm-wrap-pad, 20px);
-  display:flex;
-  align-items:center;
-  flex-wrap:nowrap;          /* never wrap */
-  overflow-x:auto;           /* swipe on mobile */
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-  position:relative;         /* for fade overlay */
-}
-
-.tm-topbar-inner::-webkit-scrollbar{ display:none; }
-
-/* right-edge fade hint */
-.tm-topbar-inner::after{
-  content:"";
-  position:absolute;
-  right:0;
-  top:0;
-  width:28px;
-  height:100%;
-  pointer-events:none;
-  background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
-}
-
-/* links (force consistent color incl. visited) */
-.tm-topbar a,
-.tm-topbar a:visited{
-  text-decoration:none;
-  color:var(--muted, #666);
-  font-size:14px;
-  font-weight:500;
-  white-space:nowrap;
-  padding:4px 10px;
-}
-
-.tm-topbar a:hover{ color:var(--accent, #0d9488); }
-
-/* Accessible active state: pill background (NOT color-only) */
-/* Excludes home icon */
-.tm-topbar a.active:not(.home-link),
-.tm-topbar a.active:not(.home-link):visited{
-  background: rgba(13,148,136,0.12);
-  color: var(--text, #111) !important;
-  font-weight: 600;
-  border-radius: 999px;
-}
-
-/* separators */
-.tm-topbar a + a{
-  border-left:1px solid #e5e7eb;
-  margin-left:6px;
-  padding-left:12px;
-}
-
-/* home icon */
-.tm-topbar .home-link{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:4px 10px;
-}
-.tm-topbar .home-link svg{
-  width:18px;
-  height:18px;
-}
-
-/* Mobile tighten + “One Minute” -> “One-Min” */
-@media (max-width: 520px){
-  .tm-topbar-inner{ padding:8px var(--tm-wrap-pad, 12px); }
-  .tm-topbar a, .tm-topbar a:visited{ font-size:13px; padding:3px 8px; }
-  .tm-topbar a + a{ margin-left:5px; padding-left:10px; }
-
-  .tm-topbar a[href$="/one-minute-audio.html"]{ font-size:0; }
-  .tm-topbar a[href$="/one-minute-audio.html"]::before{
-    content:"One-Min";
-    font-size:13px;
-  }
-}
+    /* ===== Canonical Card Pattern ===== */
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
 
     .sectionToggle{
-  width:100%;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:none;
-  border:none;
-  padding:0;
-  font-size:18px;
-  font-weight:700;
-  cursor:pointer;
-  margin-bottom:10px;
-}
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .sectionToggle:hover{ background: rgba(0,0,0,0.02); }
 
-.sectionChevron{
-  margin-left:auto;
-  transition: transform .2s ease;
-  font-size:16px;
-  color:var(--muted);
-}
+    .sectionChevron{
+      margin-left:auto;
+      transition: transform .2s ease;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .sectionChevron.rotated{ transform: rotate(180deg); }
 
-.sectionContent{
-  overflow:hidden;
-  transition: max-height .3s ease, opacity .2s ease;
-}
+    .count{ font-size: 0.8rem; color: var(--muted); }
 
-.sectionContent.collapsed{
-  max-height:0;
-  opacity:0;
-  pointer-events:none;
-}
+    /* Collapsible content */
+    .sectionContent{
+      transition: max-height .3s ease, opacity .2s ease;
+      overflow: visible; /* IMPORTANT: prevents bottom clipping */
+    }
+    .sectionContent.collapsed{
+      max-height:0;
+      opacity:0;
+      pointer-events:none;
+    }
+    .sectionContent.expanded{
+      max-height:2000px;
+      opacity:1;
+    }
 
-.sectionContent.expanded{
-  max-height:2000px;
-  opacity:1;
-}
+    /* ===== TorahMoment Topbar ===== */
+    .tm-topbar{
+      width:100%;
+      background:#ffffff;
+      border-bottom:1px solid var(--border, #e7e7ee);
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
 
-.sectionChevron.rotated{
-  transform: rotate(180deg);
-}
+    .tm-topbar-inner{
+      box-sizing: border-box;
+      max-width: var(--tm-wrap-max, 980px);
+      margin:0 auto;
+      padding:10px var(--tm-wrap-pad, 20px);
+      display:flex;
+      align-items:center;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      position:relative;
+    }
+    .tm-topbar-inner::-webkit-scrollbar{ display:none; }
 
+    .tm-topbar-inner::after{
+      content:"";
+      position:absolute;
+      right:0;
+      top:0;
+      width:28px;
+      height:100%;
+      pointer-events:none;
+      background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+    }
 
-/* ===== Canonical Card Pattern ===== */
+    .tm-topbar a,
+    .tm-topbar a:visited{
+      text-decoration:none;
+      color:var(--muted, #666);
+      font-size:14px;
+      font-weight:500;
+      white-space:nowrap;
+      padding:4px 10px;
+    }
+    .tm-topbar a:hover{ color:var(--accent, #0d9488); }
 
-.card{
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  margin-bottom: 20px;
-  overflow: hidden;
-}
+    .tm-topbar a.active:not(.home-link),
+    .tm-topbar a.active:not(.home-link):visited{
+      background: rgba(13,148,136,0.12);
+      color: var(--text, #111) !important;
+      font-weight: 600;
+      border-radius: 999px;
+    }
 
-.sectionToggle{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 14px 16px;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-}
+    .tm-topbar a + a{
+      border-left:1px solid #e5e7eb;
+      margin-left:6px;
+      padding-left:12px;
+    }
 
-.sectionToggle:hover{
-  background: rgba(0,0,0,0.02);
-}
+    .tm-topbar .home-link{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 10px;
+    }
+    .tm-topbar .home-link svg{ width:18px; height:18px; }
 
-.sectionChevron{
-  font-size: 0.9rem;
-  color: var(--muted);
-}
+    @media (max-width: 520px){
+      .tm-topbar-inner{ padding:8px var(--tm-wrap-pad, 12px); }
+      .tm-topbar a, .tm-topbar a:visited{ font-size:13px; padding:3px 8px; }
+      .tm-topbar a + a{ margin-left:5px; padding-left:10px; }
 
-.count{
-  font-size: 0.8rem;
-  color: var(--muted);
-}
+      .tm-topbar a[href$="/one-minute-audio.html"]{ font-size:0; }
+      .tm-topbar a[href$="/one-minute-audio.html"]::before{
+        content:"One-Min";
+        font-size:13px;
+      }
+    }
 
-.sectionContent{
-  padding: 0 16px 12px;
-}
+    /* ========= tm-audio-ui compact overrides (ONLY place to tweak spacing) ========= */
+    #parshaList, #halachaList{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding: 12px 16px 22px; /* bottom padding prevents cut-off */
+    }
 
+    #parshaList .tm-row, #halachaList .tm-row{
+      margin:0;
+      padding:10px 12px;
+      border-radius:14px;
+    }
 
- .list > *{
-  padding: 10px 0;
-  border-top: 1px solid var(--border);
-}
+    .tm-title{ line-height:1.15; }
+    .tm-meta{ margin:2px 0 6px; line-height:1.15; }
 
-.list > *:first-child{
-  border-top: 0;
-}
-
-.list {padding: 14px 16px;}    
-
-/* Rows now contain inline audio */
-
-
-.left{ min-width:0; }
-.title{ font-weight:600; }
-.meta{ color: var(--muted); font-size: 0.85rem; margin-top:2px; }
-
-.right{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex:0 0 auto;
-}
-
-.badge{
-  border:1px solid var(--border);
-  border-radius:999px;
-  padding:4px 10px;
-  font-size:0.75rem;
-  color: var(--muted);
-  background:#fff;
-}
-
-.openLink{
-  text-decoration:none;
-  color: var(--muted);
-  border:1px solid var(--border);
-  border-radius:999px;
-  padding:4px 10px;
-  font-size:0.8rem;
-}
-.openLink:hover{ color: var(--accent); border-color: var(--accent); }
-
-/* hidden until opened */
-.audioWrap{ display:none; width:100%; margin-top:10px; }
-.row.isOpen{ flex-wrap:wrap; }
-.row.isOpen .audioWrap{ display:block; }
-.audioWrap audio{ width:100%; }
-
-
- /* ===== Make In-Depth lists look like Mishna ===== */
-
-.listCard{
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-/* rows become flat items */
-.listCard .row{
-  margin: 0;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  background: transparent;
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--border);
-}
-
-.listCard .row:last-child{
-  border-bottom: 0;
-}
-
-/* subtle hover */
-@media (hover:hover){
-  .listCard .row:hover{
-    background: rgba(0,0,0,0.02);
-    transform: none; /* kill lift */
-  }
-}
-
-/* audio stays inline, just spaced nicely */
-.listCard .row.isOpen .audioWrap{
-  display:block;
-  width:100%;
-  margin-top:8px;
-}
-
-.listCard .audioWrap audio{
-  width:100%;
-}   
-
-/* calmer section header like mishna */
-.sectionToggle{
-  padding: 12px 14px;
-}
-
-.sectionContent{
-  padding: 10px 0 14px; /* remove side padding so listCard aligns perfectly */
-}
-
-    .controls .speedBtns{ display:none; gap:8px; flex-wrap:wrap; margin-top:8px; }
-.row.isOpen .controls .speedBtns{ display:flex; }
-
-.speedBtns button{
-  border:1px solid var(--border);
-  background:#fff;
-  padding:4px 10px;
-  border-radius:999px;
-  font-size:0.75rem;
-  cursor:pointer;
-}
-.speedBtns button.active{
-  border-color: var(--accent);
-  background: rgba(13,148,136,0.10);
-  font-weight:700;
-}
-/* indepth: tighten spacing for tm-audio-ui rows */
-#parshaList .tm-row,
-#halachaList .tm-row{
-  margin: 0 0 10px; /* controls vertical spacing between rows */
-}
-
-/* if your list wrapper also adds spacing, this keeps it consistent */
-#parshaList, #halachaList{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-/* optional: slightly tighter inside the card */
-.tm-row{ padding: 12px 14px; }          /* overrides tm-audio-ui default if needed */
-.tm-meta{ margin-top: 4px; margin-bottom: 8px; }
-    <style>
-  /* indepth: when using tm-audio-ui, don't double-card each row */
-  #parshaList .item,
-  #halachaList .item{
-    padding: 0 !important;
-    margin: 0 0 10px !important;
-    border: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-  }
-
-  /* make list spacing consistent */
-  #parshaList, #halachaList{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* tighten vertical rhythm inside each tm-row */
-  .tm-title-row{ margin-bottom: 4px !important; }
-  .tm-meta{ margin: 0 0 8px !important; }
-</style>
-
-
-  
+    .tm-player{ margin-top:6px; gap:10px; }
+    .tm-play{ width:38px; height:38px; min-width:38px; }
+    .tm-progress{ height:4px; }
+    .tm-speed, .tm-dur{ font-size:12px; padding:6px 10px; }
   </style>
-
-  <style>
-  /* Force the list layout to be consistent and not double-spaced */
-  #parshaList, #halachaList{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-
-  /* If your rows are wrapped in .item, remove its “card” spacing */
-  #parshaList .item, #halachaList .item{
-    padding:0 !important;
-    margin:0 !important;
-    border:0 !important;
-    background:transparent !important;
-    box-shadow:none !important;
-  }
-
-  /* Tighten the tm row itself (this WILL visibly change if applied) */
-  #parshaList .tm-row, #halachaList .tm-row{
-    padding:10px 12px !important;
-    margin:0 !important;   /* don’t double up with gap */
-  }
-
-  /* Fix any old .title/.meta spacing bleeding into tm elements */
-  .tm-title{ line-height:1.2; }
-  .tm-meta{ margin:2px 0 8px !important; line-height:1.2; }
-
-    /* Prevent card/sections from clipping the bottom line */
-.card,
-.sectionContent,
-.section,
-.panel,
-.wrap{
-  overflow: visible !important;
-}
-
-/* If a scrollable area exists, give it bottom padding so the last line isn’t cut */
-#parshaList,
-#halachaList{
-  padding-bottom: 22px !important;
-}
-    
-</style>
-
-  
 </head>
 
 <body>
