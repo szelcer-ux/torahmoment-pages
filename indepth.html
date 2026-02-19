@@ -254,6 +254,58 @@
 }
 
 .list {padding: 14px 16px;}    
+
+/* Rows now contain inline audio */
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  margin-bottom: 10px;
+  cursor:pointer;
+}
+
+.left{ min-width:0; }
+.title{ font-weight:600; }
+.meta{ color: var(--muted); font-size: 0.85rem; margin-top:2px; }
+
+.right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+
+.badge{
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:0.75rem;
+  color: var(--muted);
+  background:#fff;
+}
+
+.openLink{
+  text-decoration:none;
+  color: var(--muted);
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:0.8rem;
+}
+.openLink:hover{ color: var(--accent); border-color: var(--accent); }
+
+/* hidden until opened */
+.audioWrap{ display:none; width:100%; margin-top:10px; }
+.row.isOpen{ flex-wrap:wrap; }
+.row.isOpen .audioWrap{ display:block; }
+.audioWrap audio{ width:100%; }
+
+    
   </style>
 </head>
 
@@ -378,46 +430,108 @@
   tabParsha.addEventListener("click", ()=>setTab("parsha"));
   tabHalacha.addEventListener("click", ()=>setTab("halacha"));
 
-  function rowLink({title, meta, url, badgeText, durText}){
-    const a = document.createElement("a");
-    a.className = "row";
-    a.href = url;
-    a.target = "_blank";
-    a.rel = "noopener";
+function rowItem({title, meta, url, badgeText, durText}){
+  const row = document.createElement("div");
+  row.className = "row";
+  row.setAttribute("role", "button");
+  row.setAttribute("tabindex", "0");
 
-    const left = document.createElement("div");
-    left.className = "left";
+  const left = document.createElement("div");
+  left.className = "left";
 
-    const t = document.createElement("div");
-    t.className = "title";
-    t.textContent = title || "Untitled";
+  const t = document.createElement("div");
+  t.className = "title";
+  t.textContent = title || "Untitled";
 
-    const m = document.createElement("div");
-    m.className = "meta";
-    m.textContent = meta || "";
+  const m = document.createElement("div");
+  m.className = "meta";
+  m.textContent = meta || "";
 
-    left.appendChild(t);
-    left.appendChild(m);
+  left.appendChild(t);
+  left.appendChild(m);
 
-    const right = document.createElement("div");
-    right.className = "right";
+  const right = document.createElement("div");
+  right.className = "right";
 
-    if (durText){
-      const dur = document.createElement("div");
-      dur.className = "badge badgeDur";
-      dur.textContent = durText;
-      right.appendChild(dur);
-    }
-
-    const badge = document.createElement("div");
-    badge.className = "badge badgeLong";
-    badge.textContent = badgeText || "";
-    right.appendChild(badge);
-
-    a.appendChild(left);
-    a.appendChild(right);
-    return a;
+  if (durText){
+    const dur = document.createElement("div");
+    dur.className = "badge badgeDur";
+    dur.textContent = durText;
+    right.appendChild(dur);
   }
+
+  const badge = document.createElement("div");
+  badge.className = "badge badgeLong";
+  badge.textContent = badgeText || "";
+  right.appendChild(badge);
+
+  // Optional: keep an "open" link without breaking inline play
+  const open = document.createElement("a");
+  open.className = "openLink";
+  open.href = url;
+  open.target = "_blank";
+  open.rel = "noopener";
+  open.textContent = "↗";
+  open.title = "Open in new tab";
+  right.appendChild(open);
+
+  const audioWrap = document.createElement("div");
+  audioWrap.className = "audioWrap";
+  audioWrap.innerHTML = `
+    <audio controls preload="none">
+      <source src="${String(url).replace(/"/g, "&quot;")}" type="audio/mpeg">
+    </audio>
+  `;
+
+  row.appendChild(left);
+  row.appendChild(right);
+  row.appendChild(audioWrap);
+
+  // --- behavior ---
+  const audio = audioWrap.querySelector("audio");
+
+  function closeOthers(){
+    document.querySelectorAll(".row.isOpen").forEach(r => {
+      if (r !== row) {
+        r.classList.remove("isOpen");
+        const a = r.querySelector("audio");
+        if (a && !a.paused) { a.pause(); }
+      }
+    });
+  }
+
+  function toggleOpen(play){
+    const willOpen = !row.classList.contains("isOpen");
+    if (willOpen){
+      closeOthers();
+      row.classList.add("isOpen");
+      if (play) audio.play().catch(()=>{});
+    } else {
+      row.classList.remove("isOpen");
+      if (!audio.paused) audio.pause();
+    }
+  }
+
+  // click anywhere toggles, but don't hijack clicks on the open link or audio controls
+  row.addEventListener("click", (e) => {
+    if (e.target.closest("a.openLink") || e.target.closest("audio")) return;
+    toggleOpen(true);
+  });
+
+  row.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggleOpen(true);
+    }
+  });
+
+  audio.addEventListener("play", () => {
+    closeOthers();
+    row.classList.add("isOpen");
+  });
+
+  return row;
+}
 
   // ---------- duration helpers ----------
   function fmtHMS(sec){
@@ -624,7 +738,7 @@ function getAudioDurationSec(url){
       parshaListEl.innerHTML = `<div class="muted">No Parsha in-depth items found.</div>`;
     } else {
       for (const r of parshaRows){
-        parshaListEl.appendChild(rowLink({
+        parshaListEl.appendChild(rowItem({
           title: r.title,
           meta: r.parsha,
           url: r.url,
@@ -686,7 +800,7 @@ longOnes.sort((a,b) => {
     } else {
       for (const it of longOnes){
         const meta = [it.note, it.cat, it.sub].filter(Boolean).join(" • ");
-        halachaListEl.appendChild(rowLink({
+        halachaListEl.appendChild(rowItem({
           title: it.title,
           meta,
           url: it.url,
