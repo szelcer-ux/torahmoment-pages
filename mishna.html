@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mishna Audio | TorahMoment</title>
-
+<link rel="stylesheet" href="/css/tm-audio-ui.css">
   <style>
     :root{
       --bg:#ffffff;
@@ -647,102 +647,62 @@
       rowEl.classList.add("isActive");
     }
 
-    function render(){
-      const stack = document.getElementById("stack");
-      const totalsText = document.getElementById("totalsText");
-      const totalsPill = document.getElementById("totalsPill");
+function render(){
+  const stack = document.getElementById("stack");
+  const totalsText = document.getElementById("totalsText");
+  const totalsPill = document.getElementById("totalsPill");
 
-      const payload = getCountsPayload();
-      totalsText.innerHTML = `<b>Total shiurim on this page:</b> ${payload.total_items}`;
-      totalsPill.textContent = `Masechtos: ${MASECHTOS.length}`;
+  const payload = getCountsPayload();
+  totalsText.innerHTML = `<b>Total shiurim on this page:</b> ${payload.total_items}`;
+  totalsPill.textContent = `Masechtos: ${MASECHTOS.length}`;
 
-      // removed 0.8 as requested
-      const speedRates = [1, 1.25, 1.5, 2];
+  stack.innerHTML = MASECHTOS.map(m => {
+    const items = m.items || [];
+    const openAttr = m.openByDefault ? "open" : "";
+    return `
+      <details class="card" ${openAttr} data-masechta="${escapeHtml(m.name)}">
+        <summary class="cardHead">
+          <div class="headLeft">
+            <div class="chev">›</div>
+            <div class="title">${escapeHtml(m.name)}</div>
+          </div>
+          <div class="count">${items.length} shiurim</div>
+        </summary>
 
-      stack.innerHTML = MASECHTOS.map(m => {
-        const items = m.items || [];
-        const openAttr = m.openByDefault ? "open" : "";
-        return `
-          <details class="card" ${openAttr} data-masechta="${escapeHtml(m.name)}">
-            <summary class="cardHead">
-              <div class="headLeft">
-                <div class="chev">›</div>
-                <div class="title">${escapeHtml(m.name)}</div>
-              </div>
-              <div class="count">${items.length} shiurim</div>
-            </summary>
-
-            <div class="list">
-              ${items.map((it) => `
-                <div class="row" data-item="1" tabindex="0">
-                  <div class="rowTop">
-                    <div class="label">${escapeHtml(it.label)}</div>
-                  </div>
-
-                  <div class="controls">
-                    <div class="speed" role="group" aria-label="Playback speed">
-                      ${speedRates.map(r => `
-                        <button type="button" class="spdBtn" data-rate="${r}">${r}×</button>
-                      `).join("")}
-                    </div>
-                  </div>
-
-                  <audio controls preload="none" src="${escapeHtml(it.url)}"></audio>
+        <div class="list">
+          ${items.map((it, idx) => {
+            const pid = `tm_${m.name.replace(/\W+/g,'_')}_${idx}`;
+            return `
+              <div class="row" data-item="1" tabindex="0">
+                <div class="rowTop">
+                  <div class="label">${escapeHtml(it.label)}</div>
                 </div>
-              `).join("")}
-            </div>
-          </details>
-        `;
-      }).join("");
 
-      // Wire up speed buttons + default 1× + show controls only when row is selected
-      document.querySelectorAll(".row").forEach(row => {
-        const audio = row.querySelector("audio");
-        audio.playbackRate = 1;
+                <div class="tm-row" data-audio-id="${pid}">
+                  <button class="tm-play" type="button" aria-label="Play/Pause">▶</button>
 
-        // set initial active state for 1× button
-        row.querySelectorAll(".spdBtn").forEach(btn => {
-          const r = Number(btn.getAttribute("data-rate"));
-          if (r === 1) btn.classList.add("isActive");
+                  <div class="tm-main">
+                    <div class="tm-progress"><div></div></div>
+                  </div>
 
-          btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            setActiveRow(row);
-            setActiveSpeed(row, r);
-          });
-        });
+                  <div class="tm-right">
+                    <div class="tm-speed">1×</div>
+                    <div class="tm-dur">(0:00)</div>
+                  </div>
 
-        // clicking the row (or its label) makes it active (reveals speed buttons)
-        row.addEventListener("click", (e) => {
-          // avoid toggling active when clicking a speed button (handled above)
-          if (e.target.closest(".spdBtn")) return;
-          setActiveRow(row);
-        });
+                  <audio id="${pid}" preload="none" data-src="${escapeHtml(it.url)}"></audio>
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      </details>
+    `;
+  }).join("");
 
-        // keyboard accessibility: Enter/Space selects row
-        row.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            setActiveRow(row);
-          }
-        });
-
-        // if playback begins, also mark row active
-        audio.addEventListener("play", () => setActiveRow(row));
-
-        // if user changes playback rate via native controls/OS, reflect closest button
-        audio.addEventListener("ratechange", () => {
-          const current = audio.playbackRate;
-          const rates = Array.from(row.querySelectorAll(".spdBtn")).map(b => Number(b.dataset.rate));
-          let best = rates[0], bestDiff = Math.abs(current - best);
-          for (const rr of rates) {
-            const d = Math.abs(current - rr);
-            if (d < bestDiff) { best = rr; bestDiff = d; }
-          }
-          row.querySelectorAll(".spdBtn").forEach(b => b.classList.toggle("isActive", Number(b.dataset.rate) === best));
-        });
-      });
-    }
+  // Wire the halacha-style players inside this page
+  tmWireMishnaPlayers();
+}
 
     render();
   </script>
