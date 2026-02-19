@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TorahMoment — In-Depth Shiurim</title>
-<link rel="stylesheet" href="/css/tm-audio-ui.css">
+<link rel="stylesheet" href="/css/tm-audio-ui.css?v=20260219a">
   <style>
     html, body { margin:0; padding:0; }
 *, *::before, *::after { box-sizing:border-box; }
@@ -407,6 +407,34 @@
 
   
   </style>
+
+  <style>
+  /* Force the list layout to be consistent and not double-spaced */
+  #parshaList, #halachaList{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  /* If your rows are wrapped in .item, remove its “card” spacing */
+  #parshaList .item, #halachaList .item{
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+  }
+
+  /* Tighten the tm row itself (this WILL visibly change if applied) */
+  #parshaList .tm-row, #halachaList .tm-row{
+    padding:10px 12px !important;
+    margin:0 !important;   /* don’t double up with gap */
+  }
+
+  /* Fix any old .title/.meta spacing bleeding into tm elements */
+  .tm-title{ line-height:1.2; }
+  .tm-meta{ margin:2px 0 8px !important; line-height:1.2; }
+</style>
 </head>
 
 <body>
