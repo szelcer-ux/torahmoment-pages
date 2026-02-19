@@ -4,7 +4,33 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TorahMoment — In-Depth Shiurim</title>
-<link rel="stylesheet" href="/css/tm-audio-ui.css?v=20260219a">
+<link rel="stylesheet" href="/css/tm-audio-ui.css?v=in-depthgibberish">
+  <style>
+  /* PROVE this block is active */
+  .tm-row{ outline: 2px solid rgba(255,0,0,.35) !important; }
+
+  /* Tighten tm row padding and internal spacing */
+  .tm-row{
+    padding: 10px 12px !important;
+  }
+  .tm-meta{
+    margin: 2px 0 6px !important;
+    line-height: 1.15 !important;
+  }
+  .tm-player{
+    margin-top: 6px !important;
+  }
+
+  /* Control spacing between rows */
+  #parshaList, #halachaList{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:10px !important;
+  }
+  #parshaList .tm-row, #halachaList .tm-row{
+    margin:0 !important; /* avoid double-spacing (gap handles it) */
+  }
+</style>
   <style>
     html, body { margin:0; padding:0; }
 *, *::before, *::after { box-sizing:border-box; }
@@ -434,7 +460,25 @@
   /* Fix any old .title/.meta spacing bleeding into tm elements */
   .tm-title{ line-height:1.2; }
   .tm-meta{ margin:2px 0 8px !important; line-height:1.2; }
+
+    /* Prevent card/sections from clipping the bottom line */
+.card,
+.sectionContent,
+.section,
+.panel,
+.wrap{
+  overflow: visible !important;
+}
+
+/* If a scrollable area exists, give it bottom padding so the last line isn’t cut */
+#parshaList,
+#halachaList{
+  padding-bottom: 22px !important;
+}
+    
 </style>
+
+  
 </head>
 
 <body>
