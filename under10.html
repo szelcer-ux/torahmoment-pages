@@ -236,7 +236,7 @@
 
   /* If max-height animation is used, give more room */
   .sectionContent.expanded{
-    max-height: 4000px !important;  /* was 2000px; long lists need more */
+    max-height: 6000px !important;  /* was 2000px; long lists need more */
   }
 
   /* ===== One-line title row ===== */
@@ -264,6 +264,7 @@
   font-weight:400;
   color: var(--muted);
 }
+    
 </style>
 </head>
 
@@ -296,14 +297,14 @@
 
     <div class="pillbar">
       <button class="pill" id="tabAll" aria-pressed="true" type="button">All</button>
-      <button class="pill" id="tabParsha" aria-pressed="false" type="button">Parsha In-Depth</button>
+      <button class="pill" id="tabParsha" aria-pressed="false" type="button">Parsha Under 10 minutes</button>
       <button class="pill" id="tabHalacha" aria-pressed="false" type="button">Halacha / Hashkafa</button>
     </div>
 
 <div class="card" id="parshaCard">
 
   <button class="sectionToggle" type="button">
-    <span>Parsha In-Depth</span>
+    <span>Parsha Under 10 minutes</span>
     <span class="sectionChevron">⌄</span>
     <span class="count" id="parshaCount"></span>
   </button>
