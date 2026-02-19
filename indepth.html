@@ -220,6 +220,44 @@
     .tm-progress{ height:4px; }
     .tm-speed, .tm-dur{ font-size:12px; padding:6px 10px; }
   </style>
+
+  <style>
+  /* ===== Fix bottom cut-off in collapsible sections ===== */
+
+  /* Keep the card rounded corners, but don't clip the section content */
+  .card{ overflow: hidden; } /* keep */
+  .sectionContent{
+    overflow: auto;                 /* KEY: prevents clipping */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 26px !important; /* extra breathing room at bottom */
+  }
+
+  /* If max-height animation is used, give more room */
+  .sectionContent.expanded{
+    max-height: 4000px !important;  /* was 2000px; long lists need more */
+  }
+
+  /* ===== One-line title row ===== */
+  .tm-title-row{
+    display:flex !important;
+    align-items:center !important;
+    gap:10px !important;
+    flex-wrap:nowrap !important;
+  }
+
+  .tm-title{
+    flex: 1 1 auto !important;
+    min-width: 0 !important;               /* allows ellipsis */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .tm-badge{
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+</style>
 </head>
 
 <body>
