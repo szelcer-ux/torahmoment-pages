@@ -358,6 +358,24 @@
 .sectionContent{
   padding: 10px 0 14px; /* remove side padding so listCard aligns perfectly */
 }
+
+    .controls .speedBtns{ display:none; gap:8px; flex-wrap:wrap; margin-top:8px; }
+.row.isOpen .controls .speedBtns{ display:flex; }
+
+.speedBtns button{
+  border:1px solid var(--border);
+  background:#fff;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:0.75rem;
+  cursor:pointer;
+}
+.speedBtns button.active{
+  border-color: var(--accent);
+  background: rgba(13,148,136,0.10);
+  font-weight:700;
+}
+
     
   </style>
 </head>
@@ -531,6 +549,14 @@ function rowItem({title, meta, url, badgeText, durText}){
   open.title = "Open in new tab";
   right.appendChild(open);
 
+  const controls = document.createElement("div");
+controls.className = "controls";
+controls.innerHTML = `
+  <div class="speedBtns">
+    ${[1,1.25,1.5,2].map(r => `<button type="button" data-rate="${r}">${r}×</button>`).join("")}
+  </div>
+`;
+  
   const audioWrap = document.createElement("div");
   audioWrap.className = "audioWrap";
   audioWrap.innerHTML = `
@@ -541,11 +567,32 @@ function rowItem({title, meta, url, badgeText, durText}){
 
   row.appendChild(left);
   row.appendChild(right);
+  row.appendChild(controls);
   row.appendChild(audioWrap);
 
   // --- behavior ---
   const audio = audioWrap.querySelector("audio");
+  // default rate (optional: remember like one-minute)
+let currentRate = 1;
+audio.playbackRate = currentRate;
 
+controls.querySelectorAll('button[data-rate]').forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const r = Number(btn.dataset.rate);
+    if (Number.isFinite(r)) {
+      audio.playbackRate = r;
+      currentRate = r;
+      controls.querySelectorAll("button").forEach(b => b.classList.toggle("active", b === btn));
+    }
+  });
+});
+
+// show controls when playing
+audio.addEventListener("play", () => {
+  closeOthers();
+  row.classList.add("isOpen");     // this will reveal speed buttons too
+});
   function closeOthers(){
     document.querySelectorAll(".row.isOpen").forEach(r => {
       if (r !== row) {
@@ -570,7 +617,7 @@ function rowItem({title, meta, url, badgeText, durText}){
 
   // click anywhere toggles, but don't hijack clicks on the open link or audio controls
   row.addEventListener("click", (e) => {
-    if (e.target.closest("a.openLink") || e.target.closest("audio")) return;
+    if (e.target.closest("a.openLink") || e.target.closest("audio") || e.target.closest(".speedBtns")) return;
     toggleOpen(true);
   });
 
