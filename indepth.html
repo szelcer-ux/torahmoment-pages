@@ -380,6 +380,29 @@
   font-weight:700;
 }
 
+    <style>
+  /* indepth: when using tm-audio-ui, don't double-card each row */
+  #parshaList .item,
+  #halachaList .item{
+    padding: 0 !important;
+    margin: 0 0 10px !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* make list spacing consistent */
+  #parshaList, #halachaList{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* tighten vertical rhythm inside each tm-row */
+  .tm-title-row{ margin-bottom: 4px !important; }
+  .tm-meta{ margin: 0 0 8px !important; }
+</style>
     
   </style>
 </head>
