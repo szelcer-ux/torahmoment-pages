@@ -508,136 +508,39 @@
   tabParsha.addEventListener("click", ()=>setTab("parsha"));
   tabHalacha.addEventListener("click", ()=>setTab("halacha"));
 
-function rowItem({title, meta, url, badgeText, durText}){
-  const row = document.createElement("div");
-  row.className = "row";
-  row.setAttribute("role", "button");
-  row.setAttribute("tabindex", "0");
+function rowItem({ title, meta, url, badgeText, durText }){
+  const safeUrl = String(url || "").replace(/"/g, "&quot;");
 
-  const left = document.createElement("div");
-  left.className = "left";
+  const wrap = document.createElement("div");
+  wrap.className = "tm-row";
 
-  const t = document.createElement("div");
-  t.className = "title";
-  t.textContent = title || "Untitled";
+  wrap.innerHTML = `
+    <div class="tm-main">
+      <div class="tm-title-row">
+        <div class="tm-title">${(title || "Untitled")}</div>
+        ${badgeText ? `<span class="tm-badge">${badgeText}</span>` : ``}
+      </div>
 
-  const m = document.createElement("div");
-  m.className = "meta";
-  m.textContent = meta || "";
+      ${meta ? `<div class="tm-meta">${meta}</div>` : ``}
 
-  left.appendChild(t);
-  left.appendChild(m);
+      <div class="tm-player">
+        <button class="tm-play" type="button" aria-label="Play/Pause">►</button>
 
-  const right = document.createElement("div");
-  right.className = "right";
+        <div class="tm-seek">
+          <div class="tm-progress"><div></div></div>
+        </div>
 
-  if (durText){
-    const dur = document.createElement("div");
-    dur.className = "badge badgeDur";
-    dur.textContent = durText;
-    right.appendChild(dur);
-  }
+        <div class="tm-right">
+          <div class="tm-speed" role="button" tabindex="0">1×</div>
+          <div class="tm-dur">${durText ? durText : "--:--"}</div>
+        </div>
 
-  const badge = document.createElement("div");
-  badge.className = "badge badgeLong";
-  badge.textContent = badgeText || "";
-  right.appendChild(badge);
-
-  // Optional: keep an "open" link without breaking inline play
-  const open = document.createElement("a");
-  open.className = "openLink";
-  open.href = url;
-  open.target = "_blank";
-  open.rel = "noopener";
-  open.textContent = "↗";
-  open.title = "Open in new tab";
-  right.appendChild(open);
-
-  const controls = document.createElement("div");
-controls.className = "controls";
-controls.innerHTML = `
-  <div class="speedBtns">
-    ${[1,1.25,1.5,2].map(r => `<button type="button" data-rate="${r}">${r}×</button>`).join("")}
-  </div>
-`;
-  
-  const audioWrap = document.createElement("div");
-  audioWrap.className = "audioWrap";
-  audioWrap.innerHTML = `
-    <audio controls preload="none">
-      <source src="${String(url).replace(/"/g, "&quot;")}" type="audio/mpeg">
-    </audio>
+        <audio preload="none" data-src="${safeUrl}"></audio>
+      </div>
+    </div>
   `;
 
-  row.appendChild(left);
-  row.appendChild(right);
-  row.appendChild(controls);
-  row.appendChild(audioWrap);
-
-  // --- behavior ---
-  const audio = audioWrap.querySelector("audio");
-  // default rate (optional: remember like one-minute)
-let currentRate = 1;
-audio.playbackRate = currentRate;
-
-controls.querySelectorAll('button[data-rate]').forEach(btn => {
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const r = Number(btn.dataset.rate);
-    if (Number.isFinite(r)) {
-      audio.playbackRate = r;
-      currentRate = r;
-      controls.querySelectorAll("button").forEach(b => b.classList.toggle("active", b === btn));
-    }
-  });
-});
-
-// show controls when playing
-audio.addEventListener("play", () => {
-  closeOthers();
-  row.classList.add("isOpen");     // this will reveal speed buttons too
-});
-  function closeOthers(){
-    document.querySelectorAll(".row.isOpen").forEach(r => {
-      if (r !== row) {
-        r.classList.remove("isOpen");
-        const a = r.querySelector("audio");
-        if (a && !a.paused) { a.pause(); }
-      }
-    });
-  }
-
-  function toggleOpen(play){
-    const willOpen = !row.classList.contains("isOpen");
-    if (willOpen){
-      closeOthers();
-      row.classList.add("isOpen");
-      if (play) audio.play().catch(()=>{});
-    } else {
-      row.classList.remove("isOpen");
-      if (!audio.paused) audio.pause();
-    }
-  }
-
-  // click anywhere toggles, but don't hijack clicks on the open link or audio controls
-  row.addEventListener("click", (e) => {
-    if (e.target.closest("a.openLink") || e.target.closest("audio") || e.target.closest(".speedBtns")) return;
-    toggleOpen(true);
-  });
-
-  row.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      toggleOpen(true);
-    }
-  });
-
-  audio.addEventListener("play", () => {
-    closeOthers();
-    row.classList.add("isOpen");
-  });
-
-  return row;
+  return wrap;
 }
 
   // ---------- duration helpers ----------
