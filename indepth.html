@@ -305,6 +305,59 @@
 .row.isOpen .audioWrap{ display:block; }
 .audioWrap audio{ width:100%; }
 
+
+ /* ===== Make In-Depth lists look like Mishna ===== */
+
+.listCard{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* rows become flat items */
+.listCard .row{
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.listCard .row:last-child{
+  border-bottom: 0;
+}
+
+/* subtle hover */
+@media (hover:hover){
+  .listCard .row:hover{
+    background: rgba(0,0,0,0.02);
+    transform: none; /* kill lift */
+  }
+}
+
+/* audio stays inline, just spaced nicely */
+.listCard .row.isOpen .audioWrap{
+  display:block;
+  width:100%;
+  margin-top:8px;
+}
+
+.listCard .audioWrap audio{
+  width:100%;
+}   
+
+/* calmer section header like mishna */
+.sectionToggle{
+  padding: 12px 14px;
+}
+
+.sectionContent{
+  padding: 10px 0 14px; /* remove side padding so listCard aligns perfectly */
+}
     
   </style>
 </head>
@@ -352,6 +405,7 @@
 
   <div class="sectionContent" id="parshaContent">
 
+    <div class="listCard">
     <div class="list" id="parshaList">
       <div class="loader">
         <span class="dot"></span>
@@ -360,7 +414,7 @@
         Loading Parsha in-depth…
       </div>
     </div>
-
+    </div>
   </div>
 
 </div>
@@ -375,12 +429,14 @@
   </button>
 
   <div class="sectionContent" id="halachaContent">
+    <div class="listCard">
     <div class="list" id="halachaList">
       <div class="loader">
         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         Loading Halacha data…
       </div>
     </div>
+    </div>  
   </div>
 
   <div class="sub" style="margin-top:10px;">
