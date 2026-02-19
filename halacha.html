@@ -1047,6 +1047,8 @@ header h1{
 
     window.HALACHA_DATA = PAGE_DATA;
 
+
+      
 function openCategoryFromURL(){
   const params = new URLSearchParams(location.search);
   const cat = (params.get("cat") || "").trim().toLowerCase();
@@ -1389,7 +1391,7 @@ function openFromURLParams(){
     }
   }
 }
-
+<script src="/js/tm-audio-ui.js"></script>
     
     function render(){
       const q = (searchInput.value || "").trim().toLowerCase();
@@ -1484,7 +1486,7 @@ return `
       }).join("");
 
      app.innerHTML = html;
-      tmWireHalachaStylePlayers();
+      window.tmWireHalachaStylePlayers?.();
       openCategoryFromURL();
 
 
