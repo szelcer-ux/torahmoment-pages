@@ -119,22 +119,32 @@ function norm(s) {
 
 function flattenHalacha(data) {
   const out = [];
-  for (const cat of data || []) {
-    for (const sub of cat.subcategories || []) {
-      for (const it of sub.items || []) {
-        const date = parseMmDdYyyy(it.note);
-        if (!date) continue;
 
-        out.push({
-          type: "audio",
-          program: "Halacha",
-          title: it.title || "Halacha",
-          url: it.url,
-          date,
-        });
-      }
+  const pushItem = (it) => {
+    if (!it || !it.url) return;
+
+    const date = parseMmDdYyyy(it.note);
+    if (!date) return;
+
+    out.push({
+      type: (it.type || "audio"),     // keep your type if present
+      program: "Halacha",
+      title: it.title || "Halacha",
+      url: it.url,
+      date,
+    });
+  };
+
+  for (const cat of data || []) {
+    // ✅ flat categories: { category, items: [...] }
+    for (const it of cat.items || []) pushItem(it);
+
+    // ✅ nested categories: { category, subcategories:[{items:[...]}] }
+    for (const sub of cat.subcategories || []) {
+      for (const it of sub.items || []) pushItem(it);
     }
   }
+
   return out.filter((x) => x.url && x.date);
 }
 
