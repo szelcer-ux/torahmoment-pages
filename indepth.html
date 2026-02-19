@@ -6,6 +6,49 @@
   <title>TorahMoment — In-Depth Shiurim</title>
 <link rel="stylesheet" href="/css/tm-audio-ui.css?v=in-depthgibberish">
   <style>
+/* --- indepth compact mode for tm-audio-ui --- */
+
+/* spacing between rows */
+#parshaList, #halachaList{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:8px !important;
+}
+
+/* card padding */
+#parshaList .tm-row, #halachaList .tm-row{
+  margin:0 !important;
+  padding:10px 12px !important;
+}
+
+/* tighten text spacing */
+.tm-meta{
+  margin:2px 0 6px !important;
+  line-height:1.15 !important;
+}
+
+/* compact player strip */
+.tm-player{
+  margin-top:6px !important;
+  gap:10px !important;
+}
+
+.tm-play{
+  width:38px !important;
+  height:38px !important;
+  min-width:38px !important;
+}
+
+.tm-progress{
+  height:4px !important;
+}
+
+.tm-speed, .tm-dur{
+  font-size:12px !important;
+  padding:6px 10px !important;
+}
+</style>
+  <style>
   /* PROVE this block is active */
   .tm-row{ outline: 2px solid rgba(255,0,0,.35) !important; }
 
