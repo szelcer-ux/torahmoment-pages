@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>TorahMoment — Under 10 Minutes</title>
+
+  <!-- Shared Halacha/Mishna audio UI -->
+  <link rel="stylesheet" href="/css/tm-audio-ui.css?v=indepth-compact-20260219" />
+
+  <style>
+    html, body { margin:0; padding:0; }
+    *, *::before, *::after { box-sizing:border-box; }
+
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#666;
+      --border:#e7e7ee;
+      --accent:#0d9488;
+      --shadow:0 6px 22px rgba(0,0,0,0.07);
+      --radius:16px;
+
+      /* topbar alignment */
+      --tm-wrap-max: 1060px;
+      --tm-wrap-pad: 22px;
+
+      /* tm-audio-ui.css expectations */
+      --line: var(--border);
+      --accent2: var(--accent);
+    }
+
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .wrap{ max-width:1060px; margin:0 auto; padding:22px; }
+
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    h1{ margin:0; font-size:28px; letter-spacing:-0.02em; }
+    .sub{ color:var(--muted); margin-top:6px; font-size:14px; }
+
+    .pillbar{ display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+    .pill{
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:14px;
+      cursor:pointer;
+    }
+    .pill[aria-pressed="true"]{
+      border-color:rgba(13,148,136,.35);
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .muted{ color:var(--muted); }
+
+    /* ===== Canonical Card Pattern ===== */
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .sectionToggle{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .sectionToggle:hover{ background: rgba(0,0,0,0.02); }
+
+    .sectionChevron{
+      margin-left:auto;
+      transition: transform .2s ease;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .sectionChevron.rotated{ transform: rotate(180deg); }
+
+    .count{ font-size: 0.8rem; color: var(--muted); }
+
+    /* Collapsible content */
+      .sectionContent{
+        overflow: hidden;                /* keep clean animation */
+        transition: max-height .3s ease, opacity .2s ease;
+      }
+      
+      .sectionContent.collapsed{
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .sectionContent.expanded{
+        max-height: 5000px;              /* large enough to never clip */
+        opacity: 1;
+        padding-bottom: 24px;            /* space so last row isn't cut */
+      }
+
+    /* ===== TorahMoment Topbar ===== */
+    .tm-topbar{
+      width:100%;
+      background:#ffffff;
+      border-bottom:1px solid var(--border, #e7e7ee);
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .tm-topbar-inner{
+      box-sizing: border-box;
+      max-width: var(--tm-wrap-max, 980px);
+      margin:0 auto;
+      padding:10px var(--tm-wrap-pad, 20px);
+      display:flex;
+      align-items:center;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      position:relative;
+    }
+    .tm-topbar-inner::-webkit-scrollbar{ display:none; }
+
+    .tm-topbar-inner::after{
+      content:"";
+      position:absolute;
+      right:0;
+      top:0;
+      width:28px;
+      height:100%;
+      pointer-events:none;
+      background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+    }
+
+    .tm-topbar a,
+    .tm-topbar a:visited{
+      text-decoration:none;
+      color:var(--muted, #666);
+      font-size:14px;
+      font-weight:500;
+      white-space:nowrap;
+      padding:4px 10px;
+    }
+    .tm-topbar a:hover{ color:var(--accent, #0d9488); }
+
+    .tm-topbar a.active:not(.home-link),
+    .tm-topbar a.active:not(.home-link):visited{
+      background: rgba(13,148,136,0.12);
+      color: var(--text, #111) !important;
+      font-weight: 600;
+      border-radius: 999px;
+    }
+
+    .tm-topbar a + a{
+      border-left:1px solid #e5e7eb;
+      margin-left:6px;
+      padding-left:12px;
+    }
+
+    .tm-topbar .home-link{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 10px;
+    }
+    .tm-topbar .home-link svg{ width:18px; height:18px; }
+
+    @media (max-width: 520px){
+      .tm-topbar-inner{ padding:8px var(--tm-wrap-pad, 12px); }
+      .tm-topbar a, .tm-topbar a:visited{ font-size:13px; padding:3px 8px; }
+      .tm-topbar a + a{ margin-left:5px; padding-left:10px; }
+
+      .tm-topbar a[href$="/one-minute-audio.html"]{ font-size:0; }
+      .tm-topbar a[href$="/one-minute-audio.html"]::before{
+        content:"One-Min";
+        font-size:13px;
+      }
+    }
+
+    /* ========= tm-audio-ui compact overrides (ONLY place to tweak spacing) ========= */
+    #parshaList, #halachaList{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding: 12px 16px 22px; /* bottom padding prevents cut-off */
+    }
+
+    #parshaList .tm-row, #halachaList .tm-row{
+      margin:0;
+      padding:10px 12px;
+      border-radius:14px;
+    }
+
+    .tm-title{ line-height:1.15; }
+    /*.tm-meta{ margin:2px 0 6px; line-height:1.15; }*/
+
+    .tm-player{ margin-top:6px; gap:10px; }
+    .tm-play{ width:38px; height:38px; min-width:38px; }
+    .tm-progress{ height:4px; }
+    .tm-speed, .tm-dur{ font-size:12px; padding:6px 10px; }
+  </style>
+
+  <style>
+  /* ===== Fix bottom cut-off in collapsible sections ===== */
+
+  /* Keep the card rounded corners, but don't clip the section content */
+  .card{ overflow: hidden; } /* keep */
+  .sectionContent{
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 26px !important; /* extra breathing room at bottom */
+  }
+
+  /* If max-height animation is used, give more room */
+  .sectionContent.expanded{
+    max-height: 4000px !important;  /* was 2000px; long lists need more */
+  }
+
+  /* ===== One-line title row ===== */
+  .tm-title-row{
+    display:flex !important;
+    align-items:center !important;
+    gap:10px !important;
+    flex-wrap:nowrap !important;
+  }
+
+  .tm-title{
+    flex: 1 1 auto !important;
+    min-width: 0 !important;               /* allows ellipsis */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .tm-badge{
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+    
+    .tm-inline-meta{
+  font-weight:400;
+  color: var(--muted);
+}
+</style>
+</head>
+
+<body>
+  <div class="tm-topbar">
+  <div class="tm-topbar-inner">
+    <a href="https://torahmoment.com" aria-label="Home" class="home-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 10.5L12 3l9 7.5"></path>
+        <path d="M5 10v10h14V10"></path>
+      </svg>
+    </a>
+
+    <a href="https://torahmoment.com/parsha.html">Parsha</a>
+    <a href="https://torahmoment.com/halacha.html">Halacha</a>
+    <a href="https://torahmoment.com/one-minute-audio.html">One Minute</a>
+    <a href="https://torahmoment.com/tefilah.html">Tefila</a>
+    <a href="https://torahmoment.com/mishna.html">Mishna</a>
+  </div>
+</div>
+
+  <div class="wrap">
+    <div class="top">
+      <div>
+       <h1>Under 10 Minutes</h1>
+      <div class="sub">Halacha / Hashkafa audio under 10 minutes.</div>
+      </div>
+      <div class="muted" id="status">Loading…</div>
+    </div>
+
+    <div class="pillbar">
+      <button class="pill" id="tabAll" aria-pressed="true" type="button">All</button>
+      <button class="pill" id="tabParsha" aria-pressed="false" type="button">Parsha In-Depth</button>
+      <button class="pill" id="tabHalacha" aria-pressed="false" type="button">Halacha / Hashkafa</button>
+    </div>
+
+<div class="card" id="parshaCard">
+
+  <button class="sectionToggle" type="button">
+    <span>Parsha In-Depth</span>
+    <span class="sectionChevron">⌄</span>
+    <span class="count" id="parshaCount"></span>
+  </button>
+
+  <div class="sectionContent" id="parshaContent">
+
+    <div class="listCard">
+    <div class="list" id="parshaList">
+      <div class="loader">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        Loading Parsha in-depth…
+      </div>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="card" id="halachaCard">
+
+  <button class="sectionToggle" type="button">
+    <span>Halacha / Hashkafa — Under 10 minutes</span>
+    <span class="sectionChevron">⌄</span>
+    <span class="count" id="halachaCount"></span>
+  </button>
+
+  <div class="sectionContent" id="halachaContent">
+    <div class="listCard">
+    <div class="list" id="halachaList">
+      <div class="loader">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        Loading Halacha data…
+      </div>
+    </div>
+    </div>  
+  </div>
+
+  <div class="sub" style="margin-top:10px;">
+    Under 10 = less than 10 minutes (based on audio metadata).
+  </div>
+
+</div>
+
+
+<script>
+  const LONG_SEC = 600;
+
+  // Parsha order (full Torah order)
+  const PARSHA_ORDER = [
+    "Bereishis","Noach","Lech Lecha","Vayeira","Chayei Sarah","Toldos","Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi",
+    "Shemos","Va'eira","Bo","Beshalach","Yisro","Mishpatim","Terumah","Tetzaveh","Ki Sisa","Vayakhel","Pekudei",
+    "Vayikra","Tzav","Shemini","Tazria","Metzora","Achrei Mos","Kedoshim","Emor","Behar","Bechukosai",
+    "Bamidbar","Naso","Beha'aloscha","Shelach","Korach","Chukas","Balak","Pinchas","Matos","Masei",
+    "Devarim","Va'eschanan","Eikev","Re'eh","Shoftim","Ki Seitzei","Ki Savo","Nitzavim","Vayeilech","Haazinu","Vezos Haberachah"
+  ];
+
+  const parshaOrderIndex = new Map(PARSHA_ORDER.map((p,i)=>[normalizeParshaKey(p), i]));
+
+  const elStatus = document.getElementById("status");
+  const parshaListEl = document.getElementById("parshaList");
+  const halachaListEl = document.getElementById("halachaList");
+  const parshaCountEl = document.getElementById("parshaCount");
+  const halachaCountEl = document.getElementById("halachaCount");
+
+  const parshaCard = document.getElementById("parshaCard");
+  const halachaCard = document.getElementById("halachaCard");
+  const tabAll = document.getElementById("tabAll");
+  const tabParsha = document.getElementById("tabParsha");
+  const tabHalacha = document.getElementById("tabHalacha");
+
+  function setTab(which){
+    const isAll = which === "all";
+    const isParsha = which === "parsha";
+    const isHalacha = which === "halacha";
+    tabAll.setAttribute("aria-pressed", String(isAll));
+    tabParsha.setAttribute("aria-pressed", String(isParsha));
+    tabHalacha.setAttribute("aria-pressed", String(isHalacha));
+    parshaCard.style.display = (isAll || isParsha) ? "block" : "none";
+    halachaCard.style.display = (isAll || isHalacha) ? "block" : "none";
+  }
+  tabAll.addEventListener("click", ()=>setTab("all"));
+  tabParsha.addEventListener("click", ()=>setTab("parsha"));
+  tabHalacha.addEventListener("click", ()=>setTab("halacha"));
+
+function rowItem({ title, meta, url, badgeText, durText }){
+  const safeUrl = String(url || "").replace(/"/g, "&quot;");
+
+  const wrap = document.createElement("div");
+  wrap.className = "tm-row";
+
+  wrap.innerHTML = `
+    <div class="tm-main">
+     <div class="tm-title-row">
+  <div class="tm-title">
+    ${(title || "Untitled")}
+    ${meta ? `<span class="tm-inline-meta"> — ${meta}</span>` : ``}
+  </div>
+
+  ${badgeText ? `<span class="tm-badge">${badgeText}</span>` : ``}
+</div>
+
+      <div class="tm-player">
+        <button class="tm-play" type="button" aria-label="Play/Pause">►</button>
+
+        <div class="tm-seek">
+          <div class="tm-progress"><div></div></div>
+        </div>
+
+        <div class="tm-right">
+          <div class="tm-speed" role="button" tabindex="0">1×</div>
+          <div class="tm-dur">${durText ? durText : "--:--"}</div>
+        </div>
+
+        <audio preload="none" data-src="${safeUrl}"></audio>
+      </div>
+    </div>
+  `;
+
+  return wrap;
+}
+
+  // ---------- duration helpers ----------
+  function fmtHMS(sec){
+    sec = Math.round(sec);
+    const h = Math.floor(sec / 3600);
+    const m = Math.floor((sec % 3600) / 60);
+    const s = sec % 60;
+    const mm = String(m).padStart(h ? 2 : 1, "0");
+    const ss = String(s).padStart(2, "0");
+    return h ? `${h}:${mm}:${ss}` : `${m}:${ss}`;
+  }
+
+  function parseHMS(str){
+    const parts = String(str || "").trim().split(":").map(Number);
+    if (parts.some(n => !Number.isFinite(n))) return NaN;
+    if (parts.length === 2) return parts[0] * 60 + parts[1];
+    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+    return NaN;
+  }
+
+  function normalizeParshaKey(s){
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[\u2019']/g, "")   // apostrophes
+      .replace(/\s+/g, "")        // spaces
+      .replace(/-/g, "");         // dashes
+  }
+
+  // ---------- Robust extraction helpers ----------
+  function extractConstBlock(source, constName){
+    const re = new RegExp(`const\\s+${constName}\\s*=`, "m");
+    const m = source.match(re);
+    if (!m) return null;
+
+    const start = m.index + m[0].length;
+    let i = start;
+    let depthObj = 0, depthArr = 0;
+    let inStr = null;
+    let escape = false;
+
+    for (; i < source.length; i++){
+      const ch = source[i];
+
+      if (inStr){
+        if (escape){ escape = false; continue; }
+        if (ch === "\\"){ escape = true; continue; }
+        if (ch === inStr){ inStr = null; continue; }
+        continue;
+      }
+
+      if (ch === '"' || ch === "'" || ch === "`"){ inStr = ch; continue; }
+      if (ch === "{") depthObj++;
+      else if (ch === "}") depthObj--;
+      else if (ch === "[") depthArr++;
+      else if (ch === "]") depthArr--;
+      else if (ch === ";" && depthObj === 0 && depthArr === 0){
+        return source.slice(start, i).trim();
+      }
+    }
+    return null;
+  }
+
+  function evalAsData(expr){
+    return Function(`"use strict"; return (${expr});`)();
+  }
+
+  // ---------- parse / flatten ----------
+  function parseParshaInDepth(obj){
+    const rows = [];
+    for (const [parshaName, arr] of Object.entries(obj || {})){
+      for (const it of (arr || [])){
+        const durText = it.duration || "";
+        const durSec = parseHMS(durText);
+        const key = normalizeParshaKey(parshaName);
+        rows.push({
+          title: it.label || "Untitled",
+          url: it.url,
+          parsha: parshaName,
+          parshaKey: key,
+          parshaIdx: parshaOrderIndex.has(key) ? parshaOrderIndex.get(key) : 9999,
+          durText,
+          durSec
+        });
+      }
+    }
+    return rows;
+  }
+
+  function flattenHalachaAudios(PAGE_DATA){
+    const out = [];
+    for (const cat of (PAGE_DATA || [])){
+      const catName = cat.category || "Halacha";
+
+      // subcategories
+      const subs = cat.subcategories || [];
+      for (const sub of subs){
+        const subName = sub.name || "";
+        const items = sub.items || [];
+        for (const it of items){
+          if (!it || it.type !== "audio" || !it.url) continue;
+          out.push({
+            title: it.title || "Untitled",
+            url: it.url,
+            note: it.note || "",
+            cat: catName,
+            sub: subName
+          });
+        }
+      }
+
+      // direct items (some cats)
+      const directItems = cat.items || [];
+      for (const it of directItems){
+        if (!it || it.type !== "audio" || !it.url) continue;
+        out.push({
+          title: it.title || "Untitled",
+          url: it.url,
+          note: it.note || "",
+          cat: catName,
+          sub: ""
+        });
+      }
+    }
+    return out;
+  }
+
+function getAudioDurationSec(url){
+  const CACHE_KEY = "TM_AUDIO_DUR_CACHE_v1";
+
+  let cache;
+  try {
+    cache = JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
+  } catch {
+    cache = {};
+  }
+
+  if (cache[url] && Number.isFinite(cache[url])) {
+    return Promise.resolve(cache[url]);
+  }
+
+  return new Promise((resolve) => {
+    const audio = new Audio();
+    audio.preload = "metadata";
+    audio.src = url;
+
+    const done = (sec) => {
+      audio.removeEventListener("loadedmetadata", onMeta);
+      audio.removeEventListener("error", onErr);
+
+      if (Number.isFinite(sec)) {
+        cache[url] = sec;
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+        } catch {}
+      }
+
+      resolve(sec);
+    };
+
+    const onMeta = () => done(isFinite(audio.duration) ? audio.duration : NaN);
+    const onErr = () => done(NaN);
+
+    audio.addEventListener("loadedmetadata", onMeta, { once: true });
+    audio.addEventListener("error", onErr, { once: true });
+  });
+}
+
+
+  async function loadData(){
+    elStatus.textContent = "Fetching sources…";
+    const [parshaSrc, halachaSrc] = await Promise.all([
+      fetch("./parsha.html", { cache: "no-store" }).then(r => r.text()),
+      fetch("./halacha.html", { cache: "no-store" }).then(r => r.text()),
+    ]);
+
+    const parshaExpr = extractConstBlock(parshaSrc, "PARSHA_INDEPTH");
+    const halachaExpr = extractConstBlock(halachaSrc, "PAGE_DATA");
+
+    if (!parshaExpr) throw new Error("Could not find const PARSHA_INDEPTH in parsha.html");
+    if (!halachaExpr) throw new Error("Could not find const PAGE_DATA in halacha.html");
+
+    const PARSHA_INDEPTH = evalAsData(parshaExpr);
+    const PAGE_DATA = evalAsData(halachaExpr);
+
+    return { PARSHA_INDEPTH, PAGE_DATA };
+  }
+
+  async function main(){
+    const { PARSHA_INDEPTH, PAGE_DATA } = await loadData();
+
+    // ---------- Parsha render (Parsha order) ----------
+    parshaListEl.innerHTML = "";
+    let parshaRows = parseParshaInDepth(PARSHA_INDEPTH);
+
+    // Sort: Parsha order, then label
+    parshaRows.sort((a,b) => {
+      if (a.parshaIdx !== b.parshaIdx) return a.parshaIdx - b.parshaIdx;
+      return String(a.title).localeCompare(String(b.title));
+    });
+
+    parshaCountEl.textContent = parshaRows.length ? `${parshaRows.length} items` : "";
+
+    if (!parshaRows.length){
+      parshaListEl.innerHTML = `<div class="muted">No Parsha in-depth items found.</div>`;
+    } else {
+      for (const r of parshaRows){
+        parshaListEl.appendChild(rowItem({
+          title: r.title,
+          meta: r.parsha,
+          url: r.url,
+          durText: r.durText || "",
+          badgeText: "Parsha"
+        }));
+      }
+    }
+
+    // ---------- Halacha render (Long only; sort Cat → Sub → Title) ----------
+    halachaListEl.innerHTML = "";
+    const halachaAudios = flattenHalachaAudios(PAGE_DATA);
+
+    if (!halachaAudios.length){
+      halachaListEl.innerHTML = `<div class="muted">No Halacha audio items found.</div>`;
+      halachaCountEl.textContent = "";
+      elStatus.textContent = "Ready";
+      return;
+    }
+
+    elStatus.textContent = "Scanning durations…";
+const shortOnes = [];
+
+for (let i=0; i<halachaAudios.length; i++){
+  const it = halachaAudios[i];
+  const sec = await getAudioDurationSec(it.url);
+
+  // ✅ UNDER 10 minutes
+  if (isFinite(sec) && sec < LONG_SEC){
+    shortOnes.push({
+          ...it,
+      durSec: sec,
+      durText: fmtHMS(sec)
+    });
+  }
+
+  if (i % 10 === 0){
+    halachaCountEl.textContent = `Scanning… found ${shortOnes.length} under 10 so far`;
+  }
+}
+
+    function parseMDY(dateStr){
+  // expecting M/D/YYYY
+  if (!dateStr) return 0;
+  const parts = String(dateStr).trim().split("/");
+  if (parts.length !== 3) return 0;
+  const [m,d,y] = parts.map(Number);
+  if (!m || !d || !y) return 0;
+  return new Date(y, m-1, d).getTime();
+}
+
+// Sort: Newest first (date desc)
+shortOnes.sort((a,b) => {
+  return parseMDY(b.note) - parseMDY(a.note);
+});
+
+
+   halachaCountEl.textContent = shortOnes.length ? `${shortOnes.length} items` : "";
+
+if (!shortOnes.length){
+  halachaListEl.innerHTML = `<div class="muted">No Halacha items were under 10 minutes.</div>`;
+} else {
+  for (const it of shortOnes){
+    const meta = [it.note, it.cat, it.sub].filter(Boolean).join(" • ");
+    halachaListEl.appendChild(rowItem({
+      title: it.title,
+      meta,
+      url: it.url,
+      durText: it.durText || "",
+      badgeText: "Under 10"
+    }));
+  }
+}
+  
+    elStatus.textContent = "Ready";
+    // ✅ Wire the Halacha-style audio UI for all newly-rendered rows
+      tmWireIndepthPlayers("#parshaList");
+      tmWireIndepthPlayers("#halachaList");
+  }
+
+  main().catch((e)=>{
+    console.error(e);
+    elStatus.textContent = "Error";
+    parshaListEl.innerHTML = `<div class="muted">Error: ${String(e.message || e)}</div>`;
+    halachaListEl.innerHTML = `<div class="muted">Check console for details.</div>`;
+  });
+</script>
+
+<script>
+(function(){
+  const links = document.querySelectorAll(".tm-topbar a[href]:not(.home-link)");
+  const raw = (location.pathname || "/").replace(/\/+$/, "") || "/";
+  const current = (raw === "/index.html") ? "/" : raw;
+
+  links.forEach(a => {
+    const u = new URL(a.getAttribute("href"), location.href);
+    const lpRaw = (u.pathname || "/").replace(/\/+$/, "") || "/";
+    const lp = (lpRaw === "/index.html") ? "/" : lpRaw;
+
+    if (lp === current) a.classList.add("active");
+  });
+})();
+</script>
+
+  <script>
+(function(){
+
+  const sections = [
+    { toggle: 0, content: "parshaContent" },
+    { toggle: 1, content: "halachaContent" }
+  ];
+
+  const toggles = document.querySelectorAll(".sectionToggle");
+
+  sections.forEach((s, i) => {
+    const toggle = toggles[i];
+    const content = document.getElementById(s.content);
+    const chevron = toggle.querySelector(".sectionChevron");
+
+    if (!toggle || !content) return;
+
+    // start expanded
+    content.classList.add("expanded");
+
+    toggle.addEventListener("click", () => {
+      const isExpanded = content.classList.contains("expanded");
+
+      content.classList.toggle("expanded", !isExpanded);
+      content.classList.toggle("collapsed", isExpanded);
+      chevron.classList.toggle("rotated", !isExpanded);
+    });
+  });
+
+})();
+</script>
+
+ <script>
+(function(){
+  const SPEEDS = [1, 1.25, 1.5, 2];
+
+  function fmtTime(sec){
+    if (!Number.isFinite(sec)) return "--:--";
+    sec = Math.max(0, Math.floor(sec));
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m}:${String(s).padStart(2,"0")}`;
+  }
+
+  function ensureSrc(audio){
+    if (!audio) return;
+    if (audio.getAttribute("src")) return;
+
+    const ds = audio.getAttribute("data-src");
+    if (ds){
+      audio.setAttribute("src", ds);
+      audio.preload = "metadata";
+      audio.load();
+    }
+  }
+
+  function pauseAllExcept(activeAudio){
+    document.querySelectorAll("audio").forEach(a => {
+      if (a !== activeAudio && !a.paused) a.pause();
+    });
+  }
+
+  function wireRow(row){
+    if (!row || row.dataset.wired === "1") return;
+    row.dataset.wired = "1";
+
+    const playBtn = row.querySelector(".tm-play");
+    const speedBtn = row.querySelector(".tm-speed");
+    const durEl   = row.querySelector(".tm-dur");
+    const audio   = row.querySelector("audio");
+    const prog    = row.querySelector(".tm-progress");
+    const fill    = prog ? prog.querySelector("div") : null;
+
+    if (!audio || !playBtn || !speedBtn || !durEl || !prog || !fill) return;
+
+    // lazy-load when row enters viewport
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(({isIntersecting, target}) => {
+        if (!isIntersecting) return;
+        const a = target.querySelector("audio");
+        ensureSrc(a);
+        io.unobserve(target);
+      });
+    }, { rootMargin: "250px" });
+    io.observe(row);
+
+    // duration display (once metadata is available)
+    audio.addEventListener("loadedmetadata", () => {
+      durEl.textContent = fmtTime(audio.duration);
+    });
+
+    // keep progress updated while playing
+    audio.addEventListener("timeupdate", () => {
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+      const pct = (audio.currentTime / audio.duration) * 100;
+      fill.style.width = `${pct}%`;
+    });
+
+    audio.addEventListener("ended", () => {
+      playBtn.textContent = "►";
+    });
+
+    audio.addEventListener("play", () => {
+      pauseAllExcept(audio);
+      playBtn.textContent = "❚❚";
+    });
+
+    audio.addEventListener("pause", () => {
+      playBtn.textContent = "►";
+    });
+
+    function togglePlay(){
+      ensureSrc(audio);
+      if (audio.paused) audio.play();
+      else audio.pause();
+    }
+
+    // play button
+    playBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      togglePlay();
+    });
+
+    // row click toggles (but don't steal clicks from controls)
+    row.addEventListener("click", (e) => {
+      if (e.target.closest(".tm-play, .tm-speed, .tm-progress")) return;
+      togglePlay();
+    });
+
+    // speed cycles
+    function setSpeed(next){
+      audio.playbackRate = next;
+      speedBtn.textContent = `${next}×`;
+    }
+
+    // initialize speed UI
+    setSpeed(1);
+
+    speedBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const cur = audio.playbackRate || 1;
+      const idx = SPEEDS.indexOf(cur);
+      const next = SPEEDS[(idx + 1) % SPEEDS.length];
+      setSpeed(next);
+    });
+
+    // click-to-seek
+    prog.addEventListener("click", (e) => {
+      e.stopPropagation();
+      ensureSrc(audio);
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+
+      const r = prog.getBoundingClientRect();
+      const x = Math.min(Math.max(0, e.clientX - r.left), r.width);
+      const pct = x / r.width;
+      audio.currentTime = pct * audio.duration;
+    });
+  }
+
+  // Public helper: wire all rows inside a container (or whole doc)
+  window.tmWireIndepthPlayers = function(containerSelector){
+    const scope = containerSelector ? document.querySelector(containerSelector) : document;
+    if (!scope) return;
+    scope.querySelectorAll(".tm-row").forEach(wireRow);
+  };
+})();
+</script>   
+  
+</body>
+</html>
