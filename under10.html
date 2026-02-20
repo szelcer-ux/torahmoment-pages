@@ -264,6 +264,65 @@
   font-weight:400;
   color: var(--muted);
 }
+
+/* ===== Top Layout ===== */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:nowrap;
+}
+
+.top > div:first-child{
+  min-width:0;
+}
+
+h1{
+  margin:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* ===== Switch ===== */
+.tm-switch{
+  display:inline-flex;
+  gap:2px;
+  padding:2px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  flex:0 0 auto;
+}
+
+.tm-switch-btn{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:999px;
+  line-height:1;
+  white-space:nowrap;
+}
+
+.tm-switch-btn.active{
+  background: rgba(13,148,136,0.14);
+  color: var(--text);
+}
+
+/* Mobile tweak */
+@media (max-width:640px){
+  .tm-switch-btn{
+    font-size:12px;
+    padding:5px 8px;
+  }
+}
+
+/* Hide empty status line */
+#status:empty{ display:none; }
     
 </style>
 </head>
@@ -287,13 +346,18 @@
 </div>
 
   <div class="wrap">
-    <div class="top">
-      <div>
-       <h1>Under 10 Minutes</h1>
-      <div class="sub">Halacha / Hashkafa audio under 10 minutes.</div>
-      </div>
-      <div class="muted" id="status">Loading…</div>
-    </div>
+<div class="top">
+  <div>
+    <h1>Under 10 Minutes</h1>
+    <div class="sub">Shiurim under 10 minutes.</div>
+    <div id="status" class="sub"></div>
+  </div>
+
+  <div class="tm-switch">
+    <a class="tm-switch-btn" href="/indepth.html" data-key="indepth">In-Depth</a>
+    <a class="tm-switch-btn" href="/under10.html" data-key="under10">Under 10</a>
+  </div>
+</div>
 
     <div class="pillbar">
       <button class="pill" id="tabAll" aria-pressed="true" type="button">All</button>
@@ -895,6 +959,18 @@ if (!shortOnes.length){
   };
 })();
 </script>   
-  
+
+<script>
+(function(){
+  const path = location.pathname.toLowerCase();
+  const key = path.includes("under10") ? "under10" : "indepth";
+
+  document.querySelectorAll(".tm-switch-btn").forEach(a => {
+    a.classList.toggle("active", a.dataset.key === key);
+  });
+})();
+</script>    
+
+    
 </body>
 </html>
