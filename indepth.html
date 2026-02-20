@@ -289,41 +289,16 @@
     <div class="top">
       <div>
         <h1>In-Depth Shiurim</h1>
-        <div class="sub">One place for the more serious / developed TorahMoment shiurim.</div>
+        <div class="sub">One place for serious and developed TorahMoment shiurim.</div>
       </div>
       <div class="muted" id="status">Loading…</div>
     </div>
 
     <div class="pillbar">
       <button class="pill" id="tabAll" aria-pressed="true" type="button">All</button>
-      <button class="pill" id="tabParsha" aria-pressed="false" type="button">Parsha</button>
       <button class="pill" id="tabHalacha" aria-pressed="false" type="button">Halacha / Hashkafa</button>
+      <button class="pill" id="tabParsha" aria-pressed="false" type="button">Parsha</button>
     </div>
-
-<div class="card" id="parshaCard">
-
-  <button class="sectionToggle" type="button">
-    <span>Parsha In-Depth</span>
-    <span class="sectionChevron">⌄</span>
-    <span class="count" id="parshaCount"></span>
-  </button>
-
-  <div class="sectionContent" id="parshaContent">
-
-    <div class="listCard">
-    <div class="list" id="parshaList">
-      <div class="loader">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        Loading Parsha in-depth…
-      </div>
-    </div>
-    </div>
-  </div>
-
-</div>
-
 
 <div class="card" id="halachaCard">
 
@@ -350,6 +325,29 @@
 
 </div>
 
+    <div class="card" id="parshaCard">
+
+  <button class="sectionToggle" type="button">
+    <span>Parsha In-Depth</span>
+    <span class="sectionChevron">⌄</span>
+    <span class="count" id="parshaCount"></span>
+  </button>
+
+  <div class="sectionContent" id="parshaContent">
+
+    <div class="listCard">
+    <div class="list" id="parshaList">
+      <div class="loader">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        Loading Parsha in-depth…
+      </div>
+    </div>
+    </div>
+  </div>
+
+</div>
 
 <script>
   const LONG_SEC = 600;
