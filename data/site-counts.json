@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 667,
+    "total": 668,
     "breakdown": {
       "parsha": {
         "audio": 22,
-        "video": 215
+        "video": 216
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-02-19"
+    "updated": "2026-02-20"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Be youthful not childish",
+      "url": "https://www.youtube.com/watch?v=GiYs0ntVDuI",
+      "date": "2026-02-20T02:49:14Z"
+    },
     {
       "type": "audio",
       "program": "Halacha",
@@ -49,13 +56,6 @@
       "title": "True love?",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0079.mp3",
       "date": "2026-02-16T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Carry forward",
-      "url": "https://www.youtube.com/watch?v=E-K3nDaVWFQ",
-      "date": "2026-02-13T03:38:21Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Be youthful not childish",
+        "url": "https://www.youtube.com/watch?v=GiYs0ntVDuI",
+        "date": "2026-02-20T02:49:14Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Carry forward",
         "url": "https://www.youtube.com/watch?v=E-K3nDaVWFQ",
         "date": "2026-02-13T03:38:21Z"
@@ -266,13 +273,6 @@
         "title": "The true meaning of modesty",
         "url": "https://www.youtube.com/watch?v=U8EKiu5afdo",
         "date": "2025-12-19T12:21:57Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Alone time",
-        "url": "https://www.youtube.com/watch?v=pF1KMPaOEkU",
-        "date": "2025-12-05T02:09:24Z"
       }
     ]
   }
