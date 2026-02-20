@@ -169,10 +169,139 @@
         justify-content:flex-start;
       }
     }
+
+/* ===== TorahMoment Topbar ===== */
+
+.tm-topbar{
+  width:100%;
+  background:#ffffff;
+  border-bottom:1px solid var(--border, #e7e7ee);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.tm-topbar-inner{
+  box-sizing: border-box;
+
+  /* MATCH THIS PAGE'S WRAP SYSTEM */
+  max-width: var(--wrap-max);
+  padding: 10px var(--wrap-pad);
+
+  margin:0 auto;
+
+  display:flex;
+  align-items:center;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  position:relative;
+}
+
+.tm-topbar-inner::-webkit-scrollbar{ display:none; }
+
+/* right fade */
+.tm-topbar-inner::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:0;
+  width:28px;
+  height:100%;
+  pointer-events:none;
+  background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+}
+
+/* links */
+.tm-topbar a,
+.tm-topbar a:visited{
+  text-decoration:none;
+  color:var(--muted, #666);
+  font-size:14px;
+  font-weight:500;
+  white-space:nowrap;
+  padding:4px 10px;
+}
+
+.tm-topbar a:hover{
+  color:var(--accent, #0d9488);
+}
+
+/* active pill */
+.tm-topbar a.active:not(.home-link),
+.tm-topbar a.active:not(.home-link):visited{
+  background: rgba(13,148,136,0.12);
+  color: var(--text, #111) !important;
+  font-weight:600;
+  border-radius:999px;
+}
+
+/* separators */
+.tm-topbar a + a{
+  border-left:1px solid #e5e7eb;
+  margin-left:6px;
+  padding-left:12px;
+}
+
+/* home icon */
+.tm-topbar .home-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 10px;
+}
+.tm-topbar .home-link svg{
+  width:18px;
+  height:18px;
+}
+
+/* mobile tighten */
+@media (max-width:520px){
+  .tm-topbar-inner{
+    padding:8px var(--wrap-pad);
+  }
+
+  .tm-topbar a{
+    font-size:13px;
+    padding:3px 8px;
+  }
+
+  .tm-topbar a + a{
+    margin-left:5px;
+    padding-left:10px;
+  }
+
+  /* shorten One Minute */
+  .tm-topbar a[href$="/one-minute-audio.html"]{
+    font-size:0;
+  }
+  .tm-topbar a[href$="/one-minute-audio.html"]::before{
+    content:"One-Min";
+    font-size:13px;
+  }
+}
+    
   </style>
 </head>
 
 <body>
+  <div class="tm-topbar">
+  <div class="tm-topbar-inner">
+    <a href="https://torahmoment.com" aria-label="Home" class="home-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 10.5L12 3l9 7.5"></path>
+        <path d="M5 10v10h14V10"></path>
+      </svg>
+    </a>
+
+    <a href="https://torahmoment.com/parsha.html">Parsha</a>
+    <a href="https://torahmoment.com/halacha.html">Halacha</a>
+    <a href="https://torahmoment.com/one-minute-audio.html">One Minute</a>
+    <a href="https://torahmoment.com/tefilah.html">Tefila</a>
+    <a href="https://torahmoment.com/mishna.html">Mishna</a>
+  </div>
+</div>
   <main class="wrap" aria-label="Torah learning links">
     <header>
       <h1>Torah Learning Links</h1>
@@ -273,5 +402,22 @@
 
     </section>
   </main>
+
+  <script>
+(function(){
+  const links = document.querySelectorAll(".tm-topbar a[href]:not(.home-link)");
+  const raw = (location.pathname || "/").replace(/\/+$/, "") || "/";
+  const current = (raw === "/index.html") ? "/" : raw;
+
+  links.forEach(a => {
+    const u = new URL(a.getAttribute("href"), location.href);
+    const lpRaw = (u.pathname || "/").replace(/\/+$/, "") || "/";
+    const lp = (lpRaw === "/index.html") ? "/" : lpRaw;
+
+    if (lp === current) a.classList.add("active");
+  });
+})();
+</script>
+  
 </body>
 </html>
