@@ -729,35 +729,30 @@ longOnes.sort((a,b) => {
 })();
 </script>
 
-  <script>
+<script>
 (function(){
-
-  const sections = [
-    { toggle: 0, content: "parshaContent" },
-    { toggle: 1, content: "halachaContent" }
-  ];
-
-  const toggles = document.querySelectorAll(".sectionToggle");
-
-  sections.forEach((s, i) => {
-    const toggle = toggles[i];
-    const content = document.getElementById(s.content);
-    const chevron = toggle.querySelector(".sectionChevron");
-
+  document.querySelectorAll(".card").forEach(card => {
+    const toggle  = card.querySelector(".sectionToggle");
+    const content = card.querySelector(".sectionContent");
+    const chevron = toggle ? toggle.querySelector(".sectionChevron") : null;
     if (!toggle || !content) return;
 
-    // start expanded
+    // prevent double-wiring
+    if (toggle.dataset.wired === "1") return;
+    toggle.dataset.wired = "1";
+
+    // start expanded (keep your current behavior)
     content.classList.add("expanded");
+    content.classList.remove("collapsed");
+    if (chevron) chevron.classList.add("rotated");
 
     toggle.addEventListener("click", () => {
       const isExpanded = content.classList.contains("expanded");
-
       content.classList.toggle("expanded", !isExpanded);
       content.classList.toggle("collapsed", isExpanded);
-      chevron.classList.toggle("rotated", !isExpanded);
+      if (chevron) chevron.classList.toggle("rotated", !isExpanded);
     });
   });
-
 })();
 </script>
 
