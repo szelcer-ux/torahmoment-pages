@@ -264,6 +264,45 @@
   font-weight:400;
   color: var(--muted);
 }
+
+.tm-switch{
+  display:inline-flex;
+  gap:2px;
+  padding:2px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.tm-switch-btn{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:999px;
+  line-height:1;
+  white-space:nowrap;
+}
+
+.tm-switch-btn.active{
+  background: rgba(13,148,136,0.14);
+  color: var(--text);
+}
+
+/* Mobile: move below title for better spacing */
+@media (max-width: 640px){
+  .top{
+    align-items:flex-start;
+  }
+  .tm-switch{
+    margin-top:10px;
+  }
+}
+    
+
+    
 </style>
 </head>
 
@@ -285,14 +324,19 @@
   </div>
 </div>
 
-  <div class="wrap">
-    <div class="top">
-      <div>
-        <h1>In-Depth Shiurim</h1>
-        <div class="sub">One place for serious and developed TorahMoment shiurim.</div>
-      </div>
-      <div class="muted" id="status">Loading…</div>
+<div class="top">
+  <div>
+    <h1>In-Depth Shiurim</h1>
+    <div class="sub">
+      Longer, more developed TorahMoment shiurim.
     </div>
+  </div>
+
+  <div class="tm-switch" id="tmSwitch">
+    <a class="tm-switch-btn" href="/indepth.html" data-key="indepth">In-Depth</a>
+    <a class="tm-switch-btn" href="/under10.html" data-key="under10">Under 10</a>
+  </div>
+</div>
 
     <div class="pillbar">
       <button class="pill" id="tabAll" aria-pressed="true" type="button">All</button>
@@ -890,6 +934,17 @@ longOnes.sort((a,b) => {
     scope.querySelectorAll(".tm-row").forEach(wireRow);
   };
 })();
+
+<script>
+(function(){
+  const path = location.pathname.toLowerCase();
+  const key = path.includes("under10") ? "under10" : "indepth";
+  document.querySelectorAll(".tm-switch-btn").forEach(a => {
+    a.classList.toggle("active", a.dataset.key === key);
+  });
+})();
+</script>
+   
 </script>   
   
 </body>
