@@ -301,6 +301,28 @@
       <button class="pill" id="tabHalacha" aria-pressed="false" type="button">Halacha / Hashkafa</button>
     </div>
 
+
+<div class="card" id="halachaCard">
+
+  <button class="sectionToggle" type="button">
+    <span>Halacha / Hashkafa — Under 10 minutes</span>
+    <span class="sectionChevron">⌄</span>
+    <span class="count" id="halachaCount"></span>
+  </button>
+
+  <div class="sectionContent" id="halachaContent">
+    <div class="listCard">
+    <div class="list" id="halachaList">
+      <div class="loader">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        Loading Halacha data…
+      </div>
+    </div>
+    </div>  
+  </div>
+
+</div>
+
 <div class="card" id="parshaCard">
 
   <button class="sectionToggle" type="button">
@@ -324,34 +346,6 @@
   </div>
 
 </div>
-
-
-<div class="card" id="halachaCard">
-
-  <button class="sectionToggle" type="button">
-    <span>Halacha / Hashkafa — Under 10 minutes</span>
-    <span class="sectionChevron">⌄</span>
-    <span class="count" id="halachaCount"></span>
-  </button>
-
-  <div class="sectionContent" id="halachaContent">
-    <div class="listCard">
-    <div class="list" id="halachaList">
-      <div class="loader">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        Loading Halacha data…
-      </div>
-    </div>
-    </div>  
-  </div>
-
-  <div class="sub" style="margin-top:10px;">
-    Under 10 = less than 10 minutes (based on audio metadata).
-  </div>
-
-</div>
-
-
 <script>
   const LONG_SEC = 600;
 
