@@ -425,6 +425,10 @@ h1{
   const parshaOrderIndex = new Map(PARSHA_ORDER.map((p,i)=>[normalizeParshaKey(p), i]));
 
   const elStatus = document.getElementById("status");
+  function setStatus(txt){
+  if (!elStatus) return;
+  elStatus.textContent = (txt === "Ready") ? "" : txt;
+}
   const parshaListEl = document.getElementById("parshaList");
   const halachaListEl = document.getElementById("halachaList");
   const parshaCountEl = document.getElementById("parshaCount");
@@ -655,7 +659,7 @@ function getAudioDurationSec(url){
 
 
   async function loadData(){
-    elStatus.textContent = "Fetching sources…";
+    setStatus("Fetching sources…");
     const [parshaSrc, halachaSrc] = await Promise.all([
       fetch("./parsha.html", { cache: "no-store" }).then(r => r.text()),
       fetch("./halacha.html", { cache: "no-store" }).then(r => r.text()),
@@ -709,7 +713,7 @@ function getAudioDurationSec(url){
     if (!halachaAudios.length){
       halachaListEl.innerHTML = `<div class="muted">No Halacha audio items found.</div>`;
       halachaCountEl.textContent = "";
-      elStatus.textContent = "Ready";
+      setStatus("Ready");
       return;
     }
 
@@ -767,7 +771,7 @@ if (!shortOnes.length){
   }
 }
   
-    elStatus.textContent = "Ready";
+    setStatus("Ready");
     // ✅ Wire the Halacha-style audio UI for all newly-rendered rows
       tmWireIndepthPlayers("#parshaList");
       tmWireIndepthPlayers("#halachaList");
