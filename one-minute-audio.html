@@ -532,7 +532,6 @@ html, body{
 
 <!-- ✅ Keep this ONCE (and in the right place) -->
 <script src="/data/site-counts.js"></script>
-
 <script>
 const DATA_URL = "./data.json";
 
@@ -562,9 +561,31 @@ function setSavedRate(r){
   localStorage.setItem("rate", String(r));
 }
 
-/* ✅ Sort uses precomputed _sortKey */
 function sortItems(){
   filtered.sort((a,b)=> sortLatestFirst ? (b._sortKey - a._sortKey) : (a._sortKey - b._sortKey));
+}
+
+// "9/8/2024" -> key (UTC midnight)
+function dateToKey(mdy){
+  const m = String(mdy || "").trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (!m) return 0;
+  const mm = Number(m[1]);
+  const dd = Number(m[2]);
+  const yyyy = Number(m[3]);
+  return Date.UTC(yyyy, mm - 1, dd);
+}
+
+function fmtTime(sec){
+  sec = Math.max(0, sec || 0);
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${String(s).padStart(2,"0")}`;
+}
+
+const SPEEDS = [1, 1.25, 1.5, 2];
+function nextSpeed(cur){
+  const i = SPEEDS.indexOf(cur);
+  return SPEEDS[(i >= 0 ? i + 1 : 0) % SPEEDS.length];
 }
 
 function render(){
@@ -583,6 +604,7 @@ function render(){
   filtered.forEach(it=>{
     const row = document.createElement("div");
     row.className = "row";
+    row.dataset.id = String(it.id);
 
     row.innerHTML = `
       <div class="head">
@@ -596,7 +618,6 @@ function render(){
         <button class="tmSpeed" type="button" aria-label="Playback speed">${defaultRate}×</button>
         <div class="tmTime" aria-label="Time">0:00</div>
 
-        <!-- hidden audio element that actually plays -->
         <audio class="tmAudio" preload="none" data-audio-id="${it.id}">
           <source src="${esc(it.url)}" type="audio/mpeg">
         </audio>
@@ -605,67 +626,44 @@ function render(){
 
     list.appendChild(row);
 
-    // Elements
-    const player = row.querySelector(".tmPlayer");
-    const audioEl = row.querySelector(`audio.tmAudio[data-audio-id="${it.id}"]`);
-    const playBtn = row.querySelector(".tmPlay");
+    const audio = row.querySelector("audio.tmAudio");
+    if (audio) audio.playbackRate = defaultRate;
+
+    // Keep the time/seek UI updated for this row
     const seekEl = row.querySelector(".tmSeek");
-    const speedBtn = row.querySelector(".tmSpeed");
     const timeEl = row.querySelector(".tmTime");
+    const playBtn = row.querySelector(".tmPlay");
 
-    // Apply saved speed immediately
-    if (audioEl) audioEl.playbackRate = defaultRate;
-    if (speedBtn) speedBtn.textContent = `${defaultRate}×`;
-
-    // Helper: mm:ss
-    function fmtTime(sec){
-      sec = Math.max(0, sec || 0);
-      const m = Math.floor(sec / 60);
-      const s = Math.floor(sec % 60);
-      return `${m}:${String(s).padStart(2,"0")}`;
-    }
-
-    // Clicking row (outside player controls) can still open/close if you want
-    row.addEventListener("click", (e) => {
-      if (e.target.closest(".tmPlayer")) return;
-      row.classList.toggle("isOpen");
+    audio?.addEventListener("loadedmetadata", () => {
+      if (seekEl) seekEl.value = "0";
+      if (timeEl) timeEl.textContent = "0:00";
     });
 
-    // Play/pause button
-    playBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (!audioEl) return;
-
-      if (audioEl.paused) {
-        pauseAllExcept(audioEl);
-        audioEl.playbackRate = getSavedRate() || 1;
-        audioEl.play().catch(()=>{});
-      } else {
-        audioEl.pause();
-      }
+    audio?.addEventListener("timeupdate", () => {
+      if (!isFinite(audio.duration) || audio.duration <= 0) return;
+      const pct = audio.currentTime / audio.duration;
+      if (seekEl) seekEl.value = String(Math.round(pct * 1000));
+      if (timeEl) timeEl.textContent = fmtTime(audio.currentTime);
     });
 
-const SPEEDS = [1, 1.25, 1.5, 2];
+    audio?.addEventListener("play", () => {
+      pauseAllExcept(audio);
+      if (playBtn) playBtn.textContent = "⏸";
+      row.scrollIntoView({behavior:"smooth", block:"center"});
+    });
 
-function fmtTime(sec){
-  sec = Math.max(0, sec || 0);
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
-  return `${m}:${String(s).padStart(2,"0")}`;
+    audio?.addEventListener("pause", () => {
+      if (playBtn) playBtn.textContent = "▶";
+    });
+
+    audio?.addEventListener("ended", () => {
+      if (playBtn) playBtn.textContent = "▶";
+      if (seekEl) seekEl.value = "0";
+    });
+  });
 }
 
-function nextSpeed(cur){
-  const i = SPEEDS.indexOf(cur);
-  return SPEEDS[(i >= 0 ? i + 1 : 0) % SPEEDS.length];
-}
-
-function ensureSrc(audio){
-  // If you ever move to data-src lazy load, you can put it here.
-  // For now, source is already in HTML.
-}
-
+// ✅ Event delegation for play/speed (ONE place)
 list.addEventListener("click", (e) => {
   const player = e.target.closest(".tmPlayer");
   if (!player) return;
@@ -675,11 +673,12 @@ list.addEventListener("click", (e) => {
 
   // Play/pause
   if (e.target.closest(".tmPlay")) {
-    ensureSrc(audio);
+    e.preventDefault();
+    e.stopPropagation();
 
     if (audio.paused) {
       pauseAllExcept(audio);
-      audio.playbackRate = getSavedRate();
+      audio.playbackRate = getSavedRate() || 1;
       audio.play().catch(()=>{});
     } else {
       audio.pause();
@@ -689,18 +688,21 @@ list.addEventListener("click", (e) => {
 
   // Speed
   if (e.target.closest(".tmSpeed")) {
+    e.preventDefault();
+    e.stopPropagation();
+
     const btn = player.querySelector(".tmSpeed");
     const cur = Number(audio.playbackRate) || getSavedRate() || 1;
     const rate = nextSpeed(cur);
 
     audio.playbackRate = rate;
     setSavedRate(rate);
-    btn.textContent = `${rate}×`;
+    if (btn) btn.textContent = `${rate}×`;
     return;
   }
 });
 
-// Seek bar interactions
+// ✅ Event delegation for seek (ONE place)
 list.addEventListener("input", (e) => {
   const seek = e.target.closest(".tmSeek");
   if (!seek) return;
@@ -713,56 +715,43 @@ list.addEventListener("input", (e) => {
   audio.currentTime = pct * audio.duration;
 });
 
-// Keep UI updated
-list.addEventListener("timeupdate", () => {}); // (no-op; timeupdate doesn't bubble reliably)
-
-
-// Seek bar interactions
-list.addEventListener("input", (e) => {
-  const seek = e.target.closest(".tmSeek");
-  if (!seek) return;
-
-  const player = seek.closest(".tmPlayer");
-  const audio = player?.querySelector("audio.tmAudio");
-  if (!audio || !isFinite(audio.duration) || audio.duration <= 0) return;
-
-  const pct = Number(seek.value) / 1000;
-  audio.currentTime = pct * audio.duration;
-});
-
-// Keep UI updated
-list.addEventListener("timeupdate", () => {}); // (no-op; timeupdate doesn't bubble reliably)
-  
-</script>
-
-<!-- (Optional) You can remove this whole block if you don't use ONE_MINUTE_AUDIO vars.
-     Your main render() already updates SITE_COUNTS based on filtered.length -->
-<script>
-(function updateOneMinuteCount() {
-  if (!window.SITE_COUNTS?.allShiurim?.breakdown) return;
-
-  function countAllItems(obj) {
-    if (!obj) return 0;
-    if (Array.isArray(obj)) return obj.length;
-    if (typeof obj === "object") {
-      return Object.values(obj).reduce((sum, v) => sum + (Array.isArray(v) ? v.length : 0), 0);
-    }
-    return 0;
+function applySearch(){
+  const v = (q.value||"").toLowerCase().trim();
+  if(!v){
+    filtered = items.slice();
+  } else {
+    filtered = items.filter(it =>
+      (it.description||"").toLowerCase().includes(v) ||
+      (it.date||"").toLowerCase().includes(v)
+    );
   }
+  render();
+}
 
-  const oneMinuteItems =
-    (typeof ONE_MINUTE_AUDIO !== "undefined") ? ONE_MINUTE_AUDIO :
-    (typeof ONE_MINUTE_LIST !== "undefined") ? ONE_MINUTE_LIST :
-    (typeof AUDIO_ITEMS !== "undefined") ? AUDIO_ITEMS :
-    null;
+sortBtn.onclick = () => {
+  sortLatestFirst = !sortLatestFirst;
+  sortBtn.textContent = sortLatestFirst ? "Latest ↓" : "Oldest ↑";
+  render();
+};
 
-  const total = countAllItems(oneMinuteItems);
+q.oninput = applySearch;
 
-  window.SITE_COUNTS.allShiurim.breakdown.oneMinute.audio = total;
-  window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0,10);
-
-  console.log("✅ Updated One-Minute count:", total);
-})();
+fetch(DATA_URL, { cache:"no-store" })
+  .then(r => r.json())
+  .then(d => {
+    items = d.map((x, idx) => ({
+      ...x,
+      id: x.id ?? idx,
+      _sortKey: dateToKey(x.date)
+    }));
+    filtered = items.slice();
+    sortLatestFirst = true;
+    sortBtn.textContent = "Latest ↓";
+    render();
+  })
+  .catch(err => {
+    console.error("Failed to load data.json", err);
+  });
 </script>
 
 <script>
