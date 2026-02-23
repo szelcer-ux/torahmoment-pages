@@ -442,6 +442,54 @@ html, body{
   cursor:pointer;
 }
 #list .speedOne:active{ transform: scale(.98); }
+
+/* ===== Mini player row (matches screenshot vibe) ===== */
+#list .tmPlayer{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+
+#list .tmPlay{
+  width:36px;
+  height:36px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  line-height:1;
+}
+
+#list .tmSeek{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+#list .tmSpeed{
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:12px;
+  cursor:pointer;
+  line-height:1;
+}
+
+#list .tmTime{
+  font-size:12px;
+  color:var(--muted);
+  width:44px;
+  text-align:right;
+  font-variant-numeric: tabular-nums;
+}
   
 </style>
 </head>
@@ -536,69 +584,134 @@ function render(){
     const row = document.createElement("div");
     row.className = "row";
 
-    const speeds = [1, 1.25, 1.5, 2];
+    row.innerHTML = `
+      <div class="head">
+        <div class="date">${esc(it.date)}</div>
+        <div class="title">${esc(it.description)}</div>
+      </div>
 
-row.innerHTML = `
-  <div class="head">
-    <div class="date">${esc(it.date)}</div>
-    <div class="title">${esc(it.description)}</div>
+      <div class="tmPlayer" data-id="${it.id}">
+        <button class="tmPlay" type="button" aria-label="Play/Pause">▶</button>
+        <input class="tmSeek" type="range" min="0" max="1000" value="0" aria-label="Seek" />
+        <button class="tmSpeed" type="button" aria-label="Playback speed">${defaultRate}×</button>
+        <div class="tmTime" aria-label="Time">0:00</div>
 
-    <button class="speedOne" type="button" data-id="${it.id}" aria-label="Playback speed">
-      ${defaultRate}×
-    </button>
-  </div>
-
-  <audio controls preload="none" data-audio-id="${it.id}">
-    <source src="${esc(it.url)}" type="audio/mpeg">
-  </audio>
-`;
+        <!-- hidden audio element that actually plays -->
+        <audio class="tmAudio" preload="none" data-audio-id="${it.id}">
+          <source src="${esc(it.url)}" type="audio/mpeg">
+        </audio>
+      </div>
+    `;
 
     list.appendChild(row);
 
-    // Tap to open speed buttons (mobile), but don't interfere with audio controls
+    // Elements
+    const player = row.querySelector(".tmPlayer");
+    const audioEl = row.querySelector(`audio.tmAudio[data-audio-id="${it.id}"]`);
+    const playBtn = row.querySelector(".tmPlay");
+    const seekEl = row.querySelector(".tmSeek");
+    const speedBtn = row.querySelector(".tmSpeed");
+    const timeEl = row.querySelector(".tmTime");
+
+    // Apply saved speed immediately
+    if (audioEl) audioEl.playbackRate = defaultRate;
+    if (speedBtn) speedBtn.textContent = `${defaultRate}×`;
+
+    // Helper: mm:ss
+    function fmtTime(sec){
+      sec = Math.max(0, sec || 0);
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2,"0")}`;
+    }
+
+    // Clicking row (outside player controls) can still open/close if you want
     row.addEventListener("click", (e) => {
-      if (e.target.closest("audio") || e.target.closest(".speedOne")) return;
+      if (e.target.closest(".tmPlayer")) return;
       row.classList.toggle("isOpen");
     });
 
-    // apply default rate immediately to the audio element
-    const audioEl = row.querySelector(`audio[data-audio-id="${it.id}"]`);
-    audioEl.playbackRate = defaultRate;
-    const speedBtn = row.querySelector(`button.speedOne[data-id="${it.id}"]`);
-    if (speedBtn) speedBtn.textContent = `${defaultRate}×`;
-    
-    audioEl.addEventListener("play", () => {
-      pauseAllExcept(audioEl);
+    // Play/pause button
+    playBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-      // Open this row, close others (mobile UX)
+      if (!audioEl) return;
+
+      if (audioEl.paused) {
+        pauseAllExcept(audioEl);
+        audioEl.playbackRate = getSavedRate() || 1;
+        audioEl.play().catch(()=>{});
+      } else {
+        audioEl.pause();
+      }
+    });
+
+    // Speed cycles 1 → 1.25 → 1.5 → 2 → 1
+    const SPEEDS = [1, 1.25, 1.5, 2];
+    function nextSpeed(cur){
+      const i = SPEEDS.indexOf(cur);
+      return SPEEDS[(i >= 0 ? i + 1 : 0) % SPEEDS.length];
+    }
+
+    speedBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (!audioEl) return;
+
+      const cur = Number(audioEl.playbackRate) || getSavedRate() || 1;
+      const rate = nextSpeed(cur);
+
+      audioEl.playbackRate = rate;
+      setSavedRate(rate);
+      speedBtn.textContent = `${rate}×`;
+    });
+
+    // Seek bar
+    seekEl?.addEventListener("input", (e) => {
+      e.stopPropagation();
+      if (!audioEl || !isFinite(audioEl.duration) || audioEl.duration <= 0) return;
+
+      const pct = Number(seekEl.value) / 1000;
+      audioEl.currentTime = pct * audioEl.duration;
+    });
+
+    // Audio state -> UI
+    audioEl?.addEventListener("loadedmetadata", () => {
+      if (timeEl) timeEl.textContent = fmtTime(0);
+      if (seekEl) seekEl.value = "0";
+    });
+
+    audioEl?.addEventListener("timeupdate", () => {
+      if (!audioEl || !isFinite(audioEl.duration) || audioEl.duration <= 0) return;
+
+      const pct = audioEl.currentTime / audioEl.duration;
+      if (seekEl) seekEl.value = String(Math.round(pct * 1000));
+      if (timeEl) timeEl.textContent = fmtTime(audioEl.currentTime);
+    });
+
+    audioEl?.addEventListener("play", () => {
+      // Pause others + reflect UI
+      pauseAllExcept(audioEl);
+      if (playBtn) playBtn.textContent = "⏸";
+
+      // Optional: open this row and close others (mobile UX)
       document.querySelectorAll(".row.isOpen").forEach(r => {
         if (r !== row) r.classList.remove("isOpen");
       });
       row.classList.add("isOpen");
 
-      // ✅ Nice simple UX: keep the playing row in view
       row.scrollIntoView({behavior:"smooth", block:"center"});
     });
-  });
 
-  // one event handler for all speed buttons (event delegation)
-  list.querySelectorAll(".speedBtns").forEach(box => {
-    box.addEventListener("click", (e) => {
-      const btn = e.target.closest("button[data-rate]");
-      if(!btn) return;
+    audioEl?.addEventListener("pause", () => {
+      if (playBtn) playBtn.textContent = "▶";
+    });
 
-      const id = box.getAttribute("data-id");
-      const rate = Number(btn.getAttribute("data-rate"));
-
-      // set this audio's rate
-      const audioEl = list.querySelector(`audio[data-audio-id="${id}"]`);
-      if(audioEl) audioEl.playbackRate = rate;
-
-      // remember globally (so new rows + future sessions match)
-      setSavedRate(rate);
-
-      // update active button styling for this row
-      box.querySelectorAll("button").forEach(b => b.classList.toggle("active", b===btn));
+    audioEl?.addEventListener("ended", () => {
+      if (playBtn) playBtn.textContent = "▶";
+      if (seekEl) seekEl.value = "0";
     });
   });
 }
@@ -684,6 +797,75 @@ list.addEventListener("click", (e) => {
 
   btn.textContent = `${rate}×`;
 });
+
+const SPEEDS = [1, 1.25, 1.5, 2];
+
+function fmtTime(sec){
+  sec = Math.max(0, sec || 0);
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${String(s).padStart(2,"0")}`;
+}
+
+function nextSpeed(cur){
+  const i = SPEEDS.indexOf(cur);
+  return SPEEDS[(i >= 0 ? i + 1 : 0) % SPEEDS.length];
+}
+
+function ensureSrc(audio){
+  // If you ever move to data-src lazy load, you can put it here.
+  // For now, source is already in HTML.
+}
+
+list.addEventListener("click", (e) => {
+  const player = e.target.closest(".tmPlayer");
+  if (!player) return;
+
+  const audio = player.querySelector("audio.tmAudio");
+  if (!audio) return;
+
+  // Play/pause
+  if (e.target.closest(".tmPlay")) {
+    ensureSrc(audio);
+
+    if (audio.paused) {
+      pauseAllExcept(audio);
+      audio.playbackRate = getSavedRate();
+      audio.play().catch(()=>{});
+    } else {
+      audio.pause();
+    }
+    return;
+  }
+
+  // Speed
+  if (e.target.closest(".tmSpeed")) {
+    const btn = player.querySelector(".tmSpeed");
+    const cur = Number(audio.playbackRate) || getSavedRate() || 1;
+    const rate = nextSpeed(cur);
+
+    audio.playbackRate = rate;
+    setSavedRate(rate);
+    btn.textContent = `${rate}×`;
+    return;
+  }
+});
+
+// Seek bar interactions
+list.addEventListener("input", (e) => {
+  const seek = e.target.closest(".tmSeek");
+  if (!seek) return;
+
+  const player = seek.closest(".tmPlayer");
+  const audio = player?.querySelector("audio.tmAudio");
+  if (!audio || !isFinite(audio.duration) || audio.duration <= 0) return;
+
+  const pct = Number(seek.value) / 1000;
+  audio.currentTime = pct * audio.duration;
+});
+
+// Keep UI updated
+list.addEventListener("timeupdate", () => {}); // (no-op; timeupdate doesn't bubble reliably)
   
 </script>
 
