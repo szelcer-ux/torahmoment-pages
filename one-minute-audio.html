@@ -427,6 +427,21 @@ html, body{
   background: rgba(13,148,136,0.10);
   color: var(--text);
 }
+
+/* Speed pill on right */
+#list .speedOne{
+  flex:0 0 auto;
+  margin-left:auto;      /* pushes to far right */
+  padding:4px 10px;
+  font-size:12px;
+  line-height:1;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--text);
+  cursor:pointer;
+}
+#list .speedOne:active{ transform: scale(.98); }
   
 </style>
 </head>
@@ -523,36 +538,35 @@ function render(){
 
     const speeds = [1, 1.25, 1.5, 2];
 
-    row.innerHTML = `
-      <div class="head">
-        <div class="date">${esc(it.date)}</div>
-        <div class="title">${esc(it.description)}</div>
-    </div>
+row.innerHTML = `
+  <div class="head">
+    <div class="date">${esc(it.date)}</div>
+    <div class="title">${esc(it.description)}</div>
 
+    <button class="speedOne" type="button" data-id="${it.id}" aria-label="Playback speed">
+      ${defaultRate}×
+    </button>
+  </div>
 
-      <div class="controls">
-        <div class="speedBtns" data-id="${it.id}">
-          ${speeds.map(r => `<button type="button" data-rate="${r}" class="${r===defaultRate?'active':''}">${r}×</button>`).join("")}
-        </div>
-      </div>
-
-      <audio controls preload="none" data-audio-id="${it.id}">
-        <source src="${esc(it.url)}" type="audio/mpeg">
-      </audio>
-    `;
+  <audio controls preload="none" data-audio-id="${it.id}">
+    <source src="${esc(it.url)}" type="audio/mpeg">
+  </audio>
+`;
 
     list.appendChild(row);
 
     // Tap to open speed buttons (mobile), but don't interfere with audio controls
     row.addEventListener("click", (e) => {
-      if (e.target.closest("audio") || e.target.closest(".speedBtns")) return;
+      if (e.target.closest("audio") || e.target.closest(".speedOne")) return;
       row.classList.toggle("isOpen");
     });
 
     // apply default rate immediately to the audio element
     const audioEl = row.querySelector(`audio[data-audio-id="${it.id}"]`);
     audioEl.playbackRate = defaultRate;
-
+    const speedBtn = row.querySelector(`button.speedOne[data-id="${it.id}"]`);
+    if (speedBtn) speedBtn.textContent = `${defaultRate}×`;
+    
     audioEl.addEventListener("play", () => {
       pauseAllExcept(audioEl);
 
@@ -644,6 +658,33 @@ fetch(DATA_URL, { cache:"no-store" })
   }
 });
 
+const SPEEDS = [1, 1.25, 1.5, 2];
+
+function nextSpeed(cur){
+  const i = SPEEDS.indexOf(cur);
+  return SPEEDS[(i >= 0 ? i + 1 : 0) % SPEEDS.length];
+}
+
+list.addEventListener("click", (e) => {
+  const btn = e.target.closest("button.speedOne");
+  if(!btn) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const id = btn.getAttribute("data-id");
+  const audioEl = list.querySelector(`audio[data-audio-id="${id}"]`);
+  if(!audioEl) return;
+
+  const cur = Number(audioEl.playbackRate) || getSavedRate() || 1;
+  const rate = nextSpeed(cur);
+
+  audioEl.playbackRate = rate;
+  setSavedRate(rate);
+
+  btn.textContent = `${rate}×`;
+});
+  
 </script>
 
 <!-- (Optional) You can remove this whole block if you don't use ONE_MINUTE_AUDIO vars.
