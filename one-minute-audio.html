@@ -647,157 +647,6 @@ function render(){
       }
     });
 
-    // Speed cycles 1 → 1.25 → 1.5 → 2 → 1
-    const SPEEDS = [1, 1.25, 1.5, 2];
-    function nextSpeed(cur){
-      const i = SPEEDS.indexOf(cur);
-      return SPEEDS[(i >= 0 ? i + 1 : 0) % SPEEDS.length];
-    }
-
-    speedBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (!audioEl) return;
-
-      const cur = Number(audioEl.playbackRate) || getSavedRate() || 1;
-      const rate = nextSpeed(cur);
-
-      audioEl.playbackRate = rate;
-      setSavedRate(rate);
-      speedBtn.textContent = `${rate}×`;
-    });
-
-    // Seek bar
-    seekEl?.addEventListener("input", (e) => {
-      e.stopPropagation();
-      if (!audioEl || !isFinite(audioEl.duration) || audioEl.duration <= 0) return;
-
-      const pct = Number(seekEl.value) / 1000;
-      audioEl.currentTime = pct * audioEl.duration;
-    });
-
-    // Audio state -> UI
-    audioEl?.addEventListener("loadedmetadata", () => {
-      if (timeEl) timeEl.textContent = fmtTime(0);
-      if (seekEl) seekEl.value = "0";
-    });
-
-    audioEl?.addEventListener("timeupdate", () => {
-      if (!audioEl || !isFinite(audioEl.duration) || audioEl.duration <= 0) return;
-
-      const pct = audioEl.currentTime / audioEl.duration;
-      if (seekEl) seekEl.value = String(Math.round(pct * 1000));
-      if (timeEl) timeEl.textContent = fmtTime(audioEl.currentTime);
-    });
-
-    audioEl?.addEventListener("play", () => {
-      // Pause others + reflect UI
-      pauseAllExcept(audioEl);
-      if (playBtn) playBtn.textContent = "⏸";
-
-      // Optional: open this row and close others (mobile UX)
-      document.querySelectorAll(".row.isOpen").forEach(r => {
-        if (r !== row) r.classList.remove("isOpen");
-      });
-      row.classList.add("isOpen");
-
-      row.scrollIntoView({behavior:"smooth", block:"center"});
-    });
-
-    audioEl?.addEventListener("pause", () => {
-      if (playBtn) playBtn.textContent = "▶";
-    });
-
-    audioEl?.addEventListener("ended", () => {
-      if (playBtn) playBtn.textContent = "▶";
-      if (seekEl) seekEl.value = "0";
-    });
-  });
-}
-
-function applySearch(){
-  const v = (q.value||"").toLowerCase().trim();
-  if(!v){
-    filtered = items.slice();
-  } else {
-    filtered = items.filter(it =>
-      (it.description||"").toLowerCase().includes(v) ||
-      (it.date||"").toLowerCase().includes(v)
-    );
-  }
-  render();
-}
-
-// Sort toggle
-sortBtn.onclick = () => {
-  sortLatestFirst = !sortLatestFirst;
-  sortBtn.textContent = sortLatestFirst ? "Latest ↓" : "Oldest ↑";
-  render();
-};
-
-q.oninput = applySearch;
-
-// ✅ Sort by JSON date field like "9/8/2024"
-function dateToKey(mdy){
-  const m = String(mdy || "").trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
-  if (!m) return 0;
-  const mm = Number(m[1]);
-  const dd = Number(m[2]);
-  const yyyy = Number(m[3]);
-  return Date.UTC(yyyy, mm - 1, dd);
-}
-
-fetch(DATA_URL, { cache:"no-store" })
-.then(r=>r.json())
-.then(d=>{
-  items = d.map((x, idx) => ({
-    ...x,
-    id: x.id ?? idx,
-    _sortKey: dateToKey(x.date)
-  }));
-
-  filtered = items.slice();
-  sortLatestFirst = true;
-  sortBtn.textContent = "Latest ↓";
-
-  // ✅ Apply ?q= from URL AFTER data loads
-  const urlQ = (new URLSearchParams(location.search).get("q") || "").trim();
-  if (urlQ) {
-    q.value = urlQ;
-    q.dispatchEvent(new Event("input", { bubbles:true }));
-  } else {
-    render();
-  }
-});
-
-const SPEEDS = [1, 1.25, 1.5, 2];
-
-function nextSpeed(cur){
-  const i = SPEEDS.indexOf(cur);
-  return SPEEDS[(i >= 0 ? i + 1 : 0) % SPEEDS.length];
-}
-
-list.addEventListener("click", (e) => {
-  const btn = e.target.closest("button.speedOne");
-  if(!btn) return;
-
-  e.preventDefault();
-  e.stopPropagation();
-
-  const id = btn.getAttribute("data-id");
-  const audioEl = list.querySelector(`audio[data-audio-id="${id}"]`);
-  if(!audioEl) return;
-
-  const cur = Number(audioEl.playbackRate) || getSavedRate() || 1;
-  const rate = nextSpeed(cur);
-
-  audioEl.playbackRate = rate;
-  setSavedRate(rate);
-
-  btn.textContent = `${rate}×`;
-});
-
 const SPEEDS = [1, 1.25, 1.5, 2];
 
 function fmtTime(sec){
@@ -850,6 +699,23 @@ list.addEventListener("click", (e) => {
     return;
   }
 });
+
+// Seek bar interactions
+list.addEventListener("input", (e) => {
+  const seek = e.target.closest(".tmSeek");
+  if (!seek) return;
+
+  const player = seek.closest(".tmPlayer");
+  const audio = player?.querySelector("audio.tmAudio");
+  if (!audio || !isFinite(audio.duration) || audio.duration <= 0) return;
+
+  const pct = Number(seek.value) / 1000;
+  audio.currentTime = pct * audio.duration;
+});
+
+// Keep UI updated
+list.addEventListener("timeupdate", () => {}); // (no-op; timeupdate doesn't bubble reliably)
+
 
 // Seek bar interactions
 list.addEventListener("input", (e) => {
