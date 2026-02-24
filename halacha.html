@@ -1583,7 +1583,7 @@ return `
       }).join("");
 
      app.innerHTML = html;
-      const NEW_DAYS = 14;
+      const NEW_DAYS = 30;
 const isMobile = window.matchMedia("(max-width: 640px)").matches;
 const maxItems = isMobile ? 3 : 5;
 
@@ -1620,8 +1620,13 @@ for (const cat of PAGE_DATA || []) {
 
 dated.sort((a,b) => b._date - a._date);
 
-const newest = dated.slice(0, maxItems);
-const newCount = dated.filter(x => tmIsNewByNoteDate(x.item.note, NEW_DAYS)).length;
+// ONLY include items from last 30 days
+const recentOnly = dated.filter(x =>
+  tmIsNewByNoteDate(x.item.note, NEW_DAYS)
+);
+
+const newest = recentOnly.slice(0, maxItems);
+const newCount = recentOnly.length;
 
 const newCard = document.getElementById("newCard");
 if (newCard) {
