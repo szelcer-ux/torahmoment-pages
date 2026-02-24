@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Halacha – New Highlight Preview</title>
+
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#0b63ce;
+      --accent2:#0752ad;
+      --chip:#eef2ff;
+      --shadow: 0 10px 25px rgba(0,0,0,.06);
+      --radius: 16px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header{
+      padding: 24px 18px 8px;
+      text-align:center;
+    }
+    header h1{
+      margin:0;
+      font-size: 2rem;
+      letter-spacing: .2px;
+      color: var(--accent2);
+    }
+    header p{
+      margin: 10px auto 0;
+      max-width: 880px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .container{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .topbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:center;
+      margin: 12px 0 18px;
+    }
+
+    .search{
+      flex: 1 1 420px;
+      max-width: 560px;
+      position: relative;
+    }
+    .search input{
+      width:100%;
+      padding: 12px 14px;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      outline:none;
+      font-size: 15px;
+      background: #fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+    }
+
+    .count{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: #fafafa;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      margin-bottom: 14px;
+    }
+
+    .content{
+      border-top: 1px solid var(--line);
+      padding: 14px 16px 16px;
+    }
+
+    .subgrid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    details.subcat{
+      background: #fbfcff;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      overflow:hidden;
+    }
+    details.subcat > summary{
+      list-style:none;
+      padding: 12px 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+      user-select:none;
+      font-weight: 650;
+      color:#0f3f7a;
+      cursor: default;
+    }
+    details.subcat > summary::-webkit-details-marker{display:none}
+
+    .items{
+      border-top: 1px solid var(--line);
+      padding: 10px 12px 12px;
+    }
+
+    /* row look (matches your tm-row vibe) */
+    .tm-row{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin: 8px 0;
+    }
+    .tm-play{
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      color: var(--accent2);
+      flex: 0 0 auto;
+    }
+    .tm-main{ flex:1; min-width:0; }
+    .tm-title{
+      font-weight: 650;
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tm-note{
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .tm-right{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+
+    .tm-badge{
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: #374151;
+      white-space: nowrap;
+    }
+
+    /* NEW badge */
+    .tm-badge-new{
+      background:#ecfdf5;
+      border-color:#a7f3d0;
+      color:#065f46;
+      font-weight:800;
+    }
+
+    /* YouTube row tweak (no dashed border) */
+    .tm-row.tm-youtube{
+      border-color: #dbe3ff;
+      background: #f8faff;
+    }
+    .tm-row.tm-youtube .tm-play{
+      color: #dc2626;
+    }
+
+    /* What's New items */
+    .tm-new-item{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .tm-new-item:hover{
+      box-shadow: 0 6px 16px rgba(0,0,0,.06);
+    }
+    .tm-new-item .sub{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    @media (max-width: 640px){
+      header p{ display:none; }
+      .container{ padding: 10px; }
+      .subgrid{ grid-template-columns: 1fr; gap: 10px; }
+      .items{ padding: 6px 8px 8px; }
+      .tm-row{ padding: 10px 10px; }
+      .tm-play{ width: 38px; height: 38px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Halacha Preview</h1>
+    <p>This is a sandbox page to preview “What’s New” + NEW badges before touching halacha.html.</p>
+  </header>
+
+  <div class="container">
+    <div class="topbar">
+      <div class="search">
+        <input placeholder="Search (mock only)" />
+      </div>
+      <div class="count">Showing all (64)</div>
+    </div>
+
+    <!-- What’s New (mock) -->
+    <div class="card">
+      <div class="content" style="border-top:0;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;">
+          <div style="font-weight:800;">What’s New</div>
+          <div class="count">Last 14 days: 3</div>
+        </div>
+
+        <div style="margin-top:10px; display:grid; gap:8px;">
+          <div class="tm-new-item">
+            <div style="font-weight:650;">Leaving a sefer open</div>
+            <div class="sub">1/28/2026 • NEW • Talmud Torah</div>
+          </div>
+          <div class="tm-new-item">
+            <div style="font-weight:650;">Covering challah during kiddush (Part 2)</div>
+            <div class="sub">1/28/2026 • NEW • Shabbos</div>
+          </div>
+          <div class="tm-new-item">
+            <div style="font-weight:650;">Purim thoughts</div>
+            <div class="sub">2/20/2026 • NEW • Yom Tov</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example Subcategories -->
+    <div class="card">
+      <div class="content" style="border-top:0;">
+        <div class="subgrid">
+
+          <details class="subcat" open>
+            <summary>
+              <span>Yom Tov</span>
+              <span class="count">3/12</span>
+            </summary>
+            <div class="items">
+
+              <div class="tm-row">
+                <div class="tm-play">▶</div>
+                <div class="tm-main">
+                  <div class="tm-title">Three lesser discussed halachos regarding Purim</div>
+                  <div class="tm-note">3/3/2022</div>
+                </div>
+                <div class="tm-right">
+                  <div class="tm-badge tm-badge-new">NEW</div>
+                  <div class="tm-badge">Short</div>
+                  <div class="tm-badge">(9:12)</div>
+                </div>
+              </div>
+
+              <div class="tm-row tm-youtube">
+                <div class="tm-play">🎥</div>
+                <div class="tm-main">
+                  <div class="tm-title">Purim thoughts</div>
+                  <div class="tm-note">2/20/2026</div>
+                </div>
+                <div class="tm-right">
+                  <div class="tm-badge tm-badge-new">NEW</div>
+                  <div class="tm-badge">🎥 YouTube</div>
+                </div>
+              </div>
+
+            </div>
+          </details>
+
+          <details class="subcat">
+            <summary>
+              <span>Shabbos</span>
+              <span class="count">0/8</span>
+            </summary>
+            <div class="items">
+              <div style="color:var(--muted); font-size:13px;">(collapsed for preview)</div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
