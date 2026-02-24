@@ -490,6 +490,31 @@ html, body{
   text-align:right;
   font-variant-numeric: tabular-nums;
 }
+
+.subscribe{
+  text-align:center;
+  margin-bottom:16px;
+}
+
+.subscribe a{
+  display:inline-block;
+  padding:7px 14px;
+  font-size:13px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  text-decoration:none;
+  color:var(--text);
+  transition: background 120ms ease, transform 60ms ease;
+}
+
+.subscribe a:hover{
+  background: rgba(13,148,136,0.08);
+}
+
+.subscribe a:active{
+  transform: scale(.98);
+}
   
 </style>
 </head>
@@ -518,7 +543,13 @@ html, body{
 
 <h1>One minute audio</h1>
 <div class="subtitle">לע״נ הרב אברהם נתנאל צוקער זצ״ל</div>
-
+<div class="subscribe">
+  <a href="https://chat.whatsapp.com/HstQihMbEvl3HofBUOJ4Jb"
+     target="_blank"
+     rel="noopener">
+     📲 Get the Daily One-Minute Audio on WhatsApp
+  </a>
+</div>
 <div class="bar">
   <input id="q" placeholder="Search…" />
   <button class="pill" id="sortBtn">Latest ↓</button>
