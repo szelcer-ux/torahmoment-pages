@@ -256,6 +256,24 @@
   0%{ box-shadow: 0 0 0 0 rgba(11,99,206,.25); }
   100%{ box-shadow: 0 0 0 14px rgba(11,99,206,0); }
 }
+
+    /* Subtle entrance animation */
+.tm-new-title{
+  display:inline-block;
+  animation: tmNewTitleIn 500ms ease-out;
+}
+
+@keyframes tmNewTitleIn{
+  0%{
+    opacity:0;
+    transform: translateY(6px);
+  }
+  100%{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+    
   </style>
 </head>
 
@@ -278,7 +296,7 @@
       <div class="content" style="border-top:0;">
         <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;">
          
-          <div style="font-weight:800;">What’s New</div>
+          <div class="tm-new-title" style="font-weight:800;">What’s New</div>
          <div class="count tm-new-pulse">Last 14 days: 3</div>
         </div>
 
