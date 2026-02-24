@@ -919,6 +919,57 @@ header h1{
   outline: 2px solid #a7f3d0;
   outline-offset: 2px;
 }
+
+.tm-new-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.tm-new-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.tm-new-toggle{
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  color: var(--muted);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  user-select:none;
+}
+
+.tm-new-toggle:hover{
+  color: var(--text);
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+
+.tm-new-toggle .chev{
+  display:inline-block;
+  transition: transform 180ms ease;
+}
+
+.tm-new-collapsed .tm-new-toggle .chev{
+  transform: rotate(-90deg);
+}
+
+.tm-new-body{
+  margin-top:10px;
+}
+.tm-new-collapsed .tm-new-body{
+  display:none;
+}
+
+    
     
   </style>
   
@@ -1633,29 +1684,46 @@ if (newCard) {
   if (!newest.length || newCount === 0) {
     newCard.innerHTML = "";
   } else {
-    newCard.innerHTML = `
-      <div class="card tm-new-card">
-        <div class="content" style="border-top:0;">
-          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;">
-            <div class="tm-new-title" style="font-weight:800;">What’s New</div>
-            <div class="count tm-new-pulse">Last ${NEW_DAYS} days: ${newCount}</div>
-          </div>
+newCard.innerHTML = `
+  <div class="card tm-new-card" id="tmWhatsNewCard">
+    <div class="content" style="border-top:0;">
+      <div class="tm-new-head">
+        <div class="tm-new-title" style="font-weight:800;">What’s New</div>
 
-          <div style="margin-top:10px; display:grid; gap:8px;">
-            ${newest.map(({item, _sub}) => {
-              const key = tmItemKey(item);
-              const isNew = tmIsNewByNoteDate(item.note, NEW_DAYS);
-              return `
-                <div class="tm-new-item" data-key="${escapeHtml(key)}">
-                  <div style="font-weight:650;">${escapeHtml(item.title || "")}</div>
-                  <div class="sub">${escapeHtml(item.note || "")}${isNew ? " • NEW" : ""}${_sub ? ` • ${escapeHtml(_sub)}` : ""}</div>
-                </div>
-              `;
-            }).join("")}
-          </div>
+        <div class="tm-new-actions">
+          <div class="count tm-new-pulse">Last ${NEW_DAYS} days: ${newCount}</div>
+          <button class="tm-new-toggle" type="button" aria-label="Collapse What's New" title="Collapse/Expand">
+            <span class="chev">⌄</span>
+          </button>
         </div>
       </div>
-    `;
+
+      <div class="tm-new-body">
+        <div style="display:grid; gap:8px;">
+          ${newest.map(({item, _sub}) => {
+            const key = tmItemKey(item);
+            const isNew = tmIsNewByNoteDate(item.note, NEW_DAYS);
+            return `
+              <div class="tm-new-item" data-key="${escapeHtml(key)}">
+                <div style="font-weight:650;">${escapeHtml(item.title || "")}</div>
+                <div class="sub">${escapeHtml(item.note || "")}${isNew ? " • NEW" : ""}${_sub ? ` • ${escapeHtml(_sub)}` : ""}</div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      </div>
+    </div>
+  </div>
+`;
+const wnCard = document.getElementById("tmWhatsNewCard");
+const toggleBtn = wnCard?.querySelector(".tm-new-toggle");
+
+toggleBtn?.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  wnCard.classList.toggle("tm-new-collapsed");
+});
+    
   }
 }
 
