@@ -1275,7 +1275,7 @@ function enableMobileTitleExpand(){
 
     function renderItem(item){
       const key = tmItemKey(item);
-      const isNew = tmIsNewByNoteDate(item.note, 14);
+      const isNew = tmIsNewByNoteDate(item.note, 30);
       const newBadge = isNew ? `<div class="tm-badge tm-badge-new">NEW</div>` : ``;
       const title = escapeHtml(item.title || "Item");
       const note = escapeHtml(item.note || "");
