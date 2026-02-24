@@ -283,7 +283,7 @@
       padding: 10px 10px;
       margin: 8px 0;
     }
-
+.item{ scroll-margin-top: 90px; }
     .item-meta{
       display:flex;
       justify-content:space-between;
@@ -1677,7 +1677,16 @@ document.querySelectorAll(".tm-new-item").forEach(btn => {
     tmOpenParents(target);
 
     requestAnimationFrame(() => {
-      target.scrollIntoView({ behavior:"smooth", block:"start" });
+      const header =
+  document.querySelector(".tm-topbar") ||     // if you have it
+  document.querySelector(".topbar") ||        // your halacha topbar
+  document.querySelector("header");           // fallback
+
+const offset = (header?.offsetHeight || 0) + 16; // + a little breathing room
+
+const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+window.scrollTo({ top: y, behavior: "smooth" });
       target.classList.add("tm-flash");
       setTimeout(() => target.classList.remove("tm-flash"), 900);
     });
