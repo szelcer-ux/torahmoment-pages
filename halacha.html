@@ -851,7 +851,74 @@ header h1{
   }
 }
 
+/* ===== What’s New feature ===== */
+.tm-new-card{
+  position: relative;
+  overflow: hidden;
+}
+.tm-new-card::before{
+  content:"";
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width: 6px;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+}
 
+.tm-new-item{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor:pointer;
+}
+.tm-new-item:hover{
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+.tm-new-item .sub{
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.tm-badge-new{
+  background:#ecfdf5;
+  border-color:#a7f3d0;
+  color:#065f46;
+  font-weight:800;
+  font-size:11px;
+  padding: 3px 8px;
+}
+
+/* Title animation */
+.tm-new-title{
+  display:inline-block;
+  animation: tmNewTitleIn 500ms ease-out;
+}
+@keyframes tmNewTitleIn{
+  0%{ opacity:0; transform: translateY(6px); }
+  100%{ opacity:1; transform: translateY(0); }
+}
+
+/* Count pulse (runs once) */
+.tm-new-pulse{
+  animation: tmPulse 1.2s ease-out 1;
+}
+@keyframes tmPulse{
+  0%{ box-shadow: 0 0 0 0 rgba(11,99,206,.25); }
+  100%{ box-shadow: 0 0 0 14px rgba(11,99,206,0); }
+}
+
+/* mobile: reduce vertical push */
+@media (max-width: 640px){
+  #newCard .content{ padding: 10px 12px; }
+  .tm-new-item{ padding: 8px 10px; }
+  .tm-new-item .sub{ font-size: 11px; margin-top: 2px; }
+}
+
+    .tm-flash .tm-row{
+  outline: 2px solid #a7f3d0;
+  outline-offset: 2px;
+}
     
   </style>
   
@@ -890,7 +957,7 @@ header h1{
       </div>
       <div class="chip" id="resultChip">Showing all</div>
     </div>
-
+<div id="newCard"></div>
     <!-- ===================== -->
     <!-- DATA (Edit here only) -->
     <!-- ===================== -->
@@ -1156,6 +1223,9 @@ function enableMobileTitleExpand(){
     }
 
     function renderItem(item){
+      const key = tmItemKey(item);
+      const isNew = tmIsNewByNoteDate(item.note, 14);
+      const newBadge = isNew ? `<div class="tm-badge tm-badge-new">NEW</div>` : ``;
       const title = escapeHtml(item.title || "Item");
       const note = escapeHtml(item.note || "");
       const url = item.url || "";
@@ -1201,7 +1271,7 @@ if (isAudioPlayer) {
     : ``;
 
   return `
-    <div class="item" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
+    <div class="item" data-key="${escapeHtml(key)}" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
 
       <div class="tm-title-row">
         <div class="tm-title" title="${title}">${title}</div>
@@ -1217,6 +1287,7 @@ if (isAudioPlayer) {
 
         <div class="tm-right">
           <div class="tm-speed">1×</div>
+          ${newBadge}
           ${extraBadge}
           <div class="tm-badge tm-len" style="display:none"></div>
           <div class="tm-dur">(0:00)</div>
@@ -1235,7 +1306,7 @@ if (isAudioPlayer) {
      // YOUTUBE – playlist row style (uniform with audio)
 if (type === "youtube") {
   return `
-    <div class="item">
+    <div class="item" data-key="${escapeHtml(key)}">
 
       <!-- Title + note ABOVE (same as audio) -->
       <div class="tm-title-row">
@@ -1251,6 +1322,7 @@ if (type === "youtube") {
         </div>
 
         <div class="tm-right">
+         ${newBadge}
           <div class="tm-badge">🎥 YouTube</div>
         </div>
       </div>
@@ -1392,6 +1464,31 @@ function openFromURLParams(){
   }
 }
 
+function tmParseMmDdYyyy(s){
+  const m = String(s || "").trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (!m) return null;
+  const mo = Number(m[1]), d = Number(m[2]), y = Number(m[3]);
+  const dt = new Date(y, mo - 1, d);
+  return isFinite(dt) ? dt : null;
+}
+
+function tmDaysBetween(a, b){
+  const A = new Date(a.getFullYear(), a.getMonth(), a.getDate());
+  const B = new Date(b.getFullYear(), b.getMonth(), b.getDate());
+  return Math.floor((A - B) / 86400000);
+}
+
+function tmIsNewByNoteDate(note, days){
+  const dt = tmParseMmDdYyyy(note);
+  if (!dt) return false;
+  const diff = tmDaysBetween(new Date(), dt);
+  return diff >= 0 && diff <= days;
+}
+
+function tmItemKey(item){
+  return `${(item.type||"")}|${(item.title||"")}|${(item.url||"")}|${(item.note||"")}`;
+}
+
     
     function render(){
       const q = (searchInput.value || "").trim().toLowerCase();
@@ -1486,6 +1583,103 @@ return `
       }).join("");
 
      app.innerHTML = html;
+      const NEW_DAYS = 14;
+const isMobile = window.matchMedia("(max-width: 640px)").matches;
+const maxItems = isMobile ? 3 : 5;
+
+// collect dated audio/youtube items
+const dated = [];
+for (const cat of PAGE_DATA || []) {
+  const catName = cat.category || "";
+  const subs = Array.isArray(cat.subcategories) ? cat.subcategories : [];
+
+  for (const sub of subs) {
+    const subName = sub.name || "";
+    for (const it of (sub.items || [])) {
+      const t = String(it.type || "").toLowerCase();
+      if (!(t === "audio" || t === "youtube")) continue;
+
+      const dt = tmParseMmDdYyyy(it.note);
+      if (!dt) continue;
+
+      dated.push({ item: it, _date: dt, _cat: catName, _sub: subName });
+    }
+  }
+
+  // (if you ever have flat categories)
+  for (const it of (cat.items || [])) {
+    const t = String(it.type || "").toLowerCase();
+    if (!(t === "audio" || t === "youtube")) continue;
+
+    const dt = tmParseMmDdYyyy(it.note);
+    if (!dt) continue;
+
+    dated.push({ item: it, _date: dt, _cat: catName, _sub: "" });
+  }
+}
+
+dated.sort((a,b) => b._date - a._date);
+
+const newest = dated.slice(0, maxItems);
+const newCount = dated.filter(x => tmIsNewByNoteDate(x.item.note, NEW_DAYS)).length;
+
+const newCard = document.getElementById("newCard");
+if (newCard) {
+  if (!newest.length || newCount === 0) {
+    newCard.innerHTML = "";
+  } else {
+    newCard.innerHTML = `
+      <div class="card tm-new-card">
+        <div class="content" style="border-top:0;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;">
+            <div class="tm-new-title" style="font-weight:800;">What’s New</div>
+            <div class="count tm-new-pulse">Last ${NEW_DAYS} days: ${newCount}</div>
+          </div>
+
+          <div style="margin-top:10px; display:grid; gap:8px;">
+            ${newest.map(({item, _sub}) => {
+              const key = tmItemKey(item);
+              const isNew = tmIsNewByNoteDate(item.note, NEW_DAYS);
+              return `
+                <div class="tm-new-item" data-key="${escapeHtml(key)}">
+                  <div style="font-weight:650;">${escapeHtml(item.title || "")}</div>
+                  <div class="sub">${escapeHtml(item.note || "")}${isNew ? " • NEW" : ""}${_sub ? ` • ${escapeHtml(_sub)}` : ""}</div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function tmOpenParents(el){
+  const sub = el.closest("details.subcat");
+  const cat = el.closest("details.category");
+  if (cat) cat.setAttribute("open", "");
+  if (sub) sub.setAttribute("open", "");
+}
+
+document.querySelectorAll(".tm-new-item").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const key = btn.getAttribute("data-key");
+    if (!key) return;
+
+    const target = document.querySelector(`.item[data-key="${CSS.escape(key)}"]`);
+    if (!target) return;
+
+    tmOpenParents(target);
+
+    requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior:"smooth", block:"start" });
+      target.classList.add("tm-flash");
+      setTimeout(() => target.classList.remove("tm-flash"), 900);
+    });
+  });
+});
+      
+      
       window.tmWireHalachaStylePlayers?.();
       openCategoryFromURL();
 
