@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 669,
+    "total": 670,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -13,7 +13,7 @@
         "totalAll": 80
       },
       "oneMinute": {
-        "audio": 194
+        "audio": 195
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-02-25"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Real chinuch",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260225-WA0033.mp3",
+      "date": "2026-02-25T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "Burning desire",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0077.mp3",
       "date": "2026-02-18T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Inside and out",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260217-WA0015.mp3",
-      "date": "2026-02-17T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Real chinuch",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260225-WA0033.mp3",
+        "date": "2026-02-25T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Always think about others",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0029.mp3",
         "date": "2026-02-03T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "No Torah without achdus",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0030.mp3",
-        "date": "2026-02-02T00:00:00.000Z"
       }
     ],
     "halacha": [
