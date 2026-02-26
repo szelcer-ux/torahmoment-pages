@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 670,
+    "total": 671,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -13,7 +13,7 @@
         "totalAll": 80
       },
       "oneMinute": {
-        "audio": 195
+        "audio": 196
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-02-26"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Be happy for others",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260226-WA0033.mp3",
+      "date": "2026-02-26T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "Leaving a sefer open",
       "url": "https://www.buzzsprout.com/1899789/episodes/18712806-2-19-2026-shloimy-zelcer-leaving-a-sefer-open.mp3",
       "date": "2026-02-19T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Burning desire",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0077.mp3",
-      "date": "2026-02-18T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Be happy for others",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260226-WA0033.mp3",
+        "date": "2026-02-26T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Who runs the world",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260205-WA0029.mp3",
         "date": "2026-02-05T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Always think about others",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0029.mp3",
-        "date": "2026-02-03T00:00:00.000Z"
       }
     ],
     "halacha": [
