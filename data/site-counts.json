@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 671,
+    "total": 672,
     "breakdown": {
       "parsha": {
         "audio": 22,
-        "video": 216
+        "video": 217
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-02-26"
+    "updated": "2026-02-27"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "The power of consistency",
+      "url": "https://www.youtube.com/watch?v=aXyYwQeZ4zs",
+      "date": "2026-02-27T03:59:02Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Be youthful not childish",
       "url": "https://www.youtube.com/watch?v=GiYs0ntVDuI",
       "date": "2026-02-20T02:49:14Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Leaving a sefer open",
-      "url": "https://www.buzzsprout.com/1899789/episodes/18712806-2-19-2026-shloimy-zelcer-leaving-a-sefer-open.mp3",
-      "date": "2026-02-19T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "The power of consistency",
+        "url": "https://www.youtube.com/watch?v=aXyYwQeZ4zs",
+        "date": "2026-02-27T03:59:02Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Be youthful not childish",
         "url": "https://www.youtube.com/watch?v=GiYs0ntVDuI",
         "date": "2026-02-20T02:49:14Z"
@@ -266,13 +273,6 @@
         "title": "Being seen",
         "url": "https://www.youtube.com/watch?v=DYC0tB9Nc78",
         "date": "2025-12-26T10:36:00Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "The true meaning of modesty",
-        "url": "https://www.youtube.com/watch?v=U8EKiu5afdo",
-        "date": "2025-12-19T12:21:57Z"
       }
     ]
   }
