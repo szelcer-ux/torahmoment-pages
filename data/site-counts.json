@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 673,
+    "total": 674,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -13,7 +13,7 @@
         "totalAll": 81
       },
       "oneMinute": {
-        "audio": 196
+        "audio": 197
       },
       "mishna": {
         "audio": 137
@@ -27,6 +27,13 @@
       "program": "Halacha",
       "title": "Eating before Megilah",
       "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
+      "date": "2026-03-02T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Lessons from the half shekel",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0145.mp3",
       "date": "2026-03-02T00:00:00.000Z"
     },
     {
@@ -49,17 +56,17 @@
       "title": "Real chinuch",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260225-WA0033.mp3",
       "date": "2026-02-25T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Snow day lesson",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260223-WA0079.mp3",
-      "date": "2026-02-23T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Lessons from the half shekel",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0145.mp3",
+        "date": "2026-03-02T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Beis Yaakov first",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260209-WA0012.mp3",
         "date": "2026-02-09T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Who runs the world",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260205-WA0029.mp3",
-        "date": "2026-02-05T00:00:00.000Z"
       }
     ],
     "halacha": [
