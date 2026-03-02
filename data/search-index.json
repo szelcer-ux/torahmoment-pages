@@ -2293,6 +2293,16 @@
     "id": "hal-33",
     "program": "Halacha",
     "type": "audio",
+    "title": "Eating before Megilah",
+    "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
+    "date": "2026-03-02T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "eating before megilah"
+  },
+  {
+    "id": "hal-34",
+    "program": "Halacha",
+    "type": "audio",
     "title": "Three lesser discussed halachos regarding Purim",
     "url": "https://www.buzzsprout.com/1899789/episodes/10184217-3-3-2022-shloimy-zelcer.mp3",
     "date": "2022-03-03T00:00:00.000Z",
@@ -2300,7 +2310,7 @@
     "title_lc": "three lesser discussed halachos regarding purim"
   },
   {
-    "id": "hal-34",
+    "id": "hal-35",
     "program": "Halacha",
     "type": "audio",
     "title": "Purim thoughts",
@@ -2310,7 +2320,7 @@
     "title_lc": "purim thoughts"
   },
   {
-    "id": "hal-35",
+    "id": "hal-36",
     "program": "Halacha",
     "type": "audio",
     "title": "Reframing the Pesach Seder",
@@ -2320,7 +2330,7 @@
     "title_lc": "reframing the pesach seder"
   },
   {
-    "id": "hal-36",
+    "id": "hal-37",
     "program": "Halacha",
     "type": "audio",
     "title": "An alternate look at the 10 makkos",
@@ -2330,7 +2340,7 @@
     "title_lc": "an alternate look at the 10 makkos"
   },
   {
-    "id": "hal-37",
+    "id": "hal-38",
     "program": "Halacha",
     "type": "audio",
     "title": "Korban Pesach today",
@@ -2340,7 +2350,7 @@
     "title_lc": "korban pesach today"
   },
   {
-    "id": "hal-38",
+    "id": "hal-39",
     "program": "Halacha",
     "type": "audio",
     "title": "Let my people go",
@@ -2350,7 +2360,7 @@
     "title_lc": "let my people go"
   },
   {
-    "id": "hal-39",
+    "id": "hal-40",
     "program": "Halacha",
     "type": "audio",
     "title": "Historical Perspective on the Five Sages in the Haggadah",
@@ -2360,7 +2370,7 @@
     "title_lc": "historical perspective on the five sages in the haggadah"
   },
   {
-    "id": "hal-40",
+    "id": "hal-41",
     "program": "Halacha",
     "type": "audio",
     "title": "The perfect child",
@@ -2370,7 +2380,7 @@
     "title_lc": "the perfect child"
   },
   {
-    "id": "hal-41",
+    "id": "hal-42",
     "program": "Halacha",
     "type": "audio",
     "title": "Evolution of the days of Sefirah",
@@ -2380,7 +2390,7 @@
     "title_lc": "evolution of the days of sefirah"
   },
   {
-    "id": "hal-42",
+    "id": "hal-43",
     "program": "Halacha",
     "type": "audio",
     "title": "A Lesson from Lag Baomer",
@@ -2390,7 +2400,7 @@
     "title_lc": "a lesson from lag baomer"
   },
   {
-    "id": "hal-43",
+    "id": "hal-44",
     "program": "Halacha",
     "type": "audio",
     "title": "Customs of Lag Baomer",
@@ -2400,7 +2410,7 @@
     "title_lc": "customs of lag baomer"
   },
   {
-    "id": "hal-44",
+    "id": "hal-45",
     "program": "Halacha",
     "type": "audio",
     "title": "Staying awake all Shavuos night",
@@ -2410,7 +2420,7 @@
     "title_lc": "staying awake all shavuos night"
   },
   {
-    "id": "hal-45",
+    "id": "hal-46",
     "program": "Halacha",
     "type": "audio",
     "title": "Leaving a sefer open",
@@ -2420,7 +2430,7 @@
     "title_lc": "leaving a sefer open"
   },
   {
-    "id": "hal-46",
+    "id": "hal-47",
     "program": "Halacha",
     "type": "audio",
     "title": "History of Kollel",
@@ -2430,7 +2440,7 @@
     "title_lc": "history of kollel"
   },
   {
-    "id": "hal-47",
+    "id": "hal-48",
     "program": "Halacha",
     "type": "audio",
     "title": "Various aspects of talmud torah",
@@ -2440,7 +2450,7 @@
     "title_lc": "various aspects of talmud torah"
   },
   {
-    "id": "hal-48",
+    "id": "hal-49",
     "program": "Halacha",
     "type": "audio",
     "title": "אלו ואלו דברי אלקים חיים",
@@ -2450,7 +2460,7 @@
     "title_lc": "אלו ואלו דברי אלקים חיים"
   },
   {
-    "id": "hal-49",
+    "id": "hal-50",
     "program": "Halacha",
     "type": "audio",
     "title": "Learning the written and oral Torah",
@@ -2460,7 +2470,7 @@
     "title_lc": "learning the written and oral torah"
   },
   {
-    "id": "hal-50",
+    "id": "hal-51",
     "program": "Halacha",
     "type": "audio",
     "title": "Defining Torah Shebaal Peh",
@@ -2470,7 +2480,7 @@
     "title_lc": "defining torah shebaal peh"
   },
   {
-    "id": "hal-51",
+    "id": "hal-52",
     "program": "Halacha",
     "type": "audio",
     "title": "Making a Siyum",
@@ -2480,7 +2490,7 @@
     "title_lc": "making a siyum"
   },
   {
-    "id": "hal-52",
+    "id": "hal-53",
     "program": "Halacha",
     "type": "audio",
     "title": "The 6 stages of Torah-toil",
@@ -2490,7 +2500,7 @@
     "title_lc": "the 6 stages of torah-toil"
   },
   {
-    "id": "hal-53",
+    "id": "hal-54",
     "program": "Halacha",
     "type": "audio",
     "title": "The Septuagint - PART 2",
@@ -2500,7 +2510,7 @@
     "title_lc": "the septuagint - part 2"
   },
   {
-    "id": "hal-54",
+    "id": "hal-55",
     "program": "Halacha",
     "type": "audio",
     "title": "Introduction to the Septuagint",
@@ -2510,7 +2520,7 @@
     "title_lc": "introduction to the septuagint"
   },
   {
-    "id": "hal-55",
+    "id": "hal-56",
     "program": "Halacha",
     "type": "audio",
     "title": "Reconnecting our inner flame.  A Jew's internal connection to Talmud Torah",
@@ -2520,7 +2530,7 @@
     "title_lc": "reconnecting our inner flame.  a jew's internal connection to talmud torah"
   },
   {
-    "id": "hal-56",
+    "id": "hal-57",
     "program": "Halacha",
     "type": "audio",
     "title": "The Transmission of the Torah from Sinai until the Mishna - PART 2",
@@ -2530,7 +2540,7 @@
     "title_lc": "the transmission of the torah from sinai until the mishna - part 2"
   },
   {
-    "id": "hal-57",
+    "id": "hal-58",
     "program": "Halacha",
     "type": "audio",
     "title": "The Transmission of the Torah from Sinai until the Mishna",
@@ -2540,7 +2550,7 @@
     "title_lc": "the transmission of the torah from sinai until the mishna"
   },
   {
-    "id": "hal-58",
+    "id": "hal-59",
     "program": "Halacha",
     "type": "audio",
     "title": "3 lessons Lzehcer Harav Avrohom Nesanel ben Shlomo on his first Yahrtzeit",
@@ -2550,7 +2560,7 @@
     "title_lc": "3 lessons lzehcer harav avrohom nesanel ben shlomo on his first yahrtzeit"
   },
   {
-    "id": "hal-59",
+    "id": "hal-60",
     "program": "Halacha",
     "type": "audio",
     "title": "Segulos",
@@ -2560,7 +2570,7 @@
     "title_lc": "segulos"
   },
   {
-    "id": "hal-60",
+    "id": "hal-61",
     "program": "Halacha",
     "type": "audio",
     "title": "Should the death of an evil person be celebrated?",
@@ -2570,7 +2580,7 @@
     "title_lc": "should the death of an evil person be celebrated?"
   },
   {
-    "id": "hal-61",
+    "id": "hal-62",
     "program": "Halacha",
     "type": "audio",
     "title": "שויתי ה׳ לנגדי תמיד",
@@ -2580,7 +2590,7 @@
     "title_lc": "שויתי ה׳ לנגדי תמיד"
   },
   {
-    "id": "hal-62",
+    "id": "hal-63",
     "program": "Halacha",
     "type": "audio",
     "title": "The Torah's perspective on earthquakes",
@@ -2590,7 +2600,7 @@
     "title_lc": "the torah's perspective on earthquakes"
   },
   {
-    "id": "hal-63",
+    "id": "hal-64",
     "program": "Halacha",
     "type": "audio",
     "title": "When leaders fail",
@@ -2600,7 +2610,7 @@
     "title_lc": "when leaders fail"
   },
   {
-    "id": "hal-64",
+    "id": "hal-65",
     "program": "Halacha",
     "type": "audio",
     "title": "Unverified collectors",
@@ -2610,7 +2620,7 @@
     "title_lc": "unverified collectors"
   },
   {
-    "id": "hal-65",
+    "id": "hal-66",
     "program": "Halacha",
     "type": "audio",
     "title": "The obligation to give",
@@ -2620,7 +2630,7 @@
     "title_lc": "the obligation to give"
   },
   {
-    "id": "hal-66",
+    "id": "hal-67",
     "program": "Halacha",
     "type": "audio",
     "title": "Machatzis Hashekel in halacha",
@@ -2630,7 +2640,7 @@
     "title_lc": "machatzis hashekel in halacha"
   },
   {
-    "id": "hal-67",
+    "id": "hal-68",
     "program": "Halacha",
     "type": "audio",
     "title": "Asking two Rabbis the same Halachic question",
@@ -2640,7 +2650,7 @@
     "title_lc": "asking two rabbis the same halachic question"
   },
   {
-    "id": "hal-68",
+    "id": "hal-69",
     "program": "Halacha",
     "type": "audio",
     "title": "A misconception regarding tevilas keilim",
@@ -2650,7 +2660,7 @@
     "title_lc": "a misconception regarding tevilas keilim"
   },
   {
-    "id": "hal-69",
+    "id": "hal-70",
     "program": "Halacha",
     "type": "audio",
     "title": "Counting Jews",
@@ -2660,7 +2670,7 @@
     "title_lc": "counting jews"
   },
   {
-    "id": "hal-70",
+    "id": "hal-71",
     "program": "Halacha",
     "type": "audio",
     "title": "Nittel Nacht",
@@ -2670,7 +2680,7 @@
     "title_lc": "nittel nacht"
   },
   {
-    "id": "hal-71",
+    "id": "hal-72",
     "program": "Halacha",
     "type": "audio",
     "title": "Kol Isha",
@@ -2680,7 +2690,7 @@
     "title_lc": "kol isha"
   },
   {
-    "id": "hal-72",
+    "id": "hal-73",
     "program": "Halacha",
     "type": "audio",
     "title": "Third time's the charm in Jewish history",
@@ -2690,7 +2700,7 @@
     "title_lc": "third time's the charm in jewish history"
   },
   {
-    "id": "hal-73",
+    "id": "hal-74",
     "program": "Halacha",
     "type": "audio",
     "title": "The avos as a blueprint for Jewish history",
@@ -2700,7 +2710,7 @@
     "title_lc": "the avos as a blueprint for jewish history"
   },
   {
-    "id": "hal-74",
+    "id": "hal-75",
     "program": "Halacha",
     "type": "audio",
     "title": "Ten lost tribes",
@@ -2710,7 +2720,7 @@
     "title_lc": "ten lost tribes"
   },
   {
-    "id": "hal-75",
+    "id": "hal-76",
     "program": "Halacha",
     "type": "audio",
     "title": "Rambam’s view on Techias Hameisim",
@@ -2720,7 +2730,7 @@
     "title_lc": "rambam’s view on techias hameisim"
   },
   {
-    "id": "hal-76",
+    "id": "hal-77",
     "program": "Halacha",
     "type": "audio",
     "title": "Awaiting Moshiach",
@@ -2730,7 +2740,7 @@
     "title_lc": "awaiting moshiach"
   },
   {
-    "id": "hal-77",
+    "id": "hal-78",
     "program": "Halacha",
     "type": "audio",
     "title": "The Israeli flag in halacha",
@@ -2740,7 +2750,7 @@
     "title_lc": "the israeli flag in halacha"
   },
   {
-    "id": "hal-78",
+    "id": "hal-79",
     "program": "Halacha",
     "type": "audio",
     "title": "Tearing Kriyah at the Kotel",
@@ -2750,7 +2760,7 @@
     "title_lc": "tearing kriyah at the kotel"
   },
   {
-    "id": "hal-79",
+    "id": "hal-80",
     "program": "Halacha",
     "type": "audio",
     "title": "Religious Zionism",

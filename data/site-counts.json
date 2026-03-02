@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 672,
+    "total": 673,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 80
+        "totalAll": 81
       },
       "oneMinute": {
         "audio": 196
@@ -22,6 +22,13 @@
     "updated": "2026-03-02"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Eating before Megilah",
+      "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
+      "date": "2026-03-02T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,13 +56,6 @@
       "title": "Snow day lesson",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260223-WA0079.mp3",
       "date": "2026-02-23T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Be youthful not childish",
-      "url": "https://www.youtube.com/watch?v=GiYs0ntVDuI",
-      "date": "2026-02-20T02:49:14Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Eating before Megilah",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
+        "date": "2026-03-02T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Leaving a sefer open",
         "url": "https://www.buzzsprout.com/1899789/episodes/18712806-2-19-2026-shloimy-zelcer-leaving-a-sefer-open.mp3",
         "date": "2026-02-19T00:00:00.000Z"
@@ -193,13 +200,6 @@
         "program": "Halacha",
         "title": "Parshas Nitzavim / Erev Rosh Hashana",
         "url": "https://2mishnasaday.com/wp-content/uploads/Nitzavim.mp3",
-        "date": "2025-09-18T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "3 lessons Lzehcer Harav Avrohom Nesanel ben Shlomo on his first Yahrtzeit",
-        "url": "https://www.buzzsprout.com/1899789/episodes/17866609-9-18-2025-shloimy-zelcer-3-lessons-lzehcer-nishmas-moireinu-harav-avrohom-nesanel-ben-shlomo-on-his-first-yahrtzeit.mp3",
         "date": "2025-09-18T00:00:00.000Z"
       }
     ],
