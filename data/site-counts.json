@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 675,
+    "total": 594,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 81
+        "totalAll": 0
       },
       "oneMinute": {
         "audio": 198
@@ -28,13 +28,6 @@
       "title": "Do your part",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0173.mp3",
       "date": "2026-03-04T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Eating before Megilah",
-      "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
-      "date": "2026-03-02T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -56,6 +49,13 @@
       "title": "Be happy for others",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260226-WA0033.mp3",
       "date": "2026-02-26T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Real chinuch",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260225-WA0033.mp3",
+      "date": "2026-02-25T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -131,78 +131,7 @@
         "date": "2026-02-10T00:00:00.000Z"
       }
     ],
-    "halacha": [
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Eating before Megilah",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
-        "date": "2026-03-02T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Leaving a sefer open",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18712806-2-19-2026-shloimy-zelcer-leaving-a-sefer-open.mp3",
-        "date": "2026-02-19T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Standing for Aseres Hadibros",
-        "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
-        "date": "2026-01-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Covering challah during kiddush Part 2",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18577857-1-28-2026-shloimy-zelcer-covering-challah-during-kiddush-part-2.mp3",
-        "date": "2026-01-28T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Covering challah during kiddush",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18577841-1-27-2026-shloimy-zelcer-covering-challah-during-kiddush.mp3",
-        "date": "2026-01-27T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Double Black Tefilin",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18540770-1-20-2025-shloimy-zelcer-double-black-tefilin.mp3",
-        "date": "2026-01-20T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "History of Kollel",
-        "url": "https://2mishnasaday.com/wp-content/uploads/historyofkollel.mp3",
-        "date": "2025-12-25T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Daven to Hashem, not angels",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18285871-12-3-2025-shloimy-zelcer-daven-to-hashem-not-angels.mp3",
-        "date": "2025-12-03T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "When Davening takes too long",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18082159-10-28-2025-shloimy-zelcer-when-davening-takes-too-long.mp3",
-        "date": "2025-10-28T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Parshas Nitzavim / Erev Rosh Hashana",
-        "url": "https://2mishnasaday.com/wp-content/uploads/Nitzavim.mp3",
-        "date": "2025-09-18T00:00:00.000Z"
-      }
-    ],
+    "halacha": [],
     "parsha": [
       {
         "type": "video",
