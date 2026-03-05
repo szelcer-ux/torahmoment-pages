@@ -2103,16 +2103,6 @@
     "id": "hal-12",
     "program": "Halacha",
     "type": "audio",
-    "title": "Women saying Kadish",
-    "url": "https://www.buzzsprout.com/1899789/episodes/17345373-6-16-2025-shloimy-zelcer-women-saying-kadish.mp3",
-    "date": "2025-06-16T00:00:00.000Z",
-    "page": "/halacha.html",
-    "title_lc": "women saying kadish"
-  },
-  {
-    "id": "hal-13",
-    "program": "Halacha",
-    "type": "audio",
     "title": "Daven to Hashem, not angels",
     "url": "https://www.buzzsprout.com/1899789/episodes/18285871-12-3-2025-shloimy-zelcer-daven-to-hashem-not-angels.mp3",
     "date": "2025-12-03T00:00:00.000Z",
@@ -2120,7 +2110,7 @@
     "title_lc": "daven to hashem, not angels"
   },
   {
-    "id": "hal-14",
+    "id": "hal-13",
     "program": "Halacha",
     "type": "audio",
     "title": "Tefilas Haderech",
@@ -2130,7 +2120,7 @@
     "title_lc": "tefilas haderech"
   },
   {
-    "id": "hal-15",
+    "id": "hal-14",
     "program": "Halacha",
     "type": "audio",
     "title": "דָּוִד מֶלֶךְ יִשְׂרָאֵל חַי וְקַיָּם בקידוש לבנה",
@@ -2140,7 +2130,7 @@
     "title_lc": "דָּוִד מֶלֶךְ יִשְׂרָאֵל חַי וְקַיָּם בקידוש לבנה"
   },
   {
-    "id": "hal-16",
+    "id": "hal-15",
     "program": "Halacha",
     "type": "audio",
     "title": "Why Don't women say Kiddush Levanah?",
@@ -2150,7 +2140,7 @@
     "title_lc": "why don't women say kiddush levanah?"
   },
   {
-    "id": "hal-17",
+    "id": "hal-16",
     "program": "Halacha",
     "type": "audio",
     "title": "When Davening takes too long",
@@ -2160,7 +2150,7 @@
     "title_lc": "when davening takes too long"
   },
   {
-    "id": "hal-18",
+    "id": "hal-17",
     "program": "Halacha",
     "type": "audio",
     "title": "Kiddush in middle of davening?",
@@ -2168,6 +2158,16 @@
     "date": "2025-07-01T00:00:00.000Z",
     "page": "/halacha.html",
     "title_lc": "kiddush in middle of davening?"
+  },
+  {
+    "id": "hal-18",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Women saying Kadish",
+    "url": "https://www.buzzsprout.com/1899789/episodes/17345373-6-16-2025-shloimy-zelcer-women-saying-kadish.mp3",
+    "date": "2025-06-16T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "women saying kadish"
   },
   {
     "id": "hal-19",
