@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 675,
+    "total": 676,
     "breakdown": {
       "parsha": {
         "audio": 22,
-        "video": 217
+        "video": 218
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-03-05"
+    "updated": "2026-03-06"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Keep trying",
+      "url": "https://www.youtube.com/watch?v=ztLxEczqcUU",
+      "date": "2026-03-06T03:39:27Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "The power of consistency",
       "url": "https://www.youtube.com/watch?v=aXyYwQeZ4zs",
       "date": "2026-02-27T03:59:02Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Be happy for others",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260226-WA0033.mp3",
-      "date": "2026-02-26T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Keep trying",
+        "url": "https://www.youtube.com/watch?v=ztLxEczqcUU",
+        "date": "2026-03-06T03:39:27Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "The power of consistency",
         "url": "https://www.youtube.com/watch?v=aXyYwQeZ4zs",
         "date": "2026-02-27T03:59:02Z"
@@ -266,13 +273,6 @@
         "title": "When to NOT rely on Hashem",
         "url": "https://www.youtube.com/watch?v=oVzvwj8y3iI",
         "date": "2026-01-02T02:38:26Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Being seen",
-        "url": "https://www.youtube.com/watch?v=DYC0tB9Nc78",
-        "date": "2025-12-26T10:36:00Z"
       }
     ]
   }
