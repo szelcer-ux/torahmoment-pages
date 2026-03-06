@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 676,
+    "total": 677,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -13,7 +13,7 @@
         "totalAll": 81
       },
       "oneMinute": {
-        "audio": 198
+        "audio": 199
       },
       "mishna": {
         "audio": 137
@@ -28,6 +28,13 @@
       "title": "Keep trying",
       "url": "https://www.youtube.com/watch?v=ztLxEczqcUU",
       "date": "2026-03-06T03:39:27Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Remember the fix",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260306-WA0036.mp3",
+      "date": "2026-03-06T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -49,17 +56,17 @@
       "title": "Lessons from the half shekel",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0145.mp3",
       "date": "2026-03-02T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "The power of consistency",
-      "url": "https://www.youtube.com/watch?v=aXyYwQeZ4zs",
-      "date": "2026-02-27T03:59:02Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Remember the fix",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260306-WA0036.mp3",
+        "date": "2026-03-06T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "The purpose of mitzvos",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260213-WA0048.mp3",
         "date": "2026-02-13T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Dont wait to start your life",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260210-WA0040.mp3",
-        "date": "2026-02-10T00:00:00.000Z"
       }
     ],
     "halacha": [

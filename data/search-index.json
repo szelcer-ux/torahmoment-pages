@@ -1980,6 +1980,16 @@
     "title_lc": "do your part"
   },
   {
+    "id": "one-198",
+    "program": "One-Minute",
+    "type": "audio",
+    "title": "Remember the fix",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260306-WA0036.mp3",
+    "date": "2026-03-06T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "title_lc": "remember the fix"
+  },
+  {
     "id": "hal-0",
     "program": "Halacha",
     "type": "audio",
