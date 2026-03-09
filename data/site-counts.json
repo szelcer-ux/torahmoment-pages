@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 677,
+    "total": 678,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -13,7 +13,7 @@
         "totalAll": 81
       },
       "oneMinute": {
-        "audio": 199
+        "audio": 200
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-03-09"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "True freedom",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260308-WA0053.mp3",
+      "date": "2026-03-09T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,17 +56,17 @@
       "title": "Eating before Megilah",
       "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
       "date": "2026-03-02T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Lessons from the half shekel",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0145.mp3",
-      "date": "2026-03-02T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "True freedom",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260308-WA0053.mp3",
+        "date": "2026-03-09T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "True love?",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0079.mp3",
         "date": "2026-02-16T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "The purpose of mitzvos",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260213-WA0048.mp3",
-        "date": "2026-02-13T00:00:00.000Z"
       }
     ],
     "halacha": [
