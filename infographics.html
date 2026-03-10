@@ -16,7 +16,7 @@
       --accent:#0d9488;
       --shadow:0 6px 22px rgba(0,0,0,.07);
       --radius:16px;
-      --wrap-max:1100px;
+      --wrap-max:1120px;
       --wrap-pad:16px;
     }
 
@@ -125,6 +125,7 @@
       background:#eef2f7;
       overflow:hidden;
       border-bottom:1px solid var(--border);
+      position:relative;
     }
 
     .thumb img{
@@ -132,6 +133,11 @@
       height:100%;
       display:block;
       object-fit:cover;
+      transition:transform .2s ease;
+    }
+
+    .card:hover .thumb img{
+      transform:scale(1.02);
     }
 
     .body{
@@ -268,6 +274,27 @@
       return String(str).replace(/\s+/g, " ").trim();
     }
 
+    const PARSHA_ORDER = [
+      "Bereishis","Noach","Lech Lecha","Vayeira","Chayei Sarah","Toldos",
+      "Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi",
+
+      "Shemos","Vaera","Bo","Beshalach","Yisro","Mishpatim",
+      "Terumah","Tetzaveh","Ki Sisa","Vayakhel","Pekudei",
+
+      "Vayikra","Tzav","Shemini","Tazria","Metzora",
+      "Achrei Mos","Kedoshim","Emor","Behar","Bechukosai",
+
+      "Bamidbar","Naso","Behaaloscha","Shelach","Korach",
+      "Chukas","Balak","Pinchas","Matos","Masei",
+
+      "Devarim","Vaeschanan","Eikev","Reeh","Shoftim",
+      "Ki Seitzei","Ki Savo","Nitzavim","Vayeilech","Haazinu","Vezos Haberachah"
+    ];
+
+    const PARSHA_INDEX = Object.fromEntries(
+      PARSHA_ORDER.map((name, i) => [name, i])
+    );
+
     const grid = document.getElementById("grid");
     const count = document.getElementById("count");
     const empty = document.getElementById("empty");
@@ -350,6 +377,14 @@
           description: item.description || "",
           youtube: item.youtube || `https://www.youtube.com/watch?v=${videoId}`
         }));
+
+        ALL_ITEMS.sort((a, b) => {
+          const aIndex = PARSHA_INDEX[a.parsha] ?? 999;
+          const bIndex = PARSHA_INDEX[b.parsha] ?? 999;
+
+          if (aIndex !== bIndex) return aIndex - bIndex;
+          return (a.title || "").localeCompare(b.title || "");
+        });
 
         render(ALL_ITEMS);
       } catch (err) {
