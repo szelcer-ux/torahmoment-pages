@@ -1893,20 +1893,19 @@ function countParshaAudio(data, parsha) {
   }
 }
 
-const INFOGRAPHICS = {
-	    "GiYs0ntVDuI": {
-    image: "/images/infographics/parsha/terumah-be-youtful-not-childish.png"
-  },
-    "aXyYwQeZ4zs": {
-    image: "/images/infographics/parsha/tetzaveh-the-power-of-consistency.png"
-  },
-	"ztLxEczqcUU": {
-    image: "/images/infographics/parsha/ki-sisa-keep-trying.png"
-  },
-	"znuRPSkbOrY": {
-    image: "/images/infographics/parsha/pekudei-sanctity-of-normalcy.png"
+let INFOGRAPHICS = {};
+
+async function loadInfographics() {
+  try {
+    const res = await fetch("/data/infographics.json");
+    if (!res.ok) throw new Error("Failed to load /data/infographics.json");
+
+    INFOGRAPHICS = await res.json();
+  } catch (err) {
+    console.warn("Could not load infographics:", err);
+    INFOGRAPHICS = {};
   }
-};	
+}	
 	
 function render(list = []) {
   list = Array.isArray(list) ? list : [];
@@ -1916,7 +1915,8 @@ function render(list = []) {
   count.textContent = `${list.length} video${list.length === 1 ? "" : "s"} shown`;
 
   for (const v of list) {
-	const infographic = INFOGRAPHICS[v.id]; 
+    const infographic = INFOGRAPHICS[v.id];
+
     const a = document.createElement("a");
     a.className = "card";
     a.href = ytWatch(v.id);
@@ -1940,11 +1940,11 @@ function render(list = []) {
         <h3>${escapeHtml(v.title)}</h3>
         <p class="date">${escapeHtml(fmtDate(v.publishedAt))}</p>
         ${shortDesc ? `<p class="desc">${escapeHtml(shortDesc)}</p>` : ""}
-		<div class="pillrow">
-		  ${v.parsha ? `<span class="pill">${escapeHtml(v.parsha)}</span>` : `<span class="pill">Parsha</span>`}
-		  <span class="pill">YouTube</span>
-		  ${infographic ? `<a class="pill" href="${infographic.image}" target="_blank">📊 Infographic</a>` : ""}
-		</div>
+        <div class="pillrow">
+          ${v.parsha ? `<span class="pill">${escapeHtml(v.parsha)}</span>` : `<span class="pill">Parsha</span>`}
+          <span class="pill">YouTube</span>
+          ${infographic ? `<a class="pill" href="${escapeHtml(infographic.image)}" target="_blank" rel="noopener">📊 Infographic</a>` : ""}
+        </div>
       </div>
     `;
     grid.appendChild(a);
