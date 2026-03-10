@@ -119,13 +119,34 @@
       box-shadow:0 12px 28px rgba(0,0,0,.09);
     }
 
+    .head{
+      padding:14px 14px 10px;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(to bottom, #ffffff, #fbfbfc);
+    }
+
+    .parsha{
+      margin:0 0 4px;
+      font-size:.8rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:var(--accent);
+    }
+
+    .title{
+      margin:0;
+      font-size:1rem;
+      line-height:1.35;
+      letter-spacing:-.01em;
+      color:var(--text);
+    }
+
     .thumb{
       display:block;
       aspect-ratio:4 / 5;
       background:#eef2f7;
       overflow:hidden;
-      border-bottom:1px solid var(--border);
-      position:relative;
     }
 
     .thumb img{
@@ -145,33 +166,6 @@
       display:flex;
       flex-direction:column;
       flex:1;
-    }
-
-    .title{
-      margin:0 0 8px;
-      font-size:1rem;
-      line-height:1.35;
-      letter-spacing:-.01em;
-    }
-
-    .meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:10px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      height:28px;
-      padding:0 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:#f8fafc;
-      color:#334155;
-      font-size:.84rem;
-      white-space:nowrap;
     }
 
     .desc{
@@ -318,18 +312,16 @@
         const safeDescription = escapeHtml(item.description || "");
 
         card.innerHTML = `
+          <div class="head">
+            ${item.parsha ? `<div class="parsha">${safeParsha}</div>` : ""}
+            <h2 class="title">${safeTitle}</h2>
+          </div>
+
           <a class="thumb" href="${safeImage}" target="_blank" rel="noopener">
             <img loading="lazy" src="${safeImage}" alt="${safeTitle} infographic" />
           </a>
 
           <div class="body">
-            <h2 class="title">${safeTitle}</h2>
-
-            <div class="meta">
-              ${item.parsha ? `<span class="pill">${safeParsha}</span>` : ""}
-              <span class="pill">Infographic</span>
-            </div>
-
             ${item.description ? `<p class="desc">${safeDescription}</p>` : ""}
 
             <div class="actions">
