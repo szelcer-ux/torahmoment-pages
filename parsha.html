@@ -727,6 +727,26 @@
   }
 }
 
+	  .visual-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#f8fafc;
+  color:#334155;
+  font-weight:600;
+  font-size:.9rem;
+  text-decoration:none;
+  transition:all .15s ease;
+}
+
+.visual-link:hover{
+  background:#eef6ff;
+  border-color:#dbeafe;
+  color:#1d4ed8;
+}
 	  
   </style>
 </head>
@@ -770,11 +790,7 @@
   <div class="wrap">
 <div class="headerRow">
   <h1 id="pageH1">Parsha Divrei Torah</h1>
-<p class="infographic-link">
-  <a href="/infographics.html" id="infographicLink">
-    📊 Visual Divrei Torah
-  </a>
-</p>
+
   <button id="filtersBtn" class="filtersBtn" type="button"
           aria-expanded="false" aria-controls="controlsWrap">
     Filters
@@ -805,6 +821,9 @@
       </select>
       <button id="clear">Clear</button>
     </div>
+	  <a href="/infographics.html" id="infographicLink" class="visual-link">
+  📊 Visual Divrei Torah
+</a>
   </div>
 </header>
 
