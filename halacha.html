@@ -993,9 +993,15 @@ header h1{
 }
 
 .tm-parsha-section{
-  margin-top: 26px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
+  margin-top: 28px;
+}
+
+.tm-parsha-section::before{
+  content:"";
+  display:block;
+  height:1px;
+  background:var(--line);
+  margin-bottom:18px;
 }
     
   </style>
