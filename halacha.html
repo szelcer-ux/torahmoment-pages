@@ -991,6 +991,12 @@ header h1{
   height:1px;
   background:var(--line);
 }
+
+.tm-parsha-section{
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
     
   </style>
   
@@ -1851,7 +1857,7 @@ if (cat.category === "Parsha Insights") {
 }
 
 return `
-  <div class="card">
+  <div class="card ${cat.category === "Parsha Insights" ? "tm-parsha-section" : ""}">
     <details class="category" open>
       <summary>
         <div class="cat-title">${escapeHtml(cat.category)}</div>
