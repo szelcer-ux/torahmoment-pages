@@ -755,10 +755,8 @@
   margin:12px 0 18px;
 }
 
-/* search box */
-
 .controls input{
-  width:220px;
+  width:200px;
   height:38px;
   padding:0 12px;
   border-radius:10px;
@@ -766,8 +764,6 @@
   background:#fff;
   font-size:.9rem;
 }
-
-/* dropdowns */
 
 .controls select{
   height:38px;
@@ -778,25 +774,37 @@
   font-size:.9rem;
 }
 
-/* clear button */
+#parsha{
+  width:270px;
+}
+
+#sort{
+  width:170px;
+}
 
 #clear{
   height:38px;
-  padding:0 14px;
+  padding:0 12px;
   border-radius:10px;
   border:1px solid var(--border);
   background:#fff;
-  font-size:.9rem;
+  font-size:.88rem;
   cursor:pointer;
+  white-space:nowrap;
 }
 
-/* visual divrei torah button */
+#clear:hover{
+  background:#f8fafc;
+}
 
 .visual-link{
+  margin-left:auto;
   display:inline-flex;
   align-items:center;
+  justify-content:center;
   gap:6px;
-  padding:7px 12px;
+  height:38px;
+  padding:0 14px;
   border-radius:999px;
   border:1px solid #dbeafe;
   background:#eef6ff;
@@ -804,7 +812,13 @@
   font-weight:600;
   font-size:.9rem;
   text-decoration:none;
-  margin-left:auto;
+  white-space:nowrap;
+  flex:0 0 auto;
+}
+
+.visual-link:hover{
+  background:#dbeafe;
+  border-color:#bfdbfe;
 }
 	  
   </style>
