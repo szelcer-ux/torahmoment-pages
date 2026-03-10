@@ -1160,13 +1160,12 @@ header h1{
           {type: "audio",title: "Tearing Kriyah at the Kotel", url: "https://www.buzzsprout.com/1899789/episodes/11305071-9-12-2022-shloimy-zelcer.mp3", note: "9/12/2022"},
           {type: "audio",title: "Religious Zionism", url: "https://2mishnasaday.com/wp-content/uploads/religiouszionism.mp3", note: "7/31/2019"}
         ] },
-        {
+{
   category: "Parsha Insights",
   items: [
-
     {
       type: "note",
-      text: "Additional Parsha-related audio shiurim.",
+      text: "Additional Parsha-related shiurim.",
       linkText: "Main Parsha page",
       url: "/parsha.html"
     },
@@ -1177,11 +1176,23 @@ header h1{
       url: "https://www.buzzsprout.com/1899789/episodes/16010930-10-29-2024-shloimy-zelcer-how-petty-theft-sealed-the-fate-of-the-dor-hamabul.mp3",
       note: "10/29/2024"
     },
+    {
+      type: "parsha-audio",
+      title: "NOACH - Rebelling Against the Government",
+      url: "https://2mishnasaday.com/wp-content/uploads/noachrebellingagainstthegovernment.mp3",
+      note: ""
+    },
 
     {
       type: "parsha-audio",
       title: "VAYEIRA - Divrei Chizuk for RCCS",
       url: "https://2mishnasaday.com/wp-content/uploads/Rccs.mp3",
+      note: ""
+    },
+    {
+      type: "parsha-audio",
+      title: "VAYEIRA - Angels and Prophesy",
+      url: "https://2mishnasaday.com/wp-content/uploads/vayeramalachim.mp3",
       note: ""
     },
 
@@ -1191,7 +1202,6 @@ header h1{
       url: "https://www.buzzsprout.com/1899789/episodes/14012119-11-21-2023-shloimy-zelcer.mp3",
       note: "11/21/2023"
     },
-
     {
       type: "parsha-audio",
       title: "VAYEITZEI - Jacob's ladder as a paradigm for prayer",
@@ -1215,6 +1225,20 @@ header h1{
 
     {
       type: "parsha-audio",
+      title: "VAYIGASH - Why didn't Yosef contact Yaakov?",
+      url: "https://2mishnasaday.com/wp-content/uploads/whydidntyosefcontactyaakov.mp3",
+      note: ""
+    },
+
+    {
+      type: "parsha-audio",
+      title: "SHEMOS - Where was Moshe?",
+      url: "https://2mishnasaday.com/wp-content/uploads/wherewasmoshe.mp3",
+      note: ""
+    },
+
+    {
+      type: "parsha-audio",
       title: "VAEIRA - Appreciating Hashem's kindness",
       url: "https://www.buzzsprout.com/1899789/episodes/16511618-1-27-2025-shloimy-zelcer-appreciating-hashems-kindness.mp3",
       note: "1/27/2025"
@@ -1222,9 +1246,22 @@ header h1{
 
     {
       type: "parsha-audio",
+      title: "VAYAKHEL - Some famous Rashi's from the parsha",
+      url: "https://2mishnasaday.com/wp-content/uploads/vayakhel.mp3",
+      note: ""
+    },
+
+    {
+      type: "parsha-audio",
       title: "VAYIKRA - Brief Intro to Sefer Vayikra",
       url: "https://www.buzzsprout.com/1899789/episodes/14711013-3-18-2024-shloimy-zelcer.mp3",
       note: "3/18/2024"
+    },
+    {
+      type: "parsha-audio",
+      title: "VAYIKRA - Detailed intro to Vayikrah",
+      url: "https://2mishnasaday.com/wp-content/uploads/IntrotoVayikrahZoommp3.mp3",
+      note: ""
     },
 
     {
@@ -1236,11 +1273,24 @@ header h1{
 
     {
       type: "parsha-audio",
+      title: "ACHREI MOS - Parshas Achrei Mos",
+      url: "https://2mishnasaday.com/wp-content/uploads/achreizoomFINAL.mp3",
+      note: ""
+    },
+
+    {
+      type: "parsha-audio",
+      title: "BEHAR - Aliyas Regalim today",
+      url: "https://2mishnasaday.com/wp-content/uploads/BEHARaliyasregalim.mp3",
+      note: ""
+    },
+
+    {
+      type: "parsha-audio",
       title: "SHELACH - A lesson from the parsha of the Meraglim",
       url: "https://www.buzzsprout.com/1899789/episodes/13024292-6-12-2023-shloimy-zelcer.mp3",
       note: "6/12/2023"
     },
-
     {
       type: "parsha-audio",
       title: "SHELACH - Lessons from the terrible sin of the spies",
@@ -1257,11 +1307,17 @@ header h1{
 
     {
       type: "parsha-audio",
+      title: "DEVARIM - Intro to Devarim: Beginning of Torah Shebal Peh?",
+      url: "https://2mishnasaday.com/wp-content/uploads/introdevarimfinal.mp3",
+      note: ""
+    },
+
+    {
+      type: "parsha-audio",
       title: "SHOFTIM - Selective observance",
       url: "https://www.buzzsprout.com/1899789/episodes/17736499-8-26-2025-shloimy-zelcer-selective-observance.mp3",
       note: "8/26/2025"
     }
-
   ]
 }
       
@@ -1426,9 +1482,11 @@ if (isAudioPlayer) {
 
   // optional badge so you can SEE it’s the special type
   
-  const extraBadge = (type === "parsha")
-    ? `<div class="tm-badge">Extra</div>`
-    : ``;
+const extraBadge =
+  (type === "parsha-audio") ? `<div class="tm-badge">Insight</div>` :
+  (type === "audio-extra") ? `<div class="tm-badge">Extra</div>` :
+  (type === "parsha") ? `<div class="tm-badge">Parsha</div>` :
+  ``;
 
   return `
     <div class="item" data-key="${escapeHtml(key)}" data-search="${escapeHtml((item.title||"") + " " + (item.note||""))}">
