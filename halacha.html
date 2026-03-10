@@ -1003,6 +1003,29 @@ header h1{
   background:var(--line);
   margin-bottom:18px;
 }
+
+.tm-section-sep{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin: 18px 0 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .25px;
+}
+
+.tm-section-sep::before,
+.tm-section-sep::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background: var(--line);
+}
+
+.tm-section-sep span{
+  white-space: nowrap;
+}
     
   </style>
   
@@ -1863,13 +1886,14 @@ if (cat.category === "Parsha Insights") {
 }
 
 return `
-  <div class="card ${cat.category === "Parsha Insights" ? "tm-parsha-section" : ""}">
+  ${cat.category === "Parsha Insights" ? `<div class="tm-section-sep"><span>Additional Content</span></div>` : ""}
+  <div class="card">
     <details class="category" open>
       <summary>
         <div class="cat-title">${escapeHtml(cat.category)}</div>
         ${cat.category === "Parsha Insights" ? "" : `
-  <div class="count">${countableFiltered.length}/${countableAll.length}</div>
-`}
+          <div class="count">${countableFiltered.length}/${countableAll.length}</div>
+        `}
       </summary>
       <div class="content">
         ${renderedHtml}
