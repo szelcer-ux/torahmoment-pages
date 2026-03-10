@@ -189,18 +189,18 @@
         "date": "2025-12-03T00:00:00.000Z"
       },
       {
+        "type": "parsha-audio",
+        "program": "Halacha",
+        "title": "VAYEITZEI - Jacob's ladder as a paradigm for prayer",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18244005-11-24-2025-shloimy-zelcer-jacob-s-ladder-as-a-paradigm-for-prayer.mp3",
+        "date": "2025-11-24T00:00:00.000Z"
+      },
+      {
         "type": "audio",
         "program": "Halacha",
         "title": "When Davening takes too long",
         "url": "https://www.buzzsprout.com/1899789/episodes/18082159-10-28-2025-shloimy-zelcer-when-davening-takes-too-long.mp3",
         "date": "2025-10-28T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Parshas Nitzavim / Erev Rosh Hashana",
-        "url": "https://2mishnasaday.com/wp-content/uploads/Nitzavim.mp3",
-        "date": "2025-09-18T00:00:00.000Z"
       }
     ],
     "parsha": [
