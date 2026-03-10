@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Torah Infographics | TorahMoment</title>
+  <meta name="description" content="Browse TorahMoment infographics connected to Divrei Torah and watch the corresponding YouTube video." />
+
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --accent:#0d9488;
+      --shadow:0 6px 22px rgba(0,0,0,.07);
+      --radius:16px;
+      --wrap-max:1100px;
+      --wrap-pad:16px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    body{
+      line-height:1.5;
+    }
+
+    a{
+      color:inherit;
+    }
+
+    .wrap{
+      max-width:var(--wrap-max);
+      margin:0 auto;
+      padding:22px var(--wrap-pad) 40px;
+    }
+
+    .hero{
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      margin:0 0 6px;
+      font-size:clamp(1.8rem, 2.8vw, 2.35rem);
+      line-height:1.08;
+      letter-spacing:-.02em;
+    }
+
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      max-width:760px;
+    }
+
+    .toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin:18px 0 18px;
+    }
+
+    .count{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .search{
+      width:100%;
+      max-width:340px;
+    }
+
+    .search input{
+      width:100%;
+      height:42px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:#fff;
+      color:var(--text);
+      font:inherit;
+      padding:0 12px;
+      outline:none;
+    }
+
+    .search input:focus{
+      border-color:#cbd5e1;
+      box-shadow:0 0 0 3px rgba(13,148,136,.08);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(0,0,0,.09);
+    }
+
+    .thumb{
+      display:block;
+      aspect-ratio:4 / 5;
+      background:#eef2f7;
+      overflow:hidden;
+      border-bottom:1px solid var(--border);
+    }
+
+    .thumb img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+    }
+
+    .body{
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+    }
+
+    .title{
+      margin:0 0 8px;
+      font-size:1rem;
+      line-height:1.35;
+      letter-spacing:-.01em;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:10px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      height:28px;
+      padding:0 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#f8fafc;
+      color:#334155;
+      font-size:.84rem;
+      white-space:nowrap;
+    }
+
+    .desc{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:.94rem;
+      line-height:1.5;
+    }
+
+    .actions{
+      margin-top:auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:38px;
+      padding:0 12px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:#fff;
+      text-decoration:none;
+      font-size:.92rem;
+      font-weight:600;
+    }
+
+    .btn:hover{
+      filter:brightness(.98);
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      border-color:var(--accent);
+      color:#fff;
+    }
+
+    .empty{
+      display:none;
+      margin-top:14px;
+      padding:18px;
+      border:1px dashed var(--border);
+      border-radius:16px;
+      background:rgba(255,255,255,.65);
+      color:var(--muted);
+    }
+
+    @media (max-width:640px){
+      .wrap{
+        padding:16px 14px 32px;
+      }
+
+      .toolbar{
+        align-items:stretch;
+      }
+
+      .search{
+        max-width:none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Torah Infographics</h1>
+      <p>
+        Visual summaries connected to Divrei Torah on TorahMoment.
+        Browse the collection and open the corresponding YouTube video for each one.
+      </p>
+    </section>
+
+    <div class="toolbar">
+      <div id="count" class="count">0 infographics</div>
+
+      <label class="search" aria-label="Search infographics">
+        <input id="searchInput" type="search" placeholder="Search by title or parsha..." />
+      </label>
+    </div>
+
+    <section id="grid" class="grid"></section>
+    <div id="empty" class="empty">No infographics matched your search.</div>
+  </main>
+
+  <script>
+    function escapeHtml(str = "") {
+      return String(str).replace(/[&<>"']/g, s => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+      }[s]));
+    }
+
+    function normalizeWs(str = "") {
+      return String(str).replace(/\s+/g, " ").trim();
+    }
+
+    const grid = document.getElementById("grid");
+    const count = document.getElementById("count");
+    const empty = document.getElementById("empty");
+    const searchInput = document.getElementById("searchInput");
+
+    let ALL_ITEMS = [];
+
+    function render(list = []) {
+      grid.innerHTML = "";
+      count.textContent = `${list.length} infographic${list.length === 1 ? "" : "s"}`;
+      empty.style.display = list.length ? "none" : "block";
+
+      for (const item of list) {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const safeTitle = escapeHtml(item.title || "Untitled");
+        const safeParsha = escapeHtml(item.parsha || "");
+        const safeImage = escapeHtml(item.image || "");
+        const safeYoutube = escapeHtml(item.youtube || "");
+        const safeDescription = escapeHtml(item.description || "");
+
+        card.innerHTML = `
+          <a class="thumb" href="${safeImage}" target="_blank" rel="noopener">
+            <img loading="lazy" src="${safeImage}" alt="${safeTitle} infographic" />
+          </a>
+
+          <div class="body">
+            <h2 class="title">${safeTitle}</h2>
+
+            <div class="meta">
+              ${item.parsha ? `<span class="pill">${safeParsha}</span>` : ""}
+              <span class="pill">Infographic</span>
+            </div>
+
+            ${item.description ? `<p class="desc">${safeDescription}</p>` : ""}
+
+            <div class="actions">
+              <a class="btn" href="${safeImage}" target="_blank" rel="noopener">Open Image</a>
+              <a class="btn btn-primary" href="${safeYoutube}" target="_blank" rel="noopener">Watch on YouTube</a>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      }
+    }
+
+    function filterItems() {
+      const q = normalizeWs(searchInput.value).toLowerCase();
+
+      if (!q) {
+        render(ALL_ITEMS);
+        return;
+      }
+
+      const filtered = ALL_ITEMS.filter(item =>
+        [
+          item.title || "",
+          item.parsha || "",
+          item.description || ""
+        ].join(" ").toLowerCase().includes(q)
+      );
+
+      render(filtered);
+    }
+
+    async function loadInfographics() {
+      try {
+        const res = await fetch("/data/infographics.json");
+        if (!res.ok) throw new Error("Failed to load /data/infographics.json");
+
+        const data = await res.json();
+
+        ALL_ITEMS = Object.entries(data).map(([videoId, item]) => ({
+          videoId,
+          title: item.title || "Untitled",
+          parsha: item.parsha || "",
+          image: item.image || "",
+          description: item.description || "",
+          youtube: item.youtube || `https://www.youtube.com/watch?v=${videoId}`
+        }));
+
+        render(ALL_ITEMS);
+      } catch (err) {
+        console.warn("Could not load infographics:", err);
+        ALL_ITEMS = [];
+        render([]);
+      }
+    }
+
+    searchInput.addEventListener("input", filterItems);
+
+    loadInfographics();
+  </script>
+</body>
+</html>
