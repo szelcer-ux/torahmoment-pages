@@ -750,7 +750,6 @@
 
 .controls{
   display:flex;
-  flex-wrap:wrap;
   align-items:center;
   gap:10px;
   margin:12px 0 18px;
@@ -759,7 +758,7 @@
 /* search box */
 
 .controls input{
-  width:260px;
+  width:220px;
   height:38px;
   padding:0 12px;
   border-radius:10px;
@@ -779,15 +778,6 @@
   font-size:.9rem;
 }
 
-/* focus styling */
-
-.controls input:focus,
-.controls select:focus{
-  outline:none;
-  border-color:#cbd5e1;
-  box-shadow:0 0 0 3px rgba(13,148,136,.08);
-}
-
 /* clear button */
 
 #clear{
@@ -800,14 +790,9 @@
   cursor:pointer;
 }
 
-#clear:hover{
-  background:#f8fafc;
-}
-
 /* visual divrei torah button */
 
 .visual-link{
-  margin-left:auto;
   display:inline-flex;
   align-items:center;
   gap:6px;
@@ -819,12 +804,7 @@
   font-weight:600;
   font-size:.9rem;
   text-decoration:none;
-  transition:all .15s ease;
-}
-
-.visual-link:hover{
-  background:#dbeafe;
-  border-color:#bfdbfe;
+  margin-left:auto;
 }
 	  
   </style>
