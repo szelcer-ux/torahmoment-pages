@@ -974,12 +974,23 @@ header h1{
 }
 
 .tm-parsha-head{
-  font-weight: 700;
-  font-size: 13px;
-  color: var(--accent2);
-  margin: 10px 0 6px;
-  letter-spacing: .25px;
-}    
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--accent2);
+  letter-spacing:.4px;
+  margin:14px 0 6px;
+}
+
+.tm-parsha-head::before,
+.tm-parsha-head::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--line);
+}
     
   </style>
   
@@ -1844,7 +1855,9 @@ return `
     <details class="category" open>
       <summary>
         <div class="cat-title">${escapeHtml(cat.category)}</div>
-        <div class="count">${countableFiltered.length}/${countableAll.length}</div>
+        ${cat.category === "Parsha Insights" ? "" : `
+  <div class="count">${countableFiltered.length}/${countableAll.length}</div>
+`}
       </summary>
       <div class="content">
         ${renderedHtml}
