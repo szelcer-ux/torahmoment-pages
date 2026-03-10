@@ -1160,6 +1160,110 @@ header h1{
           {type: "audio",title: "Tearing Kriyah at the Kotel", url: "https://www.buzzsprout.com/1899789/episodes/11305071-9-12-2022-shloimy-zelcer.mp3", note: "9/12/2022"},
           {type: "audio",title: "Religious Zionism", url: "https://2mishnasaday.com/wp-content/uploads/religiouszionism.mp3", note: "7/31/2019"}
         ] },
+        {
+  category: "Parsha Insights",
+  items: [
+
+    {
+      type: "note",
+      text: "Additional Parsha-related audio shiurim.",
+      linkText: "Main Parsha page",
+      url: "/parsha.html"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "NOACH - How petty theft sealed the fate of the dor hamabul",
+      url: "https://www.buzzsprout.com/1899789/episodes/16010930-10-29-2024-shloimy-zelcer-how-petty-theft-sealed-the-fate-of-the-dor-hamabul.mp3",
+      note: "10/29/2024"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "VAYEIRA - Divrei Chizuk for RCCS",
+      url: "https://2mishnasaday.com/wp-content/uploads/Rccs.mp3",
+      note: ""
+    },
+
+    {
+      type: "parsha-audio",
+      title: "VAYEITZEI - הפעם אודה את ה",
+      url: "https://www.buzzsprout.com/1899789/episodes/14012119-11-21-2023-shloimy-zelcer.mp3",
+      note: "11/21/2023"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "VAYEITZEI - Jacob's ladder as a paradigm for prayer",
+      url: "https://www.buzzsprout.com/1899789/episodes/18244005-11-24-2025-shloimy-zelcer-jacob-s-ladder-as-a-paradigm-for-prayer.mp3",
+      note: "11/24/2025"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "VAYISHLACH - When preparing to battle Eisav, what was Yaakov so scared of and why?",
+      url: "https://www.buzzsprout.com/1899789/episodes/9678548-11-17-2021-shloimy-zelcer.mp3",
+      note: "11/17/2021"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "VAYEISHEV - Yosef's multifaceted personality",
+      url: "https://www.buzzsprout.com/1899789/episodes/14089027-12-4-2023-shloimy-zelcer.mp3",
+      note: "12/4/2023"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "VAEIRA - Appreciating Hashem's kindness",
+      url: "https://www.buzzsprout.com/1899789/episodes/16511618-1-27-2025-shloimy-zelcer-appreciating-hashems-kindness.mp3",
+      note: "1/27/2025"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "VAYIKRA - Brief Intro to Sefer Vayikra",
+      url: "https://www.buzzsprout.com/1899789/episodes/14711013-3-18-2024-shloimy-zelcer.mp3",
+      note: "3/18/2024"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "SHEMINI - יום השמיני - a busy day",
+      url: "https://www.buzzsprout.com/1899789/episodes/14806560-4-1-2024-shloimy-zelcer-a-busy-day.mp3",
+      note: "4/1/2024"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "SHELACH - A lesson from the parsha of the Meraglim",
+      url: "https://www.buzzsprout.com/1899789/episodes/13024292-6-12-2023-shloimy-zelcer.mp3",
+      note: "6/12/2023"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "SHELACH - Lessons from the terrible sin of the spies",
+      url: "https://www.buzzsprout.com/1899789/episodes/10842600-6-21-2022-shloimy-zelcer.mp3",
+      note: "6/21/2022"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "VAESCHANAN - My rebbis legacy - always pushing for greatness",
+      url: "https://www.buzzsprout.com/1899789/episodes/17624623-8-6-2025-shloimy-zelcer-my-rebbis-legacy-always-pushing-for-greatness.mp3",
+      note: "8/6/2025"
+    },
+
+    {
+      type: "parsha-audio",
+      title: "SHOFTIM - Selective observance",
+      url: "https://www.buzzsprout.com/1899789/episodes/17736499-8-26-2025-shloimy-zelcer-selective-observance.mp3",
+      note: "8/26/2025"
+    }
+
+  ]
+}
       
       ];
 
@@ -1310,7 +1414,12 @@ if (type === "note") {
 
       
       // AUDIO
-const isAudioPlayer = (type === "audio" || type === "audio-extra" || type === "parsha");
+const isAudioPlayer = (
+  type === "audio" ||
+  type === "audio-extra" ||
+  type === "parsha" ||
+  type === "parsha-audio"
+);
 
 if (isAudioPlayer) {
   const pid = "tm_" + Math.random().toString(36).slice(2);
