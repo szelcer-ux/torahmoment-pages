@@ -748,11 +748,7 @@
   color:#1d4ed8;
 }
 
-/* =========================
-FILTER TOOLBAR
-========================= */
-
-.filter-bar{
+.controls{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
@@ -760,55 +756,58 @@ FILTER TOOLBAR
   margin:12px 0 18px;
 }
 
-/* Inputs + dropdowns */
+/* search box */
 
-.filter-bar input,
-.filter-bar select{
+.controls input{
+  width:260px;
   height:38px;
   padding:0 12px;
   border-radius:10px;
   border:1px solid var(--border);
   background:#fff;
   font-size:.9rem;
-  transition:border .15s ease, box-shadow .15s ease;
 }
 
-/* Smaller search box */
+/* dropdowns */
 
-.filter-search{
-  width:260px;
+.controls select{
+  height:38px;
+  padding:0 10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#fff;
+  font-size:.9rem;
 }
 
-/* Focus state */
+/* focus styling */
 
-.filter-bar input:focus,
-.filter-bar select:focus{
+.controls input:focus,
+.controls select:focus{
   outline:none;
   border-color:#cbd5e1;
   box-shadow:0 0 0 3px rgba(13,148,136,.08);
 }
 
-/* Clear button */
+/* clear button */
 
-#clearBtn{
+#clear{
   height:38px;
   padding:0 14px;
   border-radius:10px;
   border:1px solid var(--border);
   background:#fff;
-  cursor:pointer;
   font-size:.9rem;
+  cursor:pointer;
 }
 
-#clearBtn:hover{
+#clear:hover{
   background:#f8fafc;
 }
 
-/* =========================
-VISUAL DIVREI TORAH BUTTON
-========================= */
+/* visual divrei torah button */
 
 .visual-link{
+  margin-left:auto;
   display:inline-flex;
   align-items:center;
   gap:6px;
@@ -889,25 +888,21 @@ VISUAL DIVREI TORAH BUTTON
 </script>
 
 
-<div class="filter-bar">
-
-  <input type="search" placeholder="Search within Parsha videos..."  id="q" class="filter-search">
-
-       <select id="parsha">
+    <div class="controls" id="controlsWrap">
+      <input id="q" type="search" placeholder="Search Parsha videos..." />
+      <select id="parsha">
         <option value="">All Parshios</option>
       </select>
-  <select id="sort">
-    <option value="new">Newest first</option>
-    <option value="old">Oldest first</option>
-  </select>
-
-  <button id="clearBtn">Clear</button>
-
-  <a href="/infographics.html" id="infographicLink" class="visual-link">
-    📊 Visual Divrei Torah
-  </a>
-
-</div>
+      <select id="sort">
+        <option value="new">Newest first</option>
+        <option value="old">Oldest first</option>
+        <option value="title">Title A–Z</option>
+      </select>
+      <button id="clear">Clear</button>
+		 <a href="/infographics.html" id="infographicLink" class="visual-link">
+  📊 Visual Divrei Torah
+</a>
+    </div>
 	 
   </div>
 </header>
