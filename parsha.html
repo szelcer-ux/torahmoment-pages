@@ -749,7 +749,7 @@
 }
 
 .controls{
-  display:flex;
+  
   align-items:center;
   gap:10px;
   margin:12px 0 18px;
@@ -946,7 +946,38 @@ html{
     flex:0 0 auto;
   }
 
-}	  
+}	 
+
+	  	@media (max-width: 780px){
+
+  .controls{
+    display:none;
+    margin-top:10px;
+  }
+
+  .controls.is-open{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    align-items:center;
+    justify-content:flex-start;
+  }
+
+  .controls input[type="search"]{
+    flex:1 1 100%;
+  }
+
+  .controls select,
+  .controls button{
+    flex:1 1 auto;
+  }
+
+  #infographicLink,
+  #clear{
+    flex:0 0 auto;
+  }
+}
+	  
   </style>
 </head>
 <body>
