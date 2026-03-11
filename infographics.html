@@ -142,20 +142,18 @@
       color:var(--text);
     }
 
-    .thumb{
-      display:block;
-      aspect-ratio:4 / 5;
-      background:#eef2f7;
-      overflow:hidden;
-    }
+.thumb{
+  display:block;
+  background:#eef2f7;
+  padding:10px;
+}
 
-    .thumb img{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit:cover;
-      transition:transform .2s ease;
-    }
+.thumb img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
 
     .card:hover .thumb img{
       transform:scale(1.02);
