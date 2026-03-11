@@ -1521,7 +1521,7 @@ if (wrap && el) {
   wrap.classList.remove("has-audio");
 
   if (total) {
-    el.textContent = `🎧 Listen to audio for ${parsha}: ${total.toLocaleString()} shiur${total === 1 ? "" : "im"}`;
+    el.textContent = `Audio available for ${parsha}: ${total.toLocaleString()} shiur${total === 1 ? "" : "im"}`;
 
     requestAnimationFrame(() => {
       wrap.classList.add("has-audio");
