@@ -823,6 +823,60 @@
   background:#dbeafe;
   border-color:#bfdbfe;
 }
+
+.notice{
+  border:1px solid rgba(17,24,39,.10);
+  margin-bottom:12px;
+  transition: opacity .28s ease, transform .28s ease, max-height .28s ease, margin .28s ease, padding .28s ease;
+  max-height:120px;
+  opacity:1;
+  overflow:hidden;
+}
+
+.notice.is-hidden{
+  opacity:0;
+  transform:translateY(-6px);
+  max-height:0;
+  margin:0;
+  padding-top:0;
+  padding-bottom:0;
+  border-width:0;
+  pointer-events:none;
+}
+
+.tm-stat{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(13,148,136,.22);
+  background:linear-gradient(180deg, #f0fdfa 0%, #ecfeff 100%);
+  color:#0f766e;
+  font-size:13px;
+  font-weight:700;
+  box-shadow:0 4px 14px rgba(13,148,136,.10);
+}
+
+.tm-stat.has-audio{
+  border-color:rgba(13,148,136,.45);
+  background:linear-gradient(180deg, #ccfbf1 0%, #ecfeff 100%);
+  color:#115e59;
+  box-shadow:0 8px 22px rgba(13,148,136,.16);
+  animation:audioPulse 1.5s ease 2;
+}
+
+.tm-stat.has-audio::before{
+  content:"🎧";
+  font-size:14px;
+  line-height:1;
+}
+
+@keyframes audioPulse{
+  0%   { transform:scale(1); }
+  50%  { transform:scale(1.03); }
+  100% { transform:scale(1); }
+}
 	  
   </style>
 </head>
@@ -1413,15 +1467,23 @@ function renderParshaExtras(parsha) {
   clearAudioRowStates();
 
   // Counter
-  const wrap = document.getElementById("audioCountWrap");
-  const el   = document.getElementById("totalAudioCount");
-  if (wrap && el) {
-    const total = shortItems.length + longItems.length;
-    wrap.style.display = total ? "" : "none";
-    if (total) el.textContent = `${parsha}: ${total.toLocaleString()} audio shiurim`;
+const wrap = document.getElementById("audioCountWrap");
+const el   = document.getElementById("totalAudioCount");
+if (wrap && el) {
+  const total = shortItems.length + longItems.length;
+  wrap.style.display = total ? "" : "none";
+
+  wrap.classList.remove("has-audio");
+
+  if (total) {
+    el.textContent = `Audio available for ${parsha}: ${total.toLocaleString()} shiur${total === 1 ? "" : "im"}`;
+
+    requestAnimationFrame(() => {
+      wrap.classList.add("has-audio");
+    });
   }
 }
-
+}
 /* =========================
    ALL RESOURCES (Audio + PDFs)
    ========================= */
@@ -1592,10 +1654,23 @@ if (filtersBtn && controlsWrap) {
 
 
 
-  function setStatus(main, small="") {
-    statusText.textContent = main;
-    statusSmall.textContent = small;
+function setStatus(main, small = "") {
+  statusText.textContent = main;
+  statusSmall.textContent = small;
+
+  const notice = document.querySelector(".notice");
+  if (!notice) return;
+
+  const done = String(main).toLowerCase() === "done";
+
+  if (done) {
+    setTimeout(() => {
+      notice.classList.add("is-hidden");
+    }, 900); // small delay so people briefly see "Done"
+  } else {
+    notice.classList.remove("is-hidden");
   }
+}
 
   async function api(url) {
     const r = await fetch(url);
