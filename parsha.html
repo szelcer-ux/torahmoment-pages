@@ -919,7 +919,34 @@ html{
     box-shadow:0 0 0 rgba(13,148,136,0);
   }
 }	  
-	  
+
+@media (max-width: 640px){
+
+  .controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    align-items:center;
+  }
+
+  .controls input[type="search"]{
+    flex:1 1 100%;
+  }
+
+  .controls select,
+  .controls button,
+  #infographicLink{
+    flex:1 1 auto;
+  }
+
+}
+@media (max-width: 640px){
+
+  #infographicLink{
+    flex:0 0 auto;
+  }
+
+}	  
   </style>
 </head>
 <body>
