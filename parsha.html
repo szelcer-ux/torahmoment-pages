@@ -888,6 +888,20 @@
   50%  { transform:scale(1.03); }
   100% { transform:scale(1); }
 }
+
+html{
+  scroll-behavior:smooth;
+}
+
+.linksBox.jump-highlight{
+  animation:jumpGlow 1.2s ease;
+}
+
+@keyframes jumpGlow{
+  0%   { box-shadow:0 0 0 rgba(13,148,136,0); }
+  40%  { box-shadow:0 0 0 6px rgba(13,148,136,.18); }
+  100% { box-shadow:0 0 0 rgba(13,148,136,0); }
+}
 	  
   </style>
 </head>
@@ -981,8 +995,9 @@
   <div id="count"></div>
 
   <div style="display:flex; gap:10px; align-items:center;">
-    <div id="audioCountWrap" class="tm-stat">
-      <span id="totalAudioCount"></span>
+<a id="audioCountWrap" class="tm-stat" style="display:none;">
+  <span id="totalAudioCount"></span>
+</a>
     </div>
 
   
@@ -1482,6 +1497,23 @@ function renderParshaExtras(parsha) {
   // Counter
 const wrap = document.getElementById("audioCountWrap");
 const el   = document.getElementById("totalAudioCount");
+
+if (wrap) {
+  wrap.onclick = function(e){
+    e.preventDefault();
+
+    const shortSection = document.getElementById("secAudioShort");
+    const longSection  = document.getElementById("secAudioLong");
+
+    if (shortItems.length && shortSection) {
+      shortSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    else if (longItems.length && longSection) {
+      longSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+}	
+	
 if (wrap && el) {
   const total = shortItems.length + longItems.length;
   wrap.style.display = total ? "" : "none";
@@ -1489,13 +1521,14 @@ if (wrap && el) {
   wrap.classList.remove("has-audio");
 
   if (total) {
-    el.textContent = `Audio available for ${parsha}: ${total.toLocaleString()} shiur${total === 1 ? "" : "im"}`;
+    el.textContent = `🎧 Listen to audio for ${parsha}: ${total.toLocaleString()} shiur${total === 1 ? "" : "im"}`;
 
     requestAnimationFrame(() => {
       wrap.classList.add("has-audio");
     });
   }
 }
+
 }
 /* =========================
    ALL RESOURCES (Audio + PDFs)
