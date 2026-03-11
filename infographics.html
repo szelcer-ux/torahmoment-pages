@@ -255,6 +255,19 @@ html, body{
 }
 
 /* ===== TorahMoment Topbar ===== */
+/* ===== Topbar Layout Reset ===== */
+
+html, body{
+  margin:0;
+  padding:0;
+}
+
+*, *::before, *::after{
+  box-sizing:border-box;
+}
+
+/* ===== TorahMoment Topbar ===== */
+
 .tm-topbar{
   width:100%;
   background:#ffffff;
@@ -266,15 +279,20 @@ html, body{
 
 .tm-topbar-inner{
   box-sizing:border-box;
-  max-width: var(--tm-wrap-max, 980px);
+
+  /* Match page layout */
+  max-width:var(--wrap-max);
+  padding:10px var(--wrap-pad);
+
   margin:0 auto;
-  padding:10px var(--tm-wrap-pad, 16px);
+
   display:flex;
   align-items:center;
   flex-wrap:nowrap;
   overflow-x:auto;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
+
   position:relative;
 }
 
@@ -282,7 +300,7 @@ html, body{
   display:none;
 }
 
-/* subtle fade on the right */
+/* right edge fade hint */
 .tm-topbar-inner::after{
   content:"";
   position:absolute;
@@ -294,10 +312,12 @@ html, body{
   background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
 }
 
+/* nav links */
+
 .tm-topbar a,
 .tm-topbar a:visited{
   text-decoration:none;
-  color:var(--muted, #666);
+  color:var(--muted,#666);
   font-size:14px;
   font-weight:500;
   white-space:nowrap;
@@ -305,19 +325,21 @@ html, body{
 }
 
 .tm-topbar a:hover{
-  color:var(--accent, #0d9488);
+  color:var(--accent,#0d9488);
 }
 
 /* active page pill */
+
 .tm-topbar a.active:not(.home-link),
 .tm-topbar a.active:not(.home-link):visited{
-  background: rgba(13,148,136,0.12);
-  color: var(--text, #111) !important;
+  background:rgba(13,148,136,0.12);
+  color:var(--text,#111) !important;
   font-weight:600;
   border-radius:999px;
 }
 
 /* separators */
+
 .tm-topbar a + a{
   border-left:1px solid #e5e7eb;
   margin-left:6px;
@@ -325,6 +347,7 @@ html, body{
 }
 
 /* home icon */
+
 .tm-topbar .home-link{
   display:flex;
   align-items:center;
@@ -337,14 +360,15 @@ html, body{
   height:18px;
 }
 
-/* mobile tighten */
+/* ===== Mobile tweaks ===== */
+
 @media (max-width:520px){
+
   .tm-topbar-inner{
-    padding:8px var(--tm-wrap-pad, 16px);
+    padding:8px var(--wrap-pad);
   }
 
-  .tm-topbar a,
-  .tm-topbar a:visited{
+  .tm-topbar a{
     font-size:13px;
     padding:3px 8px;
   }
@@ -354,7 +378,8 @@ html, body{
     padding-left:10px;
   }
 
-  /* shorten One Minute on mobile */
+  /* shorten "One Minute" on mobile */
+
   .tm-topbar a[href$="/one-minute-audio.html"]{
     font-size:0;
   }
@@ -363,6 +388,7 @@ html, body{
     content:"One-Min";
     font-size:13px;
   }
+
 }
     
   </style>
