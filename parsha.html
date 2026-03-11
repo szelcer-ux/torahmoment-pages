@@ -970,46 +970,7 @@
 </header>
 
 <main class="wrap">
-	 <!-- All resources drawer (moved up) -->
-  <details id="allResources" class="resourcesBox">
-    <summary>
-      <span class="resourcesSummaryTitle">All Parsha resources</span>
-      <span class="resourcesSummaryHint" id="resourcesSummaryHint"></span>
-    </summary>
 
-    <div class="resourcesInner">
-      <div class="resourcesControls">
-        <input id="resQ" type="search" placeholder="Search all audio + PDFs…" />
-        <select id="resParsha">
-          <option value="">All Parshiyos</option>
-        </select>
-        <button id="resClear" type="button">Clear</button>
-      </div>
-
-      <div class="resourcesCols">
-        <section class="resourcesCol">
-          <div class="resourcesColHead">
-            <div class="resourcesColTitle">Audio</div>
-            <div class="resourcesColHint" id="resAudioHint"></div>
-          </div>
-          <div id="resAudioList" class="linksList"></div>
-        </section>
-
-        <section class="resourcesCol">
-          <div class="resourcesColHead">
-            <div class="resourcesColTitle">PDFs</div>
-            <div class="resourcesColHint" id="resPdfHint"></div>
-          </div>
-          <div id="resPdfList" class="pdfList"></div>
-        </section>
-      </div>
-    </div>
-	   <div class="resourcesCloseWrap">
-      <button type="button" id="resourcesCloseBtn" class="resourcesCloseBtn">
-        Close
-      </button>
-    </div>
-  </details>
 	
   <div class="notice">
     <div><strong>Status:</strong> <span id="statusText">Ready</span></div>
@@ -1077,7 +1038,46 @@
   <div id="pdfList" class="pdfList"></div>
 </section>
 
+	 <!-- All resources drawer (moved up) -->
+  <details id="allResources" class="resourcesBox">
+    <summary>
+      <span class="resourcesSummaryTitle">All Parsha resources</span>
+      <span class="resourcesSummaryHint" id="resourcesSummaryHint"></span>
+    </summary>
 
+    <div class="resourcesInner">
+      <div class="resourcesControls">
+        <input id="resQ" type="search" placeholder="Search all audio + PDFs…" />
+        <select id="resParsha">
+          <option value="">All Parshiyos</option>
+        </select>
+        <button id="resClear" type="button">Clear</button>
+      </div>
+
+      <div class="resourcesCols">
+        <section class="resourcesCol">
+          <div class="resourcesColHead">
+            <div class="resourcesColTitle">Audio</div>
+            <div class="resourcesColHint" id="resAudioHint"></div>
+          </div>
+          <div id="resAudioList" class="linksList"></div>
+        </section>
+
+        <section class="resourcesCol">
+          <div class="resourcesColHead">
+            <div class="resourcesColTitle">PDFs</div>
+            <div class="resourcesColHint" id="resPdfHint"></div>
+          </div>
+          <div id="resPdfList" class="pdfList"></div>
+        </section>
+      </div>
+    </div>
+	   <div class="resourcesCloseWrap">
+      <button type="button" id="resourcesCloseBtn" class="resourcesCloseBtn">
+        Close
+      </button>
+    </div>
+  </details>
 
 </main>
 <script src="/data/site-counts.js"></script>
