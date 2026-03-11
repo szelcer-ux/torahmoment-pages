@@ -825,11 +825,22 @@
 }
 
 .notice{
+  background:#fff;
+  border-radius: var(--radius);
+  padding:16px;
+  color:#6b7280;
+  text-align:center;
   border:1px solid rgba(17,24,39,.10);
   margin-bottom:12px;
-  transition: opacity .28s ease, transform .28s ease, max-height .28s ease, margin .28s ease, padding .28s ease;
-  max-height:120px;
+
+  transition:
+    opacity .28s ease,
+    transform .28s ease,
+    max-height .28s ease,
+    margin .28s ease,
+    padding .28s ease;
   opacity:1;
+  max-height:140px;
   overflow:hidden;
 }
 
@@ -1282,7 +1293,9 @@ const GLOBAL_LINKS = [
   const count = $("count");
   const statusText = $("statusText");
   const statusSmall = $("statusSmall");
-
+  const noticeCard = document.querySelector(".notice");
+  let statusHideTimer = null;
+	
   const ytWatch = (id) => `https://www.youtube.com/watch?v=${id}`;
   const fmtDate = (iso) => {
     try {
@@ -1658,17 +1671,17 @@ function setStatus(main, small = "") {
   statusText.textContent = main;
   statusSmall.textContent = small;
 
-  const notice = document.querySelector(".notice");
-  if (!notice) return;
+  if (!noticeCard) return;
 
-  const done = String(main).toLowerCase() === "done";
+  clearTimeout(statusHideTimer);
+  noticeCard.classList.remove("is-hidden");
 
-  if (done) {
-    setTimeout(() => {
-      notice.classList.add("is-hidden");
-    }, 900); // small delay so people briefly see "Done"
-  } else {
-    notice.classList.remove("is-hidden");
+  const normalized = String(main).toLowerCase().trim();
+
+  if (normalized === "done" || normalized === "done (cached)") {
+    statusHideTimer = setTimeout(() => {
+      noticeCard.classList.add("is-hidden");
+    }, 900);
   }
 }
 
