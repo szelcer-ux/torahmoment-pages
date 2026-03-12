@@ -143,15 +143,21 @@ button{
   background:#fff;
   font-size:.9rem;
 }
-
-#parsha{
-  width:270px;
+.controls{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 220px 170px auto auto;
+  align-items:center;
+  gap:10px;
+  margin:12px 0 18px;
+}
+	.controls > *{
+  min-width:0;
 }
 
-#sort{
-  width:170px;
+.controls input,
+.controls select{
+  width:100%;
 }
-
 #clear{
   height:38px;
   width:auto;
