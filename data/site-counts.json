@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 680,
+    "total": 681,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -13,7 +13,7 @@
         "totalAll": 82
       },
       "oneMinute": {
-        "audio": 201
+        "audio": 202
       },
       "mishna": {
         "audio": 137
@@ -27,6 +27,13 @@
       "program": "Halacha",
       "title": "Is Iced Coffee the answer?",
       "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
+      "date": "2026-03-12T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Let it go",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260312-WA0015.mp3",
       "date": "2026-03-12T00:00:00.000Z"
     },
     {
@@ -49,17 +56,17 @@
       "title": "Keep trying",
       "url": "https://www.youtube.com/watch?v=ztLxEczqcUU",
       "date": "2026-03-06T03:39:27Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Remember the fix",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260306-WA0036.mp3",
-      "date": "2026-03-06T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Let it go",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260312-WA0015.mp3",
+        "date": "2026-03-12T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Burning desire",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0077.mp3",
         "date": "2026-02-18T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Inside and out",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260217-WA0015.mp3",
-        "date": "2026-02-17T00:00:00.000Z"
       }
     ],
     "halacha": [
