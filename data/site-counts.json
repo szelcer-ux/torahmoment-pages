@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 679,
+    "total": 680,
     "breakdown": {
       "parsha": {
         "audio": 22,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 81
+        "totalAll": 82
       },
       "oneMinute": {
         "audio": 201
@@ -22,6 +22,13 @@
     "updated": "2026-03-12"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Is Iced Coffee the answer?",
+      "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
+      "date": "2026-03-12T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Remember the fix",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260306-WA0036.mp3",
       "date": "2026-03-06T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Do your part",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0173.mp3",
-      "date": "2026-03-04T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Is Iced Coffee the answer?",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
+        "date": "2026-03-12T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Eating before Megilah",
         "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
         "date": "2026-03-02T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "VAYEITZEI - Jacob's ladder as a paradigm for prayer",
         "url": "https://www.buzzsprout.com/1899789/episodes/18244005-11-24-2025-shloimy-zelcer-jacob-s-ladder-as-a-paradigm-for-prayer.mp3",
         "date": "2025-11-24T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "When Davening takes too long",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18082159-10-28-2025-shloimy-zelcer-when-davening-takes-too-long.mp3",
-        "date": "2025-10-28T00:00:00.000Z"
       }
     ],
     "parsha": [
