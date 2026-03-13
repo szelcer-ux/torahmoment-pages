@@ -1938,7 +1938,7 @@ for (const cat of PAGE_DATA || []) {
   // (if you ever have flat categories)
   for (const it of (cat.items || [])) {
     const t = String(it.type || "").toLowerCase();
-    if (!(t === "audio" || t === "youtube")) continue;
+    if (!(t === "audio" || t === "youtube" || t === "parsha-audio")) continue;
 
     const dt = tmParseMmDdYyyy(it.note);
     if (!dt) continue;
