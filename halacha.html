@@ -1302,7 +1302,7 @@ header h1{
     },
     {
       type: "parsha-audio",
-      title: "Yisro - Serving Hashem before and after the Eigel",
+      title: "YISRO - Serving Hashem before and after the Eigel",
       url: "https://2mishnasaday.com/wp-content/uploads/before-and-after-eigel.mp3",
       note: "3/12/2026"
     },
@@ -1926,7 +1926,7 @@ for (const cat of PAGE_DATA || []) {
     const subName = sub.name || "";
     for (const it of (sub.items || [])) {
       const t = String(it.type || "").toLowerCase();
-      if (!(t === "audio" || t === "youtube")) continue;
+      if (!(t === "audio" || t === "youtube" || t === "parsha-audio")) continue;
 
       const dt = tmParseMmDdYyyy(it.note);
       if (!dt) continue;
