@@ -895,9 +895,14 @@ function renderRecentCurated(data){
     lastGroup = x._group;
 
     const dateLabel = fmtShortDate(x.date);
+    const safeUrl = String(x.url || "");
+    const isAudio =
+      x.type === "audio" ||
+      /\.mp3(\?|$)/i.test(safeUrl) ||
+      /buzzsprout\.com|wp-content\/uploads/i.test(safeUrl);
 
     // Audio: inline player (no pop-out)
-if (x.type === "audio") {
+if (isAudio) {
   const safeUrl = String(x.url || "");
   return `
     ${header}
