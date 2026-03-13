@@ -37,6 +37,13 @@
       "date": "2026-03-12T00:00:00.000Z"
     },
     {
+      "type": "parsha-audio",
+      "program": "Halacha",
+      "title": "Yisro - Serving Hashem before and after the Eigel",
+      "url": "https://2mishnasaday.com/wp-content/uploads/before-and-after-eigel.mp3",
+      "date": "2026-03-12T00:00:00.000Z"
+    },
+    {
       "type": "audio",
       "program": "One-Minute",
       "title": "Let it go",
@@ -49,13 +56,6 @@
       "title": "Only Hashem",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260308-WA0054.mp3",
       "date": "2026-03-10T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "True freedom",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260308-WA0053.mp3",
-      "date": "2026-03-09T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -140,6 +140,13 @@
         "date": "2026-03-12T00:00:00.000Z"
       },
       {
+        "type": "parsha-audio",
+        "program": "Halacha",
+        "title": "Yisro - Serving Hashem before and after the Eigel",
+        "url": "https://2mishnasaday.com/wp-content/uploads/before-and-after-eigel.mp3",
+        "date": "2026-03-12T00:00:00.000Z"
+      },
+      {
         "type": "audio",
         "program": "Halacha",
         "title": "Eating before Megilah",
@@ -194,13 +201,6 @@
         "title": "Daven to Hashem, not angels",
         "url": "https://www.buzzsprout.com/1899789/episodes/18285871-12-3-2025-shloimy-zelcer-daven-to-hashem-not-angels.mp3",
         "date": "2025-12-03T00:00:00.000Z"
-      },
-      {
-        "type": "parsha-audio",
-        "program": "Halacha",
-        "title": "VAYEITZEI - Jacob's ladder as a paradigm for prayer",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18244005-11-24-2025-shloimy-zelcer-jacob-s-ladder-as-a-paradigm-for-prayer.mp3",
-        "date": "2025-11-24T00:00:00.000Z"
       }
     ],
     "parsha": [

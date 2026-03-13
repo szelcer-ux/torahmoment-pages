@@ -2903,6 +2903,16 @@
     "id": "hal-88",
     "program": "Halacha",
     "type": "audio",
+    "title": "Yisro - Serving Hashem before and after the Eigel",
+    "url": "https://2mishnasaday.com/wp-content/uploads/before-and-after-eigel.mp3",
+    "date": "2026-03-12T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "yisro - serving hashem before and after the eigel"
+  },
+  {
+    "id": "hal-89",
+    "program": "Halacha",
+    "type": "audio",
     "title": "VAYIKRA - Brief Intro to Sefer Vayikra",
     "url": "https://www.buzzsprout.com/1899789/episodes/14711013-3-18-2024-shloimy-zelcer.mp3",
     "date": "2024-03-18T00:00:00.000Z",
@@ -2910,7 +2920,7 @@
     "title_lc": "vayikra - brief intro to sefer vayikra"
   },
   {
-    "id": "hal-89",
+    "id": "hal-90",
     "program": "Halacha",
     "type": "audio",
     "title": "SHEMINI - יום השמיני - a busy day",
@@ -2920,7 +2930,7 @@
     "title_lc": "shemini - יום השמיני - a busy day"
   },
   {
-    "id": "hal-90",
+    "id": "hal-91",
     "program": "Halacha",
     "type": "audio",
     "title": "SHELACH - A lesson from the parsha of the Meraglim",
@@ -2930,7 +2940,7 @@
     "title_lc": "shelach - a lesson from the parsha of the meraglim"
   },
   {
-    "id": "hal-91",
+    "id": "hal-92",
     "program": "Halacha",
     "type": "audio",
     "title": "SHELACH - Lessons from the terrible sin of the spies",
@@ -2940,7 +2950,7 @@
     "title_lc": "shelach - lessons from the terrible sin of the spies"
   },
   {
-    "id": "hal-92",
+    "id": "hal-93",
     "program": "Halacha",
     "type": "audio",
     "title": "VAESCHANAN - My rebbis legacy - always pushing for greatness",
@@ -2950,7 +2960,7 @@
     "title_lc": "vaeschanan - my rebbis legacy - always pushing for greatness"
   },
   {
-    "id": "hal-93",
+    "id": "hal-94",
     "program": "Halacha",
     "type": "audio",
     "title": "SHOFTIM - Selective observance",
