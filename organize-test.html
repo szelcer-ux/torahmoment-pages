@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Organize Test</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f8;
+      color: #111;
+    }
+    .wrap{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+    .card{
+      background: #fff;
+      border: 1px solid #e7e7ee;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.07);
+      margin-bottom: 16px;
+    }
+    h1,h2{
+      margin: 0 0 12px;
+    }
+    .muted{
+      color: #666;
+    }
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+    li{
+      margin: 6px 0;
+    }
+    code{
+      background: #f1f3f5;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Organize Test</h1>
+    <p class="muted">This page only tests loading and merging JSON files.</p>
+
+    <div class="card">
+      <h2>Counts</h2>
+      <div id="counts">Loading...</div>
+    </div>
+
+    <div class="card">
+      <h2>Programs</h2>
+      <div id="programs">Loading...</div>
+    </div>
+
+    <div class="card">
+      <h2>Newest 10 Items</h2>
+      <ul id="recentList"></ul>
+    </div>
+  </div>
+
+  <script>
+    async function loadJson(url) {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Failed to load ${url} (${res.status})`);
+      return res.json();
+    }
+
+    function byDateDesc(a, b) {
+      const da = a.date ? new Date(a.date).getTime() : 0;
+      const db = b.date ? new Date(b.date).getTime() : 0;
+      return db - da;
+    }
+
+    function escapeHtml(str) {
+      return String(str ?? "").replace(/[&<>"']/g, ch => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[ch]));
+    }
+
+    async function main() {
+      try {
+        const [searchIndex, tefilahExtra] = await Promise.all([
+          loadJson("/data/search-index.json"),
+          loadJson("/data/tefilah-extra.json")
+        ]);
+
+        const allItems = [...searchIndex, ...tefilahExtra];
+        const tefilahCount = allItems.filter(x => x.program === "Tefilah").length;
+
+        document.getElementById("counts").innerHTML = `
+          <p><strong>Total from search-index:</strong> ${searchIndex.length}</p>
+          <p><strong>Total from tefilah-extra:</strong> ${tefilahExtra.length}</p>
+          <p><strong>Total merged items:</strong> ${allItems.length}</p>
+          <p><strong>Total Tefilah items:</strong> ${tefilahCount}</p>
+        `;
+
+        const programCounts = {};
+        for (const item of allItems) {
+          const key = item.program || "Other";
+          programCounts[key] = (programCounts[key] || 0) + 1;
+        }
+
+        const sortedPrograms = Object.entries(programCounts)
+          .sort((a, b) => a[0].localeCompare(b[0]));
+
+        document.getElementById("programs").innerHTML = `
+          <ul>
+            ${sortedPrograms.map(([name, count]) => `<li><strong>${escapeHtml(name)}:</strong> ${count}</li>`).join("")}
+          </ul>
+        `;
+
+        const recentItems = [...allItems]
+          .sort(byDateDesc)
+          .slice(0, 10);
+
+        const recentList = document.getElementById("recentList");
+        recentList.innerHTML = recentItems.map(item => `
+          <li>
+            <strong>${escapeHtml(item.title || "Untitled")}</strong>
+            <span class="muted">(${escapeHtml(item.program || "Other")})</span>
+          </li>
+        `).join("");
+
+      } catch (err) {
+        document.getElementById("counts").innerHTML = `
+          <p style="color:#b00020;"><strong>Error:</strong> ${err.message}</p>
+          <p class="muted">Check that both JSON files exist and that the paths are correct.</p>
+        `;
+        document.getElementById("programs").innerHTML = "";
+        document.getElementById("recentList").innerHTML = "";
+        console.error(err);
+      }
+    }
+
+    main();
+  </script>
+</body>
+</html>
