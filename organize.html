@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Browse TorahMoment</title>
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#666;
+      --border:#e7e7ee;
+      --accent:#0d9488;
+      --shadow:0 6px 22px rgba(0,0,0,0.07);
+      --radius:16px;
+      --wrap-max:1150px;
+      --wrap-pad:16px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .wrap{
+      max-width:var(--wrap-max);
+      margin:0 auto;
+      padding:24px var(--wrap-pad) 40px;
+    }
+
+    .hero{
+      margin-bottom:22px;
+    }
+
+    .hero-card{
+      background:linear-gradient(135deg,#ffffff 0%,#f2fbfa 100%);
+      border:1px solid var(--border);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:24px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--accent);
+      margin-bottom:10px;
+    }
+
+    h1{
+      margin:0 0 8px;
+      font-size:clamp(28px,4vw,42px);
+      line-height:1.08;
+    }
+
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      max-width:760px;
+      line-height:1.55;
+    }
+
+    .section{
+      margin-top:26px;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .section h2{
+      margin:0;
+      font-size:22px;
+    }
+
+    .section-note{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+
+    .program-card{
+      display:block;
+      transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    }
+
+    .program-card:hover{
+      transform:translateY(-2px);
+      border-color:#cfe8e4;
+      box-shadow:0 10px 28px rgba(0,0,0,0.08);
+    }
+
+    .program-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+    }
+
+    .program-title{
+      font-size:18px;
+      font-weight:700;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:34px;
+      height:28px;
+      padding:0 10px;
+      border-radius:999px;
+      background:#ecfdf5;
+      color:#065f46;
+      font-size:13px;
+      font-weight:700;
+      border:1px solid #cdeee2;
+      white-space:nowrap;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
+
+    .topic-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:14px;
+    }
+
+    .topic-card h3{
+      margin:0 0 8px;
+      font-size:18px;
+    }
+
+    .mini-list{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .mini-item{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px;
+      background:#fcfcfd;
+    }
+
+    .mini-item:hover{
+      border-color:#d9e7e4;
+      background:#fff;
+    }
+
+    .kicker{
+      display:block;
+      font-size:12px;
+      font-weight:700;
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      margin-bottom:5px;
+    }
+
+    .mini-title{
+      font-weight:700;
+      line-height:1.35;
+      margin-bottom:4px;
+    }
+
+    .mini-meta{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .empty{
+      color:var(--muted);
+      font-style:italic;
+    }
+
+    @media (max-width:640px){
+      .wrap{
+        padding-top:18px;
+      }
+      .hero-card{
+        padding:18px;
+        border-radius:20px;
+      }
+      .card{
+        padding:14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">TorahMoment</div>
+        <h1>Browse TorahMoment</h1>
+        <p>
+          Explore shiurim by program, featured topics, and recent additions.
+          This page is meant to make the library easier to discover without changing
+          the pages that already work.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Browse by Program</h2>
+        <div class="section-note" id="programSummary">Loading...</div>
+      </div>
+      <div class="grid" id="programGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Featured Topics</h2>
+        <div class="section-note">Curated from <code>topic-map.json</code></div>
+      </div>
+      <div class="topic-grid" id="topicGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Recent Additions</h2>
+        <div class="section-note">Newest items from the merged index</div>
+      </div>
+      <div class="grid" id="recentGrid"></div>
+    </section>
+
+  </div>
+
+  <script>
+    async function loadJson(url) {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Failed to load ${url} (${res.status})`);
+      return res.json();
+    }
+
+    function escapeHtml(str) {
+      return String(str ?? "").replace(/[&<>"']/g, ch => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+      }[ch]));
+    }
+
+    function byDateDesc(a, b) {
+      const da = a.date ? new Date(a.date).getTime() : 0;
+      const db = b.date ? new Date(b.date).getTime() : 0;
+      return db - da;
+    }
+
+    function niceProgramUrl(program) {
+      const map = {
+        "Parsha": "/parsha.html",
+        "Halacha": "/halacha.html",
+        "One Minute": "/one-minute-audio.html",
+        "One-Minute": "/one-minute-audio.html",
+        "Mishna": "/mishna.html",
+        "Tefilah": "/tefilah.html"
+      };
+      return map[program] || "#";
+    }
+
+    function renderPrograms(items) {
+      const grid = document.getElementById("programGrid");
+      const summary = document.getElementById("programSummary");
+
+      const counts = {};
+      for (const item of items) {
+        const key = item.program || "Other";
+        counts[key] = (counts[key] || 0) + 1;
+      }
+
+      const sorted = Object.entries(counts).sort((a, b) => a[0].localeCompare(b[0]));
+      summary.textContent = `${items.length} total items across ${sorted.length} programs`;
+
+      grid.innerHTML = sorted.map(([program, count]) => {
+        const href = niceProgramUrl(program);
+        return `
+          <a class="card program-card" href="${escapeHtml(href)}">
+            <div class="program-top">
+              <div class="program-title">${escapeHtml(program)}</div>
+              <span class="badge">${count}</span>
+            </div>
+            <div class="muted">Open the ${escapeHtml(program)} section</div>
+          </a>
+        `;
+      }).join("");
+    }
+
+    function renderTopics(items, topicMap) {
+      const grid = document.getElementById("topicGrid");
+      const byId = new Map(items.map(item => [item.id, item]));
+
+      const topics = Object.entries(topicMap || {});
+      if (!topics.length) {
+        grid.innerHTML = `<div class="card empty">No topics found yet.</div>`;
+        return;
+      }
+
+      grid.innerHTML = topics.map(([topic, ids]) => {
+        const matched = (ids || [])
+          .map(id => byId.get(id))
+          .filter(Boolean);
+
+        const preview = matched.slice(0, 5).map(item => `
+          <a class="mini-item" href="${escapeHtml(item.url || item.page || "#")}">
+            <span class="kicker">${escapeHtml(item.program || "Item")}</span>
+            <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
+            <div class="mini-meta">${escapeHtml(item.type || "")}${item.page ? ` • ${escapeHtml(item.page)}` : ""}</div>
+          </a>
+        `).join("");
+
+        return `
+          <div class="card topic-card">
+            <h3>${escapeHtml(topic)}</h3>
+            <div class="muted">${matched.length} curated item${matched.length === 1 ? "" : "s"}</div>
+            <div class="mini-list">
+              ${preview || `<div class="empty">No items matched yet.</div>`}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderRecents(items) {
+      const grid = document.getElementById("recentGrid");
+
+      const recent = [...items].sort(byDateDesc).slice(0, 12);
+
+      if (!recent.length) {
+        grid.innerHTML = `<div class="card empty">No recent items found.</div>`;
+        return;
+      }
+
+      grid.innerHTML = recent.map(item => `
+        <a class="card" href="${escapeHtml(item.url || item.page || "#")}">
+          <span class="kicker">${escapeHtml(item.program || "Item")}</span>
+          <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
+          <div class="mini-meta">
+            ${escapeHtml(item.type || "")}
+            ${item.date ? ` • ${escapeHtml(item.date)}` : ""}
+          </div>
+        </a>
+      `).join("");
+    }
+
+    async function main() {
+      try {
+        const [searchIndex, tefilahExtra, topicMap] = await Promise.all([
+          loadJson("/data/search-index.json"),
+          loadJson("/data/tefilah-extra.json"),
+          loadJson("/data/topic-map.json")
+        ]);
+
+        const allItems = [...searchIndex, ...tefilahExtra];
+
+        renderPrograms(allItems);
+        renderTopics(allItems, topicMap);
+        renderRecents(allItems);
+      } catch (err) {
+        document.body.innerHTML = `
+          <div class="wrap">
+            <div class="card">
+              <h2 style="margin-top:0;">Error loading organize page</h2>
+              <p style="color:#b00020;"><strong>${escapeHtml(err.message)}</strong></p>
+              <p class="muted">Check that all three files exist and contain valid JSON.</p>
+            </div>
+          </div>
+        `;
+        console.error(err);
+      }
+    }
+
+    main();
+  </script>
+</body>
+</html>
