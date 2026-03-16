@@ -1,24 +1,38 @@
 {
   "Tefilah": [
-    "tef-1",
-    "tef-2",
-    "tef-3",
-    "tef-4",
-    "tef-5",
-    "tef-6",
-    "tef-7",
-    "tef-8",
-    "tef-9",
-    "tef-10",
-    "tef-11",
-    "tef-12",
-    "tef-13",
-    "tef-14",
-    "tef-15",
-    "tef-16",
-    "tef-17",
-    "tef-18",
-    "tef-19",
-    "tef-20"
+    "tef-1","tef-2","tef-3","tef-4","tef-5",
+    "tef-6","tef-7","tef-8","tef-9","tef-10",
+    "tef-11","tef-12","tef-13","tef-14","tef-15",
+    "tef-16","tef-17","tef-18","tef-19","tef-20",
+    "one-68"
+  ],
+  "Purim": [
+    "hal-33",
+    "hal-34",
+    "hal-35"
+  ],
+  "Pesach": [
+    "hal-36",
+    "hal-37",
+    "hal-38",
+    "hal-39",
+    "hal-40",
+    "hal-41",
+    "one-199"
+  ],
+  "Sefirah": [
+    "hal-42",
+    "hal-43",
+    "hal-44"
+  ],
+  "Chanukah": [
+    "hal-32",
+    "one-164",
+    "one-165",
+    "one-166"
+  ],
+  "Tefilin / Tzitzis": [
+    "hal-0",
+    "hal-1"
   ]
 }
