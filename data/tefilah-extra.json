@@ -3,7 +3,7 @@
     "id": "tef-1",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 1",
+    "title": "ה שפתי תפתח",
     "url": "https://www.youtube.com/watch?v=D41pvV-O8vI",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 1"
@@ -12,7 +12,7 @@
     "id": "tef-2",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 2",
+    "title": "מגן אברהם",
     "url": "https://www.youtube.com/watch?v=KphTzOqS01Q",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 2"
@@ -21,7 +21,7 @@
     "id": "tef-3",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 3",
+    "title": "מחיה המתים",
     "url": "https://www.youtube.com/watch?v=7W0YJ0QVGsc",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 3"
@@ -30,7 +30,7 @@
     "id": "tef-4",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 4",
+    "title": "אתה קדוש",
     "url": "https://www.youtube.com/watch?v=tivhQcm81Yo",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 4"
@@ -39,7 +39,7 @@
     "id": "tef-5",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 5",
+    "title": "אתה חונן",
     "url": "https://www.youtube.com/watch?v=pKRbjWcqE58",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 5"
@@ -48,7 +48,7 @@
     "id": "tef-6",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 6",
+    "title": "הרוצה בתשובה",
     "url": "https://www.youtube.com/watch?v=Y2mCOpPU_jc",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 6"
@@ -57,7 +57,7 @@
     "id": "tef-7",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 7",
+    "title": "המרבה לסלח",
     "url": "https://www.youtube.com/watch?v=utxAjfKBvQQ",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 7"
@@ -66,7 +66,7 @@
     "id": "tef-8",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 8",
+    "title": "ראה בענינו",
     "url": "https://www.youtube.com/watch?v=iX-sswg0fik",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 8"
@@ -75,7 +75,7 @@
     "id": "tef-9",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 9",
+    "title": "רופא חולי עמו ישראל",
     "url": "https://www.youtube.com/watch?v=yEvBLa_MGYc",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 9"
@@ -84,7 +84,7 @@
     "id": "tef-10",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 10",
+    "title": "מברך השנים",
     "url": "https://www.youtube.com/watch?v=uVwLQZ1J__M",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 10"
@@ -93,7 +93,7 @@
     "id": "tef-11",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 11",
+    "title": "מקבץ נדחי עמו ישראל",
     "url": "https://www.youtube.com/watch?v=rW1RpiAYga0",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 11"
@@ -102,25 +102,25 @@
     "id": "tef-12",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 12",
+    "title": "השיבה שופטינו כבראשונה",
     "url": "https://www.youtube.com/watch?v=rh764gXIa9M",
     "page": "/tefilah.html",
-    "title_lc": "tefilah shiur 12"
+    "title_lc": "השיבה שופטינו כבראשונה"
   },
   {
     "id": "tef-13",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 13",
+    "title": "ברכת המינים",
     "url": "https://www.youtube.com/watch?v=vUzy_Lwy8e8",
     "page": "/tefilah.html",
-    "title_lc": "tefilah shiur 13"
+    "title_lc": "מבטח לצדיקים"
   },
   {
     "id": "tef-14",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 14",
+    "title": "מבטח לצדיקים",
     "url": "https://www.youtube.com/watch?v=re7nnTbIR8g",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 14"
@@ -129,7 +129,7 @@
     "id": "tef-15",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 15",
+    "title": "בונה ירושלים",
     "url": "https://www.youtube.com/watch?v=ExCypGULgFk",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 15"
@@ -138,7 +138,7 @@
     "id": "tef-16",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 16",
+    "title": "את צמח דוד",
     "url": "https://www.youtube.com/watch?v=NXW7hjRNNfA",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 16"
@@ -147,7 +147,7 @@
     "id": "tef-17",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 17",
+    "title": "שומע תפלה",
     "url": "https://www.youtube.com/watch?v=YnfAAZCTlz4",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 17"
@@ -156,7 +156,7 @@
     "id": "tef-18",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 18",
+    "title": "רצה ברכת עבודה",
     "url": "https://www.youtube.com/watch?v=h1JJpGl9RZ8",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 18"
@@ -165,7 +165,7 @@
     "id": "tef-19",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 19",
+    "title": "מודים",
     "url": "https://www.youtube.com/watch?v=9t8oVw3_CTA",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 19"
@@ -174,7 +174,7 @@
     "id": "tef-20",
     "program": "Tefilah",
     "type": "video",
-    "title": "Tefilah Shiur 20",
+    "title": "שים שלום",
     "url": "https://www.youtube.com/watch?v=FL78Z1SKs1k",
     "page": "/tefilah.html",
     "title_lc": "tefilah shiur 20"
