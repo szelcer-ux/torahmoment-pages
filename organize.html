@@ -263,153 +263,85 @@
 
   </div>
 
-  <script>
-    async function loadJson(url) {
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(`Failed to load ${url} (${res.status})`);
-      return res.json();
-    }
+<script>
 
-    function escapeHtml(str) {
-      return String(str ?? "").replace(/[&<>"']/g, ch => ({
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#39;"
-      }[ch]));
-    }
+async function loadJson(url){
+  const r = await fetch(url,{cache:"no-store"});
+  if(!r.ok) throw new Error(url);
+  return r.json();
+}
 
-    function byDateDesc(a, b) {
-      const da = a.date ? new Date(a.date).getTime() : 0;
-      const db = b.date ? new Date(b.date).getTime() : 0;
-      return db - da;
-    }
+function escapeHtml(str){
+  return String(str ?? "").replace(/[&<>"']/g,ch=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[ch]));
+}
 
-    function niceProgramUrl(program) {
-      const map = {
-        "Parsha": "/parsha.html",
-        "Halacha": "/halacha.html",
-        "One Minute": "/one-minute-audio.html",
-        "One-Minute": "/one-minute-audio.html",
-        "Mishna": "/mishna.html",
-        "Tefilah": "/tefilah.html"
-      };
-      return map[program] || "#";
-    }
+function getTopic(){
+  const params = new URLSearchParams(location.search);
+  return params.get("topic");
+}
 
-    function renderPrograms(items) {
-      const grid = document.getElementById("programGrid");
-      const summary = document.getElementById("programSummary");
+function renderTopicGrid(topicMap){
+  const grid = document.getElementById("topicGrid");
 
-      const counts = {};
-      for (const item of items) {
-        const key = item.program || "Other";
-        counts[key] = (counts[key] || 0) + 1;
-      }
+  const topics = Object.keys(topicMap);
 
-      const sorted = Object.entries(counts).sort((a, b) => a[0].localeCompare(b[0]));
-      summary.textContent = `${items.length} total items across ${sorted.length} programs`;
+  grid.innerHTML = topics.map(t=>`
+    <a class="card program-card" href="?topic=${encodeURIComponent(t)}">
+      <div class="program-top">
+        <div class="program-title">${escapeHtml(t)}</div>
+      </div>
+      <div class="muted">View shiurim</div>
+    </a>
+  `).join("");
+}
 
-      grid.innerHTML = sorted.map(([program, count]) => {
-        const href = niceProgramUrl(program);
-        return `
-          <a class="card program-card" href="${escapeHtml(href)}">
-            <div class="program-top">
-              <div class="program-title">${escapeHtml(program)}</div>
-              <span class="badge">${count}</span>
-            </div>
-            <div class="muted">Open the ${escapeHtml(program)} section</div>
-          </a>
-        `;
-      }).join("");
-    }
+function renderTopicItems(items,topicIds,topicName){
+  const grid = document.getElementById("topicGrid");
 
-    function renderTopics(items, topicMap) {
-      const grid = document.getElementById("topicGrid");
-      const byId = new Map(items.map(item => [item.id, item]));
+  const byId = new Map(items.map(x=>[x.id,x]));
 
-      const topics = Object.entries(topicMap || {});
-      if (!topics.length) {
-        grid.innerHTML = `<div class="card empty">No topics found yet.</div>`;
-        return;
-      }
+  const topicItems = topicIds.map(id=>byId.get(id)).filter(Boolean);
 
-      grid.innerHTML = topics.map(([topic, ids]) => {
-        const matched = (ids || [])
-          .map(id => byId.get(id))
-          .filter(Boolean);
+  grid.innerHTML = `
+    <div class="card" style="grid-column:1/-1">
+      <h2>${escapeHtml(topicName)}</h2>
+      <p class="muted">${topicItems.length} shiurim</p>
+    </div>
+  ` + topicItems.map(item=>`
+    <a class="card" href="${escapeHtml(item.url || item.page)}">
+      <span class="kicker">${escapeHtml(item.program)}</span>
+      <div class="mini-title">${escapeHtml(item.title)}</div>
+    </a>
+  `).join("");
+}
 
-        const preview = matched.slice(0, 5).map(item => `
-          <a class="mini-item" href="${escapeHtml(item.url || item.page || "#")}">
-            <span class="kicker">${escapeHtml(item.program || "Item")}</span>
-            <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
-            <div class="mini-meta">${escapeHtml(item.type || "")}${item.page ? ` • ${escapeHtml(item.page)}` : ""}</div>
-          </a>
-        `).join("");
+async function main(){
 
-        return `
-          <div class="card topic-card">
-            <h3>${escapeHtml(topic)}</h3>
-            <div class="muted">${matched.length} curated item${matched.length === 1 ? "" : "s"}</div>
-            <div class="mini-list">
-              ${preview || `<div class="empty">No items matched yet.</div>`}
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
+  const [searchIndex,tefilahExtra,topicMap] = await Promise.all([
+    loadJson("/data/search-index.json"),
+    loadJson("/data/tefilah-extra.json"),
+    loadJson("/data/topic-map.json")
+  ]);
 
-    function renderRecents(items) {
-      const grid = document.getElementById("recentGrid");
+  const items=[...searchIndex,...tefilahExtra];
 
-      const recent = [...items].sort(byDateDesc).slice(0, 12);
+  const topic=getTopic();
 
-      if (!recent.length) {
-        grid.innerHTML = `<div class="card empty">No recent items found.</div>`;
-        return;
-      }
+  if(!topic){
+    renderTopicGrid(topicMap);
+    return;
+  }
 
-      grid.innerHTML = recent.map(item => `
-        <a class="card" href="${escapeHtml(item.url || item.page || "#")}">
-          <span class="kicker">${escapeHtml(item.program || "Item")}</span>
-          <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
-          <div class="mini-meta">
-            ${escapeHtml(item.type || "")}
-            ${item.date ? ` • ${escapeHtml(item.date)}` : ""}
-          </div>
-        </a>
-      `).join("");
-    }
+  const ids=topicMap[topic]||[];
 
-    async function main() {
-      try {
-        const [searchIndex, tefilahExtra, topicMap] = await Promise.all([
-          loadJson("/data/search-index.json"),
-          loadJson("/data/tefilah-extra.json"),
-          loadJson("/data/topic-map.json")
-        ]);
+  renderTopicItems(items,ids,topic);
 
-        const allItems = [...searchIndex, ...tefilahExtra];
+}
 
-        renderPrograms(allItems);
-        renderTopics(allItems, topicMap);
-        renderRecents(allItems);
-      } catch (err) {
-        document.body.innerHTML = `
-          <div class="wrap">
-            <div class="card">
-              <h2 style="margin-top:0;">Error loading organize page</h2>
-              <p style="color:#b00020;"><strong>${escapeHtml(err.message)}</strong></p>
-              <p class="muted">Check that all three files exist and contain valid JSON.</p>
-            </div>
-          </div>
-        `;
-        console.error(err);
-      }
-    }
+main();
 
-    main();
-  </script>
+</script>
 </body>
 </html>
