@@ -258,10 +258,44 @@
  .topic-audio-list{
   display:grid;
   gap:14px;
-}   
+}
+
+.topic-media-grid,
+.recent-media-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:14px;
+  margin-top:14px;
+}
+
+.topic-media-grid.is-collapsed{
+  position:relative;
+  max-height:980px;
+  overflow:hidden;
+}
+
+.topic-media-grid.is-collapsed::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:88px;
+  pointer-events:none;
+  background:linear-gradient(to bottom, rgba(247,247,248,0), rgba(247,247,248,1));
+}
+
+.media-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:14px;
+  min-width:0;
+}
+
 .video-card{
   display:block;
-  overflow:hidden;
   transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
 }
 
@@ -281,6 +315,10 @@
   background:#eef2f4;
 }
 
+ .audio-card{
+  display:block;
+}
+    
 .audio-row{
   background:var(--card);
   border:1px solid var(--border);
@@ -291,6 +329,7 @@
 
 .audio-head{
   margin-bottom:10px;
+  min-width:0;
 }
 
 .audio-cat{
@@ -308,15 +347,22 @@
   line-height:1.35;
 }
 
+.item-date{
+  margin-top:4px;
+  font-size:13px;
+  color:var(--muted);
+}
+    
 .tm-inline-player{
-  display:flex;
+  display:grid;
+  grid-template-columns:40px 1fr auto;
   align-items:center;
-  gap:12px;
+  gap:10px;
   border:1px solid var(--border);
   border-radius:999px;
   padding:10px 12px;
   background:#fcfcfd;
-  min-height:64px;
+  min-width:0;
 }
 
 .tm-play{
@@ -343,8 +389,8 @@
 }
 
 .tm-progress-wrap{
-  flex:1 1 auto;
-  min-width:120px;
+  min-width:0;
+  width:100%;
 }
 
 .tm-progress{
@@ -380,7 +426,7 @@
   display:flex;
   align-items:center;
   gap:8px;
-  flex:0 0 auto;
+  min-width:0;
 }
 
 .tm-pill{
@@ -404,7 +450,7 @@
   color:var(--muted);
   font-size:14px;
   white-space:nowrap;
-  min-width:44px;
+  min-width:56px;
   text-align:right;
 }
 
@@ -416,15 +462,20 @@
   display:none !important;
 }
 
-@media (max-width:640px){
-  .topic-video-grid{
+@media (max-width:700px){
+  .topic-media-grid,
+  .recent-media-grid{
     grid-template-columns:1fr;
   }
 
   .tm-inline-player{
+    grid-template-columns:40px 1fr;
     gap:8px;
-    padding:8px 10px;
-    min-height:56px;
+  }
+
+  .tm-controls{
+    grid-column:1 / -1;
+    justify-content:flex-end;
   }
 
   .tm-play{
@@ -440,7 +491,7 @@
 
   .tm-time{
     font-size:13px;
-    min-width:40px;
+    min-width:48px;
   }
 }
   </style>
@@ -509,6 +560,8 @@
       return db - da;
     }
 
+
+    
     function getTopic(){
       const params = new URLSearchParams(location.search);
       return params.get("topic");
@@ -578,7 +631,82 @@
       }
     }
 
+function formatDate(dateStr){
+  if(!dateStr) return "";
+  const d = new Date(dateStr);
+  if(Number.isNaN(d.getTime())) return "";
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  const yyyy = d.getFullYear();
+  return `${mm}/${dd}/${yyyy}`;
+}
 
+function renderAudioCard(item){
+  const date = formatDate(item.date);
+
+  return `
+    <div class="media-card audio-card">
+      <div class="audio-head">
+        <span class="audio-cat">${escapeHtml(item.program || "Item")}</span>
+        <div class="audio-title">${escapeHtml(item.title || "Untitled")}</div>
+        ${date ? `<div class="item-date">${escapeHtml(date)}</div>` : ``}
+      </div>
+
+      <div class="tm-inline-player" data-audio-player>
+        <button class="tm-play" type="button" data-play aria-label="Play">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </button>
+
+        <div class="tm-progress-wrap">
+          <input class="tm-progress" data-seek type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+        </div>
+
+        <div class="tm-controls">
+          <button class="tm-pill" type="button" data-speed>1×</button>
+          <span class="tm-time" data-time></span>
+        </div>
+
+        <audio preload="none" src="${escapeHtml(item.url || "")}"></audio>
+      </div>
+    </div>
+  `;
+}
+
+function renderVideoCard(item){
+  const yt = getYouTubeId(item.url);
+  const thumb = yt ? `https://img.youtube.com/vi/${yt}/hqdefault.jpg` : null;
+  const date = formatDate(item.date);
+
+  return `
+    <a class="media-card video-card" href="${escapeHtml(item.url || item.page || "#")}">
+      ${thumb ? `<img class="video-thumb" src="${thumb}" alt="${escapeHtml(item.title || "Video thumbnail")}">` : ""}
+      <span class="kicker">${escapeHtml(item.program || "Item")}</span>
+      <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
+      ${date ? `<div class="item-date">${escapeHtml(date)}</div>` : ``}
+    </a>
+  `;
+}
+
+function renderBasicCard(item){
+  const date = formatDate(item.date);
+
+  return `
+    <a class="media-card" href="${escapeHtml(item.url || item.page || "#")}">
+      <span class="kicker">${escapeHtml(item.program || "Item")}</span>
+      <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
+      ${date ? `<div class="item-date">${escapeHtml(date)}</div>` : ``}
+    </a>
+  `;
+}
+
+function renderMediaCard(item){
+  if(isAudioItem(item)) return renderAudioCard(item);
+  if(isVideoItem(item)) return renderVideoCard(item);
+  return renderBasicCard(item);
+}
+    
     function renderAudioRow(item){
   return `
     <div class="audio-row">
@@ -660,45 +788,15 @@ function renderRecents(items){
   const grid = document.getElementById("recentGrid");
   if(!grid) return;
 
-  const recent = [...items].sort(byDateDesc).slice(0,12);
+  const recent = [...items].sort(byDateDesc).slice(0, 12);
 
   if(!recent.length){
     grid.innerHTML = `<div class="card empty">No recent items found.</div>`;
     return;
   }
 
-  grid.innerHTML = recent.map(item => {
-    if(isAudioItem(item)){
-      return renderAudioRow(item);
-    }
-
-    if(isVideoItem(item)){
-      const yt = getYouTubeId(item.url);
-      const thumb = yt ? `https://img.youtube.com/vi/${yt}/hqdefault.jpg` : null;
-
-      return `
-        <a class="card video-card" href="${escapeHtml(item.url || item.page || "#")}">
-          ${thumb ? `<img class="video-thumb" src="${thumb}" alt="${escapeHtml(item.title || "Video thumbnail")}">` : ""}
-          <span class="kicker">${escapeHtml(item.program || "Item")}</span>
-          <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
-          <div class="mini-meta">
-            ${item.date ? escapeHtml(item.date) : ""}
-          </div>
-        </a>
-      `;
-    }
-
-    return `
-      <a class="card" href="${escapeHtml(item.url || item.page || "#")}">
-        <span class="kicker">${escapeHtml(item.program || "Item")}</span>
-        <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
-        <div class="mini-meta">
-          ${escapeHtml(item.type || "")}
-          ${item.date ? ` • ${escapeHtml(item.date)}` : ""}
-        </div>
-      </a>
-    `;
-  }).join("");
+  grid.className = "recent-media-grid";
+  grid.innerHTML = recent.map(renderMediaCard).join("");
 
   setupInlineAudioPlayers(grid);
 }
@@ -714,35 +812,19 @@ function renderTopicItems(items, topicIds, topicName){
   const visibleItems = topicItems.slice(0, initialCount);
   const hiddenItems = topicItems.slice(initialCount);
 
-  function renderTopicCard(item){
-    if(isVideoItem(item)){
-      const yt = getYouTubeId(item.url);
-      const thumb = yt ? `https://img.youtube.com/vi/${yt}/hqdefault.jpg` : null;
+function renderTopicItems(items, topicIds, topicName){
+  const grid = document.getElementById("topicGrid");
+  if(!grid) return;
 
-      return `
-        <a class="card video-card" href="${escapeHtml(item.url || item.page || "#")}">
-          ${thumb ? `<img class="video-thumb" src="${thumb}" alt="${escapeHtml(item.title || "Video thumbnail")}">` : ""}
-          <span class="kicker">${escapeHtml(item.program || "Item")}</span>
-          <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
-        </a>
-      `;
-    }
+  const byId = new Map(items.map(x => [x.id, x]));
+  const topicItems = (topicIds || []).map(id => byId.get(id)).filter(Boolean);
 
-    if(isAudioItem(item)){
-      return renderAudioRow(item);
-    }
-
-    return `
-      <a class="card" href="${escapeHtml(item.url || item.page || "#")}">
-        <span class="kicker">${escapeHtml(item.program || "Item")}</span>
-        <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
-      </a>
-    `;
-  }
-
-  const initialHtml = visibleItems.map(renderTopicCard).join("");
-  const hiddenHtml = hiddenItems.map(renderTopicCard).join("");
+  const initialCount = 8;
+  const visibleItems = topicItems.slice(0, initialCount);
+  const hiddenItems = topicItems.slice(initialCount);
   const hiddenCount = hiddenItems.length;
+
+  grid.className = "topic-media-grid" + (hiddenCount > 0 ? " is-collapsed" : "");
 
   grid.innerHTML = `
     <div class="card" style="grid-column:1/-1">
@@ -758,10 +840,8 @@ function renderTopicItems(items, topicIds, topicName){
       </div>
     </div>
 
-    <div class="topic-items ${hiddenCount > 0 ? "is-collapsed" : ""}" id="topicItemsWrap" style="grid-column:1/-1">
-      ${initialHtml}
-      ${hiddenCount > 0 ? `<div id="hiddenTopicItems" class="is-hidden">${hiddenHtml}</div>` : ``}
-    </div>
+    ${visibleItems.map(renderMediaCard).join("")}
+    ${hiddenCount > 0 ? `<div id="hiddenTopicItems" class="is-hidden" style="display:contents;">${hiddenItems.map(renderMediaCard).join("")}</div>` : ``}
   `;
 
   setupInlineAudioPlayers(grid);
@@ -769,19 +849,18 @@ function renderTopicItems(items, topicIds, topicName){
   if(hiddenCount > 0){
     const toggleBtn = document.getElementById("toggleTopicItems");
     const hiddenWrap = document.getElementById("hiddenTopicItems");
-    const topicWrap = document.getElementById("topicItemsWrap");
 
     toggleBtn.addEventListener("click", () => {
       const expanded = toggleBtn.getAttribute("data-expanded") === "true";
 
       if(expanded){
         hiddenWrap.classList.add("is-hidden");
-        topicWrap.classList.add("is-collapsed");
+        grid.classList.add("is-collapsed");
         toggleBtn.setAttribute("data-expanded", "false");
         toggleBtn.textContent = `Show ${hiddenCount} more`;
-      }else{
+      } else {
         hiddenWrap.classList.remove("is-hidden");
-        topicWrap.classList.remove("is-collapsed");
+        grid.classList.remove("is-collapsed");
         toggleBtn.setAttribute("data-expanded", "true");
         toggleBtn.textContent = "Show less";
       }
@@ -789,102 +868,93 @@ function renderTopicItems(items, topicIds, topicName){
   }
 }
 
-    function setupInlineAudioPlayers(root=document){
-      const players = root.querySelectorAll("[data-audio-player]");
+function setupInlineAudioPlayers(root=document){
+  const players = root.querySelectorAll("[data-audio-player]");
 
-      players.forEach(player => {
-        const audio = player.querySelector("audio");
-        const playBtn = player.querySelector("[data-play]");
-        const seek = player.querySelector("[data-seek]");
-        const speedBtn = player.querySelector("[data-speed]");
-        const shortBtn = player.querySelector("[data-shortskip]");
-        const timeEl = player.querySelector("[data-time]");
+  players.forEach(player => {
+    const audio = player.querySelector("audio");
+    const playBtn = player.querySelector("[data-play]");
+    const seek = player.querySelector("[data-seek]");
+    const speedBtn = player.querySelector("[data-speed]");
+    const timeEl = player.querySelector("[data-time]");
 
-        if(!audio || !playBtn || !seek || !speedBtn || !shortBtn || !timeEl) return;
+    if(!audio || !playBtn || !seek || !speedBtn || !timeEl) return;
 
-        const speeds = [1, 1.25, 1.5, 1.75, 2];
-        let speedIndex = 0;
+    const speeds = [1, 1.25, 1.5, 1.75, 2];
+    let speedIndex = 0;
 
-        function updatePlayIcon(isPlaying){
-          playBtn.innerHTML = isPlaying
-            ? `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5h3v14H8zm5 0h3v14h-3z"></path></svg>`
-            : `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>`;
-        }
-
-        function fmt(sec){
-          if(!Number.isFinite(sec) || sec < 0) return "";
-          const m = Math.floor(sec / 60);
-          const s = Math.floor(sec % 60);
-          return `${m}:${String(s).padStart(2,"0")}`;
-        }
-
-        function updateTime(){
-          const cur = audio.currentTime || 0;
-          const dur = audio.duration || 0;
-          if(dur > 0){
-            seek.value = (cur / dur) * 100;
-            timeEl.textContent = `(${fmt(dur)})`;
-          }else{
-            seek.value = 0;
-            timeEl.textContent = "";
-          }
-        }
-
-        playBtn.addEventListener("click", async () => {
-          const allAudios = document.querySelectorAll(".tm-inline-player audio");
-          allAudios.forEach(a => {
-            if(a !== audio){
-              a.pause();
-              const p = a.closest("[data-audio-player]");
-              const b = p?.querySelector("[data-play]");
-              if(b){
-                b.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>`;
-              }
-            }
-          });
-
-          if(audio.paused){
-            try{
-              await audio.play();
-              updatePlayIcon(true);
-            }catch(e){}
-          }else{
-            audio.pause();
-            updatePlayIcon(false);
-          }
-        });
-
-        audio.addEventListener("play", ()=> updatePlayIcon(true));
-        audio.addEventListener("pause", ()=> updatePlayIcon(false));
-        audio.addEventListener("loadedmetadata", updateTime);
-        audio.addEventListener("timeupdate", updateTime);
-        audio.addEventListener("ended", ()=> updatePlayIcon(false));
-
-        seek.addEventListener("input", () => {
-          if(audio.duration){
-            audio.currentTime = (Number(seek.value) / 100) * audio.duration;
-          }
-        });
-
-        speedBtn.addEventListener("click", () => {
-          speedIndex = (speedIndex + 1) % speeds.length;
-          audio.playbackRate = speeds[speedIndex];
-          speedBtn.textContent = `${speeds[speedIndex]}×`;
-        });
-
-        shortBtn.addEventListener("click", () => {
-          if(audio.duration){
-            audio.currentTime = Math.min(audio.currentTime + 15, audio.duration);
-          }else{
-            audio.currentTime += 15;
-          }
-        });
-
-        audio.playbackRate = speeds[speedIndex];
-        speedBtn.textContent = `${speeds[speedIndex]}×`;
-        updateTime();
-      });
+    function updatePlayIcon(isPlaying){
+      playBtn.innerHTML = isPlaying
+        ? `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5h3v14H8zm5 0h3v14h-3z"></path></svg>`
+        : `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>`;
     }
+
+    function fmt(sec){
+      if(!Number.isFinite(sec) || sec < 0) return "";
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2, "0")}`;
+    }
+
+    function updateTime(){
+      const dur = audio.duration || 0;
+      const cur = audio.currentTime || 0;
+
+      if(dur > 0){
+        seek.value = (cur / dur) * 100;
+        timeEl.textContent = fmt(dur);
+      } else {
+        seek.value = 0;
+        timeEl.textContent = "";
+      }
+    }
+
+    playBtn.addEventListener("click", async () => {
+      document.querySelectorAll(".tm-inline-player audio").forEach(a => {
+        if(a !== audio){
+          a.pause();
+          const p = a.closest("[data-audio-player]");
+          const b = p?.querySelector("[data-play]");
+          if(b){
+            b.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>`;
+          }
+        }
+      });
+
+      if(audio.paused){
+        try{
+          await audio.play();
+          updatePlayIcon(true);
+        }catch(e){}
+      } else {
+        audio.pause();
+        updatePlayIcon(false);
+      }
+    });
+
+    audio.addEventListener("play", () => updatePlayIcon(true));
+    audio.addEventListener("pause", () => updatePlayIcon(false));
+    audio.addEventListener("loadedmetadata", updateTime);
+    audio.addEventListener("timeupdate", updateTime);
+    audio.addEventListener("ended", () => updatePlayIcon(false));
+
+    seek.addEventListener("input", () => {
+      if(audio.duration){
+        audio.currentTime = (Number(seek.value) / 100) * audio.duration;
+      }
+    });
+
+    speedBtn.addEventListener("click", () => {
+      speedIndex = (speedIndex + 1) % speeds.length;
+      audio.playbackRate = speeds[speedIndex];
+      speedBtn.textContent = `${speeds[speedIndex]}×`;
+    });
+
+    audio.playbackRate = speeds[speedIndex];
+    speedBtn.textContent = `${speeds[speedIndex]}×`;
+    updateTime();
+  });
+}
 
     async function main(){
       try{
