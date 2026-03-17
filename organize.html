@@ -228,206 +228,221 @@
       background:#fafefe;
     }
 
-    .topic-items{
-      display:grid;
-      gap:14px;
-      margin-top:14px;
-    }
+.topic-items{
+  display:grid;
+  gap:14px;
+  margin-top:14px;
+}
 
-    .video-card{
-      display:block;
-      overflow:hidden;
-      transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
-    }
+.topic-items.is-collapsed{
+  position:relative;
+}
 
-    .video-card:hover{
-      transform:translateY(-2px);
-      border-color:#cfe8e4;
-      box-shadow:0 10px 28px rgba(0,0,0,0.08);
-    }
+.topic-items.is-collapsed::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:72px;
+  pointer-events:none;
+  background:linear-gradient(to bottom, rgba(247,247,248,0), rgba(247,247,248,1));
+  border-radius:0 0 16px 16px;
+}
+.topic-video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+}
 
-    .video-thumb{
-      width:100%;
-      aspect-ratio:16/9;
-      object-fit:cover;
-      display:block;
-      border-radius:12px;
-      margin-bottom:10px;
-      background:#eef2f4;
-    }
+ .topic-audio-list{
+  display:grid;
+  gap:14px;
+}   
+.video-card{
+  display:block;
+  overflow:hidden;
+  transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
 
-    .audio-row{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:14px;
-    }
+.video-card:hover{
+  transform:translateY(-2px);
+  border-color:#cfe8e4;
+  box-shadow:0 10px 28px rgba(0,0,0,0.08);
+}
 
-    .audio-head{
-      margin-bottom:10px;
-    }
+.video-thumb{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  display:block;
+  border-radius:12px;
+  margin-bottom:10px;
+  background:#eef2f4;
+}
 
-    .audio-cat{
-      display:block;
-      font-size:12px;
-      font-weight:700;
-      color:var(--accent);
-      text-transform:uppercase;
-      letter-spacing:.05em;
-      margin-bottom:4px;
-    }
+.audio-row{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:14px;
+}
 
-    .audio-title{
-      font-weight:700;
-      line-height:1.35;
-    }
+.audio-head{
+  margin-bottom:10px;
+}
 
-    .tm-inline-player{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:10px 12px;
-      background:#fcfcfd;
-      min-height:64px;
-    }
+.audio-cat{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:4px;
+}
 
-    .tm-play{
-      width:40px;
-      height:40px;
-      border-radius:999px;
-      border:1px solid #dbe2ea;
-      background:#fff;
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-      flex:0 0 auto;
-    }
+.audio-title{
+  font-weight:700;
+  line-height:1.35;
+}
 
-    .tm-play:disabled{
-      opacity:.6;
-      cursor:not-allowed;
-    }
+.tm-inline-player{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:10px 12px;
+  background:#fcfcfd;
+  min-height:64px;
+}
 
-    .tm-play svg{
-      width:18px;
-      height:18px;
-      display:block;
-    }
+.tm-play{
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  border:1px solid #dbe2ea;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  flex:0 0 auto;
+}
 
-    .tm-progress-wrap{
-      flex:1 1 auto;
-      min-width:120px;
-    }
+.tm-play:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
 
-    .tm-progress{
-      width:100%;
-      appearance:none;
-      height:4px;
-      border-radius:999px;
-      background:#dfe5eb;
-      outline:none;
-      cursor:pointer;
-    }
+.tm-play svg{
+  width:18px;
+  height:18px;
+  display:block;
+}
 
-    .tm-progress::-webkit-slider-thumb{
-      appearance:none;
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:var(--accent);
-      border:none;
-      cursor:pointer;
-    }
+.tm-progress-wrap{
+  flex:1 1 auto;
+  min-width:120px;
+}
 
-    .tm-progress::-moz-range-thumb{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:var(--accent);
-      border:none;
-      cursor:pointer;
-    }
+.tm-progress{
+  width:100%;
+  appearance:none;
+  height:4px;
+  border-radius:999px;
+  background:#dfe5eb;
+  outline:none;
+  cursor:pointer;
+}
 
-    .tm-controls{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      flex:0 0 auto;
-    }
+.tm-progress::-webkit-slider-thumb{
+  appearance:none;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--accent);
+  border:none;
+  cursor:pointer;
+}
 
-    .tm-pill{
-      height:34px;
-      padding:0 12px;
-      border-radius:999px;
-      border:1px solid #cdeee2;
-      background:#fff;
-      color:#0f172a;
-      font-size:14px;
-      cursor:pointer;
-      white-space:nowrap;
-    }
+.tm-progress::-moz-range-thumb{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--accent);
+  border:none;
+  cursor:pointer;
+}
 
-    .tm-pill:hover{
-      background:#fafefe;
-      border-color:#b8ddd4;
-    }
+.tm-controls{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex:0 0 auto;
+}
 
-    .tm-time{
-      color:var(--muted);
-      font-size:14px;
-      white-space:nowrap;
-      min-width:44px;
-      text-align:right;
-    }
+.tm-pill{
+  height:34px;
+  padding:0 12px;
+  border-radius:999px;
+  border:1px solid #cdeee2;
+  background:#fff;
+  color:#0f172a;
+  font-size:14px;
+  cursor:pointer;
+  white-space:nowrap;
+}
 
-    .card img{
-      display:block;
-    }
+.tm-pill:hover{
+  background:#fafefe;
+  border-color:#b8ddd4;
+}
 
-    .is-hidden{
-      display:none !important;
-    }
+.tm-time{
+  color:var(--muted);
+  font-size:14px;
+  white-space:nowrap;
+  min-width:44px;
+  text-align:right;
+}
 
-    @media (max-width:640px){
-      .wrap{
-        padding-top:18px;
-      }
+.card img{
+  display:block;
+}
 
-      .hero-card{
-        padding:18px;
-        border-radius:20px;
-      }
+.is-hidden{
+  display:none !important;
+}
 
-      .card,
-      .audio-row{
-        padding:14px;
-      }
+@media (max-width:640px){
+  .topic-video-grid{
+    grid-template-columns:1fr;
+  }
 
-      .tm-inline-player{
-        gap:8px;
-        padding:8px 10px;
-        min-height:56px;
-      }
+  .tm-inline-player{
+    gap:8px;
+    padding:8px 10px;
+    min-height:56px;
+  }
 
-      .tm-play{
-        width:36px;
-        height:36px;
-      }
+  .tm-play{
+    width:36px;
+    height:36px;
+  }
 
-      .tm-pill{
-        height:32px;
-        padding:0 10px;
-        font-size:13px;
-      }
+  .tm-pill{
+    height:32px;
+    padding:0 10px;
+    font-size:13px;
+  }
 
-      .tm-time{
-        font-size:13px;
-        min-width:40px;
-      }
-    }
+  .tm-time{
+    font-size:13px;
+    min-width:40px;
+  }
+}
   </style>
 </head>
 <body>
@@ -563,6 +578,38 @@
       }
     }
 
+
+    function renderAudioRow(item){
+  return `
+    <div class="audio-row">
+      <div class="audio-head">
+        <span class="audio-cat">${escapeHtml(item.program || "Item")}</span>
+        <div class="audio-title">${escapeHtml(item.title || "Untitled")}</div>
+      </div>
+
+      <div class="tm-inline-player" data-audio-player>
+        <button class="tm-play" type="button" data-play aria-label="Play">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </button>
+
+        <div class="tm-progress-wrap">
+          <input class="tm-progress" data-seek type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+        </div>
+
+        <div class="tm-controls">
+          <button class="tm-pill" type="button" data-speed>1×</button>
+          <button class="tm-pill" type="button" data-shortskip>Short</button>
+          <span class="tm-time" data-time></span>
+        </div>
+
+        <audio preload="none" src="${escapeHtml(item.url || "")}"></audio>
+      </div>
+    </div>
+  `;
+}
+    
     function renderPrograms(items){
       const grid = document.getElementById("programGrid");
       const summary = document.getElementById("programSummary");
@@ -609,126 +656,138 @@
       }).join("");
     }
 
-    function renderRecents(items){
-      const grid = document.getElementById("recentGrid");
-      if(!grid) return;
+function renderRecents(items){
+  const grid = document.getElementById("recentGrid");
+  if(!grid) return;
 
-      const recent = [...items].sort(byDateDesc).slice(0,12);
+  const recent = [...items].sort(byDateDesc).slice(0,12);
 
-      grid.innerHTML = recent.length ? recent.map(item=>`
-        <a class="card" href="${escapeHtml(item.url || item.page || "#")}">
+  if(!recent.length){
+    grid.innerHTML = `<div class="card empty">No recent items found.</div>`;
+    return;
+  }
+
+  grid.innerHTML = recent.map(item => {
+    if(isAudioItem(item)){
+      return renderAudioRow(item);
+    }
+
+    if(isVideoItem(item)){
+      const yt = getYouTubeId(item.url);
+      const thumb = yt ? `https://img.youtube.com/vi/${yt}/hqdefault.jpg` : null;
+
+      return `
+        <a class="card video-card" href="${escapeHtml(item.url || item.page || "#")}">
+          ${thumb ? `<img class="video-thumb" src="${thumb}" alt="${escapeHtml(item.title || "Video thumbnail")}">` : ""}
           <span class="kicker">${escapeHtml(item.program || "Item")}</span>
           <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
           <div class="mini-meta">
-            ${escapeHtml(item.type || "")}
-            ${item.date ? ` • ${escapeHtml(item.date)}` : ""}
+            ${item.date ? escapeHtml(item.date) : ""}
           </div>
         </a>
-      `).join("") : `<div class="card empty">No recent items found.</div>`;
-    }
-
-    function renderTopicItems(items, topicIds, topicName){
-      const grid = document.getElementById("topicGrid");
-      if(!grid) return;
-
-      const byId = new Map(items.map(x=>[x.id,x]));
-      const topicItems = (topicIds || []).map(id=>byId.get(id)).filter(Boolean);
-
-      const initialCount = 12;
-
-      const content = topicItems.map((item, index) => {
-        const hiddenClass = index >= initialCount ? "topic-item-hidden is-hidden" : "";
-
-        if(isVideoItem(item)){
-          const yt = getYouTubeId(item.url);
-          const thumb = yt ? `https://img.youtube.com/vi/${yt}/hqdefault.jpg` : null;
-
-          return `
-            <a class="card video-card ${hiddenClass}" href="${escapeHtml(item.url || item.page || "#")}">
-              ${thumb ? `<img class="video-thumb" src="${thumb}" alt="${escapeHtml(item.title || "Video thumbnail")}">` : ""}
-              <span class="kicker">${escapeHtml(item.program || "Item")}</span>
-              <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
-            </a>
-          `;
-        }
-
-        if(isAudioItem(item)){
-          return `
-            <div class="audio-row ${hiddenClass}">
-              <div class="audio-head">
-                <span class="audio-cat">${escapeHtml(item.program || "Item")}</span>
-                <div class="audio-title">${escapeHtml(item.title || "Untitled")}</div>
-              </div>
-
-              <div class="tm-inline-player" data-audio-player>
-                <button class="tm-play" type="button" data-play aria-label="Play">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M8 5v14l11-7z"></path>
-                  </svg>
-                </button>
-
-                <div class="tm-progress-wrap">
-                  <input class="tm-progress" data-seek type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
-                </div>
-
-                <div class="tm-controls">
-                  <button class="tm-pill" type="button" data-speed>1×</button>
-                  <button class="tm-pill" type="button" data-shortskip>Short</button>
-                  <span class="tm-time" data-time></span>
-                </div>
-
-                <audio preload="none" src="${escapeHtml(item.url || "")}"></audio>
-              </div>
-            </div>
-          `;
-        }
-
-        return `
-          <a class="card ${hiddenClass}" href="${escapeHtml(item.url || item.page || "#")}">
-            <span class="kicker">${escapeHtml(item.program || "Item")}</span>
-            <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
-          </a>
-        `;
-      }).join("");
-
-      const showMoreNeeded = topicItems.length > initialCount;
-
-      grid.innerHTML = `
-        <div class="card" style="grid-column:1/-1">
-          <div class="topic-detail-head">
-            <div>
-              <h2 class="topic-detail-title">${escapeHtml(topicName)}</h2>
-              <div class="muted">${topicItems.length} shiurim</div>
-            </div>
-            <div class="topic-actions">
-              ${showMoreNeeded ? `<button class="btn-pill" type="button" id="toggleTopicItems">Show more</button>` : ``}
-              <a class="btn-pill" href="organize.html">← All Topics</a>
-            </div>
-          </div>
-        </div>
-        <div class="topic-items" id="topicItemsWrap" style="grid-column:1/-1">
-          ${content}
-        </div>
       `;
-
-      setupInlineAudioPlayers(grid);
-
-      if(showMoreNeeded){
-        const toggleBtn = document.getElementById("toggleTopicItems");
-        const hiddenItems = grid.querySelectorAll(".topic-item-hidden");
-
-        toggleBtn.addEventListener("click", () => {
-          const isExpanded = toggleBtn.getAttribute("data-expanded") === "true";
-
-          hiddenItems.forEach(el => {
-            el.classList.toggle("is-hidden", isExpanded);
-          });
-
-          toggleBtn.setAttribute("data-expanded", isExpanded ? "false" : "true");
-          toggleBtn.textContent = isExpanded ? "Show more" : "Show less";
-        });
-      }
     }
+
+    return `
+      <a class="card" href="${escapeHtml(item.url || item.page || "#")}">
+        <span class="kicker">${escapeHtml(item.program || "Item")}</span>
+        <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
+        <div class="mini-meta">
+          ${escapeHtml(item.type || "")}
+          ${item.date ? ` • ${escapeHtml(item.date)}` : ""}
+        </div>
+      </a>
+    `;
+  }).join("");
+
+  setupInlineAudioPlayers(grid);
+}
+
+function renderTopicItems(items, topicIds, topicName){
+  const grid = document.getElementById("topicGrid");
+  if(!grid) return;
+
+  const byId = new Map(items.map(x => [x.id, x]));
+  const topicItems = (topicIds || []).map(id => byId.get(id)).filter(Boolean);
+
+  const initialCount = 8;
+  const visibleItems = topicItems.slice(0, initialCount);
+  const hiddenItems = topicItems.slice(initialCount);
+
+  function renderTopicCard(item){
+    if(isVideoItem(item)){
+      const yt = getYouTubeId(item.url);
+      const thumb = yt ? `https://img.youtube.com/vi/${yt}/hqdefault.jpg` : null;
+
+      return `
+        <a class="card video-card" href="${escapeHtml(item.url || item.page || "#")}">
+          ${thumb ? `<img class="video-thumb" src="${thumb}" alt="${escapeHtml(item.title || "Video thumbnail")}">` : ""}
+          <span class="kicker">${escapeHtml(item.program || "Item")}</span>
+          <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
+        </a>
+      `;
+    }
+
+    if(isAudioItem(item)){
+      return renderAudioRow(item);
+    }
+
+    return `
+      <a class="card" href="${escapeHtml(item.url || item.page || "#")}">
+        <span class="kicker">${escapeHtml(item.program || "Item")}</span>
+        <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
+      </a>
+    `;
+  }
+
+  const initialHtml = visibleItems.map(renderTopicCard).join("");
+  const hiddenHtml = hiddenItems.map(renderTopicCard).join("");
+  const hiddenCount = hiddenItems.length;
+
+  grid.innerHTML = `
+    <div class="card" style="grid-column:1/-1">
+      <div class="topic-detail-head">
+        <div>
+          <h2 class="topic-detail-title">${escapeHtml(topicName)}</h2>
+          <div class="muted">${topicItems.length} shiurim</div>
+        </div>
+        <div class="topic-actions">
+          ${hiddenCount > 0 ? `<button class="btn-pill" type="button" id="toggleTopicItems">Show ${hiddenCount} more</button>` : ``}
+          <a class="btn-pill" href="organize.html">← All Topics</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-items ${hiddenCount > 0 ? "is-collapsed" : ""}" id="topicItemsWrap" style="grid-column:1/-1">
+      ${initialHtml}
+      ${hiddenCount > 0 ? `<div id="hiddenTopicItems" class="is-hidden">${hiddenHtml}</div>` : ``}
+    </div>
+  `;
+
+  setupInlineAudioPlayers(grid);
+
+  if(hiddenCount > 0){
+    const toggleBtn = document.getElementById("toggleTopicItems");
+    const hiddenWrap = document.getElementById("hiddenTopicItems");
+    const topicWrap = document.getElementById("topicItemsWrap");
+
+    toggleBtn.addEventListener("click", () => {
+      const expanded = toggleBtn.getAttribute("data-expanded") === "true";
+
+      if(expanded){
+        hiddenWrap.classList.add("is-hidden");
+        topicWrap.classList.add("is-collapsed");
+        toggleBtn.setAttribute("data-expanded", "false");
+        toggleBtn.textContent = `Show ${hiddenCount} more`;
+      }else{
+        hiddenWrap.classList.remove("is-hidden");
+        topicWrap.classList.remove("is-collapsed");
+        toggleBtn.setAttribute("data-expanded", "true");
+        toggleBtn.textContent = "Show less";
+      }
+    });
+  }
+}
 
     function setupInlineAudioPlayers(root=document){
       const players = root.querySelectorAll("[data-audio-player]");
