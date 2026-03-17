@@ -12,6 +12,7 @@
       --muted:#666;
       --border:#e7e7ee;
       --accent:#0d9488;
+      --accent-soft:#ecfdf5;
       --shadow:0 6px 22px rgba(0,0,0,0.07);
       --radius:16px;
       --wrap-max:1150px;
@@ -83,6 +84,7 @@
       justify-content:space-between;
       gap:12px;
       margin-bottom:14px;
+      flex-wrap:wrap;
     }
 
     .section h2{
@@ -96,6 +98,12 @@
     }
 
     .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+    }
+
+    .topic-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
       gap:14px;
@@ -131,6 +139,7 @@
     .program-title{
       font-size:18px;
       font-weight:700;
+      line-height:1.25;
     }
 
     .badge{
@@ -138,10 +147,10 @@
       align-items:center;
       justify-content:center;
       min-width:34px;
-      height:28px;
+      height:30px;
       padding:0 10px;
       border-radius:999px;
-      background:#ecfdf5;
+      background:var(--accent-soft);
       color:#065f46;
       font-size:13px;
       font-weight:700;
@@ -151,35 +160,6 @@
 
     .muted{
       color:var(--muted);
-    }
-
-    .topic-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:14px;
-    }
-
-    .topic-card h3{
-      margin:0 0 8px;
-      font-size:18px;
-    }
-
-    .mini-list{
-      display:grid;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .mini-item{
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:12px;
-      background:#fcfcfd;
-    }
-
-    .mini-item:hover{
-      border-color:#d9e7e4;
-      background:#fff;
     }
 
     .kicker{
@@ -208,16 +188,244 @@
       font-style:italic;
     }
 
+    .topic-detail-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .topic-detail-title{
+      margin:0 0 6px;
+      font-size:24px;
+    }
+
+    .topic-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .btn-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:36px;
+      padding:0 14px;
+      border-radius:999px;
+      border:1px solid #cdeee2;
+      background:#fff;
+      color:#0f172a;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow:none;
+    }
+
+    .btn-pill:hover{
+      border-color:#b8ddd4;
+      background:#fafefe;
+    }
+
+    .topic-items{
+      display:grid;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .video-card{
+      display:block;
+      overflow:hidden;
+      transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    }
+
+    .video-card:hover{
+      transform:translateY(-2px);
+      border-color:#cfe8e4;
+      box-shadow:0 10px 28px rgba(0,0,0,0.08);
+    }
+
+    .video-thumb{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      display:block;
+      border-radius:12px;
+      margin-bottom:10px;
+      background:#eef2f4;
+    }
+
+    .audio-row{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:14px;
+    }
+
+    .audio-head{
+      margin-bottom:10px;
+    }
+
+    .audio-cat{
+      display:block;
+      font-size:12px;
+      font-weight:700;
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      margin-bottom:4px;
+    }
+
+    .audio-title{
+      font-weight:700;
+      line-height:1.35;
+    }
+
+    .tm-inline-player{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:10px 12px;
+      background:#fcfcfd;
+      min-height:64px;
+    }
+
+    .tm-play{
+      width:40px;
+      height:40px;
+      border-radius:999px;
+      border:1px solid #dbe2ea;
+      background:#fff;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      flex:0 0 auto;
+    }
+
+    .tm-play:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
+
+    .tm-play svg{
+      width:18px;
+      height:18px;
+      display:block;
+    }
+
+    .tm-progress-wrap{
+      flex:1 1 auto;
+      min-width:120px;
+    }
+
+    .tm-progress{
+      width:100%;
+      appearance:none;
+      height:4px;
+      border-radius:999px;
+      background:#dfe5eb;
+      outline:none;
+      cursor:pointer;
+    }
+
+    .tm-progress::-webkit-slider-thumb{
+      appearance:none;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--accent);
+      border:none;
+      cursor:pointer;
+    }
+
+    .tm-progress::-moz-range-thumb{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--accent);
+      border:none;
+      cursor:pointer;
+    }
+
+    .tm-controls{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex:0 0 auto;
+    }
+
+    .tm-pill{
+      height:34px;
+      padding:0 12px;
+      border-radius:999px;
+      border:1px solid #cdeee2;
+      background:#fff;
+      color:#0f172a;
+      font-size:14px;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+
+    .tm-pill:hover{
+      background:#fafefe;
+      border-color:#b8ddd4;
+    }
+
+    .tm-time{
+      color:var(--muted);
+      font-size:14px;
+      white-space:nowrap;
+      min-width:44px;
+      text-align:right;
+    }
+
+    .card img{
+      display:block;
+    }
+
+    .is-hidden{
+      display:none !important;
+    }
+
     @media (max-width:640px){
       .wrap{
         padding-top:18px;
       }
+
       .hero-card{
         padding:18px;
         border-radius:20px;
       }
-      .card{
+
+      .card,
+      .audio-row{
         padding:14px;
+      }
+
+      .tm-inline-player{
+        gap:8px;
+        padding:8px 10px;
+        min-height:56px;
+      }
+
+      .tm-play{
+        width:36px;
+        height:36px;
+      }
+
+      .tm-pill{
+        height:32px;
+        padding:0 10px;
+        font-size:13px;
+      }
+
+      .tm-time{
+        font-size:13px;
+        min-width:40px;
       }
     }
   </style>
@@ -228,8 +436,8 @@
     <section class="hero">
       <div class="hero-card">
         <div class="eyebrow">TorahMoment</div>
-        <h1>Browse TorahMoment</h1>
-        <p>
+        <h1 id="heroTitle">Browse TorahMoment</h1>
+        <p id="heroText">
           Explore shiurim by program, featured topics, and recent additions.
           This page is meant to make the library easier to discover without changing
           the pages that already work.
@@ -237,7 +445,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="programSection">
       <div class="section-head">
         <h2>Browse by Program</h2>
         <div class="section-note" id="programSummary">Loading...</div>
@@ -245,15 +453,15 @@
       <div class="grid" id="programGrid"></div>
     </section>
 
-    <section class="section">
+    <section class="section" id="topicSection">
       <div class="section-head">
-        <h2>Featured Topics</h2>
-        <div class="section-note">Curated from <code>topic-map.json</code></div>
+        <h2 id="topicSectionTitle">Featured Topics</h2>
+        <div class="section-note" id="topicSectionNote">Curated from <code>topic-map.json</code></div>
       </div>
       <div class="topic-grid" id="topicGrid"></div>
     </section>
 
-    <section class="section">
+    <section class="section" id="recentSection">
       <div class="section-head">
         <h2>Recent Additions</h2>
         <div class="section-note">Newest items from the merged index</div>
@@ -263,165 +471,400 @@
 
   </div>
 
-<script>
-async function loadJson(url){
-  const r = await fetch(url,{cache:"no-store"});
-  if(!r.ok) throw new Error(`Failed to load ${url} (${r.status})`);
-  return r.json();
-}
-
-function escapeHtml(str){
-  return String(str ?? "").replace(/[&<>"']/g,ch=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[ch]));
-}
-
-function byDateDesc(a,b){
-  const da = a.date ? new Date(a.date).getTime() : 0;
-  const db = b.date ? new Date(b.date).getTime() : 0;
-  return db - da;
-}
-
-function getTopic(){
-  const params = new URLSearchParams(location.search);
-  return params.get("topic");
-}
-
-function renderPrograms(items){
-  const grid = document.getElementById("programGrid");
-  const summary = document.getElementById("programSummary");
-  if(!grid || !summary) return;
-
-  const counts = {};
-  for(const item of items){
-    const key = item.program || "Other";
-    counts[key] = (counts[key] || 0) + 1;
-  }
-
-  const sorted = Object.entries(counts).sort((a,b)=>a[0].localeCompare(b[0]));
-  summary.textContent = `${items.length} total items across ${sorted.length} programs`;
-
-  const map = {
-    "Parsha": "/parsha.html",
-    "Halacha": "/halacha.html",
-    "One Minute": "/one-minute-audio.html",
-    "One-Minute": "/one-minute-audio.html",
-    "Mishna": "/mishna.html",
-    "Tefilah": "/tefilah.html"
-  };
-
-  grid.innerHTML = sorted.map(([program,count])=>`
-    <a class="card program-card" href="${escapeHtml(map[program] || "#")}">
-      <div class="program-top">
-        <div class="program-title">${escapeHtml(program)}</div>
-        <span class="badge">${count}</span>
-      </div>
-      <div class="muted">Open the ${escapeHtml(program)} section</div>
-    </a>
-  `).join("");
-}
-
-function renderTopicGrid(items, topicMap){
-  const grid = document.getElementById("topicGrid");
-  if(!grid) return;
-
-  const byId = new Map(items.map(x=>[x.id,x]));
-  const topics = Object.keys(topicMap || {});
-
-  grid.innerHTML = topics.map(t=>{
-    const count = (topicMap[t] || []).map(id=>byId.get(id)).filter(Boolean).length;
-    return `
-      <a class="card program-card" href="?topic=${encodeURIComponent(t)}">
-        <div class="program-top">
-          <div class="program-title">${escapeHtml(t)}</div>
-          <span class="badge">${count}</span>
-        </div>
-        <div class="muted">View shiurim in this topic</div>
-      </a>
-    `;
-  }).join("");
-}
-
-function renderTopicItems(items, topicIds, topicName){
-  const grid = document.getElementById("topicGrid");
-  if(!grid) return;
-
-  const byId = new Map(items.map(x=>[x.id,x]));
-  const topicItems = (topicIds || []).map(id=>byId.get(id)).filter(Boolean);
-
-  grid.innerHTML = `
-    <div class="card" style="grid-column:1/-1">
-      <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;">
-        <div>
-          <h3 style="margin:0 0 6px;">${escapeHtml(topicName)}</h3>
-          <div class="muted">${topicItems.length} shiurim</div>
-        </div>
-        <a class="badge" href="organize.html" style="text-decoration:none;">← All Topics</a>
-      </div>
-    </div>
-  ` + topicItems.map(item=>`
-    <a class="card" href="${escapeHtml(item.url || item.page || "#")}">
-      <span class="kicker">${escapeHtml(item.program || "Item")}</span>
-      <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
-      <div class="mini-meta">${escapeHtml(item.type || "")}</div>
-    </a>
-  `).join("");
-}
-
-function renderRecents(items){
-  const grid = document.getElementById("recentGrid");
-  if(!grid) return;
-
-  const recent = [...items].sort(byDateDesc).slice(0,12);
-
-  grid.innerHTML = recent.length ? recent.map(item=>`
-    <a class="card" href="${escapeHtml(item.url || item.page || "#")}">
-      <span class="kicker">${escapeHtml(item.program || "Item")}</span>
-      <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
-      <div class="mini-meta">
-        ${escapeHtml(item.type || "")}
-        ${item.date ? ` • ${escapeHtml(item.date)}` : ""}
-      </div>
-    </a>
-  `).join("") : `<div class="card empty">No recent items found.</div>`;
-}
-
-async function main(){
-  try{
-    const [searchIndex, tefilahExtra, topicMap] = await Promise.all([
-      loadJson("/data/search-index.json"),
-      loadJson("/data/tefilah-extra.json"),
-      loadJson("/data/topic-map.json")
-    ]);
-
-    const items = [...searchIndex, ...tefilahExtra];
-    const topic = getTopic();
-
-    renderPrograms(items);
-    renderRecents(items);
-
-    if(!topic){
-      renderTopicGrid(items, topicMap);
-      return;
+  <script>
+    async function loadJson(url){
+      const r = await fetch(url,{cache:"no-store"});
+      if(!r.ok) throw new Error(`Failed to load ${url} (${r.status})`);
+      return r.json();
     }
 
-    const ids = topicMap[topic] || [];
-    renderTopicItems(items, ids, topic);
-  } catch(err){
-    document.body.innerHTML = `
-      <div class="wrap">
-        <div class="card">
-          <h2 style="margin-top:0;">Error loading organize page</h2>
-          <p style="color:#b00020;"><strong>${escapeHtml(err.message)}</strong></p>
-          <p class="muted">Check that all three files exist and contain valid JSON.</p>
-        </div>
-      </div>
-    `;
-    console.error(err);
-  }
-}
+    function escapeHtml(str){
+      return String(str ?? "").replace(/[&<>"']/g,ch=>({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+      }[ch]));
+    }
 
-main();
-</script>
+    function byDateDesc(a,b){
+      const da = a.date ? new Date(a.date).getTime() : 0;
+      const db = b.date ? new Date(b.date).getTime() : 0;
+      return db - da;
+    }
+
+    function getTopic(){
+      const params = new URLSearchParams(location.search);
+      return params.get("topic");
+    }
+
+    function getYouTubeId(url){
+      if(!url) return null;
+
+      try{
+        const u = new URL(url);
+        if(u.hostname.includes("youtu.be")){
+          return u.pathname.replace("/","") || null;
+        }
+        return u.searchParams.get("v");
+      }catch{
+        const match = String(url).match(/[?&]v=([^&]+)/);
+        return match ? match[1] : null;
+      }
+    }
+
+    function isAudioItem(item){
+      const url = (item?.url || "").toLowerCase();
+      const type = (item?.type || "").toLowerCase();
+      return type === "audio" || url.endsWith(".mp3") || url.endsWith(".m4a") || url.endsWith(".wav");
+    }
+
+    function isVideoItem(item){
+      const type = (item?.type || "").toLowerCase();
+      const url = (item?.url || "").toLowerCase();
+      return type === "video" || url.includes("youtube.com/watch") || url.includes("youtu.be/");
+    }
+
+    function niceProgramUrl(program){
+      const map = {
+        "Parsha": "/parsha.html",
+        "Halacha": "/halacha.html",
+        "One Minute": "/one-minute-audio.html",
+        "One-Minute": "/one-minute-audio.html",
+        "Mishna": "/mishna.html",
+        "Tefilah": "/tefilah.html"
+      };
+      return map[program] || "#";
+    }
+
+    function setTopicMode(isTopic, topicName=""){
+      const heroTitle = document.getElementById("heroTitle");
+      const heroText = document.getElementById("heroText");
+      const programSection = document.getElementById("programSection");
+      const recentSection = document.getElementById("recentSection");
+      const topicSectionTitle = document.getElementById("topicSectionTitle");
+      const topicSectionNote = document.getElementById("topicSectionNote");
+
+      if(isTopic){
+        heroTitle.textContent = topicName;
+        heroText.textContent = "A curated topic view across TorahMoment, with videos and audio presented in a format that matches the rest of the site.";
+        programSection.classList.add("is-hidden");
+        recentSection.classList.add("is-hidden");
+        topicSectionTitle.textContent = "Topic View";
+        topicSectionNote.textContent = "";
+      }else{
+        heroTitle.textContent = "Browse TorahMoment";
+        heroText.textContent = "Explore shiurim by program, featured topics, and recent additions. This page is meant to make the library easier to discover without changing the pages that already work.";
+        programSection.classList.remove("is-hidden");
+        recentSection.classList.remove("is-hidden");
+        topicSectionTitle.textContent = "Featured Topics";
+        topicSectionNote.innerHTML = 'Curated from <code>topic-map.json</code>';
+      }
+    }
+
+    function renderPrograms(items){
+      const grid = document.getElementById("programGrid");
+      const summary = document.getElementById("programSummary");
+      if(!grid || !summary) return;
+
+      const counts = {};
+      for(const item of items){
+        const key = item.program || "Other";
+        counts[key] = (counts[key] || 0) + 1;
+      }
+
+      const sorted = Object.entries(counts).sort((a,b)=>a[0].localeCompare(b[0]));
+      summary.textContent = `${items.length} total items across ${sorted.length} programs`;
+
+      grid.innerHTML = sorted.map(([program,count])=>`
+        <a class="card program-card" href="${escapeHtml(niceProgramUrl(program))}">
+          <div class="program-top">
+            <div class="program-title">${escapeHtml(program)}</div>
+            <span class="badge">${count}</span>
+          </div>
+          <div class="muted">Open the ${escapeHtml(program)} section</div>
+        </a>
+      `).join("");
+    }
+
+    function renderTopicGrid(items, topicMap){
+      const grid = document.getElementById("topicGrid");
+      if(!grid) return;
+
+      const byId = new Map(items.map(x=>[x.id,x]));
+      const topics = Object.keys(topicMap || {});
+
+      grid.innerHTML = topics.map(t=>{
+        const count = (topicMap[t] || []).map(id=>byId.get(id)).filter(Boolean).length;
+        return `
+          <a class="card program-card" href="?topic=${encodeURIComponent(t)}">
+            <div class="program-top">
+              <div class="program-title">${escapeHtml(t)}</div>
+              <span class="badge">${count}</span>
+            </div>
+            <div class="muted">View shiurim in this topic</div>
+          </a>
+        `;
+      }).join("");
+    }
+
+    function renderRecents(items){
+      const grid = document.getElementById("recentGrid");
+      if(!grid) return;
+
+      const recent = [...items].sort(byDateDesc).slice(0,12);
+
+      grid.innerHTML = recent.length ? recent.map(item=>`
+        <a class="card" href="${escapeHtml(item.url || item.page || "#")}">
+          <span class="kicker">${escapeHtml(item.program || "Item")}</span>
+          <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
+          <div class="mini-meta">
+            ${escapeHtml(item.type || "")}
+            ${item.date ? ` • ${escapeHtml(item.date)}` : ""}
+          </div>
+        </a>
+      `).join("") : `<div class="card empty">No recent items found.</div>`;
+    }
+
+    function renderTopicItems(items, topicIds, topicName){
+      const grid = document.getElementById("topicGrid");
+      if(!grid) return;
+
+      const byId = new Map(items.map(x=>[x.id,x]));
+      const topicItems = (topicIds || []).map(id=>byId.get(id)).filter(Boolean);
+
+      const initialCount = 12;
+
+      const content = topicItems.map((item, index) => {
+        const hiddenClass = index >= initialCount ? "topic-item-hidden is-hidden" : "";
+
+        if(isVideoItem(item)){
+          const yt = getYouTubeId(item.url);
+          const thumb = yt ? `https://img.youtube.com/vi/${yt}/hqdefault.jpg` : null;
+
+          return `
+            <a class="card video-card ${hiddenClass}" href="${escapeHtml(item.url || item.page || "#")}">
+              ${thumb ? `<img class="video-thumb" src="${thumb}" alt="${escapeHtml(item.title || "Video thumbnail")}">` : ""}
+              <span class="kicker">${escapeHtml(item.program || "Item")}</span>
+              <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
+            </a>
+          `;
+        }
+
+        if(isAudioItem(item)){
+          return `
+            <div class="audio-row ${hiddenClass}">
+              <div class="audio-head">
+                <span class="audio-cat">${escapeHtml(item.program || "Item")}</span>
+                <div class="audio-title">${escapeHtml(item.title || "Untitled")}</div>
+              </div>
+
+              <div class="tm-inline-player" data-audio-player>
+                <button class="tm-play" type="button" data-play aria-label="Play">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+
+                <div class="tm-progress-wrap">
+                  <input class="tm-progress" data-seek type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+                </div>
+
+                <div class="tm-controls">
+                  <button class="tm-pill" type="button" data-speed>1×</button>
+                  <button class="tm-pill" type="button" data-shortskip>Short</button>
+                  <span class="tm-time" data-time></span>
+                </div>
+
+                <audio preload="none" src="${escapeHtml(item.url || "")}"></audio>
+              </div>
+            </div>
+          `;
+        }
+
+        return `
+          <a class="card ${hiddenClass}" href="${escapeHtml(item.url || item.page || "#")}">
+            <span class="kicker">${escapeHtml(item.program || "Item")}</span>
+            <div class="mini-title">${escapeHtml(item.title || "Untitled")}</div>
+          </a>
+        `;
+      }).join("");
+
+      const showMoreNeeded = topicItems.length > initialCount;
+
+      grid.innerHTML = `
+        <div class="card" style="grid-column:1/-1">
+          <div class="topic-detail-head">
+            <div>
+              <h2 class="topic-detail-title">${escapeHtml(topicName)}</h2>
+              <div class="muted">${topicItems.length} shiurim</div>
+            </div>
+            <div class="topic-actions">
+              ${showMoreNeeded ? `<button class="btn-pill" type="button" id="toggleTopicItems">Show more</button>` : ``}
+              <a class="btn-pill" href="organize.html">← All Topics</a>
+            </div>
+          </div>
+        </div>
+        <div class="topic-items" id="topicItemsWrap" style="grid-column:1/-1">
+          ${content}
+        </div>
+      `;
+
+      setupInlineAudioPlayers(grid);
+
+      if(showMoreNeeded){
+        const toggleBtn = document.getElementById("toggleTopicItems");
+        const hiddenItems = grid.querySelectorAll(".topic-item-hidden");
+
+        toggleBtn.addEventListener("click", () => {
+          const isExpanded = toggleBtn.getAttribute("data-expanded") === "true";
+
+          hiddenItems.forEach(el => {
+            el.classList.toggle("is-hidden", isExpanded);
+          });
+
+          toggleBtn.setAttribute("data-expanded", isExpanded ? "false" : "true");
+          toggleBtn.textContent = isExpanded ? "Show more" : "Show less";
+        });
+      }
+    }
+
+    function setupInlineAudioPlayers(root=document){
+      const players = root.querySelectorAll("[data-audio-player]");
+
+      players.forEach(player => {
+        const audio = player.querySelector("audio");
+        const playBtn = player.querySelector("[data-play]");
+        const seek = player.querySelector("[data-seek]");
+        const speedBtn = player.querySelector("[data-speed]");
+        const shortBtn = player.querySelector("[data-shortskip]");
+        const timeEl = player.querySelector("[data-time]");
+
+        if(!audio || !playBtn || !seek || !speedBtn || !shortBtn || !timeEl) return;
+
+        const speeds = [1, 1.25, 1.5, 1.75, 2];
+        let speedIndex = 0;
+
+        function updatePlayIcon(isPlaying){
+          playBtn.innerHTML = isPlaying
+            ? `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5h3v14H8zm5 0h3v14h-3z"></path></svg>`
+            : `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>`;
+        }
+
+        function fmt(sec){
+          if(!Number.isFinite(sec) || sec < 0) return "";
+          const m = Math.floor(sec / 60);
+          const s = Math.floor(sec % 60);
+          return `${m}:${String(s).padStart(2,"0")}`;
+        }
+
+        function updateTime(){
+          const cur = audio.currentTime || 0;
+          const dur = audio.duration || 0;
+          if(dur > 0){
+            seek.value = (cur / dur) * 100;
+            timeEl.textContent = `(${fmt(dur)})`;
+          }else{
+            seek.value = 0;
+            timeEl.textContent = "";
+          }
+        }
+
+        playBtn.addEventListener("click", async () => {
+          const allAudios = document.querySelectorAll(".tm-inline-player audio");
+          allAudios.forEach(a => {
+            if(a !== audio){
+              a.pause();
+              const p = a.closest("[data-audio-player]");
+              const b = p?.querySelector("[data-play]");
+              if(b){
+                b.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>`;
+              }
+            }
+          });
+
+          if(audio.paused){
+            try{
+              await audio.play();
+              updatePlayIcon(true);
+            }catch(e){}
+          }else{
+            audio.pause();
+            updatePlayIcon(false);
+          }
+        });
+
+        audio.addEventListener("play", ()=> updatePlayIcon(true));
+        audio.addEventListener("pause", ()=> updatePlayIcon(false));
+        audio.addEventListener("loadedmetadata", updateTime);
+        audio.addEventListener("timeupdate", updateTime);
+        audio.addEventListener("ended", ()=> updatePlayIcon(false));
+
+        seek.addEventListener("input", () => {
+          if(audio.duration){
+            audio.currentTime = (Number(seek.value) / 100) * audio.duration;
+          }
+        });
+
+        speedBtn.addEventListener("click", () => {
+          speedIndex = (speedIndex + 1) % speeds.length;
+          audio.playbackRate = speeds[speedIndex];
+          speedBtn.textContent = `${speeds[speedIndex]}×`;
+        });
+
+        shortBtn.addEventListener("click", () => {
+          if(audio.duration){
+            audio.currentTime = Math.min(audio.currentTime + 15, audio.duration);
+          }else{
+            audio.currentTime += 15;
+          }
+        });
+
+        audio.playbackRate = speeds[speedIndex];
+        speedBtn.textContent = `${speeds[speedIndex]}×`;
+        updateTime();
+      });
+    }
+
+    async function main(){
+      try{
+        const [searchIndex, tefilahExtra, topicMap] = await Promise.all([
+          loadJson("/data/search-index.json"),
+          loadJson("/data/tefilah-extra.json"),
+          loadJson("/data/topic-map.json")
+        ]);
+
+        const items = [...searchIndex, ...tefilahExtra];
+        const topic = getTopic();
+
+        if(!topic){
+          setTopicMode(false);
+          renderPrograms(items);
+          renderTopicGrid(items, topicMap);
+          renderRecents(items);
+          return;
+        }
+
+        setTopicMode(true, topic);
+        const ids = topicMap[topic] || [];
+        renderTopicItems(items, ids, topic);
+
+      }catch(err){
+        document.body.innerHTML = `
+          <div class="wrap">
+            <div class="card">
+              <h2 style="margin-top:0;">Error loading organize page</h2>
+              <p style="color:#b00020;"><strong>${escapeHtml(err.message)}</strong></p>
+              <p class="muted">Check that all three files exist and contain valid JSON.</p>
+            </div>
+          </div>
+        `;
+        console.error(err);
+      }
+    }
+
+    main();
+  </script>
 </body>
 </html>
