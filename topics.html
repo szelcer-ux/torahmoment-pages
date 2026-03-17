@@ -632,6 +632,45 @@ html, body{
 
 }
 
+    /*SEASONAL STUFF*/
+    .seasonal-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:14px;
+}
+
+.seasonal-card{
+  position:relative;
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:linear-gradient(135deg, #f8fafc, #ffffff);
+  transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+.seasonal-card:hover{
+  transform:translateY(-2px);
+  border-color:#cfe8e4;
+  box-shadow:0 10px 28px rgba(0,0,0,0.08);
+}
+
+.seasonal-card .program-title{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.seasonal-badge{
+  position:absolute;
+  top:10px;
+  right:10px;
+  font-size:11px;
+  font-weight:700;
+  padding:4px 8px;
+  border-radius:999px;
+  background:#0d9488;
+  color:#fff;
+  letter-spacing:.04em;
+}
     
   </style>
 </head>
@@ -662,7 +701,7 @@ html, body{
         </p>
       </div>
     </section>
-
+ 
     <section class="section" id="programSection">
       <div class="section-head">
         <h2>Browse by Program</h2>
@@ -671,6 +710,28 @@ html, body{
       <div class="grid" id="programGrid"></div>
     </section>
 
+<section class="section seasonal-section">
+  <div class="section-head">
+    <h2>This Time of Year</h2>
+    <div class="section-note">Focus on what's most relevant right now</div>
+  </div>
+
+  <div class="seasonal-grid">
+    <!-- Example: Pesach -->
+    <a class="card seasonal-card" href="topics.html?topic=Pesach">
+      <div class="seasonal-badge">Now</div>
+      <div class="program-title">Pesach</div>
+      <div class="muted">Shiurim and insights for the Yom Tov</div>
+    </a>
+
+    <!-- Optional second -->
+    <a class="card seasonal-card" href="topics.html?topic=Tefilah">
+      <div class="program-title">Tefilah</div>
+      <div class="muted">Strengthening daily davening</div>
+    </a>
+  </div>
+</section>
+    
     <section class="section" id="topicSection">
       <div class="section-head">
         <h2 id="topicSectionTitle">Featured Topics</h2>
