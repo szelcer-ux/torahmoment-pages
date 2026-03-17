@@ -737,11 +737,11 @@ function renderMediaCard(item){
       const grid = document.getElementById("topicGrid");
       if(!grid) return;
 
-      const byId = new Map(items.map(x=>[x.id,x]));
+      const byId = new Mapconst byUrl = new Map(items.map(x => [x.url, x]));(items.map(x=>[x.id,x]));
       const topics = Object.keys(topicMap || {});
 
       grid.innerHTML = topics.map(t=>{
-        const count = (topicMap[t] || []).map(id=>byId.get(id)).filter(Boolean).length;
+        const count = (topicMap[t] || []).map(url => byUrl.get(url)).filter(Boolean).length;
         return `
           <a class="card program-card" href="?topic=${encodeURIComponent(t)}">
             <div class="program-top">
@@ -771,12 +771,12 @@ function renderRecents(items){
   setupInlineAudioPlayers(grid);
 }
 
-function renderTopicItems(items, topicIds, topicName){
+function renderTopicItems(items, topicUrls, topicName){
   const grid = document.getElementById("topicGrid");
   if(!grid) return;
 
-const byUrl = new Map(items.map(x => [x.url, x]));
-const topicItems = topicUrls.map(url => byUrl.get(url)).filter(Boolean);
+  const byUrl = new Map(items.map(x => [x.url, x]));
+  const topicItems = (topicUrls || []).map(url => byUrl.get(url)).filter(Boolean);
 
   const initialCount = 8;
   const visibleItems = topicItems.slice(0, initialCount);
@@ -935,8 +935,8 @@ function setupInlineAudioPlayers(root=document){
         }
 
         setTopicMode(true, topic);
-        const ids = topicMap[topic] || [];
-        renderTopicItems(items, ids, topic);
+        const topicUrls = topicMap[topic] || [];
+        renderTopicItems(items, topicUrls, topic);
 
       }catch(err){
         document.body.innerHTML = `
