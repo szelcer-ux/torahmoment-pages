@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 685,
+    "total": 686,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 82
+        "totalAll": 83
       },
       "oneMinute": {
         "audio": 204
@@ -22,6 +22,13 @@
     "updated": "2026-03-17"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Chazan saying Hashem Sifasai Tiftach",
+      "url": "https://www.buzzsprout.com/1899789/episodes/18861996-3-17-2026-shloimy-zelcer-chazan-saying-hashem-sifasai-tiftach.mp3",
+      "date": "2026-03-17T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -48,13 +55,6 @@
       "program": "Halacha",
       "title": "Is Iced Coffee the answer?",
       "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
-      "date": "2026-03-12T00:00:00.000Z"
-    },
-    {
-      "type": "parsha-audio",
-      "program": "Halacha",
-      "title": "YISRO - Serving Hashem before and after the Eigel",
-      "url": "https://2mishnasaday.com/wp-content/uploads/before-and-after-eigel.mp3",
       "date": "2026-03-12T00:00:00.000Z"
     }
   ],
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Chazan saying Hashem Sifasai Tiftach",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18861996-3-17-2026-shloimy-zelcer-chazan-saying-hashem-sifasai-tiftach.mp3",
+        "date": "2026-03-17T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Is Iced Coffee the answer?",
         "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
         "date": "2026-03-12T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "History of Kollel",
         "url": "https://2mishnasaday.com/wp-content/uploads/historyofkollel.mp3",
         "date": "2025-12-25T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Daven to Hashem, not angels",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18285871-12-3-2025-shloimy-zelcer-daven-to-hashem-not-angels.mp3",
-        "date": "2025-12-03T00:00:00.000Z"
       }
     ],
     "parsha": [

@@ -2093,6 +2093,16 @@
     "id": "hal-5",
     "program": "Halacha",
     "type": "audio",
+    "title": "Chazan saying Hashem Sifasai Tiftach",
+    "url": "https://www.buzzsprout.com/1899789/episodes/18861996-3-17-2026-shloimy-zelcer-chazan-saying-hashem-sifasai-tiftach.mp3",
+    "date": "2026-03-17T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "chazan saying hashem sifasai tiftach"
+  },
+  {
+    "id": "hal-6",
+    "program": "Halacha",
+    "type": "audio",
     "title": "Standing up to say Krias Shema",
     "url": "https://www.buzzsprout.com/1899789/episodes/17508580-7-15-2025-shloimy-zelcer-standing-up-to-say-kriyas-shema.mp3",
     "date": "2025-07-15T00:00:00.000Z",
@@ -2100,7 +2110,7 @@
     "title_lc": "standing up to say krias shema"
   },
   {
-    "id": "hal-6",
+    "id": "hal-7",
     "program": "Halacha",
     "type": "audio",
     "title": "Do you have to know what youre saying in davening?",
@@ -2110,7 +2120,7 @@
     "title_lc": "do you have to know what youre saying in davening?"
   },
   {
-    "id": "hal-7",
+    "id": "hal-8",
     "program": "Halacha",
     "type": "audio",
     "title": "Answering Baruch Hu Uvaruch Shemo",
@@ -2120,7 +2130,7 @@
     "title_lc": "answering baruch hu uvaruch shemo"
   },
   {
-    "id": "hal-8",
+    "id": "hal-9",
     "program": "Halacha",
     "type": "audio",
     "title": "Answering Amen to גָּאַל יִשְׂרָאֵל",
@@ -2130,7 +2140,7 @@
     "title_lc": "answering amen to גָּאַל יִשְׂרָאֵל"
   },
   {
-    "id": "hal-9",
+    "id": "hal-10",
     "program": "Halacha",
     "type": "audio",
     "title": "Asking a kohen to leave",
@@ -2140,7 +2150,7 @@
     "title_lc": "asking a kohen to leave"
   },
   {
-    "id": "hal-10",
+    "id": "hal-11",
     "program": "Halacha",
     "type": "audio",
     "title": "Who gets the first aliyah when there is no kohen",
@@ -2150,7 +2160,7 @@
     "title_lc": "who gets the first aliyah when there is no kohen"
   },
   {
-    "id": "hal-11",
+    "id": "hal-12",
     "program": "Halacha",
     "type": "audio",
     "title": "Standing for Aseres Hadibros",
@@ -2160,7 +2170,7 @@
     "title_lc": "standing for aseres hadibros"
   },
   {
-    "id": "hal-12",
+    "id": "hal-13",
     "program": "Halacha",
     "type": "audio",
     "title": "Daven to Hashem, not angels",
@@ -2170,7 +2180,7 @@
     "title_lc": "daven to hashem, not angels"
   },
   {
-    "id": "hal-13",
+    "id": "hal-14",
     "program": "Halacha",
     "type": "audio",
     "title": "Women saying Kadish",
@@ -2180,7 +2190,7 @@
     "title_lc": "women saying kadish"
   },
   {
-    "id": "hal-14",
+    "id": "hal-15",
     "program": "Halacha",
     "type": "audio",
     "title": "Tefilas Haderech",
@@ -2190,7 +2200,7 @@
     "title_lc": "tefilas haderech"
   },
   {
-    "id": "hal-15",
+    "id": "hal-16",
     "program": "Halacha",
     "type": "audio",
     "title": "דָּוִד מֶלֶךְ יִשְׂרָאֵל חַי וְקַיָּם בקידוש לבנה",
@@ -2200,7 +2210,7 @@
     "title_lc": "דָּוִד מֶלֶךְ יִשְׂרָאֵל חַי וְקַיָּם בקידוש לבנה"
   },
   {
-    "id": "hal-16",
+    "id": "hal-17",
     "program": "Halacha",
     "type": "audio",
     "title": "Why Don't women say Kiddush Levanah?",
@@ -2210,7 +2220,7 @@
     "title_lc": "why don't women say kiddush levanah?"
   },
   {
-    "id": "hal-17",
+    "id": "hal-18",
     "program": "Halacha",
     "type": "audio",
     "title": "When Davening takes too long",
@@ -2220,7 +2230,7 @@
     "title_lc": "when davening takes too long"
   },
   {
-    "id": "hal-18",
+    "id": "hal-19",
     "program": "Halacha",
     "type": "audio",
     "title": "Kiddush in middle of davening?",
@@ -2230,7 +2240,7 @@
     "title_lc": "kiddush in middle of davening?"
   },
   {
-    "id": "hal-19",
+    "id": "hal-20",
     "program": "Halacha",
     "type": "audio",
     "title": "Head covering during prayer",
@@ -2240,7 +2250,7 @@
     "title_lc": "head covering during prayer"
   },
   {
-    "id": "hal-20",
+    "id": "hal-21",
     "program": "Halacha",
     "type": "audio",
     "title": "Praying with a minyan",
@@ -2250,7 +2260,7 @@
     "title_lc": "praying with a minyan"
   },
   {
-    "id": "hal-21",
+    "id": "hal-22",
     "program": "Halacha",
     "type": "audio",
     "title": "Covering challah during kiddush Part 2",
@@ -2260,7 +2270,7 @@
     "title_lc": "covering challah during kiddush part 2"
   },
   {
-    "id": "hal-22",
+    "id": "hal-23",
     "program": "Halacha",
     "type": "audio",
     "title": "Covering challah during kiddush",
@@ -2270,7 +2280,7 @@
     "title_lc": "covering challah during kiddush"
   },
   {
-    "id": "hal-23",
+    "id": "hal-24",
     "program": "Halacha",
     "type": "audio",
     "title": "Parshas Nitzavim / Erev Rosh Hashana",
@@ -2280,7 +2290,7 @@
     "title_lc": "parshas nitzavim / erev rosh hashana"
   },
   {
-    "id": "hal-24",
+    "id": "hal-25",
     "program": "Halacha",
     "type": "audio",
     "title": "Teshuva - returning home",
@@ -2290,7 +2300,7 @@
     "title_lc": "teshuva - returning home"
   },
   {
-    "id": "hal-25",
+    "id": "hal-26",
     "program": "Halacha",
     "type": "audio",
     "title": "Teshuva like snow and laundry",
@@ -2300,7 +2310,7 @@
     "title_lc": "teshuva like snow and laundry"
   },
   {
-    "id": "hal-26",
+    "id": "hal-27",
     "program": "Halacha",
     "type": "audio",
     "title": "Simanim of Rosh Hashana",
@@ -2310,7 +2320,7 @@
     "title_lc": "simanim of rosh hashana"
   },
   {
-    "id": "hal-27",
+    "id": "hal-28",
     "program": "Halacha",
     "type": "audio",
     "title": "Yom Kippur through the ages",
@@ -2320,7 +2330,7 @@
     "title_lc": "yom kippur through the ages"
   },
   {
-    "id": "hal-28",
+    "id": "hal-29",
     "program": "Halacha",
     "type": "audio",
     "title": "The importance of the Aravos",
@@ -2330,7 +2340,7 @@
     "title_lc": "the importance of the aravos"
   },
   {
-    "id": "hal-29",
+    "id": "hal-30",
     "program": "Halacha",
     "type": "audio",
     "title": "Sukkah heals our wounds",
@@ -2340,7 +2350,7 @@
     "title_lc": "sukkah heals our wounds"
   },
   {
-    "id": "hal-30",
+    "id": "hal-31",
     "program": "Halacha",
     "type": "audio",
     "title": "8 lesser known answers to the famous question of the Beis Yosef",
@@ -2350,7 +2360,7 @@
     "title_lc": "8 lesser known answers to the famous question of the beis yosef"
   },
   {
-    "id": "hal-31",
+    "id": "hal-32",
     "program": "Halacha",
     "type": "audio",
     "title": "A little at a time",
@@ -2360,7 +2370,7 @@
     "title_lc": "a little at a time"
   },
   {
-    "id": "hal-32",
+    "id": "hal-33",
     "program": "Halacha",
     "type": "audio",
     "title": "Chanukah thought",
@@ -2370,7 +2380,7 @@
     "title_lc": "chanukah thought"
   },
   {
-    "id": "hal-33",
+    "id": "hal-34",
     "program": "Halacha",
     "type": "audio",
     "title": "Eating before Megilah",
@@ -2380,7 +2390,7 @@
     "title_lc": "eating before megilah"
   },
   {
-    "id": "hal-34",
+    "id": "hal-35",
     "program": "Halacha",
     "type": "audio",
     "title": "Three lesser discussed halachos regarding Purim",
@@ -2390,7 +2400,7 @@
     "title_lc": "three lesser discussed halachos regarding purim"
   },
   {
-    "id": "hal-35",
+    "id": "hal-36",
     "program": "Halacha",
     "type": "audio",
     "title": "Purim thoughts",
@@ -2400,7 +2410,7 @@
     "title_lc": "purim thoughts"
   },
   {
-    "id": "hal-36",
+    "id": "hal-37",
     "program": "Halacha",
     "type": "audio",
     "title": "Reframing the Pesach Seder",
@@ -2410,7 +2420,7 @@
     "title_lc": "reframing the pesach seder"
   },
   {
-    "id": "hal-37",
+    "id": "hal-38",
     "program": "Halacha",
     "type": "audio",
     "title": "An alternate look at the 10 makkos",
@@ -2420,7 +2430,7 @@
     "title_lc": "an alternate look at the 10 makkos"
   },
   {
-    "id": "hal-38",
+    "id": "hal-39",
     "program": "Halacha",
     "type": "audio",
     "title": "Korban Pesach today",
@@ -2430,7 +2440,7 @@
     "title_lc": "korban pesach today"
   },
   {
-    "id": "hal-39",
+    "id": "hal-40",
     "program": "Halacha",
     "type": "audio",
     "title": "Let my people go",
@@ -2440,7 +2450,7 @@
     "title_lc": "let my people go"
   },
   {
-    "id": "hal-40",
+    "id": "hal-41",
     "program": "Halacha",
     "type": "audio",
     "title": "Historical Perspective on the Five Sages in the Haggadah",
@@ -2450,7 +2460,7 @@
     "title_lc": "historical perspective on the five sages in the haggadah"
   },
   {
-    "id": "hal-41",
+    "id": "hal-42",
     "program": "Halacha",
     "type": "audio",
     "title": "The perfect child",
@@ -2460,7 +2470,7 @@
     "title_lc": "the perfect child"
   },
   {
-    "id": "hal-42",
+    "id": "hal-43",
     "program": "Halacha",
     "type": "audio",
     "title": "Evolution of the days of Sefirah",
@@ -2470,7 +2480,7 @@
     "title_lc": "evolution of the days of sefirah"
   },
   {
-    "id": "hal-43",
+    "id": "hal-44",
     "program": "Halacha",
     "type": "audio",
     "title": "A Lesson from Lag Baomer",
@@ -2480,7 +2490,7 @@
     "title_lc": "a lesson from lag baomer"
   },
   {
-    "id": "hal-44",
+    "id": "hal-45",
     "program": "Halacha",
     "type": "audio",
     "title": "Customs of Lag Baomer",
@@ -2490,7 +2500,7 @@
     "title_lc": "customs of lag baomer"
   },
   {
-    "id": "hal-45",
+    "id": "hal-46",
     "program": "Halacha",
     "type": "audio",
     "title": "Staying awake all Shavuos night",
@@ -2500,7 +2510,7 @@
     "title_lc": "staying awake all shavuos night"
   },
   {
-    "id": "hal-46",
+    "id": "hal-47",
     "program": "Halacha",
     "type": "audio",
     "title": "Leaving a sefer open",
@@ -2510,7 +2520,7 @@
     "title_lc": "leaving a sefer open"
   },
   {
-    "id": "hal-47",
+    "id": "hal-48",
     "program": "Halacha",
     "type": "audio",
     "title": "History of Kollel",
@@ -2520,7 +2530,7 @@
     "title_lc": "history of kollel"
   },
   {
-    "id": "hal-48",
+    "id": "hal-49",
     "program": "Halacha",
     "type": "audio",
     "title": "Various aspects of talmud torah",
@@ -2530,7 +2540,7 @@
     "title_lc": "various aspects of talmud torah"
   },
   {
-    "id": "hal-49",
+    "id": "hal-50",
     "program": "Halacha",
     "type": "audio",
     "title": "אלו ואלו דברי אלקים חיים",
@@ -2540,7 +2550,7 @@
     "title_lc": "אלו ואלו דברי אלקים חיים"
   },
   {
-    "id": "hal-50",
+    "id": "hal-51",
     "program": "Halacha",
     "type": "audio",
     "title": "Learning the written and oral Torah",
@@ -2550,7 +2560,7 @@
     "title_lc": "learning the written and oral torah"
   },
   {
-    "id": "hal-51",
+    "id": "hal-52",
     "program": "Halacha",
     "type": "audio",
     "title": "Defining Torah Shebaal Peh",
@@ -2560,7 +2570,7 @@
     "title_lc": "defining torah shebaal peh"
   },
   {
-    "id": "hal-52",
+    "id": "hal-53",
     "program": "Halacha",
     "type": "audio",
     "title": "Making a Siyum",
@@ -2570,7 +2580,7 @@
     "title_lc": "making a siyum"
   },
   {
-    "id": "hal-53",
+    "id": "hal-54",
     "program": "Halacha",
     "type": "audio",
     "title": "The 6 stages of Torah-toil",
@@ -2580,7 +2590,7 @@
     "title_lc": "the 6 stages of torah-toil"
   },
   {
-    "id": "hal-54",
+    "id": "hal-55",
     "program": "Halacha",
     "type": "audio",
     "title": "The Septuagint - PART 2",
@@ -2590,7 +2600,7 @@
     "title_lc": "the septuagint - part 2"
   },
   {
-    "id": "hal-55",
+    "id": "hal-56",
     "program": "Halacha",
     "type": "audio",
     "title": "Introduction to the Septuagint",
@@ -2600,7 +2610,7 @@
     "title_lc": "introduction to the septuagint"
   },
   {
-    "id": "hal-56",
+    "id": "hal-57",
     "program": "Halacha",
     "type": "audio",
     "title": "Reconnecting our inner flame.  A Jew's internal connection to Talmud Torah",
@@ -2610,7 +2620,7 @@
     "title_lc": "reconnecting our inner flame.  a jew's internal connection to talmud torah"
   },
   {
-    "id": "hal-57",
+    "id": "hal-58",
     "program": "Halacha",
     "type": "audio",
     "title": "The Transmission of the Torah from Sinai until the Mishna - PART 2",
@@ -2620,7 +2630,7 @@
     "title_lc": "the transmission of the torah from sinai until the mishna - part 2"
   },
   {
-    "id": "hal-58",
+    "id": "hal-59",
     "program": "Halacha",
     "type": "audio",
     "title": "The Transmission of the Torah from Sinai until the Mishna",
@@ -2630,7 +2640,7 @@
     "title_lc": "the transmission of the torah from sinai until the mishna"
   },
   {
-    "id": "hal-59",
+    "id": "hal-60",
     "program": "Halacha",
     "type": "audio",
     "title": "3 lessons Lzehcer Harav Avrohom Nesanel ben Shlomo on his first Yahrtzeit",
@@ -2640,7 +2650,7 @@
     "title_lc": "3 lessons lzehcer harav avrohom nesanel ben shlomo on his first yahrtzeit"
   },
   {
-    "id": "hal-60",
+    "id": "hal-61",
     "program": "Halacha",
     "type": "audio",
     "title": "Segulos",
@@ -2650,7 +2660,7 @@
     "title_lc": "segulos"
   },
   {
-    "id": "hal-61",
+    "id": "hal-62",
     "program": "Halacha",
     "type": "audio",
     "title": "Should the death of an evil person be celebrated?",
@@ -2660,7 +2670,7 @@
     "title_lc": "should the death of an evil person be celebrated?"
   },
   {
-    "id": "hal-62",
+    "id": "hal-63",
     "program": "Halacha",
     "type": "audio",
     "title": "שויתי ה׳ לנגדי תמיד",
@@ -2670,7 +2680,7 @@
     "title_lc": "שויתי ה׳ לנגדי תמיד"
   },
   {
-    "id": "hal-63",
+    "id": "hal-64",
     "program": "Halacha",
     "type": "audio",
     "title": "The Torah's perspective on earthquakes",
@@ -2680,7 +2690,7 @@
     "title_lc": "the torah's perspective on earthquakes"
   },
   {
-    "id": "hal-64",
+    "id": "hal-65",
     "program": "Halacha",
     "type": "audio",
     "title": "When leaders fail",
@@ -2690,7 +2700,7 @@
     "title_lc": "when leaders fail"
   },
   {
-    "id": "hal-65",
+    "id": "hal-66",
     "program": "Halacha",
     "type": "audio",
     "title": "Is Iced Coffee the answer?",
@@ -2700,7 +2710,7 @@
     "title_lc": "is iced coffee the answer?"
   },
   {
-    "id": "hal-66",
+    "id": "hal-67",
     "program": "Halacha",
     "type": "audio",
     "title": "Asking two Rabbis the same Halachic question",
@@ -2710,7 +2720,7 @@
     "title_lc": "asking two rabbis the same halachic question"
   },
   {
-    "id": "hal-67",
+    "id": "hal-68",
     "program": "Halacha",
     "type": "audio",
     "title": "A misconception regarding tevilas keilim",
@@ -2720,7 +2730,7 @@
     "title_lc": "a misconception regarding tevilas keilim"
   },
   {
-    "id": "hal-68",
+    "id": "hal-69",
     "program": "Halacha",
     "type": "audio",
     "title": "Counting Jews",
@@ -2730,7 +2740,7 @@
     "title_lc": "counting jews"
   },
   {
-    "id": "hal-69",
+    "id": "hal-70",
     "program": "Halacha",
     "type": "audio",
     "title": "Nittel Nacht",
@@ -2740,7 +2750,7 @@
     "title_lc": "nittel nacht"
   },
   {
-    "id": "hal-70",
+    "id": "hal-71",
     "program": "Halacha",
     "type": "audio",
     "title": "Kol Isha",
@@ -2750,7 +2760,7 @@
     "title_lc": "kol isha"
   },
   {
-    "id": "hal-71",
+    "id": "hal-72",
     "program": "Halacha",
     "type": "audio",
     "title": "Unverified collectors",
@@ -2760,7 +2770,7 @@
     "title_lc": "unverified collectors"
   },
   {
-    "id": "hal-72",
+    "id": "hal-73",
     "program": "Halacha",
     "type": "audio",
     "title": "The obligation to give",
@@ -2770,7 +2780,7 @@
     "title_lc": "the obligation to give"
   },
   {
-    "id": "hal-73",
+    "id": "hal-74",
     "program": "Halacha",
     "type": "audio",
     "title": "Machatzis Hashekel in halacha",
@@ -2780,7 +2790,7 @@
     "title_lc": "machatzis hashekel in halacha"
   },
   {
-    "id": "hal-74",
+    "id": "hal-75",
     "program": "Halacha",
     "type": "audio",
     "title": "Third time's the charm in Jewish history",
@@ -2790,7 +2800,7 @@
     "title_lc": "third time's the charm in jewish history"
   },
   {
-    "id": "hal-75",
+    "id": "hal-76",
     "program": "Halacha",
     "type": "audio",
     "title": "The avos as a blueprint for Jewish history",
@@ -2800,7 +2810,7 @@
     "title_lc": "the avos as a blueprint for jewish history"
   },
   {
-    "id": "hal-76",
+    "id": "hal-77",
     "program": "Halacha",
     "type": "audio",
     "title": "Ten lost tribes",
@@ -2810,7 +2820,7 @@
     "title_lc": "ten lost tribes"
   },
   {
-    "id": "hal-77",
+    "id": "hal-78",
     "program": "Halacha",
     "type": "audio",
     "title": "Rambam’s view on Techias Hameisim",
@@ -2820,7 +2830,7 @@
     "title_lc": "rambam’s view on techias hameisim"
   },
   {
-    "id": "hal-78",
+    "id": "hal-79",
     "program": "Halacha",
     "type": "audio",
     "title": "Awaiting Moshiach",
@@ -2830,7 +2840,7 @@
     "title_lc": "awaiting moshiach"
   },
   {
-    "id": "hal-79",
+    "id": "hal-80",
     "program": "Halacha",
     "type": "audio",
     "title": "The Israeli flag in halacha",
@@ -2840,7 +2850,7 @@
     "title_lc": "the israeli flag in halacha"
   },
   {
-    "id": "hal-80",
+    "id": "hal-81",
     "program": "Halacha",
     "type": "audio",
     "title": "Tearing Kriyah at the Kotel",
@@ -2850,7 +2860,7 @@
     "title_lc": "tearing kriyah at the kotel"
   },
   {
-    "id": "hal-81",
+    "id": "hal-82",
     "program": "Halacha",
     "type": "audio",
     "title": "Religious Zionism",
@@ -2860,7 +2870,7 @@
     "title_lc": "religious zionism"
   },
   {
-    "id": "hal-82",
+    "id": "hal-83",
     "program": "Halacha",
     "type": "audio",
     "title": "NOACH - How petty theft sealed the fate of the dor hamabul",
@@ -2870,7 +2880,7 @@
     "title_lc": "noach - how petty theft sealed the fate of the dor hamabul"
   },
   {
-    "id": "hal-83",
+    "id": "hal-84",
     "program": "Halacha",
     "type": "audio",
     "title": "VAYEITZEI - הפעם אודה את ה",
@@ -2880,7 +2890,7 @@
     "title_lc": "vayeitzei - הפעם אודה את ה"
   },
   {
-    "id": "hal-84",
+    "id": "hal-85",
     "program": "Halacha",
     "type": "audio",
     "title": "VAYEITZEI - Jacob's ladder as a paradigm for prayer",
@@ -2890,7 +2900,7 @@
     "title_lc": "vayeitzei - jacob's ladder as a paradigm for prayer"
   },
   {
-    "id": "hal-85",
+    "id": "hal-86",
     "program": "Halacha",
     "type": "audio",
     "title": "VAYISHLACH - When preparing to battle Eisav, what was Yaakov so scared of and why?",
@@ -2900,7 +2910,7 @@
     "title_lc": "vayishlach - when preparing to battle eisav, what was yaakov so scared of and why?"
   },
   {
-    "id": "hal-86",
+    "id": "hal-87",
     "program": "Halacha",
     "type": "audio",
     "title": "VAYEISHEV - Yosef's multifaceted personality",
@@ -2910,7 +2920,7 @@
     "title_lc": "vayeishev - yosef's multifaceted personality"
   },
   {
-    "id": "hal-87",
+    "id": "hal-88",
     "program": "Halacha",
     "type": "audio",
     "title": "VAEIRA - Appreciating Hashem's kindness",
@@ -2920,7 +2930,7 @@
     "title_lc": "vaeira - appreciating hashem's kindness"
   },
   {
-    "id": "hal-88",
+    "id": "hal-89",
     "program": "Halacha",
     "type": "audio",
     "title": "YISRO - Serving Hashem before and after the Eigel",
@@ -2930,7 +2940,7 @@
     "title_lc": "yisro - serving hashem before and after the eigel"
   },
   {
-    "id": "hal-89",
+    "id": "hal-90",
     "program": "Halacha",
     "type": "audio",
     "title": "VAYIKRA - Brief Intro to Sefer Vayikra",
@@ -2940,7 +2950,7 @@
     "title_lc": "vayikra - brief intro to sefer vayikra"
   },
   {
-    "id": "hal-90",
+    "id": "hal-91",
     "program": "Halacha",
     "type": "audio",
     "title": "SHEMINI - יום השמיני - a busy day",
@@ -2950,7 +2960,7 @@
     "title_lc": "shemini - יום השמיני - a busy day"
   },
   {
-    "id": "hal-91",
+    "id": "hal-92",
     "program": "Halacha",
     "type": "audio",
     "title": "SHELACH - A lesson from the parsha of the Meraglim",
@@ -2960,7 +2970,7 @@
     "title_lc": "shelach - a lesson from the parsha of the meraglim"
   },
   {
-    "id": "hal-92",
+    "id": "hal-93",
     "program": "Halacha",
     "type": "audio",
     "title": "SHELACH - Lessons from the terrible sin of the spies",
@@ -2970,7 +2980,7 @@
     "title_lc": "shelach - lessons from the terrible sin of the spies"
   },
   {
-    "id": "hal-93",
+    "id": "hal-94",
     "program": "Halacha",
     "type": "audio",
     "title": "VAESCHANAN - My rebbis legacy - always pushing for greatness",
@@ -2980,7 +2990,7 @@
     "title_lc": "vaeschanan - my rebbis legacy - always pushing for greatness"
   },
   {
-    "id": "hal-94",
+    "id": "hal-95",
     "program": "Halacha",
     "type": "audio",
     "title": "SHOFTIM - Selective observance",
