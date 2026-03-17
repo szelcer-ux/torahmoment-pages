@@ -707,36 +707,6 @@ function renderMediaCard(item){
   return renderBasicCard(item);
 }
     
-    function renderAudioRow(item){
-  return `
-    <div class="audio-row">
-      <div class="audio-head">
-        <span class="audio-cat">${escapeHtml(item.program || "Item")}</span>
-        <div class="audio-title">${escapeHtml(item.title || "Untitled")}</div>
-      </div>
-
-      <div class="tm-inline-player" data-audio-player>
-        <button class="tm-play" type="button" data-play aria-label="Play">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M8 5v14l11-7z"></path>
-          </svg>
-        </button>
-
-        <div class="tm-progress-wrap">
-          <input class="tm-progress" data-seek type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
-        </div>
-
-        <div class="tm-controls">
-          <button class="tm-pill" type="button" data-speed>1×</button>
-          <button class="tm-pill" type="button" data-shortskip>Short</button>
-          <span class="tm-time" data-time></span>
-        </div>
-
-        <audio preload="none" src="${escapeHtml(item.url || "")}"></audio>
-      </div>
-    </div>
-  `;
-}
     
     function renderPrograms(items){
       const grid = document.getElementById("programGrid");
@@ -800,17 +770,6 @@ function renderRecents(items){
 
   setupInlineAudioPlayers(grid);
 }
-
-function renderTopicItems(items, topicIds, topicName){
-  const grid = document.getElementById("topicGrid");
-  if(!grid) return;
-
-  const byId = new Map(items.map(x => [x.id, x]));
-  const topicItems = (topicIds || []).map(id => byId.get(id)).filter(Boolean);
-
-  const initialCount = 8;
-  const visibleItems = topicItems.slice(0, initialCount);
-  const hiddenItems = topicItems.slice(initialCount);
 
 function renderTopicItems(items, topicIds, topicName){
   const grid = document.getElementById("topicGrid");
