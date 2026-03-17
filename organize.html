@@ -775,8 +775,8 @@ function renderTopicItems(items, topicIds, topicName){
   const grid = document.getElementById("topicGrid");
   if(!grid) return;
 
-  const byId = new Map(items.map(x => [x.id, x]));
-  const topicItems = (topicIds || []).map(id => byId.get(id)).filter(Boolean);
+const byUrl = new Map(items.map(x => [x.url, x]));
+const topicItems = topicUrls.map(url => byUrl.get(url)).filter(Boolean);
 
   const initialCount = 8;
   const visibleItems = topicItems.slice(0, initialCount);
