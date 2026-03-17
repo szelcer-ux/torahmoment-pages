@@ -588,11 +588,31 @@
       return type === "audio" || url.endsWith(".mp3") || url.endsWith(".m4a") || url.endsWith(".wav");
     }
 
-    function isVideoItem(item){
-      const type = (item?.type || "").toLowerCase();
-      const url = (item?.url || "").toLowerCase();
-      return type === "video" || url.includes("youtube.com/watch") || url.includes("youtu.be/");
-    }
+function isVideoItem(item){
+  const type = (item?.type || "").toLowerCase();
+  const url = (item?.url || "").toLowerCase();
+
+  return (
+    type === "video" ||
+    url.includes("youtube.com/watch") ||
+    url.includes("youtu.be/") ||
+    url.includes("youtube.com/shorts/")
+  );
+}
+
+function isAudioItem(item){
+  const type = (item?.type || "").toLowerCase();
+  const url = (item?.url || "").toLowerCase();
+
+  if (isVideoItem(item)) return false;
+
+  return (
+    type === "audio" ||
+    url.endsWith(".mp3") ||
+    url.endsWith(".m4a") ||
+    url.endsWith(".wav")
+  );
+}
 
     function niceProgramUrl(program){
       const map = {
@@ -702,8 +722,8 @@ function renderBasicCard(item){
 }
 
 function renderMediaCard(item){
-  if(isAudioItem(item)) return renderAudioCard(item);
-  if(isVideoItem(item)) return renderVideoCard(item);
+   if (isVideoItem(item)) return renderVideoCard(item);
+  if (isAudioItem(item)) return renderAudioCard(item);
   return renderBasicCard(item);
 }
     
