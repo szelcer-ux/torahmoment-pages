@@ -880,7 +880,7 @@ function isAudioItem(item){
     function setTopicMode(isTopic, topicName=""){
       const heroTitle = document.getElementById("heroTitle");
       const heroText = document.getElementById("heroText");
-      const programSection = document.getElementById("programSection");
+      
       const recentSection = document.getElementById("recentSection");
       const topicSectionTitle = document.getElementById("topicSectionTitle");
       const topicSectionNote = document.getElementById("topicSectionNote");
@@ -888,14 +888,14 @@ function isAudioItem(item){
       if(isTopic){
         heroTitle.textContent = topicName;
         heroText.textContent = "";
-        programSection.classList.add("is-hidden");
+        
         recentSection.classList.add("is-hidden");
         topicSectionTitle.textContent = "Topic View";
         topicSectionNote.textContent = "";
       }else{
         heroTitle.textContent = "Browse TorahMoment";
         heroText.textContent = "";
-        programSection.classList.remove("is-hidden");
+        
         recentSection.classList.remove("is-hidden");
         topicSectionTitle.textContent = "Featured Topics";
         topicSectionNote.innerHTML = 'Curated from <code>topic-map.json</code>';
