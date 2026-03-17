@@ -671,6 +671,15 @@ html, body{
   color:#fff;
   letter-spacing:.04em;
 }
+
+    .seasonal-primary{
+  border:1.5px solid #bde5de;
+  background:linear-gradient(135deg, #f0fdfa, #ffffff);
+}
+
+.seasonal-primary .program-title{
+  font-size:19px;
+}
     
   </style>
 </head>
@@ -712,23 +721,29 @@ html, body{
 
 <section class="section seasonal-section">
   <div class="section-head">
-    <h2>This Time of Year</h2>
-    <div class="section-note">Focus on what's most relevant right now</div>
+    <h2>This Week</h2>
+    <div class="section-note">What to focus on right now</div>
   </div>
 
   <div class="seasonal-grid">
-    <!-- Example: Pesach -->
-    <a class="card seasonal-card" href="topics.html?topic=Pesach">
-      <div class="seasonal-badge">Now</div>
-      <div class="program-title">Pesach</div>
-      <div class="muted">Shiurim and insights for the Yom Tov</div>
+
+    <!-- Parsha (Primary) -->
+    <a class="card seasonal-card seasonal-primary" href="https://torahmoment.com/parsha.html">
+      <div class="seasonal-badge">This Week</div>
+      <div class="program-title">This Week’s Parsha</div>
+      <div class="muted">
+        Explore Divrei Torah and videos for this week’s Parsha
+      </div>
     </a>
 
-    <!-- Optional second -->
-    <a class="card seasonal-card" href="topics.html?topic=Tefilah">
-      <div class="program-title">Tefilah</div>
-      <div class="muted">Strengthening daily davening</div>
+    <!-- Pesach (Secondary) -->
+    <a class="card seasonal-card" href="topics.html?topic=Pesach">
+      <div class="program-title">Pesach</div>
+      <div class="muted">
+        Prepare for the Yom Tov with shiurim and insights
+      </div>
     </a>
+
   </div>
 </section>
     
