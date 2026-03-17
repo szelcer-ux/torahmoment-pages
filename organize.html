@@ -737,7 +737,7 @@ function renderMediaCard(item){
       const grid = document.getElementById("topicGrid");
       if(!grid) return;
 
-      const byId = new Mapconst byUrl = new Map(items.map(x => [x.url, x]));(items.map(x=>[x.id,x]));
+      const byUrl = new Map(items.map(x => [x.url, x]));(items.map(x=>[x.id,x]));
       const topics = Object.keys(topicMap || {});
 
       grid.innerHTML = topics.map(t=>{
