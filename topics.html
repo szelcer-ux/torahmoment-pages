@@ -788,14 +788,14 @@ function isAudioItem(item){
 
       if(isTopic){
         heroTitle.textContent = topicName;
-        heroText.textContent = "A curated topic view across TorahMoment, with videos and audio presented in a format that matches the rest of the site.";
+        heroText.textContent = "";
         programSection.classList.add("is-hidden");
         recentSection.classList.add("is-hidden");
         topicSectionTitle.textContent = "Topic View";
         topicSectionNote.textContent = "";
       }else{
         heroTitle.textContent = "Browse TorahMoment";
-        heroText.textContent = "Explore shiurim by program, featured topics, and recent additions. This page is meant to make the library easier to discover without changing the pages that already work.";
+        heroText.textContent = "";
         programSection.classList.remove("is-hidden");
         recentSection.classList.remove("is-hidden");
         topicSectionTitle.textContent = "Featured Topics";
@@ -966,7 +966,7 @@ function renderTopicItems(items, topicUrls, topicName){
         </div>
         <div class="topic-actions">
           ${hiddenCount > 0 ? `<button class="btn-pill" type="button" id="toggleTopicItems">Show ${hiddenCount} more</button>` : ``}
-          <a class="btn-pill" href="organize.html">← All Topics</a>
+          <a class="btn-pill" href="topics.html">← All Topics</a>
         </div>
       </div>
     </div>
