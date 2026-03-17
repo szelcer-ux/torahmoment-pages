@@ -4,47 +4,36 @@
     "tef-6","tef-7","tef-8","tef-9","tef-10",
     "tef-11","tef-12","tef-13","tef-14","tef-15",
     "tef-16","tef-17","tef-18","tef-19","tef-20",
-    "one-68"
+    "one-68","hal-20","one-4","one-66","hal-19","hal-20",
+    "hal-84","par-Xt2FwcOXax4","par-rWfb6q6NPlg","par-XNJOzGa21d0","hal-5","hal-6",
+    "hal-7","hal-8","hal-17","one-3"
   ],
   "Purim": [
-    "hal-33",
-    "hal-34",
-    "hal-35"
+    "hal-33", "hal-34", "hal-35"
   ],
   "Pesach": [
-    "hal-36",
-    "hal-37",
-    "hal-38",
-    "hal-39",
-    "hal-40",
-    "hal-41",
-    "one-199"
+    "hal-36", "hal-37", "hal-38", "hal-39", "hal-40",
+    "hal-41",  "one-199"
   ],
   "Sefirah": [
-    "hal-42",
-    "hal-43",
-    "hal-44"
+    "hal-42", "hal-43", "hal-44"
   ],
   "Chanukah": [
-    "hal-32",
-    "one-164",
-    "one-165",
-    "one-166"
+    "hal-32","one-164","one-165",  "one-166","one-36","one-37","one-38"
   ],
   "Tefilin / Tzitzis": [
-    "hal-0",
-    "hal-1"
+    "hal-0", "hal-1","hal-2","hal-3","hal-4"
   ],
   "Shabbos": [
-  "hal-44",
-  "hal-45",
-  "hal-46",
-  "hal-47",
-  "hal-48",
-  "hal-49",
-  "one-120",
-  "one-121",
-  "one-122",
-  "one-123"
-]
+  "par-bpkoPXJ2Ams", "hal-21","hal-22"
+],
+  "Israel": [
+    "one-4","hal-79","hal-80","hal-81"
+  ],
+  "Days of Teshuva":[
+    "hal-0","one-7","one-8","one-10"
+  ],
+  "Talmud torah":[
+    "one-18","one-54","one-103","hal-46","hal-47","hal-48","hal-49","hal-50","hal-51","hal-52","hal-53","hal-54","hal-55","hal-56","hal-57","hal-58"
+  ]
 }
