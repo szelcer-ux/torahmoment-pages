@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 684,
+    "total": 685,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 82
       },
       "oneMinute": {
-        "audio": 203
+        "audio": 204
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-03-17"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Stay humble",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0114.mp3",
+      "date": "2026-03-17T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "YISRO - Serving Hashem before and after the Eigel",
       "url": "https://2mishnasaday.com/wp-content/uploads/before-and-after-eigel.mp3",
       "date": "2026-03-12T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Let it go",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260312-WA0015.mp3",
-      "date": "2026-03-12T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Stay humble",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0114.mp3",
+        "date": "2026-03-17T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Real chinuch",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260225-WA0033.mp3",
         "date": "2026-02-25T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Snow day lesson",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260223-WA0079.mp3",
-        "date": "2026-02-23T00:00:00.000Z"
       }
     ],
     "halacha": [
