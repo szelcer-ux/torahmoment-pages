@@ -842,14 +842,14 @@ function isAudioItem(item){
         heroText.textContent = "";
         
         recentSection.classList.add("is-hidden");
-        topicSectionTitle.textContent = "Topic View";
+        
         topicSectionNote.textContent = "";
       }else{
         heroTitle.textContent = "Browse TorahMoment";
         heroText.textContent = "";
         
         recentSection.classList.remove("is-hidden");
-        topicSectionTitle.textContent = "Featured Topics";
+        
         topicSectionNote.innerHTML = 'Curated from <code>topic-map.json</code>';
       }
     }
