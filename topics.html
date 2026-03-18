@@ -868,12 +868,12 @@ function formatDate(dateStr){
   const yyyy = d.getFullYear();
   return `${mm}/${dd}/${yyyy}`;
 }
-
+const isNew = isThisWeek(item.date);
 function renderAudioCard(item){
   const date = formatDate(item.date);
 
   return `
-const isNew = isThisWeek(item.date);
+
 
 <div class="media-card audio-card">
   <div class="audio-head">
