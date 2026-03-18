@@ -668,6 +668,19 @@
       font-size:13px;
     }
   }
+
+  .new-badge{
+  display:inline-block;
+  margin-left:6px;
+  font-size:10px;
+  font-weight:700;
+  padding:2px 6px;
+  border-radius:999px;
+  background:#0d9488;
+  color:#fff;
+  letter-spacing:.03em;
+  vertical-align:middle;
+}
 </style>
 </head>
 <body>
@@ -860,12 +873,17 @@ function renderAudioCard(item){
   const date = formatDate(item.date);
 
   return `
-    <div class="media-card audio-card">
-      <div class="audio-head">
-        <span class="audio-cat">${escapeHtml(item.program || "Item")}</span>
-        <div class="audio-title">${escapeHtml(item.title || "Untitled")}</div>
-        ${date ? `<div class="item-date">${escapeHtml(date)}</div>` : ``}
-      </div>
+const isNew = isThisWeek(item.date);
+
+<div class="media-card audio-card">
+  <div class="audio-head">
+    <span class="audio-cat">${escapeHtml(item.program || "Item")}</span>
+    <div class="audio-title">
+      ${escapeHtml(item.title || "Untitled")}
+      ${isNew ? `<span class="new-badge">New</span>` : ``}
+    </div>
+    ${date ? `<div class="item-date">${escapeHtml(date)}</div>` : ``}
+  </div>
 
       <div class="tm-inline-player" data-audio-player>
         <button class="tm-play" type="button" data-play aria-label="Play">
@@ -973,7 +991,30 @@ function renderRecents(items){
   const grid = document.getElementById("recentGrid");
   if(!grid) return;
 
-  const recent = [...items].sort(byDateDesc).slice(0, 12);
+  const THIRTY_DAYS = 1000 * 60 * 60 * 24 * 30;
+const now = Date.now();
+
+// items WITH valid dates
+const withDates = items.filter(x => x.date);
+
+// sort newest first
+const sorted = [...withDates].sort(byDateDesc);
+
+// items from last 30 days
+const recent30 = sorted.filter(x => {
+  const t = new Date(x.date).getTime();
+  return !isNaN(t) && (now - t <= THIRTY_DAYS);
+});
+
+// final selection:
+// if we have at least 12 in last 30 days → use them
+// otherwise → fallback to top 12 overall
+let recent;
+if (recent30.length >= 12) {
+  recent = recent30;
+} else {
+  recent = sorted.slice(0, 12);
+}
 
   if(!recent.length){
     grid.innerHTML = `<div class="card empty">No recent items found.</div>`;
@@ -986,6 +1027,15 @@ function renderRecents(items){
   setupInlineAudioPlayers(grid);
 }
 
+function isThisWeek(dateStr){
+  if (!dateStr) return false;
+  const t = new Date(dateStr).getTime();
+  if (isNaN(t)) return false;
+
+  const SEVEN_DAYS = 1000 * 60 * 60 * 24 * 7;
+  return (Date.now() - t) <= SEVEN_DAYS;
+}
+    
 function renderTopicItems(items, topicUrls, topicName){
   const grid = document.getElementById("topicGrid");
   if(!grid) return;
