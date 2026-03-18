@@ -46,7 +46,21 @@
   .hero{
     margin-bottom:14px;
   }
+.featured-shell{
+  background:#fafafa;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.04);
+}
 
+.featured-shell .section-head{
+  margin-bottom:12px;
+}
+
+.featured-shell .topic-grid{
+  margin-top:0;
+}
   .hero-card{
     background:linear-gradient(135deg,#ffffff 0%,#f2fbfa 100%);
     border:1px solid var(--border);
@@ -713,13 +727,13 @@
   </div>
 </section>
     
-    <section class="section" id="topicSection">
-      <div class="section-head">
-        <h2 id="topicSectionTitle">Featured Topics</h2>
-        <div class="section-note" id="topicSectionNote">Curated from <code>topic-map.json</code></div>
-      </div>
-      <div class="topic-grid" id="topicGrid"></div>
-    </section>
+<section class="section featured-shell">
+  <div class="section-head">
+    <h2>Featured Topics</h2>
+    <div class="section-note">Curated from topic-map.json</div>
+  </div>
+  <div class="topic-grid" id="topicGrid"></div>
+</section>
 
     <section class="section" id="recentSection">
       <div class="section-head">
