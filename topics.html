@@ -272,12 +272,17 @@
 
 .topic-media-grid,
 .recent-media-grid{
+  align-items:start;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:14px;
   margin-top:14px;
 }
 
+.topic-media-grid > *{
+  align-self:start;
+}
+    
 .topic-media-grid.is-collapsed{
   position:relative;
   max-height:980px;
@@ -373,13 +378,7 @@
   grid-template-columns:34px 1fr auto;
   align-items:center;
   gap:8px;
-  border:1px solid var(--border);
-  border-radius:999px;
-  padding:7px 10px;
-  background:#fcfcfd;
-  min-width:0;
 }
-
 .tm-play{
   width:34px;
   height:34px;
@@ -408,6 +407,7 @@
 .tm-progress-wrap{
   min-width:0;
   width:100%;
+  margin-right:4px;
 }
 
 .tm-progress{
@@ -442,8 +442,7 @@
 .tm-controls{
   display:flex;
   align-items:center;
-  gap:6px;
-  min-width:0;
+  justify-self:end;   /* THIS is the key */
 }
 
 .tm-pill{
