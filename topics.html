@@ -491,6 +491,7 @@
   .tm-controls{
     grid-column:1 / -1;
     justify-content:flex-end;
+    align-self:center;   /* centers vertically within grid cell */
   }
 
   .tm-play{
@@ -785,7 +786,7 @@ html, body{
   .tm-progress-wrap{
     min-width:0;
     width:100%;
-    margin-right:2px;
+    margin-right:6px;
   }
 
   .tm-progress{
@@ -827,6 +828,37 @@ html, body{
     padding:0 10px;
     font-size:13px;
   }
+}
+
+@media (max-width:640px){
+  .section-head{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .section-note{
+    margin-top:2px;
+  }
+}
+
+    .seasonal-badge{
+  height:24px;
+  font-size:11px;
+  padding:0 7px;
+}
+
+    .hero-card h1{
+  font-size:20px;
+}
+
+    .card,
+.media-card,
+.audio-card{
+  padding:10px !important;
+}
+
+    .audio-title{
+  font-size:15px;
 }
     
     /*SEASONAL STUFF*/
@@ -1026,6 +1058,7 @@ html, body{
     flex-wrap:nowrap !important;
     gap:0 !important;
     min-width:auto !important;
+    align-self:center !important;   /* centers vertically within grid cell */
   }
 
   .tm-pill{
