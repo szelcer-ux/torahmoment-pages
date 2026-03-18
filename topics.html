@@ -878,8 +878,9 @@ function formatDate(dateStr){
   return `${mm}/${dd}/${yyyy}`;
 }
     
-const isNew = isThisWeek(item.date);
+
 function renderAudioCard(item){
+  const isNew = isThisWeek(item.date);
   const date = formatDate(item.date);
 
   return `
