@@ -765,6 +765,15 @@
       return r.json();
     }
 
+function isThisWeek(dateStr){
+  if (!dateStr) return false;
+  const t = new Date(dateStr).getTime();
+  if (isNaN(t)) return false;
+
+  const SEVEN_DAYS = 1000 * 60 * 60 * 24 * 7;
+  return (Date.now() - t) <= SEVEN_DAYS;
+}
+    
     function escapeHtml(str){
       return String(str ?? "").replace(/[&<>"']/g,ch=>({
         "&":"&amp;",
@@ -868,6 +877,7 @@ function formatDate(dateStr){
   const yyyy = d.getFullYear();
   return `${mm}/${dd}/${yyyy}`;
 }
+    
 const isNew = isThisWeek(item.date);
 function renderAudioCard(item){
   const date = formatDate(item.date);
@@ -1027,14 +1037,7 @@ if (recent30.length >= 12) {
   setupInlineAudioPlayers(grid);
 }
 
-function isThisWeek(dateStr){
-  if (!dateStr) return false;
-  const t = new Date(dateStr).getTime();
-  if (isNaN(t)) return false;
 
-  const SEVEN_DAYS = 1000 * 60 * 60 * 24 * 7;
-  return (Date.now() - t) <= SEVEN_DAYS;
-}
     
 function renderTopicItems(items, topicUrls, topicName){
   const grid = document.getElementById("topicGrid");
