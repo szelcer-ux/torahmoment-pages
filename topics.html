@@ -48,7 +48,7 @@
       border:1px solid var(--border);
       border-radius:24px;
       box-shadow:var(--shadow);
-      padding:24px;
+      padding:16px 20px;   /* slightly smaller */
     }
 
     .eyebrow{
@@ -67,6 +67,14 @@
       line-height:1.08;
     }
 
+  .hero-card h1{
+  font-size:28px; /* slightly tighter */
+}
+    
+   .section:first-of-type{
+  margin-top:12px;
+}
+    
     .hero p{
       margin:0;
       color:var(--muted);
@@ -100,7 +108,7 @@
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:14px;
+      gap:12px;
     }
 
     .topic-grid{
@@ -120,6 +128,7 @@
     .program-card{
       display:block;
       transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+      padding:14px;
     }
 
     .program-card:hover{
@@ -160,6 +169,7 @@
 
     .muted{
       color:var(--muted);
+      font-size:13px;
     }
 
     .kicker{
@@ -641,7 +651,7 @@ html, body{
 
 .seasonal-card{
   position:relative;
-  padding:18px;
+  padding:14px;  /* was ~18 */
   border:1px solid var(--border);
   border-radius:var(--radius);
   background:linear-gradient(135deg, #f8fafc, #ffffff);
