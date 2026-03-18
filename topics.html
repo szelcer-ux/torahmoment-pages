@@ -834,24 +834,16 @@ function isAudioItem(item){
       const heroText = document.getElementById("heroText");
       
       const recentSection = document.getElementById("recentSection");
-      const topicSectionTitle = document.getElementById("topicSectionTitle");
-      const topicSectionNote = document.getElementById("topicSectionNote");
-
-      if(isTopic){
+           
+    if(isTopic){
         heroTitle.textContent = topicName;
         heroText.textContent = "";
-        
         recentSection.classList.add("is-hidden");
-        
-        topicSectionNote.textContent = "";
-      }else{
+        }else{
         heroTitle.textContent = "Browse TorahMoment";
         heroText.textContent = "";
-        
         recentSection.classList.remove("is-hidden");
-        
-        topicSectionNote.innerHTML = 'Curated from <code>topic-map.json</code>';
-      }
+        }
     }
 
 function formatDate(dateStr){
