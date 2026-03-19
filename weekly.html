@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>This Week on TorahMoment</title>
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --card:#fff;
+      --text:#111;
+      --muted:#666;
+      --border:#e7e7ee;
+      --accent:#0d9488;
+      --shadow:0 6px 22px rgba(0,0,0,.07);
+      --radius:16px;
+      --wrap-max:920px;
+      --wrap-pad:16px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    .wrap{
+      max-width:var(--wrap-max);
+      margin:0 auto;
+      padding:20px var(--wrap-pad) 40px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      margin-top:16px;
+    }
+    h1,h2,h3{
+      margin:0 0 8px;
+      line-height:1.2;
+    }
+    .subtle{
+      color:var(--muted);
+    }
+    .featured{
+      background:linear-gradient(135deg,#f2fbf9 0%,#ffffff 100%);
+    }
+    .item{
+      display:block;
+      text-decoration:none;
+      color:inherit;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px;
+      margin-top:10px;
+      background:#fbfbfd;
+    }
+    .item:hover{
+      border-color:rgba(13,148,136,.35);
+    }
+    .meta{
+      font-size:.92rem;
+      color:var(--muted);
+      margin-top:4px;
+    }
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:700;
+      background:var(--accent);
+      color:#fff;
+    }
+    .btn.secondary{
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>This Week on TorahMoment</h1>
+      <div id="range" class="subtle">Loading…</div>
+    </div>
+
+    <div id="featuredWrap"></div>
+    <div id="groupsWrap"></div>
+
+    <div class="card">
+      <h3>Explore More</h3>
+      <div class="actions">
+        <a class="btn" href="/topics.html">Browse by Topic</a>
+        <a class="btn secondary" href="/parsha.html">Previous Years’ Divrei Torah</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function esc(s){
+      return String(s ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function fmtDate(s){
+      if(!s) return "";
+      const d = new Date(s);
+      return isNaN(d) ? s : d.toLocaleDateString();
+    }
+
+    async function loadWeekly(){
+      const res = await fetch("/data/weekly-update.json", { cache:"no-store" });
+      if(!res.ok) throw new Error("weekly-update.json not found");
+      const data = await res.json();
+
+      document.getElementById("range").textContent =
+        `${data.rangeLabel} • ${data.totalItems || 0} new item${data.totalItems === 1 ? "" : "s"}`;
+
+      const featuredWrap = document.getElementById("featuredWrap");
+      const groupsWrap = document.getElementById("groupsWrap");
+
+      if (data.featured) {
+        featuredWrap.innerHTML = `
+          <div class="card featured">
+            <div class="subtle">Featured this week</div>
+            <h2>${esc(data.featured.title)}</h2>
+            <div class="meta">
+              ${esc(data.featured.program || "")}
+              ${data.featured.date ? ` • ${esc(fmtDate(data.featured.date))}` : ""}
+            </div>
+            <div class="actions">
+              <a class="btn" href="${esc(data.featured.page || "#")}">Open Page</a>
+              ${data.featured.url ? `<a class="btn secondary" href="${esc(data.featured.url)}">Play / Watch</a>` : ``}
+            </div>
+          </div>
+        `;
+      }
+
+      groupsWrap.innerHTML = (data.groups || []).map(group => `
+        <div class="card">
+          <h3>${esc(group.label)}</h3>
+          ${(group.items || []).map(item => `
+            <div class="item">
+              <div><strong>${esc(item.title)}</strong></div>
+              <div class="meta">
+                ${esc(item.program || "")}
+                ${item.date ? ` • ${esc(fmtDate(item.date))}` : ""}
+              </div>
+              <div class="actions">
+                <a class="btn" href="${esc(item.page || "#")}">Open Page</a>
+                ${item.url ? `<a class="btn secondary" href="${esc(item.url)}">Play / Watch</a>` : ``}
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `).join("");
+    }
+
+    loadWeekly().catch(err => {
+      console.warn(err);
+      document.getElementById("range").textContent = "Could not load this week’s digest.";
+    });
+  </script>
+</body>
+</html>
