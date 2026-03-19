@@ -349,14 +349,44 @@
         min-width:42px !important;
       }
     }
+
+    .weekly-hero{
+  background:linear-gradient(135deg, #f4fbfa 0%, #ffffff 100%);
+  border-color:rgba(13,148,136,.14);
+  padding:16px 14px 14px;
+}
+
+.weekly-kicker{
+  display:inline-block;
+  margin-bottom:4px;
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+.weekly-hero h1{
+  margin:0;
+  font-size:clamp(1.5rem, 3vw, 1.9rem);
+  line-height:1.08;
+  letter-spacing:-0.02em;
+}
+
+.weekly-range{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:.92rem;
+}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="card">
-      <h1>This Week on TorahMoment</h1>
-      <div id="range" class="subtle">Loading…</div>
-    </div>
+<div class="card weekly-hero">
+  <div class="weekly-kicker">Weekly Digest</div>
+  <h1>This Week on TorahMoment</h1>
+  <div id="range" class="weekly-range">Loading…</div>
+</div>
 
     <div id="groupsWrap"></div>
 
