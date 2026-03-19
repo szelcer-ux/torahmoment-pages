@@ -30,7 +30,7 @@
     .wrap{
       max-width:var(--wrap-max);
       margin:0 auto;
-      padding:20px var(--wrap-pad) 40px;
+      padding:16px var(--wrap-pad) 28px;
     }
 
     .card{
@@ -38,8 +38,8 @@
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
-      padding:18px;
-      margin-top:16px;
+      padding:14px;
+      margin-top:12px;
     }
 
     h1,h2,h3{
@@ -52,7 +52,8 @@
     }
 
     .section-card h3{
-      margin-bottom:10px;
+      margin-bottom:8px;
+      font-size:1.18rem;
     }
 
     .digest-list{
@@ -61,24 +62,24 @@
     }
 
     .digest-row{
-      padding:14px 0;
+      padding:10px 0;
       border-top:1px solid var(--border);
     }
 
     .digest-row:first-child{
       border-top:0;
-      padding-top:4px;
+      padding-top:2px;
     }
 
     .digest-row:last-child{
-      padding-bottom:2px;
+      padding-bottom:0;
     }
 
     .digest-head{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      gap:12px;
+      gap:8px;
     }
 
     .digest-main{
@@ -87,15 +88,15 @@
     }
 
     .digest-title{
-      font-size:1.02rem;
+      font-size:.98rem;
       font-weight:800;
-      line-height:1.3;
+      line-height:1.24;
     }
 
     .meta{
-      font-size:.92rem;
+      font-size:.86rem;
       color:var(--muted);
-      margin-top:4px;
+      margin-top:2px;
     }
 
     .open-link{
@@ -104,6 +105,7 @@
       color:var(--accent);
       font-weight:700;
       white-space:nowrap;
+      font-size:.92rem;
     }
 
     .open-link:hover{
@@ -112,9 +114,9 @@
 
     .actions{
       display:flex;
-      gap:10px;
+      gap:8px;
       flex-wrap:wrap;
-      margin-top:12px;
+      margin-top:10px;
     }
 
     .btn{
@@ -123,10 +125,11 @@
       justify-content:center;
       text-decoration:none;
       border-radius:999px;
-      padding:10px 14px;
+      padding:9px 12px;
       font-weight:700;
       background:var(--accent);
       color:#fff;
+      font-size:.95rem;
     }
 
     .btn.secondary{
@@ -139,7 +142,7 @@
       display:flex;
       gap:8px;
       flex-wrap:wrap;
-      margin-top:10px;
+      margin-top:8px;
     }
 
     .mini-btn{
@@ -148,9 +151,9 @@
       justify-content:center;
       text-decoration:none;
       border-radius:999px;
-      padding:8px 12px;
+      padding:7px 11px;
       font-weight:700;
-      font-size:.9rem;
+      font-size:.84rem;
       background:var(--accent);
       color:#fff;
     }
@@ -163,15 +166,15 @@
 
     .tm-inline-player{
       display:grid;
-      grid-template-columns:34px 1fr auto;
+      grid-template-columns:32px 1fr auto;
       align-items:center;
-      gap:8px;
-      margin-top:10px;
+      gap:6px;
+      margin-top:7px;
     }
 
     .tm-play{
-      width:34px;
-      height:34px;
+      width:32px;
+      height:32px;
       border-radius:999px;
       border:1px solid #dbe2ea;
       background:#fff;
@@ -187,15 +190,15 @@
     }
 
     .tm-play svg{
-      width:15px;
-      height:15px;
+      width:14px;
+      height:14px;
       display:block;
     }
 
     .tm-progress-wrap{
       min-width:0;
       width:100%;
-      margin-right:4px;
+      margin-right:2px;
     }
 
     .tm-progress{
@@ -231,17 +234,17 @@
       display:flex;
       align-items:center;
       justify-self:end;
-      gap:8px;
+      gap:6px;
     }
 
     .tm-pill{
-      height:30px;
-      padding:0 10px;
+      height:28px;
+      padding:0 9px;
       border-radius:999px;
       border:1px solid #cdeee2;
       background:#fff;
       color:#0f172a;
-      font-size:13px;
+      font-size:12px;
       cursor:pointer;
       white-space:nowrap;
     }
@@ -253,9 +256,9 @@
 
     .tm-time{
       color:var(--muted);
-      font-size:13px;
+      font-size:12px;
       white-space:nowrap;
-      min-width:48px;
+      min-width:42px;
       text-align:right;
     }
 
@@ -266,7 +269,7 @@
       }
 
       .tm-inline-player{
-        gap:8px;
+        gap:6px;
       }
 
       .tm-controls{
@@ -276,19 +279,19 @@
       }
 
       .tm-play{
-        width:36px;
-        height:36px;
+        width:34px;
+        height:34px;
       }
 
       .tm-pill{
-        height:32px;
-        padding:0 10px;
-        font-size:13px;
+        height:30px;
+        padding:0 9px;
+        font-size:12px;
       }
 
       .tm-time{
-        font-size:13px;
-        min-width:48px;
+        font-size:12px;
+        min-width:42px;
       }
     }
 
@@ -298,7 +301,7 @@
         grid-template-columns:32px minmax(0,1fr) auto !important;
         align-items:center !important;
         gap:6px !important;
-        padding:6px 8px !important;
+        padding:4px 6px !important;
         min-height:0 !important;
         border-radius:999px !important;
       }
@@ -386,6 +389,22 @@
       const type = String(item.type || "").toLowerCase();
       const url = String(item.url || "").toLowerCase();
       return type.includes("audio") || url.endsWith(".mp3") || url.includes(".mp3?");
+    }
+
+    function getOpenPageHref(item){
+      const program = String(item.program || "").toLowerCase();
+      if(program.includes("parsha")){
+        return "/parsha.html?parsha=__ALL__";
+      }
+      return item.page || "#";
+    }
+
+    function getOpenPageLabel(item){
+      const program = String(item.program || "").toLowerCase();
+      if(program.includes("parsha")){
+        return "Browse Parsha";
+      }
+      return "Open Page";
     }
 
     function renderAudioPlayer(item){
@@ -526,14 +545,14 @@
                         ${item.date ? ` • ${esc(fmtDate(item.date))}` : ""}
                       </div>
                     </div>
-                    <a class="open-link" href="${esc(item.page || "#")}">Open Page</a>
+                    <a class="open-link" href="${esc(getOpenPageHref(item))}">${esc(getOpenPageLabel(item))}</a>
                   </div>
 
                   ${hasAudio
                     ? renderAudioPlayer(item)
                     : `
                       <div class="mini-actions">
-                        <a class="mini-btn" href="${esc(item.page || "#")}">Open Page</a>
+                        <a class="mini-btn" href="${esc(getOpenPageHref(item))}">${esc(getOpenPageLabel(item))}</a>
                         ${item.url ? `<a class="mini-btn secondary" href="${esc(item.url)}">Play / Watch</a>` : ``}
                       </div>
                     `
