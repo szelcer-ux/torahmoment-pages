@@ -96,8 +96,7 @@
       <div id="range" class="subtle">Loading…</div>
     </div>
 
-    <div id="featuredWrap"></div>
-    <div id="groupsWrap"></div>
+      <div id="groupsWrap"></div>
 
     <div class="card">
       <h3>Explore More</h3>
@@ -132,26 +131,8 @@
       document.getElementById("range").textContent =
         `${data.rangeLabel} • ${data.totalItems || 0} new item${data.totalItems === 1 ? "" : "s"}`;
 
-      const featuredWrap = document.getElementById("featuredWrap");
       const groupsWrap = document.getElementById("groupsWrap");
-
-      if (data.featured) {
-        featuredWrap.innerHTML = `
-          <div class="card featured">
-            <div class="subtle">Featured this week</div>
-            <h2>${esc(data.featured.title)}</h2>
-            <div class="meta">
-              ${esc(data.featured.program || "")}
-              ${data.featured.date ? ` • ${esc(fmtDate(data.featured.date))}` : ""}
-            </div>
-            <div class="actions">
-              <a class="btn" href="${esc(data.featured.page || "#")}">Open Page</a>
-              ${data.featured.url ? `<a class="btn secondary" href="${esc(data.featured.url)}">Play / Watch</a>` : ``}
-            </div>
-          </div>
-        `;
-      }
-
+      
       groupsWrap.innerHTML = (data.groups || []).map(group => `
         <div class="card">
           <h3>${esc(group.label)}</h3>
