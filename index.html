@@ -615,6 +615,69 @@
   color:var(--muted);
 }
 
+    .prog-topics{
+  background: linear-gradient(135deg, #f2fbf9 0%, #ecfdf5 100%);
+  border-color: rgba(13,148,136,0.16);
+  position: relative;
+}
+
+.prog-topics:hover{
+  border-color: rgba(13,148,136,0.34);
+  box-shadow: 0 8px 22px rgba(13,148,136,0.08);
+}
+
+.topics-icon{
+  background: rgba(13,148,136,0.14);
+}
+
+.prog-topics .prog-body{
+  min-width: 0;
+}
+
+.prog-kicker{
+  display:inline-block;
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.topic-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:10px;
+}
+
+.topic-chips span{
+  display:inline-flex;
+  align-items:center;
+  padding:4px 9px;
+  border-radius:999px;
+  background: rgba(13,148,136,0.10);
+  color: #0f766e;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.prog-topics .counts{
+  margin-top: 10px;
+}
+
+@media (max-width: 520px){
+  .topic-chips{
+    gap:5px;
+  }
+
+  .topic-chips span{
+    font-size: 0.72rem;
+    padding:4px 8px;
+  }
+}
 
     
   </style>
@@ -732,16 +795,41 @@
           <div class="arrow">›</div>
         </a>
 
-        <a class="prog" href="/torahprograms.html" style="background:#eefaf3">
-          <div class="icon" style="background: rgba(34,197,94,0.12);">🤝</div>
-          <div>
-            <h3>Torah Programs</h3>
-            <div class="meta">Learning initiatives & WhatsApp signups</div>
-            <div class="counts"><b>Explore</b> →</div>
-          </div>
-          <div class="arrow">›</div>
-        </a>
+<a class="prog prog-topics" href="/topics.html" aria-label="Browse shiurim by topic">
+  <div class="icon topics-icon">🧭</div>
+  <div class="prog-body">
+    <div class="prog-kicker">Start here</div>
+    <h3>Browse by Topic</h3>
+    <div class="meta">
+      Explore shiurim by theme — emunah, tefilah, middos, Shabbos, chinuch, parsha, and more.
+    </div>
+
+    <div class="topic-chips" aria-hidden="true">
+      <span>Emunah</span>
+      <span>Tefilah</span>
+      <span>Middos</span>
+      <span>Shabbos</span>
+    </div>
+
+    <div class="counts"><b>Explore topics</b> →</div>
+  </div>
+  <div class="arrow">›</div>
+</a>
       </div>
+
+<a class="advanced-card" href="/torahprograms.html" style="margin-top:12px;">
+  <div class="advanced-left">
+    <div class="advanced-icon" style="background:rgba(34,197,94,0.12);">🤝</div>
+    <div>
+      <div class="advanced-title">Torah Programs</div>
+      <div class="advanced-sub">
+        Learning initiatives, WhatsApp signups, and ways to stay connected.
+      </div>
+    </div>
+  </div>
+  <div class="advanced-arrow">›</div>
+</a>
+      
 <div class="advanced-wrap">
   <div class="advanced-label">Advanced Learning</div>
 
