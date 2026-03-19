@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 686,
+    "total": 687,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 83
       },
       "oneMinute": {
-        "audio": 204
+        "audio": 205
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-03-19"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Keep it simple",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260319-WA0022.mp3",
+      "date": "2026-03-19T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "Halacha",
@@ -49,17 +56,17 @@
       "title": "The sanctity of normalcy",
       "url": "https://www.youtube.com/watch?v=znuRPSkbOrY",
       "date": "2026-03-13T02:14:30Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Is Iced Coffee the answer?",
-      "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
-      "date": "2026-03-12T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Keep it simple",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260319-WA0022.mp3",
+        "date": "2026-03-19T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Be happy for others",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260226-WA0033.mp3",
         "date": "2026-02-26T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Real chinuch",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260225-WA0033.mp3",
-        "date": "2026-02-25T00:00:00.000Z"
       }
     ],
     "halacha": [
