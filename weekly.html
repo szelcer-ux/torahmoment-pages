@@ -17,18 +17,22 @@
       --wrap-max:920px;
       --wrap-pad:16px;
     }
+
     *{ box-sizing:border-box; }
+
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:var(--bg);
       color:var(--text);
     }
+
     .wrap{
       max-width:var(--wrap-max);
       margin:0 auto;
       padding:20px var(--wrap-pad) 40px;
     }
+
     .card{
       background:var(--card);
       border:1px solid var(--border);
@@ -37,40 +41,82 @@
       padding:18px;
       margin-top:16px;
     }
+
     h1,h2,h3{
       margin:0 0 8px;
       line-height:1.2;
     }
+
     .subtle{
       color:var(--muted);
     }
-    .featured{
-      background:linear-gradient(135deg,#f2fbf9 0%,#ffffff 100%);
+
+    .section-card h3{
+      margin-bottom:10px;
     }
-    .item{
-      display:block;
-      text-decoration:none;
-      color:inherit;
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:12px;
-      margin-top:10px;
-      background:#fbfbfd;
+
+    .digest-list{
+      display:flex;
+      flex-direction:column;
     }
-    .item:hover{
-      border-color:rgba(13,148,136,.35);
+
+    .digest-row{
+      padding:14px 0;
+      border-top:1px solid var(--border);
     }
+
+    .digest-row:first-child{
+      border-top:0;
+      padding-top:4px;
+    }
+
+    .digest-row:last-child{
+      padding-bottom:2px;
+    }
+
+    .digest-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .digest-main{
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .digest-title{
+      font-size:1.02rem;
+      font-weight:800;
+      line-height:1.3;
+    }
+
     .meta{
       font-size:.92rem;
       color:var(--muted);
       margin-top:4px;
     }
+
+    .open-link{
+      flex:0 0 auto;
+      text-decoration:none;
+      color:var(--accent);
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .open-link:hover{
+      text-decoration:underline;
+    }
+
     .actions{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
       margin-top:12px;
     }
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -82,10 +128,223 @@
       background:var(--accent);
       color:#fff;
     }
+
     .btn.secondary{
       background:#fff;
       color:var(--text);
       border:1px solid var(--border);
+    }
+
+    .mini-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .mini-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      border-radius:999px;
+      padding:8px 12px;
+      font-weight:700;
+      font-size:.9rem;
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .mini-btn.secondary{
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--border);
+    }
+
+    .tm-inline-player{
+      display:grid;
+      grid-template-columns:34px 1fr auto;
+      align-items:center;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    .tm-play{
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      border:1px solid #dbe2ea;
+      background:#fff;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      flex:0 0 auto;
+    }
+
+    .tm-play:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
+
+    .tm-play svg{
+      width:15px;
+      height:15px;
+      display:block;
+    }
+
+    .tm-progress-wrap{
+      min-width:0;
+      width:100%;
+      margin-right:4px;
+    }
+
+    .tm-progress{
+      width:100%;
+      appearance:none;
+      height:4px;
+      border-radius:999px;
+      background:#dfe5eb;
+      outline:none;
+      cursor:pointer;
+    }
+
+    .tm-progress::-webkit-slider-thumb{
+      appearance:none;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--accent);
+      border:none;
+      cursor:pointer;
+    }
+
+    .tm-progress::-moz-range-thumb{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--accent);
+      border:none;
+      cursor:pointer;
+    }
+
+    .tm-controls{
+      display:flex;
+      align-items:center;
+      justify-self:end;
+      gap:8px;
+    }
+
+    .tm-pill{
+      height:30px;
+      padding:0 10px;
+      border-radius:999px;
+      border:1px solid #cdeee2;
+      background:#fff;
+      color:#0f172a;
+      font-size:13px;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+
+    .tm-pill:hover{
+      background:#fafefe;
+      border-color:#b8ddd4;
+    }
+
+    .tm-time{
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+      min-width:48px;
+      text-align:right;
+    }
+
+    @media (max-width:700px){
+      .digest-head{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .tm-inline-player{
+        gap:8px;
+      }
+
+      .tm-controls{
+        grid-column:1 / -1;
+        justify-content:flex-end;
+        align-self:center;
+      }
+
+      .tm-play{
+        width:36px;
+        height:36px;
+      }
+
+      .tm-pill{
+        height:32px;
+        padding:0 10px;
+        font-size:13px;
+      }
+
+      .tm-time{
+        font-size:13px;
+        min-width:48px;
+      }
+    }
+
+    @media (max-width:640px){
+      .tm-inline-player{
+        display:grid !important;
+        grid-template-columns:32px minmax(0,1fr) auto !important;
+        align-items:center !important;
+        gap:6px !important;
+        padding:6px 8px !important;
+        min-height:0 !important;
+        border-radius:999px !important;
+      }
+
+      .tm-play{
+        width:32px !important;
+        height:32px !important;
+      }
+
+      .tm-play svg{
+        width:14px !important;
+        height:14px !important;
+      }
+
+      .tm-progress-wrap{
+        min-width:0 !important;
+        width:100% !important;
+        margin-right:2px !important;
+      }
+
+      .tm-progress{
+        height:4px !important;
+      }
+
+      .tm-controls{
+        display:flex !important;
+        align-items:center !important;
+        justify-self:end !important;
+        grid-column:auto !important;
+        flex-wrap:nowrap !important;
+        gap:0 !important;
+        min-width:auto !important;
+        align-self:center !important;
+      }
+
+      .tm-pill{
+        height:28px !important;
+        padding:0 9px !important;
+        font-size:12px !important;
+        white-space:nowrap !important;
+      }
+
+      .tm-time{
+        font-size:12px !important;
+        min-width:42px !important;
+      }
     }
   </style>
 </head>
@@ -96,7 +355,7 @@
       <div id="range" class="subtle">Loading…</div>
     </div>
 
-      <div id="groupsWrap"></div>
+    <div id="groupsWrap"></div>
 
     <div class="card">
       <h3>Explore More</h3>
@@ -123,6 +382,123 @@
       return isNaN(d) ? s : d.toLocaleDateString();
     }
 
+    function isAudioItem(item){
+      const type = String(item.type || "").toLowerCase();
+      const url = String(item.url || "").toLowerCase();
+      return type.includes("audio") || url.endsWith(".mp3") || url.includes(".mp3?");
+    }
+
+    function renderAudioPlayer(item){
+      return `
+        <div class="tm-inline-player" data-audio-player>
+          <button class="tm-play" type="button" data-play aria-label="Play">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+          </button>
+
+          <div class="tm-progress-wrap">
+            <input class="tm-progress" data-seek type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+          </div>
+
+          <div class="tm-controls">
+            <button class="tm-pill" type="button" data-speed>1×</button>
+            <span class="tm-time" data-time></span>
+          </div>
+
+          <audio preload="none" src="${esc(item.url || "")}"></audio>
+        </div>
+      `;
+    }
+
+    function setupInlineAudioPlayers(root=document){
+      const players = root.querySelectorAll("[data-audio-player]");
+
+      players.forEach(player => {
+        const audio = player.querySelector("audio");
+        const playBtn = player.querySelector("[data-play]");
+        const seek = player.querySelector("[data-seek]");
+        const speedBtn = player.querySelector("[data-speed]");
+        const timeEl = player.querySelector("[data-time]");
+
+        if(!audio || !playBtn || !seek || !speedBtn || !timeEl) return;
+
+        const speeds = [1, 1.25, 1.5, 1.75, 2];
+        let speedIndex = 0;
+
+        function updatePlayIcon(isPlaying){
+          playBtn.innerHTML = isPlaying
+            ? `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5h3v14H8zm5 0h3v14h-3z"></path></svg>`
+            : `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>`;
+        }
+
+        function fmt(sec){
+          if(!Number.isFinite(sec) || sec < 0) return "";
+          const m = Math.floor(sec / 60);
+          const s = Math.floor(sec % 60);
+          return `${m}:${String(s).padStart(2, "0")}`;
+        }
+
+        function updateTime(){
+          const dur = audio.duration || 0;
+          const cur = audio.currentTime || 0;
+
+          if(dur > 0){
+            seek.value = (cur / dur) * 100;
+            timeEl.textContent = fmt(dur);
+          } else {
+            seek.value = 0;
+            timeEl.textContent = "";
+          }
+        }
+
+        playBtn.addEventListener("click", async () => {
+          document.querySelectorAll(".tm-inline-player audio").forEach(a => {
+            if(a !== audio){
+              a.pause();
+              const p = a.closest("[data-audio-player]");
+              const b = p?.querySelector("[data-play]");
+              if(b){
+                b.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>`;
+              }
+            }
+          });
+
+          if(audio.paused){
+            try{
+              await audio.play();
+              updatePlayIcon(true);
+            }catch(e){}
+          } else {
+            audio.pause();
+            updatePlayIcon(false);
+          }
+        });
+
+        audio.addEventListener("play", () => updatePlayIcon(true));
+        audio.addEventListener("pause", () => updatePlayIcon(false));
+        audio.addEventListener("loadedmetadata", updateTime);
+        audio.addEventListener("timeupdate", updateTime);
+        audio.addEventListener("ended", () => updatePlayIcon(false));
+
+        seek.addEventListener("input", () => {
+          if(audio.duration){
+            audio.currentTime = (Number(seek.value) / 100) * audio.duration;
+          }
+        });
+
+        speedBtn.addEventListener("click", () => {
+          speedIndex = (speedIndex + 1) % speeds.length;
+          audio.playbackRate = speeds[speedIndex];
+          speedBtn.textContent = `${speeds[speedIndex]}×`;
+        });
+
+        audio.playbackRate = speeds[speedIndex];
+        speedBtn.textContent = `${speeds[speedIndex]}×`;
+        updateTime();
+      });
+    }
+
     async function loadWeekly(){
       const res = await fetch("/data/weekly-update.json", { cache:"no-store" });
       if(!res.ok) throw new Error("weekly-update.json not found");
@@ -132,25 +508,44 @@
         `${data.rangeLabel} • ${data.totalItems || 0} new item${data.totalItems === 1 ? "" : "s"}`;
 
       const groupsWrap = document.getElementById("groupsWrap");
-      
+
       groupsWrap.innerHTML = (data.groups || []).map(group => `
-        <div class="card">
+        <div class="card section-card">
           <h3>${esc(group.label)}</h3>
-          ${(group.items || []).map(item => `
-            <div class="item">
-              <div><strong>${esc(item.title)}</strong></div>
-              <div class="meta">
-                ${esc(item.program || "")}
-                ${item.date ? ` • ${esc(fmtDate(item.date))}` : ""}
-              </div>
-              <div class="actions">
-                <a class="btn" href="${esc(item.page || "#")}">Open Page</a>
-                ${item.url ? `<a class="btn secondary" href="${esc(item.url)}">Play / Watch</a>` : ``}
-              </div>
-            </div>
-          `).join("")}
+          <div class="digest-list">
+            ${(group.items || []).map(item => {
+              const hasAudio = item.url && isAudioItem(item);
+
+              return `
+                <div class="digest-row">
+                  <div class="digest-head">
+                    <div class="digest-main">
+                      <div class="digest-title">${esc(item.title)}</div>
+                      <div class="meta">
+                        ${esc(item.program || "")}
+                        ${item.date ? ` • ${esc(fmtDate(item.date))}` : ""}
+                      </div>
+                    </div>
+                    <a class="open-link" href="${esc(item.page || "#")}">Open Page</a>
+                  </div>
+
+                  ${hasAudio
+                    ? renderAudioPlayer(item)
+                    : `
+                      <div class="mini-actions">
+                        <a class="mini-btn" href="${esc(item.page || "#")}">Open Page</a>
+                        ${item.url ? `<a class="mini-btn secondary" href="${esc(item.url)}">Play / Watch</a>` : ``}
+                      </div>
+                    `
+                  }
+                </div>
+              `;
+            }).join("")}
+          </div>
         </div>
       `).join("");
+
+      setupInlineAudioPlayers(groupsWrap);
     }
 
     loadWeekly().catch(err => {
