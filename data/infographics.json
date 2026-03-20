@@ -102,6 +102,7 @@
     "parsha": "Vayikra",
     "image": "/images/infographics/parsha/vayikra-first-step-to-change.png",
     "youtube": "https://www.youtube.com/watch?v=gDJEiUYevdo",
-    "description": "The alter of honesty: Finding personal growth in the ancient sacrifice."
+    "description": "The alter of honesty: Finding personal growth in the ancient sacrifice.",
+    "featured": true 
   } 
 }
