@@ -1,1 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TorahMoment Transcriber</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#fff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --accent:#0f766e;
+      --accent-2:#0d9488;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:18px;
+      --wrap:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:var(--bg);
+    }
+    .wrap{
+      max-width:var(--wrap);
+      margin:0 auto;
+      padding:24px 16px 48px;
+    }
+    .hero{
+      margin-bottom:18px;
+    }
+    .hero h1{
+      margin:0 0 6px;
+      font-size:clamp(26px,4vw,38px);
+      line-height:1.1;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      margin-bottom:16px;
+    }
+    .grid{
+      display:grid;
+      gap:16px;
+    }
+    @media (min-width: 960px){
+      .grid-2{
+        grid-template-columns:1.1fr .9fr;
+      }
+    }
+    label{
+      display:block;
+      font-weight:700;
+      margin:0 0 6px;
+    }
+    input[type="text"], textarea{
+      width:100%;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px 14px;
+      font:inherit;
+      color:var(--text);
+      background:#fff;
+    }
+    textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    button{
+      appearance:none;
+      border:0;
+      border-radius:12px;
+      background:var(--accent);
+      color:#fff;
+      padding:11px 14px;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+    }
+    button.secondary{
+      background:#111827;
+    }
+    button.ghost{
+      background:#e5e7eb;
+      color:#111827;
+    }
+    .muted{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .status{
+      margin-top:10px;
+      font-weight:600;
+    }
+    .status.error{ color:#b91c1c; }
+    .status.ok{ color:#166534; }
+    .kv{
+      display:grid;
+      gap:10px;
+    }
+    .kv div{
+      padding:10px 12px;
+      background:#f9fafb;
+      border:1px solid var(--border);
+      border-radius:12px;
+    }
+    .kv strong{
+      display:block;
+      margin-bottom:3px;
+      font-size:13px;
+    }
+    .out{
+      white-space:pre-wrap;
+      word-break:break-word;
+      background:#f9fafb;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px 14px;
+      min-height:120px;
+    }
+    .small{
+      font-size:12px;
+      color:var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>TorahMoment Transcriber</h1>
+      <p>Paste an MP3 URL and get a transcript, summary, and ready-to-paste JSON.</p>
+    </div>
 
+    <div class="card">
+      <div class="grid">
+        <div>
+          <label for="apiUrl">Vercel API URL</label>
+          <input id="apiUrl" type="text" value="https://YOUR-VERCEL-PROJECT.vercel.app/api/transcribe" />
+        </div>
+        <div>
+          <label for="adminToken">Admin Token</label>
+          <input id="adminToken" type="text" placeholder="Paste your ADMIN_TOKEN" />
+        </div>
+        <div>
+          <label for="mp3Url">MP3 URL</label>
+          <input id="mp3Url" type="text" placeholder="https://..." />
+        </div>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <button id="runBtn">Transcribe</button>
+        <button id="clearBtn" class="ghost" type="button">Clear</button>
+      </div>
+      <div id="status" class="status muted"></div>
+      <div class="small" style="margin-top:8px">
+        Tip: your token is only used in this browser request and is not saved unless your browser autofills it.
+      </div>
+    </div>
+
+    <div class="grid grid-2">
+      <div>
+        <div class="card">
+          <h2 style="margin-top:0">Metadata</h2>
+          <div id="metaBox" class="kv"></div>
+        </div>
+
+        <div class="card">
+          <div class="row" style="justify-content:space-between;align-items:center">
+            <h2 style="margin:0">Ready-to-paste JSON</h2>
+            <button id="copyJsonBtn" class="secondary" type="button">Copy JSON</button>
+          </div>
+          <div id="jsonBox" class="out" style="margin-top:12px"></div>
+        </div>
+
+        <div class="card">
+          <div class="row" style="justify-content:space-between;align-items:center">
+            <h2 style="margin:0">Summary</h2>
+            <button id="copySummaryBtn" class="secondary" type="button">Copy Summary</button>
+          </div>
+          <div id="summaryBox" class="out" style="margin-top:12px"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <div class="row" style="justify-content:space-between;align-items:center">
+            <h2 style="margin:0">Transcript</h2>
+            <button id="copyTranscriptBtn" class="secondary" type="button">Copy Transcript</button>
+          </div>
+          <div id="transcriptBox" class="out" style="margin-top:12px; min-height:520px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    const els = {
+      apiUrl: $("apiUrl"),
+      adminToken: $("adminToken"),
+      mp3Url: $("mp3Url"),
+      runBtn: $("runBtn"),
+      clearBtn: $("clearBtn"),
+      status: $("status"),
+      metaBox: $("metaBox"),
+      jsonBox: $("jsonBox"),
+      summaryBox: $("summaryBox"),
+      transcriptBox: $("transcriptBox"),
+      copyJsonBtn: $("copyJsonBtn"),
+      copySummaryBtn: $("copySummaryBtn"),
+      copyTranscriptBtn: $("copyTranscriptBtn"),
+    };
+
+    let lastData = null;
+
+    function setStatus(msg, type = "") {
+      els.status.className = "status " + (type || "muted");
+      els.status.textContent = msg || "";
+    }
+
+    function esc(s) {
+      return String(s ?? "").replace(/[&<>"]/g, (m) => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"
+      }[m]));
+    }
+
+    function renderMeta(meta) {
+      if (!meta) {
+        els.metaBox.innerHTML = "";
+        return;
+      }
+      const tags = Array.isArray(meta.tags) ? meta.tags.join(", ") : "";
+      els.metaBox.innerHTML = `
+        <div><strong>Title</strong>${esc(meta.title || "")}</div>
+        <div><strong>Category</strong>${esc(meta.category_guess || "")}</div>
+        <div><strong>Parsha</strong>${esc(meta.parsha_guess || "")}</div>
+        <div><strong>Date guess</strong>${esc(meta.date_guess || "")}</div>
+        <div><strong>Slug</strong>${esc(meta.slug || "")}</div>
+        <div><strong>Tags</strong>${esc(tags)}</div>
+      `;
+    }
+
+    async function copyText(text) {
+      await navigator.clipboard.writeText(text || "");
+    }
+
+    els.copyJsonBtn.addEventListener("click", async () => {
+      if (!lastData?.copy_blocks?.json) return;
+      await copyText(lastData.copy_blocks.json);
+      setStatus("Copied JSON.", "ok");
+    });
+
+    els.copySummaryBtn.addEventListener("click", async () => {
+      if (!lastData?.copy_blocks?.summary) return;
+      await copyText(lastData.copy_blocks.summary);
+      setStatus("Copied summary.", "ok");
+    });
+
+    els.copyTranscriptBtn.addEventListener("click", async () => {
+      if (!lastData?.copy_blocks?.transcript) return;
+      await copyText(lastData.copy_blocks.transcript);
+      setStatus("Copied transcript.", "ok");
+    });
+
+    els.clearBtn.addEventListener("click", () => {
+      lastData = null;
+      els.mp3Url.value = "";
+      els.metaBox.innerHTML = "";
+      els.jsonBox.textContent = "";
+      els.summaryBox.textContent = "";
+      els.transcriptBox.textContent = "";
+      setStatus("");
+    });
+
+    els.runBtn.addEventListener("click", async () => {
+      const apiUrl = els.apiUrl.value.trim();
+      const adminToken = els.adminToken.value.trim();
+      const mp3Url = els.mp3Url.value.trim();
+
+      if (!apiUrl || !adminToken || !mp3Url) {
+        setStatus("Please fill in API URL, Admin Token, and MP3 URL.", "error");
+        return;
+      }
+
+      try {
+        setStatus("Transcribing...");
+        els.runBtn.disabled = true;
+
+        const resp = await fetch(apiUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-admin-token": adminToken
+          },
+          body: JSON.stringify({ url: mp3Url })
+        });
+
+        const data = await resp.json();
+        if (!resp.ok) {
+          throw new Error(data.error || "Request failed");
+        }
+
+        lastData = data;
+        renderMeta(data.metadata || {});
+        els.jsonBox.textContent = data.copy_blocks?.json || "";
+        els.summaryBox.textContent = data.copy_blocks?.summary || "";
+        els.transcriptBox.textContent = data.copy_blocks?.transcript || "";
+        setStatus("Done.", "ok");
+      } catch (err) {
+        setStatus(err.message || "Something went wrong.", "error");
+      } finally {
+        els.runBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
