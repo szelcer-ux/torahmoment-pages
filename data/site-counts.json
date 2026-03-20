@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 687,
+    "total": 688,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 219
+        "video": 220
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-03-19"
+    "updated": "2026-03-20"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "The first step of change",
+      "url": "https://www.youtube.com/watch?v=gDJEiUYevdo",
+      "date": "2026-03-20T02:58:00Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Self sacrifice",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0104.mp3",
       "date": "2026-03-16T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "The sanctity of normalcy",
-      "url": "https://www.youtube.com/watch?v=znuRPSkbOrY",
-      "date": "2026-03-13T02:14:30Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "The first step of change",
+        "url": "https://www.youtube.com/watch?v=gDJEiUYevdo",
+        "date": "2026-03-20T02:58:00Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "The sanctity of normalcy",
         "url": "https://www.youtube.com/watch?v=znuRPSkbOrY",
         "date": "2026-03-13T02:14:30Z"
@@ -266,13 +273,6 @@
         "title": "Open your eyes!",
         "url": "https://www.youtube.com/watch?v=myJ3x4yjbk4",
         "date": "2026-01-16T02:44:45Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Us AND them",
-        "url": "https://www.youtube.com/watch?v=-dgBRtH-ei4",
-        "date": "2026-01-09T03:19:59Z"
       }
     ]
   }
