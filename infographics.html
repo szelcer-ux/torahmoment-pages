@@ -141,7 +141,9 @@
       letter-spacing:-.01em;
       color:var(--text);
     }
-
+.card.featured {
+  border: 2px solid var(--accent);
+}
 .thumb{
   display:flex;
   align-items:flex-start;
@@ -630,20 +632,22 @@ function renderFeatured(item) {
 function render(list = []) {
   grid.innerHTML = "";
 
-  const featuredItem = list.find(item => item.featured);
-  const regularItems = featuredItem
-    ? list.filter(item => item.videoId !== featuredItem.videoId)
-    : list;
+ const featuredItem = list.find(item => item.featured);
 
-  renderFeatured(featuredItem);
+// show featured (if exists)
+renderFeatured(featuredItem);
 
-  count.textContent = `${regularItems.length} infographic${regularItems.length === 1 ? "" : "s"}`;
-  empty.style.display = regularItems.length ? "none" : "block";
+// normal grid (includes EVERYTHING, even featured)
+count.textContent = `${list.length} infographic${list.length === 1 ? "" : "s"}`;
+empty.style.display = list.length ? "none" : "block";
 
-  for (const item of regularItems) {
+for (const item of list) {
     const card = document.createElement("article");
     card.className = "card";
-
+  
+if (item.featured) {
+  card.classList.add("featured");
+}
     const safeTitle = escapeHtml(item.title || "Untitled");
     const safeParsha = escapeHtml(item.parsha || "");
     const safeImage = escapeHtml(item.image || "");
