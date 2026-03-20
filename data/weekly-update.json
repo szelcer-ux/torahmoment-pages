@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "March 13–19, 2026",
-  "generatedAt": "2026-03-19T17:10:20.995Z",
+  "rangeLabel": "March 14–20, 2026",
+  "generatedAt": "2026-03-20T10:49:32.104Z",
   "totalItems": 5,
   "featured": {
-    "id": "par-znuRPSkbOrY",
-    "title": "The sanctity of normalcy",
+    "id": "par-gDJEiUYevdo",
+    "title": "The first step of change",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-03-13T02:14:30Z",
+    "date": "2026-03-20T02:58:00Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=znuRPSkbOrY"
+    "url": "https://www.youtube.com/watch?v=gDJEiUYevdo"
   },
   "groups": [
     {
@@ -17,13 +17,13 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-znuRPSkbOrY",
-          "title": "The sanctity of normalcy",
+          "id": "par-gDJEiUYevdo",
+          "title": "The first step of change",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-03-13T02:14:30Z",
+          "date": "2026-03-20T02:58:00Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=znuRPSkbOrY"
+          "url": "https://www.youtube.com/watch?v=gDJEiUYevdo"
         }
       ]
     },
