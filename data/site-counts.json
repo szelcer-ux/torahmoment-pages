@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 688,
+    "total": 689,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 83
       },
       "oneMinute": {
-        "audio": 205
+        "audio": 206
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-03-23"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Davening distraction free",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0108.mp3",
+      "date": "2026-03-23T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,17 +56,17 @@
       "title": "Stay humble",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0114.mp3",
       "date": "2026-03-17T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Self sacrifice",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0104.mp3",
-      "date": "2026-03-16T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Davening distraction free",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0108.mp3",
+        "date": "2026-03-23T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Lessons from the half shekel",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0145.mp3",
         "date": "2026-03-02T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Be happy for others",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260226-WA0033.mp3",
-        "date": "2026-02-26T00:00:00.000Z"
       }
     ],
     "halacha": [
