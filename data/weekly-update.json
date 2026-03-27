@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "March 14–20, 2026",
-  "generatedAt": "2026-03-20T10:49:32.104Z",
-  "totalItems": 5,
+  "rangeLabel": "March 21–27, 2026",
+  "generatedAt": "2026-03-27T10:56:42.779Z",
+  "totalItems": 4,
   "featured": {
-    "id": "par-gDJEiUYevdo",
-    "title": "The first step of change",
+    "id": "par-x17Kexo10FQ",
+    "title": "Dont stay in the past",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-03-20T02:58:00Z",
+    "date": "2026-03-27T00:49:44Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=gDJEiUYevdo"
+    "url": "https://www.youtube.com/watch?v=x17Kexo10FQ"
   },
   "groups": [
     {
@@ -17,28 +17,13 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-gDJEiUYevdo",
-          "title": "The first step of change",
+          "id": "par-x17Kexo10FQ",
+          "title": "Dont stay in the past",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-03-20T02:58:00Z",
+          "date": "2026-03-27T00:49:44Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=gDJEiUYevdo"
-        }
-      ]
-    },
-    {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
-      "items": [
-        {
-          "id": "hal-5",
-          "title": "Chazan saying Hashem Sifasai Tiftach",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-03-17T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/18861996-3-17-2026-shloimy-zelcer-chazan-saying-hashem-sifasai-tiftach.mp3"
+          "url": "https://www.youtube.com/watch?v=x17Kexo10FQ"
         }
       ]
     },
@@ -47,31 +32,31 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-204",
-          "title": "Keep it simple",
+          "id": "one-207",
+          "title": "Unexciting Mitzvos",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-03-19T00:00:00.000Z",
+          "date": "2026-03-26T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260319-WA0022.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260325-WA0147.mp3"
         },
         {
-          "id": "one-203",
-          "title": "Stay humble",
+          "id": "one-206",
+          "title": "Keep the pesach inspiration",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-03-17T00:00:00.000Z",
+          "date": "2026-03-24T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0114.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0115.mp3"
         },
         {
-          "id": "one-202",
-          "title": "Self sacrifice",
+          "id": "one-205",
+          "title": "Davening distraction free",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-03-16T00:00:00.000Z",
+          "date": "2026-03-23T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0104.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0108.mp3"
         }
       ]
     }
