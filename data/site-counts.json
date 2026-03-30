@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 692,
+    "total": 694,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -10,10 +10,10 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 83
+        "totalAll": 84
       },
       "oneMinute": {
-        "audio": 208
+        "audio": 209
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,20 @@
     "updated": "2026-03-30"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Bedikas Chomtz with a flashlight",
+      "url": "https://www.buzzsprout.com/1899789/episodes/18930105-3-30-20026-shloimy-zelcer-bedikas-chometz-with-a-flashlight.mp3",
+      "date": "2026-03-30T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Why burn the candle?",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0028.mp3",
+      "date": "2026-03-30T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -42,24 +56,17 @@
       "title": "Keep the pesach inspiration",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0115.mp3",
       "date": "2026-03-24T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Davening distraction free",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0108.mp3",
-      "date": "2026-03-23T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "The first step of change",
-      "url": "https://www.youtube.com/watch?v=gDJEiUYevdo",
-      "date": "2026-03-20T02:58:00Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Why burn the candle?",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0028.mp3",
+        "date": "2026-03-30T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,16 +129,16 @@
         "title": "True freedom",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260308-WA0053.mp3",
         "date": "2026-03-09T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Remember the fix",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260306-WA0036.mp3",
-        "date": "2026-03-06T00:00:00.000Z"
       }
     ],
     "halacha": [
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Bedikas Chomtz with a flashlight",
+        "url": "https://www.buzzsprout.com/1899789/episodes/18930105-3-30-20026-shloimy-zelcer-bedikas-chometz-with-a-flashlight.mp3",
+        "date": "2026-03-30T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "Halacha",
@@ -194,13 +201,6 @@
         "title": "Double Black Tefilin",
         "url": "https://www.buzzsprout.com/1899789/episodes/18540770-1-20-2025-shloimy-zelcer-double-black-tefilin.mp3",
         "date": "2026-01-20T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "History of Kollel",
-        "url": "https://2mishnasaday.com/wp-content/uploads/historyofkollel.mp3",
-        "date": "2025-12-25T00:00:00.000Z"
       }
     ],
     "parsha": [
