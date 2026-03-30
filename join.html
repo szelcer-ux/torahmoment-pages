@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Join Tonight’s Zoom Meeting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#666;
+      --border:#e7e7ee;
+      --accent:#0d9488;
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+    .card{
+      width:min(100%, 680px);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:32px 24px;
+      text-align:center;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size:clamp(28px, 4vw, 40px);
+      line-height:1.1;
+    }
+    .sub{
+      margin:0 0 20px;
+      color:var(--muted);
+      font-size:16px;
+    }
+    .status{
+      margin:18px 0;
+      padding:16px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:#fafafa;
+      font-size:17px;
+      line-height:1.5;
+    }
+    .countdown{
+      font-size:28px;
+      font-weight:700;
+      margin:18px 0 8px;
+    }
+    .small{
+      color:var(--muted);
+      font-size:14px;
+    }
+    .btn{
+      display:inline-block;
+      margin-top:22px;
+      padding:12px 18px;
+      border-radius:12px;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+    }
+    .btn:hover{opacity:.92}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Tonight’s Zoom Meeting</h1>
+    <p class="sub">The room opens at 8:45 PM ET. The meeting begins at 9:00 PM ET.</p>
+
+    <div class="status" id="status">Checking availability…</div>
+    <div class="countdown" id="countdown"></div>
+    <div class="small" id="timeNote"></div>
+
+    <a
+      id="manualLink"
+      class="btn"
+      href="https://us06web.zoom.us/j/89675934712?pwd=gcdzz1BPuMVu5TKZ9wE9teNn3drlsI.1"
+      style="display:none"
+    >
+      Join Zoom Now
+    </a>
+  </main>
+
+  <script>
+    const zoomUrl = "https://us06web.zoom.us/j/89675934712?pwd=gcdzz1BPuMVu5TKZ9wE9teNn3drlsI.1";
+
+    // March 30, 2026 at 8:45 PM Eastern Time
+    const openTime = new Date("2026-03-30T20:45:00-04:00");
+
+    const statusEl = document.getElementById("status");
+    const countdownEl = document.getElementById("countdown");
+    const timeNoteEl = document.getElementById("timeNote");
+    const manualLink = document.getElementById("manualLink");
+
+    function formatRemaining(ms) {
+      const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      if (hours > 0) {
+        return `${hours}h ${minutes}m ${seconds}s`;
+      }
+      return `${minutes}m ${seconds}s`;
+    }
+
+    function updatePage() {
+      const now = new Date();
+
+      if (now >= openTime) {
+        statusEl.textContent = "The Zoom room is open. Redirecting now…";
+        countdownEl.textContent = "";
+        timeNoteEl.textContent = "";
+        manualLink.style.display = "inline-block";
+
+        // brief delay so the user sees the message
+        setTimeout(() => {
+          window.location.replace(zoomUrl);
+        }, 800);
+        return;
+      }
+
+      const remaining = openTime - now;
+      statusEl.textContent = "The Zoom room is not open yet.";
+      countdownEl.textContent = formatRemaining(remaining) + " until join time";
+      timeNoteEl.textContent =
+        "You’ll be redirected automatically at 8:45 PM Eastern Time.";
+      manualLink.style.display = "none";
+    }
+
+    updatePage();
+    setInterval(updatePage, 1000);
+  </script>
+</body>
+</html>
