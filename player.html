@@ -14,7 +14,7 @@
       --accent:#0d9488;
       --shadow:0 6px 22px rgba(0,0,0,0.07);
       --radius:16px;
-      --wrap-max:900px;
+      --wrap-max:980px;
       --wrap-pad:16px;
       --line:var(--border);
     }
@@ -71,7 +71,7 @@
       background:var(--card);
       border:1px solid var(--border);
       border-radius:18px;
-      padding:14px 14px;
+      padding:14px;
     }
 
     .tm-row{
@@ -146,21 +146,43 @@
       flex:0 0 auto;
     }
 
-    .tm-speed{
+    .tm-speed,
+    .tm-random{
       appearance:none;
       border:1px solid var(--line);
       background:#fff;
       color:var(--text);
-      min-width:52px;
-      height:40px;
-      padding:0 12px;
       border-radius:999px;
       cursor:pointer;
       font:inherit;
       font-weight:600;
       transition:.15s ease;
     }
-    .tm-speed:hover{transform:translateY(-1px)}
+
+    .tm-speed{
+      min-width:52px;
+      height:40px;
+      padding:0 12px;
+    }
+
+    .tm-random{
+      height:42px;
+      padding:0 14px;
+      margin-top:14px;
+    }
+
+    .tm-speed:hover,
+    .tm-random:hover{
+      transform:translateY(-1px);
+    }
+
+    .tm-speed:disabled,
+    .tm-random:disabled,
+    .tm-play:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+      transform:none;
+    }
 
     .notice{
       margin-top:14px;
@@ -173,15 +195,6 @@
       font-weight:600;
     }
 
-    .helper{
-      margin-top:18px;
-      padding-top:14px;
-      border-top:1px solid var(--border);
-      color:var(--muted);
-      font-size:.9rem;
-      word-break:break-word;
-    }
-
     code{
       background:#f2f4f7;
       border:1px solid #e4e7ec;
@@ -189,6 +202,82 @@
       padding:2px 6px;
       font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
       font-size:.9em;
+    }
+
+    /* ===== TorahMoment Topbar ===== */
+    .tm-topbar{
+      width:100%;
+      background:#ffffff;
+      border-bottom:1px solid var(--border);
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .tm-topbar-inner{
+      max-width:var(--wrap-max);
+      margin:0 auto;
+      padding:10px var(--wrap-pad);
+      display:flex;
+      align-items:center;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      position:relative;
+    }
+
+    .tm-topbar-inner::-webkit-scrollbar{display:none}
+
+    .tm-topbar-inner::after{
+      content:"";
+      position:absolute;
+      right:0;
+      top:0;
+      width:28px;
+      height:100%;
+      pointer-events:none;
+      background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+    }
+
+    .tm-topbar a,
+    .tm-topbar a:visited{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:500;
+      white-space:nowrap;
+      padding:4px 10px;
+    }
+
+    .tm-topbar a:hover{
+      color:var(--accent);
+    }
+
+    .tm-topbar a.active:not(.home-link),
+    .tm-topbar a.active:not(.home-link):visited{
+      background:rgba(13,148,136,0.12);
+      color:var(--text) !important;
+      font-weight:600;
+      border-radius:999px;
+    }
+
+    .tm-topbar a + a{
+      border-left:1px solid #e5e7eb;
+      margin-left:6px;
+      padding-left:12px;
+    }
+
+    .tm-topbar .home-link{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 10px;
+    }
+
+    .tm-topbar .home-link svg{
+      width:18px;
+      height:18px;
     }
 
     @media (max-width:640px){
@@ -200,177 +289,51 @@
       .tm-meta{font-size:.88rem}
     }
 
-    :root{
-  --bg:#f7f7f8;
-  --card:#ffffff;
-  --text:#111;
-  --muted:#666;
-  --border:#e7e7ee;
-  --accent:#0d9488;
-  --shadow:0 6px 22px rgba(0,0,0,0.07);
-  --radius:16px;
+    @media (max-width:520px){
+      .tm-topbar-inner{
+        padding:8px var(--wrap-pad);
+      }
 
-  /* Match this page's main content container */
-  --tm-wrap-max: 980px;
-  --tm-wrap-pad: 16px;
-}
+      .tm-topbar a,
+      .tm-topbar a:visited{
+        font-size:13px;
+        padding:3px 8px;
+      }
 
-html, body{
-  margin:0;
-  padding:0;
-}
+      .tm-topbar a + a{
+        margin-left:5px;
+        padding-left:10px;
+      }
 
-*, *::before, *::after{
-  box-sizing:border-box;
-}
+      .tm-topbar a[href$="/one-minute-audio.html"]{
+        font-size:0;
+      }
 
-/* ===== TorahMoment Topbar ===== */
-.tm-topbar{
-  width:100%;
-  background:#ffffff;
-  border-bottom:1px solid var(--border, #e7e7ee);
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-
-.tm-topbar-inner{
-  box-sizing:border-box;
-  max-width: var(--tm-wrap-max, 980px);
-  margin:0 auto;
-  padding:10px var(--tm-wrap-pad, 16px);
-  display:flex;
-  align-items:center;
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-  position:relative;
-}
-
-.tm-topbar-inner::-webkit-scrollbar{
-  display:none;
-}
-
-/* subtle fade on the right */
-.tm-topbar-inner::after{
-  content:"";
-  position:absolute;
-  right:0;
-  top:0;
-  width:28px;
-  height:100%;
-  pointer-events:none;
-  background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
-}
-
-.tm-topbar a,
-.tm-topbar a:visited{
-  text-decoration:none;
-  color:var(--muted, #666);
-  font-size:14px;
-  font-weight:500;
-  white-space:nowrap;
-  padding:4px 10px;
-}
-
-.tm-topbar a:hover{
-  color:var(--accent, #0d9488);
-}
-
-/* active page pill */
-.tm-topbar a.active:not(.home-link),
-.tm-topbar a.active:not(.home-link):visited{
-  background: rgba(13,148,136,0.12);
-  color: var(--text, #111) !important;
-  font-weight:600;
-  border-radius:999px;
-}
-
-/* separators */
-.tm-topbar a + a{
-  border-left:1px solid #e5e7eb;
-  margin-left:6px;
-  padding-left:12px;
-}
-
-/* home icon */
-.tm-topbar .home-link{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:4px 10px;
-}
-
-.tm-topbar .home-link svg{
-  width:18px;
-  height:18px;
-}
-
-/* mobile tighten */
-@media (max-width:520px){
-  .tm-topbar-inner{
-    padding:8px var(--tm-wrap-pad, 16px);
-  }
-
-  .tm-topbar a,
-  .tm-topbar a:visited{
-    font-size:13px;
-    padding:3px 8px;
-  }
-
-  .tm-topbar a + a{
-    margin-left:5px;
-    padding-left:10px;
-  }
-
-  /* shorten One Minute on mobile */
-  .tm-topbar a[href$="/one-minute-audio.html"]{
-    font-size:0;
-  }
-
-  .tm-topbar a[href$="/one-minute-audio.html"]::before{
-    content:"One-Min";
-    font-size:13px;
-  }
-}
-
-
-  .tm-random{
-    appearance:none;
-    border:1px solid var(--line);
-    background:#fff;
-    color:var(--text);
-    height:42px;
-    padding:0 14px;
-    border-radius:999px;
-    cursor:pointer;
-    font:inherit;
-    font-weight:600;
-    transition:.15s ease;
-  }
-  .tm-random:hover{transform:translateY(-1px)}
-
-  
+      .tm-topbar a[href$="/one-minute-audio.html"]::before{
+        content:"One-Min";
+        font-size:13px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="tm-topbar">
-  <div class="tm-topbar-inner">
-    <a href="https://torahmoment.com" aria-label="Home" class="home-link">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M3 10.5L12 3l9 7.5"></path>
-        <path d="M5 10v10h14V10"></path>
-      </svg>
-    </a>
+    <div class="tm-topbar-inner">
+      <a href="https://torahmoment.com" aria-label="Home" class="home-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 10.5L12 3l9 7.5"></path>
+          <path d="M5 10v10h14V10"></path>
+        </svg>
+      </a>
 
-    <a href="https://torahmoment.com/parsha.html">Parsha</a>
-    <a href="https://torahmoment.com/halacha.html">Halacha</a>
-    <a href="https://torahmoment.com/one-minute-audio.html">One Minute</a>
-    <a href="https://torahmoment.com/tefilah.html">Tefila</a>
-    <a href="https://torahmoment.com/mishna.html">Mishna</a>
+      <a href="https://torahmoment.com/parsha.html">Parsha</a>
+      <a href="https://torahmoment.com/halacha.html">Halacha</a>
+      <a href="https://torahmoment.com/one-minute-audio.html">One Minute</a>
+      <a href="https://torahmoment.com/tefilah.html">Tefila</a>
+      <a href="https://torahmoment.com/mishna.html">Mishna</a>
+    </div>
   </div>
-</div>
+
   <div class="wrap">
     <section class="hero">
       <div class="eyebrow">🎧 TorahMoment Audio</div>
@@ -402,267 +365,268 @@ html, body{
 
         <div class="notice" id="notice"></div>
       </div>
-<div style="margin-top:14px">
-  <button class="tm-random" id="randomBtn" type="button">🎲 Play a random shiur</button>
-</div>
-     
+
+      <button class="tm-random" id="randomBtn" type="button">🎲 Play a random shiur</button>
     </section>
   </div>
 
   <audio id="audio" preload="metadata"></audio>
 
-<script>
-  const params = new URLSearchParams(location.search);
-  const wantedId = params.get('id');
-  const wantedSlug = params.get('slug');
+  <script>
+    const params = new URLSearchParams(location.search);
+    const wantedId = params.get('id');
+    const wantedSlug = params.get('slug');
 
-  const audio = document.getElementById('audio');
-  const playBtn = document.getElementById('playBtn');
-  const playIcon = document.getElementById('playIcon');
-  const speedBtn = document.getElementById('speedBtn');
-  const progress = document.getElementById('progress');
-  const progressFill = document.getElementById('progressFill');
-  const timeLabel = document.getElementById('timeLabel');
-  const statusLabel = document.getElementById('statusLabel');
-  const notice = document.getElementById('notice');
-  const pageTitle = document.getElementById('pageTitle');
-  const pageSub = document.getElementById('pageSub');
+    const audio = document.getElementById('audio');
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const speedBtn = document.getElementById('speedBtn');
+    const randomBtn = document.getElementById('randomBtn');
+    const progress = document.getElementById('progress');
+    const progressFill = document.getElementById('progressFill');
+    const timeLabel = document.getElementById('timeLabel');
+    const statusLabel = document.getElementById('statusLabel');
+    const notice = document.getElementById('notice');
+    const pageTitle = document.getElementById('pageTitle');
+    const pageSub = document.getElementById('pageSub');
 
-  const SPEEDS = [1, 1.25, 1.5, 2];
-  let speedIndex = 0;
-  let seeking = false;
+    const SPEEDS = [1, 1.25, 1.5, 2];
+    let speedIndex = 0;
+    let seeking = false;
+    let allItems = [];
+    let currentItem = null;
 
-const randomBtn = document.getElementById('randomBtn');
-
-let allItems = [];
-let currentItem = null;
-
-function isPlayableAudio(x){
-  return x && x.url && ['audio', 'audio-extra', 'parsha-audio', 'parsha'].includes(x.type);
-}
-function pickRandomShiur(items, excludeId){
-  const choices = items.filter(x => isPlayableAudio(x) && x.id !== excludeId);
-  if (!choices.length) return null;
-  return choices[Math.floor(Math.random() * choices.length)];
-}
-
-function loadItem(item, updateUrl = true){
-  if (!item) return;
-
-  currentItem = item;
-  audio.pause();
-  audio.src = item.url;
-  audio.load();
-
-  pageTitle.textContent = item.title || 'Audio Player';
-  pageSub.textContent = item.program
-    ? `${item.program}${item.page ? ' • ' + item.page : ''}`
-    : (item.page || '');
-
-  notice.textContent = '';
-  progressFill.style.width = '0%';
-  timeLabel.textContent = '0:00 / 0:00';
-  updatePlayIcon();
-  updateStatus();
-
-  if (updateUrl && item.id) {
-    history.replaceState({}, '', `/player.html?id=${encodeURIComponent(item.id)}`);
-  }
-}
-
-
-
-randomBtn.addEventListener('click', () => {
-  const randomItem = pickRandomShiur(allItems, currentItem?.id);
-  if (!randomItem) {
-    notice.innerHTML = '<span class="error">No random shiur was available.</span>';
-    return;
-  }
-  loadItem(randomItem, true);
-});
-  
-  function fmtTime(sec){
-    if (!isFinite(sec) || sec < 0) return '0:00';
-    const total = Math.floor(sec);
-    const h = Math.floor(total / 3600);
-    const m = Math.floor((total % 3600) / 60);
-    const s = total % 60;
-    return h > 0
-      ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
-      : `${m}:${String(s).padStart(2,'0')}`;
-  }
-
-  function updatePlayIcon(){
-    if (audio.paused) {
-      playIcon.innerHTML = '<path d="M8 5.14v13.72c0 .72.78 1.17 1.4.81l10.06-5.86a.94.94 0 0 0 0-1.62L9.4 4.33A.94.94 0 0 0 8 5.14z"></path>';
-    } else {
-      playIcon.innerHTML = '<path d="M7 5.75A1.75 1.75 0 0 1 8.75 4h.5A1.75 1.75 0 0 1 11 5.75v12.5A1.75 1.75 0 0 1 9.25 20h-.5A1.75 1.75 0 0 1 7 18.25V5.75Zm6 0A1.75 1.75 0 0 1 14.75 4h.5A1.75 1.75 0 0 1 17 5.75v12.5A1.75 1.75 0 0 1 15.25 20h-.5A1.75 1.75 0 0 1 13 18.25V5.75Z"></path>';
-    }
-  }
-
-  function updateTimeUI(){
-    const cur = audio.currentTime || 0;
-    const dur = audio.duration || 0;
-    const pct = dur > 0 ? (cur / dur) * 100 : 0;
-    progressFill.style.width = pct + '%';
-    timeLabel.textContent = `${fmtTime(cur)} / ${fmtTime(dur)}`;
-  }
-
-  function updateStatus(){
-    if (audio.error) statusLabel.textContent = 'Error';
-    else if (audio.paused) statusLabel.textContent = 'Paused';
-    else statusLabel.textContent = 'Playing';
-  }
-
-  function setSpeed(idx){
-    speedIndex = idx % SPEEDS.length;
-    const rate = SPEEDS[speedIndex];
-    audio.playbackRate = rate;
-    speedBtn.textContent = `${rate}×`;
-  }
-
-  function seekFromClientX(clientX){
-    const rect = progress.getBoundingClientRect();
-    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
-    const pct = rect.width ? x / rect.width : 0;
-    if (isFinite(audio.duration) && audio.duration > 0) {
-      audio.currentTime = pct * audio.duration;
-      updateTimeUI();
-    }
-  }
-
-  async function togglePlay(){
-    try{
-      if (!audio.src) return;
-      if (audio.paused) await audio.play();
-      else audio.pause();
-    } catch {
-      notice.innerHTML = '<span class="error">Could not play this audio.</span>';
-    }
-    updatePlayIcon();
-    updateStatus();
-  }
-
-  async function loadFromIndex(){
-  try {
-    const res = await fetch('/data/search-index.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('Could not fetch search index');
-
-    allItems = await res.json();
-
-    let item = null;
-
-    if (wantedId) {
-      item = allItems.find(x => x.id === wantedId);
-    } else if (wantedSlug) {
-      item = allItems.find(x => x.slug === wantedSlug);
+    function fmtTime(sec){
+      if (!isFinite(sec) || sec < 0) return '0:00';
+      const total = Math.floor(sec);
+      const h = Math.floor(total / 3600);
+      const m = Math.floor((total % 3600) / 60);
+      const s = total % 60;
+      return h > 0
+        ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+        : `${m}:${String(s).padStart(2,'0')}`;
     }
 
-    if ((wantedId || wantedSlug) && !item) {
-      pageTitle.textContent = 'Audio not found';
-      pageSub.textContent = wantedId || wantedSlug || '';
-      notice.innerHTML = '<span class="error">No matching audio item was found.</span>';
-      return;
-    }
-
-    if (item) {
-      loadItem(item, false);
-    } else {
-      const randomItem = pickRandomShiur(allItems);
-      if (randomItem) {
-        loadItem(randomItem, true);
+    function updatePlayIcon(){
+      if (audio.paused) {
+        playIcon.innerHTML = '<path d="M8 5.14v13.72c0 .72.78 1.17 1.4.81l10.06-5.86a.94.94 0 0 0 0-1.62L9.4 4.33A.94.94 0 0 0 8 5.14z"></path>';
       } else {
-        notice.innerHTML = '<span class="error">No random shiur was available.</span>';
+        playIcon.innerHTML = '<path d="M7 5.75A1.75 1.75 0 0 1 8.75 4h.5A1.75 1.75 0 0 1 11 5.75v12.5A1.75 1.75 0 0 1 9.25 20h-.5A1.75 1.75 0 0 1 7 18.25V5.75Zm6 0A1.75 1.75 0 0 1 14.75 4h.5A1.75 1.75 0 0 1 17 5.75v12.5A1.75 1.75 0 0 1 15.25 20h-.5A1.75 1.75 0 0 1 13 18.25V5.75Z"></path>';
       }
     }
-  } catch (err) {
-    pageTitle.textContent = 'Error';
-    pageSub.textContent = '';
-    notice.innerHTML = '<span class="error">Could not load the audio index.</span>';
-  }
-}
 
-    try {
-      const res = await fetch('/data/search-index.json', { cache: 'no-store' });
-      if (!res.ok) throw new Error('Could not fetch search index');
+    function updateTimeUI(){
+      const cur = audio.currentTime || 0;
+      const dur = audio.duration || 0;
+      const pct = dur > 0 ? (cur / dur) * 100 : 0;
+      progressFill.style.width = pct + '%';
+      timeLabel.textContent = `${fmtTime(cur)} / ${fmtTime(dur)}`;
+    }
 
-      const items = await res.json();
+    function updateStatus(){
+      if (audio.error) statusLabel.textContent = 'Error';
+      else if (audio.paused) statusLabel.textContent = 'Paused';
+      else statusLabel.textContent = 'Playing';
+    }
 
-      const item = items.find(x =>
-        (wantedId && x.id === wantedId) ||
-        (wantedSlug && x.slug === wantedSlug)
-      );
+    function setSpeed(idx){
+      speedIndex = idx % SPEEDS.length;
+      const rate = SPEEDS[speedIndex];
+      audio.playbackRate = rate;
+      speedBtn.textContent = `${rate}×`;
+    }
 
-      if (!item) {
-        pageTitle.textContent = 'Audio not found';
-        pageSub.textContent = wantedId || wantedSlug || '';
-        notice.innerHTML = '<span class="error">No matching audio item was found.</span>';
-        return;
+    function seekFromClientX(clientX){
+      const rect = progress.getBoundingClientRect();
+      const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+      const pct = rect.width ? x / rect.width : 0;
+      if (isFinite(audio.duration) && audio.duration > 0) {
+        audio.currentTime = pct * audio.duration;
+        updateTimeUI();
       }
+    }
 
+    function isPlayableAudio(x){
+      return !!(x && x.url && ['audio', 'audio-extra', 'parsha-audio', 'parsha'].includes(x.type));
+    }
+
+    function pickRandomShiur(items, excludeId){
+      const choices = (items || []).filter(x => isPlayableAudio(x) && x.id !== excludeId);
+      if (!choices.length) return null;
+      return choices[Math.floor(Math.random() * choices.length)];
+    }
+
+    function loadItem(item, updateUrl = true){
+      if (!item) return;
+
+      currentItem = item;
+      audio.pause();
       audio.src = item.url;
+      audio.load();
+
       pageTitle.textContent = item.title || 'Audio Player';
       pageSub.textContent = item.program
-        ? `${item.program} • ${item.page || ''}`
+        ? `${item.program}${item.page ? ' • ' + item.page : ''}`
         : (item.page || '');
 
       notice.textContent = '';
-    } catch (err) {
-      pageTitle.textContent = 'Error';
-      pageSub.textContent = '';
-      notice.innerHTML = '<span class="error">Could not load the audio index.</span>';
+      progressFill.style.width = '0%';
+      timeLabel.textContent = '0:00 / 0:00';
+      updatePlayIcon();
+      updateStatus();
+
+      if (updateUrl) {
+        if (item.slug) {
+          history.replaceState({}, '', `/player.html?slug=${encodeURIComponent(item.slug)}`);
+        } else if (item.id) {
+          history.replaceState({}, '', `/player.html?id=${encodeURIComponent(item.id)}`);
+        }
+      }
     }
-  }
 
-  playBtn.addEventListener('click', togglePlay);
-  speedBtn.addEventListener('click', () => setSpeed(speedIndex + 1));
+    async function togglePlay(){
+      try{
+        if (!audio.src) return;
+        if (audio.paused) await audio.play();
+        else audio.pause();
+      } catch {
+        notice.innerHTML = '<span class="error">Could not play this audio.</span>';
+      }
+      updatePlayIcon();
+      updateStatus();
+    }
 
-  progress.addEventListener('click', (e) => seekFromClientX(e.clientX));
-  progress.addEventListener('pointerdown', (e) => {
-    seeking = true;
-    seekFromClientX(e.clientX);
-    progress.setPointerCapture?.(e.pointerId);
-  });
-  progress.addEventListener('pointermove', (e) => {
-    if (!seeking) return;
-    seekFromClientX(e.clientX);
-  });
-  progress.addEventListener('pointerup', (e) => {
-    seeking = false;
-    progress.releasePointerCapture?.(e.pointerId);
-  });
+    async function loadFromIndex(){
+      randomBtn.disabled = true;
 
-  audio.addEventListener('loadedmetadata', () => { updateTimeUI(); updateStatus(); });
-  audio.addEventListener('timeupdate', updateTimeUI);
-  audio.addEventListener('play', () => { updatePlayIcon(); updateStatus(); });
-  audio.addEventListener('pause', () => { updatePlayIcon(); updateStatus(); });
-  audio.addEventListener('ended', () => { updatePlayIcon(); updateStatus(); updateTimeUI(); });
-  audio.addEventListener('error', () => {
+      try {
+        const res = await fetch('/data/search-index.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Could not fetch search index');
+
+        allItems = await res.json();
+
+        let item = null;
+
+        if (wantedId) {
+          item = allItems.find(x => x.id === wantedId);
+        } else if (wantedSlug) {
+          item = allItems.find(x => x.slug === wantedSlug);
+        }
+
+        if ((wantedId || wantedSlug) && !item) {
+          pageTitle.textContent = 'Audio not found';
+          pageSub.textContent = wantedId || wantedSlug || '';
+          notice.innerHTML = '<span class="error">No matching audio item was found.</span>';
+          randomBtn.disabled = allItems.filter(isPlayableAudio).length < 1;
+          return;
+        }
+
+        if (item) {
+          loadItem(item, false);
+        } else {
+          const randomItem = pickRandomShiur(allItems);
+          if (randomItem) {
+            loadItem(randomItem, true);
+          } else {
+            pageTitle.textContent = 'Audio Player';
+            pageSub.textContent = 'No playable audio was found.';
+            notice.innerHTML = '<span class="error">No random shiur was available.</span>';
+          }
+        }
+
+        const playableCount = allItems.filter(isPlayableAudio).length;
+        randomBtn.disabled = playableCount < 2 && !!currentItem ? playableCount < 1 : playableCount < 1;
+
+      } catch (err) {
+        pageTitle.textContent = 'Error';
+        pageSub.textContent = '';
+        notice.innerHTML = '<span class="error">Could not load the audio index.</span>';
+        randomBtn.disabled = true;
+      }
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+
+    speedBtn.addEventListener('click', () => {
+      setSpeed(speedIndex + 1);
+    });
+
+    randomBtn.addEventListener('click', () => {
+      const randomItem = pickRandomShiur(allItems, currentItem?.id);
+      if (!randomItem) {
+        notice.innerHTML = '<span class="error">No random shiur was available.</span>';
+        return;
+      }
+      loadItem(randomItem, true);
+    });
+
+    progress.addEventListener('click', (e) => seekFromClientX(e.clientX));
+
+    progress.addEventListener('pointerdown', (e) => {
+      seeking = true;
+      seekFromClientX(e.clientX);
+      progress.setPointerCapture?.(e.pointerId);
+    });
+
+    progress.addEventListener('pointermove', (e) => {
+      if (!seeking) return;
+      seekFromClientX(e.clientX);
+    });
+
+    progress.addEventListener('pointerup', (e) => {
+      seeking = false;
+      progress.releasePointerCapture?.(e.pointerId);
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      updateTimeUI();
+      updateStatus();
+    });
+
+    audio.addEventListener('timeupdate', updateTimeUI);
+
+    audio.addEventListener('play', () => {
+      updatePlayIcon();
+      updateStatus();
+    });
+
+    audio.addEventListener('pause', () => {
+      updatePlayIcon();
+      updateStatus();
+    });
+
+    audio.addEventListener('ended', () => {
+      updatePlayIcon();
+      updateStatus();
+      updateTimeUI();
+    });
+
+    audio.addEventListener('error', () => {
+      updatePlayIcon();
+      updateStatus();
+      notice.innerHTML = '<span class="error">This audio could not be loaded.</span>';
+    });
+
+    setSpeed(0);
     updatePlayIcon();
+    updateTimeUI();
     updateStatus();
-    notice.innerHTML = '<span class="error">This audio could not be loaded.</span>';
-  });
+    loadFromIndex();
+  </script>
 
-  setSpeed(0);
-  updatePlayIcon();
-  updateTimeUI();
-  updateStatus();
-  loadFromIndex();
-</script>
   <script>
-(function(){
-  const links = document.querySelectorAll(".tm-topbar a[href]:not(.home-link)");
-  const raw = (location.pathname || "/").replace(/\/+$/, "") || "/";
-  const current = (raw === "/index.html") ? "/" : raw;
+    (function(){
+      const links = document.querySelectorAll(".tm-topbar a[href]:not(.home-link)");
+      const raw = (location.pathname || "/").replace(/\/+$/, "") || "/";
+      const current = (raw === "/index.html") ? "/" : raw;
 
-  links.forEach(a => {
-    const u = new URL(a.getAttribute("href"), location.href);
-    const lpRaw = (u.pathname || "/").replace(/\/+$/, "") || "/";
-    const lp = (lpRaw === "/index.html") ? "/" : lpRaw;
-
-    if (lp === current) a.classList.add("active");
-  });
-})();
-</script>
+      links.forEach(a => {
+        const u = new URL(a.getAttribute("href"), location.href);
+        const lpRaw = (u.pathname || "/").replace(/\/+$/, "") || "/";
+        const lp = (lpRaw === "/index.html") ? "/" : lpRaw;
+        if (lp === current) a.classList.add("active");
+      });
+    })();
+  </script>
 </body>
 </html>
