@@ -438,9 +438,8 @@ let allItems = [];
 let currentItem = null;
 
 function isPlayableAudio(x){
-  return x && x.type === 'audio' && x.url;
+  return x && x.url && ['audio', 'audio-extra', 'parsha-audio', 'parsha'].includes(x.type);
 }
-
 function pickRandomShiur(items, excludeId){
   const choices = items.filter(x => isPlayableAudio(x) && x.id !== excludeId);
   if (!choices.length) return null;
@@ -471,42 +470,7 @@ function loadItem(item, updateUrl = true){
   }
 }
 
-async function loadFromIndex(){
-  try {
-    const res = await fetch('/data/search-index.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('Could not fetch search index');
 
-    const items = await res.json();
-    allItems = items;
-
-    const params = new URLSearchParams(location.search);
-    const wantedId = params.get('id');
-
-    let item = null;
-
-    if (wantedId) {
-      item = items.find(x => x.id === wantedId);
-    }
-
-    if (!item && wantedId) {
-      pageTitle.textContent = 'Audio not found';
-      pageSub.textContent = wantedId;
-      notice.innerHTML = '<span class="error">No matching audio item was found.</span>';
-      return;
-    }
-
-    if (item) {
-      loadItem(item, false);
-    } else {
-      const randomItem = pickRandomShiur(items);
-      if (randomItem) loadItem(randomItem, true);
-    }
-  } catch (err) {
-    pageTitle.textContent = 'Error';
-    pageSub.textContent = '';
-    notice.innerHTML = '<span class="error">Could not load the audio index.</span>';
-  }
-}
 
 randomBtn.addEventListener('click', () => {
   const randomItem = pickRandomShiur(allItems, currentItem?.id);
@@ -580,12 +544,43 @@ randomBtn.addEventListener('click', () => {
   }
 
   async function loadFromIndex(){
-    if (!wantedId && !wantedSlug) {
-      pageTitle.textContent = 'Audio Player';
-      pageSub.textContent = 'No audio ID was provided.';
-      notice.innerHTML = 'Use <code>?id=one-199</code>';
+  try {
+    const res = await fetch('/data/search-index.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Could not fetch search index');
+
+    allItems = await res.json();
+
+    let item = null;
+
+    if (wantedId) {
+      item = allItems.find(x => x.id === wantedId);
+    } else if (wantedSlug) {
+      item = allItems.find(x => x.slug === wantedSlug);
+    }
+
+    if ((wantedId || wantedSlug) && !item) {
+      pageTitle.textContent = 'Audio not found';
+      pageSub.textContent = wantedId || wantedSlug || '';
+      notice.innerHTML = '<span class="error">No matching audio item was found.</span>';
       return;
     }
+
+    if (item) {
+      loadItem(item, false);
+    } else {
+      const randomItem = pickRandomShiur(allItems);
+      if (randomItem) {
+        loadItem(randomItem, true);
+      } else {
+        notice.innerHTML = '<span class="error">No random shiur was available.</span>';
+      }
+    }
+  } catch (err) {
+    pageTitle.textContent = 'Error';
+    pageSub.textContent = '';
+    notice.innerHTML = '<span class="error">Could not load the audio index.</span>';
+  }
+}
 
     try {
       const res = await fetch('/data/search-index.json', { cache: 'no-store' });
