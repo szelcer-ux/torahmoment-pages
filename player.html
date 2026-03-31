@@ -334,6 +334,24 @@ html, body{
     font-size:13px;
   }
 }
+
+
+  .tm-random{
+    appearance:none;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--text);
+    height:42px;
+    padding:0 14px;
+    border-radius:999px;
+    cursor:pointer;
+    font:inherit;
+    font-weight:600;
+    transition:.15s ease;
+  }
+  .tm-random:hover{transform:translateY(-1px)}
+
+  
   </style>
 </head>
 <body>
@@ -384,7 +402,9 @@ html, body{
 
         <div class="notice" id="notice"></div>
       </div>
-
+<div style="margin-top:14px">
+  <button class="tm-random" id="randomBtn" type="button">🎲 Play a random shiur</button>
+</div>
      
     </section>
   </div>
@@ -412,6 +432,91 @@ html, body{
   let speedIndex = 0;
   let seeking = false;
 
+const randomBtn = document.getElementById('randomBtn');
+
+let allItems = [];
+let currentItem = null;
+
+function isPlayableAudio(x){
+  return x && x.type === 'audio' && x.url;
+}
+
+function pickRandomShiur(items, excludeId){
+  const choices = items.filter(x => isPlayableAudio(x) && x.id !== excludeId);
+  if (!choices.length) return null;
+  return choices[Math.floor(Math.random() * choices.length)];
+}
+
+function loadItem(item, updateUrl = true){
+  if (!item) return;
+
+  currentItem = item;
+  audio.pause();
+  audio.src = item.url;
+  audio.load();
+
+  pageTitle.textContent = item.title || 'Audio Player';
+  pageSub.textContent = item.program
+    ? `${item.program}${item.page ? ' • ' + item.page : ''}`
+    : (item.page || '');
+
+  notice.textContent = '';
+  progressFill.style.width = '0%';
+  timeLabel.textContent = '0:00 / 0:00';
+  updatePlayIcon();
+  updateStatus();
+
+  if (updateUrl && item.id) {
+    history.replaceState({}, '', `/player.html?id=${encodeURIComponent(item.id)}`);
+  }
+}
+
+async function loadFromIndex(){
+  try {
+    const res = await fetch('/data/search-index.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Could not fetch search index');
+
+    const items = await res.json();
+    allItems = items;
+
+    const params = new URLSearchParams(location.search);
+    const wantedId = params.get('id');
+
+    let item = null;
+
+    if (wantedId) {
+      item = items.find(x => x.id === wantedId);
+    }
+
+    if (!item && wantedId) {
+      pageTitle.textContent = 'Audio not found';
+      pageSub.textContent = wantedId;
+      notice.innerHTML = '<span class="error">No matching audio item was found.</span>';
+      return;
+    }
+
+    if (item) {
+      loadItem(item, false);
+    } else {
+      const randomItem = pickRandomShiur(items);
+      if (randomItem) loadItem(randomItem, true);
+    }
+  } catch (err) {
+    pageTitle.textContent = 'Error';
+    pageSub.textContent = '';
+    notice.innerHTML = '<span class="error">Could not load the audio index.</span>';
+  }
+}
+
+randomBtn.addEventListener('click', () => {
+  const randomItem = pickRandomShiur(allItems, currentItem?.id);
+  if (!randomItem) {
+    notice.innerHTML = '<span class="error">No random shiur was available.</span>';
+    return;
+  }
+  loadItem(randomItem, true);
+});
+  
   function fmtTime(sec){
     if (!isFinite(sec) || sec < 0) return '0:00';
     const total = Math.floor(sec);
