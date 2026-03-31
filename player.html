@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TorahMoment Player</title>
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#666;
+      --border:#e7e7ee;
+      --accent:#0d9488;
+      --shadow:0 6px 22px rgba(0,0,0,0.07);
+      --radius:16px;
+      --wrap-max:900px;
+      --wrap-pad:16px;
+      --line:var(--border);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .wrap{
+      max-width:var(--wrap-max);
+      margin:0 auto;
+      padding:22px var(--wrap-pad) 40px;
+    }
+
+    .hero{
+      background:linear-gradient(180deg,#ffffff 0%,#fbfbfc 100%);
+      border:1px solid var(--border);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      padding:20px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:var(--accent);
+      margin:0 0 10px;
+    }
+
+    h1{
+      margin:0 0 8px;
+      font-size:clamp(1.5rem,2vw,2rem);
+      line-height:1.15;
+    }
+
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:.98rem;
+      word-break:break-word;
+    }
+
+    .playerCard{
+      margin-top:18px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:14px 14px;
+    }
+
+    .tm-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      width:100%;
+    }
+
+    .tm-play{
+      appearance:none;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      flex:0 0 44px;
+      padding:0;
+      transition:.15s ease;
+    }
+    .tm-play:hover{transform:translateY(-1px)}
+    .tm-play svg{width:18px;height:18px;display:block}
+
+    .tm-main{
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .tm-progress{
+      position:relative;
+      width:100%;
+      height:8px;
+      border-radius:999px;
+      background:#e8eaed;
+      overflow:hidden;
+      cursor:pointer;
+      touch-action:none;
+    }
+
+    .tm-progress > div{
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:0%;
+      background:var(--accent);
+      border-radius:inherit;
+    }
+
+    .tm-meta{
+      margin-top:8px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      color:var(--muted);
+      font-size:.92rem;
+      line-height:1.2;
+    }
+
+    .tm-time{
+      font-variant-numeric:tabular-nums;
+      white-space:nowrap;
+    }
+
+    .tm-right{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex:0 0 auto;
+    }
+
+    .tm-speed{
+      appearance:none;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      min-width:52px;
+      height:40px;
+      padding:0 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font:inherit;
+      font-weight:600;
+      transition:.15s ease;
+    }
+    .tm-speed:hover{transform:translateY(-1px)}
+
+    .notice{
+      margin-top:14px;
+      font-size:.92rem;
+      color:var(--muted);
+    }
+
+    .error{
+      color:#b42318;
+      font-weight:600;
+    }
+
+    .helper{
+      margin-top:18px;
+      padding-top:14px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:.9rem;
+      word-break:break-word;
+    }
+
+    code{
+      background:#f2f4f7;
+      border:1px solid #e4e7ec;
+      border-radius:8px;
+      padding:2px 6px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      font-size:.9em;
+    }
+
+    @media (max-width:640px){
+      .hero{padding:16px}
+      .playerCard{padding:12px}
+      .tm-row{gap:10px}
+      .tm-play{width:42px;height:42px;flex-basis:42px}
+      .tm-speed{min-width:48px;height:38px;padding:0 10px}
+      .tm-meta{font-size:.88rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">🎧 TorahMoment Audio</div>
+      <h1 id="pageTitle">Audio Player</h1>
+      <p class="sub" id="pageSub">Loading audio...</p>
+
+      <div class="playerCard">
+        <div class="tm-row">
+          <button class="tm-play" id="playBtn" type="button" aria-label="Play">
+            <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5.14v13.72c0 .72.78 1.17 1.4.81l10.06-5.86a.94.94 0 0 0 0-1.62L9.4 4.33A.94.94 0 0 0 8 5.14z"></path>
+            </svg>
+          </button>
+
+          <div class="tm-main">
+            <div class="tm-progress" id="progress" aria-label="Seek audio">
+              <div id="progressFill"></div>
+            </div>
+            <div class="tm-meta">
+              <span class="tm-time" id="timeLabel">0:00 / 0:00</span>
+              <span id="statusLabel">Ready</span>
+            </div>
+          </div>
+
+          <div class="tm-right">
+            <button class="tm-speed" id="speedBtn" type="button" aria-label="Playback speed">1×</button>
+          </div>
+        </div>
+
+        <div class="notice" id="notice"></div>
+      </div>
+
+      <div class="helper">
+        Pass an MP3 in the URL like:
+        <br><code>/player.html?src=https%3A%2F%2Fexample.com%2Faudio.mp3&title=My%20Shiur</code>
+      </div>
+    </section>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const src = params.get('src') || '';
+    const title = params.get('title') || 'Audio Player';
+
+    const audio = document.getElementById('audio');
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const speedBtn = document.getElementById('speedBtn');
+    const progress = document.getElementById('progress');
+    const progressFill = document.getElementById('progressFill');
+    const timeLabel = document.getElementById('timeLabel');
+    const statusLabel = document.getElementById('statusLabel');
+    const notice = document.getElementById('notice');
+    const pageTitle = document.getElementById('pageTitle');
+    const pageSub = document.getElementById('pageSub');
+
+    const SPEEDS = [1, 1.25, 1.5, 2];
+    let speedIndex = 0;
+    let seeking = false;
+
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, m => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+      }[m]));
+    }
+
+    function fmtTime(sec){
+      if (!isFinite(sec) || sec < 0) return '0:00';
+      const total = Math.floor(sec);
+      const h = Math.floor(total / 3600);
+      const m = Math.floor((total % 3600) / 60);
+      const s = total % 60;
+      return h > 0
+        ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+        : `${m}:${String(s).padStart(2,'0')}`;
+    }
+
+    function updatePlayIcon(){
+      if (audio.paused) {
+        playIcon.innerHTML = '<path d="M8 5.14v13.72c0 .72.78 1.17 1.4.81l10.06-5.86a.94.94 0 0 0 0-1.62L9.4 4.33A.94.94 0 0 0 8 5.14z"></path>';
+      } else {
+        playIcon.innerHTML = '<path d="M7 5.75A1.75 1.75 0 0 1 8.75 4h.5A1.75 1.75 0 0 1 11 5.75v12.5A1.75 1.75 0 0 1 9.25 20h-.5A1.75 1.75 0 0 1 7 18.25V5.75Zm6 0A1.75 1.75 0 0 1 14.75 4h.5A1.75 1.75 0 0 1 17 5.75v12.5A1.75 1.75 0 0 1 15.25 20h-.5A1.75 1.75 0 0 1 13 18.25V5.75Z"></path>';
+      }
+    }
+
+    function updateTimeUI(){
+      const cur = audio.currentTime || 0;
+      const dur = audio.duration || 0;
+      const pct = dur > 0 ? (cur / dur) * 100 : 0;
+      progressFill.style.width = pct + '%';
+      timeLabel.textContent = `${fmtTime(cur)} / ${fmtTime(dur)}`;
+    }
+
+    function updateStatus(){
+      if (audio.error) {
+        statusLabel.textContent = 'Error';
+      } else if (audio.paused) {
+        statusLabel.textContent = 'Paused';
+      } else {
+        statusLabel.textContent = 'Playing';
+      }
+    }
+
+    function setSpeed(idx){
+      speedIndex = idx % SPEEDS.length;
+      const rate = SPEEDS[speedIndex];
+      audio.playbackRate = rate;
+      speedBtn.textContent = `${rate}×`;
+    }
+
+    function seekFromClientX(clientX){
+      const rect = progress.getBoundingClientRect();
+      const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+      const pct = rect.width ? x / rect.width : 0;
+      if (isFinite(audio.duration) && audio.duration > 0) {
+        audio.currentTime = pct * audio.duration;
+        updateTimeUI();
+      }
+    }
+
+    async function togglePlay(){
+      try{
+        if (!audio.src) return;
+        if (audio.paused) {
+          await audio.play();
+        } else {
+          audio.pause();
+        }
+      }catch(err){
+        notice.innerHTML = '<span class="error">Could not play this audio.</span> The file may be unavailable or the host may be blocking playback.';
+      }
+      updatePlayIcon();
+      updateStatus();
+    }
+
+    pageTitle.textContent = title;
+
+    if (!src) {
+      pageSub.textContent = 'No MP3 URL was provided.';
+      notice.innerHTML = '<span class="error">Missing required parameter:</span> <code>src</code>';
+    } else {
+      audio.src = src;
+      pageSub.textContent = src;
+      notice.textContent = 'Loaded from URL parameter.';
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+
+    speedBtn.addEventListener('click', () => {
+      setSpeed(speedIndex + 1);
+    });
+
+    progress.addEventListener('click', (e) => {
+      seekFromClientX(e.clientX);
+    });
+
+    progress.addEventListener('pointerdown', (e) => {
+      seeking = true;
+      seekFromClientX(e.clientX);
+      progress.setPointerCapture?.(e.pointerId);
+    });
+
+    progress.addEventListener('pointermove', (e) => {
+      if (!seeking) return;
+      seekFromClientX(e.clientX);
+    });
+
+    progress.addEventListener('pointerup', (e) => {
+      seeking = false;
+      progress.releasePointerCapture?.(e.pointerId);
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      updateTimeUI();
+      updateStatus();
+    });
+
+    audio.addEventListener('timeupdate', updateTimeUI);
+    audio.addEventListener('play', () => {
+      updatePlayIcon();
+      updateStatus();
+    });
+    audio.addEventListener('pause', () => {
+      updatePlayIcon();
+      updateStatus();
+    });
+    audio.addEventListener('ended', () => {
+      updatePlayIcon();
+      updateStatus();
+      updateTimeUI();
+    });
+    audio.addEventListener('error', () => {
+      updatePlayIcon();
+      updateStatus();
+      notice.innerHTML = '<span class="error">This audio could not be loaded.</span> Check that the MP3 URL is valid and publicly accessible.';
+    });
+
+    setSpeed(0);
+    updatePlayIcon();
+    updateTimeUI();
+    updateStatus();
+  </script>
+</body>
+</html>
