@@ -1,29 +1,38 @@
 {
-  "rangeLabel": "March 21–27, 2026",
-  "generatedAt": "2026-03-27T10:56:42.779Z",
+  "rangeLabel": "March 28, 2026–April 3, 2026",
+  "generatedAt": "2026-04-03T10:52:58.121Z",
   "totalItems": 4,
   "featured": {
-    "id": "par-x17Kexo10FQ",
-    "title": "Dont stay in the past",
-    "program": "Parsha",
-    "type": "video",
-    "date": "2026-03-27T00:49:44Z",
-    "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=x17Kexo10FQ"
+    "id": "one-209",
+    "title": "Erev Yom Tov thought",
+    "program": "One-Minute",
+    "type": "audio",
+    "date": "2026-03-31T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0030.mp3"
   },
   "groups": [
     {
-      "key": "parsha",
-      "label": "Parsha",
+      "key": "halacha",
+      "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "par-x17Kexo10FQ",
-          "title": "Dont stay in the past",
-          "program": "Parsha",
-          "type": "video",
-          "date": "2026-03-27T00:49:44Z",
-          "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=x17Kexo10FQ"
+          "id": "hal-37",
+          "title": "Why are we obsessed with Zecher L'Yetzias Mitzrayim?",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-03-30T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/memoryasprep.mp3"
+        },
+        {
+          "id": "hal-38",
+          "title": "Bedikas Chomtz with a flashlight",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-03-30T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/18930105-3-30-20026-shloimy-zelcer-bedikas-chometz-with-a-flashlight.mp3"
         }
       ]
     },
@@ -32,31 +41,22 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-207",
-          "title": "Unexciting Mitzvos",
+          "id": "one-209",
+          "title": "Erev Yom Tov thought",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-03-26T00:00:00.000Z",
+          "date": "2026-03-31T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260325-WA0147.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0030.mp3"
         },
         {
-          "id": "one-206",
-          "title": "Keep the pesach inspiration",
+          "id": "one-208",
+          "title": "Why burn the candle?",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-03-24T00:00:00.000Z",
+          "date": "2026-03-30T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0115.mp3"
-        },
-        {
-          "id": "one-205",
-          "title": "Davening distraction free",
-          "program": "One-Minute",
-          "type": "audio",
-          "date": "2026-03-23T00:00:00.000Z",
-          "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0108.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0028.mp3"
         }
       ]
     }
