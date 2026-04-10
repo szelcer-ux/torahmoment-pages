@@ -1,62 +1,29 @@
 {
-  "rangeLabel": "March 28, 2026–April 3, 2026",
-  "generatedAt": "2026-04-03T10:52:58.121Z",
-  "totalItems": 4,
+  "rangeLabel": "April 4–10, 2026",
+  "generatedAt": "2026-04-10T11:03:05.297Z",
+  "totalItems": 1,
   "featured": {
-    "id": "one-209",
-    "title": "Erev Yom Tov thought",
-    "program": "One-Minute",
-    "type": "audio",
-    "date": "2026-03-31T00:00:00.000Z",
-    "page": "/one-minute-audio.html",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0030.mp3"
+    "id": "par-l5JhqBahhQg",
+    "title": "Listening when there are no words",
+    "program": "Parsha",
+    "type": "video",
+    "date": "2026-04-10T02:29:44Z",
+    "page": "/parsha.html",
+    "url": "https://www.youtube.com/watch?v=l5JhqBahhQg"
   },
   "groups": [
     {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
+      "key": "parsha",
+      "label": "Parsha",
       "items": [
         {
-          "id": "hal-37",
-          "title": "Why are we obsessed with Zecher L'Yetzias Mitzrayim?",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-03-30T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/memoryasprep.mp3"
-        },
-        {
-          "id": "hal-38",
-          "title": "Bedikas Chomtz with a flashlight",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-03-30T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/18930105-3-30-20026-shloimy-zelcer-bedikas-chometz-with-a-flashlight.mp3"
-        }
-      ]
-    },
-    {
-      "key": "oneMinute",
-      "label": "One-Minute Audio",
-      "items": [
-        {
-          "id": "one-209",
-          "title": "Erev Yom Tov thought",
-          "program": "One-Minute",
-          "type": "audio",
-          "date": "2026-03-31T00:00:00.000Z",
-          "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0030.mp3"
-        },
-        {
-          "id": "one-208",
-          "title": "Why burn the candle?",
-          "program": "One-Minute",
-          "type": "audio",
-          "date": "2026-03-30T00:00:00.000Z",
-          "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0028.mp3"
+          "id": "par-l5JhqBahhQg",
+          "title": "Listening when there are no words",
+          "program": "Parsha",
+          "type": "video",
+          "date": "2026-04-10T02:29:44Z",
+          "page": "/parsha.html",
+          "url": "https://www.youtube.com/watch?v=l5JhqBahhQg"
         }
       ]
     }
