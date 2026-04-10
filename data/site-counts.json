@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 696,
+    "total": 697,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 221
+        "video": 222
       },
       "tefila": {
         "video": 20
@@ -22,6 +22,13 @@
     "updated": "2026-04-10"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Listening when there are no words",
+      "url": "https://www.youtube.com/watch?v=l5JhqBahhQg",
+      "date": "2026-04-10T02:29:44Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Why burn the candle?",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0028.mp3",
       "date": "2026-03-30T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Dont stay in the past",
-      "url": "https://www.youtube.com/watch?v=x17Kexo10FQ",
-      "date": "2026-03-27T00:49:44Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Listening when there are no words",
+        "url": "https://www.youtube.com/watch?v=l5JhqBahhQg",
+        "date": "2026-04-10T02:29:44Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Dont stay in the past",
         "url": "https://www.youtube.com/watch?v=x17Kexo10FQ",
         "date": "2026-03-27T00:49:44Z"
@@ -266,13 +273,6 @@
         "title": "Lasting impact",
         "url": "https://www.youtube.com/watch?v=g5Y84M_T21g",
         "date": "2026-01-30T04:26:06Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Judaism is for everyone",
-        "url": "https://www.youtube.com/watch?v=BGKKQnGoLrY",
-        "date": "2026-01-23T03:21:56Z"
       }
     ]
   }
