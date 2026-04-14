@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 698,
+    "total": 699,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 85
       },
       "oneMinute": {
-        "audio": 211
+        "audio": 212
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-04-14"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Not everything is black and white",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260414-WA0038.mp3",
+      "date": "2026-04-14T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "Why are we obsessed with Zecher L'Yetzias Mitzrayim?",
       "url": "https://2mishnasaday.com/wp-content/uploads/memoryasprep.mp3",
       "date": "2026-03-30T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Bedikas Chomtz with a flashlight",
-      "url": "https://www.buzzsprout.com/1899789/episodes/18930105-3-30-20026-shloimy-zelcer-bedikas-chometz-with-a-flashlight.mp3",
-      "date": "2026-03-30T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Not everything is black and white",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260414-WA0038.mp3",
+        "date": "2026-04-14T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Self sacrifice",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0104.mp3",
         "date": "2026-03-16T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Let it go",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260312-WA0015.mp3",
-        "date": "2026-03-12T00:00:00.000Z"
       }
     ],
     "halacha": [
