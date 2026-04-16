@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 700,
+    "total": 701,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 86
       },
       "oneMinute": {
-        "audio": 212
+        "audio": 213
       },
       "mishna": {
         "audio": 137
@@ -27,6 +27,13 @@
       "program": "Halacha",
       "title": "Can I tell my wife Lashon Harah?",
       "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3",
+      "date": "2026-04-16T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Concentrating during davening",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260413-WA0011.mp3",
       "date": "2026-04-16T00:00:00.000Z"
     },
     {
@@ -49,17 +56,17 @@
       "title": "Listening when there are no words",
       "url": "https://www.youtube.com/watch?v=l5JhqBahhQg",
       "date": "2026-04-10T02:29:44Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Erev Yom Tov thought",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0030.mp3",
-      "date": "2026-03-31T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Concentrating during davening",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260413-WA0011.mp3",
+        "date": "2026-04-16T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Stay humble",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0114.mp3",
         "date": "2026-03-17T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Self sacrifice",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0104.mp3",
-        "date": "2026-03-16T00:00:00.000Z"
       }
     ],
     "halacha": [
