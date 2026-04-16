@@ -28,26 +28,23 @@ jobs:
           node-version: "20"
 
       - name: Install Playwright
-        run: | 
+        run: |
           npm init -y
           npm install -D playwright
           npx playwright install --with-deps chromium
 
       - name: Build site counts JSON
         env:
-            YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: node scripts/build-site-counts.mjs
-
 
       - name: Commit site-counts.json if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add data
-          git diff --cached --quiet || git commit -m "Update site counts JSON"
+          git add data/site-counts.json
+          git diff --cached --quiet && exit 0
 
-          # 🔑 pull latest main in case it changed mid-run
-          git pull --rebase origin main
-
+          git commit -m "Update site counts JSON"
           git push
