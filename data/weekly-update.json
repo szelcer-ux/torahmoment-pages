@@ -1,29 +1,53 @@
 {
-  "rangeLabel": "April 4–10, 2026",
-  "generatedAt": "2026-04-10T11:03:05.297Z",
-  "totalItems": 1,
+  "rangeLabel": "April 11–17, 2026",
+  "generatedAt": "2026-04-17T11:04:38.750Z",
+  "totalItems": 3,
   "featured": {
-    "id": "par-l5JhqBahhQg",
-    "title": "Listening when there are no words",
-    "program": "Parsha",
-    "type": "video",
-    "date": "2026-04-10T02:29:44Z",
-    "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=l5JhqBahhQg"
+    "id": "hal-68",
+    "title": "Can I tell my wife Lashon Harah?",
+    "program": "Halacha",
+    "type": "audio",
+    "date": "2026-04-16T00:00:00.000Z",
+    "page": "/halacha.html",
+    "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3"
   },
   "groups": [
     {
-      "key": "parsha",
-      "label": "Parsha",
+      "key": "halacha",
+      "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "par-l5JhqBahhQg",
-          "title": "Listening when there are no words",
-          "program": "Parsha",
-          "type": "video",
-          "date": "2026-04-10T02:29:44Z",
-          "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=l5JhqBahhQg"
+          "id": "hal-68",
+          "title": "Can I tell my wife Lashon Harah?",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-04-16T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3"
+        }
+      ]
+    },
+    {
+      "key": "oneMinute",
+      "label": "One-Minute Audio",
+      "items": [
+        {
+          "id": "one-211",
+          "title": "Not everything is black and white",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-04-14T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260414-WA0038.mp3"
+        },
+        {
+          "id": "one-210",
+          "title": "Use your words wisely",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-04-13T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260413-WA0012.mp3"
         }
       ]
     }
