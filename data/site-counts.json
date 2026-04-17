@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 701,
+    "total": 702,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 222
+        "video": 223
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-04-16"
+    "updated": "2026-04-17"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Real change takes time",
+      "url": "https://www.youtube.com/watch?v=0E411EfFaqc",
+      "date": "2026-04-17T04:13:47Z"
+    },
     {
       "type": "audio",
       "program": "Halacha",
@@ -49,13 +56,6 @@
       "title": "Use your words wisely",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260413-WA0012.mp3",
       "date": "2026-04-13T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Listening when there are no words",
-      "url": "https://www.youtube.com/watch?v=l5JhqBahhQg",
-      "date": "2026-04-10T02:29:44Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Real change takes time",
+        "url": "https://www.youtube.com/watch?v=0E411EfFaqc",
+        "date": "2026-04-17T04:13:47Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Listening when there are no words",
         "url": "https://www.youtube.com/watch?v=l5JhqBahhQg",
         "date": "2026-04-10T02:29:44Z"
@@ -266,13 +273,6 @@
         "title": "How do YOU serve Hashem?",
         "url": "https://www.youtube.com/watch?v=qhs0gvRnUxk",
         "date": "2026-02-06T03:57:18Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Lasting impact",
-        "url": "https://www.youtube.com/watch?v=g5Y84M_T21g",
-        "date": "2026-01-30T04:26:06Z"
       }
     ]
   }
