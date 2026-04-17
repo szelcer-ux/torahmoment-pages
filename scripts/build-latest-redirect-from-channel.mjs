@@ -8,10 +8,37 @@ if (!CHANNEL_ID) {
 
 const FEED_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${encodeURIComponent(CHANNEL_ID)}`;
 
-const res = await fetch(FEED_URL, { headers: { "user-agent": "torahmoment-bot" } });
-if (!res.ok) {
-  console.error("Failed to fetch feed:", res.status, res.statusText);
-  process.exit(1);
+async function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function fetchWithRetry(url, attempts = 3, delayMs = 5000) {
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      const res = await fetch(url, {
+        headers: { "user-agent": "torahmoment-bot" }
+      });
+
+      if (res.ok) return res;
+
+      console.log(`Fetch attempt ${i} failed: ${res.status} ${res.statusText}`);
+    } catch (err) {
+      console.log(`Fetch attempt ${i} error: ${err.message}`);
+    }
+
+    if (i < attempts) {
+      await sleep(delayMs);
+    }
+  }
+
+  return null;
+}
+
+const res = await fetchWithRetry(FEED_URL, 3, 5000);
+
+if (!res) {
+  console.log("Could not fetch YouTube feed. Keeping existing latest/index.html.");
+  process.exit(0);
 }
 
 const xml = await res.text();
@@ -19,23 +46,22 @@ const xml = await res.text();
 // First <entry> = newest upload
 const entryMatch = xml.match(/<entry>([\s\S]*?)<\/entry>/);
 if (!entryMatch) {
-  console.error("No <entry> found in feed.");
-  process.exit(1);
+  console.log("No <entry> found in feed. Keeping existing latest/index.html.");
+  process.exit(0);
 }
-const entry = entryMatch[1];
 
+const entry = entryMatch[1];
 const idMatch = entry.match(/<yt:videoId>([^<]+)<\/yt:videoId>/);
 const titleMatch = entry.match(/<title>([\s\S]*?)<\/title>/);
 
 if (!idMatch) {
-  console.error("No yt:videoId found in first entry.");
-  process.exit(1);
+  console.log("No yt:videoId found in first entry. Keeping existing latest/index.html.");
+  process.exit(0);
 }
 
 const videoId = idMatch[1].trim();
-let title = (titleMatch ? titleMatch[1] : "TorahMoment — Latest").trim();
+const title = (titleMatch ? titleMatch[1] : "TorahMoment — Latest").trim();
 
-// safe escape for meta tags
 const esc = (s) =>
   String(s)
     .replaceAll("&", "&amp;")
@@ -43,13 +69,8 @@ const esc = (s) =>
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;");
 
-// Redirect target
 const youtubeUrl = `https://youtu.be/${videoId}`;
-
-// Thumbnail (hqdefault is reliable)
 const thumb = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-
-// Important: this is the URL people share
 const canonical = "https://torahmoment.com/latest";
 
 const html = `<!doctype html>
@@ -59,25 +80,20 @@ const html = `<!doctype html>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>${esc(title)}</title>
 
-  <!-- WhatsApp / link previews -->
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="This week’s Dvar Torah from TorahMoment." />
   <meta property="og:image" content="${thumb}" />
   <meta property="og:url" content="${canonical}" />
   <meta property="og:type" content="website" />
 
-  <!-- Extra preview helpers -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${esc(title)}" />
   <meta name="twitter:image" content="${thumb}" />
 
   <link rel="canonical" href="${canonical}" />
-
-  <!-- Instant redirect -->
   <meta http-equiv="refresh" content="0; url=${youtubeUrl}" />
 
   <script>
-    // JS redirect as backup
     window.location.replace(${JSON.stringify(youtubeUrl)});
   </script>
 </head>
@@ -85,8 +101,7 @@ const html = `<!doctype html>
   Redirecting to the latest TorahMoment video…
   <a href="${youtubeUrl}">Click here if you’re not redirected</a>.
 </body>
-</html>
-`;
+</html>`;
 
 fs.mkdirSync("latest", { recursive: true });
 fs.writeFileSync("latest/index.html", html);
