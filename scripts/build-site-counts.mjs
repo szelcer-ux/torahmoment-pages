@@ -475,20 +475,10 @@ console.log(
     .filter((x) => x.url && x.title);
 
   const indexHalacha = (allHalacha || [])
-
-     console.log(
-  "FOUND in indexHalacha?",
-  indexHalacha.some(x => x.title === "The risk of NOT saying Hallel on Yom Haatzmaut")
-);
-
-console.log(
-  indexHalacha.find(x => x.title === "The risk of NOT saying Hallel on Yom Haatzmaut")
-);
-     
     .map((x, i) => ({
       id: `hal-${i}`,
       program: "Halacha",
-      type: "audio",
+      type: x.type || "audio",
       title: x.title || "Halacha",
       url: x.url,
       date: x.date,
