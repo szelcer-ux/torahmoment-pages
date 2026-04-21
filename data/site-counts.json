@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 704,
+    "total": 705,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 86
+        "totalAll": 87
       },
       "oneMinute": {
         "audio": 215
@@ -22,6 +22,13 @@
     "updated": "2026-04-21"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "The risk of NOT saying Hallel on Yom Haatzmaut",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19052286-4-21-2026-shloimy-zelcer-the-risk-of-not-saying-hallel-on-yom-haatzmaut.mp3",
+      "date": "2026-04-21T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -48,13 +55,6 @@
       "program": "Halacha",
       "title": "Can I tell my wife Lashon Harah?",
       "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3",
-      "date": "2026-04-16T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Concentrating during davening",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260413-WA0011.mp3",
       "date": "2026-04-16T00:00:00.000Z"
     }
   ],
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "The risk of NOT saying Hallel on Yom Haatzmaut",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19052286-4-21-2026-shloimy-zelcer-the-risk-of-not-saying-hallel-on-yom-haatzmaut.mp3",
+        "date": "2026-04-21T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Can I tell my wife Lashon Harah?",
         "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3",
         "date": "2026-04-16T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "Standing for Aseres Hadibros",
         "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
         "date": "2026-01-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Covering challah during kiddush Part 2",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18577857-1-28-2026-shloimy-zelcer-covering-challah-during-kiddush-part-2.mp3",
-        "date": "2026-01-28T00:00:00.000Z"
       }
     ],
     "parsha": [
