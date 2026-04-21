@@ -447,6 +447,16 @@ async function readHalachaTotalAllFromDom(page) {
 });
 
     allHalacha = flattenHalacha(halachaData);
+
+console.log(
+  "FOUND in allHalacha?",
+  allHalacha.some(x => x.title === "The risk of NOT saying Hallel on Yom Haatzmaut")
+);
+
+console.log(
+  allHalacha.find(x => x.title === "The risk of NOT saying Hallel on Yom Haatzmaut")
+);
+     
   } catch (e) {
     console.warn("Halacha index build failed:", String(e));
     allHalacha = [];
@@ -465,6 +475,16 @@ async function readHalachaTotalAllFromDom(page) {
     .filter((x) => x.url && x.title);
 
   const indexHalacha = (allHalacha || [])
+
+     console.log(
+  "FOUND in indexHalacha?",
+  indexHalacha.some(x => x.title === "The risk of NOT saying Hallel on Yom Haatzmaut")
+);
+
+console.log(
+  indexHalacha.find(x => x.title === "The risk of NOT saying Hallel on Yom Haatzmaut")
+);
+     
     .map((x, i) => ({
       id: `hal-${i}`,
       program: "Halacha",
@@ -492,6 +512,11 @@ async function readHalachaTotalAllFromDom(page) {
     ...x,
     title_lc: norm(x.title),
   }));
+
+console.log(
+  "FOUND in searchIndex?",
+  searchIndex.some(x => x.title === "The risk of NOT saying Hallel on Yom Haatzmaut")
+);
 
   writeFileSync("./data/search-index.json", JSON.stringify(searchIndex, null, 2) + "\n", "utf8");
   console.log("Wrote data/search-index.json:", searchIndex.length);
