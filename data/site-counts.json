@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 707,
+    "total": 708,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 223
+        "video": 224
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-04-23"
+    "updated": "2026-04-24"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Leading by example",
+      "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg",
+      "date": "2026-04-24T02:25:53Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "The Shliach Tzibur in Gan Eden",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0011.mp3",
       "date": "2026-04-21T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "You are holy!",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0008.mp3",
-      "date": "2026-04-20T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Leading by example",
+        "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg",
+        "date": "2026-04-24T02:25:53Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Real change takes time",
         "url": "https://www.youtube.com/watch?v=0E411EfFaqc",
         "date": "2026-04-17T04:13:47Z"
@@ -266,13 +273,6 @@
         "title": "Carry forward",
         "url": "https://www.youtube.com/watch?v=E-K3nDaVWFQ",
         "date": "2026-02-13T03:38:21Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "How do YOU serve Hashem?",
-        "url": "https://www.youtube.com/watch?v=qhs0gvRnUxk",
-        "date": "2026-02-06T03:57:18Z"
       }
     ]
   }
