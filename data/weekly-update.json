@@ -1,29 +1,86 @@
 {
-  "rangeLabel": "April 15–21, 2026",
-  "generatedAt": "2026-04-21T13:59:55.260Z",
-  "totalItems": 1,
+  "rangeLabel": "April 18–24, 2026",
+  "generatedAt": "2026-04-24T11:13:32.632Z",
+  "totalItems": 6,
   "featured": {
-    "id": "hal-68",
-    "title": "Can I tell my wife Lashon Harah?",
-    "program": "Halacha",
-    "type": "audio",
-    "date": "2026-04-16T00:00:00.000Z",
-    "page": "/halacha.html",
-    "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3"
+    "id": "par-ilfCNVU7AFg",
+    "title": "Leading by example",
+    "program": "Parsha",
+    "type": "video",
+    "date": "2026-04-24T02:25:53Z",
+    "page": "/parsha.html",
+    "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg"
   },
   "groups": [
+    {
+      "key": "parsha",
+      "label": "Parsha",
+      "items": [
+        {
+          "id": "par-ilfCNVU7AFg",
+          "title": "Leading by example",
+          "program": "Parsha",
+          "type": "video",
+          "date": "2026-04-24T02:25:53Z",
+          "page": "/parsha.html",
+          "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg"
+        }
+      ]
+    },
     {
       "key": "halacha",
       "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "hal-68",
-          "title": "Can I tell my wife Lashon Harah?",
+          "id": "hal-83",
+          "title": "The risk of NOT saying Hallel on Yom Haatzmaut",
           "program": "Halacha",
           "type": "audio",
-          "date": "2026-04-16T00:00:00.000Z",
+          "date": "2026-04-21T00:00:00.000Z",
           "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3"
+          "url": "https://www.buzzsprout.com/1899789/episodes/19052286-4-21-2026-shloimy-zelcer-the-risk-of-not-saying-hallel-on-yom-haatzmaut.mp3"
+        }
+      ]
+    },
+    {
+      "key": "oneMinute",
+      "label": "One-Minute Audio",
+      "items": [
+        {
+          "id": "one-216",
+          "title": "Keep being holy",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-04-23T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0007.mp3"
+        },
+        {
+          "id": "one-215",
+          "title": "Did we really mean it when we said דיינו?",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-04-22T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260422-WA0035.mp3"
+        },
+        {
+          "id": "one-214",
+          "title": "The Shliach Tzibur in Gan Eden",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-04-21T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0011.mp3"
+        },
+        {
+          "id": "one-213",
+          "title": "You are holy!",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-04-20T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0008.mp3"
         }
       ]
     }
