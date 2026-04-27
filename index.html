@@ -864,6 +864,39 @@
 
     <div class="divider"></div>
 
+    <!-- Parsha Infographics -->
+    <section id="infographicRotator" style="display:none;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px;">
+        <h2 style="margin:0;font-size:1.1rem;">Parsha Infographic</h2>
+        <a href="/infographics.html" style="font-size:0.85rem;color:var(--accent);text-decoration:none;">View all →</a>
+      </div>
+      <div style="background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow);">
+        <div style="display:grid;grid-template-columns:1fr 160px;">
+          <div style="padding:18px 18px 14px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;">
+            <div>
+              <div id="igKicker" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;"></div>
+              <div id="igTitle" style="font-size:17px;font-weight:700;line-height:1.3;margin-bottom:6px;"></div>
+              <div id="igDesc" style="font-size:13px;color:var(--muted);line-height:1.45;"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <a id="igLink" href="/infographics.html" style="font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid rgba(13,148,136,0.3);border-radius:999px;padding:5px 12px;white-space:nowrap;">View infographic →</a>
+              <div id="igDots" style="display:flex;gap:5px;align-items:center;"></div>
+            </div>
+          </div>
+          <a id="igImageLink" href="/infographics.html" style="display:block;background:#0a2e2c;overflow:hidden;">
+            <img id="igImage" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .3s ease;" />
+          </a>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-top:1px solid var(--border);">
+          <button id="igPrev" onclick="igStep(-1)" style="background:none;border:1px solid var(--border);border-radius:10px;padding:4px 12px;font-size:13px;color:var(--muted);cursor:pointer;width:auto;">← Prev</button>
+          <span id="igCounter" style="font-size:12px;color:var(--muted);"></span>
+          <button id="igNext" onclick="igStep(1)" style="background:none;border:1px solid var(--border);border-radius:10px;padding:4px 12px;font-size:13px;color:var(--muted);cursor:pointer;width:auto;">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
     <!-- Recently Added -->
     <section class="card">
       <h2 style="margin:0 0 8px;">Recently added</h2>
@@ -1343,5 +1376,53 @@ list.querySelectorAll(".recentAudio").forEach(markLongShiur);
 </script>
 
   
+<script>
+(async function initInfographicRotator(){
+  try {
+    const res = await fetch('/data/infographics.json', { cache: 'no-store' });
+    if (!res.ok) return;
+    const data = await res.json();
+
+    const entries = Object.entries(data);
+    if (!entries.length) return;
+
+    // featured first, then rest in original order
+    entries.sort((a, b) => (b[1].featured ? 1 : 0) - (a[1].featured ? 1 : 0));
+
+    let current = 0;
+
+    function render(idx) {
+      const [id, item] = entries[idx];
+      document.getElementById('igKicker').textContent = 'Parsha · ' + (item.parsha || '');
+      document.getElementById('igTitle').textContent = item.title || '';
+      document.getElementById('igDesc').textContent = item.description || '';
+
+      const img = document.getElementById('igImage');
+      img.style.opacity = '0';
+      img.src = item.image || '';
+      img.alt = item.title || '';
+      img.onload = () => { img.style.opacity = '1'; };
+
+      document.getElementById('igCounter').textContent = (idx + 1) + ' / ' + entries.length;
+
+      const dots = document.getElementById('igDots');
+      dots.innerHTML = entries.map((_, i) => {
+        const active = i === idx;
+        return '<div style="width:' + (active ? '16' : '6') + 'px;height:6px;border-radius:999px;background:' + (active ? 'var(--accent)' : 'var(--border)') + ';transition:width .2s ease;"></div>';
+      }).join('');
+    }
+
+    window.igStep = function(dir) {
+      current = (current + dir + entries.length) % entries.length;
+      render(current);
+    };
+
+    render(0);
+    document.getElementById('infographicRotator').style.display = '';
+  } catch(e) {
+    console.warn('Infographic rotator failed:', e);
+  }
+})();
+</script>
 </body>
 </html>
