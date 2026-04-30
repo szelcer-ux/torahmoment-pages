@@ -1,450 +1,393 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About TorahMoment</title>
-  <meta name="description" content="Learn about TorahMoment, a growing library of short, practical, and meaningful Torah content including Parsha, One-Minute Torah, Halacha, Hashkafa, and Tefilah shiurim." />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | TorahMoment</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
-    :root{
-      --bg:#f7f7f8;
-      --card:#ffffff;
-      --text:#111827;
-      --muted:#6b7280;
-      --accent:#0d9488;
-      --accent-2:#ccfbf1;
-      --border:#e5e7eb;
-      --shadow:0 8px 24px rgba(0,0,0,.06);
-      --radius:18px;
-
-      --wrap-max: 1060px;
-      --wrap-pad: 16px;
+    :root {
+      --parchment:    #fdf6e3;
+      --parchment-dk: #f5e8c8;
+      --ink:          #2c1f0e;
+      --ink-lt:       #5a4228;
+      --gold:         #b5862b;
+      --gold-lt:      #d4a84b;
+      --rule:         #c9a85c;
+      --cream:        #fffcf5;
     }
 
-    *{box-sizing:border-box}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html,body{
-      margin:0;
-      padding:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      line-height:1.6;
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.8;
+      min-height: 100vh;
     }
 
-    a{
-      color:var(--accent);
-      text-decoration:none;
+    /* ── Subtle parchment texture via SVG background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
     }
 
-    a:hover{
-      text-decoration:underline;
+    /* ── Nav ── */
+    nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      border-bottom: 1px solid var(--rule);
+      background: var(--parchment);
     }
 
-    .wrap{
-      max-width:var(--wrap-max);
-      margin:0 auto;
-      padding:20px var(--wrap-pad) 40px;
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-lt);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--gold); }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 5rem 2rem 3.5rem;
+      background: linear-gradient(to bottom, var(--parchment) 0%, var(--cream) 100%);
+      border-bottom: 1px solid var(--parchment-dk);
     }
 
-    .hero{
-      background:
-        radial-gradient(circle at top right, rgba(13,148,136,.10), transparent 30%),
-        linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
-      border:1px solid var(--border);
-      border-radius:26px;
-      padding:28px 22px;
-      box-shadow:var(--shadow);
-      margin-bottom:18px;
+    .hero-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
     }
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      background:#ecfeff;
-      border:1px solid #c9f7f5;
-      color:#0f766e;
-      font-size:.85rem;
-      font-weight:700;
-      letter-spacing:.01em;
-      margin-bottom:12px;
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
     }
 
-    h1{
-      margin:0 0 10px;
-      font-size:clamp(2rem, 4vw, 3rem);
-      line-height:1.08;
-      letter-spacing:-0.03em;
+    .hero-subtitle {
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--ink-lt);
+      max-width: 480px;
+      margin: 0 auto 2rem;
     }
 
-    .hero p{
-      margin:0;
-      max-width:760px;
-      color:var(--muted);
-      font-size:1.03rem;
+    .hero-rule {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto;
     }
 
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:18px;
+    /* ── Main layout ── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:42px;
-      padding:10px 14px;
-      border-radius:12px;
-      border:1px solid var(--border);
-      background:#fff;
-      color:var(--text);
-      font-weight:700;
-      text-decoration:none;
-      transition:.18s ease;
+    /* ── Section heading ── */
+    .section-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
     }
 
-    .btn:hover{
-      transform:translateY(-1px);
-      text-decoration:none;
+    section { margin-bottom: 3.5rem; }
+
+    section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--parchment-dk);
     }
 
-    .btn-primary{
-      background:var(--accent);
-      border-color:var(--accent);
-      color:#fff;
+    section p {
+      color: var(--ink-lt);
+      margin-bottom: 1rem;
+    }
+    section p:last-child { margin-bottom: 0; }
+
+    /* ── Pull quote ── */
+    blockquote {
+      border-left: 3px solid var(--gold);
+      margin: 2.5rem 0;
+      padding: 1rem 1.8rem;
+      background: var(--parchment);
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p {
+      font-style: italic;
+      font-size: 1.12rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem !important;
+    }
+    blockquote cite {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
     }
 
-    .section{
-      margin-top:18px;
+    /* ── Divider ornament ── */
+    .ornament {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--rule);
+      margin: 2.5rem 0;
+      letter-spacing: 0.5em;
     }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:20px 18px;
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--parchment);
+      border: 1px solid var(--parchment-dk);
+      border-radius: 6px;
+      padding: 2.5rem 2.8rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    h2{
-      margin:0 0 10px;
-      font-size:1.35rem;
-      line-height:1.2;
-      letter-spacing:-0.02em;
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--gold-lt), var(--gold));
     }
 
-    .lead{
-      color:var(--muted);
-      margin:0;
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 1.4rem;
+    }
+    .contact-row:last-child { margin-bottom: 0; }
+
+    .contact-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      margin-top: 2px;
     }
 
-    .stack{
-      display:grid;
-      gap:16px;
+    .contact-icon svg {
+      width: 17px; height: 17px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .program-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:14px;
-      margin-top:14px;
+    .contact-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.15rem;
     }
 
-    .program-card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:16px 15px;
+    .contact-value {
+      font-size: 1.05rem;
+      color: var(--ink);
     }
 
-    .program-card h3{
-      margin:0 0 8px;
-      font-size:1.02rem;
-      line-height:1.2;
+    .contact-value a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .contact-value a:hover {
+      color: var(--gold);
+      border-color: var(--gold);
     }
 
-    .program-card p{
-      margin:0;
-      color:var(--muted);
-      font-size:.97rem;
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--parchment-dk);
+      background: var(--parchment);
     }
 
-    .quote{
-      border-left:4px solid var(--accent);
-      padding:2px 0 2px 14px;
-      color:#374151;
-      margin-top:10px;
+    footer p {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--ink-lt);
     }
 
-    .mini-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:16px;
-      margin-top:18px;
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    .list{
-      display:grid;
-      gap:10px;
-      margin-top:10px;
-    }
-
-    .list a{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 13px;
-      border:1px solid var(--border);
-      border-radius:12px;
-      background:#fff;
-      color:var(--text);
-      text-decoration:none;
-    }
-
-    .list a:hover{
-      border-color:#cbd5e1;
-      transform:translateY(-1px);
-    }
-
-    .list strong{
-      font-size:.98rem;
-    }
-
-    .list span{
-      color:var(--muted);
-      font-size:.92rem;
-      white-space:nowrap;
-    }
-
-    .soft{
-      background:linear-gradient(180deg,#fcfffe 0%, #f8fffd 100%);
-      border:1px solid #d6f5f0;
-    }
-
-    .footer-note{
-      text-align:center;
-      color:var(--muted);
-      font-size:.95rem;
-      margin-top:18px;
-    }
-
-    @media (max-width: 820px){
-      .program-grid,
-      .mini-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding:24px 18px;
-        border-radius:22px;
-      }
-
-      .card{
-        padding:18px 15px;
-      }
-    }
-
-    @media (max-width: 560px){
-      .wrap{
-        padding:14px 14px 30px;
-      }
-
-      h1{
-        font-size:2rem;
-      }
-
-      .hero p{
-        font-size:.98rem;
-      }
-
-      .list a{
-        align-items:flex-start;
-        flex-direction:column;
-      }
-
-      .list span{
-        white-space:normal;
-      }
-    }
+    .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+    .hero h1      { animation: fadeUp 0.6s 0.12s ease both; }
+    .hero-subtitle{ animation: fadeUp 0.6s 0.22s ease both; }
+    .hero-rule    { animation: fadeUp 0.6s 0.32s ease both; }
+    main section  { animation: fadeUp 0.7s 0.35s ease both; }
   </style>
 </head>
 <body>
-  <main class="wrap">
 
-    <section class="hero">
-      <div class="eyebrow">About TorahMoment</div>
-      <h1>A growing library of Torah for everyday life</h1>
-      <p>
-        TorahMoment is a home for short, practical, and meaningful Torah content designed to make learning
-        more accessible, more consistent, and easier to fit into a busy day.
-      </p>
+<!-- ── Navigation ── -->
+<nav>
+  <a href="https://torahmoment.com" class="nav-logo">Torah<span>Moment</span></a>
+  <ul class="nav-links">
+    <li><a href="https://torahmoment.com">Home</a></li>
+    <li><a href="https://torahmoment.com/topics.html">Topics</a></li>
+    <li><a href="https://torahmoment.com/parsha.html">Videos</a></li>
+    <li><a href="https://torahmoment.com/halacha.html">Halacha</a></li>
+    <li><a href="https://torahmoment.com/one-minute-audio.html">One-Min</a></li>
+    <li><a href="https://torahmoment.com/about.html" class="active">About</a></li>
+  </ul>
+</nav>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="/parsha.html">Explore Parsha</a>
-        <a class="btn" href="/one-minute-audio.html">Listen to One-Minute Torah</a>
+<!-- ── Hero ── -->
+<header class="hero">
+  <p class="hero-eyebrow">About TorahMoment</p>
+  <h1>A Moment of Torah,<br>Every Day</h1>
+  <p class="hero-subtitle">Bringing depth, clarity, and meaning to Torah learning</p>
+  <div class="hero-rule"></div>
+</header>
+
+<!-- ── Main Content ── -->
+<main>
+
+  <section>
+    <p class="section-label">The Mission</p>
+    <h2>What Is TorahMoment?</h2>
+    <p>TorahMoment is a resource for daily Torah learning — a place to encounter ideas that illuminate Jewish life, deepen one's understanding of halacha and machshava, and connect with the timeless wisdom of Torah in a meaningful, accessible way.</p>
+    <p>The site hosts divrei Torah, audio and video shiurim, and written resources spanning a range of topics — from the weekly parasha and halacha l'maaseh to Jewish philosophy and the teachings of great gedolim.</p>
+
+  </section>
+
+  <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <section>
+    <p class="section-label">The Person Behind It</p>
+    <h2>About the Author</h2>
+    <p>TorahMoment is the personal project of a Torah-committed Jew with a lifelong love of learning and teaching. Raised in Brooklyn with deep roots in Torah scholarship, the site reflects a commitment to bringing substantive, honest Torah content to a broader audience.</p>
+    <p>The divrei Torah shared here draw on years of learning under distinguished rebbeim, personal study, and a belief that every Jew deserves access to Torah ideas that are both rigorous and alive. The YouTube channel <strong>@torahmoment</strong> offers video shiurim that complement the written content on the site.</p>
+    <p>The goal is simple: to make each learning experience feel like a genuine <em>moment</em> — one that stays with you.</p>
+  </section>
+
+  <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <section>
+    <p class="section-label">Get in Touch</p>
+    <h2>Contact</h2>
+    <p>Questions, feedback, or Torah thoughts to share? Reach out — all correspondence is welcome and appreciated.</p>
+
+    <div class="contact-card">
+
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div>
+          <p class="contact-label">Email</p>
+          <p class="contact-value">
+            <a href="mailto:torahprojects613@gmail.com">torahprojects613@gmail.com</a>
+          </p>
+        </div>
       </div>
-    </section>
 
-    <div class="stack">
-
-      <section class="section card">
-        <h2>What is TorahMoment?</h2>
-        <p class="lead">
-          The goal of TorahMoment is simple: to share Torah in a format that is clear, practical,
-          and easy to access.
-        </p>
-
-        <div class="quote">
-          Whether during a commute, at the Shabbos table, or in a few quiet minutes of personal learning,
-          TorahMoment is meant to help bring more Torah into everyday life.
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+          </svg>
         </div>
-      </section>
-
-      <section class="section card">
-        <h2>What you’ll find here</h2>
-        <p class="lead">
-          TorahMoment includes several ongoing programs and collections of shiurim, each with its own style
-          and purpose.
-        </p>
-
-        <div class="program-grid">
-          <div class="program-card">
-            <h3>🎥 Parsha</h3>
-            <p>
-              Short divrei Torah and deeper shiurim on the weekly parsha, ideal for sharing at the
-              Shabbos table or using for personal inspiration.
-            </p>
-          </div>
-
-          <div class="program-card">
-            <h3>🎧 One-Minute Torah</h3>
-            <p>
-              Very short Torah thoughts designed to deliver a meaningful idea in about a minute,
-              perfect for daily inspiration on the go.
-            </p>
-          </div>
-
-          <div class="program-card">
-            <h3>📚 Halacha / Hashkafa</h3>
-            <p>
-              Shiurim exploring practical halacha, Jewish thought, and everyday questions in Jewish life
-              in a way that is approachable and relevant.
-            </p>
-          </div>
-
-          <div class="program-card">
-            <h3>🙏 Tefilah</h3>
-            <p>
-              Shiurim focused on understanding, appreciating, and connecting more deeply to our daily prayers
-              and the siddur.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section mini-grid">
-        <div class="card">
-          <h2>Who TorahMoment is for</h2>
-          <p class="lead">
-            TorahMoment is designed for anyone looking to add more Torah learning into their day.
-          </p>
-
-          <div class="quote" style="margin-top:14px;">
-            Many of the shiurim are especially suited for busy people looking for Torah they can listen to,
-            share, revisit, and grow from in a realistic way.
-          </div>
-
-          <div class="list" style="margin-top:14px;">
-            <div class="program-card">
-              <h3>Quick inspiration</h3>
-              <p>Short Torah thoughts that fit into even a packed schedule.</p>
-            </div>
-            <div class="program-card">
-              <h3>Shabbos table ideas</h3>
-              <p>Divrei Torah that can be said over and shared with others.</p>
-            </div>
-            <div class="program-card">
-              <h3>Personal growth</h3>
-              <p>Accessible Torah content for steady, ongoing learning.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card soft">
-          <h2>About the speaker</h2>
-          <p class="lead">
-            The shiurim on TorahMoment are delivered by <strong>Shloimy Zelcer</strong>.
-          </p>
-          <p style="margin-top:12px; color:var(--muted);">
-            TorahMoment was created as a way to share Torah insights and learning in a format that is easy
-            to access and easy to share. Over time, it has grown into a broad library of shiurim across
-            multiple Torah topics and learning tracks.
+        <div>
+          <p class="contact-label">YouTube</p>
+          <p class="contact-value">
+            <a href="https://youtube.com/@torahmoment" target="_blank" rel="noopener">@torahmoment</a>
           </p>
         </div>
-      </section>
-
-      <section class="section mini-grid">
-        <div class="card">
-          <h2>Stay connected</h2>
-          <p class="lead">
-            New Torah content is added regularly. Explore the different areas of TorahMoment below.
-          </p>
-
-          <div class="list">
-            <a href="/parsha.html">
-              <strong>Weekly Parsha Divrei Torah</strong>
-              <span>Open →</span>
-            </a>
-            <a href="/one-minute-audio.html">
-              <strong>One-Minute Torah</strong>
-              <span>Open →</span>
-            </a>
-            <a href="/halacha.html">
-              <strong>Halacha &amp; Hashkafa</strong>
-              <span>Open →</span>
-            </a>
-            <a href="/tefilah.html">
-              <strong>Tefilah</strong>
-              <span>Open →</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2>Why TorahMoment?</h2>
-          <p class="lead">
-            TorahMoment is built around clarity, brevity, and consistency.
-          </p>
-          <p style="margin-top:12px; color:var(--muted);">
-            The idea is not only to make Torah available, but to make it easier to return to regularly —
-            through short formats, practical topics, and a growing library that can be explored by topic,
-            program, and weekly parsha.
-          </p>
-        </div>
-      </section>
-
-      <section class="section card">
-        <h2>Wishing you continued growth in Torah learning</h2>
-        <p class="lead">
-          Whether you are here for a quick Torah thought, a weekly dvar Torah, or a deeper shiur,
-          may TorahMoment be a source of inspiration, growth, and connection.
-        </p>
-      </section>
+      </div>
 
     </div>
+  </section>
 
-    <div class="footer-note">
-      TorahMoment • Short, practical, and meaningful Torah for everyday life
-    </div>
+</main>
 
-  </main>
+<!-- ── Footer ── -->
+<footer>
+  <p>&copy; <span id="yr"></span> TorahMoment &nbsp;·&nbsp; All content for the sake of Torah and its learners</p>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
