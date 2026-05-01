@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 712,
+    "total": 713,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 87
+        "totalAll": 88
       },
       "oneMinute": {
         "audio": 220
@@ -28,6 +28,13 @@
       "title": "Two components of chinuch",
       "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ",
       "date": "2026-05-01T03:10:57Z"
+    },
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Yissachar Zevulun",
+      "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3",
+      "date": "2026-04-30T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -49,13 +56,6 @@
       "title": "Surround yourself with holiness",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260427-WA0020.mp3",
       "date": "2026-04-27T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Leading by example",
-      "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg",
-      "date": "2026-04-24T02:25:53Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Yissachar Zevulun",
+        "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3",
+        "date": "2026-04-30T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "The risk of NOT saying Hallel on Yom Haatzmaut",
         "url": "https://www.buzzsprout.com/1899789/episodes/19052286-4-21-2026-shloimy-zelcer-the-risk-of-not-saying-hallel-on-yom-haatzmaut.mp3",
         "date": "2026-04-21T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "Leaving a sefer open",
         "url": "https://www.buzzsprout.com/1899789/episodes/18712806-2-19-2026-shloimy-zelcer-leaving-a-sefer-open.mp3",
         "date": "2026-02-19T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Standing for Aseres Hadibros",
-        "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
-        "date": "2026-01-29T00:00:00.000Z"
       }
     ],
     "parsha": [
