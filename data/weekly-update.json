@@ -1,7 +1,7 @@
 {
   "rangeLabel": "April 25, 2026–May 1, 2026",
-  "generatedAt": "2026-05-01T11:14:16.368Z",
-  "totalItems": 4,
+  "generatedAt": "2026-05-01T14:05:38.667Z",
+  "totalItems": 5,
   "featured": {
     "id": "par-U1E7OVBU3vQ",
     "title": "Two components of chinuch",
@@ -24,6 +24,21 @@
           "date": "2026-05-01T03:10:57Z",
           "page": "/parsha.html",
           "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ"
+        }
+      ]
+    },
+    {
+      "key": "halacha",
+      "label": "Halacha / Hashkafa",
+      "items": [
+        {
+          "id": "hal-68",
+          "title": "Yissachar Zevulun",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-04-30T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3"
         }
       ]
     },
