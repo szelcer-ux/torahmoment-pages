@@ -2883,76 +2883,6 @@
     "id": "hal-68",
     "program": "Halacha",
     "type": "audio",
-    "title": "Can I tell my wife Lashon Harah?",
-    "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3",
-    "date": "2026-04-16T00:00:00.000Z",
-    "page": "/halacha.html",
-    "title_lc": "can i tell my wife lashon harah?"
-  },
-  {
-    "id": "hal-69",
-    "program": "Halacha",
-    "type": "audio",
-    "title": "Is Iced Coffee the answer?",
-    "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
-    "date": "2026-03-12T00:00:00.000Z",
-    "page": "/halacha.html",
-    "title_lc": "is iced coffee the answer?"
-  },
-  {
-    "id": "hal-70",
-    "program": "Halacha",
-    "type": "audio",
-    "title": "Asking two Rabbis the same Halachic question",
-    "url": "https://www.buzzsprout.com/1899789/episodes/11783471-11-29-2022-shloimy-zelcer.mp3",
-    "date": "2022-11-29T00:00:00.000Z",
-    "page": "/halacha.html",
-    "title_lc": "asking two rabbis the same halachic question"
-  },
-  {
-    "id": "hal-71",
-    "program": "Halacha",
-    "type": "audio",
-    "title": "A misconception regarding tevilas keilim",
-    "url": "https://www.buzzsprout.com/1899789/episodes/11006941-7-21-2022-shloimy-zelcer.mp3",
-    "date": "2022-07-21T00:00:00.000Z",
-    "page": "/halacha.html",
-    "title_lc": "a misconception regarding tevilas keilim"
-  },
-  {
-    "id": "hal-72",
-    "program": "Halacha",
-    "type": "audio",
-    "title": "Counting Jews",
-    "url": "https://2mishnasaday.com/wp-content/uploads/countingjewsmp3.mp3",
-    "date": "2020-08-20T00:00:00.000Z",
-    "page": "/halacha.html",
-    "title_lc": "counting jews"
-  },
-  {
-    "id": "hal-73",
-    "program": "Halacha",
-    "type": "audio",
-    "title": "Nittel Nacht",
-    "url": "https://2mishnasaday.com/wp-content/uploads/nittel.mp3",
-    "date": "2020-12-24T00:00:00.000Z",
-    "page": "/halacha.html",
-    "title_lc": "nittel nacht"
-  },
-  {
-    "id": "hal-74",
-    "program": "Halacha",
-    "type": "audio",
-    "title": "Kol Isha",
-    "url": "https://2mishnasaday.com/wp-content/uploads/KOLISHA.mp3",
-    "date": "2020-02-20T00:00:00.000Z",
-    "page": "/halacha.html",
-    "title_lc": "kol isha"
-  },
-  {
-    "id": "hal-75",
-    "program": "Halacha",
-    "type": "audio",
     "title": "Yissachar Zevulun",
     "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3",
     "date": "2026-04-30T00:00:00.000Z",
@@ -2960,7 +2890,7 @@
     "title_lc": "yissachar zevulun"
   },
   {
-    "id": "hal-76",
+    "id": "hal-69",
     "program": "Halacha",
     "type": "audio",
     "title": "Unverified collectors",
@@ -2970,7 +2900,7 @@
     "title_lc": "unverified collectors"
   },
   {
-    "id": "hal-77",
+    "id": "hal-70",
     "program": "Halacha",
     "type": "audio",
     "title": "The obligation to give",
@@ -2980,7 +2910,7 @@
     "title_lc": "the obligation to give"
   },
   {
-    "id": "hal-78",
+    "id": "hal-71",
     "program": "Halacha",
     "type": "audio",
     "title": "Machatzis Hashekel in halacha",
@@ -2988,6 +2918,76 @@
     "date": "2024-02-29T00:00:00.000Z",
     "page": "/halacha.html",
     "title_lc": "machatzis hashekel in halacha"
+  },
+  {
+    "id": "hal-72",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Can I tell my wife Lashon Harah?",
+    "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3",
+    "date": "2026-04-16T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "can i tell my wife lashon harah?"
+  },
+  {
+    "id": "hal-73",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Is Iced Coffee the answer?",
+    "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
+    "date": "2026-03-12T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "is iced coffee the answer?"
+  },
+  {
+    "id": "hal-74",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Asking two Rabbis the same Halachic question",
+    "url": "https://www.buzzsprout.com/1899789/episodes/11783471-11-29-2022-shloimy-zelcer.mp3",
+    "date": "2022-11-29T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "asking two rabbis the same halachic question"
+  },
+  {
+    "id": "hal-75",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "A misconception regarding tevilas keilim",
+    "url": "https://www.buzzsprout.com/1899789/episodes/11006941-7-21-2022-shloimy-zelcer.mp3",
+    "date": "2022-07-21T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "a misconception regarding tevilas keilim"
+  },
+  {
+    "id": "hal-76",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Counting Jews",
+    "url": "https://2mishnasaday.com/wp-content/uploads/countingjewsmp3.mp3",
+    "date": "2020-08-20T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "counting jews"
+  },
+  {
+    "id": "hal-77",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Nittel Nacht",
+    "url": "https://2mishnasaday.com/wp-content/uploads/nittel.mp3",
+    "date": "2020-12-24T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "nittel nacht"
+  },
+  {
+    "id": "hal-78",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Kol Isha",
+    "url": "https://2mishnasaday.com/wp-content/uploads/KOLISHA.mp3",
+    "date": "2020-02-20T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "kol isha"
   },
   {
     "id": "hal-79",
