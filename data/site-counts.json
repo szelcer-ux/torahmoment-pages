@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 711,
+    "total": 712,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 224
+        "video": 225
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-04-30"
+    "updated": "2026-05-01"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Two components of chinuch",
+      "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ",
+      "date": "2026-05-01T03:10:57Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Leading by example",
       "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg",
       "date": "2026-04-24T02:25:53Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Keep being holy",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0007.mp3",
-      "date": "2026-04-23T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Two components of chinuch",
+        "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ",
+        "date": "2026-05-01T03:10:57Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Leading by example",
         "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg",
         "date": "2026-04-24T02:25:53Z"
@@ -266,13 +273,6 @@
         "title": "Be youthful not childish",
         "url": "https://www.youtube.com/watch?v=GiYs0ntVDuI",
         "date": "2026-02-20T02:49:14Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Carry forward",
-        "url": "https://www.youtube.com/watch?v=E-K3nDaVWFQ",
-        "date": "2026-02-13T03:38:21Z"
       }
     ]
   }
