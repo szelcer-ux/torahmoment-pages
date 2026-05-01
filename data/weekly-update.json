@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "April 18–24, 2026",
-  "generatedAt": "2026-04-24T11:13:32.632Z",
-  "totalItems": 6,
+  "rangeLabel": "April 25, 2026–May 1, 2026",
+  "generatedAt": "2026-05-01T11:14:16.368Z",
+  "totalItems": 4,
   "featured": {
-    "id": "par-ilfCNVU7AFg",
-    "title": "Leading by example",
+    "id": "par-U1E7OVBU3vQ",
+    "title": "Two components of chinuch",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-04-24T02:25:53Z",
+    "date": "2026-05-01T03:10:57Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg"
+    "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ"
   },
   "groups": [
     {
@@ -17,28 +17,13 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-ilfCNVU7AFg",
-          "title": "Leading by example",
+          "id": "par-U1E7OVBU3vQ",
+          "title": "Two components of chinuch",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-04-24T02:25:53Z",
+          "date": "2026-05-01T03:10:57Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg"
-        }
-      ]
-    },
-    {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
-      "items": [
-        {
-          "id": "hal-83",
-          "title": "The risk of NOT saying Hallel on Yom Haatzmaut",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-04-21T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19052286-4-21-2026-shloimy-zelcer-the-risk-of-not-saying-hallel-on-yom-haatzmaut.mp3"
+          "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ"
         }
       ]
     },
@@ -47,40 +32,31 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-216",
-          "title": "Keep being holy",
+          "id": "one-219",
+          "title": "Dont fall into the trap",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-04-23T00:00:00.000Z",
+          "date": "2026-04-30T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0007.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260430-WA0009.mp3"
         },
         {
-          "id": "one-215",
-          "title": "Did we really mean it when we said דיינו?",
+          "id": "one-218",
+          "title": "Up or down doesn't matter",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-04-22T00:00:00.000Z",
+          "date": "2026-04-28T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260422-WA0035.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260428-WA0029.mp3"
         },
         {
-          "id": "one-214",
-          "title": "The Shliach Tzibur in Gan Eden",
+          "id": "one-217",
+          "title": "Surround yourself with holiness",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-04-27T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0011.mp3"
-        },
-        {
-          "id": "one-213",
-          "title": "You are holy!",
-          "program": "One-Minute",
-          "type": "audio",
-          "date": "2026-04-20T00:00:00.000Z",
-          "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0008.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260427-WA0020.mp3"
         }
       ]
     }
