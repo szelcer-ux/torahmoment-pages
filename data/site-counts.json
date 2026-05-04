@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 713,
+    "total": 714,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 88
       },
       "oneMinute": {
-        "audio": 220
+        "audio": 221
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-05-04"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Look to the right",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260504-WA0007.mp3",
+      "date": "2026-05-04T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,17 +56,17 @@
       "title": "Up or down doesn't matter",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260428-WA0029.mp3",
       "date": "2026-04-28T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Surround yourself with holiness",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260427-WA0020.mp3",
-      "date": "2026-04-27T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Look to the right",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260504-WA0007.mp3",
+        "date": "2026-05-04T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Not everything is black and white",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260414-WA0038.mp3",
         "date": "2026-04-14T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Use your words wisely",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260413-WA0012.mp3",
-        "date": "2026-04-13T00:00:00.000Z"
       }
     ],
     "halacha": [
