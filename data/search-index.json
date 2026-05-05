@@ -2210,6 +2210,16 @@
     "title_lc": "look to the right"
   },
   {
+    "id": "one-221",
+    "program": "One-Minute",
+    "type": "audio",
+    "title": "R' Shimon bar yochais legacy",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260505-WA0020.mp3",
+    "date": "2026-05-05T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "title_lc": "r' shimon bar yochais legacy"
+  },
+  {
     "id": "hal-0",
     "program": "Halacha",
     "type": "audio",
