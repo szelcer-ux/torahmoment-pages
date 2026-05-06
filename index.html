@@ -1,1428 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="/favicon.ico" sizes="any">
+<meta charset="UTF-8"/>
+<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0d9488">
-  <title>TorahMoment — Shloimy Zelcer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Torah videos and audio shiurim by Shloimy Zelcer" />
-
-  <style>
-    :root{
-      --bg:#f7f7f8;
-      --card:#ffffff;
-      --text:#111;
-      --muted:#666;
-      --border:#e7e7ee;
-      --accent:#0d9488;
-      --shadow:0 6px 22px rgba(0,0,0,0.07);
-      --radius:16px;
-    }
-
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
-
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    header{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom: 14px;
-    }
-
-    h1{
-      margin:0 0 2px;
-      font-size: 1.75rem;
-      letter-spacing: -0.02em;
-    }
-
-    .subtle{
-      color:var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.35;
-    }
-
-    .card{
-      background:var(--card);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow);
-      margin-top: 18px;
-      border: 1px solid rgba(0,0,0,0.02);
-    }
-
-    /* --- Stats row --- */
-    .stats{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .stat{
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 12px;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
-    }
-
-    .stat .label{
-      color: var(--muted);
-      font-size: 0.82rem;
-      margin-bottom: 6px;
-    }
-
-    .stat .value{
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .stat .hint{
-      margin-top: 4px;
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    /* --- Program cards --- */
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .prog{
-      display:flex;
-      gap: 12px;
-      align-items:flex-start;
-      padding: 14px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: #fbfbfd;
-      text-decoration:none;
-      color: var(--text);
-      transition: transform .08s ease, box-shadow .08s ease, border-color .08s ease;
-    }
-
-    .prog:hover{
-      transform: translateY(-1px);
-      border-color: rgba(13,148,136,0.35);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    }
-
-    .icon{
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: rgba(13,148,136,0.12);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex: 0 0 auto;
-      font-size: 18px;
-    }
-
-    .prog h3{
-      margin: 0 0 3px;
-      font-size: 1.05rem;
-      letter-spacing:-0.01em;
-    }
-
-    .prog .meta{
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.25;
-    }
-
-    .prog .counts{
-      margin-top: 8px;
-      font-size: 0.88rem;
-      color: #334155;
-    }
-
-    .prog .counts b{
-      font-weight: 700;
-      color: #0f172a;
-    }
-
-    .prog .arrow{
-      margin-left:auto;
-      color:#64748b;
-      font-size: 18px;
-      padding-top: 2px;
-    }
-
-    .divider{
-      height:1px;
-      background:#e6e6ea;
-      margin: 22px 0;
-    }
-
-    /* --- Recently Added link card --- */
-    .latestLink{
-      display:block;
-      padding:14px 16px;
-      border-radius:12px;
-      background:#eef6ff;
-      text-decoration:none;
-      color:#0b57d0;
-      font-weight:600;
-      text-align:center;
-      border: 1px solid rgba(11,87,208,0.12);
-    }
-    .latestLink:hover{
-      background:#e2eeff;
-    }
-
-    footer{
-      margin-top: 30px;
-      text-align:center;
-      color:#777;
-      font-size:0.9rem;
-    }
-
-/* More subtle group headers */
-.recentGroup{
-  margin-top: 12px;
-  padding: 6px 2px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: rgba(15, 23, 42, 0.65);
-  letter-spacing: 0.02em;
-  border-top: 1px solid rgba(231,231,238,0.9);
+<meta name="theme-color" content="#1a6b5e">
+<title>TorahMoment — Shloimy Zelcer</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Torah videos and audio shiurim by Shloimy Zelcer"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0f2f5;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --subtle:#94a3b8;
+  --border:#e2e8f0;
+  --border-strong:#cbd5e1;
+  --accent:#1a6b5e;
+  --accent-lt:rgba(26,107,94,0.09);
+  --accent-mid:rgba(26,107,94,0.22);
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:0 4px 14px rgba(0,0,0,0.08),0 1px 4px rgba(0,0,0,0.04);
+  --radius:12px;
 }
-.recentGroup:first-child{
-  margin-top: 0;
-  border-top: none;
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+.tm-topbar{width:100%;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+.tm-topbar-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;height:46px;position:relative}
+.tm-topbar-inner::-webkit-scrollbar{display:none}
+.tm-topbar-inner::after{content:"";position:sticky;right:0;top:0;width:26px;height:100%;pointer-events:none;background:linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,1));margin-left:auto}
+.home-link{display:flex;align-items:center;justify-content:center;padding:0 12px 0 0;border-right:1px solid var(--border);margin-right:6px;color:var(--muted);flex-shrink:0}
+.home-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tm-topbar a,.tm-topbar a:visited{text-decoration:none;color:var(--muted);font-size:13.5px;font-weight:500;white-space:nowrap;padding:0 11px;height:46px;display:inline-flex;align-items:center;border-bottom:2px solid transparent;transition:color .15s}
+.tm-topbar a:hover{color:var(--text)}
+.tm-topbar a.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tm-topbar a+a{border-left:1px solid rgba(0,0,0,0.06);margin-left:4px;padding-left:11px}
+@media(max-width:520px){
+  .tm-topbar-inner{padding:0 12px}
+  .tm-topbar a,.tm-topbar a:visited{font-size:13px;padding:0 9px}
+  .tm-topbar a+a{margin-left:3px;padding-left:9px}
+  .tm-topbar a[href$="/one-minute-audio.html"]{font-size:0}
+  .tm-topbar a[href$="/one-minute-audio.html"]::before{content:"One-Min";font-size:13px}
 }
 
-/* Recent rows */
-.recentRow{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:6px 10px;  
-  border-radius:10px;
-  text-decoration:none;
-  color:#111;
-  align-items:flex-start;
+/* ── WRAP ── */
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 56px}
+
+/* ── HERO ── */
+.hero{margin-bottom:26px}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+h1{font-family:'Lora',Georgia,serif;font-size:2.15rem;font-weight:700;letter-spacing:-.025em;line-height:1.12;color:var(--text);margin-bottom:5px}
+.subtle{color:var(--muted);font-size:.9rem}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:22px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;border-top:3px solid var(--accent);box-shadow:var(--shadow)}
+.stat .label{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.stat .value{font-family:'Lora',Georgia,serif;font-size:1.65rem;font-weight:700;color:var(--text);letter-spacing:-.02em;line-height:1}
+.stat .hint{font-size:11.5px;color:var(--subtle);margin-top:4px;line-height:1.3}
+
+/* ── SEARCH ── */
+.search-wrap{background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius);display:flex;align-items:center;gap:10px;padding:11px 16px;margin-bottom:24px;box-shadow:var(--shadow);transition:border-color .15s,box-shadow .15s}
+.search-wrap:focus-within{border-color:var(--accent-mid);box-shadow:0 0 0 3px rgba(26,107,94,0.08),var(--shadow)}
+.search-icon{color:var(--subtle);flex-shrink:0}
+.search-icon svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#tmGlobalQ{width:100%;border:none;background:transparent;font-size:14px;color:var(--text);outline:none}
+#tmGlobalQ::placeholder{color:var(--subtle)}
+#tmGlobalClear{border:none;background:transparent;cursor:pointer;color:var(--subtle);padding:2px 6px;border-radius:6px;font-size:14px}
+#tmGlobalClear:hover{background:rgba(0,0,0,.06)}
+
+/* Search panel */
+.tm-gs-panel{margin-top:8px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);overflow:hidden;box-shadow:var(--shadow-md)}
+.tm-gs-meta{padding:10px 12px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)}
+.tm-gs-results{max-height:360px;overflow:auto}
+.tm-gs-item{display:block;padding:10px 12px;text-decoration:none;color:inherit;border-bottom:1px solid var(--border)}
+.tm-gs-item:last-child{border-bottom:0}
+.tm-gs-item:hover{background:var(--accent-lt)}
+.tm-gs-title{font-size:14px;font-weight:600}
+.tm-gs-sub{margin-top:2px;font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+.tm-pill{padding:2px 8px;border-radius:999px;background:var(--accent-lt);color:var(--accent);font-weight:600}
+
+/* ── SECTION LABELS ── */
+.section-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.section-head h2{font-family:'Lora',Georgia,serif;font-size:1.1rem;font-weight:600;color:var(--text)}
+.section-head a{font-size:12px;color:var(--accent);text-decoration:none;font-weight:500}
+.section-head a:hover{text-decoration:underline}
+
+/* ── PROGRAM GRID ── */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.prog{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:15px;display:flex;gap:12px;align-items:flex-start;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:border-color .15s,transform .12s,box-shadow .12s}
+.prog:hover{border-color:var(--accent-mid);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.icon{width:38px;height:38px;border-radius:10px;background:var(--accent-lt);border:1px solid var(--accent-mid);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.prog h3{font-size:13.5px;font-weight:700;margin-bottom:2px;color:var(--text)}
+.prog .meta{color:var(--muted);font-size:11.5px;line-height:1.3;margin-bottom:5px}
+.prog .counts{font-size:11.5px;color:var(--accent);font-weight:600}
+.prog .arrow{display:none}
+
+/* Featured topics card */
+.prog-topics{grid-column:1/-1;background:linear-gradient(135deg,rgba(26,107,94,.055) 0%,rgba(26,107,94,.02) 100%);border-color:rgba(26,107,94,.2)}
+.prog-topics:hover{border-color:rgba(26,107,94,.38)}
+.prog-kicker{font-size:9.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.topic-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.topic-chips span{display:inline-flex;align-items:center;padding:2px 9px;border-radius:999px;background:var(--accent-lt);color:var(--accent);font-size:11px;font-weight:600;line-height:1;white-space:nowrap;border:1px solid var(--accent-mid)}
+.prog-topics .counts{margin-top:10px}
+
+/* ── UTILITY CARDS ── */
+.util-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.advanced-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:13px 15px;display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:border-color .15s,transform .12s}
+.advanced-card:hover{border-color:var(--accent-mid);transform:translateY(-1px)}
+.advanced-left{display:flex;align-items:center;gap:12px}
+.advanced-icon{width:34px;height:34px;border-radius:9px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.advanced-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:1px}
+.advanced-sub{font-size:11.5px;color:var(--muted);line-height:1.3}
+.advanced-arrow{margin-left:auto;color:var(--subtle);font-size:16px;flex-shrink:0}
+.advanced-wrap{margin-top:10px}
+.advanced-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border);margin:28px 0}
+
+/* ── INFOGRAPHIC ── */
+.infographic-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.infographic-card>div:first-child{display:grid;grid-template-columns:1fr 160px}
+.infographic-content{padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+#igKicker{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+#igTitle{font-size:15px;font-weight:700;line-height:1.3;margin-bottom:4px;color:var(--text)}
+#igDesc{font-size:12.5px;color:var(--muted);line-height:1.4}
+.infographic-footer{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-top:1px solid var(--border)}
+.infographic-btn{background:transparent;border:1px solid var(--border);border-radius:8px;padding:4px 12px;font-size:12px;color:var(--muted);cursor:pointer;transition:border-color .12s,background .12s;width:auto}
+.infographic-btn:hover{border-color:var(--border-strong);background:#f8fafc}
+#igCounter{font-size:11px;color:var(--subtle)}
+#igLink{font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--accent-mid);border-radius:999px;padding:5px 12px;white-space:nowrap}
+#igLink:hover{background:var(--accent-lt)}
+#igDots{display:flex;gap:5px;align-items:center}
+
+/* ── RECENT LIST ── */
+.recentGroup{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:12px 0 6px;border-top:1px solid var(--border);margin-top:2px}
+.recentGroup:first-child{padding-top:0;border-top:none;margin-top:0}
+.recentRow{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:9px;text-decoration:none;color:var(--text);align-items:flex-start;transition:background .1s;cursor:pointer}
+.recentRow:hover{background:#f1f5f9}
+.recentVideo{align-items:center}
+.rLeft{flex:1;min-width:0}
+.rLine{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rIcon{font-size:14px;width:22px;text-align:center;flex-shrink:0;padding-top:2px}
+.rTitle{font-size:13.5px;color:var(--text);flex:1;min-width:0}
+.rDate{font-size:11px;color:var(--subtle);white-space:nowrap;flex-shrink:0}
+.rMeta{font-size:11px;color:var(--muted)}
+.rSub{display:flex;margin-top:5px;padding-left:30px}
+.speedBtns{display:flex;gap:4px}
+.speedBtn{background:transparent;border:1px solid var(--border);border-radius:6px;padding:2px 7px;font-size:11px;color:var(--muted);cursor:pointer;transition:background .1s,border-color .1s,color .1s}
+.speedBtn:hover,.speedBtn.isOn{background:var(--accent-lt);border-color:var(--accent-mid);color:var(--accent)}
+.longBadge{margin-left:6px;padding:2px 8px;font-size:0.72rem;font-weight:600;border-radius:999px;background:var(--accent-lt);color:var(--accent);white-space:nowrap}
+.latestLink{display:block;padding:12px 16px;border-radius:10px;background:var(--accent-lt);text-decoration:none;color:var(--accent);font-weight:600;font-size:.92rem;text-align:center;border:1px solid var(--accent-mid)}
+.latestLink:hover{background:rgba(26,107,94,.15)}
+
+/* Mobile title truncation */
+@media(max-width:620px){
+  .rTitle{display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+  .recentAudio.isTitleOpen .rTitle{white-space:normal;overflow:visible}
 }
-.recentRow:hover{ background:#f6f8fb; }
+/* Audio player sizing */
+.rPlayer{flex:1;min-width:200px;transform:scale(.92);transform-origin:right center}
+.recentAudio .rSub{display:flex;justify-content:flex-end;margin-top:6px}
+.recentAudio .speedBtns{margin-left:auto}
+@media(min-width:821px){.rPlayer{height:30px}}
 
-.recentRow + .recentRow{
-  border-top:1px solid rgba(0,0,0,0.05);
-  margin-top:4px;
-  padding-top:6px;
+/* ── FOOTER ── */
+footer{margin-top:40px;text-align:center;color:var(--subtle);font-size:.85rem;padding-top:20px;border-top:1px solid var(--border)}
+footer a{color:var(--subtle);text-decoration:none}
+footer a:hover{color:var(--muted)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .stats{grid-template-columns:1fr 1fr}
+  .grid{grid-template-columns:1fr}
+  .prog-topics{grid-column:auto}
+  .util-grid{grid-template-columns:1fr}
+  .wrap{padding:16px 14px 48px}
+  h1{font-size:1.75rem}
+  .infographic-card>div:first-child{grid-template-columns:1fr}
 }
-
-    
-.rIcon{ width:20px; text-align:center; }
-
-.rTitle{
-  font-weight: 600;
-  line-height:1.15;
-}
-
-.rMeta{
-  color:#666;
-  font-size:0.85rem;
-  white-space:nowrap;
-}
-
-/* Date shown inline */
-.rDate{
-  margin-left:6px;
-  color:#666;
-  font-size:0.82rem;
-  white-space:nowrap;
-}
-
-/* Audio layout: title/date on one line, player to the right */
-.recentAudio{
-  background: transparent;
-   align-items: center;   /* keeps player vertically aligned */
-}
-.recentAudio:hover{
-  background:#f6f8fb;
-}
-
-.rLeft{
-  flex: 1;
-  min-width: 0;
-}
-
-.rLine{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  min-width:0;
-}
-
-.rLine .rTitle{
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-
-.rSub{
-  margin-top:4px;
-  display:flex;
-  gap:10px;
-}
-
-.rPlayer{
-  width: 220px;          /* ← this is the key change */
-  min-width: 200px;
-}
-
-/* Mobile: stack player under title */
-@media (max-width: 620px){
-  .recentAudio{
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .rPlayer{
-    width: 100%;
-    min-width: 0;
-  }
-  .rDate{
-    margin-left: 8px;
-  }
-}
-
-
-    /* Mobile */
-    @media (max-width: 820px){
-      header{ align-items:flex-start; flex-direction:column; }
-      .stats{ grid-template-columns: 1fr 1fr; }
-      .grid{ grid-template-columns: 1fr; }
-      .wrap{ padding: 16px; }
-    }
-
-/* speed buttons hidden by default */
-.speedBtns{
-  display:none;
-  gap:8px;
-  margin-left: 10px;
-  align-items:center;
-}
-
-.recentAudio.isActive .speedBtns{
-  display:inline-flex;
-}
-
-.speedBtn{
-  border:1px solid var(--border);
-  background:#fff;
-  padding:6px 10px;
-  border-radius:999px;
-  font-weight:650;
-  font-size:0.85rem;
-  cursor:pointer;
-}
-
-.speedBtn:hover{
-  border-color: rgba(13,148,136,0.35);
-}
-
-.recentAudio .speedBtn.isOn{
-  background: rgba(13,148,136,0.12);
-  border-color: rgba(13,148,136,0.28);
-}
-
-/* Desktop only: align title+date and keep player in the whitespace */
-@media (min-width: 621px){
-  .recentAudio{
-    display:grid;                 /* overrides flex from .recentRow */
-    grid-template-columns: 1fr auto;
-    column-gap: 14px;
-    align-items: center;
-  }
-
-  .rLine{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    min-width:0;
-  }
-  .rTitle{
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    font-weight:600;
-  }
-  .rDate{
-    margin-left:auto;            /* now aligns with title line */
-    color:#666;
-    font-size:0.82rem;
-    white-space:nowrap;
-  }
-
-  /* make the native control feel less heavy */
-  .rPlayer{
-    width: 210px;                /* try 200–230 */
-    min-width: 200px;
-    transform: scale(0.92);      /* visually smaller */
-    transform-origin: right center;
-  }
-
-   /* Push speed buttons to the right, near the player */
-  .recentAudio .rSub{
-    display:flex;
-    justify-content:flex-end;
-    margin-top: 6px;
-  }
-
-  .recentAudio .speedBtns{
-    margin-left: auto;
-  }
-}
-
-.longBadge{
-  margin-left: 8px;
-  padding: 2px 8px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  border-radius: 999px;
-  background: rgba(13,148,136,0.12);
-  color: #0d9488;
-  white-space: nowrap;
-}
-
-/* Mobile: collapse long titles by default */
-@media (max-width: 620px){
-  .rTitle{
-    display: inline-block;
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    cursor: pointer;
-  }
-
-  /* Expanded title */
-  .recentAudio.isTitleOpen .rTitle{
-    white-space: normal;
-    overflow: visible;
-  }
-}
-
-@media (min-width: 821px){
-  .rPlayer{
-    height:30px;   /* default is ~36px */
-  }
-}
-
-    
-    .tm-global-search{ margin:16px 0; }
-.tm-gs-box{
-  display:flex; gap:10px; align-items:center;
-  border:1px solid #e5e7eb; border-radius:14px;
-  padding:10px 12px; background:#fff;
-  box-shadow:0 2px 10px rgba(0,0,0,.05);
-}
-#tmGlobalQ{ width:100%; border:0; outline:none; font-size:15px; background:transparent; }
-#tmGlobalClear{ border:0; background:transparent; cursor:pointer; color:#6b7280; padding:4px 6px; border-radius:10px; }
-#tmGlobalClear:hover{ background:rgba(0,0,0,.06); }
-
-.tm-gs-panel{
-  margin-top:10px; border:1px solid #e5e7eb; border-radius:14px;
-  background:#fff; overflow:hidden; box-shadow:0 8px 26px rgba(0,0,0,.08);
-}
-.tm-gs-meta{ padding:10px 12px; font-size:12px; color:#6b7280; border-bottom:1px solid #e5e7eb; }
-.tm-gs-results{ max-height:360px; overflow:auto; }
-.tm-gs-item{ display:block; padding:10px 12px; text-decoration:none; color:inherit; border-bottom:1px solid #e5e7eb; }
-.tm-gs-item:last-child{ border-bottom:0; }
-.tm-gs-item:hover{ background:rgba(13,148,136,.08); }
-.tm-gs-title{ font-size:14px; font-weight:650; }
-.tm-gs-sub{ margin-top:2px; font-size:12px; color:#6b7280; display:flex; gap:10px; flex-wrap:wrap; }
-.tm-pill{ padding:2px 8px; border-radius:999px; background:rgba(13,148,136,.12); color:#0d9488; font-weight:650; }
-
-/* ===== TorahMoment Topbar ===== */
-.tm-topbar{
-  width:100%;
-  background:#ffffff;
-  border-bottom:1px solid var(--border, #e7e7ee);
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-
-.tm-topbar-inner{
-  max-width:980px;     /* match .wrap */
-  margin:0 auto;
-  padding:10px 20px;   /* match .wrap side padding */
-  display:flex;
-  align-items:center;
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-  position:relative;
-}
-
-
-.tm-topbar-inner::-webkit-scrollbar{ display:none; }
-
-/* subtle "more to the right" fade */
-.tm-topbar-inner::after{
-  content:"";
-  position:sticky;
-  right:0;
-  top:0;
-  width:26px;
-  height:100%;
-  pointer-events:none;
-  background:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
-  margin-left:auto;
-}
-
-.tm-topbar a,
-.tm-topbar a:visited{
-  text-decoration:none;
-  color:var(--muted, #555);
-  font-size:14px;
-  font-weight:500;
-  white-space:nowrap;
-  padding:4px 10px;
-}
-
-.tm-topbar a:hover{ color:var(--accent, #0d9488); }
-
-.tm-topbar a.active{
-  color:var(--accent, #0d9488);
-  font-weight:600;
-}
-
-/* separators */
-.tm-topbar a + a{
-  border-left:1px solid rgba(0,0,0,0.06);
-  margin-left:6px;
-  padding-left:12px;
-}
-
-/* home icon (optional) */
-.tm-topbar .home-link{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:4px 10px;
-}
-.tm-topbar .home-link svg{
-  width:18px;
-  height:18px;
-}
-
-/* Mobile tighten */
-@media (max-width: 520px){
-  .tm-topbar-inner{ padding:8px 10px; }
-  .tm-topbar a, .tm-topbar a:visited{ font-size:13px; padding:3px 8px; }
-  .tm-topbar a + a{ margin-left:4px; padding-left:10px; }
-}
-
-@media (max-width: 520px){
-
-  /* Hide original text */
-  .tm-topbar a[href$="/one-minute-audio.html"]{
-    font-size:0;
-  }
-
-  /* Replace with shorter label */
-  .tm-topbar a[href$="/one-minute-audio.html"]::before{
-    content:"One-Min";
-    font-size:13px;
-  }
-
-}
-
-.advanced-wrap{
-  margin-top: 40px;
-}
-
-.advanced-label{
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-
-.advanced-card{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-  padding:18px;
-  border:1px solid var(--border);
-  border-radius:16px;
-  background:#fff;
-  text-decoration:none;
-  color:inherit;
-  transition:.18s ease;
-}
-
-.advanced-card:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(0,0,0,.06);
-}
-
-.advanced-left{
-  display:flex;
-  align-items:center;
-  gap:16px;
-}
-
-.advanced-icon{
-  width:40px;
-  height:40px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:12px;
-  background:#f3f4f6;
-  font-size:18px;
-}
-
-.advanced-title{
-  font-weight:700;
-  font-size:16px;
-  margin-bottom:4px;
-}
-
-.advanced-sub{
-  font-size:13px;
-  color:var(--muted);
-}
-
-.advanced-arrow{
-  font-size:22px;
-  color:var(--muted);
-}
-
-    .prog-topics{
-  background: linear-gradient(135deg, #f2fbf9 0%, #ecfdf5 100%);
-  border-color: rgba(13,148,136,0.16);
-  position: relative;
-}
-
-.prog-topics:hover{
-  border-color: rgba(13,148,136,0.34);
-  box-shadow: 0 8px 22px rgba(13,148,136,0.08);
-}
-
-.topics-icon{
-  background: rgba(13,148,136,0.14);
-}
-
-.prog-topics .prog-body{
-  min-width: 0;
-}
-
-.prog-kicker{
-  display:inline-block;
-  margin: 0 0 6px;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.topic-chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  margin-top:10px;
-}
-
-.topic-chips span{
-  display:inline-flex;
-  align-items:center;
-  padding:4px 9px;
-  border-radius:999px;
-  background: rgba(13,148,136,0.10);
-  color: #0f766e;
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.prog-topics .counts{
-  margin-top: 10px;
-}
-
-@media (max-width: 520px){
-  .topic-chips{
-    gap:5px;
-  }
-
-  .topic-chips span{
-    font-size: 0.72rem;
-    padding:4px 8px;
-  }
-}
-
-    
-  </style>
+</style>
 </head>
-
 <body>
+
+<!-- NAV -->
 <div class="tm-topbar">
   <div class="tm-topbar-inner">
-   <a href="https://torahmoment.com" aria-label="Home" class="home-link">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M3 10.5L12 3l9 7.5"/>
-    <path d="M5 10v10h14V10"/>
-  </svg>
-</a>
+    <a href="https://torahmoment.com" aria-label="Home" class="home-link">
+      <svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>
+    </a>
     <a href="https://torahmoment.com/parsha.html">Parsha</a>
     <a href="https://torahmoment.com/halacha.html">Halacha</a>
     <a href="https://torahmoment.com/one-minute-audio.html">One Minute</a>
     <a href="https://torahmoment.com/topics.html">Topics</a>
-    <a href="https://torahmoment.com/mishna.html">Mishna</a>
+    <a href="https://torahmoment.com/about.html">About</a>
   </div>
 </div>
 
+<div class="wrap">
 
-  <div class="wrap">
-    <header>
-      <div>
-        <h1>TorahMoment</h1>
-        <div class="subtle">Shiurim by Shloimy Zelcer</div>
-      </div>
-    </header>
-
-    <!-- Stats -->
-    <section class="stats" aria-label="Site stats">
-      <div class="stat">
-        <div class="label">Total shiurim</div>
-        <div class="value" id="statTotalShiurim">—</div>
-        <div class="hint">Across all programs</div>
-      </div>
-
-      <div class="stat">
-        <div class="label">Programs</div>
-        <div class="value" id="statPrograms">—</div>
-        <div class="hint">Parsha, Halacha, One-Minute, Tefila, Mishna</div>
-      </div>
-
-      <div class="stat">
-        <div class="label">Last updated</div>
-        <div class="value" id="statUpdated">—</div>
-      </div>
-    </section>
-
-<section class="tm-global-search">
-  <div class="tm-gs-box">
-    <input id="tmGlobalQ" type="search" placeholder="Search all shiurim…" autocomplete="off" />
-    <button id="tmGlobalClear" type="button" aria-label="Clear">✕</button>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Torah Learning</div>
+    <h1>TorahMoment</h1>
+    <div class="subtle">Shiurim by Shloimy Zelcer</div>
   </div>
 
-  <div id="tmGlobalPanel" class="tm-gs-panel" hidden>
-    <div id="tmGlobalMeta" class="tm-gs-meta"></div>
-    <div id="tmGlobalResults" class="tm-gs-results"></div>
-  </div>
-</section>
-
-    
-    <!-- Navigation -->
-    <section class="card">
-      <div class="grid">
-        <a class="prog" href="/parsha.html">
-          <div class="icon">📖</div>
-          <div>
-            <h3>Parsha</h3>
-            <div class="meta">Videos · Audio · PDFs</div>
-            <div class="counts"><b data-site-count="parsha">—</b> items</div>
-          </div>
-          <div class="arrow">›</div>
-        </a>
-
-        <a class="prog" href="/halacha.html">
-          <div class="icon">📚</div>
-          <div>
-            <h3>Halacha / Hashkafa</h3>
-            <div class="meta">Audio shiurim</div>
-            <div class="counts"><b data-site-count="halacha">—</b> items</div>
-          </div>
-          <div class="arrow">›</div>
-        </a>
-
-        <a class="prog" href="/one-minute-audio.html">
-          <div class="icon">⏱️</div>
-          <div>
-            <h3>One-Minute Audio</h3>
-            <div class="meta">Short daily ideas</div>
-            <div class="counts"><b data-site-count="oneMinute">—</b> items</div>
-          </div>
-          <div class="arrow">›</div>
-        </a>
-
-        <a class="prog" href="/tefilah.html">
-          <div class="icon">🕍</div>
-          <div>
-            <h3>Biur Shemona Esrei</h3>
-            <div class="meta">Video shiurim</div>
-            <div class="counts"><b data-site-count="tefila">—</b> items</div>
-          </div>
-          <div class="arrow">›</div>
-        </a>
-
-        <a class="prog" href="/mishna.html">
-          <div class="icon">📖</div>
-          <div>
-            <h3>Mishnayos</h3>
-            <div class="meta">2 Mishnas a Day • Audio shiurim</div>
-            <div class="counts"><b data-site-count="mishna">—</b> items</div>
-          </div>
-          <div class="arrow">›</div>
-        </a>
-
-<a class="prog prog-topics" href="/topics.html" aria-label="Browse shiurim by topic">
-  <div class="icon topics-icon">🧭</div>
-  <div class="prog-body">
-    <div class="prog-kicker">Start here</div>
-    <h3>Browse by Topic</h3>
-    <div class="meta">
-      Explore shiurim by theme — tefilah, Pesach, parsha, and more.
+  <!-- STATS -->
+  <section class="stats" aria-label="Site stats">
+    <div class="stat">
+      <div class="label">Total shiurim</div>
+      <div class="value" id="statTotalShiurim">—</div>
+      <div class="hint">Across all programs</div>
     </div>
-
-    <div class="topic-chips" aria-hidden="true">
-      <span>Tefilah</span>
-      <span>Pesach</span>
-      <span>Parsha</span>
+    <div class="stat">
+      <div class="label">Programs</div>
+      <div class="value" id="statPrograms">—</div>
+      <div class="hint">Parsha, Halacha, One-Minute, Tefila, Mishna</div>
     </div>
-
-    <div class="counts"><b>Explore topics</b> →</div>
-  </div>
-  <div class="arrow">›</div>
-</a>
-      </div>
-
-<a class="advanced-card" href="/torahprograms.html" style="margin-top:12px;">
-  <div class="advanced-left">
-    <div class="advanced-icon" style="background:rgba(34,197,94,0.12);">🤝</div>
-    <div>
-      <div class="advanced-title">Torah Programs</div>
-      <div class="advanced-sub">
-        Learning initiatives, WhatsApp signups, and ways to stay connected.
-      </div>
+    <div class="stat">
+      <div class="label">Last updated</div>
+      <div class="value" id="statUpdated">—</div>
     </div>
-  </div>
-  <div class="advanced-arrow">›</div>
-</a>
-      
-<div class="advanced-wrap">
-  <div class="advanced-label">Advanced Learning</div>
+  </section>
 
-  <a href="/indepth.html" class="advanced-card">
-    <div class="advanced-left">
-      <div class="advanced-icon">📖</div>
-      <div>
-        <div class="advanced-title">In-Depth Shiurim</div>
-        <div class="advanced-sub">
-          Long-form Torah — deeper, more developed shiurim.
-        </div>
+  <!-- SEARCH -->
+  <section class="tm-global-search">
+    <div class="search-wrap">
+      <div class="search-icon">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
       </div>
+      <input id="tmGlobalQ" type="search" placeholder="Search all shiurim…" autocomplete="off"/>
+      <button id="tmGlobalClear" type="button" aria-label="Clear">✕</button>
     </div>
-    <div class="advanced-arrow">›</div>
-  </a>
-
-  <a href="/under10.html" class="advanced-card">
-    <div class="advanced-left">
-      <div class="advanced-icon">⏱️</div>
-      <div>
-        <div class="advanced-title">Under 10 Minutes</div>
-        <div class="advanced-sub">
-           Short-form Torah — focused shiurim under 10 minutes.
-        </div>
-      </div>
+    <div id="tmGlobalPanel" class="tm-gs-panel" hidden>
+      <div id="tmGlobalMeta" class="tm-gs-meta"></div>
+      <div id="tmGlobalResults" class="tm-gs-results"></div>
     </div>
-    <div class="advanced-arrow">›</div>
-  </a>
+  </section>
 
-</div>
-
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Parsha Infographics -->
-    <section id="infographicRotator" style="display:none;">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px;">
-        <h2 style="margin:0;font-size:1.1rem;">Parsha Infographic</h2>
-        <a href="/infographics.html" style="font-size:0.85rem;color:var(--accent);text-decoration:none;">View all →</a>
-      </div>
-      <div style="background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow);">
-        <div style="display:grid;grid-template-columns:1fr 160px;">
-          <div style="padding:18px 18px 14px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;">
-            <div>
-              <div id="igKicker" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;"></div>
-              <div id="igTitle" style="font-size:17px;font-weight:700;line-height:1.3;margin-bottom:6px;"></div>
-              <div id="igDesc" style="font-size:13px;color:var(--muted);line-height:1.45;"></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-              <a id="igLink" href="/infographics.html" style="font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid rgba(13,148,136,0.3);border-radius:999px;padding:5px 12px;white-space:nowrap;">View infographic →</a>
-              <div id="igDots" style="display:flex;gap:5px;align-items:center;"></div>
-            </div>
-          </div>
-          <a id="igImageLink" href="/infographics.html" style="display:block;background:#0a2e2c;overflow:hidden;">
-            <img id="igImage" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .3s ease;" />
-          </a>
+  <!-- PROGRAMS -->
+  <section class="card" style="background:transparent;box-shadow:none;border:none;padding:0;margin-top:0">
+    <div class="section-label">Browse programs</div>
+    <div class="grid">
+      <a class="prog" href="/parsha.html">
+        <div class="icon">📖</div>
+        <div>
+          <h3>Parsha</h3>
+          <div class="meta">Videos · Audio · PDFs</div>
+          <div class="counts"><b data-site-count="parsha">—</b> items</div>
         </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-top:1px solid var(--border);">
-          <button id="igPrev" onclick="igStep(-1)" style="background:none;border:1px solid var(--border);border-radius:10px;padding:4px 12px;font-size:13px;color:var(--muted);cursor:pointer;width:auto;">← Prev</button>
-          <span id="igCounter" style="font-size:12px;color:var(--muted);"></span>
-          <button id="igNext" onclick="igStep(1)" style="background:none;border:1px solid var(--border);border-radius:10px;padding:4px 12px;font-size:13px;color:var(--muted);cursor:pointer;width:auto;">Next →</button>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Recently Added -->
-    <section class="card">
-      <h2 style="margin:0 0 8px;">Recently added</h2>
-      <div class="subtle">Latest: 3 One-Minute · 2 Halacha · 1 Parsha</div>
-      <div id="recentList" style="margin-top:12px;">Loading…</div>
-    </section>
-
-    <footer>
-      © <span id="yr"></span> TorahMoment.com
-      <div style="margin-top:6px; font-size:0.86rem;">
-        <a href="/dashboard.html" style="color:#0b57d0; text-decoration:none;">Stats</a>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById("yr").textContent = new Date().getFullYear();
-  </script>
-
-  <script>
-    function animateNumber(el, target, opts = {}) {
-      const duration = opts.duration ?? 650;
-      const start = 0;
-      const t0 = performance.now();
-
-      function tick(now) {
-        const p = Math.min(1, (now - t0) / duration);
-        const eased = 1 - Math.pow(1 - p, 3);
-        const val = Math.round(start + (target - start) * eased);
-        el.textContent = val.toLocaleString();
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-
-    // Keep your old renderer (unused now). You can delete later if you want.
-    function renderRecent(items){
-      const wrap = document.getElementById("recentList");
-      if (!items?.length){
-        wrap.innerHTML = `<a href="/parsha.html" class="latestLink">▶ View latest content</a>`;
-        return;
-      }
-
-      wrap.innerHTML = items.map(x => `
-        <a class="recentRow" href="${x.url}" target="_blank" rel="noopener">
-          <span class="rIcon">${x.type==="audio"?"🎧":"📺"}</span>
-          <span>${x.title}</span>
-          <span class="rMeta">${x.program}</span>
-        </a>
-      `).join("");
-    }
-
-function parseISODateSmart(iso){
-  if (!iso) return null;
-
-  const s = String(iso);
-
-  // Case 1: plain date (YYYY-MM-DD)
-  const m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (m){
-    const y = Number(m[1]), mo = Number(m[2]), d = Number(m[3]);
-    return { date: new Date(y, mo - 1, d), useUTC: false };
-  }
-
-  // Case 2: UTC timestamp (ends with Z)
-  const isUTC = /Z$/.test(s);
-  const dt = new Date(s);
-  if (!isFinite(dt)) return null;
-
-  return { date: dt, useUTC: isUTC };
-}
-    
-    // NEW: Curated recent renderer (2 + 2 + 1), grouped but in one spot
-function fmtShortDate(iso){
-  const parsed = parseISODateSmart(iso);
-  if (!parsed) return "";
-
-  return parsed.date.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    timeZone: parsed.useUTC ? "UTC" : undefined
-  });
-}
-
-function fmtDate(iso){
-  return fmtShortDate(iso);
-}
-    
-function renderRecentCurated(data){
-  const wrap = document.getElementById("recentList");
-  if (!wrap) return;
-
-  const by = data?.recentByProgram || {};
-  const one = Array.isArray(by.oneMinute) ? by.oneMinute : [];
-  const hal = Array.isArray(by.halacha) ? by.halacha : [];
-  const par = Array.isArray(by.parsha) ? by.parsha : [];
-
-  const curated = [
-    ...one.slice(0, 3).map(x => ({ ...x, _group: "One-Minute" })), // ✅ 3
-    ...hal.slice(0, 2).map(x => ({ ...x, _group: "Halacha", _isHalacha: true })),    // ✅ 2
-    ...par.slice(0, 1).map(x => ({ ...x, _group: "Parsha" })),     // ✅ 1
-  ].filter(x => x && x.url);
-
-  if (!curated.length){
-    wrap.innerHTML = `<a href="/parsha.html" class="latestLink">▶ View latest content</a>`;
-    return;
-  }
-
-  let lastGroup = null;
-
-  wrap.innerHTML = curated.map(x => {
-    const header = (x._group !== lastGroup)
-      ? `<div class="recentGroup">${x._group}</div>`
-      : "";
-    lastGroup = x._group;
-
-    const dateLabel = fmtShortDate(x.date);
-    const safeUrl = String(x.url || "");
-    const isAudio =
-      x.type === "audio" ||
-      /\.mp3(\?|$)/i.test(safeUrl) ||
-      /buzzsprout\.com|wp-content\/uploads/i.test(safeUrl);
-
-    // Audio: inline player (no pop-out)
-if (isAudio) {
-  const safeUrl = String(x.url || "");
-  return `
-    ${header}
-    <div class="recentRow recentAudio" data-kind="audio" data-url="${safeUrl}" ${x._isHalacha ? 'data-halacha="true"' : ''}>
-      <div class="rLeft">
-        <div class="rLine">
-          <span class="rIcon">🎧</span>
-          <span class="rTitle rToggleTitle" role="button" tabindex="0">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
-          <span class="longBadge" hidden>Long shiur</span>
-          <span class="rDate">${dateLabel}</span>
-        </div>
-
-        <div class="rSub">
-          <span class="speedBtns" aria-label="Playback speed">
-            <button type="button" class="speedBtn" data-speed="1">1x</button>
-            <button type="button" class="speedBtn" data-speed="1.5">1.5x</button>
-            <button type="button" class="speedBtn" data-speed="2">2x</button>
-          </span>
-        </div>
-      </div>
-
-      <audio class="rPlayer" controls preload="metadata" src="${safeUrl}"></audio>
-    </div>
-  `;
-}
-
-
-
-
-    // Video (Parsha): keep link behavior
-    return `
-      ${header}
-      <a class="recentRow recentVideo" href="${x.url}" target="_blank" rel="noopener">
-        <span class="rIcon">📺</span>
-        <span class="rTitle">${(x.title && String(x.title).trim()) ? x.title : "Shiur"}</span>
-        <span class="rDate">${dateLabel}</span>
       </a>
-    `;
-  }).join("");
-}
-
-
-function setupRecentAudioBehavior(){
-  const list = document.getElementById("recentList");
-  if (!list) return;
-
-  function setActiveRow(row){
-    // deactivate others
-    list.querySelectorAll(".recentAudio.isActive").forEach(r => {
-      if (r !== row) r.classList.remove("isActive");
-    });
-    row.classList.add("isActive");
-  }
-
-  function pauseOthers(keepAudio){
-    list.querySelectorAll("audio.rPlayer").forEach(a => {
-      if (a !== keepAudio && !a.paused) a.pause();
-    });
-  }
-
-function markLongShiur(row){
-  if (row.dataset.halacha !== "true") return;
-
-  const audio = row.querySelector("audio");
-  const badge = row.querySelector(".longBadge");
-  if (!audio || !badge) return;
-
-  audio.addEventListener("loadedmetadata", () => {
-    if (Number.isFinite(audio.duration) && audio.duration > 10 * 60) {
-      badge.hidden = false;
-    }
-  }, { once: true });
-}
-
-
-  
-  function setSpeed(row, speed){
-    const audio = row.querySelector("audio.rPlayer");
-    if (!audio) return;
-
-    audio.playbackRate = speed;
-
-    // button UI state
-    row.querySelectorAll(".speedBtn").forEach(btn => {
-      const s = Number(btn.dataset.speed);
-      btn.classList.toggle("isOn", s === speed);
-    });
-  }
-
-  // Click behavior:
-  // - Clicking anywhere on the audio row activates it (shows speed)
-  // - Clicking a speed button sets the rate (and keeps row active)
-  list.addEventListener("click", (e) => {
-    const speedBtn = e.target.closest(".speedBtn");
-    if (speedBtn){
-      e.preventDefault();
-      e.stopPropagation();
-
-      const row = speedBtn.closest(".recentAudio");
-      if (!row) return;
-
-      setActiveRow(row);
-      const speed = Number(speedBtn.dataset.speed) || 1;
-      setSpeed(row, speed);
-      return;
-    }
-
-    const row = e.target.closest(".recentAudio");
-    if (row){
-      // Don’t interfere with native audio controls (play/pause/seek)
-      if (e.target.closest("audio")) return;
-
-      setActiveRow(row);
-
-      // If no speed set yet, default to 1x and highlight it
-      const anyOn = row.querySelector(".speedBtn.isOn");
-      if (!anyOn) setSpeed(row, 1);
-    }
-  });
-
-// Toggle title expand/collapse (mobile only)
-list.addEventListener("click", (e) => {
-  const title = e.target.closest(".rToggleTitle");
-  if (!title) return;
-
-  // Only on mobile
-  if (!window.matchMedia("(max-width: 620px)").matches) return;
-
-  e.preventDefault();
-  e.stopPropagation();
-
-  const row = title.closest(".recentAudio");
-  if (!row) return;
-
-  // Close other open titles
-  list.querySelectorAll(".recentAudio.isTitleOpen").forEach(r => {
-    if (r !== row) r.classList.remove("isTitleOpen");
-  });
-
-  // Toggle this one
-  row.classList.toggle("isTitleOpen");
-});
-
-  
-list.querySelectorAll(".recentAudio").forEach(markLongShiur);
-
-  
-  // When any audio starts playing, pause others and activate its row
-  list.addEventListener("play", (e) => {
-    const audio = e.target.closest("audio.rPlayer");
-    if (!audio) return;
-
-    pauseOthers(audio);
-
-    const row = audio.closest(".recentAudio");
-    if (row){
-      setActiveRow(row);
-
-      // Ensure default 1x highlight exists if user presses play first
-      const anyOn = row.querySelector(".speedBtn.isOn");
-      if (!anyOn){
-        audio.playbackRate = 1;
-        setSpeed(row, 1);
-      }
-    }
-  }, true);
-}
-
-    
-    async function loadCounts() {
-      try {
-        const res = await fetch("/data/site-counts.json", { cache: "no-store" });
-        if (!res.ok) throw new Error("site-counts.json not found");
-        const data = await res.json();
-
-        const totalShiurim = data?.allShiurim?.total;
-        const updatedStr   = data?.allShiurim?.updated;
-        const breakdown    = data?.allShiurim?.breakdown || {};
-
-        // Top stats
-        const elShiurim = document.getElementById("statTotalShiurim");
-        const elPrograms = document.getElementById("statPrograms");
-        const elUpdated = document.getElementById("statUpdated");
-
-        if (typeof totalShiurim === "number") animateNumber(elShiurim, totalShiurim);
-        else elShiurim.textContent = "—";
-
-        const programCount = Object.keys(breakdown).length || 0;
-        elPrograms.textContent = String(programCount);
-
-        if (updatedStr) {
-          const d = new Date(updatedStr + "T00:00:00");
-          elUpdated.textContent = isFinite(d) ? d.toLocaleDateString() : updatedStr;
-        } else {
-          elUpdated.textContent = "—";
-        }
-
-        // Per-program totals based on YOUR JSON schema
-        function programTotal(key) {
-          const b = breakdown?.[key];
-          if (!b) return null;
-
-          if (key === "parsha") return Number(b.audio || 0) + Number(b.video || 0);
-          if (key === "tefila") return Number(b.video || 0);
-          if (key === "halacha") return Number(b.totalAll ?? 0);
-          if (key === "oneMinute") return Number(b.audio || 0);
-          if (key === "mishna") return Number(b.audio || 0);
-          return null;
-        }
-
-        document.querySelectorAll("[data-site-count]").forEach(el => {
-          const key = el.dataset.siteCount;
-          const val = programTotal(key);
-          el.textContent = (typeof val === "number") ? val.toLocaleString() : "—";
-        });
-
-        // ✅ Use curated recent (3+2+1) from recentByProgram
-        renderRecentCurated(data);
-        setupRecentAudioBehavior();
-
-      } catch (e) {
-        console.warn("Could not load /data/site-counts.json", e);
-        const wrap = document.getElementById("recentList");
-        if (wrap) wrap.innerHTML = `<a href="/parsha.html" class="latestLink">▶ View latest content</a>`;
-      }
-    }
-
-    loadCounts();
-  </script>
-<script>
-(async function(){
-  const input = document.getElementById("tmGlobalQ");
-  const clearBtn = document.getElementById("tmGlobalClear");
-  const panel = document.getElementById("tmGlobalPanel");
-  const meta = document.getElementById("tmGlobalMeta");
-  const resultsEl = document.getElementById("tmGlobalResults");
-
-  const INDEX_URL = "/data/search-index.json";   // <— key file your action generates
-  const MIN_CHARS = 2;
-  const MAX_RESULTS = 30;
-
-  let idx = [];
-
-  function showPanel(on){ panel.hidden = !on; }
-  function esc(s){
-    return String(s ?? "")
-      .replaceAll("&","&amp;").replaceAll("<","&lt;")
-      .replaceAll(">","&gt;").replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
-  }
-  
-
-  async function loadIndex(){
-    meta.textContent = "Loading…";
-    showPanel(true);
-    const res = await fetch(INDEX_URL, { cache:"no-store" });
-    if(!res.ok) throw new Error("search-index load failed: HTTP " + res.status);
-    idx = await res.json();
-    if(!Array.isArray(idx)) idx = [];
-    meta.textContent = `Search across ${idx.length.toLocaleString()} items`;
-  }
-
-  function filter(q){
-    const s = (q||"").trim().toLowerCase();
-    if(s.length < MIN_CHARS) return [];
-    const parts = s.split(/\s+/).filter(Boolean);
-
-    const out = idx.filter(it => {
-      const t = it.title_lc || (it.title||"").toLowerCase();
-      return parts.every(p => t.includes(p));
-    });
-
-    out.sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
-    return out.slice(0, MAX_RESULTS);
-  }
-
-  function render(list, q){
-    if(!q.trim()){ showPanel(false); resultsEl.innerHTML=""; return; }
-    showPanel(true);
-
-    if(q.trim().length < MIN_CHARS){
-      meta.textContent = `Type at least ${MIN_CHARS} characters…`;
-      resultsEl.innerHTML = "";
-      return;
-    }
-
-    meta.textContent = list.length ? `Results (${list.length})` : "No matches";
-
-    resultsEl.innerHTML = list.map(x => {
-      // ✅ IMPORTANT: link to the PAGE, not the mp3/youtube
-      const href = `${x.page}?q=${encodeURIComponent(q)}&from=global`;
-      return `
-        <a class="tm-gs-item" href="${esc(href)}">
-          <div class="tm-gs-title">${esc(x.title || "")}</div>
-          <div class="tm-gs-sub">
-            <span class="tm-pill">${esc(x.program || "")}</span>
-            ${x.type ? `<span>${esc(String(x.type).toUpperCase())}</span>` : ""}
-            ${x.date ? `<span>${esc(fmtDate(x.date))}</span>` : ""}
+      <a class="prog" href="/halacha.html">
+        <div class="icon">📚</div>
+        <div>
+          <h3>Halacha / Hashkafa</h3>
+          <div class="meta">Audio shiurim</div>
+          <div class="counts"><b data-site-count="halacha">—</b> items</div>
+        </div>
+      </a>
+      <a class="prog" href="/one-minute-audio.html">
+        <div class="icon">⏱️</div>
+        <div>
+          <h3>One-Minute Audio</h3>
+          <div class="meta">Short daily ideas</div>
+          <div class="counts"><b data-site-count="oneMinute">—</b> items</div>
+        </div>
+      </a>
+      <a class="prog" href="/tefilah.html">
+        <div class="icon">🕍</div>
+        <div>
+          <h3>Biur Shemona Esrei</h3>
+          <div class="meta">Video shiurim</div>
+          <div class="counts"><b data-site-count="tefila">—</b> items</div>
+        </div>
+      </a>
+      <a class="prog" href="/mishna.html">
+        <div class="icon">📜</div>
+        <div>
+          <h3>Mishnayos</h3>
+          <div class="meta">2 Mishnas a Day · Audio shiurim</div>
+          <div class="counts"><b data-site-count="mishna">—</b> items</div>
+        </div>
+      </a>
+      <a class="prog prog-topics" href="/topics.html" aria-label="Browse shiurim by topic">
+        <div class="icon topics-icon" style="background:rgba(26,107,94,.13);border-color:rgba(26,107,94,.2)">🧭</div>
+        <div class="prog-body" style="min-width:0">
+          <div class="prog-kicker">Start here</div>
+          <h3>Browse by Topic</h3>
+          <div class="meta">Explore shiurim by theme — tefilah, Pesach, parsha, and more.</div>
+          <div class="topic-chips" aria-hidden="true">
+            <span>Tefilah</span><span>Pesach</span><span>Parsha</span>
           </div>
+          <div class="counts"><b>Explore topics</b> →</div>
+        </div>
+      </a>
+    </div>
+
+    <a class="advanced-card" href="/torahprograms.html" style="margin-top:10px;">
+      <div class="advanced-left">
+        <div class="advanced-icon" style="background:rgba(34,197,94,.12)">🤝</div>
+        <div>
+          <div class="advanced-title">Torah Programs</div>
+          <div class="advanced-sub">Learning initiatives, WhatsApp signups, and ways to stay connected.</div>
+        </div>
+      </div>
+      <div class="advanced-arrow">›</div>
+    </a>
+
+    <div class="advanced-wrap">
+      <div class="advanced-label">Advanced Learning</div>
+      <div class="util-grid">
+        <a href="/indepth.html" class="advanced-card">
+          <div class="advanced-left">
+            <div class="advanced-icon">📖</div>
+            <div>
+              <div class="advanced-title">In-Depth Shiurim</div>
+              <div class="advanced-sub">Long-form Torah — deeper, more developed shiurim.</div>
+            </div>
+          </div>
+          <div class="advanced-arrow">›</div>
         </a>
-      `;
+        <a href="/under10.html" class="advanced-card">
+          <div class="advanced-left">
+            <div class="advanced-icon">⏱️</div>
+            <div>
+              <div class="advanced-title">Under 10 Minutes</div>
+              <div class="advanced-sub">Short-form Torah — focused shiurim under 10 minutes.</div>
+            </div>
+          </div>
+          <div class="advanced-arrow">›</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- INFOGRAPHIC -->
+  <section id="infographicRotator" style="display:none;">
+    <div class="section-head">
+      <h2>Parsha Infographic</h2>
+      <a href="/infographics.html">View all →</a>
+    </div>
+    <div class="infographic-card">
+      <div>
+        <div class="infographic-content">
+          <div>
+            <div id="igKicker"></div>
+            <div id="igTitle"></div>
+            <div id="igDesc"></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <a id="igLink" href="/infographics.html">View infographic →</a>
+            <div id="igDots"></div>
+          </div>
+        </div>
+        <a id="igImageLink" href="/infographics.html" style="display:block;background:#0a2e2c;overflow:hidden;">
+          <img id="igImage" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .3s ease;"/>
+        </a>
+      </div>
+      <div class="infographic-footer">
+        <button id="igPrev" onclick="igStep(-1)" class="infographic-btn">← Prev</button>
+        <span id="igCounter"></span>
+        <button id="igNext" onclick="igStep(1)" class="infographic-btn">Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- RECENTLY ADDED -->
+  <div class="section-head">
+    <h2>Recently added</h2>
+    <div class="subtle" style="font-size:12px">Latest: 3 One-Minute · 2 Halacha · 1 Parsha</div>
+  </div>
+  <div id="recentList" style="margin-top:4px">Loading…</div>
+
+  <footer>
+    © <span id="yr"></span> TorahMoment.com
+    <div style="margin-top:6px;font-size:.86rem;">
+      <a href="/dashboard.html">Stats</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+
+<script>
+  function animateNumber(el, target, opts={}) {
+    const duration = opts.duration ?? 650;
+    const start = 0;
+    const t0 = performance.now();
+    function tick(now) {
+      const p = Math.min(1, (now - t0) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = Math.round(start + (target - start) * eased);
+      el.textContent = val.toLocaleString();
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function renderRecent(items){
+    const wrap = document.getElementById("recentList");
+    if (!items?.length){
+      wrap.innerHTML = `<a href="/parsha.html" class="latestLink">▶ View latest content</a>`;
+      return;
+    }
+    wrap.innerHTML = items.map(x => `
+      <a class="recentRow" href="${x.url}" target="_blank" rel="noopener">
+        <span class="rIcon">${x.type==="audio"?"🎧":"📺"}</span>
+        <span>${x.title}</span>
+        <span class="rMeta">${x.program}</span>
+      </a>
+    `).join("");
+  }
+
+  function parseISODateSmart(iso){
+    if (!iso) return null;
+    const s = String(iso);
+    const m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (m){ const y=Number(m[1]),mo=Number(m[2]),d=Number(m[3]); return {date:new Date(y,mo-1,d),useUTC:false}; }
+    const isUTC = /Z$/.test(s);
+    const dt = new Date(s);
+    if (!isFinite(dt)) return null;
+    return {date:dt,useUTC:isUTC};
+  }
+
+  function fmtShortDate(iso){
+    const parsed = parseISODateSmart(iso);
+    if (!parsed) return "";
+    return parsed.date.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric",timeZone:parsed.useUTC?"UTC":undefined});
+  }
+
+  function fmtDate(iso){ return fmtShortDate(iso); }
+
+  function renderRecentCurated(data){
+    const wrap = document.getElementById("recentList");
+    if (!wrap) return;
+    const by = data?.recentByProgram || {};
+    const one = Array.isArray(by.oneMinute) ? by.oneMinute : [];
+    const hal = Array.isArray(by.halacha) ? by.halacha : [];
+    const par = Array.isArray(by.parsha) ? by.parsha : [];
+    const curated = [
+      ...one.slice(0,3).map(x=>({...x,_group:"One-Minute"})),
+      ...hal.slice(0,2).map(x=>({...x,_group:"Halacha",_isHalacha:true})),
+      ...par.slice(0,1).map(x=>({...x,_group:"Parsha"})),
+    ].filter(x=>x&&x.url);
+    if (!curated.length){ wrap.innerHTML=`<a href="/parsha.html" class="latestLink">▶ View latest content</a>`; return; }
+    let lastGroup = null;
+    wrap.innerHTML = curated.map(x => {
+      const header = (x._group !== lastGroup) ? `<div class="recentGroup">${x._group}</div>` : "";
+      lastGroup = x._group;
+      const dateLabel = fmtShortDate(x.date);
+      const safeUrl = String(x.url||"");
+      const isAudio = x.type==="audio" || /\.mp3(\?|$)/i.test(safeUrl) || /buzzsprout\.com|wp-content\/uploads/i.test(safeUrl);
+      if (isAudio){
+        return `${header}
+          <div class="recentRow recentAudio" data-kind="audio" data-url="${safeUrl}" ${x._isHalacha?'data-halacha="true"':''}>
+            <div class="rLeft">
+              <div class="rLine">
+                <span class="rIcon">🎧</span>
+                <span class="rTitle rToggleTitle" role="button" tabindex="0">${(x.title&&String(x.title).trim())?x.title:"Shiur"}</span>
+                <span class="longBadge" hidden>Long shiur</span>
+                <span class="rDate">${dateLabel}</span>
+              </div>
+              <div class="rSub">
+                <span class="speedBtns" aria-label="Playback speed">
+                  <button type="button" class="speedBtn" data-speed="1">1x</button>
+                  <button type="button" class="speedBtn" data-speed="1.5">1.5x</button>
+                  <button type="button" class="speedBtn" data-speed="2">2x</button>
+                </span>
+              </div>
+            </div>
+            <audio class="rPlayer" controls preload="metadata" src="${safeUrl}"></audio>
+          </div>`;
+      }
+      return `${header}
+        <a class="recentRow recentVideo" href="${x.url}" target="_blank" rel="noopener">
+          <span class="rIcon">📺</span>
+          <span class="rTitle">${(x.title&&String(x.title).trim())?x.title:"Shiur"}</span>
+          <span class="rDate">${dateLabel}</span>
+        </a>`;
     }).join("");
   }
 
-  // init
-  clearBtn.style.visibility = "hidden";
-
-  input.addEventListener("focus", async () => {
-    if(!idx.length){
-      try { await loadIndex(); } catch(e){ meta.textContent = "Failed to load search index."; console.warn(e); }
+  function setupRecentAudioBehavior(){
+    const list = document.getElementById("recentList");
+    if (!list) return;
+    function setActiveRow(row){ list.querySelectorAll(".recentAudio.isActive").forEach(r=>{if(r!==row)r.classList.remove("isActive");}); row.classList.add("isActive"); }
+    function pauseOthers(keepAudio){ list.querySelectorAll("audio.rPlayer").forEach(a=>{if(a!==keepAudio&&!a.paused)a.pause();}); }
+    function markLongShiur(row){
+      if(row.dataset.halacha!=="true")return;
+      const audio=row.querySelector("audio"),badge=row.querySelector(".longBadge");
+      if(!audio||!badge)return;
+      audio.addEventListener("loadedmetadata",()=>{if(Number.isFinite(audio.duration)&&audio.duration>10*60)badge.hidden=false;},{once:true});
     }
-  });
+    function setSpeed(row,speed){
+      const audio=row.querySelector("audio.rPlayer");
+      if(!audio)return;
+      audio.playbackRate=speed;
+      row.querySelectorAll(".speedBtn").forEach(btn=>btn.classList.toggle("isOn",Number(btn.dataset.speed)===speed));
+    }
+    list.addEventListener("click",(e)=>{
+      const speedBtn=e.target.closest(".speedBtn");
+      if(speedBtn){ e.preventDefault();e.stopPropagation();const row=speedBtn.closest(".recentAudio");if(!row)return;setActiveRow(row);setSpeed(row,Number(speedBtn.dataset.speed)||1);return; }
+      const row=e.target.closest(".recentAudio");
+      if(row){ if(e.target.closest("audio"))return;setActiveRow(row);const anyOn=row.querySelector(".speedBtn.isOn");if(!anyOn)setSpeed(row,1); }
+    });
+    list.addEventListener("click",(e)=>{
+      const title=e.target.closest(".rToggleTitle");
+      if(!title)return;
+      if(!window.matchMedia("(max-width:620px)").matches)return;
+      e.preventDefault();e.stopPropagation();
+      const row=title.closest(".recentAudio");if(!row)return;
+      list.querySelectorAll(".recentAudio.isTitleOpen").forEach(r=>{if(r!==row)r.classList.remove("isTitleOpen");});
+      row.classList.toggle("isTitleOpen");
+    });
+    list.querySelectorAll(".recentAudio").forEach(markLongShiur);
+    list.addEventListener("play",(e)=>{
+      const audio=e.target.closest("audio.rPlayer");if(!audio)return;
+      pauseOthers(audio);
+      const row=audio.closest(".recentAudio");
+      if(row){setActiveRow(row);const anyOn=row.querySelector(".speedBtn.isOn");if(!anyOn){audio.playbackRate=1;setSpeed(row,1);}}
+    },true);
+  }
 
-  input.addEventListener("input", () => {
-    const q = input.value || "";
-    clearBtn.style.visibility = q ? "visible" : "hidden";
-    render(filter(q), q);
-  });
+  async function loadCounts(){
+    try {
+      const res = await fetch("/data/site-counts.json",{cache:"no-store"});
+      if(!res.ok) throw new Error("site-counts.json not found");
+      const data = await res.json();
+      const totalShiurim=data?.allShiurim?.total, updatedStr=data?.allShiurim?.updated, breakdown=data?.allShiurim?.breakdown||{};
+      const elShiurim=document.getElementById("statTotalShiurim"), elPrograms=document.getElementById("statPrograms"), elUpdated=document.getElementById("statUpdated");
+      if(typeof totalShiurim==="number") animateNumber(elShiurim,totalShiurim); else elShiurim.textContent="—";
+      elPrograms.textContent=String(Object.keys(breakdown).length||0);
+      if(updatedStr){const d=new Date(updatedStr+"T00:00:00");elUpdated.textContent=isFinite(d)?d.toLocaleDateString():updatedStr;}else{elUpdated.textContent="—";}
+      function programTotal(key){
+        const b=breakdown?.[key];if(!b)return null;
+        if(key==="parsha")return Number(b.audio||0)+Number(b.video||0);
+        if(key==="tefila")return Number(b.video||0);
+        if(key==="halacha")return Number(b.totalAll??0);
+        if(key==="oneMinute")return Number(b.audio||0);
+        if(key==="mishna")return Number(b.audio||0);
+        return null;
+      }
+      document.querySelectorAll("[data-site-count]").forEach(el=>{const key=el.dataset.siteCount;const val=programTotal(key);el.textContent=(typeof val==="number")?val.toLocaleString():"—";});
+      renderRecentCurated(data);
+      setupRecentAudioBehavior();
+    } catch(e){
+      console.warn("Could not load /data/site-counts.json",e);
+      const wrap=document.getElementById("recentList");
+      if(wrap)wrap.innerHTML=`<a href="/parsha.html" class="latestLink">▶ View latest content</a>`;
+    }
+  }
+  loadCounts();
+</script>
 
-  clearBtn.addEventListener("click", () => {
-    input.value = "";
-    clearBtn.style.visibility = "hidden";
-    showPanel(false);
-    resultsEl.innerHTML = "";
-    input.focus();
-  });
-
-  document.addEventListener("click", (e) => {
-    if(!e.target.closest(".tm-global-search")) showPanel(false);
-  });
+<script>
+(async function(){
+  const input=document.getElementById("tmGlobalQ"), clearBtn=document.getElementById("tmGlobalClear"), panel=document.getElementById("tmGlobalPanel"), meta=document.getElementById("tmGlobalMeta"), resultsEl=document.getElementById("tmGlobalResults");
+  const INDEX_URL="/data/search-index.json", MIN_CHARS=2, MAX_RESULTS=30;
+  let idx=[];
+  function showPanel(on){panel.hidden=!on;}
+  function esc(s){return String(s??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
+  async function loadIndex(){meta.textContent="Loading…";showPanel(true);const res=await fetch(INDEX_URL,{cache:"no-store"});if(!res.ok)throw new Error("search-index load failed: HTTP "+res.status);idx=await res.json();if(!Array.isArray(idx))idx=[];meta.textContent=`Search across ${idx.length.toLocaleString()} items`;}
+  function filter(q){const s=(q||"").trim().toLowerCase();if(s.length<MIN_CHARS)return[];const parts=s.split(/\s+/).filter(Boolean);const out=idx.filter(it=>{const t=it.title_lc||(it.title||"").toLowerCase();return parts.every(p=>t.includes(p));});out.sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));return out.slice(0,MAX_RESULTS);}
+  function render(list,q){
+    if(!q.trim()){showPanel(false);resultsEl.innerHTML="";return;}
+    showPanel(true);
+    if(q.trim().length<MIN_CHARS){meta.textContent=`Type at least ${MIN_CHARS} characters…`;resultsEl.innerHTML="";return;}
+    meta.textContent=list.length?`Results (${list.length})`:"No matches";
+    resultsEl.innerHTML=list.map(x=>{const href=`${x.page}?q=${encodeURIComponent(q)}&from=global`;return`<a class="tm-gs-item" href="${esc(href)}"><div class="tm-gs-title">${esc(x.title||"")}</div><div class="tm-gs-sub"><span class="tm-pill">${esc(x.program||"")}</span>${x.type?`<span>${esc(String(x.type).toUpperCase())}</span>`:""} ${x.date?`<span>${esc(fmtDate(x.date))}</span>`:""}</div></a>`;}).join("");
+  }
+  clearBtn.style.visibility="hidden";
+  input.addEventListener("focus",async()=>{if(!idx.length){try{await loadIndex();}catch(e){meta.textContent="Failed to load search index.";console.warn(e);}}});
+  input.addEventListener("input",()=>{const q=input.value||"";clearBtn.style.visibility=q?"visible":"hidden";render(filter(q),q);});
+  clearBtn.addEventListener("click",()=>{input.value="";clearBtn.style.visibility="hidden";showPanel(false);resultsEl.innerHTML="";input.focus();});
+  document.addEventListener("click",(e)=>{if(!e.target.closest(".tm-global-search"))showPanel(false);});
 })();
 </script>
 
 <script>
 (function(){
-  const links = document.querySelectorAll(".tm-topbar a");
-  const current = window.location.pathname.replace(/\/+$/, "");
-
-  links.forEach(link => {
-    const url = new URL(link.href);
-    let linkPath = url.pathname.replace(/\/+$/, "");
-
-    // normalize homepage
-    if(linkPath === "") linkPath = "/";
-
-    if(current === linkPath){
-      link.classList.add("active");
-    }
+  const links=document.querySelectorAll(".tm-topbar a");
+  const current=window.location.pathname.replace(/\/+$/,"");
+  links.forEach(link=>{
+    const url=new URL(link.href);
+    let linkPath=url.pathname.replace(/\/+$/,"");
+    if(linkPath==="")linkPath="/";
+    if(current===linkPath)link.classList.add("active");
   });
 })();
 </script>
 
-  
 <script>
 (async function initInfographicRotator(){
   try {
-    const res = await fetch('/data/infographics.json', { cache: 'no-store' });
-    if (!res.ok) return;
-    const data = await res.json();
-
-    const entries = Object.entries(data);
-    if (!entries.length) return;
-
-    // featured first, then rest in original order
-    entries.sort((a, b) => (b[1].featured ? 1 : 0) - (a[1].featured ? 1 : 0));
-
-    let current = 0;
-
-    function render(idx) {
-      const [id, item] = entries[idx];
-      document.getElementById('igKicker').textContent = 'Parsha · ' + (item.parsha || '');
-      document.getElementById('igTitle').textContent = item.title || '';
-      document.getElementById('igDesc').textContent = item.description || '';
-
-      const img = document.getElementById('igImage');
-      img.style.opacity = '0';
-      img.src = item.image || '';
-      img.alt = item.title || '';
-      img.onload = () => { img.style.opacity = '1'; };
-
-      document.getElementById('igCounter').textContent = (idx + 1) + ' / ' + entries.length;
-
-      const dots = document.getElementById('igDots');
-      dots.innerHTML = entries.map((_, i) => {
-        const active = i === idx;
-        return '<div style="width:' + (active ? '16' : '6') + 'px;height:6px;border-radius:999px;background:' + (active ? 'var(--accent)' : 'var(--border)') + ';transition:width .2s ease;"></div>';
-      }).join('');
+    const res=await fetch('/data/infographics.json',{cache:'no-store'});
+    if(!res.ok)return;
+    const data=await res.json();
+    const entries=Object.entries(data);
+    if(!entries.length)return;
+    entries.sort((a,b)=>(b[1].featured?1:0)-(a[1].featured?1:0));
+    let current=0;
+    function render(idx){
+      const [id,item]=entries[idx];
+      document.getElementById('igKicker').textContent='Parsha · '+(item.parsha||'');
+      document.getElementById('igTitle').textContent=item.title||'';
+      document.getElementById('igDesc').textContent=item.description||'';
+      const img=document.getElementById('igImage');
+      img.style.opacity='0';img.src=item.image||'';img.alt=item.title||'';
+      img.onload=()=>{img.style.opacity='1';};
+      document.getElementById('igCounter').textContent=(idx+1)+' / '+entries.length;
+      const dots=document.getElementById('igDots');
+      dots.innerHTML=entries.map((_,i)=>{const active=i===idx;return'<div style="width:'+(active?'16':'6')+'px;height:6px;border-radius:999px;background:'+(active?'var(--accent)':'var(--border)')+';transition:width .2s ease;"></div>';}).join('');
     }
-
-    window.igStep = function(dir) {
-      current = (current + dir + entries.length) % entries.length;
-      render(current);
-    };
-
+    window.igStep=function(dir){current=(current+dir+entries.length)%entries.length;render(current);};
     render(0);
-    document.getElementById('infographicRotator').style.display = '';
-  } catch(e) {
-    console.warn('Infographic rotator failed:', e);
-  }
+    document.getElementById('infographicRotator').style.display='';
+  } catch(e){console.warn('Infographic rotator failed:',e);}
 })();
 </script>
+
 </body>
 </html>
