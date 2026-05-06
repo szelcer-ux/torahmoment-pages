@@ -167,17 +167,13 @@ h1{font-family:'Lora',Georgia,serif;font-size:2.15rem;font-weight:700;letter-spa
 @media(max-width:620px){
   .rTitle{display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
   .recentAudio.isTitleOpen .rTitle{white-space:normal;overflow:visible}
-  /* Stack audio row vertically on mobile */
-  .recentAudio{flex-direction:column;align-items:stretch;gap:4px}
-  .recentAudio .rLeft{width:100%}
-  .rPlayer{display:block;width:100%;min-width:0;transform:none;margin-top:6px}
-  .recentAudio .rSub{justify-content:flex-start;padding-left:0;margin-top:4px}
-  .recentAudio .speedBtns{margin-left:0}
 }
-/* Audio player sizing — desktop */
-.rPlayer{flex:1;min-width:200px;transform:scale(.92);transform-origin:right center}
-.recentAudio .rSub{display:flex;justify-content:flex-end;margin-top:6px}
-.recentAudio .speedBtns{margin-left:auto}
+/* Audio player — full width inside rLeft, always stacked */
+.rPlayer{display:block;width:100%;margin-top:7px;height:36px}
+.recentAudio{display:block}
+.recentAudio .rLeft{width:100%}
+.recentAudio .rSub{display:flex;justify-content:flex-start;margin-top:5px;padding-left:0}
+.recentAudio .speedBtns{margin-left:0}
 @media(min-width:821px){.rPlayer{height:30px}}
 
 /* ── FOOTER ── */
@@ -485,6 +481,7 @@ footer a:hover{color:var(--muted)}
                 <span class="longBadge" hidden>Long shiur</span>
                 <span class="rDate">${dateLabel}</span>
               </div>
+              <audio class="rPlayer" controls preload="metadata" src="${safeUrl}"></audio>
               <div class="rSub">
                 <span class="speedBtns" aria-label="Playback speed">
                   <button type="button" class="speedBtn" data-speed="1">1x</button>
@@ -493,7 +490,6 @@ footer a:hover{color:var(--muted)}
                 </span>
               </div>
             </div>
-            <audio class="rPlayer" controls preload="metadata" src="${safeUrl}"></audio>
           </div>`;
       }
       return `${header}
