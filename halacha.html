@@ -7,17 +7,17 @@
 <link rel="stylesheet" href="css/tm-audio-ui.css">
   <style>
 :root{
-  --bg:#f6f7fb;
+  --bg:#f0f2f5;
   --card:#ffffff;
-  --text:#1f2937;
-  --muted:#6b7280;
-  --line:#e5e7eb;
-  --border:#e7e7ee;
-  --accent:#0b63ce;
-  --accent2:#0752ad;
-  --chip:#eef2ff;
-  --shadow: 0 10px 25px rgba(0,0,0,.06);
-  --radius: 16px;
+  --text:#0f172a;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --border:#e2e8f0;
+  --accent:#1a6b5e;
+  --accent2:#155e52;
+  --chip:rgba(26,107,94,0.09);
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+  --radius:12px;
 
   /* Per-page layout alignment (set these to match THAT page’s .wrap) */
   /* Example values below — change per page */
@@ -32,7 +32,7 @@
 .tm-topbar{
   width:100%;
   background:#ffffff;
-  border-bottom:1px solid var(--border, #e7e7ee);
+  border-bottom:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,0.05);
   position:sticky;
   top:0;
   z-index:1000;
@@ -42,7 +42,8 @@
   box-sizing: border-box; /* critical: match wrap sizing */
   max-width: var(--tm-wrap-max, 980px);
   margin:0 auto;
-  padding:10px var(--tm-wrap-pad, 20px);
+  padding:0 var(--tm-wrap-pad, 20px);
+  height:46px;
   display:flex;
   align-items:center;
   flex-wrap:nowrap;          /* never wrap */
@@ -74,26 +75,29 @@
   font-size:14px;
   font-weight:500;
   white-space:nowrap;
-  padding:4px 10px;
+  padding:0 11px;
+  height:46px;
+  display:inline-flex;
+  align-items:center;
+  border-bottom:2px solid transparent;
 }
 
-.tm-topbar a:hover{ color:var(--accent, #0d9488); }
+.tm-topbar a:hover{ color:var(--text); }
 
 /* Accessible active state: pill background (NOT color-only) */
 /* Excludes home icon */
 .tm-topbar a.active:not(.home-link),
 .tm-topbar a.active:not(.home-link):visited{
-  background: rgba(13,148,136,0.12);
-  color: var(--text, #111) !important;
-  font-weight: 600;
-  border-radius: 999px;
+  color:var(--accent) !important;
+  font-weight:600;
+  border-bottom:2px solid var(--accent);
 }
 
 /* separators */
 .tm-topbar a + a{
-  border-left:1px solid #e5e7eb;
-  margin-left:6px;
-  padding-left:12px;
+  border-left:1px solid rgba(0,0,0,0.06);
+  margin-left:4px;
+  padding-left:11px;
 }
 
 /* home icon */
@@ -101,17 +105,21 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:4px 10px;
+  padding:0 12px 0 0;
+  border-right:1px solid var(--border);
+  margin-right:6px;
+  flex-shrink:0;
+  border-bottom:none !important;
 }
 .tm-topbar .home-link svg{
-  width:18px;
-  height:18px;
+  width:15px;
+  height:15px;
 }
 
 /* Mobile tighten + “One Minute” -> “One-Min” */
 @media (max-width: 520px){
-  .tm-topbar-inner{ padding:8px var(--tm-wrap-pad, 12px); }
-  .tm-topbar a, .tm-topbar a:visited{ font-size:13px; padding:3px 8px; }
+  .tm-topbar-inner{ padding:0 12px; }
+  .tm-topbar a, .tm-topbar a:visited{ font-size:13px; padding:0 8px; }
   .tm-topbar a + a{ margin-left:5px; padding-left:10px; }
 
   .tm-topbar a[href$="/one-minute-audio.html"]{ font-size:0; }
@@ -125,20 +133,22 @@
     
     body{
       margin:0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);-webkit-font-smoothing:antialiased;
       color: var(--text);
     }
 
     header{
-      padding: 28px 18px 10px;
+      padding:20px 18px 12px;
       text-align:center;
+      border-bottom:1px solid var(--border);
+      background:#fff;
     }
     header h1{
       margin:0;
-      font-size: 2rem;
-      letter-spacing: .2px;
-      color: var(--text);
+      font-size:1.8rem;
+      letter-spacing:-.02em;
+      color:var(--text);
     }
     header p{
       margin: 10px auto 0;
@@ -180,7 +190,7 @@
 
     .chip{
       background: var(--chip);
-      color: var(--accent2);
+      color:var(--accent);
       border: 1px solid #dbe3ff;
       padding: 7px 12px;
       border-radius: 999px;
@@ -220,7 +230,7 @@
       gap:10px;
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--accent2);
+      color:var(--accent);
     }
 
     .count{
@@ -252,7 +262,7 @@
     }
 
     details.subcat{
-      background: #fbfcff;
+      background:#fafcfb;
       border:1px solid var(--line);
       border-radius: 14px;
       overflow:hidden;
@@ -306,7 +316,7 @@
   display:flex;
   align-items:center;
   gap:10px;
-  border:1px dashed var(--line);
+  border:1px dashed var(--border);
   background:#f8fafc;
   border-radius: 14px;
   padding: 12px 14px;
@@ -329,7 +339,7 @@
 }
 
     .tm-note-row:hover{
-  background: #eef2ff;
+  background:var(--accent-lt);
 }
 
 .tm-link-row .tm-play{
@@ -337,8 +347,8 @@
 }
 
 .tm-row.tm-youtube{
-  border-color: #dbe3ff;
-  background: #f8faff;
+  border-color:var(--accent-mid);
+  background:var(--accent-lt);
 }
 
 
@@ -401,9 +411,10 @@
 
     footer{
       text-align:center;
-      color: var(--muted);
-      padding: 18px;
-      font-size: 12px;
+      color:var(--muted);
+      padding:20px 18px;
+      font-size:12px;
+      border-top:1px solid var(--border);
     }
 
 .tm-badge{
@@ -417,9 +428,9 @@
 }
 
     .tm-len.tm-short{
-  background:#ecfeff;
-  border-color:#a5f3fc;
-  color:#155e75;
+  background:var(--accent-lt);
+  border-color:var(--accent-mid);
+  color:var(--accent2);
 }
 .tm-len.tm-long{
   background:#fff7ed;
@@ -447,7 +458,7 @@
   background:#fff;
   cursor:pointer;
   font-weight:800;
-  color: var(--accent2);
+  color:var(--accent);
 }
 
 .tm-seek{
@@ -573,7 +584,7 @@
   align-items:center;
   justify-content:center;
   font-weight: 900;
-  color: var(--accent2);
+  color:var(--accent);
   flex: 0 0 auto;
 }
 
@@ -816,12 +827,12 @@ header h1{
 @media (min-width: 768px){
 
   .cat-title{
-    color: var(--text); /* normal dark */
+    color:var(--accent);
   }
 
   details.subcat > summary{
-    color: var(--text);
-    font-weight: 650;
+    color:var(--text);
+    font-weight:650;
   }
 
   .count{
@@ -841,7 +852,7 @@ header h1{
 
   /* slightly highlight focused panel */
   details.subcat[open]{
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    box-shadow:var(--shadow-md);
     background: #fff;
   }
 
