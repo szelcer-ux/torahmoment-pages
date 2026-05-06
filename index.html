@@ -167,8 +167,15 @@ h1{font-family:'Lora',Georgia,serif;font-size:2.15rem;font-weight:700;letter-spa
 @media(max-width:620px){
   .rTitle{display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
   .recentAudio.isTitleOpen .rTitle{white-space:normal;overflow:visible}
+  /* Stack audio row vertically on mobile */
+  .recentAudio{flex-direction:column;gap:6px}
+  .recentAudio .rLeft{width:100%}
+  .rPlayer{width:100%;min-width:0;transform:none}
+  .recentAudio .rSub{justify-content:flex-start;padding-left:0}
+  .recentAudio .speedBtns{margin-left:0}
+  .rDate{display:block;margin-top:2px}
 }
-/* Audio player sizing */
+/* Audio player sizing — desktop */
 .rPlayer{flex:1;min-width:200px;transform:scale(.92);transform-origin:right center}
 .recentAudio .rSub{display:flex;justify-content:flex-end;margin-top:6px}
 .recentAudio .speedBtns{margin-left:auto}
