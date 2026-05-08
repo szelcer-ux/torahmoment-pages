@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "April 25, 2026–May 1, 2026",
-  "generatedAt": "2026-05-01T14:05:38.667Z",
-  "totalItems": 5,
+  "rangeLabel": "May 2–8, 2026",
+  "generatedAt": "2026-05-08T11:24:25.842Z",
+  "totalItems": 3,
   "featured": {
-    "id": "par-U1E7OVBU3vQ",
-    "title": "Two components of chinuch",
+    "id": "par-BRM2S2tFWVg",
+    "title": "Don't be too hard on yourself",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-05-01T03:10:57Z",
+    "date": "2026-05-08T02:28:47Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ"
+    "url": "https://www.youtube.com/watch?v=BRM2S2tFWVg"
   },
   "groups": [
     {
@@ -17,28 +17,13 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-U1E7OVBU3vQ",
-          "title": "Two components of chinuch",
+          "id": "par-BRM2S2tFWVg",
+          "title": "Don't be too hard on yourself",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-05-01T03:10:57Z",
+          "date": "2026-05-08T02:28:47Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ"
-        }
-      ]
-    },
-    {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
-      "items": [
-        {
-          "id": "hal-68",
-          "title": "Yissachar Zevulun",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-04-30T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3"
+          "url": "https://www.youtube.com/watch?v=BRM2S2tFWVg"
         }
       ]
     },
@@ -47,31 +32,22 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-219",
-          "title": "Dont fall into the trap",
+          "id": "one-221",
+          "title": "R' Shimon bar yochais legacy",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-04-30T00:00:00.000Z",
+          "date": "2026-05-05T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260430-WA0009.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260505-WA0020.mp3"
         },
         {
-          "id": "one-218",
-          "title": "Up or down doesn't matter",
+          "id": "one-220",
+          "title": "Look to the right",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-04-28T00:00:00.000Z",
+          "date": "2026-05-04T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260428-WA0029.mp3"
-        },
-        {
-          "id": "one-217",
-          "title": "Surround yourself with holiness",
-          "program": "One-Minute",
-          "type": "audio",
-          "date": "2026-04-27T00:00:00.000Z",
-          "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260427-WA0020.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260504-WA0007.mp3"
         }
       ]
     }
