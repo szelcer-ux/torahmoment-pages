@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 715,
+    "total": 716,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 225
+        "video": 226
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-05-07"
+    "updated": "2026-05-08"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Don't be too hard on yourself",
+      "url": "https://www.youtube.com/watch?v=BRM2S2tFWVg",
+      "date": "2026-05-08T02:28:47Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -48,13 +55,6 @@
       "program": "Halacha",
       "title": "Yissachar Zevulun",
       "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3",
-      "date": "2026-04-30T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Dont fall into the trap",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260430-WA0009.mp3",
       "date": "2026-04-30T00:00:00.000Z"
     }
   ],
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Don't be too hard on yourself",
+        "url": "https://www.youtube.com/watch?v=BRM2S2tFWVg",
+        "date": "2026-05-08T02:28:47Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Two components of chinuch",
         "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ",
         "date": "2026-05-01T03:10:57Z"
@@ -266,13 +273,6 @@
         "title": "The power of consistency",
         "url": "https://www.youtube.com/watch?v=aXyYwQeZ4zs",
         "date": "2026-02-27T03:59:02Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Be youthful not childish",
-        "url": "https://www.youtube.com/watch?v=GiYs0ntVDuI",
-        "date": "2026-02-20T02:49:14Z"
       }
     ]
   }
