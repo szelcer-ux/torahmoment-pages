@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 717,
+    "total": 718,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 88
       },
       "oneMinute": {
-        "audio": 223
+        "audio": 224
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-05-13"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Derech eretz before all",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260513-WA0001.mp3",
+      "date": "2026-05-13T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "Look to the right",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260504-WA0007.mp3",
       "date": "2026-05-04T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Two components of chinuch",
-      "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ",
-      "date": "2026-05-01T03:10:57Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Derech eretz before all",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260513-WA0001.mp3",
+        "date": "2026-05-13T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "The Shliach Tzibur in Gan Eden",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0011.mp3",
         "date": "2026-04-21T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "You are holy!",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0008.mp3",
-        "date": "2026-04-20T00:00:00.000Z"
       }
     ],
     "halacha": [
