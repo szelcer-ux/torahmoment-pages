@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 718,
+    "total": 719,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 88
+        "totalAll": 89
       },
       "oneMinute": {
         "audio": 224
@@ -22,6 +22,13 @@
     "updated": "2026-05-14"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "My Rebbis's view on Yom Yerushalayim",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19176112-5-14-2026-shloimy-zelcer-my-rebbis-s-view-on-yom-yerushalayim.mp3",
+      "date": "2026-05-14T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "R' Shimon bar yochais legacy",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260505-WA0020.mp3",
       "date": "2026-05-05T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Look to the right",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260504-WA0007.mp3",
-      "date": "2026-05-04T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "My Rebbis's view on Yom Yerushalayim",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19176112-5-14-2026-shloimy-zelcer-my-rebbis-s-view-on-yom-yerushalayim.mp3",
+        "date": "2026-05-14T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Yissachar Zevulun",
         "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3",
         "date": "2026-04-30T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "Eating before Megilah",
         "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
         "date": "2026-03-02T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Leaving a sefer open",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18712806-2-19-2026-shloimy-zelcer-leaving-a-sefer-open.mp3",
-        "date": "2026-02-19T00:00:00.000Z"
       }
     ],
     "parsha": [
