@@ -144,7 +144,14 @@
     "parsha": "Behar",
     "image": "/images/infographics/parsha/behar-dont-be-too-hard-on-yourself.png",
     "youtube": "https://www.youtube.com/watch?v=BRM2S2tFWVg",
-    "description": "Sanctuary of speech: Guarding others and ourselves.",
+    "description": "Sanctuary of speech: Guarding others and ourselves."
+  },
+  "fonWnyA-ibo": {
+    "title": "Growing on the journey",
+    "parsha": "Bamidbar",
+    "image": "/images/infographics/parsha/bamidbar-journey-in-the-wilderness.png",
+    "youtube": "https://www.youtube.com/watch?v=fonWnyA-ibo",
+    "description": "Torah in the wilderness.",
     "featured": true
   }
 }
