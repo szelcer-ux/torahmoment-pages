@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>This Week on TorahMoment</title>
+  <meta name="description" content="This week's new shiurim on TorahMoment — Parsha, Halacha, One-Minute Torah and more." />
+  <meta property="og:title" content="This Week on TorahMoment" />
+  <meta property="og:description" content="This week's new shiurim on TorahMoment — Parsha, Halacha, One-Minute Torah and more." />
+  <meta property="og:image" content="https://torahmoment.com/images/og-default.png" />
+  <meta property="og:url" content="https://torahmoment.com/weekly.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
   <style>
     :root{
       --bg:#f7f7f8;
@@ -17,590 +24,170 @@
       --wrap-max:920px;
       --wrap-pad:16px;
     }
-
     *{ box-sizing:border-box; }
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); }
+    .wrap{ max-width:var(--wrap-max); margin:0 auto; padding:16px var(--wrap-pad) 28px; display:flex; flex-direction:column; gap:12px; }
 
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
+    .hero{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px 18px 16px; }
+    .kicker{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:5px; }
+    .hero h1{ margin:0 0 6px; font-size:clamp(1.4rem,3vw,1.8rem); line-height:1.1; letter-spacing:-.02em; }
+    .hero-range{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); }
+    .count-badge{ display:inline-block; background:var(--accent); color:#fff; font-size:11px; font-weight:700; border-radius:999px; padding:2px 9px; }
 
-    .wrap{
-      max-width:var(--wrap-max);
-      margin:0 auto;
-      padding:16px var(--wrap-pad) 28px;
-    }
+    .featured{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+    .section-label{ padding:8px 14px; font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); background:var(--bg); border-bottom:1px solid var(--border); }
+    .section-label .accent{ color:var(--accent); }
+    .featured-body{ padding:16px 16px 14px; }
+    .featured-title{ font-size:17px; font-weight:800; line-height:1.25; margin:0 0 4px; }
+    .featured-meta{ font-size:12px; color:var(--muted); margin-bottom:14px; }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:14px;
-      margin-top:12px;
-    }
+    .btn-row{ display:flex; gap:8px; flex-wrap:wrap; }
+    .btn{ display:inline-flex; align-items:center; gap:5px; text-decoration:none; border-radius:999px; padding:8px 14px; font-weight:700; font-size:13px; background:var(--accent); color:#fff; }
+    .btn.secondary{ background:var(--card); color:var(--text); border:1px solid var(--border); }
 
-    h1,h2,h3{
-      margin:0 0 8px;
-      line-height:1.2;
-    }
+    .group{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+    .digest-list{ display:flex; flex-direction:column; }
+    .digest-row{ padding:12px 14px; border-top:1px solid var(--border); }
+    .digest-row:first-child{ border-top:none; }
+    .digest-title{ font-size:14px; font-weight:800; line-height:1.25; margin-bottom:2px; }
+    .meta{ font-size:12px; color:var(--muted); margin-bottom:8px; }
 
-    .subtle{
-      color:var(--muted);
-    }
+    .tm-inline-player{ display:grid; grid-template-columns:32px 1fr auto; align-items:center; gap:8px; background:var(--bg); border:1px solid var(--border); border-radius:999px; padding:4px 12px 4px 4px; }
+    .tm-play{ width:32px; height:32px; border-radius:50%; border:none; background:var(--accent); display:grid; place-items:center; cursor:pointer; flex:0 0 auto; color:#fff; }
+    .tm-play:disabled{ opacity:.5; cursor:not-allowed; }
+    .tm-play svg{ width:14px; height:14px; display:block; }
+    .tm-progress-wrap{ min-width:0; width:100%; }
+    .tm-progress{ width:100%; appearance:none; height:3px; border-radius:999px; background:#dfe5eb; outline:none; cursor:pointer; }
+    .tm-progress::-webkit-slider-thumb{ appearance:none; width:10px; height:10px; border-radius:50%; background:var(--accent); border:none; cursor:pointer; }
+    .tm-progress::-moz-range-thumb{ width:10px; height:10px; border-radius:50%; background:var(--accent); border:none; cursor:pointer; }
+    .tm-controls{ display:flex; align-items:center; gap:6px; }
+    .tm-pill{ height:26px; padding:0 9px; border-radius:999px; border:1px solid var(--border); background:var(--card); color:var(--text); font-size:11px; cursor:pointer; white-space:nowrap; }
+    .tm-time{ color:var(--muted); font-size:11px; white-space:nowrap; min-width:36px; text-align:right; }
 
-    .section-card h3{
-      margin-bottom:8px;
-      font-size:1.18rem;
-    }
+    .mini-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+    .mini-btn{ display:inline-flex; align-items:center; text-decoration:none; border-radius:999px; padding:7px 12px; font-weight:700; font-size:13px; background:var(--accent); color:#fff; }
+    .mini-btn.secondary{ background:var(--card); color:var(--text); border:1px solid var(--border); }
 
-    .digest-list{
-      display:flex;
-      flex-direction:column;
-    }
-
-    .digest-row{
-      padding:10px 0;
-      border-top:1px solid var(--border);
-    }
-
-    .digest-row:first-child{
-      border-top:0;
-      padding-top:2px;
-    }
-
-    .digest-row:last-child{
-      padding-bottom:0;
-    }
-
-    .digest-head{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:8px;
-    }
-
-    .digest-main{
-      min-width:0;
-      flex:1 1 auto;
-    }
-
-    .digest-title{
-      font-size:.98rem;
-      font-weight:800;
-      line-height:1.24;
-    }
-
-    .meta{
-      font-size:.86rem;
-      color:var(--muted);
-      margin-top:2px;
-    }
-
-    .open-link{
-      flex:0 0 auto;
-      text-decoration:none;
-      color:var(--accent);
-      font-weight:700;
-      white-space:nowrap;
-      font-size:.92rem;
-    }
-
-    .open-link:hover{
-      text-decoration:underline;
-    }
-
-    .actions{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      text-decoration:none;
-      border-radius:999px;
-      padding:9px 12px;
-      font-weight:700;
-      background:var(--accent);
-      color:#fff;
-      font-size:.95rem;
-    }
-
-    .btn.secondary{
-      background:#fff;
-      color:var(--text);
-      border:1px solid var(--border);
-    }
-
-    .mini-actions{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:8px;
-    }
-
-    .mini-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      text-decoration:none;
-      border-radius:999px;
-      padding:7px 11px;
-      font-weight:700;
-      font-size:.84rem;
-      background:var(--accent);
-      color:#fff;
-    }
-
-    .mini-btn.secondary{
-      background:#fff;
-      color:var(--text);
-      border:1px solid var(--border);
-    }
-
-    .tm-inline-player{
-      display:grid;
-      grid-template-columns:32px 1fr auto;
-      align-items:center;
-      gap:6px;
-      margin-top:7px;
-    }
-
-    .tm-play{
-      width:32px;
-      height:32px;
-      border-radius:999px;
-      border:1px solid #dbe2ea;
-      background:#fff;
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-      flex:0 0 auto;
-    }
-
-    .tm-play:disabled{
-      opacity:.6;
-      cursor:not-allowed;
-    }
-
-    .tm-play svg{
-      width:14px;
-      height:14px;
-      display:block;
-    }
-
-    .tm-progress-wrap{
-      min-width:0;
-      width:100%;
-      margin-right:2px;
-    }
-
-    .tm-progress{
-      width:100%;
-      appearance:none;
-      height:4px;
-      border-radius:999px;
-      background:#dfe5eb;
-      outline:none;
-      cursor:pointer;
-    }
-
-    .tm-progress::-webkit-slider-thumb{
-      appearance:none;
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:var(--accent);
-      border:none;
-      cursor:pointer;
-    }
-
-    .tm-progress::-moz-range-thumb{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:var(--accent);
-      border:none;
-      cursor:pointer;
-    }
-
-    .tm-controls{
-      display:flex;
-      align-items:center;
-      justify-self:end;
-      gap:6px;
-    }
-
-    .tm-pill{
-      height:28px;
-      padding:0 9px;
-      border-radius:999px;
-      border:1px solid #cdeee2;
-      background:#fff;
-      color:#0f172a;
-      font-size:12px;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-
-    .tm-pill:hover{
-      background:#fafefe;
-      border-color:#b8ddd4;
-    }
-
-    .tm-time{
-      color:var(--muted);
-      font-size:12px;
-      white-space:nowrap;
-      min-width:42px;
-      text-align:right;
-    }
-
-    @media (max-width:700px){
-      .digest-head{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .tm-inline-player{
-        gap:6px;
-      }
-
-      .tm-controls{
-        grid-column:1 / -1;
-        justify-content:flex-end;
-        align-self:center;
-      }
-
-      .tm-play{
-        width:34px;
-        height:34px;
-      }
-
-      .tm-pill{
-        height:30px;
-        padding:0 9px;
-        font-size:12px;
-      }
-
-      .tm-time{
-        font-size:12px;
-        min-width:42px;
-      }
-    }
-
-    @media (max-width:640px){
-      .tm-inline-player{
-        display:grid !important;
-        grid-template-columns:32px minmax(0,1fr) auto !important;
-        align-items:center !important;
-        gap:6px !important;
-        padding:4px 6px !important;
-        min-height:0 !important;
-        border-radius:999px !important;
-      }
-
-      .tm-play{
-        width:32px !important;
-        height:32px !important;
-      }
-
-      .tm-play svg{
-        width:14px !important;
-        height:14px !important;
-      }
-
-      .tm-progress-wrap{
-        min-width:0 !important;
-        width:100% !important;
-        margin-right:2px !important;
-      }
-
-      .tm-progress{
-        height:4px !important;
-      }
-
-      .tm-controls{
-        display:flex !important;
-        align-items:center !important;
-        justify-self:end !important;
-        grid-column:auto !important;
-        flex-wrap:nowrap !important;
-        gap:0 !important;
-        min-width:auto !important;
-        align-self:center !important;
-      }
-
-      .tm-pill{
-        height:28px !important;
-        padding:0 9px !important;
-        font-size:12px !important;
-        white-space:nowrap !important;
-      }
-
-      .tm-time{
-        font-size:12px !important;
-        min-width:42px !important;
-      }
-    }
-
-    .weekly-hero{
-  background:linear-gradient(135deg, #f4fbfa 0%, #ffffff 100%);
-  border-color:rgba(13,148,136,.14);
-  padding:16px 14px 14px;
-}
-
-.weekly-kicker{
-  display:inline-block;
-  margin-bottom:4px;
-  font-size:.72rem;
-  font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--accent);
-}
-
-.weekly-hero h1{
-  margin:0;
-  font-size:clamp(1.5rem, 3vw, 1.9rem);
-  line-height:1.08;
-  letter-spacing:-0.02em;
-}
-
-.weekly-range{
-  margin-top:6px;
-  color:var(--muted);
-  font-size:.92rem;
-}
+    .explore{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px 16px; }
+    .explore h3{ margin:0 0 10px; font-size:14px; font-weight:700; }
   </style>
 </head>
 <body>
   <div class="wrap">
-<div class="card weekly-hero">
-  <div class="weekly-kicker">Weekly Digest</div>
-  <h1>This Week on TorahMoment</h1>
-  <div id="range" class="weekly-range">Loading…</div>
-</div>
+
+    <div class="hero">
+      <div class="kicker">Weekly Digest</div>
+      <h1>This Week on TorahMoment</h1>
+      <div class="hero-range">
+        <span id="range">Loading…</span>
+        <span id="countBadge" class="count-badge" style="display:none;"></span>
+      </div>
+    </div>
+
+    <div id="featuredWrap" class="featured" style="display:none;">
+      <div class="section-label"><span class="accent">★</span> Featured this week</div>
+      <div class="featured-body">
+        <div id="featuredTitle" class="featured-title"></div>
+        <div id="featuredMeta" class="featured-meta"></div>
+        <div id="featuredBtns" class="btn-row"></div>
+      </div>
+    </div>
 
     <div id="groupsWrap"></div>
 
-    <div class="card">
-      <h3>Explore More</h3>
-      <div class="actions">
+    <div class="explore">
+      <h3>Explore more</h3>
+      <div class="btn-row">
         <a class="btn" href="/topics.html">Browse by Topic</a>
-        <a class="btn secondary" href="/parsha.html">Previous Years’ Divrei Torah</a>
+        <a class="btn secondary" href="/parsha.html">Previous Years' Divrei Torah</a>
       </div>
     </div>
+
   </div>
-
   <script>
-    function esc(s){
-      return String(s ?? "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-    }
+    function esc(s){ return String(s??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;"); }
+    function fmtDate(s){ if(!s) return ""; const d=new Date(s); return isNaN(d)?s:d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}); }
+    function isAudio(item){ const t=String(item.type||"").toLowerCase(),u=String(item.url||"").toLowerCase(); return t.includes("audio")||u.endsWith(".mp3")||u.includes(".mp3?"); }
+    function pageHref(item){ return String(item.program||"").toLowerCase().includes("parsha")?"/parsha.html?parsha=__ALL__":item.page||"#"; }
+    function pageLabel(item){ return String(item.program||"").toLowerCase().includes("parsha")?"Browse Parsha":"Open Page"; }
 
-    function fmtDate(s){
-      if(!s) return "";
-      const d = new Date(s);
-      return isNaN(d) ? s : d.toLocaleDateString();
-    }
-
-    function isAudioItem(item){
-      const type = String(item.type || "").toLowerCase();
-      const url = String(item.url || "").toLowerCase();
-      return type.includes("audio") || url.endsWith(".mp3") || url.includes(".mp3?");
-    }
-
-    function getOpenPageHref(item){
-      const program = String(item.program || "").toLowerCase();
-      if(program.includes("parsha")){
-        return "/parsha.html?parsha=__ALL__";
-      }
-      return item.page || "#";
-    }
-
-    function getOpenPageLabel(item){
-      const program = String(item.program || "").toLowerCase();
-      if(program.includes("parsha")){
-        return "Browse Parsha";
-      }
-      return "Open Page";
-    }
-
-    function renderAudioPlayer(item){
-      return `
-        <div class="tm-inline-player" data-audio-player>
-          <button class="tm-play" type="button" data-play aria-label="Play">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M8 5v14l11-7z"></path>
-            </svg>
-          </button>
-
-          <div class="tm-progress-wrap">
-            <input class="tm-progress" data-seek type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
-          </div>
-
-          <div class="tm-controls">
-            <button class="tm-pill" type="button" data-speed>1×</button>
-            <span class="tm-time" data-time></span>
-          </div>
-
-          <audio preload="none" src="${esc(item.url || "")}"></audio>
+    function renderPlayer(item){
+      return `<div class="tm-inline-player" data-audio-player>
+        <button class="tm-play" type="button" data-play aria-label="Play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="tm-progress-wrap"><input class="tm-progress" data-seek type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek"></div>
+        <div class="tm-controls">
+          <button class="tm-pill" type="button" data-speed>1×</button>
+          <span class="tm-time" data-time></span>
         </div>
-      `;
+        <audio preload="none" src="${esc(item.url||"")}"></audio>
+      </div>`;
     }
 
-    function setupInlineAudioPlayers(root=document){
-      const players = root.querySelectorAll("[data-audio-player]");
-
-      players.forEach(player => {
-        const audio = player.querySelector("audio");
-        const playBtn = player.querySelector("[data-play]");
-        const seek = player.querySelector("[data-seek]");
-        const speedBtn = player.querySelector("[data-speed]");
-        const timeEl = player.querySelector("[data-time]");
-
-        if(!audio || !playBtn || !seek || !speedBtn || !timeEl) return;
-
-        const speeds = [1, 1.25, 1.5, 1.75, 2];
-        let speedIndex = 0;
-
-        function updatePlayIcon(isPlaying){
-          playBtn.innerHTML = isPlaying
-            ? `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5h3v14H8zm5 0h3v14h-3z"></path></svg>`
-            : `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>`;
-        }
-
-        function fmt(sec){
-          if(!Number.isFinite(sec) || sec < 0) return "";
-          const m = Math.floor(sec / 60);
-          const s = Math.floor(sec % 60);
-          return `${m}:${String(s).padStart(2, "0")}`;
-        }
-
-        function updateTime(){
-          const dur = audio.duration || 0;
-          const cur = audio.currentTime || 0;
-
-          if(dur > 0){
-            seek.value = (cur / dur) * 100;
-            timeEl.textContent = fmt(dur);
-          } else {
-            seek.value = 0;
-            timeEl.textContent = "";
-          }
-        }
-
-        playBtn.addEventListener("click", async () => {
-          document.querySelectorAll(".tm-inline-player audio").forEach(a => {
-            if(a !== audio){
-              a.pause();
-              const p = a.closest("[data-audio-player]");
-              const b = p?.querySelector("[data-play]");
-              if(b){
-                b.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>`;
-              }
-            }
-          });
-
-          if(audio.paused){
-            try{
-              await audio.play();
-              updatePlayIcon(true);
-            }catch(e){}
-          } else {
-            audio.pause();
-            updatePlayIcon(false);
-          }
+    function setupPlayers(root=document){
+      root.querySelectorAll("[data-audio-player]").forEach(player=>{
+        const audio=player.querySelector("audio"),playBtn=player.querySelector("[data-play]"),seek=player.querySelector("[data-seek]"),speedBtn=player.querySelector("[data-speed]"),timeEl=player.querySelector("[data-time]");
+        if(!audio||!playBtn||!seek||!speedBtn||!timeEl) return;
+        const speeds=[1,1.25,1.5,1.75,2]; let si=0;
+        const pi=`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
+        const pa=`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5h3v14H8zm5 0h3v14h-3z"/></svg>`;
+        function fmt(s){ return Number.isFinite(s)&&s>=0?`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`: ""; }
+        function tick(){ const d=audio.duration||0,c=audio.currentTime||0; if(d>0){seek.value=(c/d)*100;timeEl.textContent=fmt(d);}else{seek.value=0;timeEl.textContent="";} }
+        playBtn.addEventListener("click",async()=>{
+          document.querySelectorAll(".tm-inline-player audio").forEach(a=>{ if(a!==audio){a.pause();a.closest("[data-audio-player]")?.querySelector("[data-play]")?.replaceChildren(...new DOMParser().parseFromString(pi,"text/html").body.childNodes);} });
+          if(audio.paused){try{await audio.play();playBtn.innerHTML=pa;}catch(e){}}else{audio.pause();playBtn.innerHTML=pi;}
         });
-
-        audio.addEventListener("play", () => updatePlayIcon(true));
-        audio.addEventListener("pause", () => updatePlayIcon(false));
-        audio.addEventListener("loadedmetadata", updateTime);
-        audio.addEventListener("timeupdate", updateTime);
-        audio.addEventListener("ended", () => updatePlayIcon(false));
-
-        seek.addEventListener("input", () => {
-          if(audio.duration){
-            audio.currentTime = (Number(seek.value) / 100) * audio.duration;
-          }
-        });
-
-        speedBtn.addEventListener("click", () => {
-          speedIndex = (speedIndex + 1) % speeds.length;
-          audio.playbackRate = speeds[speedIndex];
-          speedBtn.textContent = `${speeds[speedIndex]}×`;
-        });
-
-        audio.playbackRate = speeds[speedIndex];
-        speedBtn.textContent = `${speeds[speedIndex]}×`;
-        updateTime();
+        audio.addEventListener("play",()=>{playBtn.innerHTML=pa;});
+        audio.addEventListener("pause",()=>{playBtn.innerHTML=pi;});
+        audio.addEventListener("ended",()=>{playBtn.innerHTML=pi;});
+        audio.addEventListener("loadedmetadata",tick);
+        audio.addEventListener("timeupdate",tick);
+        seek.addEventListener("input",()=>{ if(audio.duration) audio.currentTime=(Number(seek.value)/100)*audio.duration; });
+        speedBtn.addEventListener("click",()=>{ si=(si+1)%speeds.length; audio.playbackRate=speeds[si]; speedBtn.textContent=`${speeds[si]}×`; });
+        audio.playbackRate=speeds[si]; speedBtn.textContent=`${speeds[si]}×`; tick();
       });
     }
 
-    async function loadWeekly(){
-      const res = await fetch("/data/weekly-update.json", { cache:"no-store" });
-      if(!res.ok) throw new Error("weekly-update.json not found");
-      const data = await res.json();
+    async function load(){
+      const res=await fetch("/data/weekly-update.json",{cache:"no-store"});
+      if(!res.ok) throw new Error("not found");
+      const data=await res.json();
 
-      document.getElementById("range").textContent =
-        `${data.rangeLabel} • ${data.totalItems || 0} new item${data.totalItems === 1 ? "" : "s"}`;
+      document.getElementById("range").textContent=data.rangeLabel||"";
+      if(data.totalItems){ const b=document.getElementById("countBadge"); b.textContent=`${data.totalItems} new`; b.style.display=""; }
 
-      const groupsWrap = document.getElementById("groupsWrap");
+      if(data.featured){
+        const f=data.featured;
+        document.getElementById("featuredTitle").textContent=f.title||"";
+        document.getElementById("featuredMeta").textContent=[f.program,f.date?fmtDate(f.date):""].filter(Boolean).join(" · ");
+        const btns=document.getElementById("featuredBtns");
+        if(f.url) btns.innerHTML+=`<a class="btn" href="${esc(f.url)}" target="_blank" rel="noopener">Watch on YouTube</a>`;
+        btns.innerHTML+=`<a class="btn secondary" href="${esc(pageHref(f))}">${esc(pageLabel(f))}</a>`;
+        document.getElementById("featuredWrap").style.display="";
+      }
 
-      groupsWrap.innerHTML = (data.groups || []).map(group => `
-        <div class="card section-card">
-          <h3>${esc(group.label)}</h3>
-          <div class="digest-list">
-            ${(group.items || []).map(item => {
-              const hasAudio = item.url && isAudioItem(item);
-
-              return `
-                <div class="digest-row">
-                  <div class="digest-head">
-                    <div class="digest-main">
-                      <div class="digest-title">${esc(item.title)}</div>
-                      <div class="meta">
-                        ${esc(item.program || "")}
-                        ${item.date ? ` • ${esc(fmtDate(item.date))}` : ""}
-                      </div>
-                    </div>
-                    <a class="open-link" href="${esc(getOpenPageHref(item))}">${esc(getOpenPageLabel(item))}</a>
-                  </div>
-
-                  ${hasAudio
-                    ? renderAudioPlayer(item)
-                    : `
-                      <div class="mini-actions">
-                        <a class="mini-btn" href="${esc(getOpenPageHref(item))}">${esc(getOpenPageLabel(item))}</a>
-                        ${item.url ? `<a class="mini-btn secondary" href="${esc(item.url)}">Play / Watch</a>` : ``}
-                      </div>
-                    `
-                  }
-                </div>
-              `;
-            }).join("")}
+      const fid=data.featured?.id;
+      const gw=document.getElementById("groupsWrap");
+      gw.innerHTML=(data.groups||[]).map(group=>{
+        const items=(group.items||[]).filter(i=>!(i.id===fid&&group.items.length===1));
+        if(!items.length) return "";
+        return `<div class="group">
+          <div class="section-label">${esc(group.label)}</div>
+          <div class="digest-list">${items.map(item=>`
+            <div class="digest-row">
+              <div class="digest-title">${esc(item.title)}</div>
+              <div class="meta">${[item.program,item.date?fmtDate(item.date):""].filter(Boolean).join(" · ")}</div>
+              ${isAudio(item)?renderPlayer(item):`<div class="mini-actions">${item.url?`<a class="mini-btn" href="${esc(item.url)}" target="_blank" rel="noopener">Watch</a>`:""}<a class="mini-btn secondary" href="${esc(pageHref(item))}">${esc(pageLabel(item))}</a></div>`}
+            </div>`).join("")}
           </div>
-        </div>
-      `).join("");
+        </div>`;
+      }).join("");
 
-      setupInlineAudioPlayers(groupsWrap);
+      setupPlayers(gw);
     }
 
-    loadWeekly().catch(err => {
-      console.warn(err);
-      document.getElementById("range").textContent = "Could not load this week’s digest.";
-    });
+    load().catch(e=>{ console.warn(e); document.getElementById("range").textContent="Could not load this week's digest."; });
   </script>
 </body>
 </html>
