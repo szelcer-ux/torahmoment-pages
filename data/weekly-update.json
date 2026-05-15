@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "May 2–8, 2026",
-  "generatedAt": "2026-05-08T11:24:25.842Z",
-  "totalItems": 3,
+  "rangeLabel": "May 9–15, 2026",
+  "generatedAt": "2026-05-15T12:00:13.287Z",
+  "totalItems": 4,
   "featured": {
-    "id": "par-BRM2S2tFWVg",
-    "title": "Don't be too hard on yourself",
+    "id": "par-fonWnyA-ibo",
+    "title": "Growing on the journey",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-05-08T02:28:47Z",
+    "date": "2026-05-15T02:08:46Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=BRM2S2tFWVg"
+    "url": "https://www.youtube.com/watch?v=fonWnyA-ibo"
   },
   "groups": [
     {
@@ -17,13 +17,28 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-BRM2S2tFWVg",
-          "title": "Don't be too hard on yourself",
+          "id": "par-fonWnyA-ibo",
+          "title": "Growing on the journey",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-05-08T02:28:47Z",
+          "date": "2026-05-15T02:08:46Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=BRM2S2tFWVg"
+          "url": "https://www.youtube.com/watch?v=fonWnyA-ibo"
+        }
+      ]
+    },
+    {
+      "key": "halacha",
+      "label": "Halacha / Hashkafa",
+      "items": [
+        {
+          "id": "hal-84",
+          "title": "My Rebbis's view on Yom Yerushalayim",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-05-14T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/19176112-5-14-2026-shloimy-zelcer-my-rebbis-s-view-on-yom-yerushalayim.mp3"
         }
       ]
     },
@@ -32,22 +47,22 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-221",
-          "title": "R' Shimon bar yochais legacy",
+          "id": "one-223",
+          "title": "Derech eretz before all",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-05-05T00:00:00.000Z",
+          "date": "2026-05-13T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260505-WA0020.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260513-WA0001.mp3"
         },
         {
-          "id": "one-220",
-          "title": "Look to the right",
+          "id": "one-222",
+          "title": "Gatekeepers and singers",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-05-04T00:00:00.000Z",
+          "date": "2026-05-12T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260504-WA0007.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260512-WA0015.mp3"
         }
       ]
     }
