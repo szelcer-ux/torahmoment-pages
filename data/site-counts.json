@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 721,
+    "total": 496,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,22 +13,15 @@
         "totalAll": 89
       },
       "oneMinute": {
-        "audio": 225
+        "audio": 0
       },
       "mishna": {
         "audio": 137
       }
     },
-    "updated": "2026-05-18"
+    "updated": "2026-05-19"
   },
   "recent": [
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Why not a valley?",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260518-WA0022.mp3",
-      "date": "2026-05-18T00:00:00.000Z"
-    },
     {
       "type": "video",
       "program": "Parsha",
@@ -44,93 +37,29 @@
       "date": "2026-05-14T00:00:00.000Z"
     },
     {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Derech eretz before all",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260513-WA0001.mp3",
-      "date": "2026-05-13T00:00:00.000Z"
+      "type": "video",
+      "program": "Parsha",
+      "title": "Don't be too hard on yourself",
+      "url": "https://www.youtube.com/watch?v=BRM2S2tFWVg",
+      "date": "2026-05-08T02:28:47Z"
+    },
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Two components of chinuch",
+      "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ",
+      "date": "2026-05-01T03:10:57Z"
     },
     {
       "type": "audio",
-      "program": "One-Minute",
-      "title": "Gatekeepers and singers",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260512-WA0015.mp3",
-      "date": "2026-05-12T00:00:00.000Z"
+      "program": "Halacha",
+      "title": "Yissachar Zevulun",
+      "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3",
+      "date": "2026-04-30T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
-    "oneMinute": [
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Why not a valley?",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260518-WA0022.mp3",
-        "date": "2026-05-18T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Derech eretz before all",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260513-WA0001.mp3",
-        "date": "2026-05-13T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Gatekeepers and singers",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260512-WA0015.mp3",
-        "date": "2026-05-12T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "R' Shimon bar yochais legacy",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260505-WA0020.mp3",
-        "date": "2026-05-05T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Look to the right",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260504-WA0007.mp3",
-        "date": "2026-05-04T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Dont fall into the trap",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260430-WA0009.mp3",
-        "date": "2026-04-30T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Up or down doesn't matter",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260428-WA0029.mp3",
-        "date": "2026-04-28T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Surround yourself with holiness",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260427-WA0020.mp3",
-        "date": "2026-04-27T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Keep being holy",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260420-WA0007.mp3",
-        "date": "2026-04-23T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Did we really mean it when we said דיינו?",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260422-WA0035.mp3",
-        "date": "2026-04-22T00:00:00.000Z"
-      }
-    ],
+    "oneMinute": [],
     "halacha": [
       {
         "type": "audio",
