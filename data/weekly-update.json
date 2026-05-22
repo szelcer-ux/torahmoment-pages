@@ -1,68 +1,38 @@
 {
-  "rangeLabel": "May 9–15, 2026",
-  "generatedAt": "2026-05-15T12:00:13.287Z",
-  "totalItems": 4,
+  "rangeLabel": "May 16–22, 2026",
+  "generatedAt": "2026-05-22T12:27:41.991Z",
+  "totalItems": 2,
   "featured": {
-    "id": "par-fonWnyA-ibo",
-    "title": "Growing on the journey",
-    "program": "Parsha",
-    "type": "video",
-    "date": "2026-05-15T02:08:46Z",
-    "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=fonWnyA-ibo"
+    "id": "one-225",
+    "title": "Torah is for everyone",
+    "program": "One-Minute",
+    "type": "audio",
+    "date": "2026-05-19T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260519-WA0024.mp3"
   },
   "groups": [
-    {
-      "key": "parsha",
-      "label": "Parsha",
-      "items": [
-        {
-          "id": "par-fonWnyA-ibo",
-          "title": "Growing on the journey",
-          "program": "Parsha",
-          "type": "video",
-          "date": "2026-05-15T02:08:46Z",
-          "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=fonWnyA-ibo"
-        }
-      ]
-    },
-    {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
-      "items": [
-        {
-          "id": "hal-84",
-          "title": "My Rebbis's view on Yom Yerushalayim",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-05-14T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19176112-5-14-2026-shloimy-zelcer-my-rebbis-s-view-on-yom-yerushalayim.mp3"
-        }
-      ]
-    },
     {
       "key": "oneMinute",
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-223",
-          "title": "Derech eretz before all",
+          "id": "one-225",
+          "title": "Torah is for everyone",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-05-13T00:00:00.000Z",
+          "date": "2026-05-19T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260513-WA0001.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260519-WA0024.mp3"
         },
         {
-          "id": "one-222",
-          "title": "Gatekeepers and singers",
+          "id": "one-224",
+          "title": "Why not a valley?",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-05-12T00:00:00.000Z",
+          "date": "2026-05-18T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260512-WA0015.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260518-WA0022.mp3"
         }
       ]
     }
