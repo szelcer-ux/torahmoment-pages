@@ -700,7 +700,7 @@ footer a:hover{color:var(--muted)}
   document.getElementById('tm-popup-overlay').addEventListener('click',function(e){if(e.target===this)closeTmPopup()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTmPopup()});
   /* Shows after 3 seconds — change 3000 to 0 to show immediately */
-  setTimeout(function(){var el=document.getElementById('tm-popup-overlay');el.style.display='flex';el.style.animation='tmFadeIn 0.35s ease both'},3000);
+  setTimeout(function(){var el=document.getElementById('tm-popup-overlay');el.style.display='flex';el.style.animation='tmFadeIn 0.35s ease both'},1000);
 </script>
 <!-- End Book Popup -->
 </body>
