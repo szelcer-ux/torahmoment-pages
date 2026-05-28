@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 724,
+    "total": 725,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 89
+        "totalAll": 90
       },
       "oneMinute": {
         "audio": 228
@@ -22,6 +22,13 @@
     "updated": "2026-05-28"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Jews with tattoos",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19253888-5-28-2026-shloimy-zelcer-jews-with-tattoos.mp3",
+      "date": "2026-05-28T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Why not a valley?",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260518-WA0022.mp3",
       "date": "2026-05-18T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Growing on the journey",
-      "url": "https://www.youtube.com/watch?v=fonWnyA-ibo",
-      "date": "2026-05-15T02:08:46Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Jews with tattoos",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19253888-5-28-2026-shloimy-zelcer-jews-with-tattoos.mp3",
+        "date": "2026-05-28T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "My Rebbis's view on Yom Yerushalayim",
         "url": "https://www.buzzsprout.com/1899789/episodes/19176112-5-14-2026-shloimy-zelcer-my-rebbis-s-view-on-yom-yerushalayim.mp3",
         "date": "2026-05-14T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "YISRO - Serving Hashem before and after the Eigel",
         "url": "https://2mishnasaday.com/wp-content/uploads/before-and-after-eigel.mp3",
         "date": "2026-03-12T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Eating before Megilah",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
-        "date": "2026-03-02T00:00:00.000Z"
       }
     ],
     "parsha": [
