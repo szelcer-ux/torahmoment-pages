@@ -1,38 +1,68 @@
 {
-  "rangeLabel": "May 16–22, 2026",
-  "generatedAt": "2026-05-22T12:27:41.991Z",
-  "totalItems": 2,
+  "rangeLabel": "May 23–29, 2026",
+  "generatedAt": "2026-05-29T12:49:39.636Z",
+  "totalItems": 4,
   "featured": {
-    "id": "one-225",
-    "title": "Torah is for everyone",
-    "program": "One-Minute",
-    "type": "audio",
-    "date": "2026-05-19T00:00:00.000Z",
-    "page": "/one-minute-audio.html",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260519-WA0024.mp3"
+    "id": "par-OH_uWgnHWgA",
+    "title": "From inspiration to action",
+    "program": "Parsha",
+    "type": "video",
+    "date": "2026-05-29T03:24:23Z",
+    "page": "/parsha.html",
+    "url": "https://www.youtube.com/watch?v=OH_uWgnHWgA"
   },
   "groups": [
+    {
+      "key": "parsha",
+      "label": "Parsha",
+      "items": [
+        {
+          "id": "par-OH_uWgnHWgA",
+          "title": "From inspiration to action",
+          "program": "Parsha",
+          "type": "video",
+          "date": "2026-05-29T03:24:23Z",
+          "page": "/parsha.html",
+          "url": "https://www.youtube.com/watch?v=OH_uWgnHWgA"
+        }
+      ]
+    },
+    {
+      "key": "halacha",
+      "label": "Halacha / Hashkafa",
+      "items": [
+        {
+          "id": "hal-82",
+          "title": "Jews with tattoos",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-05-28T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/19253888-5-28-2026-shloimy-zelcer-jews-with-tattoos.mp3"
+        }
+      ]
+    },
     {
       "key": "oneMinute",
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-225",
-          "title": "Torah is for everyone",
+          "id": "one-227",
+          "title": "To heal a broken heart",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-05-19T00:00:00.000Z",
+          "date": "2026-05-27T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260519-WA0024.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260527-WA0018.mp3"
         },
         {
-          "id": "one-224",
-          "title": "Why not a valley?",
+          "id": "one-226",
+          "title": "Dont compare",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-05-18T00:00:00.000Z",
+          "date": "2026-05-26T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260518-WA0022.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260526-WA0034.mp3"
         }
       ]
     }
