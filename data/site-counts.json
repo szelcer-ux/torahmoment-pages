@@ -23,13 +23,6 @@
   },
   "recent": [
     {
-      "type": "video",
-      "program": "Parsha",
-      "title": "From inspiration to action",
-      "url": "https://www.youtube.com/watch?v=OH_uWgnHWgA",
-      "date": "2026-05-29T03:24:23Z"
-    },
-    {
       "type": "audio",
       "program": "Halacha",
       "title": "Akaros of TANACH and Tefilah",
@@ -56,6 +49,13 @@
       "title": "Dont compare",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260526-WA0034.mp3",
       "date": "2026-05-26T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Torah is for everyone",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260519-WA0024.mp3",
+      "date": "2026-05-19T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
