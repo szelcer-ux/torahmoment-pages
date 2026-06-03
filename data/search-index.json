@@ -2290,6 +2290,16 @@
     "title_lc": "look for opportunity"
   },
   {
+    "id": "one-229",
+    "program": "One-Minute",
+    "type": "audio",
+    "title": "Stay connected",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260602-WA0011.mp3",
+    "date": "2026-06-03T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "title_lc": "stay connected"
+  },
+  {
     "id": "hal-0",
     "program": "Halacha",
     "type": "audio",
