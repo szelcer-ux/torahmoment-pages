@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "May 23–29, 2026",
-  "generatedAt": "2026-05-29T12:49:39.636Z",
-  "totalItems": 4,
+  "rangeLabel": "May 30, 2026–June 5, 2026",
+  "generatedAt": "2026-06-05T12:42:56.528Z",
+  "totalItems": 3,
   "featured": {
-    "id": "par-OH_uWgnHWgA",
-    "title": "From inspiration to action",
+    "id": "par-ZHDWAaalxss",
+    "title": "Small acts big impact",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-05-29T03:24:23Z",
+    "date": "2026-06-05T02:14:55Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=OH_uWgnHWgA"
+    "url": "https://www.youtube.com/watch?v=ZHDWAaalxss"
   },
   "groups": [
     {
@@ -17,28 +17,13 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-OH_uWgnHWgA",
-          "title": "From inspiration to action",
+          "id": "par-ZHDWAaalxss",
+          "title": "Small acts big impact",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-05-29T03:24:23Z",
+          "date": "2026-06-05T02:14:55Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=OH_uWgnHWgA"
-        }
-      ]
-    },
-    {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
-      "items": [
-        {
-          "id": "hal-82",
-          "title": "Jews with tattoos",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-05-28T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19253888-5-28-2026-shloimy-zelcer-jews-with-tattoos.mp3"
+          "url": "https://www.youtube.com/watch?v=ZHDWAaalxss"
         }
       ]
     },
@@ -47,22 +32,22 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-227",
-          "title": "To heal a broken heart",
+          "id": "one-229",
+          "title": "Stay connected",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-05-27T00:00:00.000Z",
+          "date": "2026-06-03T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260527-WA0018.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260602-WA0011.mp3"
         },
         {
-          "id": "one-226",
-          "title": "Dont compare",
+          "id": "one-228",
+          "title": "Look for opportunity",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-05-26T00:00:00.000Z",
+          "date": "2026-06-02T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260526-WA0034.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260602-WA0010.mp3"
         }
       ]
     }
