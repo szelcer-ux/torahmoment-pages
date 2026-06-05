@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 729,
+    "total": 730,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 228
+        "video": 229
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-06-04"
+    "updated": "2026-06-05"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Small acts big impact",
+      "url": "https://www.youtube.com/watch?v=ZHDWAaalxss",
+      "date": "2026-06-05T02:14:55Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Akaros of TANACH and Tefilah",
       "url": "https://2mishnasaday.com/wp-content/uploads/114.mp3",
       "date": "2026-05-29T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Jews with tattoos",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19253888-5-28-2026-shloimy-zelcer-jews-with-tattoos.mp3",
-      "date": "2026-05-28T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Small acts big impact",
+        "url": "https://www.youtube.com/watch?v=ZHDWAaalxss",
+        "date": "2026-06-05T02:14:55Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "From inspiration to action",
         "url": "https://www.youtube.com/watch?v=OH_uWgnHWgA",
         "date": "2026-05-29T03:24:23Z"
@@ -266,13 +273,6 @@
         "title": "The first step of change",
         "url": "https://www.youtube.com/watch?v=gDJEiUYevdo",
         "date": "2026-03-20T02:58:00Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "The sanctity of normalcy",
-        "url": "https://www.youtube.com/watch?v=znuRPSkbOrY",
-        "date": "2026-03-13T02:14:30Z"
       }
     ]
   }
