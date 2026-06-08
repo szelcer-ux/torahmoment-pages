@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 730,
+    "total": 731,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 91
+        "totalAll": 92
       },
       "oneMinute": {
         "audio": 230
@@ -22,6 +22,13 @@
     "updated": "2026-06-08"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Should the woman make kiddush Friday night?",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3",
+      "date": "2026-06-08T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,13 +56,6 @@
       "title": "From inspiration to action",
       "url": "https://www.youtube.com/watch?v=OH_uWgnHWgA",
       "date": "2026-05-29T03:24:23Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Akaros of TANACH and Tefilah",
-      "url": "https://2mishnasaday.com/wp-content/uploads/114.mp3",
-      "date": "2026-05-29T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Should the woman make kiddush Friday night?",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3",
+        "date": "2026-06-08T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Akaros of TANACH and Tefilah",
         "url": "https://2mishnasaday.com/wp-content/uploads/114.mp3",
         "date": "2026-05-29T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "Chazan saying Hashem Sifasai Tiftach",
         "url": "https://www.buzzsprout.com/1899789/episodes/18861996-3-17-2026-shloimy-zelcer-chazan-saying-hashem-sifasai-tiftach.mp3",
         "date": "2026-03-17T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Is Iced Coffee the answer?",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
-        "date": "2026-03-12T00:00:00.000Z"
       }
     ],
     "parsha": [
