@@ -2300,6 +2300,16 @@
     "title_lc": "stay connected"
   },
   {
+    "id": "one-230",
+    "program": "One-Minute",
+    "type": "audio",
+    "title": "Seeing the same thing",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260609-WA0031.mp3",
+    "date": "2026-06-09T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "title_lc": "seeing the same thing"
+  },
+  {
     "id": "hal-0",
     "program": "Halacha",
     "type": "audio",
