@@ -209,6 +209,17 @@ footer a:hover{color:var(--muted)}
   </div>
 </div>
 
+<a href="https://www.amazon.com/dp/B0GWWH92N1"
+   target="_blank" rel="noopener"
+   style="display:flex;align-items:center;justify-content:center;gap:10px;
+          background:#f4f4f0;color:#111;font-size:14px;font-weight:600;
+          text-decoration:none;padding:9px 16px;letter-spacing:.01em;
+          border-top:1px solid #e0e0d8;">
+  <img src="https://m.media-amazon.com/images/I/61YMvLIQFhL._AC_UY218_.jpg"
+       alt="A Gutten Erev Shabbos" style="height:32px;border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,.2);" />
+  Check out my new book of Divrei Torah the parsha, <em>A Gutten Erev Shabbos</em> — available now on Amazon
+</a>
+  
 <div class="wrap">
 
   <!-- HERO -->
@@ -638,70 +649,6 @@ footer a:hover{color:var(--muted)}
   } catch(e){console.warn('Infographic rotator failed:',e);}
 })();
 </script>
-  <!-- =========================================
-     PASTE THIS ENTIRE BLOCK into index.html
-     just before the closing </body> tag
-     ========================================= -->
 
-<!-- Book Popup: A Gutten Erev Shabbos -->
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap');
-  #tm-popup-overlay{position:fixed;inset:0;background:rgba(10,30,25,0.72);z-index:9999;display:none;align-items:center;justify-content:center;padding:1rem}
-  @keyframes tmFadeIn{from{opacity:0}to{opacity:1}}
-  @keyframes tmRiseIn{from{opacity:0;transform:translateY(28px) scale(0.96)}to{opacity:1;transform:translateY(0) scale(1)}}
-  #tm-popup-card{background:#faf8f2;border-radius:10px;max-width:460px;width:100%;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.45);font-family:'Source Serif 4',Georgia,serif;animation:tmRiseIn 0.45s cubic-bezier(0.22,1,0.36,1) both}
-  .tm-bar{height:5px;background:linear-gradient(90deg,#0f4a3f 0%,#1a6b5e 40%,#2a9d87 70%,#1a6b5e 100%)}
-  .tm-body{display:flex;gap:1.25rem;padding:1.5rem 1.5rem 1.25rem;align-items:flex-start}
-  .tm-cover{flex-shrink:0;width:105px;border-radius:4px;overflow:hidden;box-shadow:3px 5px 16px rgba(0,0,0,0.3)}
-  .tm-cover img{width:100%;display:block}
-  .tm-text{flex:1}
-  .tm-eyebrow{font-family:'Source Serif 4',serif;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:#1a6b5e;margin:0 0 0.4rem}
-  .tm-title{font-family:'Playfair Display',Georgia,serif;font-size:21px;font-weight:700;line-height:1.2;color:#12352d;margin:0 0 0.2rem}
-  .tm-subtitle{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:13.5px;font-weight:500;color:#2a6b5e;margin:0 0 0.9rem}
-  .tm-divider{height:1px;background:linear-gradient(90deg,transparent,#1a6b5e55,transparent);margin-bottom:0.85rem}
-  .tm-blurb{font-size:13.5px;line-height:1.65;color:#2c3e35;margin:0 0 1.1rem}
-  .tm-btn-amazon{display:block;width:100%;background:#1a6b5e;color:#fff;font-family:'Playfair Display',serif;font-size:13.5px;font-weight:700;padding:10px 16px;border-radius:6px;text-decoration:none;text-align:center;letter-spacing:0.02em;transition:background 0.2s,transform 0.15s;border:none;cursor:pointer}
-  .tm-btn-amazon:hover{background:#0f4a3f;transform:translateY(-1px)}
-  .tm-footer{background:#f0ede3;border-top:1px solid #d4cdb8;padding:0.65rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
-  .tm-author{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:#4a6b5e}
-  .tm-close{background:none;border:none;cursor:pointer;font-size:18px;color:#7a9e95;line-height:1;padding:2px 6px;border-radius:4px;transition:color 0.2s}
-  .tm-close:hover{color:#12352d}
-  @media(max-width:480px){.tm-body{flex-direction:column;align-items:center}.tm-cover{width:130px}.tm-text{width:100%}.tm-title{font-size:20px}}
-</style>
-
-<div id="tm-popup-overlay" role="dialog" aria-modal="true" aria-label="New book announcement">
-  <div id="tm-popup-card">
-    <div class="tm-bar"></div>
-    <div class="tm-body">
-      <div class="tm-cover">
-        <img src="https://m.media-amazon.com/images/I/61YMvLIQFhL._AC_UY218_.jpg" alt="A Gutten Erev Shabbos book cover">
-      </div>
-      <div class="tm-text">
-        <p class="tm-eyebrow">✦ New Book</p>
-        <h2 class="tm-title">A Gutten Erev Shabbos</h2>
-        <p class="tm-subtitle">Divrei Torah for your Shabbos table</p>
-        <div class="tm-divider"></div>
-        <p class="tm-blurb">The divrei Torah you've come to love — now in print. Perfect for the Shabbos table, for yourself or as a gift.</p>
-        <a class="tm-btn-amazon" href="https://www.amazon.com/dp/B0GWWH92N1" target="_blank" rel="noopener">🛒 Order on Amazon</a>
-      </div>
-    </div>
-    <div class="tm-footer">
-      <span class="tm-author">— Shloimy Zelcer</span>
-      <button class="tm-close" onclick="closeTmPopup()" aria-label="Close">✕</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  function closeTmPopup(){
-    var el=document.getElementById('tm-popup-overlay');
-    if(el){el.style.opacity='0';el.style.transition='opacity 0.25s';setTimeout(function(){el.remove()},260)}
-  }
-  document.getElementById('tm-popup-overlay').addEventListener('click',function(e){if(e.target===this)closeTmPopup()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTmPopup()});
-  /* Shows after 3 seconds — change 3000 to 0 to show immediately */
-  setTimeout(function(){var el=document.getElementById('tm-popup-overlay');el.style.display='flex';el.style.animation='tmFadeIn 0.35s ease both'},1000);
-</script>
-<!-- End Book Popup -->
 </body>
 </html>
