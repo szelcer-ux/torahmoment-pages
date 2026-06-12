@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "May 30, 2026–June 5, 2026",
-  "generatedAt": "2026-06-05T12:42:56.528Z",
-  "totalItems": 3,
+  "rangeLabel": "June 6–12, 2026",
+  "generatedAt": "2026-06-12T13:33:23.043Z",
+  "totalItems": 4,
   "featured": {
-    "id": "par-ZHDWAaalxss",
-    "title": "Small acts big impact",
+    "id": "par-97TN3FMjQF4",
+    "title": "Seeing the big picture",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-06-05T02:14:55Z",
+    "date": "2026-06-12T02:36:59Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=ZHDWAaalxss"
+    "url": "https://www.youtube.com/watch?v=97TN3FMjQF4"
   },
   "groups": [
     {
@@ -17,13 +17,28 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-ZHDWAaalxss",
-          "title": "Small acts big impact",
+          "id": "par-97TN3FMjQF4",
+          "title": "Seeing the big picture",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-06-05T02:14:55Z",
+          "date": "2026-06-12T02:36:59Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=ZHDWAaalxss"
+          "url": "https://www.youtube.com/watch?v=97TN3FMjQF4"
+        }
+      ]
+    },
+    {
+      "key": "halacha",
+      "label": "Halacha / Hashkafa",
+      "items": [
+        {
+          "id": "hal-23",
+          "title": "Should the woman make kiddush Friday night?",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-06-08T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3"
         }
       ]
     },
@@ -32,22 +47,22 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-229",
-          "title": "Stay connected",
+          "id": "one-231",
+          "title": "2 lessons from Kalev",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-06-03T00:00:00.000Z",
+          "date": "2026-06-10T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260602-WA0011.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260610-WA0016.mp3"
         },
         {
-          "id": "one-228",
-          "title": "Look for opportunity",
+          "id": "one-230",
+          "title": "Seeing the same thing",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-06-02T00:00:00.000Z",
+          "date": "2026-06-09T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260602-WA0010.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260609-WA0031.mp3"
         }
       ]
     }
