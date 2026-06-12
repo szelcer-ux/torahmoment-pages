@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 733,
+    "total": 734,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 229
+        "video": 230
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-06-11"
+    "updated": "2026-06-12"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Seeing the big picture",
+      "url": "https://www.youtube.com/watch?v=97TN3FMjQF4",
+      "date": "2026-06-12T02:36:59Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Small acts big impact",
       "url": "https://www.youtube.com/watch?v=ZHDWAaalxss",
       "date": "2026-06-05T02:14:55Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Stay connected",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260602-WA0011.mp3",
-      "date": "2026-06-03T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Seeing the big picture",
+        "url": "https://www.youtube.com/watch?v=97TN3FMjQF4",
+        "date": "2026-06-12T02:36:59Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Small acts big impact",
         "url": "https://www.youtube.com/watch?v=ZHDWAaalxss",
         "date": "2026-06-05T02:14:55Z"
@@ -266,13 +273,6 @@
         "title": "Dont stay in the past",
         "url": "https://www.youtube.com/watch?v=x17Kexo10FQ",
         "date": "2026-03-27T00:49:44Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "The first step of change",
-        "url": "https://www.youtube.com/watch?v=gDJEiUYevdo",
-        "date": "2026-03-20T02:58:00Z"
       }
     ]
   }
