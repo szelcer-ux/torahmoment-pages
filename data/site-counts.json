@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 734,
+    "total": 735,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 92
       },
       "oneMinute": {
-        "audio": 232
+        "audio": 233
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-06-15"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "קונה הכל",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260615-WA0031.mp3",
+      "date": "2026-06-15T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,17 +56,17 @@
       "title": "Should the woman make kiddush Friday night?",
       "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3",
       "date": "2026-06-08T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Small acts big impact",
-      "url": "https://www.youtube.com/watch?v=ZHDWAaalxss",
-      "date": "2026-06-05T02:14:55Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "קונה הכל",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260615-WA0031.mp3",
+        "date": "2026-06-15T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Derech eretz before all",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260513-WA0001.mp3",
         "date": "2026-05-13T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Gatekeepers and singers",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260512-WA0015.mp3",
-        "date": "2026-05-12T00:00:00.000Z"
       }
     ],
     "halacha": [
