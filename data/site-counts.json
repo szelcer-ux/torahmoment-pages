@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 735,
+    "total": 736,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 92
       },
       "oneMinute": {
-        "audio": 233
+        "audio": 234
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-06-16"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "What was Korach missing?",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260616-WA0030.mp3",
+      "date": "2026-06-16T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "Seeing the same thing",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260609-WA0031.mp3",
       "date": "2026-06-09T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Should the woman make kiddush Friday night?",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3",
-      "date": "2026-06-08T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "What was Korach missing?",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260616-WA0030.mp3",
+        "date": "2026-06-16T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Why not a valley?",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260518-WA0022.mp3",
         "date": "2026-05-18T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Derech eretz before all",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260513-WA0001.mp3",
-        "date": "2026-05-13T00:00:00.000Z"
       }
     ],
     "halacha": [
