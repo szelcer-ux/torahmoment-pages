@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 736,
+    "total": 737,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 92
       },
       "oneMinute": {
-        "audio": 234
+        "audio": 235
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-06-18"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Two lessons from the Lubavitch Rebbeh",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260618-WA0033.mp3",
+      "date": "2026-06-18T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "2 lessons from Kalev",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260610-WA0016.mp3",
       "date": "2026-06-10T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Seeing the same thing",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260609-WA0031.mp3",
-      "date": "2026-06-09T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Two lessons from the Lubavitch Rebbeh",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260618-WA0033.mp3",
+        "date": "2026-06-18T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Torah is for everyone",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260519-WA0024.mp3",
         "date": "2026-05-19T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Why not a valley?",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260518-WA0022.mp3",
-        "date": "2026-05-18T00:00:00.000Z"
       }
     ],
     "halacha": [
