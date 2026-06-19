@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 737,
+    "total": 738,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 230
+        "video": 231
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-06-18"
+    "updated": "2026-06-19"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Don't put out the spark",
+      "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg",
+      "date": "2026-06-19T02:21:55Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Seeing the big picture",
       "url": "https://www.youtube.com/watch?v=97TN3FMjQF4",
       "date": "2026-06-12T02:36:59Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "2 lessons from Kalev",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260610-WA0016.mp3",
-      "date": "2026-06-10T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Don't put out the spark",
+        "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg",
+        "date": "2026-06-19T02:21:55Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Seeing the big picture",
         "url": "https://www.youtube.com/watch?v=97TN3FMjQF4",
         "date": "2026-06-12T02:36:59Z"
@@ -266,13 +273,6 @@
         "title": "Listening when there are no words",
         "url": "https://www.youtube.com/watch?v=l5JhqBahhQg",
         "date": "2026-04-10T02:29:44Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Dont stay in the past",
-        "url": "https://www.youtube.com/watch?v=x17Kexo10FQ",
-        "date": "2026-03-27T00:49:44Z"
       }
     ]
   }
