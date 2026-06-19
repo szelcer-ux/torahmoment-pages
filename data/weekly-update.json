@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "June 6–12, 2026",
-  "generatedAt": "2026-06-12T13:33:23.043Z",
+  "rangeLabel": "June 13–19, 2026",
+  "generatedAt": "2026-06-19T13:39:54.297Z",
   "totalItems": 4,
   "featured": {
-    "id": "par-97TN3FMjQF4",
-    "title": "Seeing the big picture",
+    "id": "par-Zi9qfNxwYlg",
+    "title": "Don't put out the spark",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-06-12T02:36:59Z",
+    "date": "2026-06-19T02:21:55Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=97TN3FMjQF4"
+    "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg"
   },
   "groups": [
     {
@@ -17,28 +17,13 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-97TN3FMjQF4",
-          "title": "Seeing the big picture",
+          "id": "par-Zi9qfNxwYlg",
+          "title": "Don't put out the spark",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-06-12T02:36:59Z",
+          "date": "2026-06-19T02:21:55Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=97TN3FMjQF4"
-        }
-      ]
-    },
-    {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
-      "items": [
-        {
-          "id": "hal-23",
-          "title": "Should the woman make kiddush Friday night?",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-06-08T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3"
+          "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg"
         }
       ]
     },
@@ -47,22 +32,31 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-231",
-          "title": "2 lessons from Kalev",
+          "id": "one-234",
+          "title": "Two lessons from the Lubavitch Rebbeh",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-06-10T00:00:00.000Z",
+          "date": "2026-06-18T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260610-WA0016.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260618-WA0033.mp3"
         },
         {
-          "id": "one-230",
-          "title": "Seeing the same thing",
+          "id": "one-233",
+          "title": "What was Korach missing?",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-06-09T00:00:00.000Z",
+          "date": "2026-06-16T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260609-WA0031.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260616-WA0030.mp3"
+        },
+        {
+          "id": "one-232",
+          "title": "קונה הכל",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-06-15T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260615-WA0031.mp3"
         }
       ]
     }
