@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 739,
+    "total": 740,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 92
       },
       "oneMinute": {
-        "audio": 236
+        "audio": 237
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-06-24"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Never too late",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260624-WA0011.mp3",
+      "date": "2026-06-24T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "What was Korach missing?",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260616-WA0030.mp3",
       "date": "2026-06-16T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "קונה הכל",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260615-WA0031.mp3",
-      "date": "2026-06-15T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Never too late",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260624-WA0011.mp3",
+        "date": "2026-06-24T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "To heal a broken heart",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260527-WA0018.mp3",
         "date": "2026-05-27T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Dont compare",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260526-WA0034.mp3",
-        "date": "2026-05-26T00:00:00.000Z"
       }
     ],
     "halacha": [
