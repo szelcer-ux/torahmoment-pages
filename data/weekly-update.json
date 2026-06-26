@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "June 13–19, 2026",
-  "generatedAt": "2026-06-19T13:39:54.297Z",
-  "totalItems": 4,
+  "rangeLabel": "June 20–26, 2026",
+  "generatedAt": "2026-06-26T12:18:31.249Z",
+  "totalItems": 3,
   "featured": {
-    "id": "par-Zi9qfNxwYlg",
-    "title": "Don't put out the spark",
+    "id": "par-1KQJB3zsnwY",
+    "title": "Holiness begins with honesty",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-06-19T02:21:55Z",
+    "date": "2026-06-26T02:42:24Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg"
+    "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY"
   },
   "groups": [
     {
@@ -17,13 +17,13 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-Zi9qfNxwYlg",
-          "title": "Don't put out the spark",
+          "id": "par-1KQJB3zsnwY",
+          "title": "Holiness begins with honesty",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-06-19T02:21:55Z",
+          "date": "2026-06-26T02:42:24Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg"
+          "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY"
         }
       ]
     },
@@ -32,31 +32,22 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-234",
-          "title": "Two lessons from the Lubavitch Rebbeh",
+          "id": "one-236",
+          "title": "Never too late",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-06-18T00:00:00.000Z",
+          "date": "2026-06-24T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260618-WA0033.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260624-WA0011.mp3"
         },
         {
-          "id": "one-233",
-          "title": "What was Korach missing?",
+          "id": "one-235",
+          "title": "Doing the right thing",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-06-16T00:00:00.000Z",
+          "date": "2026-06-23T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260616-WA0030.mp3"
-        },
-        {
-          "id": "one-232",
-          "title": "קונה הכל",
-          "program": "One-Minute",
-          "type": "audio",
-          "date": "2026-06-15T00:00:00.000Z",
-          "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260615-WA0031.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260623-WA0014.mp3"
         }
       ]
     }
