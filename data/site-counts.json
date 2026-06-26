@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 740,
+    "total": 741,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 231
+        "video": 232
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-06-25"
+    "updated": "2026-06-26"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Holiness begins with honesty",
+      "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY",
+      "date": "2026-06-26T02:42:24Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Two lessons from the Lubavitch Rebbeh",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260618-WA0033.mp3",
       "date": "2026-06-18T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "What was Korach missing?",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260616-WA0030.mp3",
-      "date": "2026-06-16T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Holiness begins with honesty",
+        "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY",
+        "date": "2026-06-26T02:42:24Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Don't put out the spark",
         "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg",
         "date": "2026-06-19T02:21:55Z"
@@ -266,13 +273,6 @@
         "title": "Real change takes time",
         "url": "https://www.youtube.com/watch?v=0E411EfFaqc",
         "date": "2026-04-17T04:13:47Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Listening when there are no words",
-        "url": "https://www.youtube.com/watch?v=l5JhqBahhQg",
-        "date": "2026-04-10T02:29:44Z"
       }
     ]
   }
