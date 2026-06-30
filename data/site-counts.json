@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 742,
+    "total": 743,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 92
+        "totalAll": 93
       },
       "oneMinute": {
         "audio": 238
@@ -22,6 +22,13 @@
     "updated": "2026-06-30"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Shehechiyanu on being drafted by the IDF",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3",
+      "date": "2026-06-30T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Doing the right thing",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260623-WA0014.mp3",
       "date": "2026-06-23T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Don't put out the spark",
-      "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg",
-      "date": "2026-06-19T02:21:55Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Shehechiyanu on being drafted by the IDF",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3",
+        "date": "2026-06-30T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Should the woman make kiddush Friday night?",
         "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3",
         "date": "2026-06-08T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "Bedikas Chomtz with a flashlight",
         "url": "https://www.buzzsprout.com/1899789/episodes/18930105-3-30-20026-shloimy-zelcer-bedikas-chometz-with-a-flashlight.mp3",
         "date": "2026-03-30T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Chazan saying Hashem Sifasai Tiftach",
-        "url": "https://www.buzzsprout.com/1899789/episodes/18861996-3-17-2026-shloimy-zelcer-chazan-saying-hashem-sifasai-tiftach.mp3",
-        "date": "2026-03-17T00:00:00.000Z"
       }
     ],
     "parsha": [
