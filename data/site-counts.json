@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 741,
+    "total": 742,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 92
       },
       "oneMinute": {
-        "audio": 237
+        "audio": 238
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-06-30"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Seeing only part of the story",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260629-WA0099.mp3",
+      "date": "2026-06-30T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,17 +56,17 @@
       "title": "Don't put out the spark",
       "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg",
       "date": "2026-06-19T02:21:55Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Two lessons from the Lubavitch Rebbeh",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260618-WA0033.mp3",
-      "date": "2026-06-18T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Seeing only part of the story",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260629-WA0099.mp3",
+        "date": "2026-06-30T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Look for opportunity",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260602-WA0010.mp3",
         "date": "2026-06-02T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "To heal a broken heart",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260527-WA0018.mp3",
-        "date": "2026-05-27T00:00:00.000Z"
       }
     ],
     "halacha": [
