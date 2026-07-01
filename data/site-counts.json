@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 743,
+    "total": 744,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 93
       },
       "oneMinute": {
-        "audio": 238
+        "audio": 239
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-07-01"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "The leader Moshe asked for",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260630-WA0001.mp3",
+      "date": "2026-07-01T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "Halacha",
@@ -49,17 +56,17 @@
       "title": "Never too late",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260624-WA0011.mp3",
       "date": "2026-06-24T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Doing the right thing",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260623-WA0014.mp3",
-      "date": "2026-06-23T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "The leader Moshe asked for",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260630-WA0001.mp3",
+        "date": "2026-07-01T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Stay connected",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260602-WA0011.mp3",
         "date": "2026-06-03T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Look for opportunity",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260602-WA0010.mp3",
-        "date": "2026-06-02T00:00:00.000Z"
       }
     ],
     "halacha": [
