@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 744,
+    "total": 745,
     "breakdown": {
       "parsha": {
         "audio": 23,
-        "video": 232
+        "video": 233
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-07-02"
+    "updated": "2026-07-03"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "A way in, not a way out",
+      "url": "https://www.youtube.com/watch?v=lNPbQlOc3f8",
+      "date": "2026-07-03T02:56:34Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Holiness begins with honesty",
       "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY",
       "date": "2026-06-26T02:42:24Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Never too late",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260624-WA0011.mp3",
-      "date": "2026-06-24T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "A way in, not a way out",
+        "url": "https://www.youtube.com/watch?v=lNPbQlOc3f8",
+        "date": "2026-07-03T02:56:34Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Holiness begins with honesty",
         "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY",
         "date": "2026-06-26T02:42:24Z"
@@ -266,13 +273,6 @@
         "title": "Leading by example",
         "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg",
         "date": "2026-04-24T02:25:53Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Real change takes time",
-        "url": "https://www.youtube.com/watch?v=0E411EfFaqc",
-        "date": "2026-04-17T04:13:47Z"
       }
     ]
   }
