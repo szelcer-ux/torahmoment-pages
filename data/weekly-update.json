@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "June 20–26, 2026",
-  "generatedAt": "2026-06-26T12:18:31.249Z",
-  "totalItems": 3,
+  "rangeLabel": "June 27, 2026–July 3, 2026",
+  "generatedAt": "2026-07-03T12:13:25.696Z",
+  "totalItems": 4,
   "featured": {
-    "id": "par-1KQJB3zsnwY",
-    "title": "Holiness begins with honesty",
+    "id": "par-lNPbQlOc3f8",
+    "title": "A way in, not a way out",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-06-26T02:42:24Z",
+    "date": "2026-07-03T02:56:34Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY"
+    "url": "https://www.youtube.com/watch?v=lNPbQlOc3f8"
   },
   "groups": [
     {
@@ -17,13 +17,28 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-1KQJB3zsnwY",
-          "title": "Holiness begins with honesty",
+          "id": "par-lNPbQlOc3f8",
+          "title": "A way in, not a way out",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-06-26T02:42:24Z",
+          "date": "2026-07-03T02:56:34Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY"
+          "url": "https://www.youtube.com/watch?v=lNPbQlOc3f8"
+        }
+      ]
+    },
+    {
+      "key": "halacha",
+      "label": "Halacha / Hashkafa",
+      "items": [
+        {
+          "id": "hal-79",
+          "title": "Shehechiyanu on being drafted by the IDF",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-06-30T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3"
         }
       ]
     },
@@ -32,22 +47,22 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-236",
-          "title": "Never too late",
+          "id": "one-238",
+          "title": "The leader Moshe asked for",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-06-24T00:00:00.000Z",
+          "date": "2026-07-01T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260624-WA0011.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260630-WA0001.mp3"
         },
         {
-          "id": "one-235",
-          "title": "Doing the right thing",
+          "id": "one-237",
+          "title": "Seeing only part of the story",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-06-23T00:00:00.000Z",
+          "date": "2026-06-30T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260623-WA0014.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260629-WA0099.mp3"
         }
       ]
     }
