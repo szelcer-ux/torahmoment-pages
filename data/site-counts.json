@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 747,
+    "total": 748,
     "breakdown": {
       "parsha": {
         "audio": 23,
@@ -13,7 +13,7 @@
         "totalAll": 94
       },
       "oneMinute": {
-        "audio": 240
+        "audio": 241
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-07-08"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Hashem is keeping track",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0072.mp3",
+      "date": "2026-07-08T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "The leader Moshe asked for",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260630-WA0001.mp3",
       "date": "2026-07-01T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Shehechiyanu on being drafted by the IDF",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3",
-      "date": "2026-06-30T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Hashem is keeping track",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0072.mp3",
+        "date": "2026-07-08T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "2 lessons from Kalev",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260610-WA0016.mp3",
         "date": "2026-06-10T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Seeing the same thing",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260609-WA0031.mp3",
-        "date": "2026-06-09T00:00:00.000Z"
       }
     ],
     "halacha": [
