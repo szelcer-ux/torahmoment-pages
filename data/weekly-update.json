@@ -1,44 +1,29 @@
 {
-  "rangeLabel": "June 27, 2026–July 3, 2026",
-  "generatedAt": "2026-07-03T12:13:25.696Z",
-  "totalItems": 4,
+  "rangeLabel": "July 4–10, 2026",
+  "generatedAt": "2026-07-10T12:29:47.861Z",
+  "totalItems": 3,
   "featured": {
-    "id": "par-lNPbQlOc3f8",
-    "title": "A way in, not a way out",
-    "program": "Parsha",
-    "type": "video",
-    "date": "2026-07-03T02:56:34Z",
-    "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=lNPbQlOc3f8"
+    "id": "one-240",
+    "title": "Hashem is keeping track",
+    "program": "One-Minute",
+    "type": "audio",
+    "date": "2026-07-08T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0072.mp3"
   },
   "groups": [
-    {
-      "key": "parsha",
-      "label": "Parsha",
-      "items": [
-        {
-          "id": "par-lNPbQlOc3f8",
-          "title": "A way in, not a way out",
-          "program": "Parsha",
-          "type": "video",
-          "date": "2026-07-03T02:56:34Z",
-          "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=lNPbQlOc3f8"
-        }
-      ]
-    },
     {
       "key": "halacha",
       "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "hal-79",
-          "title": "Shehechiyanu on being drafted by the IDF",
+          "id": "hal-85",
+          "title": "Knock before entering",
           "program": "Halacha",
           "type": "audio",
-          "date": "2026-06-30T00:00:00.000Z",
+          "date": "2026-07-06T00:00:00.000Z",
           "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3"
+          "url": "https://www.buzzsprout.com/1899789/episodes/19452197-7-6-2026-shloimy-zelcer-knock-before-entering.mp3"
         }
       ]
     },
@@ -47,22 +32,22 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-238",
-          "title": "The leader Moshe asked for",
+          "id": "one-240",
+          "title": "Hashem is keeping track",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-07-01T00:00:00.000Z",
+          "date": "2026-07-08T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260630-WA0001.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0072.mp3"
         },
         {
-          "id": "one-237",
-          "title": "Seeing only part of the story",
+          "id": "one-239",
+          "title": "Breaking generational trauma",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-06-30T00:00:00.000Z",
+          "date": "2026-07-07T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260629-WA0099.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0071.mp3"
         }
       ]
     }
