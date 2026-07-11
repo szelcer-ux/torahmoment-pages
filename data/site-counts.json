@@ -19,7 +19,7 @@
         "audio": 137
       }
     },
-    "updated": "2026-07-10"
+    "updated": "2026-07-11"
   },
   "recent": [
     {
@@ -44,18 +44,18 @@
       "date": "2026-07-06T00:00:00.000Z"
     },
     {
-      "type": "video",
-      "program": "Parsha",
-      "title": "A way in, not a way out",
-      "url": "https://www.youtube.com/watch?v=lNPbQlOc3f8",
-      "date": "2026-07-03T02:56:34Z"
-    },
-    {
       "type": "audio",
       "program": "One-Minute",
       "title": "The leader Moshe asked for",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260630-WA0001.mp3",
       "date": "2026-07-01T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Shehechiyanu on being drafted by the IDF",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3",
+      "date": "2026-06-30T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
