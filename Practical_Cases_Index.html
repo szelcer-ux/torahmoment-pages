@@ -365,7 +365,7 @@ function renderPageLinks(pagesStr, query){
     const firstPage = rangeMatch ? rangeMatch[1] : token.match(/^\d+/)?.[0];
     const label = highlight(token, query);
     if(!firstPage) return label;
-    return `<a class="page-link" href="book.html#page-${firstPage}" target="_blank" rel="noopener">${label}</a>`;
+    return `<a class="page-link" href="Hilchos_Shabbos_Full_Text.html#page-${firstPage}" target="_blank" rel="noopener">${label}</a>`;
   }).join(', ');
 }
 
