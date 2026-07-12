@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Index of Practical Cases — Hilchos Shabbos Reference Guides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #f3ede0;
+    --paper-raised: #faf6ec;
+    --ink: #2c2419;
+    --ink-soft: #5c5142;
+    --oxblood: #7a2e2e;
+    --oxblood-deep: #5e2222;
+    --brass: #9c8348;
+    --rule: #d9cfb8;
+    --shadow: rgba(44, 36, 25, 0.18);
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top left, rgba(122,46,46,0.04), transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    min-height:100vh;
+  }
+
+  /* ===== Header / title block ===== */
+  header{
+    padding:3.2rem 1.5rem 2rem;
+    text-align:center;
+    border-bottom:1px solid var(--rule);
+    position:relative;
+  }
+  header::before, header::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    width:70px;
+    height:2px;
+    background:var(--brass);
+    transform:translateX(-50%);
+  }
+  header::before{top:1.4rem;}
+  header::after{bottom:-1px;}
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--oxblood);
+    margin-bottom:0.9rem;
+  }
+
+  h1{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(2rem, 5vw, 3.1rem);
+    margin:0 0 0.5rem;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+
+  .subtitle{
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+    max-width:36em;
+    margin:0 auto;
+  }
+
+  /* ===== Search bar ===== */
+  .search-wrap{
+    max-width:640px;
+    margin:2rem auto 0;
+    padding:0 1.5rem;
+  }
+  .search-box{
+    position:relative;
+    display:flex;
+    align-items:center;
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    box-shadow:0 2px 8px var(--shadow);
+    transition:border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .search-box:focus-within{
+    border-color:var(--oxblood);
+    box-shadow:0 2px 12px var(--shadow), 0 0 0 3px rgba(122,46,46,0.12);
+  }
+  .search-box svg{
+    flex:none;
+    margin:0 0.4rem 0 0.9rem;
+    color:var(--ink-soft);
+  }
+  #search{
+    flex:1;
+    border:none;
+    background:transparent;
+    outline:none;
+    font-family:'Source Serif 4', Georgia, serif;
+    font-size:1.05rem;
+    padding:0.85rem 0.9rem 0.85rem 0.2rem;
+    color:var(--ink);
+  }
+  #search::placeholder{color:#9a8f7a; font-style:italic;}
+  #clear-btn{
+    display:none;
+    border:none;
+    background:none;
+    cursor:pointer;
+    color:var(--ink-soft);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    padding:0.5rem 0.9rem;
+  }
+  #clear-btn:hover{color:var(--oxblood);}
+
+  .result-count{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    text-align:center;
+    margin-top:0.6rem;
+    text-transform:uppercase;
+  }
+  .result-count strong{color:var(--oxblood);}
+
+  /* ===== Layout: tabs + entries ===== */
+  .layout{
+    max-width:980px;
+    margin:2.4rem auto 5rem;
+    padding:0 1.5rem;
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:1.2rem;
+  }
+
+  /* thumb index tabs */
+  .tabs{
+    position:sticky;
+    top:1.5rem;
+    align-self:start;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    max-height:88vh;
+    overflow-y:auto;
+    scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab-btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    font-weight:600;
+    border:1px solid var(--rule);
+    background:var(--paper-raised);
+    color:var(--ink-soft);
+    border-radius:2px;
+    padding:0.32rem 0;
+    cursor:pointer;
+    text-align:center;
+    transition:all 0.12s ease;
+  }
+  .tab-btn:hover{border-color:var(--brass); color:var(--ink);}
+  .tab-btn.active{
+    background:var(--oxblood);
+    border-color:var(--oxblood);
+    color:var(--paper-raised);
+  }
+  .tab-btn.disabled{opacity:0.28; pointer-events:none;}
+
+  /* entries panel */
+  .panel{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    box-shadow:0 3px 14px var(--shadow);
+    padding:0.5rem 2rem 2rem;
+  }
+
+  .letter-section{scroll-margin-top:1.5rem;}
+
+  .letter-heading{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.7rem;
+    color:var(--oxblood);
+    padding:1.4rem 0 0.5rem;
+    margin:0;
+    border-bottom:1px solid var(--rule);
+  }
+
+  ul.entry-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  .entry{
+    display:flex;
+    align-items:baseline;
+    gap:0.5rem;
+    padding:0.62rem 0;
+    border-bottom:1px dotted var(--rule);
+  }
+  .entry:last-child{border-bottom:none;}
+
+  .term{
+    flex:none;
+    max-width:65%;
+    color:var(--ink);
+    font-size:1.02rem;
+  }
+  .term mark{
+    background:rgba(156,131,72,0.32);
+    color:inherit;
+    border-radius:1px;
+  }
+
+  .leader{
+    flex:1;
+    border-bottom:1px dotted var(--brass);
+    transform:translateY(-4px);
+    opacity:0.7;
+  }
+
+  .pages{
+    flex:none;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    color:var(--oxblood-deep);
+    white-space:nowrap;
+  }
+  .pages mark{
+    background:rgba(122,46,46,0.16);
+    color:inherit;
+    border-radius:1px;
+  }
+  .page-link{
+    color:inherit;
+    text-decoration:none;
+    border-bottom:1px solid rgba(122,46,46,0.35);
+    transition:color 0.12s ease, border-color 0.12s ease;
+  }
+  .page-link:hover{
+    color:var(--oxblood);
+    border-color:var(--oxblood);
+  }
+
+  .no-results{
+    text-align:center;
+    padding:3rem 1rem;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+
+  footer{
+    text-align:center;
+    padding:2rem 1.5rem 3rem;
+    color:var(--ink-soft);
+    font-size:0.78rem;
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.03em;
+  }
+  footer a{color:var(--oxblood-deep);}
+
+  @media (max-width:680px){
+    .layout{grid-template-columns:1fr;}
+    .tabs{
+      position:static;
+      flex-direction:row;
+      flex-wrap:wrap;
+      max-height:none;
+      justify-content:center;
+    }
+    .tab-btn{width:28px;}
+    .panel{padding:0.5rem 1.1rem 1.5rem;}
+    .term{max-width:56%;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Hilchos Shabbos &middot; Reference Guides</div>
+  <h1>Index of Practical Cases</h1>
+  <p class="subtitle">When something comes up on Shabbos — a lemon, a lamp, a fussy toddler — search here, then click a page number to jump straight to it in the full text.</p>
+
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="search" placeholder="Search an item or a page number…" autocomplete="off" spellcheck="false">
+      <button id="clear-btn">CLEAR</button>
+    </div>
+    <div class="result-count" id="result-count"></div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="tabs" id="tabs" aria-label="Jump to letter"></nav>
+  <main class="panel" id="panel"></main>
+</div>
+
+<footer>
+  Compiled from the full text of the guide, page numbers match the printed edition.
+</footer>
+
+<script>
+const ENTRIES = [{"term": "Air conditioner / thermostat / timer", "pages": "79, 206, 214, 293"}, {"term": "Alarm clock", "pages": "293"}, {"term": "Animal carcass", "pages": "207"}, {"term": "Ants", "pages": "97"}, {"term": "Apple", "pages": "37, 117-118, 120-121, 128, 154"}, {"term": "Arba minim (Yom Tov gift)", "pages": "285"}, {"term": "Baby bottle (screw lid)", "pages": "262, 270"}, {"term": "Baby cereal / rice cereal", "pages": "191"}, {"term": "Baby formula", "pages": "193"}, {"term": "Balls / toys", "pages": "116, 127, 208-209"}, {"term": "Banana", "pages": "120, 127, 136, 144-145, 149, 153-154, 173, 193, 255-256"}, {"term": "Bandage", "pages": "220-221"}, {"term": "Bath / shower / swimming", "pages": "295"}, {"term": "Batteries (in a clock)", "pages": "212"}, {"term": "Beans / lentils", "pages": "202, 204"}, {"term": "Bed", "pages": "207, 267, 273"}, {"term": "Bees", "pages": "279, 289"}, {"term": "Bells (Sefer Torah crown)", "pages": "292"}, {"term": "Besamim (Havdala spices)", "pages": "319"}, {"term": "Blech / hot plate / platta / crockpot", "pages": "8-9, 23, 28-35, 40-41, 43-46, 61, 209"}, {"term": "Blood test", "pages": "279"}, {"term": "Board games (with writing)", "pages": "284"}, {"term": "Books (about wars)", "pages": "284"}, {"term": "Bottle cap (plastic / metal)", "pages": "264-265, 272"}, {"term": "Bread / challah", "pages": "8-9, 16, 21, 26, 140-142, 149-151, 193, 255, 308-310, 312-313, 315, 317"}, {"term": "Buttons", "pages": "244, 250"}, {"term": "Candle / wax", "pages": "71-72, 75, 102, 207, 209, 228, 253-254, 259, 282, 319"}, {"term": "Carrot", "pages": "120, 131, 200"}, {"term": "Charoses", "pages": "191"}, {"term": "Cheese", "pages": "137-139, 148, 150"}, {"term": "Chess set", "pages": "148"}, {"term": "Chewing gum / glue", "pages": "254, 256"}, {"term": "Chicken", "pages": "12, 38, 116-118, 121, 128, 222"}, {"term": "Cholent", "pages": "12, 22, 30, 61"}, {"term": "Chopped liver", "pages": "194"}, {"term": "Chupa", "pages": "267"}, {"term": "Coffee", "pages": "6, 9, 17, 24, 309"}, {"term": "Coffin / grave (digging)", "pages": "77"}, {"term": "Computer / phone screen (writing on)", "pages": "283, 288"}, {"term": "Contracts / letters / documents (reading)", "pages": "284"}, {"term": "Cotton", "pages": "158"}, {"term": "Deodorant / soap", "pages": "209, 252-253, 256, 294"}, {"term": "Diaper", "pages": "108, 111, 244, 250, 253"}, {"term": "Dishes (washing)", "pages": "290"}, {"term": "Dishwasher / washing machine / dryer", "pages": "293, 298"}, {"term": "Dog", "pages": "277, 280, 287"}, {"term": "Door (detaches; magnetic key; opening near candle/furnace)", "pages": "59-60, 102, 212-213"}, {"term": "Doorknocker", "pages": "292"}, {"term": "Drain / toilet (unblocking)", "pages": "260, 270"}, {"term": "Egg (raw in Kli Sheini; laid on Shabbos; egg slicer)", "pages": "16-17, 139, 144, 148, 150, 206"}, {"term": "Electric oven", "pages": "34"}, {"term": "Electricity / radio / sound", "pages": "56-57"}, {"term": "Erasing", "pages": "105-106, 274, 281-283"}, {"term": "Eruv (fixing)", "pages": "239"}, {"term": "Fish", "pages": "115, 118-119, 121, 127, 157-158, 198, 202, 204, 209, 220, 227, 247, 299, 312"}, {"term": "Fish tank / aquarium", "pages": "209"}, {"term": "Flashlight", "pages": "304"}, {"term": "Flax seeds", "pages": "193"}, {"term": "Flies (trapping)", "pages": "51, 98, 100, 274, 279-280"}, {"term": "Folded chair", "pages": "267, 273"}, {"term": "Food wrappers", "pages": "120-121"}, {"term": "Freezer", "pages": "124, 171, 212"}, {"term": "Fridge (door / light)", "pages": "98, 103"}, {"term": "Fruit (bringing indoors from rain)", "pages": "289"}, {"term": "Garbage / garbage bin", "pages": "213, 215"}, {"term": "Garlic", "pages": "154, 174"}, {"term": "Gas stovetop", "pages": "34"}, {"term": "Generator", "pages": "293"}, {"term": "Gifts (giving on Shabbos)", "pages": "285"}, {"term": "Grass / lawn", "pages": "96"}, {"term": "Grater / food processor", "pages": "139, 148, 150"}, {"term": "Guests (money on host's plate)", "pages": "211"}, {"term": "Hairbrush", "pages": "97, 148"}, {"term": "Havdala candle", "pages": "319"}, {"term": "Honey", "pages": "191"}, {"term": "Horseradish", "pages": "194"}, {"term": "Hot water tap / boiler", "pages": "96"}, {"term": "Ice / snow", "pages": "7, 108, 170-172, 175"}, {"term": "Insect spray", "pages": "278, 294"}, {"term": "Instant potato", "pages": "194"}, {"term": "Interest (bank account)", "pages": "88-89"}, {"term": "Jello / jelled desserts", "pages": "194"}, {"term": "Kerchief", "pages": "176-177, 184"}, {"term": "Ketchup", "pages": "7, 24, 194"}, {"term": "Kiddush wine / grape juice / chamar medinah", "pages": "296, 307-309, 311, 316-318"}, {"term": "Lamp / electric heating element", "pages": "209"}, {"term": "Laundry / clothes (sorting)", "pages": "118-119, 127"}, {"term": "Leather", "pages": "182, 186"}, {"term": "Lego", "pages": "262, 271"}, {"term": "Lemon", "pages": "17, 25, 161-163, 173"}, {"term": "Lice", "pages": "278"}, {"term": "Light switch", "pages": "91"}, {"term": "Magnets", "pages": "244"}, {"term": "Matzo balls", "pages": "118, 128"}, {"term": "Mayonnaise", "pages": "193-194"}, {"term": "Measuring / weighing", "pages": "274, 284, 286"}, {"term": "Medicine / medication", "pages": "141, 150, 194, 217-219, 221, 223-224, 228, 230-231, 291"}, {"term": "Melon (seeds)", "pages": "120-121"}, {"term": "Mikveh (hot water)", "pages": "296"}, {"term": "Mortar and pestle", "pages": "150"}, {"term": "Mustard", "pages": "191"}, {"term": "Nail cutting", "pages": "99-100, 110, 299-300"}, {"term": "Nail polish", "pages": "277"}, {"term": "Necktie", "pages": "237"}, {"term": "Nuts / sunflower seeds", "pages": "9, 115, 152, 155, 208"}, {"term": "Onion", "pages": "17, 25, 37, 120, 154, 174"}, {"term": "Orange", "pages": "118, 120, 127, 153-154, 173, 309"}, {"term": "Oven", "pages": "8, 29, 34, 37-38"}, {"term": "Pages stuck together", "pages": "249"}, {"term": "Peanut", "pages": "155, 174"}, {"term": "Peas", "pages": "155"}, {"term": "Pepper (crushing)", "pages": "143-144, 150"}, {"term": "Pets / animals", "pages": "56, 100, 139, 207, 209, 214, 218, 233, 251, 279-280"}, {"term": "Phone / telephone", "pages": "208, 283, 288"}, {"term": "Photo / video (taken on Shabbos)", "pages": "59, 284"}, {"term": "Photochromic glasses", "pages": "276"}, {"term": "Pickle", "pages": "9, 162, 200"}, {"term": "Pomegranates / strawberries", "pages": "159"}, {"term": "Potato", "pages": "6, 127, 144-145, 148-150, 194, 200"}, {"term": "Potato masher", "pages": "144-145, 148, 150"}, {"term": "Rag", "pages": "183"}, {"term": "Rain cover / stroller / umbrella", "pages": "208, 267-268, 273"}, {"term": "Refrigerator", "pages": "293"}, {"term": "Safety pins", "pages": "244, 250"}, {"term": "Salt", "pages": "9, 16, 21, 25-26, 125, 197-204"}, {"term": "Sandbox / mud", "pages": "193"}, {"term": "Scab / tooth / splinter (bleeding)", "pages": "278"}, {"term": "Siddur (child carrying)", "pages": "91"}, {"term": "Sieve / strainer / vegetable peeler", "pages": "112, 125, 127, 129"}, {"term": "Snowman", "pages": "108"}, {"term": "Sponge", "pages": "165-166, 174, 220"}, {"term": "Stain (cleaning a garment)", "pages": "60, 276"}, {"term": "Sugar", "pages": "16, 162, 194"}, {"term": "Sunbathing / tan", "pages": "276"}, {"term": "Tallis", "pages": "176, 178-179, 268, 291"}, {"term": "Tape / adhesive stickers", "pages": "244-245, 250"}, {"term": "Tea / teabag", "pages": "6, 17, 25-26, 61, 163, 309"}, {"term": "Thermometer (color-changing; temperature)", "pages": "276, 286"}, {"term": "Thermos", "pages": "31"}, {"term": "Tin / can (opening)", "pages": "264, 271"}, {"term": "Toilet disinfectant", "pages": "276-277, 294"}, {"term": "Toothbrush", "pages": "168, 174"}, {"term": "Toothpick (fixing bread)", "pages": "315"}, {"term": "Towel", "pages": "28, 180-182, 184-185, 276"}, {"term": "Velcro / zippers", "pages": "244, 250"}, {"term": "Vending machine / online business", "pages": "86-87"}, {"term": "Wall clocks / paintings", "pages": "207"}, {"term": "Wallet", "pages": "207, 211"}, {"term": "Walnut", "pages": "155, 173"}, {"term": "Well (drawing water)", "pages": "74"}, {"term": "Wine", "pages": "117, 119, 128, 164-165, 174, 296, 307-309, 311, 316-318"}, {"term": "Writing (general)", "pages": "68, 104-108, 207, 224, 249, 274, 281-284"}, {"term": "Yogurt", "pages": "194"}, {"term": "Zipper / diaper tabs", "pages": "34, 37, 105, 244, 250"}];
+
+const panel = document.getElementById('panel');
+const tabsNav = document.getElementById('tabs');
+const searchInput = document.getElementById('search');
+const clearBtn = document.getElementById('clear-btn');
+const resultCount = document.getElementById('result-count');
+
+const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+function groupByLetter(entries){
+  const groups = {};
+  entries.forEach(e => {
+    const letter = e.term[0].toUpperCase();
+    if(!groups[letter]) groups[letter] = [];
+    groups[letter].push(e);
+  });
+  return groups;
+}
+
+function escapeHtml(s){
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function highlight(text, query){
+  if(!query) return escapeHtml(text);
+  const escaped = escapeHtml(text);
+  const q = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return escaped.replace(new RegExp('('+q+')', 'ig'), '<mark>$1</mark>');
+}
+
+// Turn "8-9, 23, 28-35, 61" into linked tokens pointing at book.html#page-N
+// (a range links to its first page; highlighting is preserved inside each link)
+function renderPageLinks(pagesStr, query){
+  return pagesStr.split(',').map(raw => {
+    const token = raw.trim();
+    const rangeMatch = token.match(/^(\d+)\s*-\s*(\d+)$/);
+    const firstPage = rangeMatch ? rangeMatch[1] : token.match(/^\d+/)?.[0];
+    const label = highlight(token, query);
+    if(!firstPage) return label;
+    return `<a class="page-link" href="book.html#page-${firstPage}" target="_blank" rel="noopener">${label}</a>`;
+  }).join(', ');
+}
+
+function render(query){
+  const q = query.trim().toLowerCase();
+  const filtered = q === '' ? ENTRIES : ENTRIES.filter(e =>
+    e.term.toLowerCase().includes(q) || e.pages.includes(q)
+  );
+
+  resultCount.innerHTML = q === ''
+    ? `<strong>${ENTRIES.length}</strong> entries`
+    : (filtered.length
+        ? `<strong>${filtered.length}</strong> match${filtered.length===1?'':'es'} for &ldquo;${escapeHtml(query)}&rdquo;`
+        : `no matches for &ldquo;${escapeHtml(query)}&rdquo;`);
+
+  clearBtn.style.display = q === '' ? 'none' : 'block';
+
+  if(filtered.length === 0){
+    panel.innerHTML = `<div class="no-results">Nothing found. Try a shorter word, or check the page number directly.</div>`;
+    renderTabs({});
+    return;
+  }
+
+  const groups = groupByLetter(filtered);
+  let html = '';
+  ALPHABET.forEach(letter => {
+    if(!groups[letter]) return;
+    html += `<section class="letter-section" id="letter-${letter}">`;
+    html += `<h2 class="letter-heading">${letter}</h2>`;
+    html += `<ul class="entry-list">`;
+    groups[letter].forEach(e => {
+      html += `<li class="entry">
+        <span class="term">${highlight(e.term, query)}</span>
+        <span class="leader"></span>
+        <span class="pages">p. ${renderPageLinks(e.pages, query)}</span>
+      </li>`;
+    });
+    html += `</ul></section>`;
+  });
+  panel.innerHTML = html;
+  renderTabs(groups);
+}
+
+function renderTabs(groups){
+  let html = '';
+  ALPHABET.forEach(letter => {
+    const has = !!groups[letter];
+    html += `<button class="tab-btn ${has ? '' : 'disabled'}" data-letter="${letter}" ${has ? '' : 'tabindex="-1"'}>${letter}</button>`;
+  });
+  tabsNav.innerHTML = html;
+  tabsNav.querySelectorAll('.tab-btn:not(.disabled)').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById('letter-' + btn.dataset.letter);
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+}
+
+let debounceTimer;
+searchInput.addEventListener('input', () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => render(searchInput.value), 80);
+});
+
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  render('');
+  searchInput.focus();
+});
+
+// scrollspy for active tab
+const observerOptions = { rootMargin: '-10% 0px -70% 0px' };
+let currentObserver;
+function setupObserver(){
+  if(currentObserver) currentObserver.disconnect();
+  currentObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const letter = entry.target.id.replace('letter-', '');
+        tabsNav.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        const btn = tabsNav.querySelector(`.tab-btn[data-letter="${letter}"]`);
+        if(btn) btn.classList.add('active');
+      }
+    });
+  }, observerOptions);
+  document.querySelectorAll('.letter-section').forEach(s => currentObserver.observe(s));
+}
+
+render('');
+setupObserver();
+const mo = new MutationObserver(() => setupObserver());
+mo.observe(panel, {childList:true});
+</script>
+
+</body>
+</html>
