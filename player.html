@@ -315,6 +315,14 @@
       }
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XEKR855EWG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XEKR855EWG');
+  </script>
 </head>
 <body>
   <div class="tm-topbar">
@@ -588,6 +596,14 @@
     audio.addEventListener('play', () => {
       updatePlayIcon();
       updateStatus();
+      // GA4: track play event with shiur title and id
+      if (typeof gtag === 'function' && currentItem) {
+        gtag('event', 'play_shiur', {
+          shiur_id:    currentItem.id    || '',
+          shiur_title: currentItem.title || '',
+          shiur_program: currentItem.program || '',
+        });
+      }
     });
 
     audio.addEventListener('pause', () => {
