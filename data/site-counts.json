@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 752,
+    "total": 753,
     "breakdown": {
       "parsha": {
         "audio": 24,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 95
+        "totalAll": 96
       },
       "oneMinute": {
         "audio": 242
@@ -22,6 +22,13 @@
     "updated": "2026-07-15"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "From Moshe to Moshe, what happened to the name Moshe?",
+      "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3",
+      "date": "2026-07-14T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Not one day more",
       "url": "https://www.youtube.com/watch?v=q_Ly7ZdHEjA",
       "date": "2026-07-10T11:18:20Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Hashem is keeping track",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0072.mp3",
-      "date": "2026-07-08T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "From Moshe to Moshe, what happened to the name Moshe?",
+        "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3",
+        "date": "2026-07-14T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Standing up for a chosson",
         "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3",
         "date": "2026-07-13T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "Yissachar Zevulun",
         "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3",
         "date": "2026-04-30T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "The risk of NOT saying Hallel on Yom Haatzmaut",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19052286-4-21-2026-shloimy-zelcer-the-risk-of-not-saying-hallel-on-yom-haatzmaut.mp3",
-        "date": "2026-04-21T00:00:00.000Z"
       }
     ],
     "parsha": [
