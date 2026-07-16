@@ -204,7 +204,6 @@
       font-size:.9em;
     }
 
-    /* ===== TorahMoment Topbar ===== */
     .tm-topbar{
       width:100%;
       background:#ffffff;
@@ -315,7 +314,6 @@
       }
     }
   </style>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XEKR855EWG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -382,8 +380,7 @@
 
   <script>
     const params = new URLSearchParams(location.search);
-    const wantedId = params.get('id');
-    const wantedSlug = params.get('slug');
+    const wantedFile = (params.get('file') || '').trim().toLowerCase();
 
     const audio = document.getElementById('audio');
     const playBtn = document.getElementById('playBtn');
@@ -458,8 +455,22 @@
       return !!(x && x.url && ['audio', 'audio-extra', 'parsha-audio', 'parsha'].includes(x.type));
     }
 
-    function pickRandomShiur(items, excludeId){
-      const choices = (items || []).filter(x => isPlayableAudio(x) && x.id !== excludeId);
+    function getFileBaseFromUrl(url){
+      try {
+        const pathname = new URL(url, location.origin).pathname;
+        const filename = pathname.split('/').pop() || '';
+        return filename.replace(/\.[^.]+$/i, '').toLowerCase();
+      } catch {
+        return '';
+      }
+    }
+
+    function pickRandomShiur(items, excludeFileBase){
+      const choices = (items || []).filter(x => {
+        if (!isPlayableAudio(x)) return false;
+        const fileBase = getFileBaseFromUrl(x.url);
+        return fileBase && fileBase !== excludeFileBase;
+      });
       if (!choices.length) return null;
       return choices[Math.floor(Math.random() * choices.length)];
     }
@@ -484,10 +495,9 @@
       updateStatus();
 
       if (updateUrl) {
-        if (item.slug) {
-          history.replaceState({}, '', `/player.html?slug=${encodeURIComponent(item.slug)}`);
-        } else if (item.id) {
-          history.replaceState({}, '', `/player.html?id=${encodeURIComponent(item.id)}`);
+        const fileBase = getFileBaseFromUrl(item.url);
+        if (fileBase) {
+          history.replaceState({}, '', `/player.html?file=${encodeURIComponent(fileBase)}`);
         }
       }
     }
@@ -515,15 +525,13 @@
 
         let item = null;
 
-        if (wantedId) {
-          item = allItems.find(x => x.id === wantedId);
-        } else if (wantedSlug) {
-          item = allItems.find(x => x.slug === wantedSlug);
+        if (wantedFile) {
+          item = allItems.find(x => getFileBaseFromUrl(x.url) === wantedFile);
         }
 
-        if ((wantedId || wantedSlug) && !item) {
+        if (wantedFile && !item) {
           pageTitle.textContent = 'Audio not found';
-          pageSub.textContent = wantedId || wantedSlug || '';
+          pageSub.textContent = wantedFile;
           notice.innerHTML = '<span class="error">No matching audio item was found.</span>';
           randomBtn.disabled = allItems.filter(isPlayableAudio).length < 1;
           return;
@@ -532,7 +540,7 @@
         if (item) {
           loadItem(item, false);
         } else {
-          const randomItem = pickRandomShiur(allItems);
+          const randomItem = pickRandomShiur(allItems, '');
           if (randomItem) {
             loadItem(randomItem, true);
           } else {
@@ -543,7 +551,7 @@
         }
 
         const playableCount = allItems.filter(isPlayableAudio).length;
-        randomBtn.disabled = playableCount < 2 && !!currentItem ? playableCount < 1 : playableCount < 1;
+        randomBtn.disabled = playableCount < 1;
 
       } catch (err) {
         pageTitle.textContent = 'Error';
@@ -560,7 +568,8 @@
     });
 
     randomBtn.addEventListener('click', () => {
-      const randomItem = pickRandomShiur(allItems, currentItem?.id);
+      const currentFileBase = currentItem ? getFileBaseFromUrl(currentItem.url) : '';
+      const randomItem = pickRandomShiur(allItems, currentFileBase);
       if (!randomItem) {
         notice.innerHTML = '<span class="error">No random shiur was available.</span>';
         return;
@@ -596,12 +605,12 @@
     audio.addEventListener('play', () => {
       updatePlayIcon();
       updateStatus();
-      // GA4: track play event with shiur title and id
       if (typeof gtag === 'function' && currentItem) {
         gtag('event', 'play_shiur', {
-          shiur_id:    currentItem.id    || '',
+          shiur_id: currentItem.id || '',
           shiur_title: currentItem.title || '',
           shiur_program: currentItem.program || '',
+          shiur_file: getFileBaseFromUrl(currentItem.url) || ''
         });
       }
     });
