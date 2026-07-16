@@ -12,7 +12,7 @@
       --muted:#666;
       --border:#e7e7ee;
       --accent:#0d9488;
-      --shadow:0 6px 22px rgba(0,0,0,0.07);
+      --shadow:#0 6px 22px rgba(0,0,0,0.07);
       --radius:16px;
       --wrap-max:980px;
       --wrap-pad:16px;
@@ -37,7 +37,7 @@
       background:linear-gradient(180deg,#ffffff 0%,#fbfbfc 100%);
       border:1px solid var(--border);
       border-radius:20px;
-      box-shadow:var(--shadow);
+      box-shadow:0 6px 22px rgba(0,0,0,0.07);
       padding:20px;
       margin-bottom:18px;
     }
@@ -143,7 +143,7 @@
       background:var(--card);
       border:1px solid var(--border);
       border-radius:16px;
-      box-shadow:var(--shadow);
+      box-shadow:0 6px 22px rgba(0,0,0,0.07);
       padding:14px 16px;
     }
 
@@ -370,10 +370,19 @@
     function isPlayableAudio(item){
       return !!(
         item &&
-        item.id &&
         item.url &&
         ['audio', 'audio-extra', 'parsha-audio', 'parsha'].includes(item.type)
       );
+    }
+
+    function getFileBaseFromUrl(url){
+      try {
+        const pathname = new URL(url, location.origin).pathname;
+        const filename = pathname.split('/').pop() || '';
+        return filename.replace(/\.[^.]+$/i, '');
+      } catch {
+        return '';
+      }
     }
 
     function formatDate(dateStr){
@@ -440,6 +449,11 @@
           <div class="list">
             ${arr.map(item => {
               const meta = [formatDate(item.date)].filter(Boolean).join(' • ');
+              const fileBase = getFileBaseFromUrl(item.url);
+              const playHref = fileBase
+                ? `/player.html?file=${encodeURIComponent(fileBase)}`
+                : '#';
+
               return `
                 <article class="item">
                   <div class="item-top">
@@ -447,7 +461,7 @@
                       <h3 class="title">${escapeHtml(item.title || 'Untitled Shiur')}</h3>
                       ${meta ? `<div class="meta">${escapeHtml(meta)}</div>` : ''}
                     </div>
-                    <a class="play-link" href="/player.html?id=${encodeURIComponent(item.id)}">Play shiur</a>
+                    <a class="play-link" href="${playHref}">Play shiur</a>
                   </div>
                 </article>
               `;
