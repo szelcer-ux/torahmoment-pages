@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 754,
+    "total": 755,
     "breakdown": {
       "parsha": {
         "audio": 24,
@@ -13,7 +13,7 @@
         "totalAll": 96
       },
       "oneMinute": {
-        "audio": 243
+        "audio": 244
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-07-16"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Holding two things at once",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260716-WA0014.mp3",
+      "date": "2026-07-16T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "Standing up for a chosson",
       "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3",
       "date": "2026-07-13T00:00:00.000Z"
-    },
-    {
-      "type": "parsha-audio",
-      "program": "Halacha",
-      "title": "DEVARIM - Parsha overview",
-      "url": "https://torahmoment.com/audio/Devarim%20parsha%20overview.mp3",
-      "date": "2026-07-13T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Holding two things at once",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260716-WA0014.mp3",
+        "date": "2026-07-16T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Two lessons from the Lubavitch Rebbeh",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260618-WA0033.mp3",
         "date": "2026-06-18T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "What was Korach missing?",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260616-WA0030.mp3",
-        "date": "2026-06-16T00:00:00.000Z"
       }
     ],
     "halacha": [
