@@ -12,7 +12,6 @@
       --muted:#666;
       --border:#e7e7ee;
       --accent:#0d9488;
-      --shadow:#0 6px 22px rgba(0,0,0,0.07);
       --radius:16px;
       --wrap-max:980px;
       --wrap-pad:16px;
@@ -171,6 +170,13 @@
       flex-wrap:wrap;
     }
 
+    .item-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
     .play-link{
       display:inline-flex;
       align-items:center;
@@ -185,6 +191,8 @@
       font-weight:600;
       white-space:nowrap;
       transition:.15s ease;
+      font:inherit;
+      cursor:pointer;
     }
 
     .play-link:hover{
@@ -429,6 +437,26 @@
         .sort((a, b) => a[0].localeCompare(b[0]));
     }
 
+    function attachCopyHandlers(){
+      document.querySelectorAll('.copy-link-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const relative = btn.getAttribute('data-share-url') || '';
+          const absolute = new URL(relative, location.origin).href;
+
+          try {
+            await navigator.clipboard.writeText(absolute);
+            const oldText = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => {
+              btn.textContent = oldText;
+            }, 1200);
+          } catch {
+            alert(absolute);
+          }
+        });
+      });
+    }
+
     function render(items){
       countBox.textContent = `${items.length} shiur${items.length === 1 ? '' : 'im'}`;
 
@@ -453,6 +481,9 @@
               const playHref = fileBase
                 ? `/player.html?file=${encodeURIComponent(fileBase)}`
                 : '#';
+              const shareHref = fileBase
+                ? `/player/${encodeURIComponent(fileBase)}.html`
+                : '#';
 
               return `
                 <article class="item">
@@ -461,7 +492,16 @@
                       <h3 class="title">${escapeHtml(item.title || 'Untitled Shiur')}</h3>
                       ${meta ? `<div class="meta">${escapeHtml(meta)}</div>` : ''}
                     </div>
-                    <a class="play-link" href="${playHref}">Play shiur</a>
+
+                    <div class="item-actions">
+                      <a class="play-link" href="${playHref}">Play shiur</a>
+                      <a class="play-link" href="${shareHref}" target="_blank" rel="noopener">Open share page</a>
+                      <button
+                        class="play-link copy-link-btn"
+                        type="button"
+                        data-share-url="${shareHref}"
+                      >Copy share link</button>
+                    </div>
                   </div>
                 </article>
               `;
@@ -469,6 +509,8 @@
           </div>
         </section>
       `).join('');
+
+      attachCopyHandlers();
     }
 
     function applySearch(){
