@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "July 4–10, 2026",
-  "generatedAt": "2026-07-10T12:29:47.861Z",
-  "totalItems": 3,
+  "rangeLabel": "July 11–17, 2026",
+  "generatedAt": "2026-07-17T11:22:06.446Z",
+  "totalItems": 6,
   "featured": {
-    "id": "one-240",
-    "title": "Hashem is keeping track",
+    "id": "one-243",
+    "title": "Holding two things at once",
     "program": "One-Minute",
     "type": "audio",
-    "date": "2026-07-08T00:00:00.000Z",
+    "date": "2026-07-16T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0072.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260716-WA0014.mp3"
   },
   "groups": [
     {
@@ -17,13 +17,31 @@
       "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "hal-85",
-          "title": "Knock before entering",
+          "id": "hal-74",
+          "title": "From Moshe to Moshe, what happened to the name Moshe?",
           "program": "Halacha",
           "type": "audio",
-          "date": "2026-07-06T00:00:00.000Z",
+          "date": "2026-07-14T00:00:00.000Z",
           "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19452197-7-6-2026-shloimy-zelcer-knock-before-entering.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3"
+        },
+        {
+          "id": "hal-86",
+          "title": "Standing up for a chosson",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-07-13T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3"
+        },
+        {
+          "id": "hal-107",
+          "title": "DEVARIM - Parsha overview",
+          "program": "Halacha",
+          "type": "parsha-audio",
+          "date": "2026-07-13T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://torahmoment.com/audio/Devarim%20parsha%20overview.mp3"
         }
       ]
     },
@@ -32,22 +50,31 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-240",
-          "title": "Hashem is keeping track",
+          "id": "one-243",
+          "title": "Holding two things at once",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-07-08T00:00:00.000Z",
+          "date": "2026-07-16T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0072.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260716-WA0014.mp3"
         },
         {
-          "id": "one-239",
-          "title": "Breaking generational trauma",
+          "id": "one-242",
+          "title": "Trust in your Father",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-07-07T00:00:00.000Z",
+          "date": "2026-07-15T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0071.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260715-WA0034.mp3"
+        },
+        {
+          "id": "one-241",
+          "title": "Where life and growth begin",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-07-14T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260713-WA0116.mp3"
         }
       ]
     }
