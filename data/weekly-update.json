@@ -1,17 +1,32 @@
 {
   "rangeLabel": "July 11–17, 2026",
-  "generatedAt": "2026-07-17T11:25:42.867Z",
-  "totalItems": 6,
+  "generatedAt": "2026-07-17T11:54:32.688Z",
+  "totalItems": 7,
   "featured": {
-    "id": "one-243",
-    "title": "Holding two things at once",
-    "program": "One-Minute",
-    "type": "audio",
-    "date": "2026-07-16T00:00:00.000Z",
-    "page": "/one-minute-audio.html",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260716-WA0014.mp3"
+    "id": "par-I-CVzeHuA3w",
+    "title": "Stop fighting!",
+    "program": "Parsha",
+    "type": "video",
+    "date": "2026-07-17T02:02:17Z",
+    "page": "/parsha.html",
+    "url": "https://www.youtube.com/watch?v=I-CVzeHuA3w"
   },
   "groups": [
+    {
+      "key": "parsha",
+      "label": "Parsha",
+      "items": [
+        {
+          "id": "par-I-CVzeHuA3w",
+          "title": "Stop fighting!",
+          "program": "Parsha",
+          "type": "video",
+          "date": "2026-07-17T02:02:17Z",
+          "page": "/parsha.html",
+          "url": "https://www.youtube.com/watch?v=I-CVzeHuA3w"
+        }
+      ]
+    },
     {
       "key": "halacha",
       "label": "Halacha / Hashkafa",
