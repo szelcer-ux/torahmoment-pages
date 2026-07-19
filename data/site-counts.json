@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-07-18"
+    "updated": "2026-07-19"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Stop fighting!",
+      "url": "https://www.youtube.com/watch?v=I-CVzeHuA3w",
+      "date": "2026-07-17T02:02:17Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Where life and growth begin",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260713-WA0116.mp3",
       "date": "2026-07-14T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Standing up for a chosson",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3",
-      "date": "2026-07-13T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
