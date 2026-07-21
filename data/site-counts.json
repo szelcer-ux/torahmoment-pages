@@ -23,6 +23,13 @@
   },
   "recent": [
     {
+      "type": "parsha-audio",
+      "program": "Halacha",
+      "title": "VAESCHANAN - Parsha overview",
+      "url": "https://torahmoment.com/audio/VaeschananOverview.mp3",
+      "date": "2026-07-21T00:00:00.000Z"
+    },
+    {
       "type": "audio",
       "program": "One-Minute",
       "title": "Move on",
@@ -49,13 +56,6 @@
       "title": "Trust in your Father",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260715-WA0034.mp3",
       "date": "2026-07-15T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "From Moshe to Moshe, what happened to the name Moshe?",
-      "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3",
-      "date": "2026-07-14T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -133,6 +133,13 @@
     ],
     "halacha": [
       {
+        "type": "parsha-audio",
+        "program": "Halacha",
+        "title": "VAESCHANAN - Parsha overview",
+        "url": "https://torahmoment.com/audio/VaeschananOverview.mp3",
+        "date": "2026-07-21T00:00:00.000Z"
+      },
+      {
         "type": "audio",
         "program": "Halacha",
         "title": "From Moshe to Moshe, what happened to the name Moshe?",
@@ -194,13 +201,6 @@
         "title": "My Rebbis's view on Yom Yerushalayim",
         "url": "https://www.buzzsprout.com/1899789/episodes/19176112-5-14-2026-shloimy-zelcer-my-rebbis-s-view-on-yom-yerushalayim.mp3",
         "date": "2026-05-14T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Yissachar Zevulun",
-        "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3",
-        "date": "2026-04-30T00:00:00.000Z"
       }
     ],
     "parsha": [

@@ -3533,6 +3533,16 @@
     "id": "hal-108",
     "program": "Halacha",
     "type": "parsha-audio",
+    "title": "VAESCHANAN - Parsha overview",
+    "url": "https://torahmoment.com/audio/VaeschananOverview.mp3",
+    "date": "2026-07-21T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "vaeschanan - parsha overview"
+  },
+  {
+    "id": "hal-109",
+    "program": "Halacha",
+    "type": "parsha-audio",
     "title": "VAESCHANAN - My rebbis legacy - always pushing for greatness",
     "url": "https://www.buzzsprout.com/1899789/episodes/17624623-8-6-2025-shloimy-zelcer-my-rebbis-legacy-always-pushing-for-greatness.mp3",
     "date": "2025-08-06T00:00:00.000Z",
@@ -3540,7 +3550,7 @@
     "title_lc": "vaeschanan - my rebbis legacy - always pushing for greatness"
   },
   {
-    "id": "hal-109",
+    "id": "hal-110",
     "program": "Halacha",
     "type": "parsha-audio",
     "title": "SHOFTIM - Selective observance",
