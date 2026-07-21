@@ -1190,6 +1190,14 @@ button{
   <audio id="audioEl" preload="metadata"></audio>
  <div id="empty" class="empty" style="display:none;">No videos match your filters.</div>
 
+<section id="secAudioOverview" class="linksBox" style="display:none;">
+  <div class="linksTop">
+    <div class="linksTitle">🗺️ Parsha Overview</div>
+    <div class="linksHint">A general overview and themes of the Parsha</div>
+  </div>
+  <div id="audioOverviewList" class="linksList"></div>
+</section>
+
 	<section id="secAudioShort" class="linksBox" style="display:none;">
   <div class="linksTop">
     <div class="linksTitle">🎧 Short Audio Insights</div>
@@ -1354,14 +1362,20 @@ const PARSHA_AUDIO = {
     { label: "A lesson from the parsha of the Meraglim", url: "https://www.buzzsprout.com/1899789/episodes/13024292-6-12-2023-shloimy-zelcer.mp3", duration: "5:10" },
 	{ label: "Lessons from the terrible sin of the spies", url: "https://www.buzzsprout.com/1899789/episodes/10842600-6-21-2022-shloimy-zelcer.mp3", duration: "7:22" }
   ], 
-	"Devarim": [
-		 { label: "Parshas Devarim overview", url: "https://torahmoment.com/audio/Devarim%20parsha%20overview.mp3", duration: "9:51" }
-		],
     "Vaeschanan": [
     { label: "My rebbis legacy - always pushing for greatness", url: "https://www.buzzsprout.com/1899789/episodes/17624623-8-6-2025-shloimy-zelcer-my-rebbis-legacy-always-pushing-for-greatness.mp3", duration: "5:29" }
   ],
   "Shoftim": [
     { label: "Selective observance", url: "https://www.buzzsprout.com/1899789/episodes/17736499-8-26-2025-shloimy-zelcer-selective-observance.mp3", duration: "5:14" }
+  ]
+};
+
+const PARSHA_OVERVIEW = {
+  "Devarim": [
+    { label: "Parshas Devarim overview", url: "https://torahmoment.com/audio/Devarim%20parsha%20overview.mp3", duration: "9:51" }
+  ],
+  "Vaeschanan": [
+    { label: "Parshas Vaeschanan overview", url: "https://torahmoment.com/audio/VaeschananOverview.mp3", duration: "" }
   ]
 };
 
@@ -1578,6 +1592,7 @@ function updateParshaCounts() {
 
   // ✅ use the actual variables (NOT window.PARSHA_AUDIO)
   const audioShort = countAllItems(typeof PARSHA_AUDIO !== "undefined" ? PARSHA_AUDIO : null);
+  const audioOverview = countAllItems(typeof PARSHA_OVERVIEW !== "undefined" ? PARSHA_OVERVIEW : null);
 
   const inDepthObj =
     (typeof PARSHA_INDEPTH !== "undefined" ? PARSHA_INDEPTH :
@@ -1590,7 +1605,7 @@ function updateParshaCounts() {
     ? parshaVideos.length
     : 0;
 
-  b.parsha.audio = audioShort + audioLong;
+  b.parsha.audio = audioShort + audioLong + audioOverview;
   b.parsha.video = videoTotal;
   window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
 
@@ -1636,6 +1651,7 @@ function renderPdfList(containerId, items){
 function renderParshaExtras(parsha) {
   // No selection => hide everything
   if (!parsha) {
+    setSectionVisible("secAudioOverview", false);
     setSectionVisible("secAudioShort", false);
     setSectionVisible("secAudioLong",  false);
     setSectionVisible("secPdfs",       false);
@@ -1647,14 +1663,17 @@ function renderParshaExtras(parsha) {
     return;
   }
 
+  const overviewItems = (PARSHA_OVERVIEW && PARSHA_OVERVIEW[parsha]) ? PARSHA_OVERVIEW[parsha] : [];
   const shortItems = (PARSHA_AUDIO && PARSHA_AUDIO[parsha]) ? PARSHA_AUDIO[parsha] : [];
   const longItems  = (PARSHA_INDEPTH && PARSHA_INDEPTH[parsha]) ? PARSHA_INDEPTH[parsha] : [];
   const pdfItems   = (PARSHA_PDFS && PARSHA_PDFS[parsha]) ? PARSHA_PDFS[parsha] : [];
 
+  setSectionVisible("secAudioOverview", overviewItems.length > 0);
   setSectionVisible("secAudioShort", shortItems.length > 0);
   setSectionVisible("secAudioLong",  longItems.length  > 0);
   setSectionVisible("secPdfs",       pdfItems.length   > 0);
 
+  renderAudioList("audioOverviewList", overviewItems);
   renderAudioList("audioShortList", shortItems);
   renderAudioList("audioLongList",  longItems);
   renderPdfList("pdfList",          pdfItems);
