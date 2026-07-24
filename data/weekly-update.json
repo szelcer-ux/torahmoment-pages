@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "July 11–17, 2026",
-  "generatedAt": "2026-07-17T11:54:32.688Z",
-  "totalItems": 7,
+  "rangeLabel": "July 18–24, 2026",
+  "generatedAt": "2026-07-24T11:47:13.123Z",
+  "totalItems": 4,
   "featured": {
-    "id": "par-I-CVzeHuA3w",
-    "title": "Stop fighting!",
+    "id": "par-RWV08AhDkvg",
+    "title": "Make Him beloved",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-07-17T02:02:17Z",
+    "date": "2026-07-24T01:44:21Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=I-CVzeHuA3w"
+    "url": "https://www.youtube.com/watch?v=RWV08AhDkvg"
   },
   "groups": [
     {
@@ -17,13 +17,13 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-I-CVzeHuA3w",
-          "title": "Stop fighting!",
+          "id": "par-RWV08AhDkvg",
+          "title": "Make Him beloved",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-07-17T02:02:17Z",
+          "date": "2026-07-24T01:44:21Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=I-CVzeHuA3w"
+          "url": "https://www.youtube.com/watch?v=RWV08AhDkvg"
         }
       ]
     },
@@ -32,31 +32,13 @@
       "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "hal-74",
-          "title": "From Moshe to Moshe, what happened to the name Moshe?",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-07-14T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3"
-        },
-        {
-          "id": "hal-86",
-          "title": "Standing up for a chosson",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-07-13T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3"
-        },
-        {
-          "id": "hal-107",
-          "title": "DEVARIM - Parsha overview",
+          "id": "hal-108",
+          "title": "VAESCHANAN - Parsha overview",
           "program": "Halacha",
           "type": "parsha-audio",
-          "date": "2026-07-13T00:00:00.000Z",
+          "date": "2026-07-21T00:00:00.000Z",
           "page": "/halacha.html",
-          "url": "https://torahmoment.com/audio/Devarim%20parsha%20overview.mp3"
+          "url": "https://torahmoment.com/audio/VaeschananOverview.mp3"
         }
       ]
     },
@@ -65,31 +47,22 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-243",
-          "title": "Holding two things at once",
+          "id": "one-245",
+          "title": "2 journeys one road",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-07-16T00:00:00.000Z",
+          "date": "2026-07-22T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260716-WA0014.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0016.mp3"
         },
         {
-          "id": "one-242",
-          "title": "Trust in your Father",
+          "id": "one-244",
+          "title": "Move on",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-07-15T00:00:00.000Z",
+          "date": "2026-07-21T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260715-WA0034.mp3"
-        },
-        {
-          "id": "one-241",
-          "title": "Where life and growth begin",
-          "program": "One-Minute",
-          "type": "audio",
-          "date": "2026-07-14T00:00:00.000Z",
-          "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260713-WA0116.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260721-WA0017.mp3"
         }
       ]
     }
