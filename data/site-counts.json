@@ -19,16 +19,9 @@
         "audio": 137
       }
     },
-    "updated": "2026-07-24"
+    "updated": "2026-07-25"
   },
   "recent": [
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Make Him beloved",
-      "url": "https://www.youtube.com/watch?v=RWV08AhDkvg",
-      "date": "2026-07-24T01:44:21Z"
-    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -51,11 +44,18 @@
       "date": "2026-07-21T00:00:00.000Z"
     },
     {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Stop fighting!",
-      "url": "https://www.youtube.com/watch?v=I-CVzeHuA3w",
-      "date": "2026-07-17T02:02:17Z"
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Holding two things at once",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260716-WA0014.mp3",
+      "date": "2026-07-16T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Trust in your Father",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260715-WA0034.mp3",
+      "date": "2026-07-15T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
