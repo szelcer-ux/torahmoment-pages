@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 760,
+    "total": 761,
     "breakdown": {
       "parsha": {
         "audio": 25,
@@ -13,7 +13,7 @@
         "totalAll": 96
       },
       "oneMinute": {
-        "audio": 246
+        "audio": 247
       },
       "mishna": {
         "audio": 137
@@ -32,8 +32,15 @@
     {
       "type": "audio",
       "program": "One-Minute",
-      "title": "2 journeys one road",
+      "title": "2 journeys 1 road",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0016.mp3",
+      "date": "2026-07-22T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "The closest nation",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0017.mp3",
       "date": "2026-07-22T00:00:00.000Z"
     },
     {
@@ -49,13 +56,6 @@
       "title": "Move on",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260721-WA0017.mp3",
       "date": "2026-07-21T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Stop fighting!",
-      "url": "https://www.youtube.com/watch?v=I-CVzeHuA3w",
-      "date": "2026-07-17T02:02:17Z"
     }
   ],
   "recentByProgram": {
@@ -63,8 +63,15 @@
       {
         "type": "audio",
         "program": "One-Minute",
-        "title": "2 journeys one road",
+        "title": "2 journeys 1 road",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0016.mp3",
+        "date": "2026-07-22T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "The closest nation",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0017.mp3",
         "date": "2026-07-22T00:00:00.000Z"
       },
       {
@@ -122,13 +129,6 @@
         "title": "Seeing only part of the story",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260629-WA0099.mp3",
         "date": "2026-06-30T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Never too late",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260624-WA0011.mp3",
-        "date": "2026-06-24T00:00:00.000Z"
       }
     ],
     "halacha": [
