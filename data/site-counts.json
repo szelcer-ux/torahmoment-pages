@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 761,
+    "total": 762,
     "breakdown": {
       "parsha": {
         "audio": 25,
@@ -13,7 +13,7 @@
         "totalAll": 96
       },
       "oneMinute": {
-        "audio": 247
+        "audio": 248
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-07-29"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "The real test of the maan",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260727-WA0008.mp3",
+      "date": "2026-07-29T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "VAESCHANAN - Parsha overview",
       "url": "https://torahmoment.com/audio/VaeschananOverview.mp3",
       "date": "2026-07-21T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Move on",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260721-WA0017.mp3",
-      "date": "2026-07-21T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "The real test of the maan",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260727-WA0008.mp3",
+        "date": "2026-07-29T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "The leader Moshe asked for",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260630-WA0001.mp3",
         "date": "2026-07-01T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Seeing only part of the story",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260629-WA0099.mp3",
-        "date": "2026-06-30T00:00:00.000Z"
       }
     ],
     "halacha": [
