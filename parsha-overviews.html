@@ -190,25 +190,13 @@
 
   async function loadOverviews(){
     try{
-      // Load PARSHA_OVERVIEW from parsha.html via fetch + parse
-      const res=await fetch("/parsha.html",{cache:"no-store"});
-      const text=await res.text();
-      const match=text.match(/const PARSHA_OVERVIEW\s*=\s*(\{[\s\S]*?\})\s*;/);
-      if(!match) throw new Error("PARSHA_OVERVIEW not found");
-      const data=JSON.parse(match[1]);
+      const res=await fetch("/data/search-index.json",{cache:"no-store"});
+      if(!res.ok) throw new Error("search-index.json not found");
+      const idx=await res.json();
 
-      // Flatten into array sorted by date desc
-      const items=[];
-      for(const [parsha,entries] of Object.entries(data)){
-        for(const entry of entries||[]){
-          items.push({parsha,...entry});
-        }
-      }
-      items.sort((a,b)=>{
-        const ad=a.date?new Date(a.date.replace(/(\d+)\/(\d+)\/(\d+)/,"$3-$1-$2")):0;
-        const bd=b.date?new Date(b.date.replace(/(\d+)\/(\d+)\/(\d+)/,"$3-$1-$2")):0;
-        return bd-ad;
-      });
+      const items=(idx||[])
+        .filter(x=>x.program==="Parsha Overview" && x.url)
+        .sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
 
       document.getElementById("countVal").textContent=`${items.length} shiur${items.length===1?"":"im"}`;
 
@@ -218,12 +206,12 @@
       }
 
       document.getElementById("shiurList").innerHTML=items.map(item=>`
-        <div class="shiur-card" data-title="${(item.label||"").replace(/"/g,"&quot;")}">
+        <div class="shiur-card" data-title="${(item.title||"").replace(/"/g,"&quot;")}">
           <div class="shiur-top">
             <div>
-              <div class="shiur-parsha">${item.parsha||""}</div>
-              <div class="shiur-title">${item.label||"Parsha Overview"}</div>
-              ${item.date?`<div class="shiur-meta">${fmtDate(item.date)}</div>`:""}
+              <div class="shiur-parsha">${(item.id||"").replace("ov-","").replace(/-/g," ").replace(/\w/g,c=>c.toUpperCase())}</div>
+              <div class="shiur-title">${item.title||"Parsha Overview"}</div>
+              ${item.date?`<div class="shiur-meta">${new Date(item.date).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})}</div>`:""}
             </div>
           </div>
           <div class="tm-inline-player">
