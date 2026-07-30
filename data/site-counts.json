@@ -140,13 +140,6 @@
         "date": "2026-07-29T00:00:00.000Z"
       },
       {
-        "type": "parsha-audio",
-        "program": "Halacha",
-        "title": "VAESCHANAN - Parsha overview",
-        "url": "https://torahmoment.com/audio/VaeschananOverview.mp3",
-        "date": "2026-07-21T00:00:00.000Z"
-      },
-      {
         "type": "audio",
         "program": "Halacha",
         "title": "From Moshe to Moshe, what happened to the name Moshe?",
@@ -158,13 +151,6 @@
         "program": "Halacha",
         "title": "Standing up for a chosson",
         "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3",
-        "date": "2026-07-13T00:00:00.000Z"
-      },
-      {
-        "type": "parsha-audio",
-        "program": "Halacha",
-        "title": "DEVARIM - Parsha overview",
-        "url": "https://torahmoment.com/audio/Devarim%20parsha%20overview.mp3",
         "date": "2026-07-13T00:00:00.000Z"
       },
       {
@@ -201,6 +187,20 @@
         "title": "Jews with tattoos",
         "url": "https://www.buzzsprout.com/1899789/episodes/19253888-5-28-2026-shloimy-zelcer-jews-with-tattoos.mp3",
         "date": "2026-05-28T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "My Rebbis's view on Yom Yerushalayim",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19176112-5-14-2026-shloimy-zelcer-my-rebbis-s-view-on-yom-yerushalayim.mp3",
+        "date": "2026-05-14T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Yissachar Zevulun",
+        "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3",
+        "date": "2026-04-30T00:00:00.000Z"
       }
     ],
     "parsha": [
