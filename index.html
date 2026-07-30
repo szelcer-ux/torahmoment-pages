@@ -61,7 +61,7 @@ h1{font-family:'Lora',Georgia,serif;font-size:2.15rem;font-weight:700;letter-spa
 .subtle{color:var(--muted);font-size:.9rem}
 
 /* ── STATS ── */
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:22px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:22px}
 .stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;border-top:3px solid var(--accent);box-shadow:var(--shadow)}
 .stat .label{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .stat .value{font-family:'Lora',Georgia,serif;font-size:1.65rem;font-weight:700;color:var(--text);letter-spacing:-.02em;line-height:1}
@@ -129,6 +129,7 @@ h1{font-family:'Lora',Georgia,serif;font-size:2.15rem;font-weight:700;letter-spa
 .divider{height:1px;background:var(--border);margin:28px 0}
 
 /* ── INFOGRAPHIC ── */
+.parsha-pill{display:inline-block;font-size:10.5px;background:rgba(13,148,136,.12);color:var(--accent);border-radius:999px;padding:2px 8px;font-weight:600;margin-right:4px;margin-top:4px}
 .infographic-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
 .infographic-card>div:first-child{display:grid;grid-template-columns:1fr 160px}
 .infographic-content{padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
@@ -246,13 +247,9 @@ footer a:hover{color:var(--muted)}
       <div class="hint">Across all programs</div>
     </div>
     <div class="stat">
-      <div class="label">Programs</div>
-      <div class="value" id="statPrograms">—</div>
-      <div class="hint">Parsha, Halacha, One-Minute, Tefila, Mishna</div>
-    </div>
-    <div class="stat">
       <div class="label">Last updated</div>
       <div class="value" id="statUpdated">—</div>
+      <div class="hint">Most recent addition</div>
     </div>
   </section>
 
@@ -279,8 +276,11 @@ footer a:hover{color:var(--muted)}
         <div class="icon">📖</div>
         <div>
           <h3>Parsha</h3>
-          <div class="meta">Videos · Audio · PDFs</div>
-          <div class="counts"><b data-site-count="parsha">—</b> items</div>
+          <div class="meta">Videos · Audio · Overviews</div>
+          <div class="counts" id="parshaCountWrap">
+            <span class="parsha-pill" id="parshaVideoCount" style="display:none"></span>
+            <span class="parsha-pill" id="parshaAudioCount" style="display:none"></span>
+          </div>
         </div>
       </a>
       <a class="prog" href="/halacha.html">
@@ -311,44 +311,40 @@ footer a:hover{color:var(--muted)}
         <div class="icon">📜</div>
         <div>
           <h3>Mishnayos</h3>
-          <div class="meta">2 Mishnas a Day · Audio shiurim</div>
+          <div class="meta">2 Mishnas a Day · Audio</div>
           <div class="counts"><b data-site-count="mishna">—</b> items</div>
         </div>
       </a>
-      <a class="prog prog-topics" href="/topics.html" aria-label="Browse shiurim by topic">
-        <div class="icon topics-icon" style="background:rgba(26,107,94,.13);border-color:rgba(26,107,94,.2)">🧭</div>
-        <div class="prog-body" style="min-width:0">
-          <div class="prog-kicker">Start here</div>
-          <h3>Browse by Topic</h3>
-          <div class="meta">Explore shiurim by theme — tefilah, Pesach, parsha, and more.</div>
-          <div class="topic-chips" aria-hidden="true">
-            <span>Tefilah</span><span>Pesach</span><span>Parsha</span>
-          </div>
-          <div class="counts"><b>Explore topics</b> →</div>
+      <a class="prog" href="/parsha.html#overview" style="border-color:rgba(13,148,136,.3)">
+        <div class="icon">🗺️</div>
+        <div>
+          <h3>Parsha Overviews</h3>
+          <div class="meta">New · Audio</div>
+          <div class="counts"><b data-site-count="parshaOverview">—</b> items</div>
         </div>
       </a>
     </div>
 
-    <a class="advanced-card" href="/torahprograms.html" style="margin-top:10px;">
+    <a class="advanced-card" href="/all-audio.html" style="margin-top:10px;border-color:rgba(13,148,136,.3)">
       <div class="advanced-left">
-        <div class="advanced-icon" style="background:rgba(34,197,94,.12)">🤝</div>
+        <div class="advanced-icon" style="background:rgba(13,148,136,.12)">🎧</div>
         <div>
-          <div class="advanced-title">Torah Programs</div>
-          <div class="advanced-sub">Learning initiatives, WhatsApp signups, and ways to stay connected.</div>
+          <div class="advanced-title">All audio shiurim</div>
+          <div class="advanced-sub">Search and browse the full audio library</div>
         </div>
       </div>
-      <div class="advanced-arrow">›</div>
+      <div class="advanced-arrow" style="color:var(--accent)">›</div>
     </a>
 
     <div class="advanced-wrap">
-      <div class="advanced-label">Advanced Learning</div>
+      <div class="advanced-label">More</div>
       <div class="util-grid">
         <a href="/indepth.html" class="advanced-card">
           <div class="advanced-left">
             <div class="advanced-icon">📖</div>
             <div>
               <div class="advanced-title">In-Depth Shiurim</div>
-              <div class="advanced-sub">Long-form Torah — deeper, more developed shiurim.</div>
+              <div class="advanced-sub">Long-form Torah</div>
             </div>
           </div>
           <div class="advanced-arrow">›</div>
@@ -358,7 +354,27 @@ footer a:hover{color:var(--muted)}
             <div class="advanced-icon">⏱️</div>
             <div>
               <div class="advanced-title">Under 10 Minutes</div>
-              <div class="advanced-sub">Short-form Torah — focused shiurim under 10 minutes.</div>
+              <div class="advanced-sub">Short-form Torah</div>
+            </div>
+          </div>
+          <div class="advanced-arrow">›</div>
+        </a>
+        <a href="/torahprograms.html" class="advanced-card">
+          <div class="advanced-left">
+            <div class="advanced-icon" style="background:rgba(34,197,94,.12)">🤝</div>
+            <div>
+              <div class="advanced-title">Torah Programs</div>
+              <div class="advanced-sub">WhatsApp signups &amp; more</div>
+            </div>
+          </div>
+          <div class="advanced-arrow">›</div>
+        </a>
+        <a href="/Practical_Cases_Index.html" class="advanced-card">
+          <div class="advanced-left">
+            <div class="advanced-icon">📋</div>
+            <div>
+              <div class="advanced-title">Hilchos Shabbos</div>
+              <div class="advanced-sub">Reference guides</div>
             </div>
           </div>
           <div class="advanced-arrow">›</div>
@@ -568,9 +584,8 @@ footer a:hover{color:var(--muted)}
       if(!res.ok) throw new Error("site-counts.json not found");
       const data = await res.json();
       const totalShiurim=data?.allShiurim?.total, updatedStr=data?.allShiurim?.updated, breakdown=data?.allShiurim?.breakdown||{};
-      const elShiurim=document.getElementById("statTotalShiurim"), elPrograms=document.getElementById("statPrograms"), elUpdated=document.getElementById("statUpdated");
+      const elShiurim=document.getElementById("statTotalShiurim"), elUpdated=document.getElementById("statUpdated");
       if(typeof totalShiurim==="number") animateNumber(elShiurim,totalShiurim); else elShiurim.textContent="—";
-      elPrograms.textContent=String(Object.keys(breakdown).length||0);
       if(updatedStr){const d=new Date(updatedStr+"T00:00:00");elUpdated.textContent=isFinite(d)?d.toLocaleDateString():updatedStr;}else{elUpdated.textContent="—";}
       function programTotal(key){
         const b=breakdown?.[key];if(!b)return null;
@@ -582,6 +597,22 @@ footer a:hover{color:var(--muted)}
         return null;
       }
       document.querySelectorAll("[data-site-count]").forEach(el=>{const key=el.dataset.siteCount;const val=programTotal(key);el.textContent=(typeof val==="number")?val.toLocaleString():"—";});
+      // Parsha video/audio pills
+      const pb=breakdown?.parsha;
+      if(pb){
+        const vEl=document.getElementById("parshaVideoCount"),aEl=document.getElementById("parshaAudioCount");
+        if(vEl&&pb.video){vEl.textContent=Number(pb.video).toLocaleString()+" video";vEl.style.display="";}
+        if(aEl&&pb.audio){aEl.textContent=Number(pb.audio).toLocaleString()+" audio";aEl.style.display="";}
+      }
+      // Parsha overview count from search index
+      try{
+        const idxRes=await fetch("/data/search-index.json",{cache:"no-store"});
+        if(idxRes.ok){
+          const idx=await idxRes.json();
+          const ovCount=(idx||[]).filter(x=>x.program==="Parsha Overview").length;
+          document.querySelectorAll("[data-site-count='parshaOverview']").forEach(el=>el.textContent=ovCount||"—");
+        }
+      }catch(e){}
       renderRecentCurated(data);
       setupRecentAudioBehavior();
     } catch(e){
