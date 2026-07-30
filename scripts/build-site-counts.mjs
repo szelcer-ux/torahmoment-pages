@@ -233,7 +233,7 @@ async function readHalachaTotalAllFromDom(page) {
       for (const [parsha, items] of Object.entries(overviewData)) {
         for (const item of items||[]) {
           if (item.url && item.label) {
-            allParshaOverviews.push({ parsha, title: item.label, url: item.url, duration: item.duration||"" });
+            allParshaOverviews.push({ parsha, title: item.label, url: item.url, duration: item.duration||"", date: item.date||null });
           }
         }
       }
@@ -247,12 +247,12 @@ async function readHalachaTotalAllFromDom(page) {
     ? (allParshaVideos||[]).map(x=>({ id:`par-${x.url.split("v=")[1]||x.date||Math.random().toString(16).slice(2)}`, program:"Parsha", type:"video", title:x.title||"Parsha video", url:x.url, date:x.date, page:"/parsha.html" })).filter(x=>x.url&&x.title)
     : existingIndexParsha;
   const indexOverviews = allParshaOverviews.map(x=>({
-    id: `ov-${x.parsha.toLowerCase().replace(/\s+/g,"-")}`,
+    id: `ov-${x.parsha.toLowerCase().replace(/[^a-z0-9]/g,"-")}`,
     program: "Parsha Overview",
     type: "audio",
     title: x.title,
     url: x.url,
-    date: null,
+    date: x.date ? parseMmDdYyyy(x.date) : null,
     page: "/parsha.html",
     title_lc: norm(x.title),
   }));
