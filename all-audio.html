@@ -103,6 +103,29 @@
       white-space:nowrap;
     }
 
+    .filter-btn{
+      display:inline-flex;
+      align-items:center;
+      min-height:44px;
+      padding:0 16px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:#fff;
+      color:var(--text);
+      font:inherit;
+      font-size:.95rem;
+      font-weight:600;
+      cursor:pointer;
+      white-space:nowrap;
+      transition:.15s ease;
+    }
+    .filter-btn:hover{ border-color:#b8d9d6; }
+    .filter-btn.active{
+      background:var(--accent);
+      color:#fff;
+      border-color:var(--accent);
+    }
+
     .groups{
       display:grid;
       gap:18px;
@@ -357,6 +380,7 @@
           placeholder="Search shiur title..."
           autocomplete="off"
         />
+        <button class="filter-btn" id="overviewToggle" type="button">🗺️ Parsha Overviews</button>
         <div class="count" id="countBox">Loading...</div>
       </div>
     </section>
@@ -370,6 +394,7 @@
     const countBox = document.getElementById('countBox');
 
     let allAudio = [];
+    let showOverviewOnly = false;
 
     function normalizeText(s){
       return String(s || '').toLowerCase().trim();
@@ -515,17 +540,17 @@
 
     function applySearch(){
       const q = normalizeText(searchInput.value);
+      let items = allAudio;
 
-      if (!q) {
-        render(allAudio);
-        return;
+      if (showOverviewOnly) {
+        items = items.filter(item => item.program === 'Parsha Overview');
       }
 
-      const filtered = allAudio.filter(item =>
-        normalizeText(item.title).includes(q)
-      );
+      if (q) {
+        items = items.filter(item => normalizeText(item.title).includes(q));
+      }
 
-      render(filtered);
+      render(items);
     }
 
     async function init(){
@@ -552,6 +577,12 @@
         countBox.textContent = 'Error';
       }
     }
+
+    document.getElementById('overviewToggle').addEventListener('click', () => {
+      showOverviewOnly = !showOverviewOnly;
+      document.getElementById('overviewToggle').classList.toggle('active', showOverviewOnly);
+      applySearch();
+    });
 
     searchInput.addEventListener('input', applySearch);
 
