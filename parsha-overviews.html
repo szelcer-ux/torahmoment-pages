@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Parsha Overviews | TorahMoment</title>
+  <meta name="description" content="Weekly Parsha overview audio shiurim by Shloimy Zelcer — a general overview and key themes of each Parsha." />
+  <meta property="og:title" content="Parsha Overviews — TorahMoment" />
+  <meta property="og:description" content="Weekly Parsha overview audio shiurim by Shloimy Zelcer — a general overview and key themes of each Parsha." />
+  <meta property="og:image" content="https://torahmoment.com/images/og-default.png" />
+  <meta property="og:url" content="https://torahmoment.com/parsha-overviews.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XEKR855EWG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XEKR855EWG');
+  </script>
+
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#666;
+      --subtle:#999;
+      --border:#e7e7ee;
+      --border-strong:#d0d0dc;
+      --accent:#0d9488;
+      --accent-mid:rgba(13,148,136,.3);
+      --shadow:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);
+      --radius:14px;
+      --line:var(--border);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
+
+    /* Topbar */
+    .tm-topbar{width:100%;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+    .tm-topbar-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;height:46px;position:relative}
+    .tm-topbar-inner::-webkit-scrollbar{display:none}
+    .tm-topbar-inner::after{content:"";position:sticky;right:0;top:0;width:26px;height:100%;pointer-events:none;background:linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,1));margin-left:auto}
+    .tm-topbar a,.tm-topbar a:visited{text-decoration:none;color:var(--muted);font-size:13.5px;font-weight:500;white-space:nowrap;padding:0 11px;height:46px;display:inline-flex;align-items:center;border-bottom:2px solid transparent;transition:color .15s}
+    .tm-topbar a:hover{color:var(--text)}
+    .tm-topbar a.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+    .tm-topbar a+a{border-left:1px solid rgba(0,0,0,0.06);margin-left:4px;padding-left:11px}
+    .home-link svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+
+    /* Layout */
+    .wrap{max-width:900px;margin:0 auto;padding:22px 20px 48px;}
+
+    /* Hero */
+    .hero{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px 18px;margin-bottom:20px;}
+    .hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+    .hero h1{margin:0 0 6px;font-size:clamp(1.5rem,3vw,2rem);line-height:1.1;letter-spacing:-.02em;}
+    .hero-sub{margin:0;color:var(--muted);font-size:.95rem;line-height:1.5;}
+
+    /* Count bar */
+    .count-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+    .count-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+    .count-val{font-size:13px;color:var(--muted);}
+
+    /* Shiur list */
+    .shiur-list{display:flex;flex-direction:column;gap:12px;}
+
+    .shiur-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;}
+    .shiur-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;}
+    .shiur-parsha{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;}
+    .shiur-title{font-size:1rem;font-weight:700;line-height:1.3;color:var(--text);}
+    .shiur-meta{font-size:12px;color:var(--muted);margin-top:3px;}
+
+    /* Inline player */
+    .tm-inline-player{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:4px 14px 4px 4px;}
+    .tm-play{width:36px;height:36px;border-radius:50%;border:none;background:var(--accent);display:grid;place-items:center;cursor:pointer;flex:0 0 auto;color:#fff;transition:.12s ease;}
+    .tm-play:hover{transform:scale(1.06);}
+    .tm-play svg{width:15px;height:15px;display:block;}
+    .tm-progress-wrap{min-width:0;width:100%;}
+    .tm-progress{width:100%;appearance:none;height:3px;border-radius:999px;background:#dfe5eb;outline:none;cursor:pointer;}
+    .tm-progress::-webkit-slider-thumb{appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;}
+    .tm-progress::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;}
+    .tm-controls{display:flex;align-items:center;gap:6px;}
+    .tm-pill{height:26px;padding:0 10px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:11px;cursor:pointer;white-space:nowrap;}
+    .tm-time{color:var(--muted);font-size:11px;white-space:nowrap;min-width:38px;text-align:right;}
+
+    .empty{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;color:var(--muted);text-align:center;}
+
+    @media(max-width:640px){
+      .wrap{padding:16px 14px 40px;}
+      .hero{padding:16px;}
+      .shiur-card{padding:14px 14px;}
+      .tm-inline-player{padding:3px 10px 3px 3px;}
+    }
+    @media(max-width:520px){
+      .tm-topbar-inner{padding:0 12px;}
+      .tm-topbar a,.tm-topbar a:visited{font-size:13px;padding:0 9px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="tm-topbar">
+  <div class="tm-topbar-inner">
+    <a href="https://torahmoment.com" aria-label="Home" class="home-link">
+      <svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>
+    </a>
+    <a href="https://torahmoment.com/parsha.html">Parsha</a>
+    <a href="https://torahmoment.com/halacha.html">Halacha</a>
+    <a href="https://torahmoment.com/one-minute-audio.html">One Minute</a>
+    <a href="https://torahmoment.com/Practical_Cases_Index.html">Hilchos Shabbos</a>
+    <a href="https://torahmoment.com/about.html">About</a>
+  </div>
+</div>
+
+<a href="https://www.amazon.com/dp/B0GWWH92N1"
+   target="_blank" rel="noopener"
+   style="display:flex;align-items:center;justify-content:center;gap:10px;
+          background:#f4f4f0;color:#111;font-size:14px;font-weight:600;
+          text-decoration:none;padding:9px 16px;letter-spacing:.01em;
+          border-bottom:1px solid #e0e0d8;">
+  <img src="https://m.media-amazon.com/images/I/61YMvLIQFhL._AC_UY218_.jpg"
+       alt="A Gutten Erev Shabbos" style="height:32px;border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,.2);" />
+  Check out my new book of Divrei Torah on the parsha, <em>A Gutten Erev Shabbos</em> — available now on Amazon
+</a>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-eyebrow">🗺️ Parsha Overviews</div>
+    <h1>Weekly Parsha Overviews</h1>
+    <p class="hero-sub">A general overview and key themes of each Parsha — one audio shiur per week by Shloimy Zelcer.</p>
+  </div>
+
+  <div class="count-bar">
+    <div class="count-label">All overviews</div>
+    <div class="count-val" id="countVal">Loading…</div>
+  </div>
+
+  <div class="shiur-list" id="shiurList">
+    <div class="empty">Loading…</div>
+  </div>
+
+</div>
+
+<script>
+  const PLAY_ICON  = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
+  const PAUSE_ICON = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5h3v14H8zm5 0h3v14h-3z"/></svg>`;
+
+  function fmtDate(s){
+    if(!s) return "";
+    const m=s.match(/^\s*(\d{1,2})\/(\d{1,2})\/(\d{4})\s*$/);
+    if(!m) return "";
+    const d=new Date(Date.UTC(Number(m[3]),Number(m[1])-1,Number(m[2])));
+    return isNaN(d)?"":`${d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})}`;
+  }
+
+  function setupPlayer(card){
+    const audio=card.querySelector("audio"),playBtn=card.querySelector(".tm-play"),
+          seek=card.querySelector(".tm-progress"),speedBtn=card.querySelector(".tm-pill"),
+          timeEl=card.querySelector(".tm-time");
+    if(!audio||!playBtn||!seek||!speedBtn||!timeEl) return;
+    const speeds=[1,1.25,1.5,1.75,2]; let si=0;
+    function fmt(s){return Number.isFinite(s)&&s>=0?`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`:""}
+    function tick(){const d=audio.duration||0,c=audio.currentTime||0;if(d>0){seek.value=(c/d)*100;timeEl.textContent=fmt(d);}else{seek.value=0;timeEl.textContent="";}}
+    playBtn.addEventListener("click",async()=>{
+      document.querySelectorAll(".tm-inline-player audio").forEach(a=>{
+        if(a!==audio){a.pause();a.closest(".tm-inline-player")?.querySelector(".tm-play")?.replaceChildren(...new Range().createContextualFragment(PLAY_ICON).childNodes);}
+      });
+      if(audio.paused){
+        try{await audio.play();playBtn.innerHTML=PAUSE_ICON;
+          if(typeof gtag==="function"){gtag("event","play_shiur",{shiur_title:card.dataset.title||"",shiur_program:"Parsha Overview"});}
+        }catch(e){}
+      } else {audio.pause();playBtn.innerHTML=PLAY_ICON;}
+    });
+    audio.addEventListener("play",()=>{playBtn.innerHTML=PAUSE_ICON;});
+    audio.addEventListener("pause",()=>{playBtn.innerHTML=PLAY_ICON;});
+    audio.addEventListener("ended",()=>{playBtn.innerHTML=PLAY_ICON;});
+    audio.addEventListener("loadedmetadata",tick);
+    audio.addEventListener("timeupdate",tick);
+    seek.addEventListener("input",()=>{if(audio.duration)audio.currentTime=(Number(seek.value)/100)*audio.duration;});
+    speedBtn.addEventListener("click",()=>{si=(si+1)%speeds.length;audio.playbackRate=speeds[si];speedBtn.textContent=`${speeds[si]}×`;});
+    audio.playbackRate=speeds[si]; speedBtn.textContent=`${speeds[si]}×`; tick();
+  }
+
+  async function loadOverviews(){
+    try{
+      // Load PARSHA_OVERVIEW from parsha.html via fetch + parse
+      const res=await fetch("/parsha.html",{cache:"no-store"});
+      const text=await res.text();
+      const match=text.match(/const PARSHA_OVERVIEW\s*=\s*(\{[\s\S]*?\})\s*;/);
+      if(!match) throw new Error("PARSHA_OVERVIEW not found");
+      const data=JSON.parse(match[1]);
+
+      // Flatten into array sorted by date desc
+      const items=[];
+      for(const [parsha,entries] of Object.entries(data)){
+        for(const entry of entries||[]){
+          items.push({parsha,...entry});
+        }
+      }
+      items.sort((a,b)=>{
+        const ad=a.date?new Date(a.date.replace(/(\d+)\/(\d+)\/(\d+)/,"$3-$1-$2")):0;
+        const bd=b.date?new Date(b.date.replace(/(\d+)\/(\d+)\/(\d+)/,"$3-$1-$2")):0;
+        return bd-ad;
+      });
+
+      document.getElementById("countVal").textContent=`${items.length} shiur${items.length===1?"":"im"}`;
+
+      if(!items.length){
+        document.getElementById("shiurList").innerHTML=`<div class="empty">No overviews yet — check back soon.</div>`;
+        return;
+      }
+
+      document.getElementById("shiurList").innerHTML=items.map(item=>`
+        <div class="shiur-card" data-title="${(item.label||"").replace(/"/g,"&quot;")}">
+          <div class="shiur-top">
+            <div>
+              <div class="shiur-parsha">${item.parsha||""}</div>
+              <div class="shiur-title">${item.label||"Parsha Overview"}</div>
+              ${item.date?`<div class="shiur-meta">${fmtDate(item.date)}</div>`:""}
+            </div>
+          </div>
+          <div class="tm-inline-player">
+            <button class="tm-play" type="button" aria-label="Play">${PLAY_ICON}</button>
+            <div class="tm-progress-wrap">
+              <input class="tm-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+            </div>
+            <div class="tm-controls">
+              <button class="tm-pill" type="button">1×</button>
+              <span class="tm-time"></span>
+            </div>
+            <audio preload="none" src="${item.url||""}"></audio>
+          </div>
+        </div>
+      `).join("");
+
+      document.querySelectorAll(".shiur-card").forEach(setupPlayer);
+
+    }catch(e){
+      console.warn("Failed to load overviews:",e);
+      document.getElementById("shiurList").innerHTML=`<div class="empty">Could not load overviews.</div>`;
+      document.getElementById("countVal").textContent="";
+    }
+  }
+
+  loadOverviews();
+
+  // Active nav
+  (function(){
+    const links=document.querySelectorAll(".tm-topbar a[href]:not(.home-link)");
+    const current=(location.pathname||"/").replace(/\/+$/,"")||"/";
+    links.forEach(a=>{
+      const lp=(new URL(a.href,location.href).pathname||"/").replace(/\/+$/,"")||"/";
+      if(lp===current) a.classList.add("active");
+    });
+  })();
+</script>
+
+</body>
+</html>
