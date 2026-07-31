@@ -502,6 +502,21 @@ button{
   outline-offset:-2px;
 }
 
+.audioSpeedBtn{
+  height:26px;
+  padding:0 9px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--text);
+  font-size:11px;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.audioSpeedBtn:hover{background:var(--bg);}
+
 .audioLink + .audioLink{
   border-top:1px solid rgba(17,24,39,.08);
 }
@@ -1569,6 +1584,7 @@ function renderAudioList(containerId, items){
       </span>
 
       <span class="audioMeta">
+        <button class="audioSpeedBtn" type="button" data-speed-btn>1×</button>
         ${it.duration ? `<span class="audioDuration">${escapeHtml(it.duration)}</span>` : ``}
         <span class="audioBadge">Audio</span>
       </span>
@@ -2621,6 +2637,11 @@ function setActiveRow(row){
   if (prog) prog.value = 0;
   if (cur) cur.textContent = "0:00";
   if (dur) dur.textContent = "0:00";
+
+  // Apply this row's stored speed (default 1)
+  const speedBtn = row?.querySelector("[data-speed-btn]");
+  const rate = speedBtn ? (parseFloat(speedBtn.dataset.rateValue) || 1) : 1;
+  audioEl.playbackRate = rate;
 }
 
 // Update scrubber as audio plays
@@ -2691,6 +2712,24 @@ document.addEventListener("input", (e) => {
 
   const pct = Number(r.value) / 1000;
   audioEl.currentTime = pct * d;
+});
+
+// Speed button — delegate clicks on all audioSpeedBtn buttons
+const AUDIO_SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-speed-btn]");
+  if (!btn) return;
+  e.stopPropagation();
+  const speeds = AUDIO_SPEEDS;
+  const cur = parseFloat(btn.textContent) || 1;
+  const next = speeds[(speeds.indexOf(cur) + 1) % speeds.length];
+  btn.textContent = next + "×";
+  // apply to audio only if this row is the active one
+  if (currentRow && currentRow.contains(btn)) {
+    audioEl.playbackRate = next;
+  }
+  // store on button so we can restore when this row becomes active
+  btn.dataset.rateValue = next;
 });
 
 
