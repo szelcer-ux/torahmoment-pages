@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 764,
+    "total": 765,
     "breakdown": {
       "parsha": {
         "audio": 26,
-        "video": 236
+        "video": 237
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-07-30"
+    "updated": "2026-07-31"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Who gets the credit?",
+      "url": "https://www.youtube.com/watch?v=5VkABmGakCg",
+      "date": "2026-07-31T03:04:23Z"
+    },
     {
       "type": "audio",
       "program": "Halacha",
@@ -49,13 +56,6 @@
       "title": "Make Him beloved",
       "url": "https://www.youtube.com/watch?v=RWV08AhDkvg",
       "date": "2026-07-24T01:44:21Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "2 journeys 1 road",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0016.mp3",
-      "date": "2026-07-22T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Who gets the credit?",
+        "url": "https://www.youtube.com/watch?v=5VkABmGakCg",
+        "date": "2026-07-31T03:04:23Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Make Him beloved",
         "url": "https://www.youtube.com/watch?v=RWV08AhDkvg",
         "date": "2026-07-24T01:44:21Z"
@@ -266,13 +273,6 @@
         "title": "From inspiration to action",
         "url": "https://www.youtube.com/watch?v=OH_uWgnHWgA",
         "date": "2026-05-29T03:24:23Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Growing on the journey",
-        "url": "https://www.youtube.com/watch?v=fonWnyA-ibo",
-        "date": "2026-05-15T02:08:46Z"
       }
     ]
   }
