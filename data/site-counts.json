@@ -19,16 +19,9 @@
         "audio": 137
       }
     },
-    "updated": "2026-08-01"
+    "updated": "2026-08-02"
   },
   "recent": [
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Who gets the credit?",
-      "url": "https://www.youtube.com/watch?v=5VkABmGakCg",
-      "date": "2026-07-31T03:04:23Z"
-    },
     {
       "type": "audio",
       "program": "Halacha",
@@ -51,11 +44,18 @@
       "date": "2026-07-27T00:00:00.000Z"
     },
     {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Make Him beloved",
-      "url": "https://www.youtube.com/watch?v=RWV08AhDkvg",
-      "date": "2026-07-24T01:44:21Z"
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "2 journeys 1 road",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0016.mp3",
+      "date": "2026-07-22T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Move on",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260721-WA0017.mp3",
+      "date": "2026-07-21T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
