@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 765,
+    "total": 766,
     "breakdown": {
       "parsha": {
         "audio": 26,
@@ -13,7 +13,7 @@
         "totalAll": 97
       },
       "oneMinute": {
-        "audio": 248
+        "audio": 249
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-08-04"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Today is a new day",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0017.mp3",
+      "date": "2026-08-04T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,17 +56,17 @@
       "title": "The closest nation",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0017.mp3",
       "date": "2026-07-27T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Make Him beloved",
-      "url": "https://www.youtube.com/watch?v=RWV08AhDkvg",
-      "date": "2026-07-24T01:44:21Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Today is a new day",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0017.mp3",
+        "date": "2026-08-04T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Breaking generational trauma",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0071.mp3",
         "date": "2026-07-07T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "The leader Moshe asked for",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260630-WA0001.mp3",
-        "date": "2026-07-01T00:00:00.000Z"
       }
     ],
     "halacha": [

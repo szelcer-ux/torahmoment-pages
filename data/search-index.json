@@ -2480,6 +2480,16 @@
     "title_lc": "the real test of the maan"
   },
   {
+    "id": "one-248",
+    "program": "One-Minute",
+    "type": "audio",
+    "title": "Today is a new day",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0017.mp3",
+    "date": "2026-08-04T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "title_lc": "today is a new day"
+  },
+  {
     "id": "hal-0",
     "program": "Halacha",
     "type": "audio",
