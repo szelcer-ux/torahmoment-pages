@@ -5998,5 +5998,15 @@
     "date": "2026-07-29T00:00:00.000Z",
     "page": "/parsha.html",
     "title_lc": "parshas eikev overview"
+  },
+  {
+    "id": "ov-reeh",
+    "program": "Parsha Overview",
+    "type": "audio",
+    "title": "Parshas Reeh overview",
+    "url": "https://torahmoment.com/audio/ReehParshaOverview.mp3",
+    "date": "2026-08-05T00:00:00.000Z",
+    "page": "/parsha.html",
+    "title_lc": "parshas reeh overview"
   }
 ]
