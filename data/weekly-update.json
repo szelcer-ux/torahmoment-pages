@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "July 25–31, 2026",
-  "generatedAt": "2026-07-31T12:05:37.431Z",
+  "rangeLabel": "August 1–7, 2026",
+  "generatedAt": "2026-08-07T10:59:15.396Z",
   "totalItems": 5,
   "featured": {
-    "id": "par-5VkABmGakCg",
-    "title": "Who gets the credit?",
+    "id": "par-fqlzgOT2FYU",
+    "title": "The search before the the destination",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-07-31T03:04:23Z",
+    "date": "2026-08-07T01:56:05Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=5VkABmGakCg"
+    "url": "https://www.youtube.com/watch?v=fqlzgOT2FYU"
   },
   "groups": [
     {
@@ -17,22 +17,22 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-5VkABmGakCg",
-          "title": "Who gets the credit?",
+          "id": "par-fqlzgOT2FYU",
+          "title": "The search before the the destination",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-07-31T03:04:23Z",
+          "date": "2026-08-07T01:56:05Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=5VkABmGakCg"
+          "url": "https://www.youtube.com/watch?v=fqlzgOT2FYU"
         },
         {
-          "id": "ov-eikev",
-          "title": "Parshas Eikev overview",
+          "id": "ov-reeh",
+          "title": "Parshas Reeh overview",
           "program": "Parsha Overview",
           "type": "audio",
-          "date": "2026-07-29T00:00:00.000Z",
+          "date": "2026-08-05T00:00:00.000Z",
           "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/EikevOverview.mp3"
+          "url": "https://torahmoment.com/audio/ReehParshaOverview.mp3"
         }
       ]
     },
@@ -41,13 +41,13 @@
       "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "hal-80",
-          "title": "Halachic status of the Kotel plaza",
+          "id": "hal-51",
+          "title": "How Loud Should Torah Learning Be?",
           "program": "Halacha",
           "type": "audio",
-          "date": "2026-07-29T00:00:00.000Z",
+          "date": "2026-08-05T00:00:00.000Z",
           "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19569585-7-29-2026-shloimy-zelcer-halachic-status-of-the-kotel-plaza.mp3"
+          "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?"
         }
       ]
     },
@@ -56,22 +56,22 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-247",
-          "title": "The real test of the maan",
+          "id": "one-249",
+          "title": "A little light",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-07-29T00:00:00.000Z",
+          "date": "2026-08-05T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260727-WA0008.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0019.mp3"
         },
         {
-          "id": "one-246",
-          "title": "The closest nation",
+          "id": "one-248",
+          "title": "Today is a new day",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-07-27T00:00:00.000Z",
+          "date": "2026-08-04T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0017.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0017.mp3"
         }
       ]
     }
