@@ -2500,6 +2500,16 @@
     "title_lc": "a little light"
   },
   {
+    "id": "one-250",
+    "program": "One-Minute",
+    "type": "audio",
+    "title": "Communal responsibility",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260809-WA0024.mp3",
+    "date": "2026-08-10T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "title_lc": "communal responsibility"
+  },
+  {
     "id": "hal-0",
     "program": "Halacha",
     "type": "audio",
