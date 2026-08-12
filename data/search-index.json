@@ -6058,5 +6058,15 @@
     "date": "2026-08-05T00:00:00.000Z",
     "page": "/parsha.html",
     "title_lc": "parshas reeh overview"
+  },
+  {
+    "id": "ov-shoftim",
+    "program": "Parsha Overview",
+    "type": "audio",
+    "title": "Parshas Shoftim overview",
+    "url": "https://torahmoment.com/audio/ShoftimOverview.mp3",
+    "date": "2026-08-12T00:00:00.000Z",
+    "page": "/parsha.html",
+    "title_lc": "parshas shoftim overview"
   }
 ]
