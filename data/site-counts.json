@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 774,
+    "total": 775,
     "breakdown": {
       "parsha": {
         "audio": 28,
-        "video": 238
+        "video": 239
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-08-13"
+    "updated": "2026-08-14"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "What's going to be?",
+      "url": "https://www.youtube.com/watch?v=fr-25KmZbws",
+      "date": "2026-08-14T03:41:40Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "The search before the destination",
       "url": "https://www.youtube.com/watch?v=fqlzgOT2FYU",
       "date": "2026-08-07T01:56:05Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "How Loud Should Torah Learning Be?",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?",
-      "date": "2026-08-05T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "What's going to be?",
+        "url": "https://www.youtube.com/watch?v=fr-25KmZbws",
+        "date": "2026-08-14T03:41:40Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "The search before the destination",
         "url": "https://www.youtube.com/watch?v=fqlzgOT2FYU",
         "date": "2026-08-07T01:56:05Z"
@@ -266,13 +273,6 @@
         "title": "Seeing the big picture",
         "url": "https://www.youtube.com/watch?v=97TN3FMjQF4",
         "date": "2026-06-12T02:36:59Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Small acts big impact",
-        "url": "https://www.youtube.com/watch?v=ZHDWAaalxss",
-        "date": "2026-06-05T02:14:55Z"
       }
     ]
   }
