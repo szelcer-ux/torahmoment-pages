@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "August 1–7, 2026",
-  "generatedAt": "2026-08-07T10:59:15.396Z",
+  "rangeLabel": "August 8–14, 2026",
+  "generatedAt": "2026-08-14T11:02:27.268Z",
   "totalItems": 5,
   "featured": {
-    "id": "par-fqlzgOT2FYU",
-    "title": "The search before the the destination",
+    "id": "par-fr-25KmZbws",
+    "title": "What's going to be?",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-08-07T01:56:05Z",
+    "date": "2026-08-14T03:41:40Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=fqlzgOT2FYU"
+    "url": "https://www.youtube.com/watch?v=fr-25KmZbws"
   },
   "groups": [
     {
@@ -17,37 +17,22 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-fqlzgOT2FYU",
-          "title": "The search before the the destination",
+          "id": "par-fr-25KmZbws",
+          "title": "What's going to be?",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-08-07T01:56:05Z",
+          "date": "2026-08-14T03:41:40Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=fqlzgOT2FYU"
+          "url": "https://www.youtube.com/watch?v=fr-25KmZbws"
         },
         {
-          "id": "ov-reeh",
-          "title": "Parshas Reeh overview",
+          "id": "ov-shoftim",
+          "title": "Parshas Shoftim overview",
           "program": "Parsha Overview",
           "type": "audio",
-          "date": "2026-08-05T00:00:00.000Z",
+          "date": "2026-08-12T00:00:00.000Z",
           "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/ReehParshaOverview.mp3"
-        }
-      ]
-    },
-    {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
-      "items": [
-        {
-          "id": "hal-51",
-          "title": "How Loud Should Torah Learning Be?",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-08-05T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?"
+          "url": "https://torahmoment.com/audio/ShoftimOverview.mp3"
         }
       ]
     },
@@ -56,22 +41,31 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-249",
-          "title": "A little light",
+          "id": "one-252",
+          "title": "You're not the exception",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-08-05T00:00:00.000Z",
+          "date": "2026-08-12T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0019.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0009.mp3"
         },
         {
-          "id": "one-248",
-          "title": "Today is a new day",
+          "id": "one-251",
+          "title": "Dont be so stubborn",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-08-04T00:00:00.000Z",
+          "date": "2026-08-11T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0017.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0010.mp3"
+        },
+        {
+          "id": "one-250",
+          "title": "Communal responsibility",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-08-10T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260809-WA0024.mp3"
         }
       ]
     }
