@@ -1080,20 +1080,9 @@ header h1{
     <!-- DATA (Edit here only) -->
     <!-- ===================== -->
     <script>
-      (async function() {
       // Data is loaded from /data/halacha.json
       // To add a shiur, edit that file — no need to touch this HTML.
-
       let PAGE_DATA = [];
-      try {
-        const _res = await fetch('/data/halacha.json', { cache: 'no-store' });
-        if (!_res.ok) throw new Error('halacha.json not found');
-        PAGE_DATA = await _res.json();
-      } catch(e) {
-        console.error('Failed to load halacha.json:', e);
-      }
-
-    window.HALACHA_DATA = PAGE_DATA;
 
 
       
@@ -1748,7 +1737,6 @@ window.scrollTo({ top: y, behavior: "smooth" });
       
       
       window.tmWireHalachaStylePlayers?.();
-      openCategoryFromURL();
 
 
 const hasSearch = q.length > 0;
@@ -2063,8 +2051,20 @@ if (speedBtn) {
 
     
     searchInput.addEventListener("input", render);
-    render();
-      })(); // end async IIFE
+
+    // Fetch halacha.json and initialise
+    fetch('/data/halacha.json', { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error('halacha.json not found'); return r.json(); })
+      .then(data => {
+        PAGE_DATA = data;
+    
+        render();
+        openCategoryFromURL();
+      })
+      .catch(e => {
+        console.error('Failed to load halacha.json:', e);
+        render();
+      });
   </script>
 
 
