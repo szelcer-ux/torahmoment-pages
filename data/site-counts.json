@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 522,
+    "total": 424,
     "breakdown": {
       "parsha": {
         "audio": 28,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 98
+        "totalAll": 0
       },
       "oneMinute": {
         "audio": 0
@@ -37,13 +37,6 @@
       "date": "2026-08-07T01:56:05Z"
     },
     {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "How Loud Should Torah Learning Be?",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?",
-      "date": "2026-08-05T00:00:00.000Z"
-    },
-    {
       "type": "video",
       "program": "Parsha",
       "title": "Who gets the credit?",
@@ -51,87 +44,23 @@
       "date": "2026-07-31T03:04:23Z"
     },
     {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Halachic status of the Kotel plaza",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19569585-7-29-2026-shloimy-zelcer-halachic-status-of-the-kotel-plaza.mp3",
-      "date": "2026-07-29T00:00:00.000Z"
+      "type": "video",
+      "program": "Parsha",
+      "title": "Make Him beloved",
+      "url": "https://www.youtube.com/watch?v=RWV08AhDkvg",
+      "date": "2026-07-24T01:44:21Z"
+    },
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Stop fighting!",
+      "url": "https://www.youtube.com/watch?v=I-CVzeHuA3w",
+      "date": "2026-07-17T02:02:17Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [],
-    "halacha": [
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "How Loud Should Torah Learning Be?",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?",
-        "date": "2026-08-05T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Halachic status of the Kotel plaza",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19569585-7-29-2026-shloimy-zelcer-halachic-status-of-the-kotel-plaza.mp3",
-        "date": "2026-07-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "From Moshe to Moshe, what happened to the name Moshe?",
-        "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3",
-        "date": "2026-07-14T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Standing up for a chosson",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3",
-        "date": "2026-07-13T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Knock before entering",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19452197-7-6-2026-shloimy-zelcer-knock-before-entering.mp3",
-        "date": "2026-07-06T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Shehechiyanu on being drafted by the IDF",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3",
-        "date": "2026-06-30T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Should the woman make kiddush Friday night?",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3",
-        "date": "2026-06-08T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Akaros of TANACH and Tefilah",
-        "url": "https://2mishnasaday.com/wp-content/uploads/114.mp3",
-        "date": "2026-05-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Jews with tattoos",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19253888-5-28-2026-shloimy-zelcer-jews-with-tattoos.mp3",
-        "date": "2026-05-28T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "My Rebbis's view on Yom Yerushalayim",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19176112-5-14-2026-shloimy-zelcer-my-rebbis-s-view-on-yom-yerushalayim.mp3",
-        "date": "2026-05-14T00:00:00.000Z"
-      }
-    ],
+    "halacha": [],
     "parsha": [
       {
         "type": "video",
