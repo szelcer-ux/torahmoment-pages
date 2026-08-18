@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 776,
+    "total": 522,
     "breakdown": {
       "parsha": {
         "audio": 28,
@@ -13,7 +13,7 @@
         "totalAll": 98
       },
       "oneMinute": {
-        "audio": 254
+        "audio": 0
       },
       "mishna": {
         "audio": 137
@@ -23,13 +23,6 @@
   },
   "recent": [
     {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Pay on time",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260817-WA0037.mp3",
-      "date": "2026-08-17T00:00:00.000Z"
-    },
-    {
       "type": "video",
       "program": "Parsha",
       "title": "What's going to be?",
@@ -37,100 +30,36 @@
       "date": "2026-08-14T03:41:40Z"
     },
     {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "You're not the exception",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0009.mp3",
-      "date": "2026-08-12T00:00:00.000Z"
+      "type": "video",
+      "program": "Parsha",
+      "title": "The search before the destination",
+      "url": "https://www.youtube.com/watch?v=fqlzgOT2FYU",
+      "date": "2026-08-07T01:56:05Z"
     },
     {
       "type": "audio",
-      "program": "One-Minute",
-      "title": "Dont be so stubborn",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0010.mp3",
-      "date": "2026-08-11T00:00:00.000Z"
+      "program": "Halacha",
+      "title": "How Loud Should Torah Learning Be?",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?",
+      "date": "2026-08-05T00:00:00.000Z"
+    },
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Who gets the credit?",
+      "url": "https://www.youtube.com/watch?v=5VkABmGakCg",
+      "date": "2026-07-31T03:04:23Z"
     },
     {
       "type": "audio",
-      "program": "One-Minute",
-      "title": "Communal responsibility",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260809-WA0024.mp3",
-      "date": "2026-08-10T00:00:00.000Z"
+      "program": "Halacha",
+      "title": "Halachic status of the Kotel plaza",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19569585-7-29-2026-shloimy-zelcer-halachic-status-of-the-kotel-plaza.mp3",
+      "date": "2026-07-29T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
-    "oneMinute": [
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Pay on time",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260817-WA0037.mp3",
-        "date": "2026-08-17T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "You're not the exception",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0009.mp3",
-        "date": "2026-08-12T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Dont be so stubborn",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0010.mp3",
-        "date": "2026-08-11T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Communal responsibility",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260809-WA0024.mp3",
-        "date": "2026-08-10T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "A little light",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0019.mp3",
-        "date": "2026-08-05T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Today is a new day",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0017.mp3",
-        "date": "2026-08-04T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "The real test of the maan",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260727-WA0008.mp3",
-        "date": "2026-07-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "The closest nation",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0017.mp3",
-        "date": "2026-07-27T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "2 journeys 1 road",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0016.mp3",
-        "date": "2026-07-22T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Move on",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260721-WA0017.mp3",
-        "date": "2026-07-21T00:00:00.000Z"
-      }
-    ],
+    "oneMinute": [],
     "halacha": [
       {
         "type": "audio",
