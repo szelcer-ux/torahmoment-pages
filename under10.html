@@ -660,19 +660,16 @@ function getAudioDurationSec(url){
 
   async function loadData(){
     setStatus("Fetching sources…");
-    const [parshaSrc, halachaSrc] = await Promise.all([
+    const [parshaSrc, halachaData] = await Promise.all([
       fetch("./parsha.html", { cache: "no-store" }).then(r => r.text()),
-      fetch("./halacha.html", { cache: "no-store" }).then(r => r.text()),
+      fetch("./data/halacha.json", { cache: "no-store" }).then(r => r.json()),
     ]);
 
     const parshaExpr = extractConstBlock(parshaSrc, "PARSHA_AUDIO");
-    const halachaExpr = extractConstBlock(halachaSrc, "PAGE_DATA");
-
-   if (!parshaExpr) throw new Error("Could not find const PARSHA_AUDIO in parsha.html");
-    if (!halachaExpr) throw new Error("Could not find const PAGE_DATA in halacha.html");
+    if (!parshaExpr) throw new Error("Could not find const PARSHA_AUDIO in parsha.html");
 
     const PARSHA_AUDIO = evalAsData(parshaExpr);
-    const PAGE_DATA = evalAsData(halachaExpr);
+    const PAGE_DATA = halachaData;
 
     return { PARSHA_AUDIO, PAGE_DATA };
   }
