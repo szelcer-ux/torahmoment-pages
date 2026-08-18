@@ -336,11 +336,11 @@
   function checkPassword(){
     const pw = document.getElementById('passwordInput').value;
     if (pw === PW) {
-      document.getElementById('loginScreen').style.display = 'none';
-      document.getElementById('app').style.display = '';
+      document.getElementById('loginScreen').style.cssText = 'display:none !important';
+      document.getElementById('app').style.cssText = 'display:block !important';
       init();
     } else {
-      document.getElementById('loginError').style.display = '';
+      document.getElementById('loginError').style.display = 'block';
     }
   }
 
@@ -349,8 +349,8 @@
   });
 
   function logout(){
-    document.getElementById('loginScreen').style.display = '';
-    document.getElementById('app').style.display = 'none';
+    document.getElementById('loginScreen').style.cssText = 'display:flex !important';
+    document.getElementById('app').style.cssText = 'display:none !important';
     document.getElementById('passwordInput').value = '';
   }
 
