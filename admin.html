@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TorahMoment Admin</title>
+  <style>
+    :root {
+      --bg: #f7f7f8;
+      --card: #fff;
+      --text: #111;
+      --muted: #666;
+      --border: #e7e7ee;
+      --accent: #0d9488;
+      --accent-dk: #0a7a6f;
+      --radius: 14px;
+      --shadow: 0 4px 16px rgba(0,0,0,.07);
+      --error: #b42318;
+      --success: #166534;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── Login ── */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .login-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+    }
+    .login-card h1 { font-size: 1.4rem; margin-bottom: 6px; }
+    .login-card p { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .login-card input {
+      width: 100%; padding: 10px 14px; font-size: 15px;
+      border: 1px solid var(--border); border-radius: 10px;
+      margin-bottom: 12px; outline: none;
+    }
+    .login-card input:focus { border-color: var(--accent); }
+    .login-error { color: var(--error); font-size: 13px; margin-bottom: 10px; display: none; }
+
+    /* ── Main app ── */
+    #app { display: none; }
+    .topbar {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 10px; }
+    .topbar h1 { font-size: 16px; font-weight: 700; }
+    .topbar-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--accent);
+      background: rgba(13,148,136,.1); border-radius: 999px;
+      padding: 2px 8px;
+    }
+    .logout-btn {
+      font-size: 13px; color: var(--muted); background: none;
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 5px 12px; cursor: pointer;
+    }
+    .logout-btn:hover { color: var(--error); border-color: var(--error); }
+
+    .wrap { max-width: 680px; margin: 0 auto; padding: 24px 20px 48px; }
+
+    /* ── Token setup ── */
+    .token-card {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+    .token-card strong { display: block; margin-bottom: 6px; }
+    .token-row { display: flex; gap: 8px; margin-top: 10px; }
+    .token-row input { flex: 1; padding: 8px 12px; font-size: 13px; border: 1px solid var(--border); border-radius: 8px; outline: none; font-family: monospace; }
+    .token-row input:focus { border-color: var(--accent); }
+
+    /* ── File selector ── */
+    .file-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+    .file-tab {
+      padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border); background: var(--card); color: var(--muted);
+      cursor: pointer; transition: .15s ease;
+    }
+    .file-tab:hover { border-color: var(--accent); color: var(--accent); }
+    .file-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* ── Form card ── */
+    .form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+    .form-card h2 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+
+    .field { margin-bottom: 14px; }
+    .field label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 5px; letter-spacing: .04em; text-transform: uppercase; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 9px 12px; font-size: 14px; font-family: inherit;
+      border: 1px solid var(--border); border-radius: 9px; outline: none;
+      background: var(--bg); color: var(--text);
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); background: #fff; }
+    .field textarea { resize: vertical; min-height: 70px; }
+    .field-hint { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* ── Preview ── */
+    .preview-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .preview-card h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--success); margin-bottom: 10px; }
+    .preview-card pre { font-size: 12px; font-family: monospace; white-space: pre-wrap; color: #166534; }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; border: none; transition: .15s ease; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-dk); }
+    .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* ── Status ── */
+    .status { margin-top: 14px; padding: 12px 14px; border-radius: 10px; font-size: 13px; font-weight: 600; display: none; }
+    .status.success { background: #f0fdf4; border: 1px solid #bbf7d0; color: var(--success); }
+    .status.error { background: #fef2f2; border: 1px solid #fecaca; color: var(--error); }
+    .status.loading { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+
+    @media (max-width: 520px) {
+      .field-row { grid-template-columns: 1fr; }
+      .wrap { padding: 16px 14px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-card">
+    <h1>🕍 TorahMoment</h1>
+    <p>Admin — enter password to continue</p>
+    <div class="login-error" id="loginError">Incorrect password</div>
+    <input type="password" id="passwordInput" placeholder="Password" autocomplete="current-password" />
+    <button class="btn btn-primary" style="width:100%" onclick="checkPassword()">Sign in</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="topbar">
+    <div class="topbar-left">
+      <h1>TorahMoment Admin</h1>
+      <span class="topbar-badge">szelcer-ux/torahmoment-pages</span>
+    </div>
+    <button class="logout-btn" onclick="logout()">Sign out</button>
+  </div>
+
+  <div class="wrap">
+
+    <!-- GitHub Token -->
+    <div class="token-card" id="tokenCard">
+      <strong>⚠️ GitHub Token Required</strong>
+      Enter a GitHub personal access token with <code>repo</code> scope to save changes directly to the repo.
+      The token is saved in your browser only.
+      <div class="token-row">
+        <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx" />
+        <button class="btn btn-secondary" style="padding:8px 14px;font-size:13px;" onclick="saveToken()">Save</button>
+      </div>
+    </div>
+
+    <!-- File selector -->
+    <div class="file-tabs">
+      <button class="file-tab active" onclick="selectFile('halacha')" id="tab-halacha">📚 Halacha</button>
+      <button class="file-tab" onclick="selectFile('oneMinute')" id="tab-oneMinute">⏱️ One-Minute</button>
+      <button class="file-tab" onclick="selectFile('infographics')" id="tab-infographics">🖼️ Infographics</button>
+    </div>
+
+    <!-- HALACHA FORM -->
+    <div id="form-halacha" class="form-card">
+      <h2>Add Halacha Shiur</h2>
+
+      <div class="field">
+        <label>Category</label>
+        <select id="hal-category" onchange="updateSubcategories()">
+          <option value="">— select —</option>
+        </select>
+      </div>
+      <div class="field" id="hal-sub-field">
+        <label>Subcategory <span style="font-weight:400;text-transform:none;">(optional)</span></label>
+        <select id="hal-subcategory">
+          <option value="">— none / flat category —</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Title</label>
+        <input type="text" id="hal-title" placeholder="e.g. The laws of Muktzeh" />
+      </div>
+      <div class="field">
+        <label>Audio URL</label>
+        <input type="url" id="hal-url" placeholder="https://www.buzzsprout.com/..." />
+        <div class="field-hint">Buzzsprout .mp3 link</div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Date</label>
+          <input type="date" id="hal-date" />
+        </div>
+        <div class="field">
+          <label>Type</label>
+          <select id="hal-type">
+            <option value="audio">Audio</option>
+            <option value="youtube">YouTube</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- ONE-MINUTE FORM -->
+    <div id="form-oneMinute" class="form-card" style="display:none;">
+      <h2>Add One-Minute Torah</h2>
+      <div class="field">
+        <label>Description (title)</label>
+        <input type="text" id="om-description" placeholder="e.g. The importance of Shema" />
+      </div>
+      <div class="field">
+        <label>Audio URL</label>
+        <input type="url" id="om-url" placeholder="https://2mishnasaday.com/wp-content/uploads/PTT-..." />
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Date</label>
+          <input type="date" id="om-date" />
+        </div>
+        <div class="field">
+          <label>Filename <span style="font-weight:400;text-transform:none;">(auto-detected)</span></label>
+          <input type="text" id="om-filename" placeholder="PTT-20260818-WA0001.mp3" />
+          <div class="field-hint">Leave blank to auto-detect from URL</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFOGRAPHICS FORM -->
+    <div id="form-infographics" class="form-card" style="display:none;">
+      <h2>Add Parsha Infographic</h2>
+      <div class="field">
+        <label>YouTube Video ID</label>
+        <input type="text" id="ig-id" placeholder="e.g. GiYs0ntVDuI" />
+        <div class="field-hint">The part after youtube.com/watch?v=</div>
+      </div>
+      <div class="field">
+        <label>Title</label>
+        <input type="text" id="ig-title" placeholder="e.g. Leading by example" />
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Parsha</label>
+          <input type="text" id="ig-parsha" placeholder="e.g. Achrei Mos" />
+        </div>
+        <div class="field">
+          <label>Featured?</label>
+          <select id="ig-featured">
+            <option value="no">No</option>
+            <option value="yes">Yes (shows first on homepage)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <input type="text" id="ig-description" placeholder="e.g. The ripple effect of personal integrity." />
+      </div>
+      <div class="field">
+        <label>Image path</label>
+        <input type="text" id="ig-image" placeholder="/images/infographics/parsha/achrei-mos-leading-by-example.png" />
+        <div class="field-hint">Path to image in repo</div>
+      </div>
+    </div>
+
+    <!-- Preview -->
+    <div class="preview-card" id="previewCard">
+      <h3>Preview — entry to be added</h3>
+      <pre id="previewContent"></pre>
+    </div>
+
+    <!-- Actions -->
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="previewEntry()">👁 Preview</button>
+      <button class="btn btn-primary" id="commitBtn" onclick="commitEntry()">💾 Save to GitHub</button>
+    </div>
+    <div class="status" id="status"></div>
+
+  </div>
+</div>
+
+<script>
+  const REPO   = 'szelcer-ux/torahmoment-pages';
+  const BRANCH = 'main';
+  const PW     = 'TorahMoment613';
+
+  const FILES = {
+    halacha:     { path: 'data/halacha.json',     type: 'array'  },
+    oneMinute:   { path: 'data.json',              type: 'array'  },
+    infographics:{ path: 'data/infographics.json', type: 'object' },
+  };
+
+  let currentFile = 'halacha';
+  let halachaData = null;
+
+  // ── Auth ──
+  function checkPassword(){
+    const pw = document.getElementById('passwordInput').value;
+    if (pw === PW) {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('app').style.display = '';
+      init();
+    } else {
+      document.getElementById('loginError').style.display = '';
+    }
+  }
+
+  document.getElementById('passwordInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkPassword();
+  });
+
+  function logout(){
+    document.getElementById('loginScreen').style.display = '';
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('passwordInput').value = '';
+  }
+
+  // ── Token ──
+  function saveToken(){
+    const t = document.getElementById('tokenInput').value.trim();
+    if (!t) return;
+    localStorage.setItem('tm_admin_token', t);
+    document.getElementById('tokenCard').style.display = 'none';
+    showStatus('Token saved.', 'success');
+  }
+
+  function getToken(){
+    return localStorage.getItem('tm_admin_token') || '';
+  }
+
+  // ── Init ──
+  async function init(){
+    // Hide token card if token already saved
+    if (getToken()) document.getElementById('tokenCard').style.display = 'none';
+    else document.getElementById('tokenInput').value = '';
+
+    // Set today's date on all date fields
+    const today = new Date().toISOString().slice(0, 10);
+    ['hal-date','om-date'].forEach(id => {
+      document.getElementById(id).value = today;
+    });
+
+    // Load halacha.json to populate category/subcategory dropdowns
+    await loadHalachaCategories();
+  }
+
+  async function loadHalachaCategories(){
+    try {
+      const res = await fetch('/data/halacha.json', { cache: 'no-store' });
+      halachaData = await res.json();
+      const catSel = document.getElementById('hal-category');
+      catSel.innerHTML = '<option value="">— select —</option>';
+      halachaData.forEach((cat, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = cat.category;
+        catSel.appendChild(opt);
+      });
+    } catch(e) {
+      console.warn('Could not load halacha categories:', e);
+    }
+  }
+
+  function updateSubcategories(){
+    const idx = document.getElementById('hal-category').value;
+    const subSel = document.getElementById('hal-subcategory');
+    subSel.innerHTML = '<option value="">— none / flat category —</option>';
+    if (idx === '' || !halachaData) return;
+    const cat = halachaData[idx];
+    (cat.subcategories || []).forEach((sub, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = sub.name;
+      subSel.appendChild(opt);
+    });
+  }
+
+  // ── File tabs ──
+  function selectFile(key){
+    currentFile = key;
+    document.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(`tab-${key}`).classList.add('active');
+    document.querySelectorAll('[id^="form-"]').forEach(f => f.style.display = 'none');
+    document.getElementById(`form-${key}`).style.display = '';
+    document.getElementById('previewCard').style.display = 'none';
+    document.getElementById('status').style.display = 'none';
+  }
+
+  // ── Build entries ──
+  function fmtDateToSlash(isoDate){
+    if (!isoDate) return '';
+    const [y, m, d] = isoDate.split('-');
+    return `${parseInt(m)}/${parseInt(d)}/${y}`;
+  }
+
+  function buildEntry(){
+    if (currentFile === 'halacha') {
+      const title = document.getElementById('hal-title').value.trim();
+      const url   = document.getElementById('hal-url').value.trim();
+      const date  = fmtDateToSlash(document.getElementById('hal-date').value);
+      const type  = document.getElementById('hal-type').value;
+      if (!title || !url || !date) throw new Error('Title, URL and Date are required.');
+      return { type, title, url, note: date };
+    }
+    if (currentFile === 'oneMinute') {
+      const desc = document.getElementById('om-description').value.trim();
+      const url  = document.getElementById('om-url').value.trim();
+      const date = fmtDateToSlash(document.getElementById('om-date').value);
+      if (!desc || !url || !date) throw new Error('Description, URL and Date are required.');
+      const filename = document.getElementById('om-filename').value.trim()
+        || url.split('/').pop();
+      return { date, description: desc, filename, url };
+    }
+    if (currentFile === 'infographics') {
+      const id    = document.getElementById('ig-id').value.trim();
+      const title = document.getElementById('ig-title').value.trim();
+      const parsha = document.getElementById('ig-parsha').value.trim();
+      const desc  = document.getElementById('ig-description').value.trim();
+      const image = document.getElementById('ig-image').value.trim();
+      const featured = document.getElementById('ig-featured').value === 'yes';
+      if (!id || !title || !parsha) throw new Error('Video ID, Title, and Parsha are required.');
+      const entry = { title, parsha, image, youtube: `https://www.youtube.com/watch?v=${id}`, description: desc };
+      if (featured) entry.featured = true;
+      return { _key: id, ...entry };
+    }
+  }
+
+  // ── Preview ──
+  function previewEntry(){
+    try {
+      const entry = buildEntry();
+      document.getElementById('previewContent').textContent = JSON.stringify(entry, null, 2);
+      document.getElementById('previewCard').style.display = '';
+      document.getElementById('status').style.display = 'none';
+    } catch(e) {
+      showStatus(e.message, 'error');
+    }
+  }
+
+  // ── GitHub API ──
+  async function fetchJSON(path){
+    const token = getToken();
+    if (!token) throw new Error('No GitHub token set. Please add your token above.');
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}?ref=${BRANCH}`, {
+      headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
+    });
+    if (!res.ok) throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
+    const meta = await res.json();
+    const content = JSON.parse(atob(meta.content.replace(/\n/g, '')));
+    return { content, sha: meta.sha };
+  }
+
+  async function commitJSON(path, content, sha, message){
+    const token = getToken();
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2) + '\n')));
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, content: encoded, sha, branch: BRANCH })
+    });
+    if (!res.ok) throw new Error(`Commit failed ${res.status}: ${await res.text()}`);
+    return res.json();
+  }
+
+  async function commitEntry(){
+    const btn = document.getElementById('commitBtn');
+    try {
+      const entry = buildEntry();
+      btn.disabled = true;
+      showStatus('Fetching current file from GitHub…', 'loading');
+
+      const { path } = FILES[currentFile];
+      const { content, sha } = await fetchJSON(path);
+
+      showStatus('Adding entry…', 'loading');
+
+      let updated;
+      if (currentFile === 'infographics') {
+        const key = entry._key;
+        const { _key, ...rest } = entry;
+        // Remove featured from all others first, set on new one if needed
+        if (rest.featured) {
+          Object.values(content).forEach(v => delete v.featured);
+        }
+        updated = { ...content, [key]: rest };
+      } else if (currentFile === 'halacha') {
+        // Add to correct category/subcategory
+        const catIdx = parseInt(document.getElementById('hal-category').value);
+        const subIdx = document.getElementById('hal-subcategory').value;
+        updated = JSON.parse(JSON.stringify(content));
+        if (subIdx !== '') {
+          updated[catIdx].subcategories[parseInt(subIdx)].items.unshift(entry);
+        } else {
+          if (!updated[catIdx].items) updated[catIdx].items = [];
+          updated[catIdx].items.unshift(entry);
+        }
+      } else {
+        // One-minute: prepend to array
+        updated = [entry, ...content];
+      }
+
+      const title = entry.title || entry.description || entry._key || 'new entry';
+      await commitJSON(path, updated, sha, `Add ${currentFile} entry: ${title}`);
+
+      showStatus(`✅ Saved! "${title}" added to ${path}. The GitHub Action will update the site shortly.`, 'success');
+      clearForm();
+
+      // Reload halacha categories if we just added to halacha
+      if (currentFile === 'halacha') await loadHalachaCategories();
+
+    } catch(e) {
+      showStatus(`❌ ${e.message}`, 'error');
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  function clearForm(){
+    const today = new Date().toISOString().slice(0, 10);
+    if (currentFile === 'halacha') {
+      document.getElementById('hal-title').value = '';
+      document.getElementById('hal-url').value = '';
+      document.getElementById('hal-date').value = today;
+      document.getElementById('hal-category').value = '';
+      document.getElementById('hal-subcategory').innerHTML = '<option value="">— none / flat category —</option>';
+    } else if (currentFile === 'oneMinute') {
+      document.getElementById('om-description').value = '';
+      document.getElementById('om-url').value = '';
+      document.getElementById('om-filename').value = '';
+      document.getElementById('om-date').value = today;
+    } else {
+      document.getElementById('ig-id').value = '';
+      document.getElementById('ig-title').value = '';
+      document.getElementById('ig-parsha').value = '';
+      document.getElementById('ig-description').value = '';
+      document.getElementById('ig-image').value = '';
+      document.getElementById('ig-featured').value = 'no';
+    }
+    document.getElementById('previewCard').style.display = 'none';
+  }
+
+  function showStatus(msg, type){
+    const el = document.getElementById('status');
+    el.textContent = msg;
+    el.className = `status ${type}`;
+    el.style.display = '';
+  }
+</script>
+</body>
+</html>
