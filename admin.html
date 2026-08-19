@@ -319,8 +319,6 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-
   const REPO   = 'szelcer-ux/torahmoment-pages';
   const BRANCH = 'main';
   const PW     = 'TorahMoment613';
@@ -346,9 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  document.getElementById('passwordInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') checkPassword();
-  });
+
 
   function logout(){
     document.getElementById('loginScreen').style.cssText = 'display:flex !important';
@@ -587,16 +583,10 @@ document.addEventListener('DOMContentLoaded', function() {
     el.style.display = '';
   }
 
-  // Expose functions to global scope for onclick handlers
-  window.checkPassword = checkPassword;
-  window.logout = logout;
-  window.saveToken = saveToken;
-  window.selectFile = selectFile;
-  window.previewEntry = previewEntry;
-  window.commitEntry = commitEntry;
-  window.updateSubcategories = updateSubcategories;
-
-}); // end DOMContentLoaded
+  // Wire up Enter key on password field
+  document.getElementById('passwordInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkPassword();
+  });
 </script>
 </body>
 </html>
