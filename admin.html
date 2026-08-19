@@ -319,6 +319,8 @@
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+
   const REPO   = 'szelcer-ux/torahmoment-pages';
   const BRANCH = 'main';
   const PW     = 'TorahMoment613';
@@ -584,6 +586,17 @@
     el.className = `status ${type}`;
     el.style.display = '';
   }
+
+  // Expose functions to global scope for onclick handlers
+  window.checkPassword = checkPassword;
+  window.logout = logout;
+  window.saveToken = saveToken;
+  window.selectFile = selectFile;
+  window.previewEntry = previewEntry;
+  window.commitEntry = commitEntry;
+  window.updateSubcategories = updateSubcategories;
+
+}); // end DOMContentLoaded
 </script>
 </body>
 </html>
