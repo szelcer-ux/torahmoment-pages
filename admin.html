@@ -225,7 +225,7 @@ document.getElementById('hal-cat').addEventListener('change', function() {
     currentTab = key;
     ['halacha', 'oneMinute', 'infographics'].forEach(function(k) {
       document.getElementById('tab-' + k).className = 'tab' + (k === key ? ' on' : '');
-      document.getElementById('form-' + k).style.display = k === key ? '' : 'none';
+      document.getElementById('form-' + k).style.display = k === key ? 'block' : 'none';
     });
     document.getElementById('preview').style.display = 'none';
     document.getElementById('status').style.display = 'none';
@@ -278,7 +278,7 @@ document.getElementById('previewBtn').addEventListener('click', function() {
   try {
     var e = buildEntry();
     document.getElementById('previewPre').textContent = JSON.stringify(e, null, 2);
-    document.getElementById('preview').style.display = '';
+    document.getElementById('preview').style.display = 'block';
     document.getElementById('status').style.display = 'none';
   } catch(err) {
     showStatus(err.message, 'err');
