@@ -37,13 +37,6 @@
       "date": "2026-08-17T00:00:00.000Z"
     },
     {
-      "type": "video",
-      "program": "Parsha",
-      "title": "What's going to be?",
-      "url": "https://www.youtube.com/watch?v=fr-25KmZbws",
-      "date": "2026-08-14T03:41:40Z"
-    },
-    {
       "type": "audio",
       "program": "One-Minute",
       "title": "You're not the exception",
@@ -56,6 +49,13 @@
       "title": "Dont be so stubborn",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0010.mp3",
       "date": "2026-08-11T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Communal responsibility",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260809-WA0024.mp3",
+      "date": "2026-08-10T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
