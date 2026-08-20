@@ -79,7 +79,7 @@
 <body>
   <main class="card">
     <h1>Tonight’s Zoom Meeting</h1>
-    <p class="sub">The room opens at 8:45 PM ET. The meeting begins at 9:00 PM ET.</p>
+    <p class="sub">The room opens at 8:00 PM ET. The meeting begins at 8:30 PM ET.</p>
 
     <div class="status" id="status">Checking availability…</div>
     <div class="countdown" id="countdown"></div>
@@ -138,7 +138,7 @@
       statusEl.textContent = "The Zoom room is not open yet.";
       countdownEl.textContent = formatRemaining(remaining) + " until join time";
       timeNoteEl.textContent =
-        "You’ll be redirected automatically at 8:45 PM Eastern Time.";
+        "You’ll be redirected automatically at 8:00 PM Eastern Time.";
       manualLink.style.display = "none";
     }
 
