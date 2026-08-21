@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 780,
+    "total": 781,
     "breakdown": {
       "parsha": {
         "audio": 29,
-        "video": 239
+        "video": 240
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-08-20"
+    "updated": "2026-08-21"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "When piety becomes a chilul Hashem",
+      "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM",
+      "date": "2026-08-21T02:30:11Z"
+    },
     {
       "type": "audio",
       "program": "Halacha",
@@ -49,13 +56,6 @@
       "title": "Pay on time",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260817-WA0037.mp3",
       "date": "2026-08-17T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "What's going to be?",
-      "url": "https://www.youtube.com/watch?v=fr-25KmZbws",
-      "date": "2026-08-14T03:41:40Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "When piety becomes a chilul Hashem",
+        "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM",
+        "date": "2026-08-21T02:30:11Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "What's going to be?",
         "url": "https://www.youtube.com/watch?v=fr-25KmZbws",
         "date": "2026-08-14T03:41:40Z"
@@ -266,13 +273,6 @@
         "title": "Don't put out the spark",
         "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg",
         "date": "2026-06-19T02:21:55Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Seeing the big picture",
-        "url": "https://www.youtube.com/watch?v=97TN3FMjQF4",
-        "date": "2026-06-12T02:36:59Z"
       }
     ]
   }
