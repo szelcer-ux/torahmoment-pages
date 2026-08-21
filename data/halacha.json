@@ -78,7 +78,7 @@
           },
           {
             "type": "audio",
-            "title": "Answering Amen to ×Ö¼Ö¸×Ö·× ×Ö´×©×Ö°×¨Ö¸×Öµ×",
+            "title": "Answering Amen to ÃÂÃÂ¼ÃÂ¸ÃÂÃÂ·ÃÂ ÃÂÃÂ´ÃÂ©ÃÂÃÂ°ÃÂ¨ÃÂ¸ÃÂÃÂµÃÂ",
             "url": "https://www.buzzsprout.com/1899789/episodes/16829518-3-26-2025-shloimy-zelcer-answering-amen-to.mp3",
             "note": "3/26/2025"
           },
@@ -136,7 +136,7 @@
           },
           {
             "type": "audio",
-            "title": "×Ö¼Ö¸×Ö´× ×Ö¶×Ö¶×Ö° ×Ö´×©×Ö°×¨Ö¸×Öµ× ×Ö·× ×Ö°×§Ö·×Ö¼Ö¸× ××§××××© ××× ×",
+            "title": "ÃÂÃÂ¼ÃÂ¸ÃÂÃÂ´ÃÂ ÃÂÃÂ¶ÃÂÃÂ¶ÃÂÃÂ° ÃÂÃÂ´ÃÂ©ÃÂÃÂ°ÃÂ¨ÃÂ¸ÃÂÃÂµÃÂ ÃÂÃÂ·ÃÂ ÃÂÃÂ°ÃÂ§ÃÂ·ÃÂÃÂ¼ÃÂ¸ÃÂ ÃÂÃÂ§ÃÂÃÂÃÂÃÂ© ÃÂÃÂÃÂ ÃÂ",
             "url": "https://www.buzzsprout.com/1899789/episodes/16554683-2-3-2025-shloimy-zelcer.mp3",
             "note": "2/3/2025"
           },
@@ -453,7 +453,7 @@
       },
       {
         "type": "audio",
-        "title": "××× ×××× ×××¨× ×××§×× ××××",
+        "title": "ÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂ¨ÃÂ ÃÂÃÂÃÂ§ÃÂÃÂ ÃÂÃÂÃÂÃÂ",
         "url": "https://www.buzzsprout.com/1899789/episodes/15026066-5-7-2024-shloimy-zelcer.mp3",
         "note": "5/7/2024"
       },
@@ -518,6 +518,12 @@
     "items": [
       {
         "type": "audio",
+        "title": "The “Handle it” fallacy",
+        "url": "https://2mishnasaday.com/wp-content/uploads/117.mp3",
+        "note": "8/20/2026"
+      },
+      {
+        "type": "audio",
         "title": "3 lessons Lzehcer Harav Avrohom Nesanel ben Shlomo on his first Yahrtzeit",
         "url": "https://www.buzzsprout.com/1899789/episodes/17866609-9-18-2025-shloimy-zelcer-3-lessons-lzehcer-nishmas-moireinu-harav-avrohom-nesanel-ben-shlomo-on-his-first-yahrtzeit.mp3",
         "note": "9/18/2025"
@@ -536,7 +542,7 @@
       },
       {
         "type": "audio",
-        "title": "×©×××ª× ××³ ×× ××× ×ª×××",
+        "title": "ÃÂ©ÃÂÃÂÃÂªÃÂ ÃÂÃÂ³ ÃÂÃÂ ÃÂÃÂÃÂ ÃÂªÃÂÃÂÃÂ",
         "url": "https://www.buzzsprout.com/1899789/episodes/15302666-6-24-2024-shloimy-zelcer.mp3",
         "note": "6/24/2024"
       },
@@ -622,7 +628,7 @@
       },
       {
         "type": "audio",
-        "title": "Rambamâs view on Techias Hameisim",
+        "title": "RambamÃ¢ÂÂs view on Techias Hameisim",
         "url": "https://2mishnasaday.com/wp-content/uploads/rambamtechiashameisim.mp3",
         "note": "3/31/2022"
       },
@@ -786,7 +792,7 @@
       },
       {
         "type": "parsha-audio",
-        "title": "VAYEITZEI - ××¤×¢× ×××× ××ª ×",
+        "title": "VAYEITZEI - ÃÂÃÂ¤ÃÂ¢ÃÂ ÃÂÃÂÃÂÃÂ ÃÂÃÂª ÃÂ",
         "url": "https://www.buzzsprout.com/1899789/episodes/14012119-11-21-2023-shloimy-zelcer.mp3",
         "note": "11/21/2023"
       },
@@ -852,7 +858,7 @@
       },
       {
         "type": "parsha-audio",
-        "title": "SHEMINI - ××× ××©××× × - a busy day",
+        "title": "SHEMINI - ÃÂÃÂÃÂ ÃÂÃÂ©ÃÂÃÂÃÂ ÃÂ - a busy day",
         "url": "https://www.buzzsprout.com/1899789/episodes/14806560-4-1-2024-shloimy-zelcer-a-busy-day.mp3",
         "note": "4/1/2024"
       },
