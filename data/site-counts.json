@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 781,
+    "total": 782,
     "breakdown": {
       "parsha": {
         "audio": 29,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 99
+        "totalAll": 100
       },
       "oneMinute": {
         "audio": 256
@@ -38,6 +38,13 @@
     },
     {
       "type": "audio",
+      "program": "Halacha",
+      "title": "The “Handle it” fallacy",
+      "url": "https://2mishnasaday.com/wp-content/uploads/117.mp3",
+      "date": "2026-08-20T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
       "program": "One-Minute",
       "title": "Helping is good for everyone",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260819-WA0005.mp3",
@@ -49,13 +56,6 @@
       "title": "Individual accountability",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260818-WA0017.mp3",
       "date": "2026-08-18T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Pay on time",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260817-WA0037.mp3",
-      "date": "2026-08-17T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -142,6 +142,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "The “Handle it” fallacy",
+        "url": "https://2mishnasaday.com/wp-content/uploads/117.mp3",
+        "date": "2026-08-20T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "How Loud Should Torah Learning Be?",
         "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?",
         "date": "2026-08-05T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "Akaros of TANACH and Tefilah",
         "url": "https://2mishnasaday.com/wp-content/uploads/114.mp3",
         "date": "2026-05-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Jews with tattoos",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19253888-5-28-2026-shloimy-zelcer-jews-with-tattoos.mp3",
-        "date": "2026-05-28T00:00:00.000Z"
       }
     ],
     "parsha": [
