@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "August 8–14, 2026",
-  "generatedAt": "2026-08-14T11:02:27.268Z",
-  "totalItems": 5,
+  "rangeLabel": "August 15–21, 2026",
+  "generatedAt": "2026-08-21T10:36:56.823Z",
+  "totalItems": 6,
   "featured": {
-    "id": "par-fr-25KmZbws",
-    "title": "What's going to be?",
+    "id": "par-9T-OCgnuGlM",
+    "title": "When piety becomes a chilul Hashem",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-08-14T03:41:40Z",
+    "date": "2026-08-21T02:30:11Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=fr-25KmZbws"
+    "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM"
   },
   "groups": [
     {
@@ -17,22 +17,37 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-fr-25KmZbws",
-          "title": "What's going to be?",
+          "id": "par-9T-OCgnuGlM",
+          "title": "When piety becomes a chilul Hashem",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-08-14T03:41:40Z",
+          "date": "2026-08-21T02:30:11Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=fr-25KmZbws"
+          "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM"
         },
         {
-          "id": "ov-shoftim",
-          "title": "Parshas Shoftim overview",
+          "id": "ov-ki-seitzei",
+          "title": "Parshas Ki Seitzei overview",
           "program": "Parsha Overview",
           "type": "audio",
-          "date": "2026-08-12T00:00:00.000Z",
+          "date": "2026-08-19T00:00:00.000Z",
           "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/ShoftimOverview.mp3"
+          "url": "https://torahmoment.com/audio/KizseitzeiOverview.mp3"
+        }
+      ]
+    },
+    {
+      "key": "halacha",
+      "label": "Halacha / Hashkafa",
+      "items": [
+        {
+          "id": "hal-5",
+          "title": "Learning during Chazaras Hashatz",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-08-20T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/19676739-8-20-2026-shloimy-zelcer-learning-during-chazaras-hashatz.mp3"
         }
       ]
     },
@@ -41,31 +56,31 @@
       "label": "One-Minute Audio",
       "items": [
         {
-          "id": "one-252",
-          "title": "You're not the exception",
+          "id": "one-0",
+          "title": "Helping is good for everyone",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-08-12T00:00:00.000Z",
+          "date": "2026-08-19T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0009.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260819-WA0005.mp3"
         },
         {
-          "id": "one-251",
-          "title": "Dont be so stubborn",
+          "id": "one-254",
+          "title": "Individual accountability",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-08-11T00:00:00.000Z",
+          "date": "2026-08-18T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0010.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260818-WA0017.mp3"
         },
         {
-          "id": "one-250",
-          "title": "Communal responsibility",
+          "id": "one-253",
+          "title": "Pay on time",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-08-10T00:00:00.000Z",
+          "date": "2026-08-17T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260809-WA0024.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260817-WA0037.mp3"
         }
       ]
     }
