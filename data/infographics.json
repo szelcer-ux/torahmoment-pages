@@ -242,7 +242,14 @@
     "parsha": "Ki Seitzei",
     "image": "images/infographics/parsha/Ki_Seitzei_The_Harmony_of_Piety.png",
     "youtube": "https://www.youtube.com/watch?v=9T-OCgnuGlM",
-    "description": "The Harmony of Piety",
+    "description": "The Harmony of Piety"
+  },
+  "4fGyqb7tUQs": {
+    "title": "More than just a thank you",
+    "parsha": "Ki Savo",
+    "image": "images/infographics/parsha/KiSavo_The_Full_Story_of_Gratitude.png",
+    "youtube": "https://www.youtube.com/watch?v=4fGyqb7tUQs",
+    "description": "The full story of gratitude",
     "featured": true
   }
 }
