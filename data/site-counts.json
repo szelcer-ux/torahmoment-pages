@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 782,
+    "total": 783,
     "breakdown": {
       "parsha": {
         "audio": 29,
@@ -13,7 +13,7 @@
         "totalAll": 100
       },
       "oneMinute": {
-        "audio": 256
+        "audio": 257
       },
       "mishna": {
         "audio": 137
@@ -23,6 +23,13 @@
   },
   "recent": [
     {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Secret curses",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260825-WA0012.mp3",
+      "date": "2026-08-25T00:00:00.000Z"
+    },
+    {
       "type": "video",
       "program": "Parsha",
       "title": "When piety becomes a chilul Hashem",
@@ -31,35 +38,35 @@
     },
     {
       "type": "audio",
+      "program": "Halacha",
+      "title": "Learning during Chazaras Hashatz",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19676739-8-20-2026-shloimy-zelcer-learning-during-chazaras-hashatz.mp3",
+      "date": "2026-08-20T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "The “Handle it” fallacy",
+      "url": "https://2mishnasaday.com/wp-content/uploads/117.mp3",
+      "date": "2026-08-20T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
       "program": "One-Minute",
       "title": "Helping is good for everyone",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260819-WA0005.mp3",
       "date": "2026-08-19T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Individual accountability",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260818-WA0017.mp3",
-      "date": "2026-08-18T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Pay on time",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260817-WA0037.mp3",
-      "date": "2026-08-17T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "What's going to be?",
-      "url": "https://www.youtube.com/watch?v=fr-25KmZbws",
-      "date": "2026-08-14T03:41:40Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Secret curses",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260825-WA0012.mp3",
+        "date": "2026-08-25T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,16 +129,80 @@
         "title": "The real test of the maan",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260727-WA0008.mp3",
         "date": "2026-07-29T00:00:00.000Z"
+      }
+    ],
+    "halacha": [
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Learning during Chazaras Hashatz",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19676739-8-20-2026-shloimy-zelcer-learning-during-chazaras-hashatz.mp3",
+        "date": "2026-08-20T00:00:00.000Z"
       },
       {
         "type": "audio",
-        "program": "One-Minute",
-        "title": "The closest nation",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0017.mp3",
-        "date": "2026-07-27T00:00:00.000Z"
+        "program": "Halacha",
+        "title": "The “Handle it” fallacy",
+        "url": "https://2mishnasaday.com/wp-content/uploads/117.mp3",
+        "date": "2026-08-20T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "How Loud Should Torah Learning Be?",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?",
+        "date": "2026-08-05T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Halachic status of the Kotel plaza",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19569585-7-29-2026-shloimy-zelcer-halachic-status-of-the-kotel-plaza.mp3",
+        "date": "2026-07-29T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "From Moshe to Moshe, what happened to the name Moshe?",
+        "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3",
+        "date": "2026-07-14T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Standing up for a chosson",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3",
+        "date": "2026-07-13T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Knock before entering",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19452197-7-6-2026-shloimy-zelcer-knock-before-entering.mp3",
+        "date": "2026-07-06T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Shehechiyanu on being drafted by the IDF",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3",
+        "date": "2026-06-30T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Should the woman make kiddush Friday night?",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3",
+        "date": "2026-06-08T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
+        "title": "Akaros of TANACH and Tefilah",
+        "url": "https://2mishnasaday.com/wp-content/uploads/114.mp3",
+        "date": "2026-05-29T00:00:00.000Z"
       }
     ],
-    "halacha": [],
     "parsha": [
       {
         "type": "video",
