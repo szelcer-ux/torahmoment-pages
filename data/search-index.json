@@ -6158,5 +6158,15 @@
     "date": "2026-08-19T00:00:00.000Z",
     "page": "/parsha.html",
     "title_lc": "parshas ki seitzei overview"
+  },
+  {
+    "id": "ov-ki-savo",
+    "program": "Parsha Overview",
+    "type": "audio",
+    "title": "Parshas Ki Savo overview",
+    "url": "https://torahmoment.com/audio/KiSavoOverview.mp3",
+    "date": "2026-08-26T00:00:00.000Z",
+    "page": "/parsha.html",
+    "title_lc": "parshas ki savo overview"
   }
 ]
