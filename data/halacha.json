@@ -78,7 +78,7 @@
           },
           {
             "type": "audio",
-            "title": "Answering Amen to גָּאַל יִשְׂרָאֵל",
+            "title": "Answering Amen to ×Ö¼Ö¸×Ö·× ×Ö´×©×Ö°×¨Ö¸×Öµ×",
             "url": "https://www.buzzsprout.com/1899789/episodes/16829518-3-26-2025-shloimy-zelcer-answering-amen-to.mp3",
             "note": "3/26/2025"
           },
@@ -93,6 +93,12 @@
       {
         "name": "Krias Hatorah",
         "items": [
+          {
+            "type": "audio",
+            "title": "Whispering the Tochecha",
+            "url": "https://www.buzzsprout.com/1899789/episodes/19706343-8-26-2026-shloimy-zelcer-whispering-the-tochecha.mp3",
+            "note": "8/26/2026"
+          },
           {
             "type": "audio",
             "title": "Asking a kohen to leave",
@@ -136,7 +142,7 @@
           },
           {
             "type": "audio",
-            "title": "דָּוִד מֶלֶךְ יִשְׂרָאֵל חַי וְקַיָּם בקידוש לבנה",
+            "title": "×Ö¼Ö¸×Ö´× ×Ö¶×Ö¶×Ö° ×Ö´×©×Ö°×¨Ö¸×Öµ× ×Ö·× ×Ö°×§Ö·×Ö¼Ö¸× ××§××××© ××× ×",
             "url": "https://www.buzzsprout.com/1899789/episodes/16554683-2-3-2025-shloimy-zelcer.mp3",
             "note": "2/3/2025"
           },
@@ -453,7 +459,7 @@
       },
       {
         "type": "audio",
-        "title": "אלו ואלו דברי אלקים חיים",
+        "title": "××× ×××× ×××¨× ×××§×× ××××",
         "url": "https://www.buzzsprout.com/1899789/episodes/15026066-5-7-2024-shloimy-zelcer.mp3",
         "note": "5/7/2024"
       },
@@ -518,7 +524,7 @@
     "items": [
       {
         "type": "audio",
-        "title": "The “Handle it” fallacy",
+        "title": "The âHandle itâ fallacy",
         "url": "https://2mishnasaday.com/wp-content/uploads/117.mp3",
         "note": "8/20/2026"
       },
@@ -542,7 +548,7 @@
       },
       {
         "type": "audio",
-        "title": "שויתי ה׳ לנגדי תמיד",
+        "title": "×©×××ª× ××³ ×× ××× ×ª×××",
         "url": "https://www.buzzsprout.com/1899789/episodes/15302666-6-24-2024-shloimy-zelcer.mp3",
         "note": "6/24/2024"
       },
@@ -792,7 +798,7 @@
       },
       {
         "type": "parsha-audio",
-        "title": "VAYEITZEI - הפעם אודה את ה",
+        "title": "VAYEITZEI - ××¤×¢× ×××× ××ª ×",
         "url": "https://www.buzzsprout.com/1899789/episodes/14012119-11-21-2023-shloimy-zelcer.mp3",
         "note": "11/21/2023"
       },
@@ -858,7 +864,7 @@
       },
       {
         "type": "parsha-audio",
-        "title": "SHEMINI - יום השמיני - a busy day",
+        "title": "SHEMINI - ××× ××©××× × - a busy day",
         "url": "https://www.buzzsprout.com/1899789/episodes/14806560-4-1-2024-shloimy-zelcer-a-busy-day.mp3",
         "note": "4/1/2024"
       },
