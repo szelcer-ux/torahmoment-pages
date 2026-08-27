@@ -79,7 +79,7 @@
 <body>
   <main class="card">
     <h1>Tonight’s Zoom Meeting</h1>
-    <p class="sub">The room opens at 8:00 PM ET. The meeting begins at 8:30 PM ET.</p>
+    <p class="sub">The room opens at 8:30 PM ET. The meeting begins at 9:00 PM ET.</p>
 
     <div class="status" id="status">Checking availability…</div>
     <div class="countdown" id="countdown"></div>
@@ -96,10 +96,10 @@
   </main>
 
   <script>
-    const zoomUrl = "https://us06web.zoom.us/j/87245080638?pwd=3UMu3VDcdUKIO7pYMlF9tCb328qqx6.1";
+    const zoomUrl = "https://us06web.zoom.us/j/3566418114?pwd=cTg1QmQ4dm9JQUNwUmFsSWY2bHhkdz09&omn=85095379952";
 
     // March 30, 2026 at 8:45 PM Eastern Time
-    const openTime = new Date("2026-08-20T20:00:00-04:00");
+    const openTime = new Date("2026-08-27T04:00:00-04:00");
 
     const statusEl = document.getElementById("status");
     const countdownEl = document.getElementById("countdown");
@@ -138,7 +138,7 @@
       statusEl.textContent = "The Zoom room is not open yet.";
       countdownEl.textContent = formatRemaining(remaining) + " until join time";
       timeNoteEl.textContent =
-        "You’ll be redirected automatically at 8:00 PM Eastern Time.";
+        "You’ll be redirected automatically at 9:00 PM Eastern Time.";
       manualLink.style.display = "none";
     }
 
