@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 787,
+    "total": 788,
     "breakdown": {
       "parsha": {
         "audio": 30,
-        "video": 240
+        "video": 241
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-08-27"
+    "updated": "2026-08-28"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "More than just a thank you",
+      "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs",
+      "date": "2026-08-28T02:21:19Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "When piety becomes a chilul Hashem",
       "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM",
       "date": "2026-08-21T02:30:11Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Helping is good for everyone",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260819-WA0005.mp3",
-      "date": "2026-08-19T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -136,6 +136,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "More than just a thank you",
+        "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs",
+        "date": "2026-08-28T02:21:19Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "When piety becomes a chilul Hashem",
         "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM",
         "date": "2026-08-21T02:30:11Z"
@@ -195,13 +202,6 @@
         "title": "Holiness begins with honesty",
         "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY",
         "date": "2026-06-26T02:42:24Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Don't put out the spark",
-        "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg",
-        "date": "2026-06-19T02:21:55Z"
       }
     ]
   }
