@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "August 15–21, 2026",
-  "generatedAt": "2026-08-21T10:36:56.823Z",
+  "rangeLabel": "August 22–28, 2026",
+  "generatedAt": "2026-08-28T21:09:40.780Z",
   "totalItems": 6,
   "featured": {
-    "id": "par-9T-OCgnuGlM",
-    "title": "When piety becomes a chilul Hashem",
+    "id": "par-4fGyqb7tUQs",
+    "title": "More than just a thank you",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-08-21T02:30:11Z",
+    "date": "2026-08-28T02:21:19Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM"
+    "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs"
   },
   "groups": [
     {
@@ -17,22 +17,22 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-9T-OCgnuGlM",
-          "title": "When piety becomes a chilul Hashem",
+          "id": "par-4fGyqb7tUQs",
+          "title": "More than just a thank you",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-08-21T02:30:11Z",
+          "date": "2026-08-28T02:21:19Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM"
+          "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs"
         },
         {
-          "id": "ov-ki-seitzei",
-          "title": "Parshas Ki Seitzei overview",
+          "id": "ov-ki-savo",
+          "title": "Parshas Ki Savo overview",
           "program": "Parsha Overview",
           "type": "audio",
-          "date": "2026-08-19T00:00:00.000Z",
+          "date": "2026-08-26T00:00:00.000Z",
           "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/KizseitzeiOverview.mp3"
+          "url": "https://torahmoment.com/audio/KiSavoOverview.mp3"
         }
       ]
     },
@@ -41,13 +41,13 @@
       "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "hal-5",
-          "title": "Learning during Chazaras Hashatz",
+          "id": "hal-11",
+          "title": "Whispering the Tochecha",
           "program": "Halacha",
           "type": "audio",
-          "date": "2026-08-20T00:00:00.000Z",
+          "date": "2026-08-26T00:00:00.000Z",
           "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19676739-8-20-2026-shloimy-zelcer-learning-during-chazaras-hashatz.mp3"
+          "url": "https://www.buzzsprout.com/1899789/episodes/19706343-8-26-2026-shloimy-zelcer-whispering-the-tochecha.mp3"
         }
       ]
     },
@@ -57,30 +57,30 @@
       "items": [
         {
           "id": "one-0",
-          "title": "Helping is good for everyone",
+          "title": "The shofar is not magic",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-08-19T00:00:00.000Z",
+          "date": "2026-08-27T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260819-WA0005.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260827-WA0005.mp3"
         },
         {
-          "id": "one-254",
-          "title": "Individual accountability",
+          "id": "one-1",
+          "title": "Acknowledge the good people",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-08-18T00:00:00.000Z",
+          "date": "2026-08-26T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260818-WA0017.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260826-WA0013.mp3"
         },
         {
-          "id": "one-253",
-          "title": "Pay on time",
+          "id": "one-2",
+          "title": "Secret curses",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-08-17T00:00:00.000Z",
+          "date": "2026-08-25T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260817-WA0037.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260825-WA0012.mp3"
         }
       ]
     }
