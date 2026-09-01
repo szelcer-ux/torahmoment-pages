@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 788,
+    "total": 789,
     "breakdown": {
       "parsha": {
         "audio": 30,
@@ -13,7 +13,7 @@
         "totalAll": 101
       },
       "oneMinute": {
-        "audio": 259
+        "audio": 260
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-09-01"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "The small things add up",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3",
+      "date": "2026-09-01T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -35,13 +42,6 @@
       "title": "The shofar is not magic",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260827-WA0005.mp3",
       "date": "2026-08-27T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Whispering the Tochecha",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19706343-8-26-2026-shloimy-zelcer-whispering-the-tochecha.mp3",
-      "date": "2026-08-26T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -60,6 +60,13 @@
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "The small things add up",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3",
+        "date": "2026-09-01T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,87 +129,9 @@
         "title": "Communal responsibility",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260809-WA0024.mp3",
         "date": "2026-08-10T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "A little light",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0019.mp3",
-        "date": "2026-08-05T00:00:00.000Z"
       }
     ],
-    "halacha": [
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Whispering the Tochecha",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19706343-8-26-2026-shloimy-zelcer-whispering-the-tochecha.mp3",
-        "date": "2026-08-26T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Learning during Chazaras Hashatz",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19676739-8-20-2026-shloimy-zelcer-learning-during-chazaras-hashatz.mp3",
-        "date": "2026-08-20T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "The âHandle itâ fallacy",
-        "url": "https://2mishnasaday.com/wp-content/uploads/117.mp3",
-        "date": "2026-08-20T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "How Loud Should Torah Learning Be?",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?",
-        "date": "2026-08-05T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Halachic status of the Kotel plaza",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19569585-7-29-2026-shloimy-zelcer-halachic-status-of-the-kotel-plaza.mp3",
-        "date": "2026-07-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "From Moshe to Moshe, what happened to the name Moshe?",
-        "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3",
-        "date": "2026-07-14T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Standing up for a chosson",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3",
-        "date": "2026-07-13T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Knock before entering",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19452197-7-6-2026-shloimy-zelcer-knock-before-entering.mp3",
-        "date": "2026-07-06T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Shehechiyanu on being drafted by the IDF",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3",
-        "date": "2026-06-30T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Should the woman make kiddush Friday night?",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3",
-        "date": "2026-06-08T00:00:00.000Z"
-      }
-    ],
+    "halacha": [],
     "parsha": [
       {
         "type": "video",
