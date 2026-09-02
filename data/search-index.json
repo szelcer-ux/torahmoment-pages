@@ -3,6 +3,16 @@
     "id": "one-0",
     "program": "One-Minute",
     "type": "audio",
+    "title": "Clean slate",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260902-WA0025.mp3",
+    "date": "2026-09-02T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "title_lc": "clean slate"
+  },
+  {
+    "id": "one-1",
+    "program": "One-Minute",
+    "type": "audio",
     "title": "The small things add up",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3",
     "date": "2026-09-01T00:00:00.000Z",
@@ -10,7 +20,7 @@
     "title_lc": "the small things add up"
   },
   {
-    "id": "one-1",
+    "id": "one-2",
     "program": "One-Minute",
     "type": "audio",
     "title": "The shofar is not magic",
@@ -20,7 +30,7 @@
     "title_lc": "the shofar is not magic"
   },
   {
-    "id": "one-2",
+    "id": "one-3",
     "program": "One-Minute",
     "type": "audio",
     "title": "Acknowledge the good people",
@@ -30,7 +40,7 @@
     "title_lc": "acknowledge the good people"
   },
   {
-    "id": "one-3",
+    "id": "one-4",
     "program": "One-Minute",
     "type": "audio",
     "title": "Secret curses",
@@ -40,7 +50,7 @@
     "title_lc": "secret curses"
   },
   {
-    "id": "one-4",
+    "id": "one-5",
     "program": "One-Minute",
     "type": "audio",
     "title": "Helping is good for everyone",
@@ -63,11 +73,11 @@
     "id": "one-1",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂ©ÃÂÃÂªÃÂ ÃÂÃÂÃÂÃÂª ÃÂ",
+    "title": "ÃÂÃÂ©ÃÂÃÂÃÂÃÂªÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂª ÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240908-WA0046.mp3",
     "date": "2024-09-09T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâ©ãâãâªãâ ãâãâãâãâª ãâ"
+    "title_lc": "ãâãâ©ãâãâãâãâªãâãâ ãâãâãâãâãâãâãâãâª ãâãâ"
   },
   {
     "id": "one-2",
@@ -83,11 +93,11 @@
     "id": "one-3",
     "program": "One-Minute",
     "type": "audio",
-    "title": "Something to think about while saying ÃÂ©ÃÂ°ÃÂÃÂÃÂ·ÃÂ¢ ÃÂÃÂ´ÃÂ©ÃÂ°ÃÂÃÂ¨ÃÂ¸ÃÂÃÂµÃÂ",
+    "title": "Something to think about while saying ÃÂÃÂ©ÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂ·ÃÂÃÂ¢ ÃÂÃÂÃÂÃÂ´ÃÂÃÂ©ÃÂÃÂ°ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ¸ÃÂÃÂÃÂÃÂµÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0059.mp3",
     "date": "2024-09-11T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "something to think about while saying ãâ©ãâ°ãâãâãâ·ãâ¢ ãâãâ´ãâ©ãâ°ãâãâ¨ãâ¸ãâãâµãâ"
+    "title_lc": "something to think about while saying ãâãâ©ãâãâ°ãâãâãâãâãâãâ·ãâãâ¢ ãâãâãâãâ´ãâãâ©ãâãâ°ãâãâãâãâ¨ãâãâ¸ãâãâãâãâµãâãâ"
   },
   {
     "id": "one-4",
@@ -103,11 +113,11 @@
     "id": "one-5",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂÃÂÃÂ¾ÃÂªÃÂ¦ÃÂ - Battling the Yetzer Harah",
+    "title": "ÃÂÃÂÃÂÃÂÃÂÃÂ¾ÃÂÃÂªÃÂÃÂ¦ÃÂÃÂ - Battling the Yetzer Harah",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240912-WA0047.mp3",
     "date": "2024-09-13T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâãâãâ¾ãâªãâ¦ãâ - battling the yetzer harah"
+    "title_lc": "ãâãâãâãâãâãâ¾ãâãâªãâãâ¦ãâãâ - battling the yetzer harah"
   },
   {
     "id": "one-6",
@@ -203,11 +213,11 @@
     "id": "one-15",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂ§ÃÂÃÂ© ÃÂÃÂ ÃÂÃÂ ÃÂÃÂÃÂÃÂ¨ - love every Jew",
+    "title": "ÃÂÃÂ§ÃÂÃÂÃÂÃÂ© ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¨ - love every Jew",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240906-WA0068.mp3",
     "date": "2024-09-25T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâ§ãâãâ© ãâãâ ãâãâ ãâãâãâãâ¨ - love every jew"
+    "title_lc": "ãâãâ§ãâãâãâãâ© ãâãâãâãâ ãâãâãâãâ ãâãâãâãâãâãâãâãâ¨ - love every jew"
   },
   {
     "id": "one-16",
@@ -293,11 +303,11 @@
     "id": "one-24",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂ¢ÃÂ©ÃÂ ÃÂÃÂ ÃÂ¨ÃÂ",
+    "title": "ÃÂÃÂ¢ÃÂÃÂ©ÃÂÃÂ ÃÂÃÂÃÂÃÂ ÃÂÃÂ¨ÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241117-WA0030.mp3",
     "date": "2024-11-18T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâ¢ãâ©ãâ ãâãâ ãâ¨ãâ"
+    "title_lc": "ãâãâ¢ãâãâ©ãâãâ ãâãâãâãâ ãâãâ¨ãâãâ"
   },
   {
     "id": "one-25",
@@ -603,11 +613,11 @@
     "id": "one-55",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂÃÂ¢ÃÂÃÂÃÂ ÃÂÃÂÃÂ ÃÂÃÂÃÂ ÃÂÃÂ¨ÃÂ ÃÂ©ÃÂÃÂÃÂ",
+    "title": "ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂ©ÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0010.mp3",
     "date": "2025-01-27T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâãâ¢ãâãâãâ ãâãâãâ ãâãâãâ ãâãâ¨ãâ ãâ©ãâãâãâ"
+    "title_lc": "ãâãâãâãâ¢ãâãâãâãâãâãâ ãâãâãâãâãâãâ ãâãâãâãâãâãâ ãâãâãâãâ¨ãâãâ ãâãâ©ãâãâãâãâãâãâ"
   },
   {
     "id": "one-56",
@@ -623,11 +633,11 @@
     "id": "one-57",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂªÃÂÃÂÃÂÃÂ ÃÂªÃÂÃÂ¨ÃÂ ÃÂÃÂ ÃÂÃÂ ÃÂÃÂÃÂÃÂ ?",
+    "title": "ÃÂÃÂªÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂªÃÂÃÂÃÂÃÂ¨ÃÂÃÂ ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ?",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0019.mp3",
     "date": "2025-01-30T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâªãâãâãâãâ ãâªãâãâ¨ãâ ãâãâ ãâãâ ãâãâãâãâ ?"
+    "title_lc": "ãâãâªãâãâãâãâãâãâãâãâ ãâãâªãâãâãâãâ¨ãâãâ ãâãâãâãâ ãâãâãâãâ ãâãâãâãâãâãâãâãâ ?"
   },
   {
     "id": "one-58",
@@ -703,11 +713,11 @@
     "id": "one-65",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂÃÂÃÂÃÂ¨ ÃÂ©ÃÂ§ÃÂ¨ ÃÂªÃÂ¨ÃÂÃÂ§",
+    "title": "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¨ ÃÂÃÂ©ÃÂÃÂ§ÃÂÃÂ¨ ÃÂÃÂªÃÂÃÂ¨ÃÂÃÂÃÂÃÂ§",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250217-WA0097.mp3",
     "date": "2025-02-18T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâãâãâãâ¨ ãâ©ãâ§ãâ¨ ãâªãâ¨ãâãâ§"
+    "title_lc": "ãâãâãâãâãâãâãâãâ¨ ãâãâ©ãâãâ§ãâãâ¨ ãâãâªãâãâ¨ãâãâãâãâ§"
   },
   {
     "id": "one-66",
@@ -873,21 +883,21 @@
     "id": "one-82",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂ",
+    "title": "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0037.mp3",
     "date": "2025-03-31T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâãâãâãâãâ ãâãâãâ"
+    "title_lc": "ãâãâãâãâãâãâãâãâãâãâ ãâãâãâãâãâãâ"
   },
   {
     "id": "one-83",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂ§ÃÂÃÂ© - Connecting to Hashem",
+    "title": "ÃÂÃÂ§ÃÂÃÂÃÂÃÂ© - Connecting to Hashem",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0046.mp3",
     "date": "2025-04-01T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâ§ãâãâ© - connecting to hashem"
+    "title_lc": "ãâãâ§ãâãâãâãâ© - connecting to hashem"
   },
   {
     "id": "one-84",
@@ -923,21 +933,21 @@
     "id": "one-87",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂ¦ÃÂ ÃÂÃÂÃÂÃÂ",
+    "title": "ÃÂÃÂ¦ÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0049.mp3",
     "date": "2025-04-08T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâ¦ãâ ãâãâãâãâ"
+    "title_lc": "ãâãâ¦ãâãâ ãâãâãâãâãâãâãâãâ"
   },
   {
     "id": "one-88",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂÃÂ©ÃÂ ÃÂ ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂ¨ÃÂÃÂ©ÃÂÃÂÃÂ ÃÂÃÂÃÂ ÃÂÃÂÃÂ",
+    "title": "ÃÂÃÂÃÂÃÂ©ÃÂÃÂ ÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂÃÂÃÂ©ÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0048.mp3",
     "date": "2025-04-10T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâãâ©ãâ ãâ ãâãâãâãâ ãâãâãâ¨ãâãâ©ãâãâãâ ãâãâãâ ãâãâãâ"
+    "title_lc": "ãâãâãâãâ©ãâãâ ãâãâ ãâãâãâãâãâãâãâãâ ãâãâãâãâãâãâ¨ãâãâãâãâ©ãâãâãâãâãâãâ ãâãâãâãâãâãâ ãâãâãâãâãâãâ"
   },
   {
     "id": "one-89",
@@ -963,41 +973,41 @@
     "id": "one-91",
     "program": "One-Minute",
     "type": "audio",
-    "title": "Experiencing the ÃÂÃÂÃÂÃÂÃÂ",
+    "title": "Experiencing the ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250430-WA0089.mp3",
     "date": "2025-05-01T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "experiencing the ãâãâãâãâãâ"
+    "title_lc": "experiencing the ãâãâãâãâãâãâãâãâãâãâ"
   },
   {
     "id": "one-92",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂªÃÂÃÂ§ÃÂ",
+    "title": "ÃÂÃÂªÃÂÃÂÃÂÃÂ§ÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250504-WA0022.mp3",
     "date": "2025-05-05T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâªãâãâ§ãâ"
+    "title_lc": "ãâãâªãâãâãâãâ§ãâãâ"
   },
   {
     "id": "one-93",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂÃÂ ÃÂÃÂ©ÃÂ¨ÃÂÃÂ...ÃÂÃÂ¢ÃÂÃÂ ÃÂÃÂÃÂÃÂ ÃÂ¦ÃÂÃÂÃÂ§ÃÂÃÂ",
+    "title": "ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂ©ÃÂÃÂ¨ÃÂÃÂÃÂÃÂ...ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250504-WA0056.mp3",
     "date": "2025-05-06T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâãâ ãâãâ©ãâ¨ãâãâ...ãâãâ¢ãâãâ ãâãâãâãâ ãâ¦ãâãâãâ§ãâãâ"
+    "title_lc": "ãâãâãâãâ ãâãâãâãâ©ãâãâ¨ãâãâãâãâ...ãâãâãâãâ¢ãâãâãâãâ ãâãâãâãâãâãâãâãâ ãâãâ¦ãâãâãâãâãâãâ§ãâãâãâãâ"
   },
   {
     "id": "one-94",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂ§ÃÂÃÂ©ÃÂÃÂ ÃÂªÃÂÃÂÃÂÃÂ",
+    "title": "ÃÂÃÂ§ÃÂÃÂÃÂÃÂ©ÃÂÃÂÃÂÃÂ ÃÂÃÂªÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250506-WA0068.mp3",
     "date": "2025-05-07T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâ§ãâãâ©ãâãâ ãâªãâãâãâãâ"
+    "title_lc": "ãâãâ§ãâãâãâãâ©ãâãâãâãâ ãâãâªãâãâãâãâãâãâãâãâ"
   },
   {
     "id": "one-95",
@@ -1043,21 +1053,21 @@
     "id": "one-99",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂÃÂ ÃÂÃÂÃÂ",
+    "title": "ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250525-WA0114.mp3",
     "date": "2025-05-26T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâãâ ãâãâãâ"
+    "title_lc": "ãâãâãâãâ ãâãâãâãâãâãâ"
   },
   {
     "id": "one-100",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂ¢ÃÂÃÂ©ÃÂ ÃÂ©ÃÂÃÂÃÂ ÃÂÃÂÃÂ¨ÃÂ¥",
+    "title": "ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ©ÃÂÃÂ ÃÂÃÂ©ÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂ¥",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250527-WA0116.mp3",
     "date": "2025-05-28T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâ¢ãâãâ©ãâ ãâ©ãâãâãâ ãâãâãâ¨ãâ¥"
+    "title_lc": "ãâãâ¢ãâãâãâãâ©ãâãâ ãâãâ©ãâãâãâãâãâãâ ãâãâãâãâãâãâ¨ãâãâ¥"
   },
   {
     "id": "one-101",
@@ -1173,11 +1183,11 @@
     "id": "one-112",
     "program": "One-Minute",
     "type": "audio",
-    "title": "Our path to ÃÂ¢ÃÂÃÂÃÂ ÃÂÃÂÃÂ",
+    "title": "Our path to ÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250626-WA0088.mp3",
     "date": "2025-07-02T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "our path to ãâ¢ãâãâãâ ãâãâãâ"
+    "title_lc": "our path to ãâãâ¢ãâãâãâãâãâãâ ãâãâãâãâãâãâ"
   },
   {
     "id": "one-113",
@@ -1203,11 +1213,11 @@
     "id": "one-115",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂÃÂÃÂÃÂÃÂªÃÂ ÃÂÃÂ¨ÃÂ¢ÃÂ ÃÂ§ÃÂÃÂÃÂ",
+    "title": "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂªÃÂÃÂ ÃÂÃÂÃÂÃÂ¨ÃÂÃÂ¢ÃÂÃÂ ÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250706-WA0014.mp3",
     "date": "2025-07-08T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâãâãâãâãâªãâ ãâãâ¨ãâ¢ãâ ãâ§ãâãâãâ"
+    "title_lc": "ãâãâãâãâãâãâãâãâãâãâªãâãâ ãâãâãâãâ¨ãâãâ¢ãâãâ ãâãâ§ãâãâãâãâãâãâ"
   },
   {
     "id": "one-116",
@@ -1433,11 +1443,11 @@
     "id": "one-138",
     "program": "One-Minute",
     "type": "audio",
-    "title": "What is your ÃÂÃÂÃÂÃÂ?",
+    "title": "What is your ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ?",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250902-WA0007.mp3",
     "date": "2025-09-03T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "what is your ãâãâãâãâ?"
+    "title_lc": "what is your ãâãâãâãâãâãâãâãâ?"
   },
   {
     "id": "one-139",
@@ -1483,11 +1493,11 @@
     "id": "one-143",
     "program": "One-Minute",
     "type": "audio",
-    "title": "Be ÃÂªÃÂÃÂÃÂ",
+    "title": "Be ÃÂÃÂªÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250907-WA0051.mp3",
     "date": "2025-09-16T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "be ãâªãâãâãâ"
+    "title_lc": "be ãâãâªãâãâãâãâãâãâ"
   },
   {
     "id": "one-144",
@@ -1513,11 +1523,11 @@
     "id": "one-146",
     "program": "One-Minute",
     "type": "audio",
-    "title": "Be a ÃÂÃÂ ÃÂÃÂÃÂ¨ÃÂÃÂ not a ÃÂÃÂ ÃÂ ÃÂ",
+    "title": "Be a ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂ¨ÃÂÃÂÃÂÃÂ not a ÃÂÃÂÃÂÃÂ ÃÂÃÂ ÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251019-WA0037.mp3",
     "date": "2025-10-21T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "be a ãâãâ ãâãâãâ¨ãâãâ not a ãâãâ ãâ ãâ"
+    "title_lc": "be a ãâãâãâãâ ãâãâãâãâãâãâ¨ãâãâãâãâ not a ãâãâãâãâ ãâãâ ãâãâ"
   },
   {
     "id": "one-147",
@@ -1733,11 +1743,11 @@
     "id": "one-168",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂÃÂÃÂÃÂ© ÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂ",
+    "title": "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251223-WA0030.mp3",
     "date": "2025-12-23T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâãâãâãâ© ãâãâãâãâ ãâãâãâãâãâ"
+    "title_lc": "ãâãâãâãâãâãâãâãâ© ãâãâãâãâãâãâãâãâ ãâãâãâãâãâãâãâãâãâãâ"
   },
   {
     "id": "one-169",
@@ -2203,11 +2213,11 @@
     "id": "one-215",
     "program": "One-Minute",
     "type": "audio",
-    "title": "Did we really mean it when we said ÃÂÃÂ·ÃÂ¼ÃÂÃÂµÃÂ¼ÃÂ ÃÂÃÂ¼?",
+    "title": "Did we really mean it when we said ÃÂÃÂÃÂÃÂ·ÃÂÃÂ¼ÃÂÃÂÃÂÃÂµÃÂÃÂ¼ÃÂÃÂ ÃÂÃÂÃÂÃÂ¼?",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260422-WA0035.mp3",
     "date": "2026-04-22T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "did we really mean it when we said ãâãâ·ãâ¼ãâãâµãâ¼ãâ ãâãâ¼?"
+    "title_lc": "did we really mean it when we said ãâãâãâãâ·ãâãâ¼ãâãâãâãâµãâãâ¼ãâãâ ãâãâãâãâ¼?"
   },
   {
     "id": "one-216",
@@ -2373,11 +2383,11 @@
     "id": "one-232",
     "program": "One-Minute",
     "type": "audio",
-    "title": "ÃÂ§ÃÂÃÂ¹ÃÂ ÃÂµÃÂ ÃÂÃÂ·ÃÂÃÂ¼ÃÂ¹ÃÂ",
+    "title": "ÃÂÃÂ§ÃÂÃÂÃÂÃÂ¹ÃÂÃÂ ÃÂÃÂµÃÂÃÂ ÃÂÃÂÃÂÃÂ·ÃÂÃÂÃÂÃÂ¼ÃÂÃÂ¹ÃÂÃÂ",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260615-WA0031.mp3",
     "date": "2026-06-15T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "ãâ§ãâãâ¹ãâ ãâµãâ ãâãâ·ãâãâ¼ãâ¹ãâ"
+    "title_lc": "ãâãâ§ãâãâãâãâ¹ãâãâ ãâãâµãâãâ ãâãâãâãâ·ãâãâãâãâ¼ãâãâ¹ãâãâ"
   },
   {
     "id": "one-233",
