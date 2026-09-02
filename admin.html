@@ -309,7 +309,8 @@ document.getElementById('commitBtn').addEventListener('click', function() {
   })
   .then(function(meta) {
     var sha = meta.sha;
-    var current = JSON.parse(atob(meta.content.replace(/\n/g, '')));
+    var raw = atob(meta.content.replace(/\n/g, ''));
+    var current = JSON.parse(decodeURIComponent(escape(raw)));
     var updated;
 
     if (currentTab === 'infographics') {
