@@ -37,6 +37,13 @@
       "date": "2026-09-01T00:00:00.000Z"
     },
     {
+      "type": "video",
+      "program": "Parsha",
+      "title": "More than just a thank you",
+      "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs",
+      "date": "2026-08-28T02:21:19Z"
+    },
+    {
       "type": "audio",
       "program": "One-Minute",
       "title": "The shofar is not magic",
@@ -48,13 +55,6 @@
       "program": "Halacha",
       "title": "Whispering the Tochecha",
       "url": "https://www.buzzsprout.com/1899789/episodes/19706343-8-26-2026-shloimy-zelcer-whispering-the-tochecha.mp3",
-      "date": "2026-08-26T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Acknowledge the good people",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260826-WA0013.mp3",
       "date": "2026-08-26T00:00:00.000Z"
     }
   ],
