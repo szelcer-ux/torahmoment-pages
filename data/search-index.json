@@ -6228,5 +6228,15 @@
     "date": "2026-08-26T00:00:00.000Z",
     "page": "/parsha.html",
     "title_lc": "parshas ki savo overview"
+  },
+  {
+    "id": "ov-nitzavim---vayeilech-overview",
+    "program": "Parsha Overview",
+    "type": "audio",
+    "title": "Parshios Nitzavim / Vayeilech overview",
+    "url": "https://torahmoment.com/audio/Nitzavimvayeilechoverview.mp3",
+    "date": "2026-09-02T00:00:00.000Z",
+    "page": "/parsha.html",
+    "title_lc": "parshios nitzavim / vayeilech overview"
   }
 ]
