@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "August 22–28, 2026",
-  "generatedAt": "2026-08-28T21:09:40.780Z",
-  "totalItems": 6,
+  "rangeLabel": "August 29, 2026–September 4, 2026",
+  "generatedAt": "2026-09-04T14:09:02.775Z",
+  "totalItems": 4,
   "featured": {
-    "id": "par-4fGyqb7tUQs",
-    "title": "More than just a thank you",
+    "id": "par-yirY8s5pgUo",
+    "title": "Always be growing",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-08-28T02:21:19Z",
+    "date": "2026-09-04T02:17:52Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs"
+    "url": "https://www.youtube.com/watch?v=yirY8s5pgUo"
   },
   "groups": [
     {
@@ -17,37 +17,22 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-4fGyqb7tUQs",
-          "title": "More than just a thank you",
+          "id": "par-yirY8s5pgUo",
+          "title": "Always be growing",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-08-28T02:21:19Z",
+          "date": "2026-09-04T02:17:52Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs"
+          "url": "https://www.youtube.com/watch?v=yirY8s5pgUo"
         },
         {
-          "id": "ov-ki-savo",
-          "title": "Parshas Ki Savo overview",
+          "id": "ov-nitzavim---vayeilech-overview",
+          "title": "Parshios Nitzavim / Vayeilech overview",
           "program": "Parsha Overview",
           "type": "audio",
-          "date": "2026-08-26T00:00:00.000Z",
+          "date": "2026-09-02T00:00:00.000Z",
           "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/KiSavoOverview.mp3"
-        }
-      ]
-    },
-    {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
-      "items": [
-        {
-          "id": "hal-11",
-          "title": "Whispering the Tochecha",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-08-26T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19706343-8-26-2026-shloimy-zelcer-whispering-the-tochecha.mp3"
+          "url": "https://torahmoment.com/audio/Nitzavimvayeilechoverview.mp3"
         }
       ]
     },
@@ -57,30 +42,21 @@
       "items": [
         {
           "id": "one-0",
-          "title": "The shofar is not magic",
+          "title": "Clean slate",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-08-27T00:00:00.000Z",
+          "date": "2026-09-02T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260827-WA0005.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260902-WA0025.mp3"
         },
         {
           "id": "one-1",
-          "title": "Acknowledge the good people",
+          "title": "The small things add up",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-08-26T00:00:00.000Z",
+          "date": "2026-09-01T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260826-WA0013.mp3"
-        },
-        {
-          "id": "one-2",
-          "title": "Secret curses",
-          "program": "One-Minute",
-          "type": "audio",
-          "date": "2026-08-25T00:00:00.000Z",
-          "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260825-WA0012.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3"
         }
       ]
     }
