@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 791,
+    "total": 792,
     "breakdown": {
       "parsha": {
         "audio": 31,
-        "video": 241
+        "video": 242
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-09-03"
+    "updated": "2026-09-04"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Always be growing",
+      "url": "https://www.youtube.com/watch?v=yirY8s5pgUo",
+      "date": "2026-09-04T02:17:52Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "The shofar is not magic",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260827-WA0005.mp3",
       "date": "2026-08-27T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Whispering the Tochecha",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19706343-8-26-2026-shloimy-zelcer-whispering-the-tochecha.mp3",
-      "date": "2026-08-26T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Always be growing",
+        "url": "https://www.youtube.com/watch?v=yirY8s5pgUo",
+        "date": "2026-09-04T02:17:52Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "More than just a thank you",
         "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs",
         "date": "2026-08-28T02:21:19Z"
@@ -266,13 +273,6 @@
         "title": "A way in, not a way out",
         "url": "https://www.youtube.com/watch?v=lNPbQlOc3f8",
         "date": "2026-07-03T02:56:34Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Holiness begins with honesty",
-        "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY",
-        "date": "2026-06-26T02:42:24Z"
       }
     ]
   }
