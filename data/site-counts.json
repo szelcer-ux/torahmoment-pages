@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 792,
+    "total": 793,
     "breakdown": {
       "parsha": {
         "audio": 31,
@@ -13,7 +13,7 @@
         "totalAll": 101
       },
       "oneMinute": {
-        "audio": 261
+        "audio": 262
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-09-07"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "In memory of my rebbi on his 2nd yahrtzeit",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260907-WA0008.mp3",
+      "date": "2026-09-07T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,17 +56,17 @@
       "title": "More than just a thank you",
       "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs",
       "date": "2026-08-28T02:21:19Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "The shofar is not magic",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260827-WA0005.mp3",
-      "date": "2026-08-27T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "In memory of my rebbi on his 2nd yahrtzeit",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260907-WA0008.mp3",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "You're not the exception",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0009.mp3",
         "date": "2026-08-12T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Dont be so stubborn",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0010.mp3",
-        "date": "2026-08-11T00:00:00.000Z"
       }
     ],
     "halacha": [
