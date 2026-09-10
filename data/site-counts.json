@@ -44,18 +44,18 @@
       "date": "2026-09-07T00:00:00.000Z"
     },
     {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Always be growing",
-      "url": "https://www.youtube.com/watch?v=yirY8s5pgUo",
-      "date": "2026-09-04T02:17:52Z"
-    },
-    {
       "type": "audio",
       "program": "One-Minute",
       "title": "Clean slate",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260902-WA0025.mp3",
       "date": "2026-09-02T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "The small things add up",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3",
+      "date": "2026-09-01T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
