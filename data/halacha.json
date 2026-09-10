@@ -226,16 +226,17 @@
       {
         "name": "Elul/Tishrei",
         "items": [
-          {
-            "type": "audio",
-            "title": "Is it SO BAD for Rosh Hashana to fall out on Shabbos?",
-            "url": "https://www.buzzsprout.com/1899789/episodes/19785608-9-10-2026-shloimy-zelcer-is-it-so-bad-for-rosh-hashana-to-fall-out-on-shabbos.mp3",
-            "note": "9/10/2026"
-          },
+         
           {
             "type": "note",
             "noteStyle": "divider",
             "text": "Rosh Hashana"
+          },
+           {
+            "type": "audio",
+            "title": "Is it SO BAD for Rosh Hashana to fall out on Shabbos?",
+            "url": "https://www.buzzsprout.com/1899789/episodes/19785608-9-10-2026-shloimy-zelcer-is-it-so-bad-for-rosh-hashana-to-fall-out-on-shabbos.mp3",
+            "note": "9/10/2026"
           },
           {
             "type": "audio",
