@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 794,
+    "total": 795,
     "breakdown": {
       "parsha": {
         "audio": 31,
@@ -13,7 +13,7 @@
         "totalAll": 101
       },
       "oneMinute": {
-        "audio": 263
+        "audio": 264
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-09-10"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Wake up",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3",
+      "date": "2026-09-10T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "Clean slate",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260902-WA0025.mp3",
       "date": "2026-09-02T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "The small things add up",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3",
-      "date": "2026-09-01T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Wake up",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3",
+        "date": "2026-09-10T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Individual accountability",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260818-WA0017.mp3",
         "date": "2026-08-18T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Pay on time",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260817-WA0037.mp3",
-        "date": "2026-08-17T00:00:00.000Z"
       }
     ],
     "halacha": [
