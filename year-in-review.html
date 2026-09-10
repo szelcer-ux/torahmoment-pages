@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Year in Review | TorahMoment</title>
+  <meta name="description" content="All TorahMoment shiurim by Jewish year — grouped by program." />
+  <meta property="og:title" content="Year in Review — TorahMoment" />
+  <meta property="og:image" content="https://torahmoment.com/images/og-default.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XEKR855EWG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XEKR855EWG');
+  </script>
+
+  <style>
+    :root {
+      --bg: #f7f7f8;
+      --card: #fff;
+      --text: #111;
+      --muted: #666;
+      --border: #e7e7ee;
+      --accent: #0d9488;
+      --shadow: 0 4px 16px rgba(0,0,0,.06);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+
+    /* Topbar */
+    .tm-topbar { width: 100%; background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 4px rgba(0,0,0,.05); }
+    .tm-topbar-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; height: 46px; position: relative; }
+    .tm-topbar-inner::-webkit-scrollbar { display: none; }
+    .tm-topbar a, .tm-topbar a:visited { text-decoration: none; color: var(--muted); font-size: 13.5px; font-weight: 500; white-space: nowrap; padding: 0 11px; height: 46px; display: inline-flex; align-items: center; border-bottom: 2px solid transparent; }
+    .tm-topbar a:hover { color: var(--text); }
+    .tm-topbar a.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+    .tm-topbar a + a { border-left: 1px solid rgba(0,0,0,.06); margin-left: 4px; padding-left: 11px; }
+    .tm-topbar .home-link { padding: 0 12px 0 0; border-right: 1px solid var(--border); margin-right: 6px; border-bottom: none !important; display: flex; align-items: center; }
+    .tm-topbar .home-link svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    .wrap { max-width: 900px; margin: 0 auto; padding: 22px 20px 48px; }
+
+    /* Hero */
+    .hero { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 22px; margin-bottom: 18px; }
+    .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .hero h1 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; letter-spacing: -.02em; margin-bottom: 6px; }
+    .hero-sub { font-size: .95rem; color: var(--muted); }
+
+    /* Year picker */
+    .year-picker { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+    .year-btn { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); transition: .15s; }
+    .year-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .year-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* Summary bar */
+    .summary { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+    .summary-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .summary-count { font-size: 13px; color: var(--muted); }
+    .summary-total { font-size: 22px; font-weight: 700; color: var(--accent); }
+
+    /* Program groups */
+    .groups { display: flex; flex-direction: column; gap: 16px; }
+    .group { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .group-head { padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: space-between; }
+    .group-title { font-size: 13px; font-weight: 700; }
+    .group-count { font-size: 12px; color: var(--muted); }
+    .group-list { display: flex; flex-direction: column; }
+
+    /* Shiur rows */
+    .shiur-row { padding: 11px 16px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .shiur-row:first-child { border-top: none; }
+    .shiur-info { flex: 1; min-width: 0; }
+    .shiur-title { font-size: 13.5px; font-weight: 500; color: var(--text); line-height: 1.3; }
+    .shiur-date { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .shiur-link { font-size: 12px; font-weight: 600; color: var(--accent); text-decoration: none; white-space: nowrap; border: 1px solid rgba(13,148,136,.3); border-radius: 999px; padding: 4px 10px; flex-shrink: 0; }
+    .shiur-link:hover { background: rgba(13,148,136,.08); }
+
+
+
+    .empty { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-align: center; color: var(--muted); font-size: 14px; }
+    .loading { text-align: center; color: var(--muted); padding: 32px; font-size: 14px; }
+
+    @media (max-width: 600px) {
+      .wrap { padding: 16px 14px 40px; }
+
+    }
+  </style>
+</head>
+<body>
+
+<div class="tm-topbar">
+  <div class="tm-topbar-inner">
+    <a href="https://torahmoment.com" aria-label="Home" class="home-link">
+      <svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>
+    </a>
+    <a href="https://torahmoment.com/parsha.html">Parsha</a>
+    <a href="https://torahmoment.com/halacha.html">Halacha</a>
+    <a href="https://torahmoment.com/one-minute-audio.html">One Minute</a>
+    <a href="https://torahmoment.com/Practical_Cases_Index.html">Hilchos Shabbos</a>
+    <a href="https://torahmoment.com/about.html">About</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-eyebrow">📅 Year in Review</div>
+    <h1>Shiurim by Jewish Year</h1>
+    <p class="hero-sub">Every shiur recorded, grouped by program and ordered by date.</p>
+  </div>
+
+  <div class="year-picker" id="yearPicker"></div>
+
+  <div class="summary" id="summary" style="display:none;">
+    <div>
+      <div class="summary-label">Total this year</div>
+      <div class="summary-total" id="totalCount">—</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="summary-label">Jewish year</div>
+      <div id="yearLabel" style="font-size:13px;color:var(--muted);"></div>
+    </div>
+  </div>
+
+  <div id="content"><div class="loading">Loading…</div></div>
+
+</div>
+
+<script>
+var JEWISH_YEARS = [
+  { eng: '5784', heb: 'תשפ״ד', start: '2023-09-16', end: '2024-10-02' },
+  { eng: '5785', heb: 'תשפ״ה', start: '2024-10-03', end: '2025-09-21' },
+  { eng: '5786', heb: 'תשפ״ו', start: '2025-09-22', end: '2026-09-10' },
+  { eng: '5787', heb: 'תשפ״ז', start: '2026-09-11', end: '2027-09-30' },
+];
+
+// Determine current Jewish year
+var now = new Date();
+var currentYear = JEWISH_YEARS.find(function(y) {
+  return now >= new Date(y.start) && now <= new Date(y.end);
+}) || JEWISH_YEARS[JEWISH_YEARS.length - 1];
+
+var allItems = [];
+var selectedYear = currentYear;
+
+// Program display order and labels
+var PROGRAM_ORDER = ['Parsha Overview', 'Parsha', 'Halacha', 'One-Minute', 'Mishna', 'Tefila'];
+var PROGRAM_ICONS = { 'Parsha': '📖', 'Halacha': '📚', 'One-Minute': '⏱️', 'Mishna': '📜', 'Tefila': '🕍', 'Parsha Overview': '🗺️' };
+
+// Audio types
+var AUDIO_TYPES = ['audio', 'audio-extra', 'parsha-audio'];
+var VIDEO_TYPES = ['video'];
+
+function fmtDate(iso) {
+  if (!iso) return '';
+  var d = new Date(iso);
+  return isNaN(d) ? '' : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+// ── Year picker ──
+var picker = document.getElementById('yearPicker');
+JEWISH_YEARS.forEach(function(y) {
+  var btn = document.createElement('button');
+  btn.className = 'year-btn' + (y.eng === currentYear.eng ? ' active' : '');
+  btn.textContent = y.eng + ' · ' + y.heb;
+  btn.addEventListener('click', function() {
+    selectedYear = y;
+    document.querySelectorAll('.year-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    render();
+  });
+  picker.appendChild(btn);
+});
+
+// ── Load data ──
+fetch('/data/search-index.json', { cache: 'no-store' })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    allItems = data || [];
+    render();
+  })
+  .catch(function() {
+    document.getElementById('content').innerHTML = '<div class="empty">Could not load shiurim.</div>';
+  });
+
+// ── Render ──
+function render() {
+  var start = new Date(selectedYear.start);
+  var end = new Date(selectedYear.end + 'T23:59:59');
+
+  var items = allItems.filter(function(x) {
+    if (!x.date) return false;
+    var d = new Date(x.date);
+    return d >= start && d <= end;
+  });
+
+  // Update summary
+  document.getElementById('summary').style.display = '';
+  document.getElementById('totalCount').textContent = items.length;
+  document.getElementById('yearLabel').textContent = selectedYear.eng + ' · ' + selectedYear.heb + ' (' + fmtDate(selectedYear.start) + ' – ' + fmtDate(selectedYear.end) + ')';
+
+  if (!items.length) {
+    document.getElementById('content').innerHTML = '<div class="empty">No shiurim found for ' + selectedYear.eng + ' · ' + selectedYear.heb + '</div>';
+    return;
+  }
+
+  // Group by program
+  var groups = {};
+  items.forEach(function(item) {
+    var prog = item.program || 'Other';
+    if (!groups[prog]) groups[prog] = [];
+    groups[prog].push(item);
+  });
+
+  // Sort each group by date desc
+  Object.keys(groups).forEach(function(prog) {
+    groups[prog].sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
+  });
+
+  // Sort programs
+  var progKeys = Object.keys(groups).sort(function(a, b) {
+    var ai = PROGRAM_ORDER.indexOf(a);
+    var bi = PROGRAM_ORDER.indexOf(b);
+    if (ai === -1) ai = 99;
+    if (bi === -1) bi = 99;
+    return ai - bi;
+  });
+
+  var html = progKeys.map(function(prog) {
+    var progItems = groups[prog];
+    var icon = PROGRAM_ICONS[prog] || '📄';
+    var rows = progItems.map(function(item) {
+      var isAudio = AUDIO_TYPES.indexOf(item.type) > -1;
+      var isVideo = VIDEO_TYPES.indexOf(item.type) > -1;
+      var dateStr = fmtDate(item.date);
+
+      if (isVideo) {
+        return '<div class="shiur-row">' +
+          '<div class="shiur-info">' +
+            '<div class="shiur-title">' + esc(item.title) + '</div>' +
+            (dateStr ? '<div class="shiur-date">' + dateStr + '</div>' : '') +
+          '</div>' +
+          (item.url ? '<a class="shiur-link" href="' + esc(item.url) + '" target="_blank" rel="noopener">Watch ↗</a>' : '') +
+        '</div>';
+      }
+
+      if (isAudio) {
+        var playerHref = item.id ? '/player.html?id=' + encodeURIComponent(item.id) : (item.url ? '/player.html' : '#');
+        return '<div class="shiur-row">' +
+          '<div class="shiur-info">' +
+            '<div class="shiur-title">' + esc(item.title) + '</div>' +
+            (dateStr ? '<div class="shiur-date">' + dateStr + '</div>' : '') +
+          '</div>' +
+          '<a class="shiur-link" href="' + playerHref + '">▶ Play</a>' +
+        '</div>';
+      }
+
+      return '';
+    }).join('');
+
+    return '<div class="group">' +
+      '<div class="group-head">' +
+        '<div class="group-title">' + icon + ' ' + esc(prog) + '</div>' +
+        '<div class="group-count">' + progItems.length + ' shiur' + (progItems.length === 1 ? '' : 'im') + '</div>' +
+      '</div>' +
+      '<div class="group-list">' + rows + '</div>' +
+    '</div>';
+  }).join('');
+
+  document.getElementById('content').innerHTML = '<div class="groups">' + html + '</div>';
+}
+
+
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Active nav
+(function() {
+  var links = document.querySelectorAll('.tm-topbar a[href]:not(.home-link)');
+  var current = (location.pathname || '/').replace(/\/+$/, '') || '/';
+  links.forEach(function(a) {
+    var lp = (new URL(a.href, location.href).pathname || '/').replace(/\/+$/, '') || '/';
+    if (lp === current) a.classList.add('active');
+  });
+})();
+</script>
+
+</body>
+</html>
