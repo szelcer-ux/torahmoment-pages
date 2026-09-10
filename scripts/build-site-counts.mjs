@@ -114,8 +114,8 @@ async function readHalachaTotalAllFromDom(page) {
   // 1) One-Minute JSON
   let oneMinItems = [];
   try {
-    const res = await fetch(`http://127.0.0.1:${PORT}/data.json`);
-    const oneMin = await res.json();
+    const { readFileSync } = await import("node:fs");
+    const oneMin = JSON.parse(readFileSync("./data.json","utf8"));
     oneMinItems = Array.isArray(oneMin)?oneMin:oneMin.items||[];
   } catch(e) { console.warn("One-Minute data.json failed:", String(e)); }
 
@@ -184,8 +184,8 @@ async function readHalachaTotalAllFromDom(page) {
   // 4) Recents
   let recentHalacha=[], recentOneMin=[];
   try {
-    await page.goto(`http://127.0.0.1:${PORT}/halacha.html`,{waitUntil:"load"});
-    const halachaData = await page.evaluate(()=>{ if(window.HALACHA_DATA) return window.HALACHA_DATA; if(typeof PAGE_DATA!=="undefined") return PAGE_DATA; return null; });
+    const { readFileSync } = await import("node:fs");
+    const halachaData = JSON.parse(readFileSync("./data/halacha.json","utf8"));
     recentHalacha = flattenHalacha(halachaData);
   } catch(e) { console.warn("Recent Halacha failed:", String(e)); }
 
@@ -218,10 +218,10 @@ async function readHalachaTotalAllFromDom(page) {
   // 6) Write search-index.json
   let allHalacha=[];
   try {
-    await page.goto(`http://127.0.0.1:${PORT}/halacha.html`,{waitUntil:"load"});
-    const halachaData = await page.evaluate(()=>{ if(window.HALACHA_DATA) return window.HALACHA_DATA; if(typeof PAGE_DATA!=="undefined") return PAGE_DATA; return null; });
+    const { readFileSync } = await import("node:fs");
+    const halachaData = JSON.parse(readFileSync("./data/halacha.json","utf8"));
     allHalacha=flattenHalacha(halachaData);
-    console.log("FOUND in allHalacha?", allHalacha.some(x=>x.title==="The risk of NOT saying Hallel on Yom Haatzmaut"));
+    console.log("Halacha items loaded from file:", allHalacha.length);
   } catch(e) { console.warn("Halacha index build failed:", String(e)); }
 
   // Read PARSHA_OVERVIEW from parsha page
