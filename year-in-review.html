@@ -135,9 +135,9 @@
 <script>
 var JEWISH_YEARS = [
   { eng: '5784', heb: 'תשפ״ד', start: '2023-09-16', end: '2024-10-02' },
-  { eng: '5785', heb: 'תשפ״ה', start: '2024-10-03', end: '2025-09-21' },
-  { eng: '5786', heb: 'תשפ״ו', start: '2025-09-22', end: '2026-09-10' },
-  { eng: '5787', heb: 'תשפ״ז', start: '2026-09-11', end: '2027-09-30' },
+  { eng: '5785', heb: 'תשפ״ה', start: '2024-10-03', end: '2025-09-22' },
+  { eng: '5786', heb: 'תשפ״ו', start: '2025-09-23', end: '2026-09-11' },
+  { eng: '5787', heb: 'תשפ״ז', start: '2026-09-12', end: '2027-10-02' },
 ];
 
 // Determine current Jewish year
@@ -251,7 +251,14 @@ function render() {
       }
 
       if (isAudio) {
-        var playerHref = item.id ? '/player.html?id=' + encodeURIComponent(item.id) : (item.url ? '/player.html' : '#');
+        var playerHref = '#';
+        if (item.url) {
+          try {
+            var pathname = new URL(item.url).pathname;
+            var filename = pathname.split('/').pop().replace(/\.mp3$/i, '');
+            playerHref = '/player.html?file=' + encodeURIComponent(filename);
+          } catch(e) {}
+        }
         return '<div class="shiur-row">' +
           '<div class="shiur-info">' +
             '<div class="shiur-title">' + esc(item.title) + '</div>' +
