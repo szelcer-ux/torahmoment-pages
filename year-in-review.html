@@ -83,6 +83,13 @@
 
 
 
+    /* Collapsible groups */
+    .group-head { cursor: pointer; user-select: none; }
+    .group-head:hover { background: #f0f0f2; }
+    .group-toggle { font-size: 12px; color: var(--muted); margin-left: 8px; transition: transform .2s; display: inline-block; }
+    .group.collapsed .group-toggle { transform: rotate(-90deg); }
+    .group.collapsed .group-list { display: none; }
+
     .empty { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-align: center; color: var(--muted); font-size: 14px; }
     .loading { text-align: center; color: var(--muted); padding: 32px; font-size: 14px; }
 
@@ -150,7 +157,7 @@ var allItems = [];
 var selectedYear = currentYear;
 
 // Program display order and labels
-var PROGRAM_ORDER = ['Parsha Overview', 'Parsha', 'Halacha', 'One-Minute', 'Mishna', 'Tefila'];
+var PROGRAM_ORDER = ['Parsha', 'Parsha Overview', 'Halacha', 'One-Minute', 'Mishna', 'Tefila'];
 var PROGRAM_ICONS = { 'Parsha': '📖', 'Halacha': '📚', 'One-Minute': '⏱️', 'Mishna': '📜', 'Tefila': '🕍', 'Parsha Overview': '🗺️' };
 
 // Audio types
@@ -272,8 +279,8 @@ function render() {
     }).join('');
 
     return '<div class="group">' +
-      '<div class="group-head">' +
-        '<div class="group-title">' + icon + ' ' + esc(prog) + '</div>' +
+      '<div class="group-head" onclick="toggleGroup(this)">' +
+        '<div class="group-title">' + icon + ' ' + esc(prog) + '<span class="group-toggle">▾</span></div>' +
         '<div class="group-count">' + progItems.length + ' shiur' + (progItems.length === 1 ? '' : 'im') + '</div>' +
       '</div>' +
       '<div class="group-list">' + rows + '</div>' +
@@ -284,6 +291,11 @@ function render() {
 }
 
 
+
+function toggleGroup(head) {
+  var group = head.closest('.group');
+  group.classList.toggle('collapsed');
+}
 
 function esc(s) {
   return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
