@@ -90,6 +90,42 @@
     .group.collapsed .group-toggle { transform: rotate(-90deg); }
     .group.collapsed .group-list { display: none; }
 
+    /* Print button */
+    .print-btn {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .print-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Print styles */
+    @media print {
+      .tm-topbar, .hero, .year-picker, .print-btn, .shiur-link, .group-toggle { display: none !important; }
+      body { background: #fff; font-size: 11pt; }
+      .wrap { padding: 0; max-width: 100%; }
+      .summary { margin-bottom: 12pt; border-bottom: 1pt solid #ccc; padding-bottom: 8pt; }
+      .summary-label { font-size: 8pt; }
+      .summary-total { font-size: 16pt; }
+      #yearLabel { font-size: 10pt; }
+      .groups { gap: 10pt; }
+      .group { border: none; box-shadow: none; border-radius: 0; break-inside: avoid; }
+      .group-head { background: none; border-bottom: 1pt solid #ccc; padding: 4pt 0; }
+      .group-title { font-size: 11pt; font-weight: 700; }
+      .group-count { font-size: 9pt; }
+      .group-list { display: flex !important; }
+      .group.collapsed .group-list { display: flex !important; }
+      .shiur-row { padding: 3pt 0; border-top: 0.5pt solid #eee; }
+      .shiur-row:first-child { border-top: none; }
+      .shiur-title { font-size: 10pt; }
+      .shiur-date { font-size: 8pt; color: #666; }
+    }
+
     .empty { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-align: center; color: var(--muted); font-size: 14px; }
     .loading { text-align: center; color: var(--muted); padding: 32px; font-size: 14px; }
 
@@ -129,9 +165,12 @@
       <div class="summary-label">Total this year</div>
       <div class="summary-total" id="totalCount">—</div>
     </div>
-    <div style="text-align:right;">
-      <div class="summary-label">Jewish year</div>
-      <div id="yearLabel" style="font-size:13px;color:var(--muted);"></div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="text-align:right;">
+        <div class="summary-label">Jewish year</div>
+        <div id="yearLabel" style="font-size:13px;color:var(--muted);"></div>
+      </div>
+      <button onclick="printYear()" class="print-btn">🖨 Print</button>
     </div>
   </div>
 
@@ -291,6 +330,10 @@ function render() {
 }
 
 
+
+function printYear() {
+  window.print();
+}
 
 function toggleGroup(head) {
   var group = head.closest('.group');
