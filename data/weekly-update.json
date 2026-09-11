@@ -1,38 +1,29 @@
 {
-  "rangeLabel": "August 29, 2026–September 4, 2026",
-  "generatedAt": "2026-09-04T14:09:02.775Z",
+  "rangeLabel": "September 5–11, 2026",
+  "generatedAt": "2026-09-11T14:13:52.615Z",
   "totalItems": 4,
   "featured": {
-    "id": "par-yirY8s5pgUo",
-    "title": "Always be growing",
-    "program": "Parsha",
-    "type": "video",
-    "date": "2026-09-04T02:17:52Z",
-    "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=yirY8s5pgUo"
+    "id": "one-0",
+    "title": "Wake up",
+    "program": "One-Minute",
+    "type": "audio",
+    "date": "2026-09-10T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3"
   },
   "groups": [
     {
-      "key": "parsha",
-      "label": "Parsha",
+      "key": "halacha",
+      "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "par-yirY8s5pgUo",
-          "title": "Always be growing",
-          "program": "Parsha",
-          "type": "video",
-          "date": "2026-09-04T02:17:52Z",
-          "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=yirY8s5pgUo"
-        },
-        {
-          "id": "ov-nitzavim---vayeilech-overview",
-          "title": "Parshios Nitzavim / Vayeilech overview",
-          "program": "Parsha Overview",
+          "id": "hal-28",
+          "title": "Is it SO BAD for Rosh Hashana to fall out on Shabbos?",
+          "program": "Halacha",
           "type": "audio",
-          "date": "2026-09-02T00:00:00.000Z",
-          "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/Nitzavimvayeilechoverview.mp3"
+          "date": "2026-09-10T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/19785608-9-10-2026-shloimy-zelcer-is-it-so-bad-for-rosh-hashana-to-fall-out-on-shabbos.mp3"
         }
       ]
     },
@@ -42,21 +33,30 @@
       "items": [
         {
           "id": "one-0",
-          "title": "Clean slate",
+          "title": "Wake up",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-09-02T00:00:00.000Z",
+          "date": "2026-09-10T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260902-WA0025.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3"
         },
         {
           "id": "one-1",
-          "title": "The small things add up",
+          "title": "Mitzvah momentum",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-09-01T00:00:00.000Z",
+          "date": "2026-09-08T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260908-WA0011.mp3"
+        },
+        {
+          "id": "one-2",
+          "title": "In memory of my rebbi on his 2nd yahrtzeit",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-09-07T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260907-WA0008.mp3"
         }
       ]
     }
