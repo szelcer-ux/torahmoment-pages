@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 796,
+    "total": 797,
     "breakdown": {
       "parsha": {
         "audio": 31,
@@ -13,7 +13,7 @@
         "totalAll": 102
       },
       "oneMinute": {
-        "audio": 264
+        "audio": 265
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-09-15"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "The right Ana Hashem",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260915-WA0009.mp3",
+      "date": "2026-09-15T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "Halacha",
@@ -49,17 +56,17 @@
       "title": "In memory of my rebbi on his 2nd yahrtzeit",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260907-WA0008.mp3",
       "date": "2026-09-07T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Always be growing",
-      "url": "https://www.youtube.com/watch?v=yirY8s5pgUo",
-      "date": "2026-09-04T02:17:52Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "The right Ana Hashem",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260915-WA0009.mp3",
+        "date": "2026-09-15T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Helping is good for everyone",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260819-WA0005.mp3",
         "date": "2026-08-19T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Individual accountability",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260818-WA0017.mp3",
-        "date": "2026-08-18T00:00:00.000Z"
       }
     ],
     "halacha": [
