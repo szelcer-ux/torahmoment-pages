@@ -309,8 +309,10 @@ document.getElementById('commitBtn').addEventListener('click', function() {
   })
   .then(function(meta) {
     var sha = meta.sha;
-    var raw = atob(meta.content.replace(/\n/g, ''));
-    var current = JSON.parse(decodeURIComponent(escape(raw)));
+    // Decode base64 → bytes → UTF-8 string
+    var b64 = meta.content.replace(/\n/g, '');
+    var bytes = Uint8Array.from(atob(b64), function(c) { return c.charCodeAt(0); });
+    var current = JSON.parse(new TextDecoder('utf-8').decode(bytes));
     var updated;
 
     if (currentTab === 'infographics') {
@@ -332,7 +334,10 @@ document.getElementById('commitBtn').addEventListener('click', function() {
     }
 
     showStatus('Saving…', 'loading');
-    var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(updated, null, 2) + '\n')));
+    // Encode UTF-8 string → bytes → base64
+    var jsonStr = JSON.stringify(updated, null, 2) + '\n';
+    var encBytes = new TextEncoder().encode(jsonStr);
+    var encoded = btoa(String.fromCharCode.apply(null, encBytes));
     var label = entry.title || entry.description || entry._key || 'new entry';
 
     return fetch('https://api.github.com/repos/' + REPO + '/contents/' + path, {
