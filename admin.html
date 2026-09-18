@@ -96,7 +96,8 @@
     <div class="card" id="form-halacha">
       <h2>Add Halacha Shiur</h2>
       <div class="f"><label>Category</label><select id="hal-cat"></select></div>
-      <div class="f"><label>Subcategory (optional)</label><select id="hal-sub"><option value="">— none —</option></select></div>
+      <div class="f"><label>Subcategory (optional)</label><select id="hal-sub" onchange="updateSections()"><option value="">— none —</option></select></div>
+      <div class="f" id="hal-section-field" style="display:none;"><label>Section (optional)</label><select id="hal-section"><option value="">— top of subcategory —</option></select></div>
       <div class="f"><label>Title</label><input type="text" id="hal-title" placeholder="e.g. The laws of Muktzeh" /></div>
       <div class="f"><label>Audio URL</label><input type="url" id="hal-url" placeholder="https://www.buzzsprout.com/..." /></div>
       <div class="f2">
@@ -217,7 +218,37 @@ document.getElementById('hal-cat').addEventListener('change', function() {
     o.textContent = sub.name;
     sel.appendChild(o);
   });
+  // reset section
+  document.getElementById('hal-section').innerHTML = '<option value="">— top of subcategory —</option>';
+  document.getElementById('hal-section-field').style.display = 'none';
 });
+
+function updateSections() {
+  var catIdx = document.getElementById('hal-cat').value;
+  var subIdx = document.getElementById('hal-sub').value;
+  var secSel = document.getElementById('hal-section');
+  var secField = document.getElementById('hal-section-field');
+  secSel.innerHTML = '<option value="">— top of subcategory —</option>';
+  secField.style.display = 'none';
+  if (catIdx === '' || subIdx === '' || !halachaData) return;
+  var sub = halachaData[parseInt(catIdx)].subcategories[parseInt(subIdx)];
+  if (!sub) return;
+  // Find dividers
+  var dividers = [];
+  (sub.items || []).forEach(function(item, i) {
+    if (item.type === 'note' && item.noteStyle === 'divider') {
+      dividers.push({ idx: i, text: item.text });
+    }
+  });
+  if (!dividers.length) return;
+  dividers.forEach(function(d) {
+    var o = document.createElement('option');
+    o.value = d.idx;
+    o.textContent = d.text;
+    secSel.appendChild(o);
+  });
+  secField.style.display = 'block';
+}
 
 // ── Tabs ──
 ['halacha', 'oneMinute', 'infographics'].forEach(function(key) {
@@ -324,7 +355,19 @@ document.getElementById('commitBtn').addEventListener('click', function() {
       var catIdx = parseInt(document.getElementById('hal-cat').value);
       var subVal = document.getElementById('hal-sub').value;
       if (subVal !== '') {
-        updated[catIdx].subcategories[parseInt(subVal)].items.unshift(entry);
+        var subItems = updated[catIdx].subcategories[parseInt(subVal)].items;
+        var secVal = document.getElementById('hal-section').value;
+        if (secVal !== '') {
+          // Insert after the divider at secVal index
+          var insertAt = parseInt(secVal) + 1;
+          // Skip past any existing items in this section (until next divider or end)
+          while (insertAt < subItems.length && !(subItems[insertAt].type === 'note' && subItems[insertAt].noteStyle === 'divider')) {
+            insertAt++;
+          }
+          subItems.splice(insertAt, 0, entry);
+        } else {
+          subItems.unshift(entry);
+        }
       } else {
         if (!updated[catIdx].items) updated[catIdx].items = [];
         updated[catIdx].items.unshift(entry);
@@ -368,6 +411,8 @@ function clearForm() {
     document.getElementById('hal-date').value = today;
     document.getElementById('hal-cat').value = '';
     document.getElementById('hal-sub').innerHTML = '<option value="">— none —</option>';
+    document.getElementById('hal-section').innerHTML = '<option value="">— top of subcategory —</option>';
+    document.getElementById('hal-section-field').style.display = 'none';
   } else if (currentTab === 'oneMinute') {
     document.getElementById('om-desc').value = '';
     document.getElementById('om-url').value = '';
