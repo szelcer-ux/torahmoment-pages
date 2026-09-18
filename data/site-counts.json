@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 801,
+    "total": 802,
     "breakdown": {
       "parsha": {
         "audio": 32,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 102
+        "totalAll": 103
       },
       "oneMinute": {
         "audio": 267
@@ -28,6 +28,13 @@
       "title": "Remember who you are",
       "url": "https://www.youtube.com/watch?v=InwwdxrYyyo",
       "date": "2026-09-18T02:46:11Z"
+    },
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Forgiveness in halacha",
+      "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3",
+      "date": "2026-09-17T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -49,13 +56,6 @@
       "title": "The right Ana Hashem",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260915-WA0009.mp3",
       "date": "2026-09-15T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Is it SO BAD for Rosh Hashana to fall out on Shabbos?",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19785608-9-10-2026-shloimy-zelcer-is-it-so-bad-for-rosh-hashana-to-fall-out-on-shabbos.mp3",
-      "date": "2026-09-10T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Forgiveness in halacha",
+        "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3",
+        "date": "2026-09-17T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Is it SO BAD for Rosh Hashana to fall out on Shabbos?",
         "url": "https://www.buzzsprout.com/1899789/episodes/19785608-9-10-2026-shloimy-zelcer-is-it-so-bad-for-rosh-hashana-to-fall-out-on-shabbos.mp3",
         "date": "2026-09-10T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "Knock before entering",
         "url": "https://www.buzzsprout.com/1899789/episodes/19452197-7-6-2026-shloimy-zelcer-knock-before-entering.mp3",
         "date": "2026-07-06T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Shehechiyanu on being drafted by the IDF",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3",
-        "date": "2026-06-30T00:00:00.000Z"
       }
     ],
     "parsha": [
