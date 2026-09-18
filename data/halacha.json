@@ -227,12 +227,6 @@
         "name": "Elul/Tishrei",
         "items": [
           {
-            "type": "audio",
-            "title": "Forgiveness in halacha",
-            "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3",
-            "note": "9/17/2026"
-          },
-          {
             "type": "note",
             "noteStyle": "divider",
             "text": "Rosh Hashana"
@@ -271,6 +265,12 @@
             "type": "note",
             "noteStyle": "divider",
             "text": "Yom Kippur"
+          },
+          {
+            "type": "audio",
+            "title": "Forgiveness in halacha",
+            "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3",
+            "note": "9/17/2026"
           },
           {
             "type": "audio",
