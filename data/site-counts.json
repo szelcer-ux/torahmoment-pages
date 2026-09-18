@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 800,
+    "total": 801,
     "breakdown": {
       "parsha": {
         "audio": 32,
-        "video": 242
+        "video": 243
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-09-17"
+    "updated": "2026-09-18"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Remember who you are",
+      "url": "https://www.youtube.com/watch?v=InwwdxrYyyo",
+      "date": "2026-09-18T02:46:11Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -48,13 +55,6 @@
       "program": "Halacha",
       "title": "Is it SO BAD for Rosh Hashana to fall out on Shabbos?",
       "url": "https://www.buzzsprout.com/1899789/episodes/19785608-9-10-2026-shloimy-zelcer-is-it-so-bad-for-rosh-hashana-to-fall-out-on-shabbos.mp3",
-      "date": "2026-09-10T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Wake up",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3",
       "date": "2026-09-10T00:00:00.000Z"
     }
   ],
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Remember who you are",
+        "url": "https://www.youtube.com/watch?v=InwwdxrYyyo",
+        "date": "2026-09-18T02:46:11Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Always be growing",
         "url": "https://www.youtube.com/watch?v=yirY8s5pgUo",
         "date": "2026-09-04T02:17:52Z"
@@ -266,13 +273,6 @@
         "title": "Not one day more",
         "url": "https://www.youtube.com/watch?v=q_Ly7ZdHEjA",
         "date": "2026-07-10T11:18:20Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "A way in, not a way out",
-        "url": "https://www.youtube.com/watch?v=lNPbQlOc3f8",
-        "date": "2026-07-03T02:56:34Z"
       }
     ]
   }
