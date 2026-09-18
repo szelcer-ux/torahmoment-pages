@@ -1,29 +1,53 @@
 {
-  "rangeLabel": "September 5–11, 2026",
-  "generatedAt": "2026-09-11T14:13:52.615Z",
-  "totalItems": 4,
+  "rangeLabel": "September 12–18, 2026",
+  "generatedAt": "2026-09-18T14:19:28.995Z",
+  "totalItems": 6,
   "featured": {
-    "id": "one-0",
-    "title": "Wake up",
-    "program": "One-Minute",
-    "type": "audio",
-    "date": "2026-09-10T00:00:00.000Z",
-    "page": "/one-minute-audio.html",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3"
+    "id": "par-InwwdxrYyyo",
+    "title": "Remember who you are",
+    "program": "Parsha",
+    "type": "video",
+    "date": "2026-09-18T02:46:11Z",
+    "page": "/parsha.html",
+    "url": "https://www.youtube.com/watch?v=InwwdxrYyyo"
   },
   "groups": [
+    {
+      "key": "parsha",
+      "label": "Parsha",
+      "items": [
+        {
+          "id": "par-InwwdxrYyyo",
+          "title": "Remember who you are",
+          "program": "Parsha",
+          "type": "video",
+          "date": "2026-09-18T02:46:11Z",
+          "page": "/parsha.html",
+          "url": "https://www.youtube.com/watch?v=InwwdxrYyyo"
+        },
+        {
+          "id": "ov-haazinu",
+          "title": "Parshas Haazinu overview",
+          "program": "Parsha Overview",
+          "type": "audio",
+          "date": "2026-09-16T00:00:00.000Z",
+          "page": "/parsha.html",
+          "url": "https://torahmoment.com/audio/Haazinuoverview.mp3"
+        }
+      ]
+    },
     {
       "key": "halacha",
       "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "hal-28",
-          "title": "Is it SO BAD for Rosh Hashana to fall out on Shabbos?",
+          "id": "hal-33",
+          "title": "Forgiveness in halacha",
           "program": "Halacha",
           "type": "audio",
-          "date": "2026-09-10T00:00:00.000Z",
+          "date": "2026-09-17T00:00:00.000Z",
           "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19785608-9-10-2026-shloimy-zelcer-is-it-so-bad-for-rosh-hashana-to-fall-out-on-shabbos.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3"
         }
       ]
     },
@@ -33,30 +57,30 @@
       "items": [
         {
           "id": "one-0",
-          "title": "Wake up",
+          "title": "An honest heart",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-09-10T00:00:00.000Z",
+          "date": "2026-09-17T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260917-WA0027.mp3"
         },
         {
           "id": "one-1",
-          "title": "Mitzvah momentum",
+          "title": "Where are you?",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-09-08T00:00:00.000Z",
+          "date": "2026-09-16T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260908-WA0011.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260916-WA0013.mp3"
         },
         {
           "id": "one-2",
-          "title": "In memory of my rebbi on his 2nd yahrtzeit",
+          "title": "The right Ana Hashem",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-09-07T00:00:00.000Z",
+          "date": "2026-09-15T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260907-WA0008.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260915-WA0009.mp3"
         }
       ]
     }
