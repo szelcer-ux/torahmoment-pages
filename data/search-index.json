@@ -2953,16 +2953,6 @@
     "id": "hal-28",
     "program": "Halacha",
     "type": "audio",
-    "title": "Forgiveness in halacha",
-    "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3",
-    "date": "2026-09-17T00:00:00.000Z",
-    "page": "/halacha.html",
-    "title_lc": "forgiveness in halacha"
-  },
-  {
-    "id": "hal-29",
-    "program": "Halacha",
-    "type": "audio",
     "title": "Is it SO BAD for Rosh Hashana to fall out on Shabbos?",
     "url": "https://www.buzzsprout.com/1899789/episodes/19785608-9-10-2026-shloimy-zelcer-is-it-so-bad-for-rosh-hashana-to-fall-out-on-shabbos.mp3",
     "date": "2026-09-10T00:00:00.000Z",
@@ -2970,7 +2960,7 @@
     "title_lc": "is it so bad for rosh hashana to fall out on shabbos?"
   },
   {
-    "id": "hal-30",
+    "id": "hal-29",
     "program": "Halacha",
     "type": "audio",
     "title": "Parshas Nitzavim / Erev Rosh Hashana",
@@ -2980,7 +2970,7 @@
     "title_lc": "parshas nitzavim / erev rosh hashana"
   },
   {
-    "id": "hal-31",
+    "id": "hal-30",
     "program": "Halacha",
     "type": "audio",
     "title": "Teshuva - returning home",
@@ -2990,7 +2980,7 @@
     "title_lc": "teshuva - returning home"
   },
   {
-    "id": "hal-32",
+    "id": "hal-31",
     "program": "Halacha",
     "type": "audio",
     "title": "Teshuva like snow and laundry",
@@ -3000,7 +2990,7 @@
     "title_lc": "teshuva like snow and laundry"
   },
   {
-    "id": "hal-33",
+    "id": "hal-32",
     "program": "Halacha",
     "type": "audio",
     "title": "Simanim of Rosh Hashana",
@@ -3008,6 +2998,16 @@
     "date": "2020-09-16T00:00:00.000Z",
     "page": "/halacha.html",
     "title_lc": "simanim of rosh hashana"
+  },
+  {
+    "id": "hal-33",
+    "program": "Halacha",
+    "type": "audio",
+    "title": "Forgiveness in halacha",
+    "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3",
+    "date": "2026-09-17T00:00:00.000Z",
+    "page": "/halacha.html",
+    "title_lc": "forgiveness in halacha"
   },
   {
     "id": "hal-34",
