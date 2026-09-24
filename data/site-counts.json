@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 805,
+    "total": 806,
     "breakdown": {
       "parsha": {
         "audio": 32,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 104
+        "totalAll": 105
       },
       "oneMinute": {
         "audio": 269
@@ -22,6 +22,13 @@
     "updated": "2026-09-24"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "What to do if rains first night of Sukkos",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19859579-9-25-2026-shloimy-zelcer-what-to-do-if-it-rains-tonight.mp3",
+      "date": "2026-09-25T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "Remember who you are",
       "url": "https://www.youtube.com/watch?v=InwwdxrYyyo",
       "date": "2026-09-18T02:46:11Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Forgiveness in halacha",
-      "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3",
-      "date": "2026-09-17T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "What to do if rains first night of Sukkos",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19859579-9-25-2026-shloimy-zelcer-what-to-do-if-it-rains-tonight.mp3",
+        "date": "2026-09-25T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Yom Kippur's over - now what?",
         "url": "https://www.buzzsprout.com/1899789/episodes/19845216-9-22-2026-shloimy-zelcer-yom-kippur-s-over-now-what.mp3",
         "date": "2026-09-22T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "From Moshe to Moshe, what happened to the name Moshe?",
         "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3",
         "date": "2026-07-14T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Standing up for a chosson",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3",
-        "date": "2026-07-13T00:00:00.000Z"
       }
     ],
     "parsha": [
