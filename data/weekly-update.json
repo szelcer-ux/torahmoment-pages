@@ -1,53 +1,38 @@
 {
-  "rangeLabel": "September 12–18, 2026",
-  "generatedAt": "2026-09-18T14:19:28.995Z",
-  "totalItems": 6,
+  "rangeLabel": "September 19–25, 2026",
+  "generatedAt": "2026-09-25T15:06:42.130Z",
+  "totalItems": 4,
   "featured": {
-    "id": "par-InwwdxrYyyo",
-    "title": "Remember who you are",
-    "program": "Parsha",
-    "type": "video",
-    "date": "2026-09-18T02:46:11Z",
-    "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=InwwdxrYyyo"
+    "id": "hal-38",
+    "title": "What to do if rains first night of Sukkos",
+    "program": "Halacha",
+    "type": "audio",
+    "date": "2026-09-25T00:00:00.000Z",
+    "page": "/halacha.html",
+    "url": "https://www.buzzsprout.com/1899789/episodes/19859579-9-25-2026-shloimy-zelcer-what-to-do-if-it-rains-tonight.mp3"
   },
   "groups": [
-    {
-      "key": "parsha",
-      "label": "Parsha",
-      "items": [
-        {
-          "id": "par-InwwdxrYyyo",
-          "title": "Remember who you are",
-          "program": "Parsha",
-          "type": "video",
-          "date": "2026-09-18T02:46:11Z",
-          "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=InwwdxrYyyo"
-        },
-        {
-          "id": "ov-haazinu",
-          "title": "Parshas Haazinu overview",
-          "program": "Parsha Overview",
-          "type": "audio",
-          "date": "2026-09-16T00:00:00.000Z",
-          "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/Haazinuoverview.mp3"
-        }
-      ]
-    },
     {
       "key": "halacha",
       "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "hal-33",
-          "title": "Forgiveness in halacha",
+          "id": "hal-38",
+          "title": "What to do if rains first night of Sukkos",
           "program": "Halacha",
           "type": "audio",
-          "date": "2026-09-17T00:00:00.000Z",
+          "date": "2026-09-25T00:00:00.000Z",
           "page": "/halacha.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3"
+          "url": "https://www.buzzsprout.com/1899789/episodes/19859579-9-25-2026-shloimy-zelcer-what-to-do-if-it-rains-tonight.mp3"
+        },
+        {
+          "id": "hal-35",
+          "title": "Yom Kippur's over - now what?",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-09-22T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/19845216-9-22-2026-shloimy-zelcer-yom-kippur-s-over-now-what.mp3"
         }
       ]
     },
@@ -57,30 +42,21 @@
       "items": [
         {
           "id": "one-0",
-          "title": "An honest heart",
+          "title": "Step out",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-09-17T00:00:00.000Z",
+          "date": "2026-09-24T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260917-WA0027.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260923-WA0092.mp3"
         },
         {
           "id": "one-1",
-          "title": "Where are you?",
+          "title": "Gott's Nomen",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-09-16T00:00:00.000Z",
+          "date": "2026-09-22T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260916-WA0013.mp3"
-        },
-        {
-          "id": "one-2",
-          "title": "The right Ana Hashem",
-          "program": "One-Minute",
-          "type": "audio",
-          "date": "2026-09-15T00:00:00.000Z",
-          "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260915-WA0009.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260922-WA0009.mp3"
         }
       ]
     }
