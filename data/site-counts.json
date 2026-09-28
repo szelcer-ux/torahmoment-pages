@@ -19,7 +19,7 @@
         "audio": 137
       }
     },
-    "updated": "2026-09-27"
+    "updated": "2026-09-28"
   },
   "recent": [
     {
@@ -51,11 +51,11 @@
       "date": "2026-09-22T00:00:00.000Z"
     },
     {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Forgiveness in halacha",
-      "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3",
-      "date": "2026-09-17T00:00:00.000Z"
+      "type": "video",
+      "program": "Parsha",
+      "title": "Remember who you are",
+      "url": "https://www.youtube.com/watch?v=InwwdxrYyyo",
+      "date": "2026-09-18T02:46:11Z"
     }
   ],
   "recentByProgram": {
