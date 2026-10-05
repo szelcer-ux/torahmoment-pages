@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 808,
+    "total": 809,
     "breakdown": {
       "parsha": {
         "audio": 33,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 105
+        "totalAll": 106
       },
       "oneMinute": {
         "audio": 269
@@ -22,6 +22,13 @@
     "updated": "2026-10-05"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Moshe's tears - It's up to us",
+      "url": "https://www.buzzsprout.com/1899789/episodes/19912060-10-5-2026-shloimy-zelcer-moshe-s-tears-it-s-up-to-us.mp3",
+      "date": "2026-10-05T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -48,13 +55,6 @@
       "program": "Halacha",
       "title": "Yom Kippur's over - now what?",
       "url": "https://www.buzzsprout.com/1899789/episodes/19845216-9-22-2026-shloimy-zelcer-yom-kippur-s-over-now-what.mp3",
-      "date": "2026-09-22T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Gott's Nomen",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260922-WA0009.mp3",
       "date": "2026-09-22T00:00:00.000Z"
     }
   ],
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Moshe's tears - It's up to us",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19912060-10-5-2026-shloimy-zelcer-moshe-s-tears-it-s-up-to-us.mp3",
+        "date": "2026-10-05T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "What to do if rains first night of Sukkos",
         "url": "https://www.buzzsprout.com/1899789/episodes/19859579-9-25-2026-shloimy-zelcer-what-to-do-if-it-rains-tonight.mp3",
         "date": "2026-09-25T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "Halachic status of the Kotel plaza",
         "url": "https://www.buzzsprout.com/1899789/episodes/19569585-7-29-2026-shloimy-zelcer-halachic-status-of-the-kotel-plaza.mp3",
         "date": "2026-07-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "From Moshe to Moshe, what happened to the name Moshe?",
-        "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3",
-        "date": "2026-07-14T00:00:00.000Z"
       }
     ],
     "parsha": [
