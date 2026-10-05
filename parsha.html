@@ -2239,13 +2239,14 @@ function selectParshaFromURL() {
   const wantedRaw = getParshaFromURL();
   if (!wantedRaw) return false;
 
-  const wanted = normParsha(wantedRaw);
+  // Use normalizeParshaName so aliases (bereishit→bereishis etc.) are applied
+  const wanted = normalizeParshaName(wantedRaw);
 
-  // Build a lookup of normalized option value -> real option value
+  // Build a lookup of normalized+aliased option value -> real option value
   const map = new Map();
   for (const opt of parshaSel.options) {
     if (!opt.value) continue;
-    map.set(normParsha(opt.value), opt.value);
+    map.set(normalizeParshaName(opt.value), opt.value);
   }
 
   const actual = map.get(wanted);
@@ -2297,8 +2298,8 @@ function applyFilters() {
 
   // Apply parsha filter only if not ALL
   if (selectedParsha !== "__ALL__") {
-    const wanted = normParsha(selectedParsha);
-    list = list.filter(v => normParsha(v.parsha) === wanted);
+    const wanted = normalizeParshaName(selectedParsha);
+    list = list.filter(v => normalizeParshaName(v.parsha) === wanted);
   }
 
   // Text search
