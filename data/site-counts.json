@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 809,
+    "total": 810,
     "breakdown": {
       "parsha": {
         "audio": 33,
@@ -13,7 +13,7 @@
         "totalAll": 106
       },
       "oneMinute": {
-        "audio": 269
+        "audio": 270
       },
       "mishna": {
         "audio": 137
@@ -27,6 +27,13 @@
       "program": "Halacha",
       "title": "Moshe's tears - It's up to us",
       "url": "https://www.buzzsprout.com/1899789/episodes/19912060-10-5-2026-shloimy-zelcer-moshe-s-tears-it-s-up-to-us.mp3",
+      "date": "2026-10-05T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "We need protecting",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0032.mp3",
       "date": "2026-10-05T00:00:00.000Z"
     },
     {
@@ -49,17 +56,17 @@
       "title": "Step out",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260923-WA0092.mp3",
       "date": "2026-09-24T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Yom Kippur's over - now what?",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19845216-9-22-2026-shloimy-zelcer-yom-kippur-s-over-now-what.mp3",
-      "date": "2026-09-22T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "We need protecting",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0032.mp3",
+        "date": "2026-10-05T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Clean slate",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260902-WA0025.mp3",
         "date": "2026-09-02T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "The small things add up",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3",
-        "date": "2026-09-01T00:00:00.000Z"
       }
     ],
     "halacha": [
