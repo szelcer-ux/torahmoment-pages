@@ -791,12 +791,6 @@
     "category": "Parsha Insights",
     "items": [
       {
-        "type": "audio",
-        "title": "Moshe's tears - It's up to us",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19912060-10-5-2026-shloimy-zelcer-moshe-s-tears-it-s-up-to-us.mp3",
-        "note": "10/5/2026"
-      },
-      {
         "type": "note",
         "text": "Additional Parsha-related shiurim.",
         "linkText": "Main Parsha page",
@@ -939,7 +933,13 @@
         "title": "SHOFTIM - Selective observance",
         "url": "https://www.buzzsprout.com/1899789/episodes/17736499-8-26-2025-shloimy-zelcer-selective-observance.mp3",
         "note": "8/26/2025"
-      }
+      },
+            {
+        "type": "parsha-audio",
+        "title": "VZOS HABRACHA - Moshe's tears: It's up to us",
+        "url": "https://www.buzzsprout.com/1899789/episodes/19912060-10-5-2026-shloimy-zelcer-moshe-s-tears-it-s-up-to-us.mp3",
+        "note": "10/5/2026"
+      },
     ]
   }
 ]
