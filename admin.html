@@ -245,6 +245,7 @@ function onLogin() {
   document.getElementById('hal-date').value = today;
   document.getElementById('om-date').value = today;
   loadHalachaCategories();
+  populateCatDropdowns();
 }
 
 // ── Halacha categories ──
@@ -508,19 +509,19 @@ function showStatus(msg, type) {
 }
 
 // ── Populate category dropdowns on login ──
-var _origLogin = onLogin;
-onLogin = function() {
-  _origLogin();
+// Called from onLogin() defined above
+function populateCatDropdowns() {
   ['om','hal'].forEach(function(p) {
     var sel = document.getElementById(p+'-cat-main');
     if (!sel) return;
+    if (sel.options.length > 1) return; // already populated
     sel.innerHTML = '<option value="">-- select --</option>';
     Object.keys(CATEGORIES).forEach(function(cat) {
       var o = document.createElement('option'); o.value=cat; o.textContent=cat; sel.appendChild(o);
     });
     sel.addEventListener('change', function() { populateCatSub(p); });
   });
-};
+}
 
 function populateCatSub(prefix) {
   var cat = document.getElementById(prefix+'-cat-main').value;
