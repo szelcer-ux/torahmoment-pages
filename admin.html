@@ -577,8 +577,7 @@ function initCategorize() {
   fetch('https://api.github.com/repos/'+REPO+'/contents/'+catPaths[catSource]+'?ref='+BRANCH,{
     headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}
   }).then(function(r){return r.json();}).then(function(meta){
-    var bytes=Uint8Array.from(atob(meta.content.replace(/
-/g,'')),function(c){return c.charCodeAt(0);});
+    var bytes=Uint8Array.from(atob(meta.content.replace(/\n/g,'')),function(c){return c.charCodeAt(0);});
     var parsed=JSON.parse(new TextDecoder('utf-8').decode(bytes));
     if (catSource==='halacha') {
       catData=[];
@@ -704,8 +703,7 @@ function commitAllCats(){
     headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}
   }).then(function(r){return r.json();}).then(function(meta){
     var sha=meta.sha;
-    var bytes=Uint8Array.from(atob(meta.content.replace(/
-/g,'')),function(c){return c.charCodeAt(0);});
+    var bytes=Uint8Array.from(atob(meta.content.replace(/\n/g,'')),function(c){return c.charCodeAt(0);});
     var full=JSON.parse(new TextDecoder('utf-8').decode(bytes));
     if (catSource==='oneMinute'){
       full.forEach(function(it){
