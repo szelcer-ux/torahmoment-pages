@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 810,
+    "total": 811,
     "breakdown": {
       "parsha": {
         "audio": 34,
@@ -13,7 +13,7 @@
         "totalAll": 105
       },
       "oneMinute": {
-        "audio": 270
+        "audio": 271
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-10-06"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Form good habits",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0040.mp3",
+      "date": "2026-10-06T00:00:00.000Z"
+    },
     {
       "type": "parsha-audio",
       "program": "Halacha",
@@ -49,17 +56,17 @@
       "title": "What to do if rains first night of Sukkos",
       "url": "https://www.buzzsprout.com/1899789/episodes/19859579-9-25-2026-shloimy-zelcer-what-to-do-if-it-rains-tonight.mp3",
       "date": "2026-09-25T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Step out",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260923-WA0092.mp3",
-      "date": "2026-09-24T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Form good habits",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0040.mp3",
+        "date": "2026-10-06T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "In memory of my rebbi on his 2nd yahrtzeit",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260907-WA0008.mp3",
         "date": "2026-09-07T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Clean slate",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260902-WA0025.mp3",
-        "date": "2026-09-02T00:00:00.000Z"
       }
     ],
     "halacha": [
