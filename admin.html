@@ -90,6 +90,7 @@
       <button class="tab on" id="tab-halacha">📚 Halacha</button>
       <button class="tab" id="tab-oneMinute">⏱️ One-Minute</button>
       <button class="tab" id="tab-infographics">🖼️ Infographics</button>
+      <button class="tab" id="tab-categorize">🏷️ Categorize</button>
     </div>
 
     <!-- HALACHA -->
@@ -104,6 +105,9 @@
         <div class="f"><label>Date</label><input type="date" id="hal-date" /></div>
         <div class="f"><label>Type</label><select id="hal-type"><option value="audio">Audio</option><option value="youtube">YouTube</option></select></div>
       </div>
+      <div class="f"><label>Category (optional)</label><select id="hal-cat-main"><option value="">-- select --</option></select></div>
+      <div class="f" id="hal-cat-sub-field" style="display:none;"><label id="hal-cat-sub-label">Sub-category</label><select id="hal-cat-sub"><option value="">-- select --</option></select></div>
+      <div class="f" id="hal-cat-parsha-field" style="display:none;"><label>Parsha</label><select id="hal-cat-parsha"><option value="">-- select --</option></select></div>
     </div>
 
     <!-- ONE-MINUTE -->
@@ -115,6 +119,9 @@
         <div class="f"><label>Date</label><input type="date" id="om-date" /></div>
         <div class="f"><label>Filename (auto from URL)</label><input type="text" id="om-file" placeholder="PTT-20260819-WA0005.mp3" /></div>
       </div>
+      <div class="f"><label>Category (optional)</label><select id="om-cat-main"><option value="">-- select --</option></select></div>
+      <div class="f" id="om-cat-sub-field" style="display:none;"><label id="om-cat-sub-label">Sub-category</label><select id="om-cat-sub"><option value="">-- select --</option></select></div>
+      <div class="f" id="om-cat-parsha-field" style="display:none;"><label>Parsha</label><select id="om-cat-parsha"><option value="">-- select --</option></select></div>
     </div>
 
     <!-- INFOGRAPHICS -->
@@ -138,6 +145,42 @@
     </div>
     <div id="status"></div>
 
+    <!-- CATEGORIZE PANEL -->
+    <div id="form-categorize" style="display:none;">
+      <div class="card" style="margin-bottom:12px;">
+        <h2 style="margin-bottom:12px;">Categorize Clips</h2>
+        <div style="display:flex;gap:8px;margin-bottom:14px;">
+          <button class="btn btn-primary" id="catSrcBtn" style="font-size:13px;padding:6px 12px;">One-Minute</button>
+          <button class="btn btn-outline" id="catSrcBtnHal" style="font-size:13px;padding:6px 12px;">Halacha</button>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+          <div id="catProgress" style="font-size:13px;color:#666;"></div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-outline" id="catPrevBtn" style="font-size:13px;padding:6px 12px;">&larr; Prev</button>
+            <button class="btn btn-outline" id="catNextBtn" style="font-size:13px;padding:6px 12px;">Next &rarr;</button>
+            <button class="btn btn-outline" id="catSkipBtn" style="font-size:13px;padding:6px 12px;color:#0d9488;">Skip uncategorized</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div id="catClipTitle" style="font-size:16px;font-weight:700;margin-bottom:3px;"></div>
+        <div id="catClipDate" style="font-size:12px;color:#666;margin-bottom:10px;"></div>
+        <audio id="catAudio" controls style="width:100%;margin-bottom:12px;"></audio>
+        <div id="catCurrentLabel" style="font-size:12px;color:#0d9488;font-weight:600;margin-bottom:10px;display:none;"></div>
+        <div class="f"><label>Category</label><select id="cat-main"><option value="">-- select --</option></select></div>
+        <div class="f" id="cat-sub-field" style="display:none;"><label id="cat-sub-label">Sub-category</label><select id="cat-sub"><option value="">-- select --</option></select></div>
+        <div class="f" id="cat-parsha-field" style="display:none;"><label>Parsha</label><select id="cat-parsha-sel"><option value="">-- select --</option></select></div>
+        <div class="btn-row" style="margin-top:14px;">
+          <button class="btn btn-primary" id="catSaveBtn">Save &amp; Next</button>
+          <button class="btn btn-outline" id="catSaveStayBtn">Save (stay)</button>
+        </div>
+        <div style="margin-top:10px;">
+          <button class="btn btn-primary" id="catCommitBtn" disabled style="background:#166534;width:100%;">Commit to GitHub (0 changes)</button>
+        </div>
+        <div id="catStatus" style="margin-top:10px;font-size:13px;display:none;"></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -145,6 +188,21 @@
 var REPO = 'szelcer-ux/torahmoment-pages';
 var BRANCH = 'main';
 var PW = 'TorahMoment613';
+
+var CATEGORIES = {
+  'Parsha': {
+    'Bereishis': ['Bereishis','Noach','Lech Lecha','Vayeira','Chayei Sara','Toldos','Vayeitzei','Vayishlach','Vayeishev','Miketz','Vayigash','Vayechi'],
+    'Shemos':    ['Shemos','Vaeira','Bo','Beshalach','Yisro','Mishpatim','Terumah','Tetzaveh','Ki Sisa','Vayakhel','Pekudei'],
+    'Vayikra':   ['Vayikra','Tzav','Shemini','Tazria','Metzora','Achrei Mos','Kedoshim','Emor','Behar','Bechukosai'],
+    'Bamidbar':  ['Bamidbar','Nasso','Behaaloscha','Shelach','Korach','Chukas','Balak','Pinchas','Matos','Massei'],
+    'Devarim':   ['Devarim','Vaeschanan','Eikev','Reeh','Shoftim','Ki Seitzei','Ki Savo','Nitzavim','Vayeilech','Haazinu','Vezos Haberacha']
+  },
+  'Yomim Tovim': ['Rosh Hashana','Yom Kippur','Sukkos','Chanukah','Purim','Pesach','Shavuos',"Tisha B'Av",'Sefirah','Elul/Tishrei'],
+  'Tefila': null,
+  'Middos': null,
+  'Hashkafa': null,
+  'General': null
+};
 var currentTab = 'halacha';
 var halachaData = null;
 
@@ -251,15 +309,20 @@ function updateSections() {
 }
 
 // ── Tabs ──
-['halacha', 'oneMinute', 'infographics'].forEach(function(key) {
+var ALL_TABS = ['halacha','oneMinute','infographics','categorize'];
+ALL_TABS.forEach(function(key) {
   document.getElementById('tab-' + key).addEventListener('click', function() {
     currentTab = key;
-    ['halacha', 'oneMinute', 'infographics'].forEach(function(k) {
+    ALL_TABS.forEach(function(k) {
       document.getElementById('tab-' + k).className = 'tab' + (k === key ? ' on' : '');
-      document.getElementById('form-' + k).style.display = k === key ? 'block' : 'none';
+      var f = document.getElementById('form-' + k); if (f) f.style.display = k === key ? 'block' : 'none';
     });
+    var isCat = key === 'categorize';
     document.getElementById('preview').style.display = 'none';
     document.getElementById('status').style.display = 'none';
+    var brow = document.querySelector('.btn-row');
+    if (brow) brow.style.display = isCat ? 'none' : '';
+    if (isCat) initCategorize();
   });
 });
 
@@ -277,7 +340,11 @@ function buildEntry() {
     var date  = toSlashDate(document.getElementById('hal-date').value);
     var type  = document.getElementById('hal-type').value;
     if (!title || !url || !date) throw new Error('Title, URL and Date are required.');
-    return { type: type, title: title, url: url, note: date };
+    var entry = { type: type, title: title, url: url, note: date };
+    var halCat = document.getElementById('hal-cat-main').value;
+    var halSub = halCat === 'Parsha' ? document.getElementById('hal-cat-parsha').value : document.getElementById('hal-cat-sub').value;
+    if (halCat) { entry.category = halCat; if (halSub) entry.categoryDetail = halSub; }
+    return entry;
   }
   if (currentTab === 'oneMinute') {
     var desc = document.getElementById('om-desc').value.trim();
@@ -285,7 +352,11 @@ function buildEntry() {
     var date = toSlashDate(document.getElementById('om-date').value);
     if (!desc || !url || !date) throw new Error('Description, URL and Date are required.');
     var fname = document.getElementById('om-file').value.trim() || url.split('/').pop();
-    return { date: date, description: desc, filename: fname, url: url };
+    var entry = { date: date, description: desc, filename: fname, url: url };
+    var omCat = document.getElementById('om-cat-main').value;
+    var omSub = omCat === 'Parsha' ? document.getElementById('om-cat-parsha').value : document.getElementById('om-cat-sub').value;
+    if (omCat) { entry.category = omCat; if (omSub) entry.categoryDetail = omSub; }
+    return entry;
   }
   if (currentTab === 'infographics') {
     var id    = document.getElementById('ig-id').value.trim();
@@ -435,6 +506,258 @@ function showStatus(msg, type) {
   el.className = type;
   el.style.display = 'block';
 }
+
+// ── Populate category dropdowns on login ──
+var _origLogin = onLogin;
+onLogin = function() {
+  _origLogin();
+  ['om','hal'].forEach(function(p) {
+    var sel = document.getElementById(p+'-cat-main');
+    if (!sel) return;
+    sel.innerHTML = '<option value="">-- select --</option>';
+    Object.keys(CATEGORIES).forEach(function(cat) {
+      var o = document.createElement('option'); o.value=cat; o.textContent=cat; sel.appendChild(o);
+    });
+    sel.addEventListener('change', function() { populateCatSub(p); });
+  });
+};
+
+function populateCatSub(prefix) {
+  var cat = document.getElementById(prefix+'-cat-main').value;
+  var subField = document.getElementById(prefix+'-cat-sub-field');
+  var subSel = document.getElementById(prefix+'-cat-sub');
+  var parshaField = document.getElementById(prefix+'-cat-parsha-field');
+  var parshaSel = document.getElementById(prefix+'-cat-parsha');
+  subField.style.display='none'; parshaField.style.display='none';
+  subSel.innerHTML='<option value="">-- select --</option>';
+  parshaSel.innerHTML='<option value="">-- select --</option>';
+  if (!cat || !CATEGORIES[cat]) return;
+  if (cat === 'Parsha') {
+    subField.style.display='block';
+    document.getElementById(prefix+'-cat-sub-label').textContent='Sefer';
+    Object.keys(CATEGORIES['Parsha']).forEach(function(sefer){
+      var o=document.createElement('option'); o.value=sefer; o.textContent=sefer; subSel.appendChild(o);
+    });
+    subSel.addEventListener('change', function() {
+      var sefer = subSel.value;
+      parshaSel.innerHTML='<option value="">-- select --</option>';
+      parshaField.style.display = sefer ? 'block' : 'none';
+      if (sefer && CATEGORIES['Parsha'][sefer]) {
+        CATEGORIES['Parsha'][sefer].forEach(function(p2){
+          var o=document.createElement('option'); o.value=p2; o.textContent=p2; parshaSel.appendChild(o);
+        });
+      }
+    });
+  } else if (Array.isArray(CATEGORIES[cat])) {
+    subField.style.display='block';
+    document.getElementById(prefix+'-cat-sub-label').textContent='Sub-category';
+    CATEGORIES[cat].forEach(function(item){
+      var o=document.createElement('option'); o.value=item; o.textContent=item; subSel.appendChild(o);
+    });
+  }
+}
+
+// ── CATEGORIZE TAB ──
+var catData=[], catIdx=0, catSource='oneMinute', catPending={};
+var catPaths={oneMinute:'data.json',halacha:'data/halacha.json'};
+
+function setCatSource(src) {
+  catSource=src;
+  document.getElementById('catSrcBtn').className='btn '+(src==='oneMinute'?'btn-primary':'btn-outline');
+  document.getElementById('catSrcBtnHal').className='btn '+(src==='halacha'?'btn-primary':'btn-outline');
+  catData=[]; catIdx=0; catPending={};
+  initCategorize();
+}
+
+function initCategorize() {
+  showCatStatus('Loading...','#666');
+  var token=getToken();
+  if (!token){showCatStatus('Please save your GitHub token first.','#b42318');return;}
+  fetch('https://api.github.com/repos/'+REPO+'/contents/'+catPaths[catSource]+'?ref='+BRANCH,{
+    headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}
+  }).then(function(r){return r.json();}).then(function(meta){
+    var bytes=Uint8Array.from(atob(meta.content.replace(/
+/g,'')),function(c){return c.charCodeAt(0);});
+    var parsed=JSON.parse(new TextDecoder('utf-8').decode(bytes));
+    if (catSource==='halacha') {
+      catData=[];
+      parsed.forEach(function(cat,ci){
+        (cat.items||[]).forEach(function(it,ii){it._p={ci:ci,si:-1,ii:ii};catData.push(it);});
+        (cat.subcategories||[]).forEach(function(sub,si){
+          (sub.items||[]).forEach(function(it,ii){it._p={ci:ci,si:si,ii:ii};catData.push(it);});
+        });
+      });
+    } else { catData=parsed; }
+    catIdx=0; catPending={};
+    buildCatMainSel();
+    showCatStatus('','');
+    renderCatClip();
+  }).catch(function(e){showCatStatus('Error: '+e.message,'#b42318');});
+}
+
+function buildCatMainSel(){
+  var sel=document.getElementById('cat-main');
+  sel.innerHTML='<option value="">-- select --</option>';
+  Object.keys(CATEGORIES).forEach(function(cat){
+    var o=document.createElement('option'); o.value=cat; o.textContent=cat; sel.appendChild(o);
+  });
+}
+
+function renderCatClip(){
+  if (!catData.length){document.getElementById('catProgress').textContent='No items found';return;}
+  var item=catData[catIdx];
+  var done=catData.filter(function(x){return x.category;}).length;
+  document.getElementById('catProgress').textContent=(catIdx+1)+' of '+catData.length+' - '+done+' categorized';
+  document.getElementById('catClipTitle').textContent=item.description||item.title||'(no title)';
+  document.getElementById('catClipDate').textContent=item.date||item.note||'';
+  var audio=document.getElementById('catAudio'); audio.src=item.url||''; audio.load();
+  var lbl=document.getElementById('catCurrentLabel');
+  if (item.category){lbl.textContent='Currently: '+item.category+(item.categoryDetail?' > '+item.categoryDetail:'');lbl.style.display='block';}
+  else{lbl.style.display='none';}
+  document.getElementById('cat-main').value=item.category||'';
+  onCatMainChange(item.categoryDetail);
+}
+
+function onCatMainChange(currentSub) {
+  var cat=document.getElementById('cat-main').value;
+  var subF=document.getElementById('cat-sub-field');
+  var subS=document.getElementById('cat-sub');
+  var pF=document.getElementById('cat-parsha-field');
+  var pS=document.getElementById('cat-parsha-sel');
+  subF.style.display='none'; pF.style.display='none';
+  subS.innerHTML='<option value="">-- select --</option>';
+  pS.innerHTML='<option value="">-- select --</option>';
+  if (!cat||!CATEGORIES[cat]) return;
+  if (cat==='Parsha') {
+    subF.style.display='block';
+    document.getElementById('cat-sub-label').textContent='Sefer';
+    Object.keys(CATEGORIES['Parsha']).forEach(function(sefer){
+      var o=document.createElement('option'); o.value=sefer; o.textContent=sefer; subS.appendChild(o);
+    });
+    if (currentSub) {
+      Object.keys(CATEGORIES['Parsha']).forEach(function(sefer){
+        if (CATEGORIES['Parsha'][sefer].includes(currentSub)){subS.value=sefer;onCatSubChange(currentSub);}
+      });
+    }
+  } else if (Array.isArray(CATEGORIES[cat])) {
+    subF.style.display='block';
+    document.getElementById('cat-sub-label').textContent='Sub-category';
+    CATEGORIES[cat].forEach(function(item){
+      var o=document.createElement('option'); o.value=item; o.textContent=item;
+      if(item===currentSub)o.selected=true; subS.appendChild(o);
+    });
+  }
+}
+
+function onCatSubChange(currentParsha) {
+  var cat=document.getElementById('cat-main').value;
+  var pF=document.getElementById('cat-parsha-field');
+  var pS=document.getElementById('cat-parsha-sel');
+  pF.style.display='none'; pS.innerHTML='<option value="">-- select --</option>';
+  if (cat!=='Parsha') return;
+  var sefer=document.getElementById('cat-sub').value;
+  if (!sefer||!CATEGORIES['Parsha'][sefer]) return;
+  pF.style.display='block';
+  CATEGORIES['Parsha'][sefer].forEach(function(p){
+    var o=document.createElement('option'); o.value=p; o.textContent=p;
+    if(p===currentParsha)o.selected=true; pS.appendChild(o);
+  });
+}
+
+document.getElementById('cat-main').addEventListener('change',function(){onCatMainChange();});
+document.getElementById('cat-sub').addEventListener('change',function(){onCatSubChange();});
+
+function getSelCat(){
+  var cat=document.getElementById('cat-main').value; if(!cat) return null;
+  var detail='';
+  if (cat==='Parsha') detail=document.getElementById('cat-parsha-sel').value;
+  else if (Array.isArray(CATEGORIES[cat])) detail=document.getElementById('cat-sub').value;
+  return {category:cat,categoryDetail:detail};
+}
+
+function saveCatLocal(advance){
+  var sel=getSelCat(); if(!sel){showCatStatus('Please select a category.','#b42318');return;}
+  var item=catData[catIdx];
+  item.category=sel.category;
+  if(sel.categoryDetail) item.categoryDetail=sel.categoryDetail; else delete item.categoryDetail;
+  catPending[item.url]=true;
+  var n=Object.keys(catPending).length;
+  showCatStatus('Saved locally ('+n+' unsaved change'+(n===1?'':'s')+' - click Commit when done)','#166534');
+  updateCommitBtn();
+  if(advance&&catIdx<catData.length-1){catIdx++;renderCatClip();}
+}
+
+function updateCommitBtn(){
+  var n=Object.keys(catPending).length;
+  var btn=document.getElementById('catCommitBtn');
+  btn.textContent='Commit to GitHub ('+n+' change'+(n===1?'':'s')+')';
+  btn.disabled=n===0;
+}
+
+function commitAllCats(){
+  var n=Object.keys(catPending).length; if(!n) return;
+  var token=getToken(); if(!token){showCatStatus('No token.','#b42318');return;}
+  showCatStatus('Committing '+n+' change'+(n===1?'':'s')+'...','#1e40af');
+  document.getElementById('catCommitBtn').disabled=true;
+  fetch('https://api.github.com/repos/'+REPO+'/contents/'+catPaths[catSource]+'?ref='+BRANCH,{
+    headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}
+  }).then(function(r){return r.json();}).then(function(meta){
+    var sha=meta.sha;
+    var bytes=Uint8Array.from(atob(meta.content.replace(/
+/g,'')),function(c){return c.charCodeAt(0);});
+    var full=JSON.parse(new TextDecoder('utf-8').decode(bytes));
+    if (catSource==='oneMinute'){
+      full.forEach(function(it){
+        if(catPending[it.url]){
+          var match=catData.find(function(x){return x.url===it.url;});
+          if(match){it.category=match.category;if(match.categoryDetail)it.categoryDetail=match.categoryDetail;else delete it.categoryDetail;}
+        }
+      });
+    } else {
+      catData.forEach(function(item){
+        if(!catPending[item.url]) return;
+        var p=item._p,target;
+        if(p.si===-1) target=full[p.ci].items[p.ii];
+        else target=full[p.ci].subcategories[p.si].items[p.ii];
+        if(target){target.category=item.category;if(item.categoryDetail)target.categoryDetail=item.categoryDetail;else delete target.categoryDetail;}
+      });
+    }
+    var jsonStr=JSON.stringify(full,null,2)+'\n';
+    var encBytes=new TextEncoder().encode(jsonStr);
+    var encoded=btoa(String.fromCharCode.apply(null,encBytes));
+    return fetch('https://api.github.com/repos/'+REPO+'/contents/'+catPaths[catSource],{
+      method:'PUT',
+      headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json','Content-Type':'application/json'},
+      body:JSON.stringify({message:'Categorize '+n+' item'+(n===1?'':'s'),content:encoded,sha:sha,branch:BRANCH})
+    });
+  }).then(function(r){if(!r.ok)return r.text().then(function(t){throw new Error(t);});return r.json();})
+  .then(function(){
+    catPending={};
+    showCatStatus('Committed '+n+' change'+(n===1?'':'s')+' to GitHub!','#166534');
+    updateCommitBtn();
+  }).catch(function(e){
+    showCatStatus('Error: '+e.message,'#b42318');
+    document.getElementById('catCommitBtn').disabled=false;
+  });
+}
+
+document.getElementById('catSaveBtn').addEventListener('click',function(){saveCatLocal(true);});
+document.getElementById('catSaveStayBtn').addEventListener('click',function(){saveCatLocal(false);});
+document.getElementById('catCommitBtn').addEventListener('click',commitAllCats);
+document.getElementById('catPrevBtn').addEventListener('click',function(){if(catIdx>0){catIdx--;renderCatClip();}});
+document.getElementById('catNextBtn').addEventListener('click',function(){if(catIdx<catData.length-1){catIdx++;renderCatClip();}});
+document.getElementById('catSkipBtn').addEventListener('click',function(){
+  for(var i=catIdx+1;i<catData.length;i++){if(!catData[i].category){catIdx=i;renderCatClip();return;}}
+  showCatStatus('No more uncategorized items!','#166534');
+});
+document.getElementById('catSrcBtn').addEventListener('click',function(){setCatSource('oneMinute');});
+document.getElementById('catSrcBtnHal').addEventListener('click',function(){setCatSource('halacha');});
+
+function showCatStatus(msg,color){
+  var el=document.getElementById('catStatus');
+  el.textContent=msg; el.style.color=color; el.style.display=msg?'block':'none';
+}
+
 </script>
 </body>
 </html>
