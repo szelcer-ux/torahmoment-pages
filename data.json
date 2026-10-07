@@ -58,49 +58,60 @@
     "date": "9/15/2026",
     "description": "The right Ana Hashem",
     "filename": "PTT-20260915-WA0009.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260915-WA0009.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260915-WA0009.mp3",
+    "category": "Tefila"
   },
   {
     "date": "9/10/2026",
     "description": "Wake up",
     "filename": "PTT-20260910-WA0007.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Elul/Tishrei"
   },
   {
     "date": "9/8/2026",
     "description": "Mitzvah momentum",
     "filename": "PTT-20260908-WA0011.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260908-WA0011.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260908-WA0011.mp3",
+    "category": "Hashkafa"
   },
   {
     "date": "9/7/2026",
     "description": "In memory of my rebbi on his 2nd yahrtzeit",
     "filename": "PTT-20260907-WA0008.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260907-WA0008.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260907-WA0008.mp3",
+    "category": "Hashkafa"
   },
   {
     "date": "9/2/2026",
     "description": "Clean slate",
     "filename": "PTT-20260902-WA0025.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260902-WA0025.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260902-WA0025.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Elul/Tishrei"
   },
   {
     "date": "9/1/2026",
     "description": "The small things add up",
     "filename": "PTT-20260901-WA0021.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3",
+    "category": "Hashkafa"
   },
   {
     "date": "8/27/2026",
     "description": "The shofar is not magic",
     "filename": "PTT-20260827-WA0005.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260827-WA0005.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260827-WA0005.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Elul/Tishrei"
   },
   {
     "date": "8/26/2026",
     "description": "Acknowledge the good people",
     "filename": "PTT-20260826-WA0013.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260826-WA0013.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260826-WA0013.mp3",
+    "category": "Middos"
   },
   {
     "date": "8/25/2026",
