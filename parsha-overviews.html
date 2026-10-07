@@ -69,9 +69,15 @@
     /* Featured latest */
     .featured{background:rgba(13,148,136,.06);border:1px solid rgba(13,148,136,.25);border-radius:var(--radius);padding:16px 18px;margin-bottom:20px;}
     .featured-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:var(--card);border:1px solid var(--accent-mid);border-radius:999px;padding:2px 9px;margin-bottom:8px;}
-    .featured-parsha{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;}
+    .featured-parsha{font-size:18px;font-weight:700;line-height:1.25;margin-bottom:3px;}
     .featured-title{font-size:17px;font-weight:700;line-height:1.25;margin-bottom:3px;}
     .featured-date{font-size:12px;color:var(--muted);margin-bottom:12px;}
+
+    /* Sefer filter */
+    .sefer-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+    .sefer-btn{padding:7px 15px;border-radius:999px;border:1px solid var(--border);background:var(--card);font-size:13px;font-weight:600;cursor:pointer;color:var(--muted);transition:.15s;font-family:inherit;}
+    .sefer-btn:hover{border-color:var(--accent);color:var(--accent);}
+    .sefer-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
 
     /* Sefer label */
     .sefer-label{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:20px 0 10px 2px;}
@@ -82,7 +88,7 @@
     .shiur-top{display:flex;align-items:center;gap:12px;padding:13px 16px 0;}
     .shiur-num{width:26px;height:26px;border-radius:50%;background:var(--bg);border:1px solid var(--border);display:grid;place-items:center;font-size:11px;font-weight:600;color:var(--muted);flex-shrink:0;}
     .shiur-info{flex:1;min-width:0;}
-    .shiur-parsha{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-bottom:1px;}
+    .shiur-parsha{font-size:15px;font-weight:700;line-height:1.3;color:var(--text);}
     .shiur-title{font-size:14px;font-weight:700;line-height:1.3;color:var(--text);}
     .shiur-meta{font-size:11px;color:var(--muted);margin-top:2px;}
 
@@ -144,10 +150,11 @@
   <div id="featuredWrap" style="display:none;" class="featured">
     <div class="featured-badge">Latest</div>
     <div id="featuredParsha" class="featured-parsha"></div>
-    <div id="featuredTitle" class="featured-title"></div>
     <div id="featuredDate" class="featured-date"></div>
     <div id="featuredPlayer"></div>
   </div>
+
+  <div class="sefer-filter" id="seferFilter"></div>
 
   <div id="shiurList"></div>
 
@@ -257,6 +264,63 @@
     tick();
   }
 
+  let allItems = [];
+  let selectedSefer = null; // sefer name, or 'all'
+
+  function seferOf(item) {
+    const p = normP(parshaFromItem(item));
+    return SEFANIM.find(s => s.parshas.includes(p)) || null;
+  }
+
+  function renderList() {
+    let html = '';
+    SEFANIM.forEach(sefer => {
+      if (selectedSefer !== 'all' && selectedSefer !== sefer.name) return;
+      const sItems = allItems.filter(item => {
+        const s = seferOf(item);
+        return s && s.name === sefer.name;
+      });
+      if (!sItems.length) return;
+
+      html += `<div class="sefer-label">${sefer.name}</div><div class="shiur-list">`;
+      sItems.forEach(item => {
+        const parsha  = parshaFromItem(item);
+        const dateStr = fmtDate(item.date);
+        const num     = sefer.parshas.indexOf(normP(parsha)) + 1;
+        html += `<div class="shiur-card" data-title="${(item.title||'').replace(/"/g,'&quot;')}">
+          <div class="shiur-top">
+            <div class="shiur-num">${num}</div>
+            <div class="shiur-info">
+              <div class="shiur-parsha">${parsha}</div>
+              ${dateStr?`<div class="shiur-meta">${dateStr}</div>`:''}
+            </div>
+          </div>
+          ${renderPlayer(item.url, '')}
+        </div>`;
+      });
+      html += `</div>`;
+    });
+    document.getElementById('shiurList').innerHTML = html;
+    document.querySelectorAll('#shiurList .tm-inline-player').forEach(setupPlayer);
+  }
+
+  function renderFilter() {
+    const wrap = document.getElementById('seferFilter');
+    const present = SEFANIM.filter(s => allItems.some(i => { const x = seferOf(i); return x && x.name === s.name; }));
+    const buttons = present.map(s => ({ key: s.name, label: s.name.replace('Sefer ', '') }));
+    buttons.push({ key: 'all', label: 'All' });
+    wrap.innerHTML = buttons.map(b =>
+      `<button type="button" class="sefer-btn${b.key === selectedSefer ? ' active' : ''}" data-sefer="${b.key}">${b.label}</button>`
+    ).join('');
+    wrap.querySelectorAll('.sefer-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedSefer = btn.dataset.sefer;
+        document.querySelectorAll('.sefer-btn').forEach(x => x.classList.toggle('active', x === btn));
+        renderList();
+      });
+    });
+  }
+
   async function loadOverviews() {
     try {
       const res = await fetch('/data/search-index.json',{cache:'no-store'});
@@ -274,12 +338,11 @@
 
       // Sort by parsha order
       items.sort((a,b)=>{
-        const na = normP(parshaFromItem(a));
-        const nb = normP(parshaFromItem(b));
-        const ia = PARSHA_ORDER.indexOf(na);
-        const ib = PARSHA_ORDER.indexOf(nb);
+        const ia = PARSHA_ORDER.indexOf(normP(parshaFromItem(a)));
+        const ib = PARSHA_ORDER.indexOf(normP(parshaFromItem(b)));
         return (ia===-1?999:ia)-(ib===-1?999:ib);
       });
+      allItems = items;
 
       // Latest = most recent by date
       const latest = [...items].sort((a,b)=>new Date(b.date||0)-new Date(a.date||0))[0];
@@ -288,7 +351,6 @@
       const fw = document.getElementById('featuredWrap');
       if (latest) {
         document.getElementById('featuredParsha').textContent = parshaFromItem(latest);
-        document.getElementById('featuredTitle').textContent  = latest.title||'Parsha Overview';
         document.getElementById('featuredDate').textContent   = fmtDate(latest.date);
         document.getElementById('featuredPlayer').innerHTML   = renderPlayer(latest.url, 'featuredPlayer');
         fw.style.display='';
@@ -296,38 +358,12 @@
         setupPlayer(fw.querySelector('.tm-inline-player'));
       }
 
-      // Group by sefer
-      let html = '';
-      let globalNum = 1;
+      // Default filter = sefer of the most recent overview
+      const cur = seferOf(latest);
+      selectedSefer = cur ? cur.name : 'all';
 
-      SEFANIM.forEach(sefer=>{
-        const sItems = items.filter(item=>{
-          const p = normP(parshaFromItem(item));
-          return sefer.parshas.includes(p);
-        });
-        if (!sItems.length) return;
-
-        html += `<div class="sefer-label">${sefer.name}</div><div class="shiur-list">`;
-        sItems.forEach(item=>{
-          const parsha  = parshaFromItem(item);
-          const dateStr = fmtDate(item.date);
-          html += `<div class="shiur-card" data-title="${(item.title||'').replace(/"/g,'&quot;')}">
-            <div class="shiur-top">
-              <div class="shiur-num">${globalNum++}</div>
-              <div class="shiur-info">
-                <div class="shiur-parsha">${parsha}</div>
-                <div class="shiur-title">${item.title||'Parsha Overview'}</div>
-                ${dateStr?`<div class="shiur-meta">${dateStr}</div>`:''}
-              </div>
-            </div>
-            ${renderPlayer(item.url, '')}
-          </div>`;
-        });
-        html += `</div>`;
-      });
-
-      document.getElementById('shiurList').innerHTML = html;
-      document.querySelectorAll('#shiurList .tm-inline-player').forEach(setupPlayer);
+      renderFilter();
+      renderList();
 
     } catch(e) {
       console.warn('Failed to load overviews:',e);
