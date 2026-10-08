@@ -2446,7 +2446,23 @@ async function getThisWeeksParsha() {
   if (!r.ok) throw new Error("Hebcal fetch failed");
 
   const j = await r.json();
-  const item = (j.items || []).find(it => it.category === "parashat");
+  let item = (j.items || []).find(it => it.category === "parashat");
+
+  // Fallback: the /shabbat feed can return no parsha (e.g. around Yom Tov).
+  // Ask Hebcal's calendar for the next Shabbos' parsha by date range instead.
+  if (!item?.title) {
+    try {
+      const pad = n => String(n).padStart(2, "0");
+      const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+      const start = new Date(), end = new Date(Date.now() + 14 * 86400000);
+      const u2 = "https://www.hebcal.com/hebcal?v=1&cfg=json&s=on&i=off&start=" + ymd(start) + "&end=" + ymd(end);
+      const r2 = await fetch(u2);
+      if (r2.ok) {
+        const j2 = await r2.json();
+        item = (j2.items || []).find(it => it.category === "parashat");
+      }
+    } catch (e) { console.warn("Hebcal fallback failed:", e); }
+  }
   if (!item?.title) return "";
 
   // "Parashat Beshalach" → "Beshalach"
