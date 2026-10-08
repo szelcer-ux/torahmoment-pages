@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { writeFileSync, readFileSync } from "node:fs";
 import http from "node:http";
 import { chromium } from "playwright";
 
@@ -122,6 +122,20 @@ async function readHalachaTotalAllFromDom(page) {
   // 2) Breakdown from pages
   const breakdown = { parsha:{audio:null,video:null}, tefila:{video:null}, halacha:{totalAll:null}, oneMinute:{audio:null}, mishna:{audio:null} };
 
+  // Parsha overviews: read from data/parsha-overviews.json (same count semantics as the page: sum of array lengths)
+  let diskOverviews = [], overviewDiskCount = 0;
+  try {
+    const ovData = JSON.parse(readFileSync("./data/parsha-overviews.json","utf8"));
+    for (const [parsha, items] of Object.entries(ovData||{})) {
+      if (!Array.isArray(items)) continue;
+      overviewDiskCount += items.length;
+      for (const item of items) {
+        if (item && item.url && item.label) diskOverviews.push({ parsha, title:item.label, url:item.url, duration:item.duration||"", date:item.date||null });
+      }
+    }
+    console.log("Parsha overviews loaded from file:", overviewDiskCount);
+  } catch(e) { console.warn("Could not read data/parsha-overviews.json:", String(e)); }
+
   for (const path of PAGES) {
     try {
       await page.goto(`http://127.0.0.1:${PORT}${path}`,{waitUntil:"load",timeout:60000});
@@ -129,11 +143,17 @@ async function readHalachaTotalAllFromDom(page) {
       const snap = await page.evaluate(()=>({
         breakdown: window.SITE_COUNTS?.allShiurim?.breakdown||null,
         tmCounts: window.TM_COUNTS||null,
+        parshaParts: window.__PARSHA_AUDIO_PARTS__||null,
       }));
       console.log("SNAP", path, JSON.stringify(snap));
       const b = snap.breakdown;
       if(b?.parsha) {
         if(typeof b.parsha.audio==="number") breakdown.parsha.audio=b.parsha.audio;
+        // Overviews live in data/parsha-overviews.json: audio = short + in-depth (from page) + overviews (from disk)
+        if(snap.parshaParts && typeof snap.parshaParts.short==="number" && typeof snap.parshaParts.long==="number") {
+          breakdown.parsha.audio = snap.parshaParts.short + snap.parshaParts.long + overviewDiskCount;
+          console.log("PARSHA audio parts:", JSON.stringify(snap.parshaParts), "overviews(disk):", overviewDiskCount, "=>", breakdown.parsha.audio);
+        }
         if(typeof b.parsha.video==="number") breakdown.parsha.video=b.parsha.video;
       }
       if(b?.tefila&&typeof b.tefila.video==="number") breakdown.tefila.video=b.tefila.video;
@@ -224,22 +244,9 @@ async function readHalachaTotalAllFromDom(page) {
     console.log("Halacha items loaded from file:", allHalacha.length);
   } catch(e) { console.warn("Halacha index build failed:", String(e)); }
 
-  // Read PARSHA_OVERVIEW from parsha page
-  let allParshaOverviews = [];
-  try {
-    await page.goto(`http://127.0.0.1:${PORT}/parsha.html`,{waitUntil:"load"});
-    const overviewData = await page.evaluate(()=>typeof PARSHA_OVERVIEW!=="undefined" ? PARSHA_OVERVIEW : null);
-    if (overviewData) {
-      for (const [parsha, items] of Object.entries(overviewData)) {
-        for (const item of items||[]) {
-          if (item.url && item.label) {
-            allParshaOverviews.push({ parsha, title: item.label, url: item.url, duration: item.duration||"", date: item.date||null });
-          }
-        }
-      }
-    }
-    console.log("Parsha overviews found:", allParshaOverviews.length);
-  } catch(e) { console.warn("Parsha overview index build failed:", String(e)); }
+  // Parsha overviews come from data/parsha-overviews.json (read above)
+  const allParshaOverviews = diskOverviews;
+  console.log("Parsha overviews found:", allParshaOverviews.length);
 
   const indexOneMin = (oneMinItems||[]).map((x,i)=>({ id:`one-${x.id??i}`, program:"One-Minute", type:"audio", title:x.description||x.filename||"One-Minute Audio", url:x.url, date:parseMmDdYyyy(x.date), page:"/one-minute-audio.html" })).filter(x=>x.url&&x.title);
   const indexHalacha = (allHalacha||[]).map((x,i)=>({ id:`hal-${i}`, program:"Halacha", type:x.type||"audio", title:x.title||"Halacha", url:x.url, date:x.date, page:"/halacha.html" })).filter(x=>x.url&&x.title);
