@@ -90,6 +90,7 @@
       <button class="tab on" id="tab-halacha">📚 Halacha</button>
       <button class="tab" id="tab-oneMinute">⏱️ One-Minute</button>
       <button class="tab" id="tab-infographics">🖼️ Infographics</button>
+      <button class="tab" id="tab-overviews">🎧 Overviews</button>
       <button class="tab" id="tab-categorize">🏷️ Categorize</button>
     </div>
 
@@ -122,6 +123,18 @@
       <div class="f"><label>Category (optional)</label><select id="om-cat-main"><option value="">-- select --</option></select></div>
       <div class="f" id="om-cat-sub-field" style="display:none;"><label id="om-cat-sub-label">Sub-category</label><select id="om-cat-sub"><option value="">-- select --</option></select></div>
       <div class="f" id="om-cat-parsha-field" style="display:none;"><label>Parsha</label><select id="om-cat-parsha"><option value="">-- select --</option></select></div>
+    </div>
+
+    <!-- PARSHA OVERVIEWS -->
+    <div class="card" id="form-overviews" style="display:none;">
+      <h2>Add Parsha Overview</h2>
+      <div class="f"><label>Parsha</label><select id="ov-parsha"><option value="">-- select --</option><option>Bereishis</option><option>Noach</option><option>Lech Licha</option><option>Vayeira</option><option>Chayei Sarah</option><option>Toldos</option><option>Vayeitzei</option><option>Vayishlach</option><option>Vayeishev</option><option>Mekeitz</option><option>Vayigash</option><option>Vayichi</option><option>Shemos</option><option>Vaeira</option><option>Bo</option><option>Beshalach</option><option>Yisro</option><option>Mishpatim</option><option>Terumah</option><option>Tetzaveh</option><option>Ki Sisa</option><option>Vayakhel</option><option>Pekudei</option><option>Vayikra</option><option>Tzav</option><option>Shemini</option><option>Tazria</option><option>Metzora</option><option>Achrei Mos</option><option>Kedoshim</option><option>Emor</option><option>Behar</option><option>Bechukosai</option><option>Bamidbar</option><option>Naso</option><option>Behaaloscha</option><option>Shelach</option><option>Korach</option><option>Chukas</option><option>Balak</option><option>Pinchas</option><option>Matos</option><option>Masei</option><option>Devarim</option><option>Vaeschanan</option><option>Eikev</option><option>Reeh</option><option>Shoftim</option><option>Ki Seitzei</option><option>Ki Savo</option><option>Nitzavim</option><option>Vayeilech</option><option>Haazinu</option><option>Vezos Haberacha</option></select></div>
+      <div class="f"><label>Title</label><input type="text" id="ov-label" placeholder="auto: Parshas ... overview" /></div>
+      <div class="f"><label>Audio URL</label><input type="url" id="ov-url" placeholder="https://torahmoment.com/audio/..." /></div>
+      <div class="f2">
+        <div class="f"><label>Duration</label><input type="text" id="ov-duration" placeholder="9:05" /></div>
+        <div class="f"><label>Date</label><input type="date" id="ov-date" /></div>
+      </div>
     </div>
 
     <!-- INFOGRAPHICS -->
@@ -310,7 +323,7 @@ function updateSections() {
 }
 
 // ── Tabs ──
-var ALL_TABS = ['halacha','oneMinute','infographics','categorize'];
+var ALL_TABS = ['halacha','oneMinute','infographics','overviews','categorize'];
 ALL_TABS.forEach(function(key) {
   document.getElementById('tab-' + key).addEventListener('click', function() {
     currentTab = key;
@@ -359,6 +372,16 @@ function buildEntry() {
     if (omCat) { entry.category = omCat; if (omSub) entry.categoryDetail = omSub; }
     return entry;
   }
+  if (currentTab === 'overviews') {
+    var ovParsha = document.getElementById('ov-parsha').value;
+    var ovUrl = document.getElementById('ov-url').value.trim();
+    var ovDate = toSlashDate(document.getElementById('ov-date').value);
+    var ovDur = document.getElementById('ov-duration').value.trim();
+    if (!ovParsha || !ovUrl || !ovDate) throw new Error('Parsha, Audio URL and Date are required.');
+    if (ovDur && !/^\d{1,2}:\d{2}$/.test(ovDur)) throw new Error('Duration should look like 9:05.');
+    var ovLabel = document.getElementById('ov-label').value.trim() || ('Parshas ' + ovParsha + ' overview');
+    return { _key: ovParsha, entry: { label: ovLabel, url: ovUrl, duration: ovDur, date: ovDate } };
+  }
   if (currentTab === 'infographics') {
     var id    = document.getElementById('ig-id').value.trim();
     var title = document.getElementById('ig-title').value.trim();
@@ -400,7 +423,7 @@ document.getElementById('commitBtn').addEventListener('click', function() {
   btn.disabled = true;
   showStatus('Fetching file from GitHub…', 'loading');
 
-  var paths = { halacha: 'data/halacha.json', oneMinute: 'data.json', infographics: 'data/infographics.json' };
+  var paths = { halacha: 'data/halacha.json', oneMinute: 'data.json', infographics: 'data/infographics.json', overviews: 'data/parsha-overviews.json' };
   var path = paths[currentTab];
 
   fetch('https://api.github.com/repos/' + REPO + '/contents/' + path + '?ref=' + BRANCH, {
@@ -418,7 +441,11 @@ document.getElementById('commitBtn').addEventListener('click', function() {
     var current = JSON.parse(new TextDecoder('utf-8').decode(bytes));
     var updated;
 
-    if (currentTab === 'infographics') {
+    if (currentTab === 'overviews') {
+      updated = JSON.parse(JSON.stringify(current));
+      if (!Array.isArray(updated[entry._key])) updated[entry._key] = [];
+      updated[entry._key].push(entry.entry);
+    } else if (currentTab === 'infographics') {
       updated = Object.assign({}, current);
       if (entry.entry.featured) Object.values(updated).forEach(function(v) { delete v.featured; });
       updated[entry._key] = entry.entry;
@@ -453,7 +480,7 @@ document.getElementById('commitBtn').addEventListener('click', function() {
     var jsonStr = JSON.stringify(updated, null, 2) + '\n';
     var encBytes = new TextEncoder().encode(jsonStr);
     var encoded = btoa(String.fromCharCode.apply(null, encBytes));
-    var label = entry.title || entry.description || entry._key || 'new entry';
+    var label = entry.title || entry.description || (entry.entry && entry.entry.label) || entry._key || 'new entry';
 
     return fetch('https://api.github.com/repos/' + REPO + '/contents/' + path, {
       method: 'PUT',
@@ -463,7 +490,7 @@ document.getElementById('commitBtn').addEventListener('click', function() {
   })
   .then(function(r) {
     if (!r.ok) return r.text().then(function(t) { throw new Error('Commit failed: ' + t); });
-    var label = entry.title || entry.description || entry._key || 'entry';
+    var label = entry.title || entry.description || (entry.entry && entry.entry.label) || entry._key || 'entry';
     showStatus('✅ Saved! "' + label + '" committed to ' + path + '. The GitHub Action will update the site shortly.', 'ok');
     clearForm();
   })
@@ -490,6 +517,12 @@ function clearForm() {
     document.getElementById('om-url').value = '';
     document.getElementById('om-file').value = '';
     document.getElementById('om-date').value = today;
+  } else if (currentTab === 'overviews') {
+    document.getElementById('ov-parsha').value = '';
+    document.getElementById('ov-label').value = '';
+    document.getElementById('ov-url').value = '';
+    document.getElementById('ov-duration').value = '';
+    document.getElementById('ov-date').value = today;
   } else {
     document.getElementById('ig-id').value = '';
     document.getElementById('ig-title').value = '';

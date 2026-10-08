@@ -1385,19 +1385,23 @@ const PARSHA_AUDIO = {
 	]	
 };
 
-const PARSHA_OVERVIEW = {
-  	"Devarim": [ { label: "Parshas Devarim overview", url: "https://torahmoment.com/audio/Devarim%20parsha%20overview.mp3", duration: "9:51", date: "7/15/2026" } ],
-  	"Vaeschanan": [ { label: "Parshas Vaeschanan overview", url: "https://torahmoment.com/audio/VaeschananOverview.mp3", duration: "8:56", date: "7/22/2026" } ],
-  	"Eikev": [ { label: "Parshas Eikev overview", url: "https://torahmoment.com/audio/EikevOverview.mp3", duration: "8:53", date: "7/29/2026" } ],
-	"Reeh": [ { label: "Parshas Reeh overview", url: "https://torahmoment.com/audio/ReehParshaOverview.mp3", duration: "8:08", date: "8/5/2026" } ],
-	"Shoftim": [ { label: "Parshas Shoftim overview", url: "https://torahmoment.com/audio/ShoftimOverview.mp3", duration: "8:59", date: "8/12/2026" } ],
-	"Ki Seitzei": [ { label: "Parshas Ki Seitzei overview", url: "https://torahmoment.com/audio/KizseitzeiOverview.mp3", duration: "8:29", date: "8/19/2026" } ],
-	"Ki Savo": [ { label: "Parshas Ki Savo overview", url: "https://torahmoment.com/audio/KiSavoOverview.mp3", duration: "8:44", date: "8/26/2026" } ],
-	"Nitzavim / Vayeilech overview": [ { label: "Parshios Nitzavim / Vayeilech overview", url: "https://torahmoment.com/audio/Nitzavimvayeilechoverview.mp3", duration: "9:11", date: "9/2/2026" } ],
-	"Haazinu": [ { label: "Parshas Haazinu overview", url: "https://torahmoment.com/audio/Haazinuoverview.mp3", duration: "8:40", date: "9/16/2026" } ],
-	"Vezos Haberacha": [ { label: "Parshas Vezos Haberacha overview", url: "https://torahmoment.com/audio/VzosHabrachaOverview.mp3", duration: "9:28", date: "10/1/2026" } ],
-	"Bereishis": [ { label: "Parshas Bereishis overview", url: "https://torahmoment.com/audio/Bereishisoverview.mp3", duration: "9:05", date: "10/7/2026" } ]
-};
+// Overviews now live in /data/parsha-overviews.json (loaded by loadOverviews below)
+let PARSHA_OVERVIEW = {};
+let OVERVIEWS_SETTLED = false;
+
+async function loadOverviews() {
+  try {
+    const res = await fetch("/data/parsha-overviews.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const j = await res.json();
+    PARSHA_OVERVIEW = (j && typeof j === "object" && !Array.isArray(j)) ? j : {};
+  } catch (err) {
+    console.warn("Could not load parsha overviews:", err);
+    PARSHA_OVERVIEW = {};
+  } finally {
+    OVERVIEWS_SETTLED = true;
+  }
+}
 
 const PARSHA_INDEPTH = {
   "Noach": [
@@ -1627,13 +1631,15 @@ function updateParshaCounts() {
     : 0;
 
   b.parsha.audio = audioShort + audioLong + audioOverview;
+  // Parts exposed so the build script can add the on-disk overview count authoritatively
+  window.__PARSHA_AUDIO_PARTS__ = { short: audioShort, long: audioLong, overview: audioOverview, overviewsSettled: OVERVIEWS_SETTLED };
   b.parsha.video = videoTotal;
   window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
 
   // Flags for Playwright/GitHub Actions
   window.__PARSHAVIDEOS_LEN__ = videoTotal;
   window.__COUNTS_READY__ = window.__COUNTS_READY__ || {};
-  window.__COUNTS_READY__.parsha = (videoTotal > 0);
+  window.__COUNTS_READY__.parsha = (videoTotal > 0 && OVERVIEWS_SETTLED);
 
 window.addEventListener("load", () => {
   try { updateParshaCounts(); } catch {}
@@ -2613,8 +2619,9 @@ parshaSel.addEventListener("change", () => {
 
 
  (async () => {
-  await loadInfographics();
+  await Promise.all([loadInfographics(), loadOverviews()]);
   await setDefaultParshaOnEntry();
+  try { updateParshaCounts(); } catch {}
 
   updateURLFromSelection();
   setPageTitle();

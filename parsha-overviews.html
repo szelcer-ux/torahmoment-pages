@@ -182,7 +182,8 @@
     { name: 'Sefer Devarim',   parshas: ['devarim','vaeschanan','eikev','reeh','shoftim','ki seitzei','ki savo','nitzavim','vayeilech','haazinu','vezos haberacha'] },
   ];
 
-  function normP(s) { return String(s||'').toLowerCase().replace(/[^a-z0-9 ]/g,'').trim(); }
+  const P_ALIAS = { 'lech licha':'lech lecha','chayei sarah':'chayei sara','mekeitz':'miketz','vayichi':'vayechi','naso':'nasso','masei':'massei' };
+  function normP(s) { const k = String(s||'').toLowerCase().replace(/[^a-z0-9 ]/g,'').trim(); return P_ALIAS[k] || k; }
 
   function parshaFromItem(item) {
     // Extract parsha name from id like "ov-devarim" or title
