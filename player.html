@@ -98,6 +98,7 @@
     }
     .tm-play:hover{transform:translateY(-1px)}
     .tm-play svg{width:18px;height:18px;display:block}
+    .tm-rewind svg{width:26px;height:26px}
 
     .tm-main{
       min-width:0;
@@ -354,6 +355,14 @@
             </svg>
           </button>
 
+          <button class="tm-play tm-rewind" id="rewindBtn" type="button" aria-label="Rewind 15 seconds" title="Rewind 15 seconds">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M11 3 6.5 6.75 11 10.5z"></path>
+              <path d="M16.5 3 12 6.75l4.5 3.75z"></path>
+              <text x="11.5" y="21" text-anchor="middle" font-size="11" font-weight="800" font-family="system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif">15</text>
+            </svg>
+          </button>
+
           <div class="tm-main">
             <div class="tm-progress" id="progress" aria-label="Seek audio">
               <div id="progressFill"></div>
@@ -386,6 +395,7 @@
     const playBtn = document.getElementById('playBtn');
     const playIcon = document.getElementById('playIcon');
     const speedBtn = document.getElementById('speedBtn');
+    const rewindBtn = document.getElementById('rewindBtn');
     const randomBtn = document.getElementById('randomBtn');
     const progress = document.getElementById('progress');
     const progressFill = document.getElementById('progressFill');
@@ -562,6 +572,11 @@
     }
 
     playBtn.addEventListener('click', togglePlay);
+
+    rewindBtn.addEventListener('click', () => {
+      if (!audio.src) return;
+      audio.currentTime = Math.max(0, (audio.currentTime || 0) - 15);
+    });
 
     speedBtn.addEventListener('click', () => {
       setSpeed(speedIndex + 1);
