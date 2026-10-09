@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 813,
+    "total": 814,
     "breakdown": {
       "parsha": {
         "audio": 35,
-        "video": 244
+        "video": 245
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-10-08"
+    "updated": "2026-10-09"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Even in Gan Eden",
+      "url": "https://www.youtube.com/watch?v=ZqiQBiaRh1s",
+      "date": "2026-10-09T01:54:08Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,13 +56,6 @@
       "title": "We need protecting",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0032.mp3",
       "date": "2026-10-05T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "What is the Torah really all about?",
-      "url": "https://www.youtube.com/watch?v=2mcFMZ8bQv4",
-      "date": "2026-10-02T10:39:04Z"
     }
   ],
   "recentByProgram": {
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Even in Gan Eden",
+        "url": "https://www.youtube.com/watch?v=ZqiQBiaRh1s",
+        "date": "2026-10-09T01:54:08Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "What is the Torah really all about?",
         "url": "https://www.youtube.com/watch?v=2mcFMZ8bQv4",
         "date": "2026-10-02T10:39:04Z"
@@ -266,13 +273,6 @@
         "title": "Make Him beloved",
         "url": "https://www.youtube.com/watch?v=RWV08AhDkvg",
         "date": "2026-07-24T01:44:21Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Stop fighting!",
-        "url": "https://www.youtube.com/watch?v=I-CVzeHuA3w",
-        "date": "2026-07-17T02:02:17Z"
       }
     ]
   }
