@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 814,
+    "total": 815,
     "breakdown": {
       "parsha": {
         "audio": 35,
@@ -13,7 +13,7 @@
         "totalAll": 105
       },
       "oneMinute": {
-        "audio": 272
+        "audio": 273
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-10-12"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Believing - but not quite",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261011-WA0052.mp3",
+      "date": "2026-10-12T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,17 +56,17 @@
       "title": "VZOS HABRACHA - Moshe's tears: It's up to us",
       "url": "https://www.buzzsprout.com/1899789/episodes/19912060-10-5-2026-shloimy-zelcer-moshe-s-tears-it-s-up-to-us.mp3",
       "date": "2026-10-05T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "We need protecting",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0032.mp3",
-      "date": "2026-10-05T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Believing - but not quite",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261011-WA0052.mp3",
+        "date": "2026-10-12T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Wake up",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3",
         "date": "2026-09-10T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Mitzvah momentum",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260908-WA0011.mp3",
-        "date": "2026-09-08T00:00:00.000Z"
       }
     ],
     "halacha": [
