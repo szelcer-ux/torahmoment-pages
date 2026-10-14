@@ -277,7 +277,14 @@
     "parsha": "Bereishis",
     "image": "images/infographics/parsha/Bereishis_Work__A_Divine_Purpose.png",
     "youtube": "https://www.youtube.com/watch?v=ZqiQBiaRh1s",
-    "description": "Work: A Divine purpose",
+    "description": "Work: A Divine purpose"
+  },
+  "N2CZKVfrdb8": {
+    "title": "The problem wasn't the wine",
+    "parsha": "Noach",
+    "image": "images/infographics/parsha/Noach_Lesson_of_Noach_s_Vineyard.png",
+    "youtube": "https://www.youtube.com/watch?v=N2CZKVfrdb8",
+    "description": "Lesson of Noach's Vineyard",
     "featured": true
   }
 }
