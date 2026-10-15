@@ -37,6 +37,13 @@
       "date": "2026-10-12T00:00:00.000Z"
     },
     {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Even in Gan Eden",
+      "url": "https://www.youtube.com/watch?v=ZqiQBiaRh1s",
+      "date": "2026-10-09T01:54:08Z"
+    },
+    {
       "type": "audio",
       "program": "One-Minute",
       "title": "Do your best",
@@ -49,13 +56,6 @@
       "title": "Form good habits",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0040.mp3",
       "date": "2026-10-06T00:00:00.000Z"
-    },
-    {
-      "type": "parsha-audio",
-      "program": "Halacha",
-      "title": "VZOS HABRACHA - Moshe's tears: It's up to us",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19912060-10-5-2026-shloimy-zelcer-moshe-s-tears-it-s-up-to-us.mp3",
-      "date": "2026-10-05T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
