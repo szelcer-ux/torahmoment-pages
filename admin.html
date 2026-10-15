@@ -129,8 +129,8 @@
     <div class="card" id="form-overviews" style="display:none;">
       <h2>Add Parsha Overview</h2>
       <div class="f"><label>Parsha</label><select id="ov-parsha"><option value="">-- select --</option><option>Bereishis</option><option>Noach</option><option>Lech Licha</option><option>Vayeira</option><option>Chayei Sarah</option><option>Toldos</option><option>Vayeitzei</option><option>Vayishlach</option><option>Vayeishev</option><option>Mekeitz</option><option>Vayigash</option><option>Vayichi</option><option>Shemos</option><option>Vaeira</option><option>Bo</option><option>Beshalach</option><option>Yisro</option><option>Mishpatim</option><option>Terumah</option><option>Tetzaveh</option><option>Ki Sisa</option><option>Vayakhel</option><option>Pekudei</option><option>Vayikra</option><option>Tzav</option><option>Shemini</option><option>Tazria</option><option>Metzora</option><option>Achrei Mos</option><option>Kedoshim</option><option>Emor</option><option>Behar</option><option>Bechukosai</option><option>Bamidbar</option><option>Naso</option><option>Behaaloscha</option><option>Shelach</option><option>Korach</option><option>Chukas</option><option>Balak</option><option>Pinchas</option><option>Matos</option><option>Masei</option><option>Devarim</option><option>Vaeschanan</option><option>Eikev</option><option>Reeh</option><option>Shoftim</option><option>Ki Seitzei</option><option>Ki Savo</option><option>Nitzavim</option><option>Vayeilech</option><option>Haazinu</option><option>Vezos Haberacha</option></select></div>
-      <div class="f"><label>Title</label><input type="text" id="ov-label" placeholder="auto: Parshas ... overview" /></div>
-      <div class="f"><label>Audio URL</label><input type="url" id="ov-url" placeholder="https://torahmoment.com/audio/..." /></div>
+      <div class="f"><label>Title</label><input type="text" id="ov-label" placeholder="Fills in when you pick a parsha — edit or add to it" /></div>
+      <div class="f"><label>Audio file name</label><input type="text" id="ov-url" placeholder="e.g. BereishisOverview.mp3" /><div style="font-size:12px;color:#666;margin-top:4px;">Saved as https://torahmoment.com/audio/&lt;file name&gt;</div></div>
       <div class="f2">
         <div class="f"><label>Duration</label><input type="text" id="ov-duration" placeholder="9:05" /></div>
         <div class="f"><label>Date</label><input type="date" id="ov-date" /></div>
@@ -147,7 +147,7 @@
         <div class="f"><label>Featured?</label><select id="ig-featured"><option value="no">No</option><option value="yes">Yes</option></select></div>
       </div>
       <div class="f"><label>Description</label><input type="text" id="ig-desc" placeholder="e.g. The ripple effect of personal integrity." /></div>
-      <div class="f"><label>Image path</label><input type="text" id="ig-image" placeholder="/images/infographics/parsha/filename.png" /></div>
+      <div class="f"><label>Image file name</label><input type="text" id="ig-image" placeholder="e.g. filename.png" /><div style="font-size:12px;color:#666;margin-top:4px;">Saved as /images/infographics/parsha/&lt;file name&gt;</div></div>
     </div>
 
     <div id="preview"><h3>Preview</h3><pre id="previewPre"></pre></div>
@@ -340,6 +340,24 @@ ALL_TABS.forEach(function(key) {
   });
 });
 
+// ── Infographic image: file name only -> full path (full paths/URLs still accepted) ──
+function igImagePath(v) {
+  if (!v) return '';
+  if (/^https?:\/\//i.test(v) || v.charAt(0) === '/') return v;
+  return '/images/infographics/parsha/' + v;
+}
+
+// ── Overview title: auto-fills when a parsha is picked, stays editable ──
+var ovLastAuto = '';
+document.getElementById('ov-parsha').addEventListener('change', function() {
+  var box = document.getElementById('ov-label');
+  var cur = box.value.trim();
+  if (cur === '' || cur === ovLastAuto) {
+    ovLastAuto = this.value ? 'Parshas ' + this.value + ' overview' : '';
+    box.value = ovLastAuto;
+  }
+});
+
 // ── Build entry ──
 function toSlashDate(iso) {
   if (!iso) return '';
@@ -375,6 +393,9 @@ function buildEntry() {
   if (currentTab === 'overviews') {
     var ovParsha = document.getElementById('ov-parsha').value;
     var ovUrl = document.getElementById('ov-url').value.trim();
+    // Just a file name? Add the audio folder. A full URL or path is still accepted as-is.
+    if (ovUrl && !/^https?:\/\//i.test(ovUrl) && ovUrl.charAt(0) !== '/') ovUrl = 'https://torahmoment.com/audio/' + encodeURIComponent(ovUrl).replace(/%25/g, '%');
+    else if (ovUrl.charAt(0) === '/') ovUrl = 'https://torahmoment.com' + ovUrl;
     var ovDate = toSlashDate(document.getElementById('ov-date').value);
     var ovDur = document.getElementById('ov-duration').value.trim();
     if (!ovParsha || !ovUrl || !ovDate) throw new Error('Parsha, Audio URL and Date are required.');
@@ -390,7 +411,7 @@ function buildEntry() {
     var entry = {
       title: title,
       parsha: parsha,
-      image: document.getElementById('ig-image').value.trim(),
+      image: igImagePath(document.getElementById('ig-image').value.trim()),
       youtube: 'https://www.youtube.com/watch?v=' + id,
       description: document.getElementById('ig-desc').value.trim()
     };
@@ -519,8 +540,9 @@ function clearForm() {
     document.getElementById('om-date').value = today;
   } else if (currentTab === 'overviews') {
     document.getElementById('ov-parsha').value = '';
-    document.getElementById('ov-label').value = '';
     document.getElementById('ov-url').value = '';
+    document.getElementById('ov-label').value = '';
+    ovLastAuto = '';
     document.getElementById('ov-duration').value = '';
     document.getElementById('ov-date').value = today;
   } else {
