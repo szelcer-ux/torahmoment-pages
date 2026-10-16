@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "October 3–9, 2026",
-  "generatedAt": "2026-10-09T16:55:23.668Z",
-  "totalItems": 6,
+  "rangeLabel": "October 10–16, 2026",
+  "generatedAt": "2026-10-16T13:26:51.138Z",
+  "totalItems": 5,
   "featured": {
-    "id": "par-ZqiQBiaRh1s",
-    "title": "Even in Gan Eden",
+    "id": "par-N2CZKVfrdb8",
+    "title": "The problem wasn't the wine",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-10-09T01:54:08Z",
+    "date": "2026-10-16T00:21:08Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=ZqiQBiaRh1s"
+    "url": "https://www.youtube.com/watch?v=N2CZKVfrdb8"
   },
   "groups": [
     {
@@ -17,37 +17,22 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-ZqiQBiaRh1s",
-          "title": "Even in Gan Eden",
+          "id": "par-N2CZKVfrdb8",
+          "title": "The problem wasn't the wine",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-10-09T01:54:08Z",
+          "date": "2026-10-16T00:21:08Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=ZqiQBiaRh1s"
+          "url": "https://www.youtube.com/watch?v=N2CZKVfrdb8"
         },
         {
-          "id": "ov-bereishis",
-          "title": "Parshas Bereishis overview",
+          "id": "ov-noach",
+          "title": "Parshas Noach Overview",
           "program": "Parsha Overview",
           "type": "audio",
-          "date": "2026-10-07T00:00:00.000Z",
+          "date": "2026-10-14T00:00:00.000Z",
           "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/Bereishisoverview.mp3"
-        }
-      ]
-    },
-    {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
-      "items": [
-        {
-          "id": "hal-118",
-          "title": "VZOS HABRACHA - Moshe's tears: It's up to us",
-          "program": "Halacha",
-          "type": "parsha-audio",
-          "date": "2026-10-05T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19912060-10-5-2026-shloimy-zelcer-moshe-s-tears-it-s-up-to-us.mp3"
+          "url": "https://Torahmoment.com/audio/NoachOverview.mp3"
         }
       ]
     },
@@ -57,30 +42,30 @@
       "items": [
         {
           "id": "one-0",
-          "title": "Do your best",
+          "title": "The last guy",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-10-07T00:00:00.000Z",
+          "date": "2026-10-15T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261007-WA0016.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261011-WA0055.mp3"
         },
         {
           "id": "one-1",
-          "title": "Form good habits",
+          "title": "Doing right because it's right",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-10-06T00:00:00.000Z",
+          "date": "2026-10-13T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0040.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261011-WA0053.mp3"
         },
         {
           "id": "one-2",
-          "title": "We need protecting",
+          "title": "Believing - but not quite",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-10-05T00:00:00.000Z",
+          "date": "2026-10-12T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0032.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261011-WA0052.mp3"
         }
       ]
     }
