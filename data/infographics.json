@@ -284,7 +284,14 @@
     "parsha": "Noach",
     "image": "images/infographics/parsha/Noach_Lesson_of_Noach_s_Vineyard.png",
     "youtube": "https://www.youtube.com/watch?v=N2CZKVfrdb8",
-    "description": "Lesson of Noach's Vineyard",
+    "description": "Lesson of Noach's Vineyard"
+  },
+  "XzMZC-rWQiI": {
+    "title": "What will success cost you?",
+    "parsha": "Lech Lecha",
+    "image": "/images/infographics/parsha/Lech_Lecha_The_True_Cost_of_Success.png",
+    "youtube": "https://www.youtube.com/watch?v=XzMZC-rWQiI",
+    "description": "The True Cost of Success",
     "featured": true
   }
 }
