@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 822,
+    "total": 791,
     "breakdown": {
       "parsha": {
         "audio": 36,
-        "video": 246
+        "video": 214
       },
       "tefila": {
         "video": 20
@@ -13,7 +13,7 @@
         "totalAll": 106
       },
       "oneMinute": {
-        "audio": 277
+        "audio": 278
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-10-21"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Be like Avrohom - just do it!",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261021-WA0028.mp3",
+      "date": "2026-10-21T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "The problem wasn't the wine",
       "url": "https://www.youtube.com/watch?v=N2CZKVfrdb8",
       "date": "2026-10-16T00:21:08Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "The last guy",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261011-WA0055.mp3",
-      "date": "2026-10-15T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Be like Avrohom - just do it!",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261021-WA0028.mp3",
+        "date": "2026-10-21T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Step out",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260923-WA0092.mp3",
         "date": "2026-09-24T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Gott's Nomen",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260922-WA0009.mp3",
-        "date": "2026-09-22T00:00:00.000Z"
       }
     ],
     "halacha": [

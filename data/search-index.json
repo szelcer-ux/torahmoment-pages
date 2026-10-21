@@ -3,6 +3,16 @@
     "id": "one-0",
     "program": "One-Minute",
     "type": "audio",
+    "title": "Be like Avrohom - just do it!",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261021-WA0028.mp3",
+    "date": "2026-10-21T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "title_lc": "be like avrohom - just do it!"
+  },
+  {
+    "id": "one-1",
+    "program": "One-Minute",
+    "type": "audio",
     "title": "Say hello!",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0049.mp3",
     "date": "2026-10-20T00:00:00.000Z",
@@ -10,7 +20,7 @@
     "title_lc": "say hello!"
   },
   {
-    "id": "one-1",
+    "id": "one-2",
     "program": "One-Minute",
     "type": "audio",
     "title": "The company we keep",
@@ -20,7 +30,7 @@
     "title_lc": "the company we keep"
   },
   {
-    "id": "one-2",
+    "id": "one-3",
     "program": "One-Minute",
     "type": "audio",
     "title": "The last guy",
@@ -30,7 +40,7 @@
     "title_lc": "the last guy"
   },
   {
-    "id": "one-3",
+    "id": "one-4",
     "program": "One-Minute",
     "type": "audio",
     "title": "Doing right because it's right",
@@ -40,7 +50,7 @@
     "title_lc": "doing right because it's right"
   },
   {
-    "id": "one-4",
+    "id": "one-5",
     "program": "One-Minute",
     "type": "audio",
     "title": "Believing - but not quite",
@@ -50,7 +60,7 @@
     "title_lc": "believing - but not quite"
   },
   {
-    "id": "one-5",
+    "id": "one-6",
     "program": "One-Minute",
     "type": "audio",
     "title": "Do your best",
@@ -60,7 +70,7 @@
     "title_lc": "do your best"
   },
   {
-    "id": "one-6",
+    "id": "one-7",
     "program": "One-Minute",
     "type": "audio",
     "title": "Form good habits",
@@ -70,7 +80,7 @@
     "title_lc": "form good habits"
   },
   {
-    "id": "one-7",
+    "id": "one-8",
     "program": "One-Minute",
     "type": "audio",
     "title": "We need protecting",
@@ -80,7 +90,7 @@
     "title_lc": "we need protecting"
   },
   {
-    "id": "one-8",
+    "id": "one-9",
     "program": "One-Minute",
     "type": "audio",
     "title": "Step out",
@@ -90,7 +100,7 @@
     "title_lc": "step out"
   },
   {
-    "id": "one-9",
+    "id": "one-10",
     "program": "One-Minute",
     "type": "audio",
     "title": "Gott's Nomen",
@@ -100,7 +110,7 @@
     "title_lc": "gott's nomen"
   },
   {
-    "id": "one-10",
+    "id": "one-11",
     "program": "One-Minute",
     "type": "audio",
     "title": "An honest heart",
@@ -110,7 +120,7 @@
     "title_lc": "an honest heart"
   },
   {
-    "id": "one-11",
+    "id": "one-12",
     "program": "One-Minute",
     "type": "audio",
     "title": "Where are you?",
@@ -120,7 +130,7 @@
     "title_lc": "where are you?"
   },
   {
-    "id": "one-12",
+    "id": "one-13",
     "program": "One-Minute",
     "type": "audio",
     "title": "The right Ana Hashem",
@@ -130,7 +140,7 @@
     "title_lc": "the right ana hashem"
   },
   {
-    "id": "one-13",
+    "id": "one-14",
     "program": "One-Minute",
     "type": "audio",
     "title": "Wake up",
@@ -140,7 +150,7 @@
     "title_lc": "wake up"
   },
   {
-    "id": "one-14",
+    "id": "one-15",
     "program": "One-Minute",
     "type": "audio",
     "title": "Mitzvah momentum",
@@ -150,7 +160,7 @@
     "title_lc": "mitzvah momentum"
   },
   {
-    "id": "one-15",
+    "id": "one-16",
     "program": "One-Minute",
     "type": "audio",
     "title": "In memory of my rebbi on his 2nd yahrtzeit",
@@ -160,7 +170,7 @@
     "title_lc": "in memory of my rebbi on his 2nd yahrtzeit"
   },
   {
-    "id": "one-16",
+    "id": "one-17",
     "program": "One-Minute",
     "type": "audio",
     "title": "Clean slate",
@@ -170,7 +180,7 @@
     "title_lc": "clean slate"
   },
   {
-    "id": "one-17",
+    "id": "one-18",
     "program": "One-Minute",
     "type": "audio",
     "title": "The small things add up",
@@ -180,7 +190,7 @@
     "title_lc": "the small things add up"
   },
   {
-    "id": "one-18",
+    "id": "one-19",
     "program": "One-Minute",
     "type": "audio",
     "title": "The shofar is not magic",
@@ -190,7 +200,7 @@
     "title_lc": "the shofar is not magic"
   },
   {
-    "id": "one-19",
+    "id": "one-20",
     "program": "One-Minute",
     "type": "audio",
     "title": "Acknowledge the good people",
@@ -200,7 +210,7 @@
     "title_lc": "acknowledge the good people"
   },
   {
-    "id": "one-20",
+    "id": "one-21",
     "program": "One-Minute",
     "type": "audio",
     "title": "Secret curses",
@@ -210,7 +220,7 @@
     "title_lc": "secret curses"
   },
   {
-    "id": "one-21",
+    "id": "one-22",
     "program": "One-Minute",
     "type": "audio",
     "title": "Helping is good for everyone",
@@ -4968,326 +4978,6 @@
     "date": "2024-08-16T03:00:08Z",
     "page": "/parsha.html",
     "title_lc": "one step at a time"
-  },
-  {
-    "id": "par-sW0pddecVxA",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Being ready for our Emunah moment",
-    "url": "https://www.youtube.com/watch?v=sW0pddecVxA",
-    "date": "2024-08-09T03:00:41Z",
-    "page": "/parsha.html",
-    "title_lc": "being ready for our emunah moment"
-  },
-  {
-    "id": "par-XNJOzGa21d0",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Thinking and praying",
-    "url": "https://www.youtube.com/watch?v=XNJOzGa21d0",
-    "date": "2024-08-02T04:11:59Z",
-    "page": "/parsha.html",
-    "title_lc": "thinking and praying"
-  },
-  {
-    "id": "par-DmdSmW6eIXM",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Controlling our own destiny",
-    "url": "https://www.youtube.com/watch?v=DmdSmW6eIXM",
-    "date": "2024-07-26T03:00:16Z",
-    "page": "/parsha.html",
-    "title_lc": "controlling our own destiny"
-  },
-  {
-    "id": "par-w9pTcYzNqwI",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Don't wait to get hit!",
-    "url": "https://www.youtube.com/watch?v=w9pTcYzNqwI",
-    "date": "2024-07-12T02:00:32Z",
-    "page": "/parsha.html",
-    "title_lc": "don't wait to get hit!"
-  },
-  {
-    "id": "par-EHPTJZDrTXI",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Sleep on it",
-    "url": "https://www.youtube.com/watch?v=EHPTJZDrTXI",
-    "date": "2024-07-05T02:07:40Z",
-    "page": "/parsha.html",
-    "title_lc": "sleep on it"
-  },
-  {
-    "id": "par-KHviV9IPAT0",
-    "program": "Parsha",
-    "type": "video",
-    "title": "One step at a time",
-    "url": "https://www.youtube.com/watch?v=KHviV9IPAT0",
-    "date": "2024-06-28T03:00:11Z",
-    "page": "/parsha.html",
-    "title_lc": "one step at a time"
-  },
-  {
-    "id": "par-NzAt8xvAx_4",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Being sensitive and showing love",
-    "url": "https://www.youtube.com/watch?v=NzAt8xvAx_4",
-    "date": "2024-06-21T04:00:15Z",
-    "page": "/parsha.html",
-    "title_lc": "being sensitive and showing love"
-  },
-  {
-    "id": "par-ZcB4iron84I",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Know your self worth",
-    "url": "https://www.youtube.com/watch?v=ZcB4iron84I",
-    "date": "2024-05-31T02:45:47Z",
-    "page": "/parsha.html",
-    "title_lc": "know your self worth"
-  },
-  {
-    "id": "par-IV5VKhZVQsg",
-    "program": "Parsha",
-    "type": "video",
-    "title": "It's never too late",
-    "url": "https://www.youtube.com/watch?v=IV5VKhZVQsg",
-    "date": "2024-05-24T03:00:14Z",
-    "page": "/parsha.html",
-    "title_lc": "it's never too late"
-  },
-  {
-    "id": "par-VgoSymXs56g",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Remember your old self!",
-    "url": "https://www.youtube.com/watch?v=VgoSymXs56g",
-    "date": "2024-05-17T04:00:19Z",
-    "page": "/parsha.html",
-    "title_lc": "remember your old self!"
-  },
-  {
-    "id": "par-wbdc0vCkSyE",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Raising children to be responsible adults",
-    "url": "https://www.youtube.com/watch?v=wbdc0vCkSyE",
-    "date": "2024-05-10T03:59:50Z",
-    "page": "/parsha.html",
-    "title_lc": "raising children to be responsible adults"
-  },
-  {
-    "id": "par-Gk-vbNaMVwM",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Positive speech",
-    "url": "https://www.youtube.com/watch?v=Gk-vbNaMVwM",
-    "date": "2024-04-19T02:13:32Z",
-    "page": "/parsha.html",
-    "title_lc": "positive speech"
-  },
-  {
-    "id": "par-AkwwmY31VCs",
-    "program": "Parsha",
-    "type": "video",
-    "title": "compassion and sensitivity",
-    "url": "https://www.youtube.com/watch?v=AkwwmY31VCs",
-    "date": "2024-04-12T02:55:35Z",
-    "page": "/parsha.html",
-    "title_lc": "compassion and sensitivity"
-  },
-  {
-    "id": "par-bAVq_F5kUCA",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Two halves of a whole",
-    "url": "https://www.youtube.com/watch?v=bAVq_F5kUCA",
-    "date": "2024-04-05T03:02:25Z",
-    "page": "/parsha.html",
-    "title_lc": "two halves of a whole"
-  },
-  {
-    "id": "par-23SWXHxOSQw",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Keep the flame burning",
-    "url": "https://www.youtube.com/watch?v=23SWXHxOSQw",
-    "date": "2024-03-29T01:08:33Z",
-    "page": "/parsha.html",
-    "title_lc": "keep the flame burning"
-  },
-  {
-    "id": "par-aD2AidKGLMA",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Spice it up",
-    "url": "https://www.youtube.com/watch?v=aD2AidKGLMA",
-    "date": "2024-03-22T01:38:02Z",
-    "page": "/parsha.html",
-    "title_lc": "spice it up"
-  },
-  {
-    "id": "par-hUdphNixufE",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Believe in yourself",
-    "url": "https://www.youtube.com/watch?v=hUdphNixufE",
-    "date": "2024-03-15T02:12:59Z",
-    "page": "/parsha.html",
-    "title_lc": "believe in yourself"
-  },
-  {
-    "id": "par-1HX4P7-KABw",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Consistent service",
-    "url": "https://www.youtube.com/watch?v=1HX4P7-KABw",
-    "date": "2024-02-23T12:32:06Z",
-    "page": "/parsha.html",
-    "title_lc": "consistent service"
-  },
-  {
-    "id": "par-RK9u7c0lVzM",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Proper Measurements",
-    "url": "https://www.youtube.com/watch?v=RK9u7c0lVzM",
-    "date": "2024-02-16T12:29:48Z",
-    "page": "/parsha.html",
-    "title_lc": "proper measurements"
-  },
-  {
-    "id": "par-E0sWl3Y5G3w",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Live in the now",
-    "url": "https://www.youtube.com/watch?v=E0sWl3Y5G3w",
-    "date": "2024-02-02T04:39:45Z",
-    "page": "/parsha.html",
-    "title_lc": "live in the now"
-  },
-  {
-    "id": "par-SGdTp0RwfQA",
-    "program": "Parsha",
-    "type": "video",
-    "title": "One day at a time",
-    "url": "https://www.youtube.com/watch?v=SGdTp0RwfQA",
-    "date": "2024-01-26T03:00:29Z",
-    "page": "/parsha.html",
-    "title_lc": "one day at a time"
-  },
-  {
-    "id": "par-srwcIlsdShA",
-    "program": "Parsha",
-    "type": "video",
-    "title": "We are all beloved",
-    "url": "https://www.youtube.com/watch?v=srwcIlsdShA",
-    "date": "2024-01-19T03:05:56Z",
-    "page": "/parsha.html",
-    "title_lc": "we are all beloved"
-  },
-  {
-    "id": "par-8TodSIlo3LA",
-    "program": "Parsha",
-    "type": "video",
-    "title": "You are how you act",
-    "url": "https://www.youtube.com/watch?v=8TodSIlo3LA",
-    "date": "2024-01-05T12:34:06Z",
-    "page": "/parsha.html",
-    "title_lc": "you are how you act"
-  },
-  {
-    "id": "par-HVLS2JhmdbU",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Block out the noise",
-    "url": "https://www.youtube.com/watch?v=HVLS2JhmdbU",
-    "date": "2023-12-29T13:56:50Z",
-    "page": "/parsha.html",
-    "title_lc": "block out the noise"
-  },
-  {
-    "id": "par-16qxNXeiXqE",
-    "program": "Parsha",
-    "type": "video",
-    "title": "I'll be there for you....",
-    "url": "https://www.youtube.com/watch?v=16qxNXeiXqE",
-    "date": "2023-12-22T03:54:27Z",
-    "page": "/parsha.html",
-    "title_lc": "i'll be there for you...."
-  },
-  {
-    "id": "par-O-nBfhztItY",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Ignore the haters",
-    "url": "https://www.youtube.com/watch?v=O-nBfhztItY",
-    "date": "2023-11-17T04:11:38Z",
-    "page": "/parsha.html",
-    "title_lc": "ignore the haters"
-  },
-  {
-    "id": "par-jGUg6i5Mvsg",
-    "program": "Parsha",
-    "type": "video",
-    "title": "True kindness",
-    "url": "https://www.youtube.com/watch?v=jGUg6i5Mvsg",
-    "date": "2023-11-03T12:55:07Z",
-    "page": "/parsha.html",
-    "title_lc": "true kindness"
-  },
-  {
-    "id": "par-HjAV7Ds1M04",
-    "program": "Parsha",
-    "type": "video",
-    "title": "The best way we know how to",
-    "url": "https://www.youtube.com/watch?v=HjAV7Ds1M04",
-    "date": "2023-10-27T00:41:38Z",
-    "page": "/parsha.html",
-    "title_lc": "the best way we know how to"
-  },
-  {
-    "id": "par-j5dj4Bx1IDE",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Everybody can do something",
-    "url": "https://www.youtube.com/watch?v=j5dj4Bx1IDE",
-    "date": "2023-10-20T04:00:22Z",
-    "page": "/parsha.html",
-    "title_lc": "everybody can do something"
-  },
-  {
-    "id": "par-CK_OQQbEA88",
-    "program": "Parsha",
-    "type": "video",
-    "title": "How to speak to Hashem",
-    "url": "https://www.youtube.com/watch?v=CK_OQQbEA88",
-    "date": "2023-09-22T01:20:16Z",
-    "page": "/parsha.html",
-    "title_lc": "how to speak to hashem"
-  },
-  {
-    "id": "par-CsDHjcB2zjs",
-    "program": "Parsha",
-    "type": "video",
-    "title": "So close!",
-    "url": "https://www.youtube.com/watch?v=CsDHjcB2zjs",
-    "date": "2023-09-08T03:14:36Z",
-    "page": "/parsha.html",
-    "title_lc": "so close!"
-  },
-  {
-    "id": "par-WOzs4fjvzho",
-    "program": "Parsha",
-    "type": "video",
-    "title": "Greatness via adversity",
-    "url": "https://www.youtube.com/watch?v=WOzs4fjvzho",
-    "date": "2023-09-01T02:36:47Z",
-    "page": "/parsha.html",
-    "title_lc": "greatness via adversity"
   },
   {
     "id": "par-MZhU8npeEzI",
