@@ -6558,5 +6558,15 @@
     "date": "2026-10-14T00:00:00.000Z",
     "page": "/parsha.html",
     "title_lc": "parshas noach overview"
+  },
+  {
+    "id": "ov-lech-licha",
+    "program": "Parsha Overview",
+    "type": "audio",
+    "title": "Parshas Lech Licha overview",
+    "url": "https://torahmoment.com/audio/Lechlichaoverview.mp3",
+    "date": "2026-10-22T00:00:00.000Z",
+    "page": "/parsha.html",
+    "title_lc": "parshas lech licha overview"
   }
 ]
