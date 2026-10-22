@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 824,
+    "total": 825,
     "breakdown": {
       "parsha": {
         "audio": 37,
@@ -13,7 +13,7 @@
         "totalAll": 106
       },
       "oneMinute": {
-        "audio": 278
+        "audio": 279
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-10-22"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Time's up?",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0048.mp3",
+      "date": "2026-10-22T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "The company we keep",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0047.mp3",
       "date": "2026-10-19T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "The problem wasn't the wine",
-      "url": "https://www.youtube.com/watch?v=N2CZKVfrdb8",
-      "date": "2026-10-16T00:21:08Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Time's up?",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0048.mp3",
+        "date": "2026-10-22T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "We need protecting",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0032.mp3",
         "date": "2026-10-05T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Step out",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260923-WA0092.mp3",
-        "date": "2026-09-24T00:00:00.000Z"
       }
     ],
     "halacha": [
