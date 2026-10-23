@@ -728,6 +728,13 @@
     "category": "Other Halachos/Minhagim",
     "items": [
       {
+        "type": "audio",
+        "title": "One curse: The Chofetz Cahim and Acher",
+        "url": "https://2mishnasaday.com/wp-content/uploads/122.mp3",
+        "note": "10/22/2026",
+        "category": "Tefila"
+      },
+      {
         "type": "note",
         "noteStyle": "divider",
         "text": "Misc."
