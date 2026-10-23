@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 825,
+    "total": 826,
     "breakdown": {
       "parsha": {
         "audio": 37,
-        "video": 246
+        "video": 247
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,16 @@
         "audio": 137
       }
     },
-    "updated": "2026-10-22"
+    "updated": "2026-10-23"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "What will success cost you?",
+      "url": "https://www.youtube.com/watch?v=XzMZC-rWQiI",
+      "date": "2026-10-23T02:30:00Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -48,13 +55,6 @@
       "program": "Halacha",
       "title": "Barichu at the end of Shachris",
       "url": "https://www.buzzsprout.com/1899789/episodes/19983929-10-19-2026-shloimy-zelcer-barichu-at-the-end-of-shachris.mp3",
-      "date": "2026-10-19T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "The company we keep",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0047.mp3",
       "date": "2026-10-19T00:00:00.000Z"
     }
   ],
@@ -207,6 +207,13 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "What will success cost you?",
+        "url": "https://www.youtube.com/watch?v=XzMZC-rWQiI",
+        "date": "2026-10-23T02:30:00Z"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "The problem wasn't the wine",
         "url": "https://www.youtube.com/watch?v=N2CZKVfrdb8",
         "date": "2026-10-16T00:21:08Z"
@@ -266,13 +273,6 @@
         "title": "The search before the destination",
         "url": "https://www.youtube.com/watch?v=fqlzgOT2FYU",
         "date": "2026-08-07T01:56:05Z"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Who gets the credit?",
-        "url": "https://www.youtube.com/watch?v=5VkABmGakCg",
-        "date": "2026-07-31T03:04:23Z"
       }
     ]
   }
