@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 826,
+    "total": 827,
     "breakdown": {
       "parsha": {
         "audio": 37,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 106
+        "totalAll": 107
       },
       "oneMinute": {
         "audio": 279
@@ -28,6 +28,13 @@
       "title": "What will success cost you?",
       "url": "https://www.youtube.com/watch?v=XzMZC-rWQiI",
       "date": "2026-10-23T02:30:00Z"
+    },
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "One curse: The Chofetz Cahim and Acher",
+      "url": "https://2mishnasaday.com/wp-content/uploads/122.mp3",
+      "date": "2026-10-22T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -49,13 +56,6 @@
       "title": "Say hello!",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0049.mp3",
       "date": "2026-10-20T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Barichu at the end of Shachris",
-      "url": "https://www.buzzsprout.com/1899789/episodes/19983929-10-19-2026-shloimy-zelcer-barichu-at-the-end-of-shachris.mp3",
-      "date": "2026-10-19T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "One curse: The Chofetz Cahim and Acher",
+        "url": "https://2mishnasaday.com/wp-content/uploads/122.mp3",
+        "date": "2026-10-22T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Barichu at the end of Shachris",
         "url": "https://www.buzzsprout.com/1899789/episodes/19983929-10-19-2026-shloimy-zelcer-barichu-at-the-end-of-shachris.mp3",
         "date": "2026-10-19T00:00:00.000Z"
@@ -194,13 +201,6 @@
         "title": "The \"Handle it\" fallacy",
         "url": "https://2mishnasaday.com/wp-content/uploads/117.mp3",
         "date": "2026-08-20T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "How Loud Should Torah Learning Be?",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?",
-        "date": "2026-08-05T00:00:00.000Z"
       }
     ],
     "parsha": [
