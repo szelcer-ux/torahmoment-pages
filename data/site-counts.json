@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 828,
+    "total": 829,
     "breakdown": {
       "parsha": {
         "audio": 37,
@@ -13,7 +13,7 @@
         "totalAll": 108
       },
       "oneMinute": {
-        "audio": 279
+        "audio": 280
       },
       "mishna": {
         "audio": 137
@@ -27,6 +27,13 @@
       "program": "Halacha",
       "title": "Where to read the Haftorah from",
       "url": "https://www.buzzsprout.com/1899789/episodes/20021232-10-26-2026-shloimy-zelcer-where-to-read-haftorah-from.mp3",
+      "date": "2026-10-26T00:00:00.000Z"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Afraid of the wrong one",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261026-WA0010.mp3",
       "date": "2026-10-26T00:00:00.000Z"
     },
     {
@@ -49,17 +56,17 @@
       "title": "Time's up?",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0048.mp3",
       "date": "2026-10-22T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Be like Avrohom - just do it!",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261021-WA0028.mp3",
-      "date": "2026-10-21T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Afraid of the wrong one",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261026-WA0010.mp3",
+        "date": "2026-10-26T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Form good habits",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0040.mp3",
         "date": "2026-10-06T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "We need protecting",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0032.mp3",
-        "date": "2026-10-05T00:00:00.000Z"
       }
     ],
     "halacha": [
