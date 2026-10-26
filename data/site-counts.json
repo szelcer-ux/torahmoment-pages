@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 827,
+    "total": 828,
     "breakdown": {
       "parsha": {
         "audio": 37,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 107
+        "totalAll": 108
       },
       "oneMinute": {
         "audio": 279
@@ -22,6 +22,13 @@
     "updated": "2026-10-26"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Where to read the Haftorah from",
+      "url": "https://www.buzzsprout.com/1899789/episodes/20021232-10-26-2026-shloimy-zelcer-where-to-read-haftorah-from.mp3",
+      "date": "2026-10-26T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -49,13 +56,6 @@
       "title": "Be like Avrohom - just do it!",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261021-WA0028.mp3",
       "date": "2026-10-21T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Say hello!",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0049.mp3",
-      "date": "2026-10-20T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -135,6 +135,13 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Where to read the Haftorah from",
+        "url": "https://www.buzzsprout.com/1899789/episodes/20021232-10-26-2026-shloimy-zelcer-where-to-read-haftorah-from.mp3",
+        "date": "2026-10-26T00:00:00.000Z"
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "One curse: The Chofetz Chaim and Acher",
         "url": "https://2mishnasaday.com/wp-content/uploads/122.mp3",
         "date": "2026-10-22T00:00:00.000Z"
@@ -193,13 +200,6 @@
         "program": "Halacha",
         "title": "Learning during Chazaras Hashatz",
         "url": "https://www.buzzsprout.com/1899789/episodes/19676739-8-20-2026-shloimy-zelcer-learning-during-chazaras-hashatz.mp3",
-        "date": "2026-08-20T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "The \"Handle it\" fallacy",
-        "url": "https://2mishnasaday.com/wp-content/uploads/117.mp3",
         "date": "2026-08-20T00:00:00.000Z"
       }
     ],
