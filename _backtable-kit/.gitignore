@@ -1,0 +1,6 @@
+BackTable/
+config.local.json
+site/
+*.bak
+__pycache__/
+youtube_list.txt
