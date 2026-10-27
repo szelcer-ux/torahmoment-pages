@@ -1,0 +1,10 @@
+{
+  "media_base": "https://f005.backblazeb2.com/file/backtable-audio",
+  "ga_id": "G-XEKR855EWG",
+  "site_url": "https://torahmoment.com/backtable",
+  "torahmoment_url": "https://torahmoment.com/",
+  "whatsapp_group_url": "",
+  "media_folder": "BackTable",
+  "output_dir": "../backtable",
+  "rclone_remote": "b2:backtable-audio"
+}
