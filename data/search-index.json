@@ -3,6 +3,16 @@
     "id": "one-0",
     "program": "One-Minute",
     "type": "audio",
+    "title": "Just 5 minutes",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261027-WA0042.mp3",
+    "date": "2026-10-27T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "title_lc": "just 5 minutes"
+  },
+  {
+    "id": "one-1",
+    "program": "One-Minute",
+    "type": "audio",
     "title": "Afraid of the wrong one",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261026-WA0010.mp3",
     "date": "2026-10-26T00:00:00.000Z",
@@ -10,7 +20,7 @@
     "title_lc": "afraid of the wrong one"
   },
   {
-    "id": "one-1",
+    "id": "one-2",
     "program": "One-Minute",
     "type": "audio",
     "title": "Time's up?",
@@ -20,7 +30,7 @@
     "title_lc": "time's up?"
   },
   {
-    "id": "one-2",
+    "id": "one-3",
     "program": "One-Minute",
     "type": "audio",
     "title": "Be like Avrohom - just do it!",
@@ -30,7 +40,7 @@
     "title_lc": "be like avrohom - just do it!"
   },
   {
-    "id": "one-3",
+    "id": "one-4",
     "program": "One-Minute",
     "type": "audio",
     "title": "Say hello!",
@@ -40,7 +50,7 @@
     "title_lc": "say hello!"
   },
   {
-    "id": "one-4",
+    "id": "one-5",
     "program": "One-Minute",
     "type": "audio",
     "title": "The company we keep",
@@ -50,7 +60,7 @@
     "title_lc": "the company we keep"
   },
   {
-    "id": "one-5",
+    "id": "one-6",
     "program": "One-Minute",
     "type": "audio",
     "title": "The last guy",
@@ -60,7 +70,7 @@
     "title_lc": "the last guy"
   },
   {
-    "id": "one-6",
+    "id": "one-7",
     "program": "One-Minute",
     "type": "audio",
     "title": "Doing right because it's right",
@@ -70,7 +80,7 @@
     "title_lc": "doing right because it's right"
   },
   {
-    "id": "one-7",
+    "id": "one-8",
     "program": "One-Minute",
     "type": "audio",
     "title": "Believing - but not quite",
@@ -80,7 +90,7 @@
     "title_lc": "believing - but not quite"
   },
   {
-    "id": "one-8",
+    "id": "one-9",
     "program": "One-Minute",
     "type": "audio",
     "title": "Do your best",
@@ -90,7 +100,7 @@
     "title_lc": "do your best"
   },
   {
-    "id": "one-9",
+    "id": "one-10",
     "program": "One-Minute",
     "type": "audio",
     "title": "Form good habits",
@@ -100,7 +110,7 @@
     "title_lc": "form good habits"
   },
   {
-    "id": "one-10",
+    "id": "one-11",
     "program": "One-Minute",
     "type": "audio",
     "title": "We need protecting",
@@ -110,7 +120,7 @@
     "title_lc": "we need protecting"
   },
   {
-    "id": "one-11",
+    "id": "one-12",
     "program": "One-Minute",
     "type": "audio",
     "title": "Step out",
@@ -120,7 +130,7 @@
     "title_lc": "step out"
   },
   {
-    "id": "one-12",
+    "id": "one-13",
     "program": "One-Minute",
     "type": "audio",
     "title": "Gott's Nomen",
@@ -130,7 +140,7 @@
     "title_lc": "gott's nomen"
   },
   {
-    "id": "one-13",
+    "id": "one-14",
     "program": "One-Minute",
     "type": "audio",
     "title": "An honest heart",
@@ -140,7 +150,7 @@
     "title_lc": "an honest heart"
   },
   {
-    "id": "one-14",
+    "id": "one-15",
     "program": "One-Minute",
     "type": "audio",
     "title": "Where are you?",
@@ -150,7 +160,7 @@
     "title_lc": "where are you?"
   },
   {
-    "id": "one-15",
+    "id": "one-16",
     "program": "One-Minute",
     "type": "audio",
     "title": "The right Ana Hashem",
@@ -160,7 +170,7 @@
     "title_lc": "the right ana hashem"
   },
   {
-    "id": "one-16",
+    "id": "one-17",
     "program": "One-Minute",
     "type": "audio",
     "title": "Wake up",
@@ -170,7 +180,7 @@
     "title_lc": "wake up"
   },
   {
-    "id": "one-17",
+    "id": "one-18",
     "program": "One-Minute",
     "type": "audio",
     "title": "Mitzvah momentum",
@@ -180,7 +190,7 @@
     "title_lc": "mitzvah momentum"
   },
   {
-    "id": "one-18",
+    "id": "one-19",
     "program": "One-Minute",
     "type": "audio",
     "title": "In memory of my rebbi on his 2nd yahrtzeit",
@@ -190,7 +200,7 @@
     "title_lc": "in memory of my rebbi on his 2nd yahrtzeit"
   },
   {
-    "id": "one-19",
+    "id": "one-20",
     "program": "One-Minute",
     "type": "audio",
     "title": "Clean slate",
@@ -200,7 +210,7 @@
     "title_lc": "clean slate"
   },
   {
-    "id": "one-20",
+    "id": "one-21",
     "program": "One-Minute",
     "type": "audio",
     "title": "The small things add up",
@@ -210,7 +220,7 @@
     "title_lc": "the small things add up"
   },
   {
-    "id": "one-21",
+    "id": "one-22",
     "program": "One-Minute",
     "type": "audio",
     "title": "The shofar is not magic",
@@ -220,7 +230,7 @@
     "title_lc": "the shofar is not magic"
   },
   {
-    "id": "one-22",
+    "id": "one-23",
     "program": "One-Minute",
     "type": "audio",
     "title": "Acknowledge the good people",
@@ -230,7 +240,7 @@
     "title_lc": "acknowledge the good people"
   },
   {
-    "id": "one-23",
+    "id": "one-24",
     "program": "One-Minute",
     "type": "audio",
     "title": "Secret curses",
@@ -240,7 +250,7 @@
     "title_lc": "secret curses"
   },
   {
-    "id": "one-24",
+    "id": "one-25",
     "program": "One-Minute",
     "type": "audio",
     "title": "Helping is good for everyone",
