@@ -291,7 +291,14 @@
     "parsha": "Lech Lecha",
     "image": "/images/infographics/parsha/Lech_Lecha_The_True_Cost_of_Success.png",
     "youtube": "https://www.youtube.com/watch?v=XzMZC-rWQiI",
-    "description": "The True Cost of Success",
+    "description": "The True Cost of Success"
+  },
+  "N56WTJKBG9c": {
+    "title": "Before the chesed",
+    "parsha": "Vayeira",
+    "image": "/images/infographics/parsha/Vayeira_The_True_Beginning_of_Kindness.png",
+    "youtube": "https://www.youtube.com/watch?v=N56WTJKBG9c",
+    "description": "The True Beginning of Kindness",
     "featured": true
   }
 }
