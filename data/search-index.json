@@ -6628,5 +6628,15 @@
     "date": "2026-10-22T00:00:00.000Z",
     "page": "/parsha.html",
     "title_lc": "parshas lech licha overview"
+  },
+  {
+    "id": "ov-vayeira",
+    "program": "Parsha Overview",
+    "type": "audio",
+    "title": "Parshas Vayeira overview",
+    "url": "https://torahmoment.com/audio/Vayeiraoverview.mp3",
+    "date": "2026-10-29T00:00:00.000Z",
+    "page": "/parsha.html",
+    "title_lc": "parshas vayeira overview"
   }
 ]
