@@ -260,8 +260,11 @@ def build_shiur(cfg, s, prev, nxt):
     vids = []
     for n, i in enumerate(ids, 1):
         cap = f'<p class="bt-part">Part {n}</p>' if len(ids) > 1 else ""
-        vids.append(f'{cap}<div class="bt-video"><iframe src="https://www.youtube-nocookie.com/embed/{i}?rel=0&modestbranding=1" '
-                    f'title="{E(label)} video{f" part {n}" if len(ids) > 1 else ""}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>')
+        vids.append(f'{cap}<div class="bt-video"><iframe src="https://www.youtube.com/embed/{i}?rel=0" '
+                    f'title="{E(label)} video{f" part {n}" if len(ids) > 1 else ""}" loading="lazy" '
+                    f'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+                    f'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>'
+                    f'<p class="bt-yt-link"><a href="https://www.youtube.com/watch?v={i}" target="_blank" rel="noopener">Video not playing? Watch on YouTube</a></p>')
     if not ids and s["video_parts"]:
         vids.append(f'<div class="bt-video bt-pending">{ICON["play"]}<span>Video coming soon</span></div>')
 
