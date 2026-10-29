@@ -65,6 +65,47 @@ def upload(cfg):
 MONTHS = "January February March April May June July August September October November December".split()
 
 
+def copy_to_clipboard(text):
+    """Put text on the Windows clipboard using Windows' own functions (no extra programs)."""
+    if os.name != "nt":
+        return False
+    try:
+        import ctypes
+        from ctypes import wintypes
+        u32, k32 = ctypes.WinDLL("user32"), ctypes.WinDLL("kernel32")
+        u32.OpenClipboard.argtypes = [wintypes.HWND]
+        u32.SetClipboardData.argtypes = [wintypes.UINT, wintypes.HANDLE]
+        u32.SetClipboardData.restype = wintypes.HANDLE
+        k32.GlobalAlloc.argtypes = [wintypes.UINT, ctypes.c_size_t]
+        k32.GlobalAlloc.restype = wintypes.HGLOBAL
+        k32.GlobalLock.argtypes = [wintypes.HGLOBAL]
+        k32.GlobalLock.restype = ctypes.c_void_p
+        k32.GlobalUnlock.argtypes = [wintypes.HGLOBAL]
+        k32.GlobalFree.argtypes = [wintypes.HGLOBAL]
+        data = text.replace("\n", "\r\n").encode("utf-16-le") + b"\x00\x00"
+        if not u32.OpenClipboard(None):
+            return False
+        try:
+            u32.EmptyClipboard()
+            h = k32.GlobalAlloc(0x0002, len(data))  # GMEM_MOVEABLE
+            if not h:
+                return False
+            ptr = k32.GlobalLock(h)
+            if not ptr:
+                k32.GlobalFree(h)
+                return False
+            ctypes.memmove(ptr, data, len(data))
+            k32.GlobalUnlock(h)
+            if not u32.SetClipboardData(13, h):  # CF_UNICODETEXT
+                k32.GlobalFree(h)
+                return False
+            return True
+        finally:
+            u32.CloseClipboard()
+    except Exception:
+        return False
+
+
 def announce(num, cfg):
     """Make a ready-to-paste WhatsApp message for a shiur, save it, and copy it."""
     S = json.load(open(os.path.join(HERE, "shiurim.json"), encoding="utf-8"))
@@ -82,15 +123,7 @@ def announce(num, cfg):
     path = os.path.join(HERE, "announcement.txt")
     with open(path, "w", encoding="utf-8") as f:
         f.write(text + "\n")
-    copied = False
-    if os.name == "nt":
-        try:
-            subprocess.run(["powershell", "-NoProfile", "-Command",
-                            f"Get-Content -Raw -Encoding UTF8 '{path}' | Set-Clipboard"],
-                           capture_output=True, timeout=20, check=True)
-            copied = True
-        except Exception:
-            pass
+    copied = copy_to_clipboard(text)
     print("\n   ---- WhatsApp message" + (" (copied - just paste it)" if copied else "") + " ----")
     print("   " + text.replace("\n", "\n   "))
     print("   " + "-" * 40)
