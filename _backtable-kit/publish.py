@@ -49,14 +49,16 @@ def config():
 def upload(cfg):
     media = os.path.join(HERE, cfg.get("media_folder", "BackTable"))
     remote = cfg.get("rclone_remote", "b2:backtable-audio")
-    if not shutil.which("rclone"):
-        print("3. Skipping Backblaze upload (rclone isn't set up on this computer).")
+    rclone = cfg.get("rclone") or shutil.which("rclone") or (
+        os.path.join(HERE, "rclone.exe") if os.path.exists(os.path.join(HERE, "rclone.exe")) else None)
+    if not rclone or not os.path.exists(rclone) and not shutil.which(rclone):
+        print("3. Skipping Backblaze upload (rclone isn't set up on this computer - see README.txt).")
         return
     print("3. Uploading new audio and source sheets to Backblaze...")
     for sub in ("audio", "pdf"):
         folder = os.path.join(media, sub)
         if os.path.isdir(folder):
-            run(["rclone", "copy", folder, f"{remote}/{sub}", "--ignore-existing"], cwd=HERE)
+            run([rclone, "copy", folder, f"{remote}/{sub}", "--ignore-existing"], cwd=HERE)
 
 
 def main():

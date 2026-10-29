@@ -51,6 +51,8 @@ SETTING UP A COMPUTER (once per computer, about 15 minutes)
        "media_folder" - where new recordings and audio files are kept on this computer
   5. Connect rclone to Backblaze (make a key under Backblaze > Application Keys):
        rclone config create b2 b2 account=KEYID key=APPKEY
+     If Windows says 'rclone' is not recognized, put rclone.exe in this folder, or add
+     its location to config.local.json, e.g.  "rclone": "C:\\Tools\\rclone.exe"
 
 
 NOTES
