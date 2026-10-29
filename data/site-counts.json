@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 831,
+    "total": 832,
     "breakdown": {
       "parsha": {
         "audio": 38,
@@ -13,7 +13,7 @@
         "totalAll": 108
       },
       "oneMinute": {
-        "audio": 281
+        "audio": 282
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-10-29"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "The quiet mitzvah",
+      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261029-WA0020.mp3",
+      "date": "2026-10-29T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -49,17 +56,17 @@
       "title": "What will success cost you?",
       "url": "https://www.youtube.com/watch?v=XzMZC-rWQiI",
       "date": "2026-10-23T02:30:00Z"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "One curse: The Chofetz Chaim and Acher",
-      "url": "https://2mishnasaday.com/wp-content/uploads/122.mp3",
-      "date": "2026-10-22T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "The quiet mitzvah",
+        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261029-WA0020.mp3",
+        "date": "2026-10-29T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -122,13 +129,6 @@
         "title": "Believing - but not quite",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261011-WA0052.mp3",
         "date": "2026-10-12T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Do your best",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261007-WA0016.mp3",
-        "date": "2026-10-07T00:00:00.000Z"
       }
     ],
     "halacha": [
