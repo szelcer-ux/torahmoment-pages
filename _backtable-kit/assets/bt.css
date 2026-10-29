@@ -146,3 +146,4 @@ div.bt-pdf.bt-pending{color:var(--bt-muted);height:220px}
 .bt-extras a:hover .bt-pn-title{text-decoration:underline}
 .bt-yt-link{margin:-8px 0 0;font-size:13px;text-align:end}
 .bt-yt-link a{color:var(--bt-muted)}
+.bt-note{margin:0;padding:14px 16px;border-radius:10px;background:var(--bt-amber-bg);color:#5c3a05;font-size:15px}

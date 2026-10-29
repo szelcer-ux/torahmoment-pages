@@ -433,11 +433,14 @@
   "youtube": [],
   "video_parts": 0,
   "audio": [],
-  "pdf": [],
+  "pdf": [
+   "shiur-011.pdf"
+  ],
   "images": [],
   "ext_links": [],
   "zoom_chat": [],
-  "old_url": "http://thebacktable.org/shiur-12-history-of-the-hashmonaim-part-2"
+  "old_url": "http://thebacktable.org/shiur-12-history-of-the-hashmonaim-part-2",
+  "note": "No recording of this shiur was saved. The source sheet below is the one from Part 1 (Shiur 11)."
  },
  {
   "num": 13,

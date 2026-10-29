@@ -297,6 +297,8 @@ def build_shiur(cfg, s, prev, nxt):
                   if mb else '<div class="bt-pdf bt-pending"><span>Source sheet preview appears here once uploaded</span></div>')
         pdfs = f'<section class="bt-card-box"><h2>Source sheet{"s" if len(s["pdf"]) > 1 else ""}</h2><ul class="bt-files">{"".join(items)}</ul>{viewer}</section>'
 
+    note = f'<p class="bt-note">{E(s["note"])}</p>' if s.get("note") else ""
+
     links = ""
     if s["ext_links"]:
         li = "".join(f'<li><a href="{E(u)}" target="_blank" rel="noopener">{E(u)}</a></li>' for u in s["ext_links"])
@@ -336,7 +338,7 @@ def build_shiur(cfg, s, prev, nxt):
 </div>
 {img}
 </div>
-{''.join(vids)}
+{note}{''.join(vids)}
 {''.join(aud)}
 {pdfs}
 {links}
