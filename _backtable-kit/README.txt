@@ -16,6 +16,7 @@ WHAT'S HERE
   import_youtube.bat  Add a whole batch of YouTube links from the playlist (see below).
   publish.bat         Get the latest, rebuild, upload audio/PDFs, and put it live.
   preview.bat         Build a copy on this computer and open it, without publishing.
+  announce.bat        Make the WhatsApp message for any shiur (copied, ready to paste).
 
 
 ADDING A NEW SHIUR
@@ -25,6 +26,8 @@ ADDING A NEW SHIUR
      channel: Unlisted, add to the playlist. Paste the link when asked, or later
      with set_youtube.bat.
   3. Double-click publish.bat. Done - it uploads the audio/PDF and updates the site.
+  4. publish.bat ends with a WhatsApp message for the new shiur, already copied.
+     Paste it into the group once the page is live (a minute or two).
 
 
 ADDING YOUTUBE LINKS IN BULK (for the archive uploads)

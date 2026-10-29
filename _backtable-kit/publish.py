@@ -10,8 +10,9 @@ Double-click publish.bat. It:
 
   python publish.py --sync     # only step 1 (new_shiur.bat runs this first)
   python publish.py --no-push  # build and upload, but don't publish
+  python publish.py --announce 123   # just make the WhatsApp message for a shiur
 """
-import json, os, shutil, subprocess, sys
+import json, os, re, shutil, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -61,8 +62,49 @@ def upload(cfg):
             run([rclone, "copy", folder, f"{remote}/{sub}", "--ignore-existing"], cwd=HERE)
 
 
+MONTHS = "January February March April May June July August September October November December".split()
+
+
+def announce(num, cfg):
+    """Make a ready-to-paste WhatsApp message for a shiur, save it, and copy it."""
+    S = json.load(open(os.path.join(HERE, "shiurim.json"), encoding="utf-8"))
+    s = next((x for x in S if x["num"] == num), None)
+    if not s:
+        print(f"   Shiur {num} isn't in the list.")
+        return
+    y, m, d = s["date"].split("-")
+    url = cfg.get("site_url", "https://torahmoment.com/backtable").rstrip("/") + f"/{s['slug']}/"
+    by = f"Given by {s['speaker']} · " if s.get("speaker") else ""
+    text = (f"*Back Table Torah – Shiur {num}*\n"
+            f"{s['title']}\n"
+            f"{by}{MONTHS[int(m) - 1]} {int(d)}, {y}\n\n"
+            f"{url}")
+    path = os.path.join(HERE, "announcement.txt")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text + "\n")
+    copied = False
+    if os.name == "nt":
+        try:
+            subprocess.run(["powershell", "-NoProfile", "-Command",
+                            f"Get-Content -Raw -Encoding UTF8 '{path}' | Set-Clipboard"],
+                           capture_output=True, timeout=20, check=True)
+            copied = True
+        except Exception:
+            pass
+    print("\n   ---- WhatsApp message" + (" (copied - just paste it)" if copied else "") + " ----")
+    print("   " + text.replace("\n", "\n   "))
+    print("   " + "-" * 40)
+    if not copied:
+        print(f"   (also saved in {path})")
+
+
 def main():
     args = sys.argv[1:]
+    if "--announce" in args:
+        i = args.index("--announce")
+        if i + 1 >= len(args) or not args[i + 1].isdigit():
+            sys.exit("Usage: python publish.py --announce 123")
+        return announce(int(args[i + 1]), config())
     need_git()
     sync()
     if "--sync" in args:
@@ -86,8 +128,10 @@ def main():
     if run(["git", "diff", "--cached", "--quiet"], check=False, quiet=True).returncode == 0:
         print("   Nothing changed - the site is already up to date.")
         return
-    nums = []
+    nums, new = [], []
     try:
+        st = run(["git", "diff", "--cached", "--name-status"], quiet=True).stdout.splitlines()
+        new = sorted({int(m.group(1)) for m in (re.match(r"A\s+backtable/shiur-(\d+)/index\.html$", ln) for ln in st) if m})
         d = run(["git", "diff", "--cached", "--name-only"], quiet=True).stdout.split()
         nums = sorted({p.split("/")[1] for p in d if p.startswith("backtable/shiur-")})
     except Exception:
@@ -98,6 +142,10 @@ def main():
         run(["git", "pull", "--rebase", "origin", "main"])
         run(["git", "push", "origin", "HEAD:main"])
     print("\nPublished. The site updates in a minute or two: https://torahmoment.com/backtable/")
+    for n in new:
+        announce(n, cfg)
+    if new:
+        print("   (Paste it once the page is live. For a different shiur: announce.bat)")
 
 
 if __name__ == "__main__":

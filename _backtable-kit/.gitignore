@@ -5,3 +5,4 @@ site/
 __pycache__/
 youtube_list.txt
 rclone.exe
+announcement.txt
