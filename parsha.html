@@ -212,10 +212,49 @@ code{
 
 #audioEmpty{ margin-bottom:14px; }
 
+/* ===== Visual (infographics) tab ===== */
+.vgrid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:14px;
+}
+.vcard{
+  display:block;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  text-decoration:none;
+  color:inherit;
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.vcard:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-md);
+  border-color:var(--accent-mid);
+}
+.vcard img{
+  display:block;
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  object-position:top;
+  background:#e5e7eb;
+}
+.vcard .vmeta{ padding:12px 12px 14px; }
+.vcard .vmeta h3{ margin:0 0 4px; font-size:16px; line-height:1.25; }
+.vcard .vmeta p{ margin:0; color:var(--muted); font-size:13px; line-height:1.35; }
+.vAll{ margin:18px 0 6px; text-align:center; font-size:14px; }
+.vAll a{ color:var(--accent-ink); font-weight:600; text-decoration:none; }
+.vAll a:hover{ text-decoration:underline; }
+@media (max-width:980px){ .vgrid{ grid-template-columns:repeat(2, 1fr); } }
+@media (max-width:620px){ .vgrid{ grid-template-columns:1fr; } }
+
 /* ===== Controls ===== */
 .controls{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 220px 170px auto auto;
+  grid-template-columns:minmax(0,1fr) 220px 170px auto;
   align-items:center;
   gap:10px;
   margin:12px 0 18px;
@@ -1300,9 +1339,6 @@ button{
         <option value="title">Title A–Z</option>
       </select>
       <button id="clear">Clear</button>
-		 <a href="/infographics.html" id="infographicLink" class="visual-link">
-  📊 Visual Divrei Torah
-</a>
     </div>
 	 
   </div>
@@ -1319,6 +1355,7 @@ button{
 <div class="tmTabs" role="tablist" aria-label="Video or audio">
   <button id="tabVideo" class="tmTab active" type="button" role="tab" aria-selected="true" aria-controls="panelVideo">▶ Videos <span class="n" id="tabVideoN"></span></button>
   <button id="tabAudio" class="tmTab" type="button" role="tab" aria-selected="false" aria-controls="panelAudio">🎧 Audio <span class="n" id="tabAudioN"></span></button>
+  <button id="tabVisual" class="tmTab" type="button" role="tab" aria-selected="false" aria-controls="panelVisual">📊 Visual <span class="n" id="tabVisualN"></span></button>
 </div>
 
 <div id="panelVideo" role="tabpanel" aria-labelledby="tabVideo">
@@ -1326,11 +1363,6 @@ button{
 <div class="bar">
   <div id="count"></div>
 
-  <div style="display:flex; gap:10px; align-items:center;">
-<a id="audioCountWrap" class="tm-stat" style="display:none;">
-  <span id="totalAudioCount"></span>
-</a>
-    </div>
 
   
   </div>
@@ -1401,6 +1433,12 @@ button{
 
 
 </div><!-- /panelAudio -->
+
+<div id="panelVisual" role="tabpanel" aria-labelledby="tabVisual" hidden>
+  <div id="visualEmpty" class="empty" style="display:none;"></div>
+  <div id="visualGrid" class="vgrid"></div>
+  <div class="vAll"><a href="/infographics.html">See all Visual Divrei Torah &rarr;</a></div>
+</div><!-- /panelVisual -->
 
 </main>
 <script src="/data/site-counts.js"></script>
@@ -1803,6 +1841,7 @@ function renderPdfList(containerId, items){
 
 	
 function renderParshaExtras(parsha) {
+  try { renderVisual(parsha); } catch (e) {}
   // No selection => hide everything
   if (!parsha) {
     setSectionVisible("secAudioOverview", false);
@@ -2171,28 +2210,57 @@ function setPageTitle() {
 
 // ===== Video / Audio tabs (display only) =====
 function setTab(tab, opts) {
-  const isAudio = tab === "audio";
-  const pv = document.getElementById("panelVideo");
-  const pa = document.getElementById("panelAudio");
-  const tv = document.getElementById("tabVideo");
-  const ta = document.getElementById("tabAudio");
-  if (!pv || !pa || !tv || !ta) return;
-  pv.hidden = isAudio;
-  pa.hidden = !isAudio;
-  tv.classList.toggle("active", !isAudio);
-  ta.classList.toggle("active", isAudio);
-  tv.setAttribute("aria-selected", String(!isAudio));
-  ta.setAttribute("aria-selected", String(isAudio));
+  if (tab !== "audio" && tab !== "visual") tab = "video";
+  const panels = { video: "panelVideo", audio: "panelAudio", visual: "panelVisual" };
+  const btns   = { video: "tabVideo",   audio: "tabAudio",   visual: "tabVisual" };
+  if (!Object.values(panels).every(id => document.getElementById(id))) return;
+  for (const k of Object.keys(panels)) {
+    document.getElementById(panels[k]).hidden = (k !== tab);
+    const b = document.getElementById(btns[k]);
+    b.classList.toggle("active", k === tab);
+    b.setAttribute("aria-selected", String(k === tab));
+  }
   if (!(opts && opts.noURL)) {
     try {
       const url = new URL(window.location.href);
-      if (isAudio) url.searchParams.set("tab", "audio"); else url.searchParams.delete("tab");
+      if (tab !== "video") url.searchParams.set("tab", tab); else url.searchParams.delete("tab");
       history.replaceState({}, "", url.toString());
     } catch (e) {}
   }
 }
 document.getElementById("tabVideo")?.addEventListener("click", () => setTab("video"));
 document.getElementById("tabAudio")?.addEventListener("click", () => setTab("audio"));
+document.getElementById("tabVisual")?.addEventListener("click", () => setTab("visual"));
+
+// Infographics for the selected parsha (display only; reads INFOGRAPHICS)
+function renderVisual(parsha) {
+  const grid = document.getElementById("visualGrid");
+  const em = document.getElementById("visualEmpty");
+  const n = document.getElementById("tabVisualN");
+  if (!grid || !em) return;
+  const sel = (parsha && parsha !== "__ALL__") ? normalizeParshaName(parsha) : "";
+  const items = sel
+    ? Object.entries(INFOGRAPHICS || {}).filter(([id, g]) => g && g.image && normalizeParshaName(g.parsha) === sel)
+    : [];
+  if (n) n.textContent = items.length ? String(items.length) : "";
+  grid.innerHTML = items.map(([id, g]) => `
+    <a class="vcard" href="${escapeHtml(g.image)}" target="_blank" rel="noopener">
+      <img loading="lazy" src="${escapeHtml(g.image)}" alt="${escapeHtml(g.title || "Infographic")}" />
+      <div class="vmeta">
+        <h3>${escapeHtml(g.title || "")}</h3>
+        ${g.description ? `<p>${escapeHtml(g.description)}</p>` : ""}
+      </div>
+    </a>`).join("");
+  if (!sel) {
+    em.textContent = "Pick a parsha above to see its visual Divrei Torah.";
+    em.style.display = "block";
+  } else if (!items.length) {
+    em.textContent = "No visual Divrei Torah for " + parsha + " yet.";
+    em.style.display = "block";
+  } else {
+    em.style.display = "none";
+  }
+}
 
 function setAudioTabInfo(parsha, audioTotal, pdfTotal) {
   const n = document.getElementById("tabAudioN");
@@ -2644,9 +2712,8 @@ function render(list = []) {
         <h3>${escapeHtml(v.title)}</h3>
         <p class="date">${escapeHtml(fmtDate(v.publishedAt))}</p>
         ${shortDesc ? `<p class="desc">${escapeHtml(shortDesc)}</p>` : ""}
-        ${(!parshaChosen || infographic) ? `<div class="pillrow">
-          ${!parshaChosen ? (v.parsha ? `<span class="pill">${escapeHtml(v.parsha)}</span>` : `<span class="pill">Parsha</span>`) : ""}
-          ${infographic ? `<a class="pill" href="${escapeHtml(infographic.image)}" target="_blank" rel="noopener">📊 Infographic</a>` : ""}
+        ${!parshaChosen ? `<div class="pillrow">
+          ${v.parsha ? `<span class="pill">${escapeHtml(v.parsha)}</span>` : `<span class="pill">Parsha</span>`}
         </div>` : ""}
       </div>
     `;
@@ -2867,7 +2934,7 @@ parshaSel.addEventListener("change", () => {
   setPageTitle();
   renderParshaExtras(parshaSel.value || "");
   applyFilters();
-  setTab(new URLSearchParams(location.search).get("tab") === "audio" ? "audio" : "video", { noURL: true });
+  setTab(new URLSearchParams(location.search).get("tab") || "video", { noURL: true });
 
   load();
 })();
