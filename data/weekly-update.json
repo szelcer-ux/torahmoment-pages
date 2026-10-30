@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "October 17–23, 2026",
-  "generatedAt": "2026-10-23T14:51:59.968Z",
-  "totalItems": 8,
+  "rangeLabel": "October 24–30, 2026",
+  "generatedAt": "2026-10-30T13:15:11.314Z",
+  "totalItems": 6,
   "featured": {
-    "id": "par-XzMZC-rWQiI",
-    "title": "What will success cost you?",
+    "id": "par-N56WTJKBG9c",
+    "title": "Before the chesed",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-10-23T02:30:00Z",
+    "date": "2026-10-30T01:35:00Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=XzMZC-rWQiI"
+    "url": "https://www.youtube.com/watch?v=N56WTJKBG9c"
   },
   "groups": [
     {
@@ -17,22 +17,22 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-XzMZC-rWQiI",
-          "title": "What will success cost you?",
+          "id": "par-N56WTJKBG9c",
+          "title": "Before the chesed",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-10-23T02:30:00Z",
+          "date": "2026-10-30T01:35:00Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=XzMZC-rWQiI"
+          "url": "https://www.youtube.com/watch?v=N56WTJKBG9c"
         },
         {
-          "id": "ov-lech-licha",
-          "title": "Parshas Lech Licha overview",
+          "id": "ov-vayeira",
+          "title": "Parshas Vayeira overview",
           "program": "Parsha Overview",
           "type": "audio",
-          "date": "2026-10-22T00:00:00.000Z",
+          "date": "2026-10-29T00:00:00.000Z",
           "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/Lechlichaoverview.mp3"
+          "url": "https://torahmoment.com/audio/Vayeiraoverview.mp3"
         }
       ]
     },
@@ -41,22 +41,13 @@
       "label": "Halacha / Hashkafa",
       "items": [
         {
-          "id": "hal-96",
-          "title": "One curse: The Chofetz Chaim and Acher",
+          "id": "hal-11",
+          "title": "Where to read the Haftorah from",
           "program": "Halacha",
           "type": "audio",
-          "date": "2026-10-22T00:00:00.000Z",
+          "date": "2026-10-26T00:00:00.000Z",
           "page": "/halacha.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/122.mp3"
-        },
-        {
-          "id": "hal-20",
-          "title": "Barichu at the end of Shachris",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-10-19T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/19983929-10-19-2026-shloimy-zelcer-barichu-at-the-end-of-shachris.mp3"
+          "url": "https://www.buzzsprout.com/1899789/episodes/20021232-10-26-2026-shloimy-zelcer-where-to-read-haftorah-from.mp3"
         }
       ]
     },
@@ -66,39 +57,30 @@
       "items": [
         {
           "id": "one-0",
-          "title": "Time's up?",
+          "title": "The quiet mitzvah",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-10-22T00:00:00.000Z",
+          "date": "2026-10-29T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0048.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261029-WA0020.mp3"
         },
         {
           "id": "one-1",
-          "title": "Be like Avrohom - just do it!",
+          "title": "Just 5 minutes",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-10-21T00:00:00.000Z",
+          "date": "2026-10-27T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261021-WA0028.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261027-WA0042.mp3"
         },
         {
           "id": "one-2",
-          "title": "Say hello!",
+          "title": "Afraid of the wrong one",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-10-20T00:00:00.000Z",
+          "date": "2026-10-26T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0049.mp3"
-        },
-        {
-          "id": "one-3",
-          "title": "The company we keep",
-          "program": "One-Minute",
-          "type": "audio",
-          "date": "2026-10-19T00:00:00.000Z",
-          "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0047.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261026-WA0010.mp3"
         }
       ]
     }
