@@ -29,15 +29,16 @@
   <title>Parsha Divrei Torah</title>
 <style>
 :root{
-  --bg:#f0f2f5;
+  --bg:#f7f7f8;
   --card:#ffffff;
   --text:#0f172a;
   --muted:#64748b;
   --border:#e2e8f0;
   --border-strong:#cbd5e1;
-  --accent:#1a6b5e;
-  --accent-lt:rgba(26,107,94,0.09);
-  --accent-mid:rgba(26,107,94,0.22);
+  --accent:#0d9488;
+  --accent-ink:#0f766e;
+  --accent-lt:rgba(13,148,136,0.09);
+  --accent-mid:rgba(13,148,136,0.22);
   --shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
   --shadow-md:0 4px 14px rgba(0,0,0,0.08),0 1px 4px rgba(0,0,0,0.04);
   --radius:12px;
@@ -111,6 +112,54 @@ code{
   display:none;
 }
 
+/* ===== Title + prev/next parsha ===== */
+[hidden]{ display:none !important; }
+
+.titleNav{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+  flex-wrap:wrap;
+}
+
+.titleNav h1{ min-width:0; }
+
+.titleNav .navArrow{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:32px;
+  height:32px;
+  padding:0;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--text);
+  font-size:20px;
+  line-height:1;
+  flex:0 0 auto;
+}
+
+.titleNav .navArrow:hover{
+  background:var(--accent-lt);
+  border-color:var(--accent-mid);
+  color:var(--accent-ink);
+}
+
+.weekBadge{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+  background:var(--accent-lt);
+  border:1px solid var(--accent-mid);
+  border-radius:999px;
+  padding:3px 9px;
+  white-space:nowrap;
+}
+
 /* ===== Controls ===== */
 .controls{
   display:grid;
@@ -145,7 +194,7 @@ input:focus,
 select:focus{
   outline:none;
   border-color:var(--accent-mid);
-  box-shadow:0 0 0 3px rgba(26,107,94,0.08);
+  box-shadow:0 0 0 3px rgba(13,148,136,0.08);
 }
 
 button{
@@ -180,7 +229,7 @@ button{
   border-radius:999px;
   border:1px solid var(--accent-mid);
   background:var(--accent-lt);
-  color:var(--accent);
+  color:var(--accent-ink);
   font-weight:600;
   font-size:.9rem;
   text-decoration:none;
@@ -190,15 +239,15 @@ button{
 }
 
 .visual-link:hover{
-  background:rgba(26,107,94,0.15);
-  border-color:rgba(26,107,94,0.35);
+  background:rgba(13,148,136,0.15);
+  border-color:rgba(13,148,136,0.35);
 }
 
 .pill[href]{
   text-decoration:none;
   cursor:pointer;
   background:var(--accent-lt);
-  color:var(--accent);
+  color:var(--accent-ink);
   border:1px solid var(--accent-mid);
 }
 
@@ -883,17 +932,17 @@ button{
   border-radius:999px;
   border:1px solid var(--accent-mid);
   background:var(--accent-lt);
-  color:var(--accent);
+  color:var(--accent-ink);
   font-size:13px;
   font-weight:700;
-  box-shadow:0 2px 8px rgba(26,107,94,.10);
+  box-shadow:0 2px 8px rgba(13,148,136,.10);
 }
 
 .tm-stat.has-audio{
-  border-color:rgba(26,107,94,.45);
-  background:rgba(26,107,94,.14);
-  color:#0f4c3a;
-  box-shadow:0 4px 14px rgba(26,107,94,.16);
+  border-color:rgba(13,148,136,.45);
+  background:rgba(13,148,136,.14);
+  color:#115e59;
+  box-shadow:0 4px 14px rgba(13,148,136,.16);
   animation:audioPulse 1.5s ease 2;
 }
 
@@ -914,9 +963,9 @@ button{
 }
 
 @keyframes jumpGlow{
-  0%{ box-shadow:0 0 0 rgba(26,107,94,0); }
-  40%{ box-shadow:0 0 0 6px rgba(26,107,94,.25); border-color:var(--accent); }
-  100%{ box-shadow:0 0 0 rgba(26,107,94,0); }
+  0%{ box-shadow:0 0 0 rgba(13,148,136,0); }
+  40%{ box-shadow:0 0 0 6px rgba(13,148,136,.25); border-color:var(--accent); }
+  100%{ box-shadow:0 0 0 rgba(13,148,136,0); }
 }
 
 /* ===== Responsive ===== */
@@ -952,6 +1001,23 @@ button{
 
   #pageH1{
     margin:0;
+  }
+
+  .titleNav{
+    flex-wrap:nowrap;
+    gap:6px;
+  }
+
+  .titleNav .navArrow{
+    width:28px;
+    height:28px;
+    padding:0;
+    font-size:18px;
+  }
+
+  .weekBadge{
+    font-size:10px;
+    padding:2px 7px;
   }
 
   .notice{
@@ -1099,16 +1165,33 @@ button{
   Join Weekly Divrei Torah on WhatsApp
 </a>
 
+<div id="bookBanner" style="position:relative;background:#f4f4f0;border-top:1px solid #e0e0d8;">
 <a href="https://www.amazon.com/dp/B0GWWH92N1"
    target="_blank" rel="noopener"
    style="display:flex;align-items:center;justify-content:center;gap:10px;
-          background:#f4f4f0;color:#111;font-size:14px;font-weight:600;
-          text-decoration:none;padding:9px 16px;letter-spacing:.01em;
-          border-top:1px solid #e0e0d8;">
+          color:#111;font-size:14px;font-weight:600;
+          text-decoration:none;padding:9px 44px 9px 16px;letter-spacing:.01em;">
   <img src="https://m.media-amazon.com/images/I/61YMvLIQFhL._AC_UY218_.jpg"
        alt="A Gutten Erev Shabbos" style="height:32px;border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,.2);" />
   These shiurim inspired my new book, <em>A Gutten Erev Shabbos</em> — available now on Amazon
 </a>
+  <button id="bookBannerClose" type="button" aria-label="Dismiss"
+          style="position:absolute;right:8px;top:50%;transform:translateY(-50%);width:28px;height:28px;padding:0;border:none;border-radius:999px;background:transparent;color:#666;font-size:20px;line-height:1;cursor:pointer;">&times;</button>
+</div>
+<script>
+(function(){
+  var KEY="tm_book_banner_dismissed", DAYS=30, el=document.getElementById("bookBanner");
+  if(!el) return;
+  try{
+    var t=parseInt(localStorage.getItem(KEY)||"0",10);
+    if(t && Date.now()-t < DAYS*86400000){ el.style.display="none"; return; }
+  }catch(e){}
+  document.getElementById("bookBannerClose").addEventListener("click",function(){
+    el.style.display="none";
+    try{ localStorage.setItem(KEY,String(Date.now())); }catch(e){}
+  });
+})();
+</script>
 	
 <script>
   window.SITE_COUNTS = window.SITE_COUNTS || {};
@@ -1130,7 +1213,12 @@ button{
 <header>
   <div class="wrap">
 <div class="headerRow">
-  <h1 id="pageH1">Parsha Divrei Torah</h1>
+  <div class="titleNav">
+    <button id="prevParsha" class="navArrow" type="button" aria-label="Previous parsha" title="Previous parsha" hidden>&#8249;</button>
+    <h1 id="pageH1">Parsha Divrei Torah</h1>
+    <button id="nextParsha" class="navArrow" type="button" aria-label="Next parsha" title="Next parsha" hidden>&#8250;</button>
+    <span id="weekBadge" class="weekBadge" hidden>This week</span>
+  </div>
   <button id="filtersBtn" class="filtersBtn" type="button"
           aria-expanded="false" aria-controls="controlsWrap">
     Filters
@@ -2036,13 +2124,44 @@ function updatePlayingRow(){
 
 function setPageTitle() {
   const base = "Parsha Divrei Torah";
-  const p = parshaSel.value;
+  const p = parshaSel.value === "__ALL__" ? "" : parshaSel.value;
 
   const full = p ? `${base} – ${p}` : base;
 
   document.title = full;
   if (pageH1) pageH1.textContent = full;
+  try { updateParshaNav(); } catch (e) {}
 }
+
+// ===== Prev / next parsha arrows + "This week" badge (display only) =====
+function updateParshaNav() {
+  const prev = document.getElementById("prevParsha");
+  const next = document.getElementById("nextParsha");
+  const badge = document.getElementById("weekBadge");
+  const p = parshaSel.value;
+  const isReal = !!p && p !== "__ALL__" && [...parshaSel.options].some(o => o.value === p && o.value);
+  if (prev) prev.hidden = !isReal;
+  if (next) next.hidden = !isReal;
+  if (!badge) return;
+  badge.hidden = true;
+  if (!isReal) return;
+  getThisWeeksParsha().then(wk => {
+    if (parshaSel.value === p && wk) {
+      badge.hidden = normalizeParshaName(wk) !== normalizeParshaName(p);
+    }
+  }).catch(() => {});
+}
+
+function stepParsha(dir) {
+  const opts = [...parshaSel.options].filter(o => o.value && o.value !== "__ALL__");
+  const i = opts.findIndex(o => o.value === parshaSel.value);
+  if (i < 0 || !opts.length) return;
+  parshaSel.value = opts[(i + dir + opts.length) % opts.length].value;
+  parshaSel.dispatchEvent(new Event("change"));
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+document.getElementById("prevParsha")?.addEventListener("click", () => stepParsha(-1));
+document.getElementById("nextParsha")?.addEventListener("click", () => stepParsha(1));
 
 
 function updateURLFromSelection() {
@@ -2424,7 +2543,14 @@ function render(list = []) {
     a.rel = "noopener";
 
     const desc = normalizeWs((v.description || "").split("\n")[0] || "");
-    const shortDesc = desc.length > 110 ? (desc.slice(0, 110) + "…") : desc;
+    let shortDesc = desc.length > 110 ? (desc.slice(0, 110) + "…") : desc;
+    // Hide the description when it only repeats the title
+    if (shortDesc && String(v.title || "").trim() &&
+        shortDesc.toLowerCase().includes(String(v.title).trim().toLowerCase())) {
+      shortDesc = "";
+    }
+    // Only show the parsha chip when browsing/searching across parshios
+    const parshaChosen = !!parshaSel.value && parshaSel.value !== "__ALL__";
 
     a.innerHTML = `
       <span class="thumb">
@@ -2440,11 +2566,10 @@ function render(list = []) {
         <h3>${escapeHtml(v.title)}</h3>
         <p class="date">${escapeHtml(fmtDate(v.publishedAt))}</p>
         ${shortDesc ? `<p class="desc">${escapeHtml(shortDesc)}</p>` : ""}
-        <div class="pillrow">
-          ${v.parsha ? `<span class="pill">${escapeHtml(v.parsha)}</span>` : `<span class="pill">Parsha</span>`}
-          <span class="pill">YouTube</span>
+        ${(!parshaChosen || infographic) ? `<div class="pillrow">
+          ${!parshaChosen ? (v.parsha ? `<span class="pill">${escapeHtml(v.parsha)}</span>` : `<span class="pill">Parsha</span>`) : ""}
           ${infographic ? `<a class="pill" href="${escapeHtml(infographic.image)}" target="_blank" rel="noopener">📊 Infographic</a>` : ""}
-        </div>
+        </div>` : ""}
       </div>
     `;
     grid.appendChild(a);
@@ -2452,7 +2577,15 @@ function render(list = []) {
 }
 window.render = render;
 
-async function getThisWeeksParsha() {
+let _tmWeekPromise = null;
+function getThisWeeksParsha() {
+  if (!_tmWeekPromise) {
+    _tmWeekPromise = _fetchThisWeeksParsha().catch(e => { _tmWeekPromise = null; throw e; });
+  }
+  return _tmWeekPromise;
+}
+
+async function _fetchThisWeeksParsha() {
   // NYC / Diaspora (GeoNames ID 5128581)
   const url = "https://www.hebcal.com/shabbat?cfg=json&geonameid=5128581";
   const r = await fetch(url);
