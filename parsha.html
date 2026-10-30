@@ -160,6 +160,58 @@ code{
   white-space:nowrap;
 }
 
+/* ===== Video / Audio tabs ===== */
+.tmTabs{
+  display:flex;
+  gap:6px;
+  margin:0 0 14px;
+  border-bottom:1px solid var(--border);
+}
+
+.tmTab{
+  appearance:none;
+  background:none;
+  border:none;
+  border-bottom:3px solid transparent;
+  margin-bottom:-1px;
+  padding:10px 14px;
+  font-size:15px;
+  font-weight:600;
+  color:var(--muted);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border-radius:0;
+}
+
+.tmTab:hover{ color:var(--text); }
+
+.tmTab.active{
+  color:var(--accent-ink);
+  border-bottom-color:var(--accent);
+}
+
+.tmTab .n{
+  font-size:12px;
+  font-weight:700;
+  background:#e9ecf0;
+  color:var(--muted);
+  border-radius:999px;
+  padding:1px 8px;
+  min-width:20px;
+  text-align:center;
+}
+
+.tmTab .n:empty{ display:none; }
+
+.tmTab.active .n{
+  background:var(--accent-lt);
+  color:var(--accent-ink);
+}
+
+#audioEmpty{ margin-bottom:14px; }
+
 /* ===== Controls ===== */
 .controls{
   display:grid;
@@ -1264,6 +1316,13 @@ button{
     <div class="small" id="statusSmall"></div>
   </div>
 
+<div class="tmTabs" role="tablist" aria-label="Video or audio">
+  <button id="tabVideo" class="tmTab active" type="button" role="tab" aria-selected="true" aria-controls="panelVideo">▶ Videos <span class="n" id="tabVideoN"></span></button>
+  <button id="tabAudio" class="tmTab" type="button" role="tab" aria-selected="false" aria-controls="panelAudio">🎧 Audio <span class="n" id="tabAudioN"></span></button>
+</div>
+
+<div id="panelVideo" role="tabpanel" aria-labelledby="tabVideo">
+
 <div class="bar">
   <div id="count"></div>
 
@@ -1275,17 +1334,10 @@ button{
 
   
   </div>
-</div>
 
 
 
-<section id="secAudioOverview" style="display:none;margin-bottom:14px;">
-  <div style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:rgba(13,148,136,.1);border-radius:999px;padding:3px 10px;margin-bottom:8px;">🗺️ Parsha Overview</div>
-  <div style="background:rgba(13,148,136,.06);border:1px solid rgba(13,148,136,.25);border-radius:16px;padding:14px 16px;">
-    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">A general overview and themes of the Parsha</div>
-    <div id="audioOverviewList" class="linksList"></div>
-  </div>
-</section>
+
 
   <div id="grid" class="grid"></div>
 
@@ -1302,8 +1354,23 @@ button{
 
 </div> 
 
-  <audio id="audioEl" preload="metadata"></audio>
  <div id="empty" class="empty" style="display:none;">No videos match your filters.</div>
+
+</div><!-- /panelVideo -->
+
+<audio id="audioEl" preload="metadata"></audio>
+
+<div id="panelAudio" role="tabpanel" aria-labelledby="tabAudio" hidden>
+
+<div id="audioEmpty" class="empty" style="display:none;"></div>
+
+<section id="secAudioOverview" style="display:none;margin-bottom:14px;">
+  <div style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:rgba(13,148,136,.1);border-radius:999px;padding:3px 10px;margin-bottom:8px;">🗺️ Parsha Overview</div>
+  <div style="background:rgba(13,148,136,.06);border:1px solid rgba(13,148,136,.25);border-radius:16px;padding:14px 16px;">
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">A general overview and themes of the Parsha</div>
+    <div id="audioOverviewList" class="linksList"></div>
+  </div>
+</section>
 
 
 
@@ -1331,46 +1398,9 @@ button{
   <div id="pdfList" class="pdfList"></div>
 </section>
 
-	 <!-- All resources drawer (moved up) -->
-  <details id="allResources" class="resourcesBox">
-    <summary>
-      <span class="resourcesSummaryTitle">All Parsha resources</span>
-      <span class="resourcesSummaryHint" id="resourcesSummaryHint"></span>
-    </summary>
 
-    <div class="resourcesInner">
-      <div class="resourcesControls">
-        <input id="resQ" type="search" placeholder="Search all audio + PDFs…" />
-        <select id="resParsha">
-          <option value="">All Parshiyos</option>
-        </select>
-        <button id="resClear" type="button">Clear</button>
-      </div>
 
-      <div class="resourcesCols">
-        <section class="resourcesCol">
-          <div class="resourcesColHead">
-            <div class="resourcesColTitle">Audio</div>
-            <div class="resourcesColHint" id="resAudioHint"></div>
-          </div>
-          <div id="resAudioList" class="linksList"></div>
-        </section>
-
-        <section class="resourcesCol">
-          <div class="resourcesColHead">
-            <div class="resourcesColTitle">PDFs</div>
-            <div class="resourcesColHint" id="resPdfHint"></div>
-          </div>
-          <div id="resPdfList" class="pdfList"></div>
-        </section>
-      </div>
-    </div>
-	   <div class="resourcesCloseWrap">
-      <button type="button" id="resourcesCloseBtn" class="resourcesCloseBtn">
-        Close
-      </button>
-    </div>
-  </details>
+</div><!-- /panelAudio -->
 
 </main>
 <script src="/data/site-counts.js"></script>
@@ -1784,6 +1814,7 @@ function renderParshaExtras(parsha) {
     if (wrap) wrap.style.display = "none";
 
     clearAudioRowStates();
+    setAudioTabInfo("", 0, 0);
     return;
   }
 
@@ -1803,6 +1834,7 @@ function renderParshaExtras(parsha) {
   renderPdfList("pdfList",          pdfItems);
 
   clearAudioRowStates();
+  setAudioTabInfo(parsha, overviewItems.length + shortItems.length + longItems.length, pdfItems.length);
 
   // Counter
 const wrap = document.getElementById("audioCountWrap");
@@ -1811,6 +1843,7 @@ const el   = document.getElementById("totalAudioCount");
 if (wrap) {
   wrap.onclick = function(e){
     e.preventDefault();
+    setTab("audio");
 
     const shortSection = document.getElementById("secAudioShort");
     const longSection  = document.getElementById("secAudioLong");
@@ -1822,6 +1855,9 @@ if (wrap) {
     } 
     else if (longItems.length && longSection) {
       target = longSection;
+    }
+    else if (overviewItems.length) {
+      target = document.getElementById("secAudioOverview");
     }
 
     if (target) {
@@ -1836,7 +1872,7 @@ if (wrap) {
 }
 	
 if (wrap && el) {
-  const total = shortItems.length + longItems.length;
+  const total = overviewItems.length + shortItems.length + longItems.length;
   wrap.style.display = total ? "" : "none";
 
   wrap.classList.remove("has-audio");
@@ -2131,6 +2167,47 @@ function setPageTitle() {
   document.title = full;
   if (pageH1) pageH1.textContent = full;
   try { updateParshaNav(); } catch (e) {}
+}
+
+// ===== Video / Audio tabs (display only) =====
+function setTab(tab, opts) {
+  const isAudio = tab === "audio";
+  const pv = document.getElementById("panelVideo");
+  const pa = document.getElementById("panelAudio");
+  const tv = document.getElementById("tabVideo");
+  const ta = document.getElementById("tabAudio");
+  if (!pv || !pa || !tv || !ta) return;
+  pv.hidden = isAudio;
+  pa.hidden = !isAudio;
+  tv.classList.toggle("active", !isAudio);
+  ta.classList.toggle("active", isAudio);
+  tv.setAttribute("aria-selected", String(!isAudio));
+  ta.setAttribute("aria-selected", String(isAudio));
+  if (!(opts && opts.noURL)) {
+    try {
+      const url = new URL(window.location.href);
+      if (isAudio) url.searchParams.set("tab", "audio"); else url.searchParams.delete("tab");
+      history.replaceState({}, "", url.toString());
+    } catch (e) {}
+  }
+}
+document.getElementById("tabVideo")?.addEventListener("click", () => setTab("video"));
+document.getElementById("tabAudio")?.addEventListener("click", () => setTab("audio"));
+
+function setAudioTabInfo(parsha, audioTotal, pdfTotal) {
+  const n = document.getElementById("tabAudioN");
+  if (n) n.textContent = audioTotal ? String(audioTotal) : "";
+  const em = document.getElementById("audioEmpty");
+  if (!em) return;
+  if (!parsha) {
+    em.textContent = "Pick a parsha above to see its audio.";
+    em.style.display = "block";
+  } else if (!audioTotal && !pdfTotal) {
+    em.textContent = "No audio for " + parsha + " yet.";
+    em.style.display = "block";
+  } else {
+    em.style.display = "none";
+  }
 }
 
 // ===== Prev / next parsha arrows + "This week" badge (display only) =====
@@ -2532,6 +2609,7 @@ function render(list = []) {
   grid.innerHTML = "";
   empty.style.display = list.length ? "none" : "block";
   count.textContent = `${list.length} video${list.length === 1 ? "" : "s"} shown`;
+  try { const tn = document.getElementById("tabVideoN"); if (tn) tn.textContent = list.length ? String(list.length) : ""; } catch (e) {}
 
   for (const v of list) {
     const infographic = INFOGRAPHICS[v.id];
@@ -2789,6 +2867,7 @@ parshaSel.addEventListener("change", () => {
   setPageTitle();
   renderParshaExtras(parshaSel.value || "");
   applyFilters();
+  setTab(new URLSearchParams(location.search).get("tab") === "audio" ? "audio" : "video", { noURL: true });
 
   load();
 })();
