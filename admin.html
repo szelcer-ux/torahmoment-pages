@@ -617,8 +617,20 @@ function addNewCatOption(sel) {
   var o = document.createElement('option'); o.value = NEW_CAT; o.textContent = '➕ Add new category…'; sel.appendChild(o);
 }
 
+// Drop categories that only exist because an old spelling was read from the data and no clip uses it any more
+function pruneStaleCats() {
+  var used = {}; (catData||[]).forEach(function(it){ if(it&&it.category) used[it.category]=true; });
+  var gone = false;
+  Object.keys(CATEGORIES).forEach(function(c){
+    if (BUILTIN_CATS.indexOf(c)>=0 || customCats.indexOf(c)>=0 || used[c]) return;
+    delete CATEGORIES[c]; gone = true;
+  });
+  return gone;
+}
+
 // Rebuild every category dropdown (keeps what is selected)
 function rebuildCatSelects() {
+  if (catData && catData.length) pruneStaleCats();
   ['om-cat-main','hal-cat-main','cat-main'].forEach(function(id) {
     var sel = document.getElementById(id); if (!sel) return;
     var cur = sel.value;
@@ -1151,6 +1163,7 @@ function saveCatLocal(advance){
   var n=Object.keys(catPending).length;
   showCatStatus('Saved locally ('+n+' unsaved change'+(n===1?'':'s')+' - click Commit when done)','#166534');
   updateCommitBtn();
+  if(pruneStaleCats()){ rebuildCatSelects(); }
   if(advance&&catIdx<catData.length-1){catIdx++;renderCatClip();}else{try{renderCatOverview();}catch(e){}}
 }
 

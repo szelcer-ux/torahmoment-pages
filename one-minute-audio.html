@@ -781,6 +781,8 @@ const SEFARIM = {
 };
 function nk(x){return String(x||"").toLowerCase().replace(/[^a-z]/g,"");}
 function lev(a,b){const m=a.length,n=b.length,d=[];for(let i=0;i<=m;i++){d[i]=[i];}for(let j=1;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
+function parshaIdx(name,sef){ // index of the closest-spelled parsha in that sefer's order
+  const k=nk(name); let best=0,bd=99; SEFARIM[sef].forEach((p,i)=>{const d=lev(k,nk(p)); if(d<bd){bd=d;best=i;}}); return best; }
 const _sefCache = {};
 function seferOf(name){
   if (name in _sefCache) return _sefCache[name];
@@ -812,7 +814,7 @@ function buildCats(){
     }).join("");
     if (activeSefer) {
       const ps = [...subs.entries()].filter(([n])=>seferOf(n)===activeSefer)
-        .sort((a,b)=>SEFARIM[activeSefer].findIndex(p=>lev(nk(p),nk(a[0]))<=3) - SEFARIM[activeSefer].findIndex(p=>lev(nk(p),nk(b[0]))<=3));
+        .sort((a,b)=>parshaIdx(a[0],activeSefer)-parshaIdx(b[0],activeSefer));
       parBar.hidden = false;
       parBar.innerHTML = `<button data-sub="" class="${activeSub?"":"on"}">All ${esc(activeSefer)}</button>` +
         ps.map(([n,c])=>`<button data-sub="${esc(n)}" class="${n===activeSub?"on":""}">${esc(n)}<small>${c}</small></button>`).join("");
@@ -871,6 +873,7 @@ fetch(DATA_URL, { cache:"no-store" })
   .then(d => {
     items = d.map((x, idx) => ({
       ...x,
+      description: String(x.description||"").replace(/\s*<This message was edited>\s*/gi, "").trim(),
       id: x.id ?? idx,
       _sortKey: dateToKey(x.date)
     }));
