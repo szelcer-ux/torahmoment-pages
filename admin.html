@@ -268,6 +268,7 @@ document.getElementById('saveTokenBtn').addEventListener('click', function() {
   localStorage.setItem('tm_token', t);
   document.getElementById('tokenBanner').style.display = 'none';
   showStatus('Token saved!', 'ok');
+  loadCustomCats();
 });
 
 function getToken() { return localStorage.getItem('tm_token') || ''; }
@@ -280,6 +281,7 @@ function onLogin() {
   document.getElementById('om-date').value = today;
   loadHalachaCategories();
   populateCatDropdowns();
+  loadCustomCats();
 }
 
 // ── Halacha categories ──
@@ -584,6 +586,111 @@ function showStatus(msg, type) {
   el.style.display = 'block';
 }
 
+// ── Add a category on the fly ──
+var NEW_CAT = '__new__';
+var CUSTOM_CATS_PATH = 'data/categories.json';
+var customCats = [];
+
+function addNewCatOption(sel) {
+  var o = document.createElement('option'); o.value = NEW_CAT; o.textContent = '➕ Add new category…'; sel.appendChild(o);
+}
+
+// Rebuild every category dropdown (keeps what is selected)
+function rebuildCatSelects() {
+  ['om-cat-main','hal-cat-main','cat-main'].forEach(function(id) {
+    var sel = document.getElementById(id); if (!sel) return;
+    var cur = sel.value;
+    sel.innerHTML = '<option value="">-- select --</option>';
+    Object.keys(CATEGORIES).forEach(function(cat) {
+      var o = document.createElement('option'); o.value = cat; o.textContent = cat; sel.appendChild(o);
+    });
+    addNewCatOption(sel);
+    if (cur && cur !== NEW_CAT && CATEGORIES.hasOwnProperty(cur)) sel.value = cur;
+    sel.setAttribute('data-prev', sel.value);
+  });
+  try { if (catData && catData.length) renderCatOverview(); } catch (e) {}
+}
+
+function handleNewCategory(sel) {
+  var prev = sel.getAttribute('data-prev') || '';
+  var name = window.prompt('Name of the new category (for example: Israel):');
+  name = (name || '').replace(/\s+/g, ' ').trim();
+  if (!name) { sel.value = prev; return; }
+  if (name.length > 40) { showStatus('Category name is too long (40 characters max).', 'err'); sel.value = prev; return; }
+  var existing = null;
+  Object.keys(CATEGORIES).forEach(function(k) { if (k.toLowerCase() === name.toLowerCase()) existing = k; });
+  var finalName = existing || name;
+  if (!existing) {
+    CATEGORIES[name] = null;
+    if (customCats.indexOf(name) < 0) customCats.push(name);
+    saveCustomCats(name);
+  }
+  rebuildCatSelects();
+  sel.value = finalName;
+  sel.setAttribute('data-prev', finalName);
+  sel.dispatchEvent(new Event('change'));
+}
+
+function ghGetFile(path) {
+  return fetch('https://api.github.com/repos/' + REPO + '/contents/' + path + '?ref=' + BRANCH, {
+    headers: { Authorization: 'Bearer ' + getToken(), Accept: 'application/vnd.github+json' }
+  });
+}
+function ghDecode(meta) {
+  var bytes = Uint8Array.from(atob(meta.content.replace(/\n/g, '')), function(c) { return c.charCodeAt(0); });
+  return new TextDecoder('utf-8').decode(bytes);
+}
+
+// Save the custom category list so it is there next time (data/categories.json)
+function saveCustomCats(justAdded) {
+  if (!getToken()) { showStatus('Added "' + justAdded + '" for this session only - save your GitHub token to keep it.', 'err'); return; }
+  showStatus('Saving new category "' + justAdded + '"...', 'ok');
+  ghGetFile(CUSTOM_CATS_PATH).then(function(r) {
+    if (r.status === 404) return { sha: null, list: [] };
+    return r.json().then(function(meta) {
+      var list = [];
+      try { var j = JSON.parse(ghDecode(meta)); list = Array.isArray(j) ? j : (j.categories || []); } catch (e) {}
+      return { sha: meta.sha, list: list };
+    });
+  }).then(function(cur) {
+    var merged = cur.list.slice();
+    customCats.forEach(function(c) { if (merged.indexOf(c) < 0) merged.push(c); });
+    var body = JSON.stringify({ categories: merged }, null, 2) + '\n';
+    var enc = btoa(String.fromCharCode.apply(null, new TextEncoder().encode(body)));
+    var payload = { message: 'Add category: ' + justAdded, content: enc, branch: BRANCH };
+    if (cur.sha) payload.sha = cur.sha;
+    return fetch('https://api.github.com/repos/' + REPO + '/contents/' + CUSTOM_CATS_PATH, {
+      method: 'PUT',
+      headers: { Authorization: 'Bearer ' + getToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  }).then(function(r) {
+    if (!r.ok) return r.text().then(function(t) { throw new Error(t); });
+    showStatus('Category "' + justAdded + '" added and saved.', 'ok');
+  }).catch(function(e) {
+    showStatus('Added for this session, but saving failed: ' + e.message, 'err');
+  });
+}
+
+// Load saved custom categories (called on login / token save)
+function loadCustomCats() {
+  if (!getToken()) return;
+  ghGetFile(CUSTOM_CATS_PATH).then(function(r) {
+    if (!r.ok) return null;
+    return r.json();
+  }).then(function(meta) {
+    if (!meta || !meta.content) return;
+    var j = JSON.parse(ghDecode(meta));
+    var list = Array.isArray(j) ? j : (j.categories || []);
+    var added = false;
+    list.forEach(function(c) {
+      if (c && !CATEGORIES.hasOwnProperty(c)) { CATEGORIES[c] = null; added = true; }
+      if (c && customCats.indexOf(c) < 0) customCats.push(c);
+    });
+    if (added) rebuildCatSelects();
+  }).catch(function(e) { console.warn('Could not load custom categories:', e); });
+}
+
 // ── Populate category dropdowns on login ──
 // Called from onLogin() defined above
 function populateCatDropdowns() {
@@ -595,7 +702,12 @@ function populateCatDropdowns() {
     Object.keys(CATEGORIES).forEach(function(cat) {
       var o = document.createElement('option'); o.value=cat; o.textContent=cat; sel.appendChild(o);
     });
-    sel.addEventListener('change', function() { populateCatSub(p); });
+    addNewCatOption(sel);
+    sel.addEventListener('change', function() {
+      if (sel.value === NEW_CAT) { handleNewCategory(sel); return; }
+      sel.setAttribute('data-prev', sel.value);
+      populateCatSub(p);
+    });
   });
 }
 
@@ -665,6 +777,7 @@ function initCategorize() {
       });
     } else { catData=parsed; }
     catIdx=0; catPending={};
+    catData.forEach(function(x){ if (x && x.category && !CATEGORIES.hasOwnProperty(x.category)) CATEGORIES[x.category]=null; });
     buildCatMainSel();
     showCatStatus('','');
     renderCatClip();
@@ -676,7 +789,7 @@ function buildCatMainSel(){
   sel.innerHTML='<option value="">-- select --</option>';
   Object.keys(CATEGORIES).forEach(function(cat){
     var o=document.createElement('option'); o.value=cat; o.textContent=cat; sel.appendChild(o);
-  });
+  });  addNewCatOption(sel);
 }
 
 // ── Categorize overview: what's done / what's left ──
@@ -802,7 +915,12 @@ function onCatSubChange(currentParsha) {
   });
 }
 
-document.getElementById('cat-main').addEventListener('change',function(){onCatMainChange();});
+document.getElementById('cat-main').addEventListener('change',function(){
+  var sel=document.getElementById('cat-main');
+  if (sel.value===NEW_CAT) { handleNewCategory(sel); return; }
+  sel.setAttribute('data-prev', sel.value);
+  onCatMainChange();
+});
 document.getElementById('cat-sub').addEventListener('change',function(){onCatSubChange();});
 
 function getSelCat(){
