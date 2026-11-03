@@ -30,6 +30,17 @@
     .token-row input { flex: 1; padding: 8px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; font-family: monospace; }
     .token-row button { padding: 8px 14px; background: var(--accent); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
 
+    .ovChip { display:inline-block; padding:5px 11px; border-radius:999px; border:1px solid var(--border); background:#fff; font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; margin:0 6px 6px 0; }
+    .ovChip.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+    .ovRow { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:4px 10px; padding:9px 12px; border-bottom:1px solid var(--border); cursor:pointer; font-size:13px; }
+    .ovRow:last-child { border-bottom:none; }
+    .ovRow:hover { background:#f0fdfa; }
+    .ovRow.cur { background:#ecfdf5; box-shadow: inset 3px 0 0 var(--accent); }
+    .ovRow .t { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600; }
+    .ovRow .m { flex:0 0 auto; font-size:11px; color:var(--muted); white-space:nowrap; }
+    .ovTag { display:inline-block; padding:2px 8px; border-radius:999px; background:#ccfbf1; color:#0f766e; font-size:11px; font-weight:600; margin-right:6px; }
+    .ovTag.todo { background:#f3f4f6; color:#6b7280; }
+    .ovTag.unsaved { background:#fef3c7; color:#92400e; }
     .tabs { display: flex; gap: 8px; margin-bottom: 18px; }
     .tab { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); }
     .tab.on { background: var(--accent); color: #fff; border-color: var(--accent); }
@@ -174,6 +185,16 @@
             <button class="btn btn-outline" id="catSkipBtn" style="font-size:13px;padding:6px 12px;color:#0d9488;">Skip uncategorized</button>
           </div>
         </div>
+      </div>
+      <div class="card" id="catOverview" style="margin-bottom:12px;">
+        <h2 style="margin-bottom:8px;">Overview</h2>
+        <div id="catOvSummary" style="font-size:13px;color:#444;margin-bottom:10px;"></div>
+        <div id="catOvBar" style="height:8px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin-bottom:12px;"><div id="catOvBarFill" style="height:100%;width:0;background:var(--accent);"></div></div>
+        <div id="catOvChips" style="margin-bottom:4px;"></div>
+        <div id="catOvParsha" style="font-size:12px;color:#444;margin:4px 0 10px;"></div>
+        <input id="catOvSearch" type="search" placeholder="Search clips..." style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;margin-bottom:8px;" />
+        <div id="catOvList" style="max-height:320px;overflow:auto;border:1px solid var(--border);border-radius:10px;background:#fff;"></div>
+        <div style="font-size:11px;color:#888;margin-top:6px;">Tap a clip to open it in the editor below.</div>
       </div>
       <div class="card">
         <div id="catClipTitle" style="font-size:16px;font-weight:700;margin-bottom:3px;"></div>
@@ -658,8 +679,69 @@ function buildCatMainSel(){
   });
 }
 
+// ── Categorize overview: what's done / what's left ──
+var catOvFilter='todo';
+function catEsc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function catLabel(it){return it.description||it.title||'(no title)';}
+function catAllParshas(){var out=[];Object.keys(CATEGORIES.Parsha).forEach(function(s){CATEGORIES.Parsha[s].forEach(function(p){out.push(p);});});return out;}
+
+function renderCatOverview(){
+  var box=document.getElementById('catOvList'); if(!box) return;
+  var total=catData.length;
+  var done=catData.filter(function(x){return x.category;}).length;
+  var todo=total-done;
+  var pe=document.getElementById('catProgress'); if(pe&&total) pe.textContent=(catIdx+1)+' of '+total+' - '+done+' categorized';
+  document.getElementById('catOvSummary').innerHTML='<b>'+done+'</b> of '+total+' categorized &middot; <b>'+todo+'</b> still to do';
+  document.getElementById('catOvBarFill').style.width=(total?Math.round(done*100/total):0)+'%';
+
+  // chips: To do / Categorized / All / each category
+  var counts={}; catData.forEach(function(x){if(x.category)counts[x.category]=(counts[x.category]||0)+1;});
+  var chips=[['todo','Not categorized ('+todo+')'],['done','Categorized ('+done+')'],['all','All ('+total+')']];
+  Object.keys(CATEGORIES).forEach(function(c){chips.push(['cat:'+c,c+' ('+(counts[c]||0)+')']);});
+  document.getElementById('catOvChips').innerHTML=chips.map(function(c){
+    return '<span class="ovChip'+(catOvFilter===c[0]?' on':'')+'" data-f="'+catEsc(c[0])+'">'+catEsc(c[1])+'</span>';
+  }).join('');
+
+  // parsha coverage
+  var pc={}; catData.forEach(function(x){if(x.category==='Parsha'&&x.categoryDetail)pc[x.categoryDetail]=(pc[x.categoryDetail]||0)+1;});
+  var have=Object.keys(pc), none=catAllParshas().filter(function(p){return !pc[p];});
+  var ph='';
+  if(have.length) ph+='<div><b>Parshas with clips:</b> '+have.map(function(p){return catEsc(p)+' '+pc[p];}).join(' &middot; ')+'</div>';
+  ph+='<details style="margin-top:4px;"><summary style="cursor:pointer;">Parshas with no clips yet ('+none.length+')</summary><div style="margin-top:4px;color:#666;">'+none.map(catEsc).join(' &middot; ')+'</div></details>';
+  document.getElementById('catOvParsha').innerHTML=(catSource==='oneMinute')?ph:'';
+
+  // list
+  var term=(document.getElementById('catOvSearch').value||'').toLowerCase().trim();
+  var rows=[];
+  catData.forEach(function(it,i){
+    var isDone=!!it.category;
+    if(catOvFilter==='todo'&&isDone) return;
+    if(catOvFilter==='done'&&!isDone) return;
+    if(catOvFilter.indexOf('cat:')===0&&it.category!==catOvFilter.slice(4)) return;
+    if(term&&(catLabel(it)+' '+(it.category||'')+' '+(it.categoryDetail||'')).toLowerCase().indexOf(term)<0) return;
+    var tag=isDone?'<span class="ovTag">'+catEsc(it.category+(it.categoryDetail?' > '+it.categoryDetail:''))+'</span>':'<span class="ovTag todo">not categorized</span>';
+    if(catPending[it.url]) tag+='<span class="ovTag unsaved">unsaved</span>';
+    rows.push('<div class="ovRow'+(i===catIdx?' cur':'')+'" data-i="'+i+'"><span class="t">'+catEsc(catLabel(it))+'</span><span class="m">'+catEsc(it.date||it.note||'')+'</span><div style="width:100%;">'+tag+'</div></div>');
+  });
+  var st=box.scrollTop;
+  box.innerHTML=rows.length?rows.join(''):'<div style="padding:16px;text-align:center;color:#666;font-size:13px;">Nothing here'+(catOvFilter==='todo'?' - everything is categorized!':'.')+'</div>';
+  box.scrollTop=st;
+}
+
+document.getElementById('catOvChips').addEventListener('click',function(e){
+  var f=e.target&&e.target.getAttribute&&e.target.getAttribute('data-f'); if(!f) return;
+  catOvFilter=f; renderCatOverview();
+});
+document.getElementById('catOvSearch').addEventListener('input',renderCatOverview);
+document.getElementById('catOvList').addEventListener('click',function(e){
+  var row=e.target.closest?e.target.closest('.ovRow'):null; if(!row) return;
+  catIdx=parseInt(row.getAttribute('data-i'),10);
+  renderCatClip();
+  document.getElementById('catClipTitle').scrollIntoView({behavior:'smooth',block:'center'});
+});
+
 function renderCatClip(){
-  if (!catData.length){document.getElementById('catProgress').textContent='No items found';return;}
+  if (!catData.length){document.getElementById('catProgress').textContent='No items found';try{renderCatOverview();}catch(e){}return;}
   var item=catData[catIdx];
   var done=catData.filter(function(x){return x.category;}).length;
   document.getElementById('catProgress').textContent=(catIdx+1)+' of '+catData.length+' - '+done+' categorized';
@@ -671,6 +753,7 @@ function renderCatClip(){
   else{lbl.style.display='none';}
   document.getElementById('cat-main').value=item.category||'';
   onCatMainChange(item.categoryDetail);
+  try{renderCatOverview();}catch(e){}
 }
 
 function onCatMainChange(currentSub) {
@@ -739,7 +822,7 @@ function saveCatLocal(advance){
   var n=Object.keys(catPending).length;
   showCatStatus('Saved locally ('+n+' unsaved change'+(n===1?'':'s')+' - click Commit when done)','#166534');
   updateCommitBtn();
-  if(advance&&catIdx<catData.length-1){catIdx++;renderCatClip();}
+  if(advance&&catIdx<catData.length-1){catIdx++;renderCatClip();}else{try{renderCatOverview();}catch(e){}}
 }
 
 function updateCommitBtn(){
@@ -789,6 +872,7 @@ function commitAllCats(){
     catPending={};
     showCatStatus('Committed '+n+' change'+(n===1?'':'s')+' to GitHub!','#166534');
     updateCommitBtn();
+    try{renderCatOverview();}catch(e){}
   }).catch(function(e){
     showCatStatus('Error: '+e.message,'#b42318');
     document.getElementById('catCommitBtn').disabled=false;
