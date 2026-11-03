@@ -200,6 +200,10 @@
           <div style="font-size:12px;color:#666;margin-bottom:8px;">Uses the section each item is already in. Items that already have a category are left alone. Nothing is saved until you click Commit.</div>
           <button class="btn btn-outline" id="catHalPreviewBtn" style="font-size:13px;padding:6px 12px;">Preview</button>
           <div id="catHalPlan" style="display:none;margin-top:10px;font-size:13px;"></div>
+          <div id="catNoteFix" style="display:none;margin-top:10px;padding:10px;background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;font-size:13px;">
+            <span id="catNoteFixText"></span>
+            <button class="btn btn-outline" id="catNoteFixBtn" style="font-size:12px;padding:5px 10px;margin-left:6px;">Remove</button>
+          </div>
         </div>
         <div id="catRenameBox" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
           <div style="font-size:13px;font-weight:700;margin-bottom:6px;">Rename a category</div>
@@ -254,6 +258,7 @@ var CATEGORIES = {
 };
 var BUILTIN_CATS = Object.keys(CATEGORIES);
 var halStruct = null;
+var catNotes = [];
 var currentTab = 'halacha';
 var halachaData = null;
 
@@ -786,14 +791,15 @@ function initCategorize() {
     var parsed=JSON.parse(new TextDecoder('utf-8').decode(bytes));
     if (catSource==='halacha') {
       halStruct=parsed;
-      catData=[];
+      catData=[]; catNotes=[];
+      var addIt=function(it,p){ it._p=p; if(it.type==='note'){ if(it.category) catNotes.push(it); } else catData.push(it); };
       parsed.forEach(function(cat,ci){
-        (cat.items||[]).forEach(function(it,ii){it._p={ci:ci,si:-1,ii:ii};catData.push(it);});
+        (cat.items||[]).forEach(function(it,ii){addIt(it,{ci:ci,si:-1,ii:ii});});
         (cat.subcategories||[]).forEach(function(sub,si){
-          (sub.items||[]).forEach(function(it,ii){it._p={ci:ci,si:si,ii:ii};catData.push(it);});
+          (sub.items||[]).forEach(function(it,ii){addIt(it,{ci:ci,si:si,ii:ii});});
         });
       });
-    } else { catData=parsed; }
+    } else { catData=parsed; catNotes=[]; }
     catIdx=0; catPending={};
     catData.forEach(function(x){ if (x && x.category && !CATEGORIES.hasOwnProperty(x.category)) CATEGORIES[x.category]=null; });
     buildCatMainSel();
@@ -931,6 +937,12 @@ function renameCategory(from,to){
 
 function refreshCatTools(){
   var hal=document.getElementById('catHalAuto'); if(hal) hal.style.display=(catSource==='halacha')?'block':'none';
+  var nf=document.getElementById('catNoteFix');
+  if(nf){
+    var nn=(catSource==='halacha')?catNotes.filter(function(x){return x.category;}).length:0;
+    nf.style.display=nn?'block':'none';
+    document.getElementById('catNoteFixText').textContent=nn+' link/heading note'+(nn===1?'':'s')+' (not audio clips) wrongly got a category. Remove it?';
+  }
   var sel=document.getElementById('catRenameFrom'); if(!sel) return;
   var cur=sel.value;
   var names=Object.keys(CATEGORIES).filter(function(c){ return BUILTIN_CATS.indexOf(c)<0; });
@@ -938,6 +950,17 @@ function refreshCatTools(){
   if(cur && names.indexOf(cur)>=0) sel.value=cur;
 }
 document.getElementById('catHalPreviewBtn').addEventListener('click',showHalPlan);
+document.getElementById('catNoteFixBtn').addEventListener('click',function(){
+  var n=0;
+  catNotes.forEach(function(it){
+    if(!it.category) return;
+    delete it.category; delete it.categoryDetail;
+    catPending[it.url||('note:'+it._p.ci+':'+it._p.si+':'+it._p.ii)]=true; n++;
+  });
+  updateCommitBtn();
+  showCatStatus('Removed the category from '+n+' note'+(n===1?'':'s')+' - click "Commit to GitHub" below to save.','#166534');
+  renderCatOverview();
+});
 document.getElementById('catHalPlan').addEventListener('click',function(e){
   if(e.target.id==='catHalApplyBtn') applyHalPlan();
   if(e.target.id==='catHalCancelBtn'){ halPlan=null; this.style.display='none'; }
@@ -1124,6 +1147,12 @@ function commitAllCats(){
         }
       });
     } else {
+      catNotes.forEach(function(item){
+        var key=item.url||('note:'+item._p.ci+':'+item._p.si+':'+item._p.ii);
+        if(!catPending[key]) return;
+        var p=item._p,target=(p.si===-1)?full[p.ci].items[p.ii]:full[p.ci].subcategories[p.si].items[p.ii];
+        if(target&&target.type==='note'){ delete target.category; delete target.categoryDetail; }
+      });
       catData.forEach(function(item){
         if(!catPending[item.url]) return;
         var p=item._p,target;
