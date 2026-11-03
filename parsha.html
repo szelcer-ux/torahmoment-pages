@@ -1414,6 +1414,14 @@ button{
   <div id="audioShortList" class="linksList"></div>
 </section>
 
+<section id="secOneMin" class="linksBox" style="display:none;">
+  <div class="linksTop">
+    <div class="linksTitle">🎧 One-Minute Audio</div>
+    <div class="linksHint">Quick daily thoughts connected to this Parsha</div>
+  </div>
+  <div id="oneMinList" class="linksList"></div>
+</section>
+
 <section id="secAudioLong" class="linksBox" style="display:none;">
   <div class="linksTop">
    <div class="linksTitle">🎧 In-Depth Shiurim</div>
@@ -1566,6 +1574,29 @@ async function loadOverviews() {
   } finally {
     OVERVIEWS_SETTLED = true;
   }
+}
+
+// One-minute clips that were filed under a parsha in admin (data.json).
+// Display only - NOT part of the parsha audio counts (those clips are counted on the one-minute page).
+let ONE_MIN = [];
+async function loadOneMinute() {
+  try {
+    const res = await fetch("/data.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const j = await res.json();
+    ONE_MIN = Array.isArray(j) ? j.filter(x => x && x.category === "Parsha" && x.categoryDetail && x.url) : [];
+  } catch (err) {
+    console.warn("Could not load one-minute clips:", err);
+    ONE_MIN = [];
+  }
+}
+
+function oneMinuteFor(parsha) {
+  if (!parsha || parsha === "__ALL__" || !ONE_MIN.length) return [];
+  return ONE_MIN.filter(x => {
+    const o = matchParshaOption(x.categoryDetail);
+    return o && o.value === parsha;
+  }).map(x => ({ label: x.description || x.title || "One-minute thought", url: x.url }));
 }
 
 const PARSHA_INDEPTH = {
@@ -1844,6 +1875,7 @@ function renderParshaExtras(parsha) {
   if (!parsha) {
     setSectionVisible("secAudioOverview", false);
     setSectionVisible("secAudioShort", false);
+    setSectionVisible("secOneMin",     false);
     setSectionVisible("secAudioLong",  false);
     setSectionVisible("secPdfs",       false);
 
@@ -1861,17 +1893,20 @@ function renderParshaExtras(parsha) {
   const pdfItems   = (PARSHA_PDFS && PARSHA_PDFS[parsha]) ? PARSHA_PDFS[parsha] : [];
 
   setSectionVisible("secAudioOverview", overviewItems.length > 0);
+  const oneMinItems = oneMinuteFor(parsha);
   setSectionVisible("secAudioShort", shortItems.length > 0);
+  setSectionVisible("secOneMin", oneMinItems.length > 0);
   setSectionVisible("secAudioLong",  longItems.length  > 0);
   setSectionVisible("secPdfs",       pdfItems.length   > 0);
 
   renderAudioList("audioOverviewList", overviewItems);
   renderAudioList("audioShortList", shortItems);
+  renderAudioList("oneMinList", oneMinItems);
   renderAudioList("audioLongList",  longItems);
   renderPdfList("pdfList",          pdfItems);
 
   clearAudioRowStates();
-  setAudioTabInfo(parsha, overviewItems.length + shortItems.length + longItems.length, pdfItems.length);
+  setAudioTabInfo(parsha, overviewItems.length + shortItems.length + oneMinItems.length + longItems.length, pdfItems.length);
 
   // Counter
 const wrap = document.getElementById("audioCountWrap");
@@ -2971,7 +3006,7 @@ parshaSel.addEventListener("change", () => {
 
 
  (async () => {
-  await Promise.all([loadInfographics(), loadOverviews()]);
+  await Promise.all([loadInfographics(), loadOverviews(), loadOneMinute()]);
   await setDefaultParshaOnEntry();
   try { updateParshaCounts(); } catch {}
 
