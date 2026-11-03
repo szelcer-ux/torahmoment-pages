@@ -248,7 +248,7 @@ async function readHalachaTotalAllFromDom(page) {
   const allParshaOverviews = diskOverviews;
   console.log("Parsha overviews found:", allParshaOverviews.length);
 
-  const indexOneMin = (oneMinItems||[]).map((x,i)=>({ id:`one-${x.id??i}`, program:"One-Minute", type:"audio", title:x.description||x.filename||"One-Minute Audio", url:x.url, date:parseMmDdYyyy(x.date), page:"/one-minute-audio.html", category:x.category||null, categoryDetail:x.categoryDetail||null })).filter(x=>x.url&&x.title);
+  const indexOneMin = (oneMinItems||[]).map((x,i)=>({ id:`one-${x.id??i}`, program:"One-Minute", type:"audio", title:String(x.description||x.filename||"One-Minute Audio").replace(/\s*<This message was edited>\s*/gi,"").trim(), url:x.url, date:parseMmDdYyyy(x.date), page:"/one-minute-audio.html", category:x.category||null, categoryDetail:x.categoryDetail||null })).filter(x=>x.url&&x.title);
   const indexHalacha = (allHalacha||[]).map((x,i)=>({ id:`hal-${i}`, program:"Halacha", type:x.type||"audio", title:x.title||"Halacha", url:x.url, date:x.date, page:"/halacha.html", category:x.category||null, categoryDetail:x.categoryDetail||null })).filter(x=>x.url&&x.title);
   const indexParsha = youtubeSucceeded
     ? (allParshaVideos||[]).map(x=>({ id:`par-${x.url.split("v=")[1]||x.date||Math.random().toString(16).slice(2)}`, program:"Parsha", type:"video", title:x.title||"Parsha video", url:x.url, date:x.date, page:"/parsha.html" })).filter(x=>x.url&&x.title)
