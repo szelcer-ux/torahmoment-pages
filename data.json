@@ -639,14 +639,17 @@
     "date": "1/13/2025",
     "description": "Do we really want to spend time with Hashem?",
     "filename": "PTT-20250105-WA0045.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250105-WA0045.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250105-WA0045.mp3",
+    "category": "Middos"
   },
   {
     "id": 50,
     "date": "1/14/2025",
     "description": "Was Moshe right to hide his face from Hashem?",
     "filename": "PTT-20250114-WA0013.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250114-WA0013.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250114-WA0013.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Shemos"
   },
   {
     "id": 51,
@@ -660,7 +663,8 @@
     "date": "1/20/2025",
     "description": "Magen avrohom",
     "filename": "PTT-20250119-WA0048.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250119-WA0048.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250119-WA0048.mp3",
+    "category": "Tefila"
   },
   {
     "id": 53,
@@ -674,35 +678,42 @@
     "date": "1/23/2025",
     "description": "The proper way to grow in Torah",
     "filename": "PTT-20250123-WA0009.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250123-WA0009.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250123-WA0009.mp3",
+    "category": "Talmud Torah"
   },
   {
     "id": 55,
     "date": "1/27/2025",
     "description": "לעולם יהא אדם ירא שמים",
     "filename": "PTT-20250126-WA0010.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0010.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0010.mp3",
+    "category": "Tefila"
   },
   {
     "id": 56,
     "date": "1/28/2025",
     "description": "Go with Hashem",
     "filename": "PTT-20250126-WA0018.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0018.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0018.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Bo"
   },
   {
     "id": 57,
     "date": "1/30/2025",
     "description": "תלמוד תורה כנגד כולם ?",
     "filename": "PTT-20250126-WA0019.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0019.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0019.mp3",
+    "category": "Talmud Torah"
   },
   {
     "id": 58,
     "date": "2/3/2025",
     "description": "Believe in yourself!",
     "filename": "PTT-20250202-WA0049.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250202-WA0049.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250202-WA0049.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Beshalach"
   },
   {
     "id": 59,
