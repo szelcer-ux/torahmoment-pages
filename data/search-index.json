@@ -854,7 +854,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250105-WA0045.mp3",
     "date": "2025-01-13T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "do we really want to spend time with hashem?"
+    "title_lc": "do we really want to spend time with hashem?",
+    "cat_lc": "middos"
   },
   {
     "id": "one-50",
@@ -864,7 +865,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250114-WA0013.mp3",
     "date": "2025-01-14T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "was moshe right to hide his face from hashem?"
+    "title_lc": "was moshe right to hide his face from hashem?",
+    "cat_lc": "parsha shemos"
   },
   {
     "id": "one-51",
@@ -884,7 +886,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250119-WA0048.mp3",
     "date": "2025-01-20T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "magen avrohom"
+    "title_lc": "magen avrohom",
+    "cat_lc": "tefila"
   },
   {
     "id": "one-53",
@@ -904,7 +907,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250123-WA0009.mp3",
     "date": "2025-01-23T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the proper way to grow in torah"
+    "title_lc": "the proper way to grow in torah",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "one-55",
@@ -914,7 +918,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0010.mp3",
     "date": "2025-01-27T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "לעולם יהא אדם ירא שמים"
+    "title_lc": "לעולם יהא אדם ירא שמים",
+    "cat_lc": "tefila"
   },
   {
     "id": "one-56",
@@ -924,7 +929,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0018.mp3",
     "date": "2025-01-28T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "go with hashem"
+    "title_lc": "go with hashem",
+    "cat_lc": "parsha bo"
   },
   {
     "id": "one-57",
@@ -934,7 +940,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250126-WA0019.mp3",
     "date": "2025-01-30T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "תלמוד תורה כנגד כולם ?"
+    "title_lc": "תלמוד תורה כנגד כולם ?",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "one-58",
@@ -944,17 +951,18 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250202-WA0049.mp3",
     "date": "2025-02-03T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "believe in yourself!"
+    "title_lc": "believe in yourself!",
+    "cat_lc": "parsha beshalach"
   },
   {
     "id": "one-59",
     "program": "One-Minute",
     "type": "audio",
-    "title": "Not to embarrass even a sinner <This message was edited>",
+    "title": "Not to embarrass even a sinner",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250202-WA0050.mp3",
     "date": "2025-02-04T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "not to embarrass even a sinner <this message was edited>"
+    "title_lc": "not to embarrass even a sinner"
   },
   {
     "id": "one-60",
