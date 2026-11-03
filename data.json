@@ -656,7 +656,9 @@
     "date": "1/16/2025",
     "description": "The Jews and the stars",
     "filename": "PTT-20250115-WA0086.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250115-WA0086.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250115-WA0086.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Shemos"
   },
   {
     "id": 52,
@@ -755,35 +757,41 @@
     "date": "2/16/2025",
     "description": "Everything in life guided by the Torah",
     "filename": "PTT-20250216-WA0034.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250216-WA0034.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250216-WA0034.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Mishpatim"
   },
   {
     "id": 65,
     "date": "2/18/2025",
     "description": "מדבר שקר תרחק",
     "filename": "PTT-20250217-WA0097.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250217-WA0097.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250217-WA0097.mp3",
+    "category": "Middos"
   },
   {
     "id": 66,
     "date": "2/20/2025",
     "description": "The real essence of prayer",
     "filename": "PTT-20250219-WA0008.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250219-WA0008.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250219-WA0008.mp3",
+    "category": "Tefila"
   },
   {
     "id": 67,
     "date": "2/24/2025",
     "description": "Willpower",
     "filename": "PTT-20250223-WA0045.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250223-WA0045.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250223-WA0045.mp3",
+    "category": "Tefila"
   },
   {
     "id": 68,
     "date": "2/26/2025",
     "description": "2 points about tefilah",
     "filename": "PTT-20250223-WA0047.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250223-WA0047.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250223-WA0047.mp3",
+    "category": "Tefila"
   },
   {
     "id": 69,
@@ -797,49 +805,58 @@
     "date": "3/3/2025",
     "description": "Direct connection",
     "filename": "PTT-20250303-WA0007.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250303-WA0007.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250303-WA0007.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Tetzaveh"
   },
   {
     "id": 71,
     "date": "3/5/2025",
     "description": "Nature itself is the true miracle",
     "filename": "PTT-20250305-WA0010.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250305-WA0010.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250305-WA0010.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 72,
     "date": "3/6/2025",
     "description": "Just do it",
     "filename": "PTT-20250306-WA0011.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250306-WA0011.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250306-WA0011.mp3",
+    "category": "Tefila"
   },
   {
     "id": 73,
     "date": "3/10/2025",
     "description": "Forgive yourself",
     "filename": "PTT-20250305-WA0103.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250305-WA0103.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250305-WA0103.mp3",
+    "category": "Middos"
   },
   {
     "id": 74,
     "date": "3/11/2025",
     "description": "Even on a cloudy day",
     "filename": "PTT-20250309-WA0081.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250309-WA0081.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250309-WA0081.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 75,
     "date": "3/13/2025",
     "description": "It's all good",
     "filename": "PTT-20250313-WA0035.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250313-WA0035.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250313-WA0035.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Purim"
   },
   {
     "id": 76,
     "date": "3/18/2025",
     "description": "Always take care of others",
     "filename": "PTT-20250318-WA0009.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250318-WA0009.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250318-WA0009.mp3",
+    "category": "Tefila"
   },
   {
     "id": 77,
@@ -860,112 +877,140 @@
     "date": "3/26/2025",
     "description": "Never too late",
     "filename": "PTT-20250326-WA0009.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250326-WA0009.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250326-WA0009.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 80,
     "date": "3/27/2025",
     "description": "Never too late 2",
     "filename": "PTT-20250327-WA0016.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250327-WA0016.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250327-WA0016.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 81,
     "date": "3/28/2025",
     "description": "A sacred pause",
     "filename": "PTT-20250328-WA0026.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250328-WA0026.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250328-WA0026.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Pekudei"
   },
   {
     "id": 82,
     "date": "3/31/2025",
     "description": "הלילה הזה",
     "filename": "PTT-20250330-WA0037.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0037.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0037.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 83,
     "date": "4/1/2025",
     "description": "קדש - Connecting to Hashem",
     "filename": "PTT-20250330-WA0046.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0046.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0046.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 84,
     "date": "4/2/2025",
     "description": "Never too far",
     "filename": "PTT-20250402-WA0013.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250402-WA0013.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250402-WA0013.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vayikra"
   },
   {
     "id": 85,
     "date": "4/4/2025",
     "description": "Never alone",
     "filename": "PTT-20250404-WA0029.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250404-WA0029.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250404-WA0029.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vayikra"
   },
   {
     "id": 86,
     "date": "4/7/2025",
     "description": "Mutual love",
     "filename": "PTT-20250406-WA0009.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250406-WA0009.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250406-WA0009.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 87,
     "date": "4/8/2025",
     "description": "צא ולמד",
     "filename": "PTT-20250330-WA0049.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0049.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0049.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 88,
     "date": "4/10/2025",
     "description": "לשנה הבאה בירושלים הבנויה",
     "filename": "PTT-20250330-WA0048.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0048.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250330-WA0048.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 89,
     "date": "4/28/2025",
     "description": "Respectfully disagree",
     "filename": "PTT-20250427-WA0027.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250427-WA0027.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250427-WA0027.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Sefirah"
   },
   {
     "id": 90,
     "date": "4/29/2025",
     "description": "Constant reflection",
     "filename": "PTT-20250427-WA0028.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250427-WA0028.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250427-WA0028.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 91,
     "date": "5/1/2025",
     "description": "Experiencing the גאולה",
     "filename": "PTT-20250430-WA0089.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250430-WA0089.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250430-WA0089.mp3",
+    "category": "Tefila"
   },
   {
     "id": 92,
     "date": "5/5/2025",
     "description": "תיקו",
     "filename": "PTT-20250504-WA0022.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250504-WA0022.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250504-WA0022.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 93,
     "date": "5/6/2025",
     "description": "כל ישראל...ועמך כולם צדיקים",
     "filename": "PTT-20250504-WA0056.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250504-WA0056.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250504-WA0056.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 94,
     "date": "5/7/2025",
     "description": "קדשים תהיוי",
     "filename": "PTT-20250506-WA0068.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250506-WA0068.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250506-WA0068.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Kedoshim"
   },
   {
     "id": 95,
