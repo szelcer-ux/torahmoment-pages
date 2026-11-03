@@ -55,7 +55,9 @@
       "program": "Halacha",
       "title": "Where to read the Haftorah from",
       "url": "https://www.buzzsprout.com/1899789/episodes/20021232-10-26-2026-shloimy-zelcer-where-to-read-haftorah-from.mp3",
-      "date": "2026-10-26T00:00:00.000Z"
+      "date": "2026-10-26T00:00:00.000Z",
+      "category": "Tefila",
+      "categoryDetail": null
     }
   ],
   "recentByProgram": {
@@ -137,70 +139,90 @@
         "program": "Halacha",
         "title": "Where to read the Haftorah from",
         "url": "https://www.buzzsprout.com/1899789/episodes/20021232-10-26-2026-shloimy-zelcer-where-to-read-haftorah-from.mp3",
-        "date": "2026-10-26T00:00:00.000Z"
+        "date": "2026-10-26T00:00:00.000Z",
+        "category": "Tefila",
+        "categoryDetail": null
       },
       {
         "type": "audio",
         "program": "Halacha",
         "title": "One curse: The Chofetz Chaim and Acher",
         "url": "https://2mishnasaday.com/wp-content/uploads/122.mp3",
-        "date": "2026-10-22T00:00:00.000Z"
+        "date": "2026-10-22T00:00:00.000Z",
+        "category": null,
+        "categoryDetail": null
       },
       {
         "type": "audio",
         "program": "Halacha",
         "title": "Barichu at the end of Shachris",
         "url": "https://www.buzzsprout.com/1899789/episodes/19983929-10-19-2026-shloimy-zelcer-barichu-at-the-end-of-shachris.mp3",
-        "date": "2026-10-19T00:00:00.000Z"
+        "date": "2026-10-19T00:00:00.000Z",
+        "category": "Tefila",
+        "categoryDetail": null
       },
       {
         "type": "parsha-audio",
         "program": "Halacha",
         "title": "VZOS HABRACHA - Moshe's tears: It's up to us",
         "url": "https://www.buzzsprout.com/1899789/episodes/19912060-10-5-2026-shloimy-zelcer-moshe-s-tears-it-s-up-to-us.mp3",
-        "date": "2026-10-05T00:00:00.000Z"
+        "date": "2026-10-05T00:00:00.000Z",
+        "category": "Parsha",
+        "categoryDetail": "Vezos Haberacha"
       },
       {
         "type": "audio",
         "program": "Halacha",
         "title": "What to do if rains first night of Sukkos",
         "url": "https://www.buzzsprout.com/1899789/episodes/19859579-9-25-2026-shloimy-zelcer-what-to-do-if-it-rains-tonight.mp3",
-        "date": "2026-09-25T00:00:00.000Z"
+        "date": "2026-09-25T00:00:00.000Z",
+        "category": "Yomim Tovim",
+        "categoryDetail": "Elul/Tishrei"
       },
       {
         "type": "audio",
         "program": "Halacha",
         "title": "Yom Kippur's over - now what?",
         "url": "https://www.buzzsprout.com/1899789/episodes/19845216-9-22-2026-shloimy-zelcer-yom-kippur-s-over-now-what.mp3",
-        "date": "2026-09-22T00:00:00.000Z"
+        "date": "2026-09-22T00:00:00.000Z",
+        "category": "Yomim Tovim",
+        "categoryDetail": "Elul/Tishrei"
       },
       {
         "type": "audio",
         "program": "Halacha",
         "title": "Forgiveness in halacha",
         "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3",
-        "date": "2026-09-17T00:00:00.000Z"
+        "date": "2026-09-17T00:00:00.000Z",
+        "category": "Yomim Tovim",
+        "categoryDetail": "Elul/Tishrei"
       },
       {
         "type": "audio",
         "program": "Halacha",
         "title": "Is it SO BAD for Rosh Hashana to fall out on Shabbos?",
         "url": "https://www.buzzsprout.com/1899789/episodes/19785608-9-10-2026-shloimy-zelcer-is-it-so-bad-for-rosh-hashana-to-fall-out-on-shabbos.mp3",
-        "date": "2026-09-10T00:00:00.000Z"
+        "date": "2026-09-10T00:00:00.000Z",
+        "category": "Yomim Tovim",
+        "categoryDetail": "Elul/Tishrei"
       },
       {
         "type": "audio",
         "program": "Halacha",
         "title": "Whispering the Tochecha",
         "url": "https://www.buzzsprout.com/1899789/episodes/19706343-8-26-2026-shloimy-zelcer-whispering-the-tochecha.mp3",
-        "date": "2026-08-26T00:00:00.000Z"
+        "date": "2026-08-26T00:00:00.000Z",
+        "category": "Tefila",
+        "categoryDetail": null
       },
       {
         "type": "audio",
         "program": "Halacha",
         "title": "Learning during Chazaras Hashatz",
         "url": "https://www.buzzsprout.com/1899789/episodes/19676739-8-20-2026-shloimy-zelcer-learning-during-chazaras-hashatz.mp3",
-        "date": "2026-08-20T00:00:00.000Z"
+        "date": "2026-08-20T00:00:00.000Z",
+        "category": "Tefila",
+        "categoryDetail": null
       }
     ],
     "parsha": [

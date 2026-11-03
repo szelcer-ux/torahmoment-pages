@@ -7,7 +7,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261102-WA0015.mp3",
     "date": "2026-11-02T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the first question"
+    "title_lc": "the first question",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-1",
@@ -17,7 +18,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261029-WA0020.mp3",
     "date": "2026-10-29T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the quiet mitzvah"
+    "title_lc": "the quiet mitzvah",
+    "cat_lc": "middos"
   },
   {
     "id": "one-2",
@@ -27,7 +29,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261027-WA0042.mp3",
     "date": "2026-10-27T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "just 5 minutes"
+    "title_lc": "just 5 minutes",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-3",
@@ -37,7 +40,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261026-WA0010.mp3",
     "date": "2026-10-26T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "afraid of the wrong one"
+    "title_lc": "afraid of the wrong one",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-4",
@@ -47,7 +51,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0048.mp3",
     "date": "2026-10-22T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "time's up?"
+    "title_lc": "time's up?",
+    "cat_lc": "parsha lech lecha"
   },
   {
     "id": "one-5",
@@ -57,7 +62,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261021-WA0028.mp3",
     "date": "2026-10-21T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "be like avrohom - just do it!"
+    "title_lc": "be like avrohom - just do it!",
+    "cat_lc": "parsha lech lecha"
   },
   {
     "id": "one-6",
@@ -67,7 +73,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0049.mp3",
     "date": "2026-10-20T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "say hello!"
+    "title_lc": "say hello!",
+    "cat_lc": "middos"
   },
   {
     "id": "one-7",
@@ -77,7 +84,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0047.mp3",
     "date": "2026-10-19T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the company we keep"
+    "title_lc": "the company we keep",
+    "cat_lc": "parsha lech lecha"
   },
   {
     "id": "one-8",
@@ -87,7 +95,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261011-WA0055.mp3",
     "date": "2026-10-15T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the last guy"
+    "title_lc": "the last guy",
+    "cat_lc": "middos"
   },
   {
     "id": "one-9",
@@ -97,7 +106,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261011-WA0053.mp3",
     "date": "2026-10-13T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "doing right because it's right"
+    "title_lc": "doing right because it's right",
+    "cat_lc": "parsha noach"
   },
   {
     "id": "one-10",
@@ -107,7 +117,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261011-WA0052.mp3",
     "date": "2026-10-12T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "believing - but not quite"
+    "title_lc": "believing - but not quite",
+    "cat_lc": "parsha noach"
   },
   {
     "id": "one-11",
@@ -117,7 +128,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261007-WA0016.mp3",
     "date": "2026-10-07T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "do your best"
+    "title_lc": "do your best",
+    "cat_lc": "parsha bereishis"
   },
   {
     "id": "one-12",
@@ -127,7 +139,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0040.mp3",
     "date": "2026-10-06T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "form good habits"
+    "title_lc": "form good habits",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-13",
@@ -137,7 +150,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261005-WA0032.mp3",
     "date": "2026-10-05T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "we need protecting"
+    "title_lc": "we need protecting",
+    "cat_lc": "parsha bereishis"
   },
   {
     "id": "one-14",
@@ -147,7 +161,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260923-WA0092.mp3",
     "date": "2026-09-24T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "step out"
+    "title_lc": "step out",
+    "cat_lc": "yomim tovim sukkos"
   },
   {
     "id": "one-15",
@@ -157,7 +172,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260922-WA0009.mp3",
     "date": "2026-09-22T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "gott's nomen"
+    "title_lc": "gott's nomen",
+    "cat_lc": "yomim tovim yom kippur"
   },
   {
     "id": "one-16",
@@ -167,7 +183,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260917-WA0027.mp3",
     "date": "2026-09-17T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "an honest heart"
+    "title_lc": "an honest heart",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "one-17",
@@ -177,7 +194,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260916-WA0013.mp3",
     "date": "2026-09-16T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "where are you?"
+    "title_lc": "where are you?",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "one-18",
@@ -187,7 +205,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260915-WA0009.mp3",
     "date": "2026-09-15T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the right ana hashem"
+    "title_lc": "the right ana hashem",
+    "cat_lc": "tefila"
   },
   {
     "id": "one-19",
@@ -197,7 +216,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260910-WA0007.mp3",
     "date": "2026-09-10T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "wake up"
+    "title_lc": "wake up",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "one-20",
@@ -207,7 +227,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260908-WA0011.mp3",
     "date": "2026-09-08T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "mitzvah momentum"
+    "title_lc": "mitzvah momentum",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-21",
@@ -217,7 +238,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260907-WA0008.mp3",
     "date": "2026-09-07T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "in memory of my rebbi on his 2nd yahrtzeit"
+    "title_lc": "in memory of my rebbi on his 2nd yahrtzeit",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-22",
@@ -227,7 +249,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260902-WA0025.mp3",
     "date": "2026-09-02T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "clean slate"
+    "title_lc": "clean slate",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "one-23",
@@ -237,7 +260,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260901-WA0021.mp3",
     "date": "2026-09-01T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the small things add up"
+    "title_lc": "the small things add up",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-24",
@@ -247,7 +271,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260827-WA0005.mp3",
     "date": "2026-08-27T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the shofar is not magic"
+    "title_lc": "the shofar is not magic",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "one-25",
@@ -257,7 +282,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260826-WA0013.mp3",
     "date": "2026-08-26T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "acknowledge the good people"
+    "title_lc": "acknowledge the good people",
+    "cat_lc": "middos"
   },
   {
     "id": "one-26",
@@ -267,7 +293,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260825-WA0012.mp3",
     "date": "2026-08-25T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "secret curses"
+    "title_lc": "secret curses",
+    "cat_lc": "parsha ki savo"
   },
   {
     "id": "one-27",
@@ -277,7 +304,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260819-WA0005.mp3",
     "date": "2026-08-19T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "helping is good for everyone"
+    "title_lc": "helping is good for everyone",
+    "cat_lc": "parsha ki seitzei"
   },
   {
     "id": "one-0",
@@ -287,7 +315,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240906-WA0064.mp3",
     "date": "2024-09-08T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "elul - removing the negative and adding the positive"
+    "title_lc": "elul - removing the negative and adding the positive",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "one-1",
@@ -297,7 +326,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240908-WA0046.mp3",
     "date": "2024-09-09T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "שבתי בבית ה"
+    "title_lc": "שבתי בבית ה",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "one-2",
@@ -307,7 +337,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0012.mp3",
     "date": "2024-09-10T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "having the proper perspective"
+    "title_lc": "having the proper perspective",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-3",
@@ -317,7 +348,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0059.mp3",
     "date": "2024-09-11T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "something to think about while saying שְׁמַע יִשְׂרָאֵל"
+    "title_lc": "something to think about while saying שְׁמַע יִשְׂרָאֵל",
+    "cat_lc": "tefila"
   },
   {
     "id": "one-4",
@@ -327,7 +359,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0061.mp3",
     "date": "2024-09-12T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "praying for israeli soldiers"
+    "title_lc": "praying for israeli soldiers",
+    "cat_lc": "israel"
   },
   {
     "id": "one-5",
@@ -337,7 +370,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240912-WA0047.mp3",
     "date": "2024-09-13T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "כי־תצא - battling the yetzer harah"
+    "title_lc": "כי־תצא - battling the yetzer harah",
+    "cat_lc": "parsha ki seitzei"
   },
   {
     "id": "one-6",
@@ -347,7 +381,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240906-WA0080.mp3",
     "date": "2024-09-15T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "teaching by example"
+    "title_lc": "teaching by example",
+    "cat_lc": "chinuch"
   },
   {
     "id": "one-7",
@@ -357,7 +392,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240906-WA0070.mp3",
     "date": "2024-09-16T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "we can always do teshuva"
+    "title_lc": "we can always do teshuva",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "one-8",
@@ -367,7 +403,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0039.mp3",
     "date": "2024-09-17T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "preparing for the yom hadin with love"
+    "title_lc": "preparing for the yom hadin with love",
+    "cat_lc": "yomim tovim rosh hashana"
   },
   {
     "id": "one-9",
@@ -377,7 +414,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240917-WA0008.mp3",
     "date": "2024-09-18T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "judging the entirety of the person"
+    "title_lc": "judging the entirety of the person",
+    "cat_lc": "middos"
   },
   {
     "id": "one-10",
@@ -387,7 +425,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0041.mp3",
     "date": "2024-09-19T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the mood for yomim noraim"
+    "title_lc": "the mood for yomim noraim",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "one-11",
@@ -2837,7 +2876,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18540770-1-20-2025-shloimy-zelcer-double-black-tefilin.mp3",
     "date": "2026-01-20T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "double black tefilin"
+    "title_lc": "double black tefilin",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-1",
@@ -2847,7 +2887,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/16448331-1-16-2025-shloimy-zelcer-stripes-on-the-talis.mp3",
     "date": "2025-01-16T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "stripes on the talis"
+    "title_lc": "stripes on the talis",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-2",
@@ -2857,7 +2898,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/womentefilin.mp3",
     "date": "2022-06-30T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "women and the mitzvah of tefillin"
+    "title_lc": "women and the mitzvah of tefillin",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-3",
@@ -2867,7 +2909,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/techeileshistory.mp3",
     "date": "2021-08-05T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "history of techeiles"
+    "title_lc": "history of techeiles",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-4",
@@ -2877,7 +2920,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/techeileswhynot.mp3",
     "date": "2021-07-29T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "why don't people wear techeiles"
+    "title_lc": "why don't people wear techeiles",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-5",
@@ -2887,7 +2931,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19676739-8-20-2026-shloimy-zelcer-learning-during-chazaras-hashatz.mp3",
     "date": "2026-08-20T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "learning during chazaras hashatz"
+    "title_lc": "learning during chazaras hashatz",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-6",
@@ -2897,7 +2942,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18861996-3-17-2026-shloimy-zelcer-chazan-saying-hashem-sifasai-tiftach.mp3",
     "date": "2026-03-17T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "chazan saying hashem sifasai tiftach"
+    "title_lc": "chazan saying hashem sifasai tiftach",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-7",
@@ -2907,7 +2953,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/17508580-7-15-2025-shloimy-zelcer-standing-up-to-say-kriyas-shema.mp3",
     "date": "2025-07-15T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "standing up to say krias shema"
+    "title_lc": "standing up to say krias shema",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-8",
@@ -2917,7 +2964,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/17665749-8-13-2025-shloimy-zelcer-do-you-have-to-know-what-youre-saying-in-davening.mp3",
     "date": "2025-08-13T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "do you have to know what youre saying in davening?"
+    "title_lc": "do you have to know what youre saying in davening?",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-9",
@@ -2927,7 +2975,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/17240722-5-28-2025-shloimy-zelcer-answering-baruch-hu-uvaruch-shemo.mp3",
     "date": "2025-05-28T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "answering baruch hu uvaruch shemo"
+    "title_lc": "answering baruch hu uvaruch shemo",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-10",
@@ -2937,7 +2986,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/16829518-3-26-2025-shloimy-zelcer-answering-amen-to.mp3",
     "date": "2025-03-26T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "answering amen to גָּאַל יִשְׂרָאֵל"
+    "title_lc": "answering amen to גָּאַל יִשְׂרָאֵל",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-11",
@@ -2947,7 +2997,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/20021232-10-26-2026-shloimy-zelcer-where-to-read-haftorah-from.mp3",
     "date": "2026-10-26T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "where to read the haftorah from"
+    "title_lc": "where to read the haftorah from",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-12",
@@ -2957,7 +3008,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19706343-8-26-2026-shloimy-zelcer-whispering-the-tochecha.mp3",
     "date": "2026-08-26T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "whispering the tochecha"
+    "title_lc": "whispering the tochecha",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-13",
@@ -2967,7 +3019,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/16170138-11-25-2024-shloimy-zelcer-asking-a-kohen-to-leave.mp3",
     "date": "2024-11-25T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "asking a kohen to leave"
+    "title_lc": "asking a kohen to leave",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-14",
@@ -2977,7 +3030,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/16134190-11-19-2024-shloimy-zelcer-who-gets-the-first-aliyah-when-there-is-no-kohen.mp3",
     "date": "2024-11-19T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "who gets the first aliyah when there is no kohen"
+    "title_lc": "who gets the first aliyah when there is no kohen",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-15",
@@ -2987,7 +3041,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/standingasereshadibros.mp3",
     "date": "2026-01-29T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "standing for aseres hadibros"
+    "title_lc": "standing for aseres hadibros",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-16",
@@ -2997,7 +3052,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18285871-12-3-2025-shloimy-zelcer-daven-to-hashem-not-angels.mp3",
     "date": "2025-12-03T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "daven to hashem, not angels"
+    "title_lc": "daven to hashem, not angels",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-17",
@@ -3007,7 +3063,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/17345373-6-16-2025-shloimy-zelcer-women-saying-kadish.mp3",
     "date": "2025-06-16T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "women saying kadish"
+    "title_lc": "women saying kadish",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-18",
@@ -3017,7 +3074,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/17012786-4-21-2025-shloimy-zelcer-tefilas-haderech.mp3",
     "date": "2025-04-21T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "tefilas haderech"
+    "title_lc": "tefilas haderech",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-19",
@@ -3027,7 +3085,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/16554683-2-3-2025-shloimy-zelcer.mp3",
     "date": "2025-02-03T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "דָּוִד מֶלֶךְ יִשְׂרָאֵל חַי וְקַיָּם בקידוש לבנה"
+    "title_lc": "דָּוִד מֶלֶךְ יִשְׂרָאֵל חַי וְקַיָּם בקידוש לבנה",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-20",
@@ -3037,7 +3096,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/womenkiddushlevana.mp3",
     "date": "2021-03-11T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "why don't women say kiddush levanah?"
+    "title_lc": "why don't women say kiddush levanah?",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-21",
@@ -3047,7 +3107,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19983929-10-19-2026-shloimy-zelcer-barichu-at-the-end-of-shachris.mp3",
     "date": "2026-10-19T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "barichu at the end of shachris"
+    "title_lc": "barichu at the end of shachris",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-22",
@@ -3057,7 +3118,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/114.mp3",
     "date": "2026-05-29T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "akaros of tanach and tefilah"
+    "title_lc": "akaros of tanach and tefilah",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-23",
@@ -3067,7 +3129,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18082159-10-28-2025-shloimy-zelcer-when-davening-takes-too-long.mp3",
     "date": "2025-10-28T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "when davening takes too long"
+    "title_lc": "when davening takes too long",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-24",
@@ -3077,7 +3140,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/17430394-7-1-2025-shloimy-zelcer-kiddush-in-middle-of-davening.mp3",
     "date": "2025-07-01T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "kiddush in middle of davening?"
+    "title_lc": "kiddush in middle of davening?",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-25",
@@ -3087,7 +3151,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/10438736-4-12-2022-shloimy-zelcer.mp3",
     "date": "2022-04-12T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "head covering during prayer"
+    "title_lc": "head covering during prayer",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-26",
@@ -3097,7 +3162,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/minyanzoom.mp3",
     "date": "2020-06-04T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "praying with a minyan"
+    "title_lc": "praying with a minyan",
+    "cat_lc": "tefila"
   },
   {
     "id": "hal-27",
@@ -3107,7 +3173,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19312518-6-8-2026-shloimy-zelcer-should-the-woman-make-kiddush-friday-night.mp3",
     "date": "2026-06-08T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "should the woman make kiddush friday night?"
+    "title_lc": "should the woman make kiddush friday night?",
+    "cat_lc": "shabbos"
   },
   {
     "id": "hal-28",
@@ -3117,7 +3184,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18577857-1-28-2026-shloimy-zelcer-covering-challah-during-kiddush-part-2.mp3",
     "date": "2026-01-28T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "covering challah during kiddush part 2"
+    "title_lc": "covering challah during kiddush part 2",
+    "cat_lc": "shabbos"
   },
   {
     "id": "hal-29",
@@ -3127,7 +3195,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18577841-1-27-2026-shloimy-zelcer-covering-challah-during-kiddush.mp3",
     "date": "2026-01-27T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "covering challah during kiddush"
+    "title_lc": "covering challah during kiddush",
+    "cat_lc": "shabbos"
   },
   {
     "id": "hal-30",
@@ -3137,7 +3206,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19785608-9-10-2026-shloimy-zelcer-is-it-so-bad-for-rosh-hashana-to-fall-out-on-shabbos.mp3",
     "date": "2026-09-10T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "is it so bad for rosh hashana to fall out on shabbos?"
+    "title_lc": "is it so bad for rosh hashana to fall out on shabbos?",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-31",
@@ -3147,7 +3217,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/Nitzavim.mp3",
     "date": "2025-09-18T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "parshas nitzavim / erev rosh hashana"
+    "title_lc": "parshas nitzavim / erev rosh hashana",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-32",
@@ -3157,7 +3228,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/15721287-9-9-2024-shloimy-zelcer-teshuva-returning-home.mp3",
     "date": "2024-09-09T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "teshuva - returning home"
+    "title_lc": "teshuva - returning home",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-33",
@@ -3167,7 +3239,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/14272565-1-8-2024-shloimy-zelcer.mp3",
     "date": "2024-01-08T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "teshuva like snow and laundry"
+    "title_lc": "teshuva like snow and laundry",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-34",
@@ -3177,7 +3250,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/simaneiroshhashanaMP3.mp3",
     "date": "2020-09-16T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "simanim of rosh hashana"
+    "title_lc": "simanim of rosh hashana",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-35",
@@ -3187,7 +3261,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/120_forgivnessinhalacha.mp3",
     "date": "2026-09-17T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "forgiveness in halacha"
+    "title_lc": "forgiveness in halacha",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-36",
@@ -3197,7 +3272,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/yomkippurthroughtheages.mp3",
     "date": "2020-09-23T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "yom kippur through the ages"
+    "title_lc": "yom kippur through the ages",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-37",
@@ -3207,7 +3283,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19845216-9-22-2026-shloimy-zelcer-yom-kippur-s-over-now-what.mp3",
     "date": "2026-09-22T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "yom kippur's over - now what?"
+    "title_lc": "yom kippur's over - now what?",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-38",
@@ -3217,7 +3294,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/15931239-10-15-2024-shloimy-zelcer-the-importance-of-the-aravos.mp3",
     "date": "2024-10-15T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the importance of the aravos"
+    "title_lc": "the importance of the aravos",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-39",
@@ -3227,7 +3305,8 @@
     "url": "https://youtu.be/qI8KKe3om1c",
     "date": "2023-09-28T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "sukkah heals our wounds"
+    "title_lc": "sukkah heals our wounds",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-40",
@@ -3237,7 +3316,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19859579-9-25-2026-shloimy-zelcer-what-to-do-if-it-rains-tonight.mp3",
     "date": "2026-09-25T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "what to do if rains first night of sukkos"
+    "title_lc": "what to do if rains first night of sukkos",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "hal-41",
@@ -3247,7 +3327,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/11906323-12-20-2022-shloimy-zelcer.mp3",
     "date": "2022-12-20T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "8 lesser known answers to the famous question of the beis yosef"
+    "title_lc": "8 lesser known answers to the famous question of the beis yosef",
+    "cat_lc": "yomim tovim chanukah"
   },
   {
     "id": "hal-42",
@@ -3257,7 +3338,8 @@
     "url": "https://youtu.be/ScsMi-d0qHs",
     "date": "2021-11-30T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "a little at a time"
+    "title_lc": "a little at a time",
+    "cat_lc": "yomim tovim chanukah"
   },
   {
     "id": "hal-43",
@@ -3267,7 +3349,8 @@
     "url": "https://youtu.be/gzQiPo2JKT8",
     "date": "2019-12-24T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "chanukah thought"
+    "title_lc": "chanukah thought",
+    "cat_lc": "yomim tovim chanukah"
   },
   {
     "id": "hal-44",
@@ -3277,7 +3360,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18774803-3-2-2026-shloimy-zelcer-eating-before-megilah.mp3",
     "date": "2026-03-02T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "eating before megilah"
+    "title_lc": "eating before megilah",
+    "cat_lc": "yomim tovim purim"
   },
   {
     "id": "hal-45",
@@ -3287,7 +3371,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/10184217-3-3-2022-shloimy-zelcer.mp3",
     "date": "2022-03-03T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "three lesser discussed halachos regarding purim"
+    "title_lc": "three lesser discussed halachos regarding purim",
+    "cat_lc": "yomim tovim purim"
   },
   {
     "id": "hal-46",
@@ -3297,7 +3382,8 @@
     "url": "https://youtu.be/4ZhRg40--g8",
     "date": "2019-03-20T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "purim thoughts"
+    "title_lc": "purim thoughts",
+    "cat_lc": "yomim tovim purim"
   },
   {
     "id": "hal-47",
@@ -3307,7 +3393,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/memoryasprep.mp3",
     "date": "2026-03-30T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "why are we obsessed with zecher l'yetzias mitzrayim?"
+    "title_lc": "why are we obsessed with zecher l'yetzias mitzrayim?",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-48",
@@ -3317,7 +3404,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18930105-3-30-20026-shloimy-zelcer-bedikas-chometz-with-a-flashlight.mp3",
     "date": "2026-03-30T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "bedikas chomtz with a flashlight"
+    "title_lc": "bedikas chomtz with a flashlight",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-49",
@@ -3327,7 +3415,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PESACHPRESHIUR.mp3",
     "date": "2025-04-10T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "reframing the pesach seder"
+    "title_lc": "reframing the pesach seder",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-50",
@@ -3337,7 +3426,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/10makkosnewlight.mp3",
     "date": "2023-03-23T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "an alternate look at the 10 makkos"
+    "title_lc": "an alternate look at the 10 makkos",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-51",
@@ -3347,7 +3437,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/korbanpesachtoday.mp3",
     "date": "2022-04-07T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "korban pesach today"
+    "title_lc": "korban pesach today",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-52",
@@ -3357,7 +3448,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/letmypeoplego.mp3",
     "date": "2022-01-13T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "let my people go"
+    "title_lc": "let my people go",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-53",
@@ -3367,7 +3459,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/5sageshagadah.mp3",
     "date": "2021-03-18T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "historical perspective on the five sages in the haggadah"
+    "title_lc": "historical perspective on the five sages in the haggadah",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-54",
@@ -3377,7 +3470,8 @@
     "url": "https://youtu.be/hLOR9lvtuUE",
     "date": "2019-04-17T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the perfect child"
+    "title_lc": "the perfect child",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-55",
@@ -3387,7 +3481,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/historyofsefirah.mp3",
     "date": "2022-02-26T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "evolution of the days of sefirah"
+    "title_lc": "evolution of the days of sefirah",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-56",
@@ -3397,7 +3492,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/15124705-5-23-2024-shloimy-zelcer-a-lesson-from-lag-baomer.mp3",
     "date": "2024-05-23T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "a lesson from lag baomer"
+    "title_lc": "a lesson from lag baomer",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-57",
@@ -3407,7 +3503,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/LagBaomerZoom.mp3",
     "date": "2020-05-21T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "customs of lag baomer"
+    "title_lc": "customs of lag baomer",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-58",
@@ -3417,7 +3514,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/stayingupshavuosnight.mp3",
     "date": "2023-05-18T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "staying awake all shavuos night"
+    "title_lc": "staying awake all shavuos night",
+    "cat_lc": "yomim tovim sefirah"
   },
   {
     "id": "hal-59",
@@ -3427,7 +3525,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19603597-8-5-2026-shloimy-zelcer-how-loud-should-torah-learning-be.mp3?",
     "date": "2026-08-05T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "how loud should torah learning be?"
+    "title_lc": "how loud should torah learning be?",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-60",
@@ -3437,7 +3536,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18712806-2-19-2026-shloimy-zelcer-leaving-a-sefer-open.mp3",
     "date": "2026-02-19T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "leaving a sefer open"
+    "title_lc": "leaving a sefer open",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-61",
@@ -3447,7 +3547,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/historyofkollel.mp3",
     "date": "2025-12-25T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "history of kollel"
+    "title_lc": "history of kollel",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-62",
@@ -3457,7 +3558,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/15494012-7-30-2024-shloimy-zelcer-various-aspects-of-talmud-torah.mp3",
     "date": "2024-07-30T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "various aspects of talmud torah"
+    "title_lc": "various aspects of talmud torah",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-63",
@@ -3467,7 +3569,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/15026066-5-7-2024-shloimy-zelcer.mp3",
     "date": "2024-05-07T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "אלו ואלו דברי אלקים חיים"
+    "title_lc": "אלו ואלו דברי אלקים חיים",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-64",
@@ -3477,7 +3580,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/14864486-4-10-2024-shloimy-zelcer-learning-the-written-and-oral-torah.mp3",
     "date": "2024-04-10T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "learning the written and oral torah"
+    "title_lc": "learning the written and oral torah",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-65",
@@ -3487,7 +3591,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/14763027-3-25-2024-shloimy-zelcer-defining-torah-shebaal-peh.mp3",
     "date": "2024-03-25T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "defining torah shebaal peh"
+    "title_lc": "defining torah shebaal peh",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-66",
@@ -3497,7 +3602,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/14362862-1-23-2024-shloimy-zelcer.mp3",
     "date": "2024-01-23T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "making a siyum"
+    "title_lc": "making a siyum",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-67",
@@ -3507,7 +3613,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/10675134-5-24-2022-shloimy-zelcer.mp3",
     "date": "2022-05-24T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the 6 stages of torah-toil"
+    "title_lc": "the 6 stages of torah-toil",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-68",
@@ -3517,7 +3624,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/septuigint2.mp3",
     "date": "2021-07-08T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the septuagint - part 2"
+    "title_lc": "the septuagint - part 2",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-69",
@@ -3527,7 +3635,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/septuigint.mp3",
     "date": "2021-07-01T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "introduction to the septuagint"
+    "title_lc": "introduction to the septuagint",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-70",
@@ -3537,7 +3646,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/9861401-1-10-2022-shloimy-zelcer.mp3",
     "date": "2022-01-10T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "reconnecting our inner flame.  a jew's internal connection to talmud torah"
+    "title_lc": "reconnecting our inner flame.  a jew's internal connection to talmud torah",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-71",
@@ -3547,7 +3657,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/torahfromsinaitomishna2.mp3",
     "date": "2021-11-18T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the transmission of the torah from sinai until the mishna - part 2"
+    "title_lc": "the transmission of the torah from sinai until the mishna - part 2",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-72",
@@ -3557,7 +3668,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/torahfromsinaitomishna.mp3",
     "date": "2021-11-11T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the transmission of the torah from sinai until the mishna"
+    "title_lc": "the transmission of the torah from sinai until the mishna",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "hal-73",
@@ -3567,7 +3679,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/117.mp3",
     "date": "2026-08-20T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the \"handle it\" fallacy"
+    "title_lc": "the \"handle it\" fallacy",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "hal-74",
@@ -3577,7 +3690,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/17866609-9-18-2025-shloimy-zelcer-3-lessons-lzehcer-nishmas-moireinu-harav-avrohom-nesanel-ben-shlomo-on-his-first-yahrtzeit.mp3",
     "date": "2025-09-18T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "3 lessons lzehcer harav avrohom nesanel ben shlomo on his first yahrtzeit"
+    "title_lc": "3 lessons lzehcer harav avrohom nesanel ben shlomo on his first yahrtzeit",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "hal-75",
@@ -3587,7 +3701,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/segulos.mp3",
     "date": "2025-09-04T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "segulos"
+    "title_lc": "segulos",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "hal-76",
@@ -3597,7 +3712,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/15508964-7-31-2024-shloimy-zelcer-should-the-death-of-an-evil-person-be-celebrated.mp3",
     "date": "2024-07-31T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "should the death of an evil person be celebrated?"
+    "title_lc": "should the death of an evil person be celebrated?",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "hal-77",
@@ -3607,7 +3723,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/15302666-6-24-2024-shloimy-zelcer.mp3",
     "date": "2024-06-24T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "שויתי ה׳ לנגדי תמיד"
+    "title_lc": "שויתי ה׳ לנגדי תמיד",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "hal-78",
@@ -3617,7 +3734,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/14834618-4-5-2024-shloimy-zelcer-the-torah-s-perspective-on-earthquakes.mp3",
     "date": "2024-04-05T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the torah's perspective on earthquakes"
+    "title_lc": "the torah's perspective on earthquakes",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "hal-79",
@@ -3627,7 +3745,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/whenleadersfail.mp3",
     "date": "2020-06-18T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "when leaders fail"
+    "title_lc": "when leaders fail",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "hal-80",
@@ -3637,7 +3756,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/112.mp3",
     "date": "2026-04-30T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "yissachar zevulun"
+    "title_lc": "yissachar zevulun",
+    "cat_lc": "tzedakah"
   },
   {
     "id": "hal-81",
@@ -3647,7 +3767,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/16732918-3-4-2025-shloimy-zelcer-giving-tzedakah-part-2-unverified-collectors.mp3",
     "date": "2025-03-04T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "unverified collectors"
+    "title_lc": "unverified collectors",
+    "cat_lc": "tzedakah"
   },
   {
     "id": "hal-82",
@@ -3657,7 +3778,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/16697000-2-26-2025-shloimy-zelcer-giving-tzedakah-part-1-the-obligation-to-give.mp3",
     "date": "2025-02-26T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the obligation to give"
+    "title_lc": "the obligation to give",
+    "cat_lc": "tzedakah"
   },
   {
     "id": "hal-83",
@@ -3667,7 +3789,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/14624968-2-29-2024-shloimy-zelcer.mp3",
     "date": "2024-02-29T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "machatzis hashekel in halacha"
+    "title_lc": "machatzis hashekel in halacha",
+    "cat_lc": "tzedakah"
   },
   {
     "id": "hal-84",
@@ -3677,7 +3800,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/116.mp3",
     "date": "2026-07-14T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "from moshe to moshe, what happened to the name moshe?"
+    "title_lc": "from moshe to moshe, what happened to the name moshe?",
+    "cat_lc": "jewish timeline"
   },
   {
     "id": "hal-85",
@@ -3687,7 +3811,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/15612428-8-20-2024-shloimy-zelcer-third-time-s-the-charm-in-jewish-history.mp3",
     "date": "2024-08-20T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "third time's the charm in jewish history"
+    "title_lc": "third time's the charm in jewish history",
+    "cat_lc": "jewish timeline"
   },
   {
     "id": "hal-86",
@@ -3697,7 +3822,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/15606341-8-19-2024-shloimy-zelcer-the-avos-as-a-blueprint-for-jewish-history.mp3",
     "date": "2024-08-19T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the avos as a blueprint for jewish history"
+    "title_lc": "the avos as a blueprint for jewish history",
+    "cat_lc": "jewish timeline"
   },
   {
     "id": "hal-87",
@@ -3707,7 +3833,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/tenlosttribes.mp3",
     "date": "2022-12-29T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "ten lost tribes"
+    "title_lc": "ten lost tribes",
+    "cat_lc": "jewish timeline"
   },
   {
     "id": "hal-88",
@@ -3717,7 +3844,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/rambamtechiashameisim.mp3",
     "date": "2022-03-31T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "rambam's view on techias hameisim"
+    "title_lc": "rambam's view on techias hameisim",
+    "cat_lc": "jewish timeline"
   },
   {
     "id": "hal-89",
@@ -3727,7 +3855,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/Moshiach6000.mp3",
     "date": "2020-08-13T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "awaiting moshiach"
+    "title_lc": "awaiting moshiach",
+    "cat_lc": "jewish timeline"
   },
   {
     "id": "hal-90",
@@ -3737,7 +3866,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19569585-7-29-2026-shloimy-zelcer-halachic-status-of-the-kotel-plaza.mp3",
     "date": "2026-07-29T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "halachic status of the kotel plaza"
+    "title_lc": "halachic status of the kotel plaza",
+    "cat_lc": "israel"
   },
   {
     "id": "hal-91",
@@ -3747,7 +3877,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19424996-6-30-2026-shloimy-zelcer-shehechiyanu-on-being-drafted-by-the-idf.mp3",
     "date": "2026-06-30T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "shehechiyanu on being drafted by the idf"
+    "title_lc": "shehechiyanu on being drafted by the idf",
+    "cat_lc": "israel"
   },
   {
     "id": "hal-92",
@@ -3757,7 +3888,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19176112-5-14-2026-shloimy-zelcer-my-rebbis-s-view-on-yom-yerushalayim.mp3",
     "date": "2026-05-14T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "my rebbis's view on yom yerushalayim"
+    "title_lc": "my rebbis's view on yom yerushalayim",
+    "cat_lc": "israel"
   },
   {
     "id": "hal-93",
@@ -3767,7 +3899,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19052286-4-21-2026-shloimy-zelcer-the-risk-of-not-saying-hallel-on-yom-haatzmaut.mp3",
     "date": "2026-04-21T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the risk of not saying hallel on yom haatzmaut"
+    "title_lc": "the risk of not saying hallel on yom haatzmaut",
+    "cat_lc": "israel"
   },
   {
     "id": "hal-94",
@@ -3777,7 +3910,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/12730340-4-26-2023-shloimy-zelcer.mp3",
     "date": "2023-04-26T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "the israeli flag in halacha"
+    "title_lc": "the israeli flag in halacha",
+    "cat_lc": "israel"
   },
   {
     "id": "hal-95",
@@ -3787,7 +3921,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/11305071-9-12-2022-shloimy-zelcer.mp3",
     "date": "2022-09-12T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "tearing kriyah at the kotel"
+    "title_lc": "tearing kriyah at the kotel",
+    "cat_lc": "israel"
   },
   {
     "id": "hal-96",
@@ -3797,7 +3932,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/religiouszionism.mp3",
     "date": "2019-07-31T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "religious zionism"
+    "title_lc": "religious zionism",
+    "cat_lc": "israel"
   },
   {
     "id": "hal-97",
@@ -3817,7 +3953,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3",
     "date": "2026-07-13T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "standing up for a chosson"
+    "title_lc": "standing up for a chosson",
+    "cat_lc": "halacha"
   },
   {
     "id": "hal-99",
@@ -3827,7 +3964,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19452197-7-6-2026-shloimy-zelcer-knock-before-entering.mp3",
     "date": "2026-07-06T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "knock before entering"
+    "title_lc": "knock before entering",
+    "cat_lc": "middos"
   },
   {
     "id": "hal-100",
@@ -3837,7 +3975,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19253888-5-28-2026-shloimy-zelcer-jews-with-tattoos.mp3",
     "date": "2026-05-28T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "jews with tattoos"
+    "title_lc": "jews with tattoos",
+    "cat_lc": "halacha"
   },
   {
     "id": "hal-101",
@@ -3847,7 +3986,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3",
     "date": "2026-04-16T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "can i tell my wife lashon harah?"
+    "title_lc": "can i tell my wife lashon harah?",
+    "cat_lc": "halacha"
   },
   {
     "id": "hal-102",
@@ -3857,7 +3997,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
     "date": "2026-03-12T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "is iced coffee the answer?"
+    "title_lc": "is iced coffee the answer?",
+    "cat_lc": "halacha"
   },
   {
     "id": "hal-103",
@@ -3867,7 +4008,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/11783471-11-29-2022-shloimy-zelcer.mp3",
     "date": "2022-11-29T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "asking two rabbis the same halachic question"
+    "title_lc": "asking two rabbis the same halachic question",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "hal-104",
@@ -3877,7 +4019,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/11006941-7-21-2022-shloimy-zelcer.mp3",
     "date": "2022-07-21T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "a misconception regarding tevilas keilim"
+    "title_lc": "a misconception regarding tevilas keilim",
+    "cat_lc": "halacha"
   },
   {
     "id": "hal-105",
@@ -3907,7 +4050,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/KOLISHA.mp3",
     "date": "2020-02-20T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "kol isha"
+    "title_lc": "kol isha",
+    "cat_lc": "halacha"
   },
   {
     "id": "hal-108",
@@ -3917,7 +4061,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/16010930-10-29-2024-shloimy-zelcer-how-petty-theft-sealed-the-fate-of-the-dor-hamabul.mp3",
     "date": "2024-10-29T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "noach - how petty theft sealed the fate of the dor hamabul"
+    "title_lc": "noach - how petty theft sealed the fate of the dor hamabul",
+    "cat_lc": "parsha noach"
   },
   {
     "id": "hal-109",
@@ -3927,7 +4072,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/14012119-11-21-2023-shloimy-zelcer.mp3",
     "date": "2023-11-21T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "vayeitzei - הפעם אודה את ה"
+    "title_lc": "vayeitzei - הפעם אודה את ה",
+    "cat_lc": "parsha vayeitzei"
   },
   {
     "id": "hal-110",
@@ -3937,7 +4083,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/18244005-11-24-2025-shloimy-zelcer-jacob-s-ladder-as-a-paradigm-for-prayer.mp3",
     "date": "2025-11-24T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "vayeitzei - jacob's ladder as a paradigm for prayer"
+    "title_lc": "vayeitzei - jacob's ladder as a paradigm for prayer",
+    "cat_lc": "parsha vayeitzei"
   },
   {
     "id": "hal-111",
@@ -3947,7 +4094,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/9678548-11-17-2021-shloimy-zelcer.mp3",
     "date": "2021-11-17T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "vayishlach - when preparing to battle eisav, what was yaakov so scared of and why?"
+    "title_lc": "vayishlach - when preparing to battle eisav, what was yaakov so scared of and why?",
+    "cat_lc": "parsha vayishlach"
   },
   {
     "id": "hal-112",
@@ -3957,7 +4105,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/14089027-12-4-2023-shloimy-zelcer.mp3",
     "date": "2023-12-04T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "vayeishev - yosef's multifaceted personality"
+    "title_lc": "vayeishev - yosef's multifaceted personality",
+    "cat_lc": "parsha vayeishev"
   },
   {
     "id": "hal-113",
@@ -3967,7 +4116,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/16511618-1-27-2025-shloimy-zelcer-appreciating-hashems-kindness.mp3",
     "date": "2025-01-27T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "vaeira - appreciating hashem's kindness"
+    "title_lc": "vaeira - appreciating hashem's kindness",
+    "cat_lc": "parsha vaeira"
   },
   {
     "id": "hal-114",
@@ -3977,7 +4127,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/before-and-after-eigel.mp3",
     "date": "2026-03-12T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "yisro - serving hashem before and after the eigel"
+    "title_lc": "yisro - serving hashem before and after the eigel",
+    "cat_lc": "parsha yisro"
   },
   {
     "id": "hal-115",
@@ -3987,7 +4138,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/14711013-3-18-2024-shloimy-zelcer.mp3",
     "date": "2024-03-18T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "vayikra - brief intro to sefer vayikra"
+    "title_lc": "vayikra - brief intro to sefer vayikra",
+    "cat_lc": "parsha vayikra"
   },
   {
     "id": "hal-116",
@@ -3997,7 +4149,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/14806560-4-1-2024-shloimy-zelcer-a-busy-day.mp3",
     "date": "2024-04-01T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "shemini - יום השמיני - a busy day"
+    "title_lc": "shemini - יום השמיני - a busy day",
+    "cat_lc": "parsha shemini"
   },
   {
     "id": "hal-117",
@@ -4007,7 +4160,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/13024292-6-12-2023-shloimy-zelcer.mp3",
     "date": "2023-06-12T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "shelach - a lesson from the parsha of the meraglim"
+    "title_lc": "shelach - a lesson from the parsha of the meraglim",
+    "cat_lc": "parsha shelach"
   },
   {
     "id": "hal-118",
@@ -4017,7 +4171,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/10842600-6-21-2022-shloimy-zelcer.mp3",
     "date": "2022-06-21T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "shelach - lessons from the terrible sin of the spies"
+    "title_lc": "shelach - lessons from the terrible sin of the spies",
+    "cat_lc": "parsha shelach"
   },
   {
     "id": "hal-119",
@@ -4027,7 +4182,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/17624623-8-6-2025-shloimy-zelcer-my-rebbis-legacy-always-pushing-for-greatness.mp3",
     "date": "2025-08-06T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "vaeschanan - my rebbis legacy - always pushing for greatness"
+    "title_lc": "vaeschanan - my rebbis legacy - always pushing for greatness",
+    "cat_lc": "parsha vaeschanan"
   },
   {
     "id": "hal-120",
@@ -4037,7 +4193,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/17736499-8-26-2025-shloimy-zelcer-selective-observance.mp3",
     "date": "2025-08-26T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "shoftim - selective observance"
+    "title_lc": "shoftim - selective observance",
+    "cat_lc": "parsha shoftim"
   },
   {
     "id": "hal-121",
@@ -4047,7 +4204,8 @@
     "url": "https://www.buzzsprout.com/1899789/episodes/19912060-10-5-2026-shloimy-zelcer-moshe-s-tears-it-s-up-to-us.mp3",
     "date": "2026-10-05T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "vzos habracha - moshe's tears: it's up to us"
+    "title_lc": "vzos habracha - moshe's tears: it's up to us",
+    "cat_lc": "parsha vezos haberacha"
   },
   {
     "id": "par-N56WTJKBG9c",
