@@ -195,6 +195,21 @@
         <input id="catOvSearch" type="search" placeholder="Search clips..." style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;margin-bottom:8px;" />
         <div id="catOvList" style="max-height:320px;overflow:auto;border:1px solid var(--border);border-radius:10px;background:#fff;"></div>
         <div style="font-size:11px;color:#888;margin-top:6px;">Tap a clip to open it in the editor below.</div>
+        <div id="catHalAuto" style="display:none;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:700;margin-bottom:6px;">Fill categories from the Halacha sections</div>
+          <div style="font-size:12px;color:#666;margin-bottom:8px;">Uses the section each item is already in. Items that already have a category are left alone. Nothing is saved until you click Commit.</div>
+          <button class="btn btn-outline" id="catHalPreviewBtn" style="font-size:13px;padding:6px 12px;">Preview</button>
+          <div id="catHalPlan" style="display:none;margin-top:10px;font-size:13px;"></div>
+        </div>
+        <div id="catRenameBox" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:700;margin-bottom:6px;">Rename a category</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <select id="catRenameFrom" style="flex:1 1 150px;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:13px;"></select>
+            <input id="catRenameTo" type="text" placeholder="New name" style="flex:1 1 150px;padding:8px;border:1px solid var(--border);border-radius:8px;font-size:13px;" />
+            <button class="btn btn-outline" id="catRenameBtn" style="font-size:13px;padding:6px 12px;">Rename</button>
+          </div>
+          <div style="font-size:11px;color:#888;margin-top:6px;">Changes every clip in the list you have open (One-Minute or Halacha). Only categories you added yourself can be renamed.</div>
+        </div>
       </div>
       <div class="card">
         <div id="catClipTitle" style="font-size:16px;font-weight:700;margin-bottom:3px;"></div>
@@ -237,6 +252,8 @@ var CATEGORIES = {
   'Hashkafa': null,
   'General': null
 };
+var BUILTIN_CATS = Object.keys(CATEGORIES);
+var halStruct = null;
 var currentTab = 'halacha';
 var halachaData = null;
 
@@ -642,7 +659,7 @@ function ghDecode(meta) {
 }
 
 // Save the custom category list so it is there next time (data/categories.json)
-function saveCustomCats(justAdded) {
+function saveCustomCats(justAdded, removeName) {
   if (!getToken()) { showStatus('Added "' + justAdded + '" for this session only - save your GitHub token to keep it.', 'err'); return; }
   showStatus('Saving new category "' + justAdded + '"...', 'ok');
   ghGetFile(CUSTOM_CATS_PATH).then(function(r) {
@@ -653,7 +670,7 @@ function saveCustomCats(justAdded) {
       return { sha: meta.sha, list: list };
     });
   }).then(function(cur) {
-    var merged = cur.list.slice();
+    var merged = cur.list.filter(function(c) { return c !== removeName; });
     customCats.forEach(function(c) { if (merged.indexOf(c) < 0) merged.push(c); });
     var body = JSON.stringify({ categories: merged }, null, 2) + '\n';
     var enc = btoa(String.fromCharCode.apply(null, new TextEncoder().encode(body)));
@@ -666,7 +683,7 @@ function saveCustomCats(justAdded) {
     });
   }).then(function(r) {
     if (!r.ok) return r.text().then(function(t) { throw new Error(t); });
-    showStatus('Category "' + justAdded + '" added and saved.', 'ok');
+    showStatus('Category "' + justAdded + '" saved.', 'ok');
   }).catch(function(e) {
     showStatus('Added for this session, but saving failed: ' + e.message, 'err');
   });
@@ -768,6 +785,7 @@ function initCategorize() {
     var bytes=Uint8Array.from(atob(meta.content.replace(/\n/g,'')),function(c){return c.charCodeAt(0);});
     var parsed=JSON.parse(new TextDecoder('utf-8').decode(bytes));
     if (catSource==='halacha') {
+      halStruct=parsed;
       catData=[];
       parsed.forEach(function(cat,ci){
         (cat.items||[]).forEach(function(it,ii){it._p={ci:ci,si:-1,ii:ii};catData.push(it);});
@@ -792,6 +810,142 @@ function buildCatMainSel(){
   });  addNewCatOption(sel);
 }
 
+// ── Fill halacha categories from sections ──
+var HAL_MAP = {
+  'Tefilah': { cat: 'Tefila' },
+  'Hashkafa': { cat: 'Hashkafa' },
+  'Israel': { cat: 'Israel' },
+  'Talmud Torah': { cat: 'Talmud Torah' },
+  'Tzedakah': { cat: 'Tzedakah' },
+  'Jewish Timeline': { cat: 'Jewish Timeline' },
+  'Shabbos/Yom Tov': { subs: {
+    'Shabbos': { cat: 'Shabbos' },
+    'Elul/Tishrei': { cat: 'Yomim Tovim', detail: 'Elul/Tishrei' },
+    'Chanukah': { cat: 'Yomim Tovim', detail: 'Chanukah' },
+    'Purim': { cat: 'Yomim Tovim', detail: 'Purim' },
+    'Yimei Sefirah': { cat: 'Yomim Tovim', detail: 'Sefirah' }
+  } },
+  'Parsha Insights': { parsha: true }
+  // 'Other Halachos/Minhagim' is intentionally left out
+};
+var halPlan = null;
+
+function catNorm(x){ return String(x||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim(); }
+function catLev(a,b){
+  var m=a.length,n=b.length; if(!m) return n; if(!n) return m;
+  var prev=[],cur,i,j; for(j=0;j<=n;j++) prev[j]=j;
+  for(i=1;i<=m;i++){ cur=[i]; for(j=1;j<=n;j++){ cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1)); } prev=cur; }
+  return prev[n];
+}
+// "NOACH - title" -> "Noach" (matches the Parsha list in CATEGORIES)
+function parshaFromTitle(title){
+  title=String(title||''); if(title.indexOf(' - ')<0) return '';
+  var pre=title.split(' - ')[0];
+  var t=catNorm(pre); if(t.length<3) return '';
+  var all=catAllParshas(), best=null, bd=99, tie=false;
+  all.forEach(function(p){ var d=catLev(catNorm(p),t); if(d<bd){best=p;bd=d;tie=false;} else if(d===bd){tie=true;} });
+  return (best && !tie && bd<=2) ? best : '';
+}
+
+function planHalachaAuto(){
+  var plan=[], left=0, noUrl=0, already=0, counts={}, newCats=[];
+  catData.forEach(function(it){
+    var p=it._p; if(!p||!halStruct) return;
+    if(it.category){ already++; return; }
+    if(!it.url){ noUrl++; return; }
+    var top=halStruct[p.ci], rule=HAL_MAP[top.category];
+    if(!rule){ left++; return; }
+    var cat=null, detail='';
+    if(rule.subs){
+      var subName = p.si>=0 ? top.subcategories[p.si].name : null;
+      var r2 = subName ? rule.subs[subName] : null;
+      if(!r2){ left++; return; }
+      cat=r2.cat; detail=r2.detail||'';
+    } else if(rule.parsha){
+      cat='Parsha'; detail=parshaFromTitle(it.title);
+    } else { cat=rule.cat; }
+    plan.push({item:it,cat:cat,detail:detail});
+    var key=cat+(detail?' > '+detail:'');
+    counts[key]=(counts[key]||0)+1;
+    if(!CATEGORIES.hasOwnProperty(cat) && newCats.indexOf(cat)<0) newCats.push(cat);
+  });
+  return {plan:plan,left:left,noUrl:noUrl,already:already,counts:counts,newCats:newCats};
+}
+
+function showHalPlan(){
+  var box=document.getElementById('catHalPlan');
+  halPlan=planHalachaAuto();
+  var keys=Object.keys(halPlan.counts).sort();
+  if(!halPlan.plan.length){ box.style.display='block'; box.innerHTML='Nothing to fill in - everything that can be matched already has a category.'; return; }
+  var noDetail=halPlan.plan.filter(function(x){return x.cat==='Parsha'&&!x.detail;}).length;
+  box.style.display='block';
+  box.innerHTML='<div style="margin-bottom:6px;"><b>'+halPlan.plan.length+'</b> items will be categorized:</div>'+
+    '<div style="color:#444;line-height:1.7;">'+keys.map(function(k){return catEsc(k)+' <b>'+halPlan.counts[k]+'</b>';}).join(' &middot; ')+'</div>'+
+    (halPlan.newCats.length?'<div style="margin-top:6px;">New categories that will be created: <b>'+halPlan.newCats.map(catEsc).join(', ')+'</b></div>':'')+
+    (noDetail?'<div style="margin-top:6px;color:#92400e;">'+noDetail+' Parsha Insights item'+(noDetail===1?' has':'s have')+' no recognizable parsha in the title, so '+(noDetail===1?'it goes':'they go')+' under Parsha without a specific parsha.</div>':'')+
+    '<div style="margin-top:6px;color:#666;">Left alone: '+halPlan.left+' (e.g. Other Halachos/Minhagim)'+(halPlan.already?', '+halPlan.already+' already categorized':'')+(halPlan.noUrl?', '+halPlan.noUrl+' notes without audio':'')+'.</div>'+
+    '<div style="margin-top:10px;display:flex;gap:8px;"><button class="btn btn-primary" id="catHalApplyBtn" style="font-size:13px;padding:6px 12px;">Apply to '+halPlan.plan.length+' items</button><button class="btn btn-outline" id="catHalCancelBtn" style="font-size:13px;padding:6px 12px;">Cancel</button></div>';
+}
+
+function applyHalPlan(){
+  if(!halPlan||!halPlan.plan.length) return;
+  halPlan.newCats.forEach(function(c){ CATEGORIES[c]=null; if(customCats.indexOf(c)<0) customCats.push(c); });
+  if(halPlan.newCats.length) saveCustomCats(halPlan.newCats.join(', '));
+  halPlan.plan.forEach(function(x){
+    x.item.category=x.cat;
+    if(x.detail) x.item.categoryDetail=x.detail; else delete x.item.categoryDetail;
+    catPending[x.item.url]=true;
+  });
+  var n=halPlan.plan.length;
+  halPlan=null;
+  document.getElementById('catHalPlan').style.display='none';
+  rebuildCatSelects();
+  updateCommitBtn();
+  showCatStatus('Filled in '+n+' item'+(n===1?'':'s')+' - click "Commit to GitHub" below to save them.','#166534');
+  renderCatOverview();
+}
+
+// ── Rename a category you added ──
+function renameCategory(from,to){
+  to=String(to||'').replace(/\s+/g,' ').trim();
+  if(!from){ showCatStatus('Pick the category to rename.','#b42318'); return; }
+  if(!to){ showCatStatus('Type the new name.','#b42318'); return; }
+  if(to.length>40){ showCatStatus('Name is too long (40 characters max).','#b42318'); return; }
+  if(to===from){ showCatStatus('That is already its name.','#b42318'); return; }
+  var clash=null; Object.keys(CATEGORIES).forEach(function(k){ if(k!==from && k.toLowerCase()===to.toLowerCase()) clash=k; });
+  if(clash) to=clash;   // merge into the existing one
+  var n=0;
+  catData.forEach(function(it){ if(it.category===from && it.url){ it.category=to; catPending[it.url]=true; n++; } });
+  delete CATEGORIES[from];
+  if(!CATEGORIES.hasOwnProperty(to)) CATEGORIES[to]=null;
+  customCats=customCats.filter(function(c){return c!==from;});
+  if(customCats.indexOf(to)<0) customCats.push(to);
+  saveCustomCats(to, from);
+  if(catOvFilter==='cat:'+from) catOvFilter='cat:'+to;
+  rebuildCatSelects();
+  updateCommitBtn();
+  document.getElementById('catRenameTo').value='';
+  showCatStatus('Renamed "'+from+'" to "'+to+'"'+(n?' on '+n+' clip'+(n===1?'':'s')+' - click "Commit to GitHub" below to save them.':'.'),'#166534');
+  renderCatOverview();
+}
+
+function refreshCatTools(){
+  var hal=document.getElementById('catHalAuto'); if(hal) hal.style.display=(catSource==='halacha')?'block':'none';
+  var sel=document.getElementById('catRenameFrom'); if(!sel) return;
+  var cur=sel.value;
+  var names=Object.keys(CATEGORIES).filter(function(c){ return BUILTIN_CATS.indexOf(c)<0; });
+  sel.innerHTML='<option value="">-- category to rename --</option>'+names.map(function(c){return '<option value="'+catEsc(c)+'">'+catEsc(c)+'</option>';}).join('');
+  if(cur && names.indexOf(cur)>=0) sel.value=cur;
+}
+document.getElementById('catHalPreviewBtn').addEventListener('click',showHalPlan);
+document.getElementById('catHalPlan').addEventListener('click',function(e){
+  if(e.target.id==='catHalApplyBtn') applyHalPlan();
+  if(e.target.id==='catHalCancelBtn'){ halPlan=null; this.style.display='none'; }
+});
+document.getElementById('catRenameBtn').addEventListener('click',function(){
+  renameCategory(document.getElementById('catRenameFrom').value,document.getElementById('catRenameTo').value);
+});
+
 // ── Categorize overview: what's done / what's left ──
 var catOvFilter='todo';
 function catEsc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
@@ -800,6 +954,7 @@ function catAllParshas(){var out=[];Object.keys(CATEGORIES.Parsha).forEach(funct
 
 function renderCatOverview(){
   var box=document.getElementById('catOvList'); if(!box) return;
+  try{ refreshCatTools(); }catch(e){}
   var total=catData.length;
   var done=catData.filter(function(x){return x.category;}).length;
   var todo=total-done;
