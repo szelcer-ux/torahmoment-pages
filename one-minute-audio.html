@@ -579,6 +579,7 @@ html, body{
 
 <div class="catbar" id="catBar" hidden></div>
 <div class="catbar sub" id="subBar" hidden></div>
+<div class="catbar sub" id="parBar" hidden></div>
 
 <div class="listCard">
   <div id="list"></div>
@@ -770,8 +771,24 @@ list.addEventListener("input", (e) => {
   audio.currentTime = pct * audio.duration;
 });
 
-let activeCat = "", activeSub = "";
-const catBar = document.getElementById("catBar"), subBar = document.getElementById("subBar");
+let activeCat = "", activeSub = "", activeSefer = "";
+const SEFARIM = {
+  "Bereishis":["Bereishis","Noach","Lech Licha","Vayeira","Chayei Sarah","Toldos","Vayeitzei","Vayishlach","Vayeishev","Mikeitz","Vayigash","Vayechi"],
+  "Shemos":["Shemos","Vaeira","Bo","Beshalach","Yisro","Mishpatim","Terumah","Tetzaveh","Ki Sisa","Vayakhel","Pekudei"],
+  "Vayikra":["Vayikra","Tzav","Shemini","Tazria","Metzora","Achrei Mos","Kedoshim","Emor","Behar","Bechukosai"],
+  "Bamidbar":["Bamidbar","Naso","Behaaloscha","Shelach","Korach","Chukas","Balak","Pinchas","Matos","Masei"],
+  "Devarim":["Devarim","Vaeschanan","Eikev","Reeh","Shoftim","Ki Seitzei","Ki Savo","Nitzavim","Vayeilech","Haazinu","Vezos Haberacha"]
+};
+function nk(x){return String(x||"").toLowerCase().replace(/[^a-z]/g,"");}
+function lev(a,b){const m=a.length,n=b.length,d=[];for(let i=0;i<=m;i++){d[i]=[i];}for(let j=1;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
+const _sefCache = {};
+function seferOf(name){
+  if (name in _sefCache) return _sefCache[name];
+  const k = nk(name); let best = "", bd = 99;
+  for (const [sef, list] of Object.entries(SEFARIM)) for (const p of list) { const d = lev(k, nk(p)); if (d < bd) { bd = d; best = sef; } }
+  return (_sefCache[name] = bd <= 3 ? best : "");
+}
+const catBar = document.getElementById("catBar"), subBar = document.getElementById("subBar"), parBar = document.getElementById("parBar");
 
 function buildCats(){
   const m = new Map();
@@ -781,29 +798,49 @@ function buildCats(){
   catBar.hidden = false;
   catBar.innerHTML = `<button data-cat="" class="${activeCat?"":"on"}">All<small>${items.length}</small></button>` +
     cats.map(([c,n])=>`<button data-cat="${esc(c)}" class="${c===activeCat?"on":""}">${esc(c)}<small>${n}</small></button>`).join("");
-  // sub-chips (e.g. which parsha / which yom tov)
+  // sub-chips: for Parsha -> 5 sefarim, then that sefer's parshiyos; otherwise detail chips
   const subs = new Map();
   if (activeCat) items.filter(it=>it.category===activeCat && it.categoryDetail).forEach(it=>subs.set(it.categoryDetail,(subs.get(it.categoryDetail)||0)+1));
-  if (subs.size > 1) {
+  parBar.hidden = true; parBar.innerHTML = "";
+  if (activeCat === "Parsha") {
+    if (activeSub && !activeSefer) activeSefer = seferOf(activeSub);
+    const sc = {}; for (const [n,c] of subs) { const sf = seferOf(n); if (sf) sc[sf] = (sc[sf]||0)+c; }
+    subBar.hidden = false;
+    subBar.innerHTML = Object.keys(SEFARIM).map(sf => {
+      const n = sc[sf]||0;
+      return `<button data-sefer="${sf}" class="${sf===activeSefer?"on":""}" ${n?"":"disabled style=\"opacity:.45;cursor:default\""}>${sf}<small>${n}</small></button>`;
+    }).join("");
+    if (activeSefer) {
+      const ps = [...subs.entries()].filter(([n])=>seferOf(n)===activeSefer)
+        .sort((a,b)=>SEFARIM[activeSefer].findIndex(p=>lev(nk(p),nk(a[0]))<=3) - SEFARIM[activeSefer].findIndex(p=>lev(nk(p),nk(b[0]))<=3));
+      parBar.hidden = false;
+      parBar.innerHTML = `<button data-sub="" class="${activeSub?"":"on"}">All ${esc(activeSefer)}</button>` +
+        ps.map(([n,c])=>`<button data-sub="${esc(n)}" class="${n===activeSub?"on":""}">${esc(n)}<small>${c}</small></button>`).join("");
+    }
+  } else if (subs.size > 1) {
     subBar.hidden = false;
     subBar.innerHTML = `<button data-sub="" class="${activeSub?"":"on"}">All ${esc(activeCat)}</button>` +
       [...subs.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([c,n])=>`<button data-sub="${esc(c)}" class="${c===activeSub?"on":""}">${esc(c)}<small>${n}</small></button>`).join("");
   } else { subBar.hidden = true; subBar.innerHTML = ""; }
 }
 
-function setCat(c, sub){
-  activeCat = c || ""; activeSub = sub || "";
+function setCat(c, sub, sefer){
+  activeCat = c || ""; activeSub = sub || ""; activeSefer = (c === "Parsha") ? (sefer || "") : "";
   try {
     const u = new URL(location.href);
     if (activeCat) u.searchParams.set("cat", activeCat); else u.searchParams.delete("cat");
     if (activeSub) u.searchParams.set("sub", activeSub); else u.searchParams.delete("sub");
+    if (activeSefer) u.searchParams.set("sefer", activeSefer); else u.searchParams.delete("sefer");
     history.replaceState(null, "", u);
   } catch(e){}
   buildCats(); applySearch();
 }
 
 catBar.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setCat(b.dataset.cat, ""); });
-subBar.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setCat(activeCat, b.dataset.sub); });
+subBar.addEventListener("click", e => { const b = e.target.closest("button"); if (!b || b.disabled) return;
+  if (b.dataset.sefer) setCat("Parsha", "", b.dataset.sefer === activeSefer ? "" : b.dataset.sefer);
+  else setCat(activeCat, b.dataset.sub); });
+parBar.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setCat("Parsha", b.dataset.sub, activeSefer); });
 list.addEventListener("click", e => { const t = e.target.closest(".cattag"); if (t) { setCat(t.dataset.cat, ""); window.scrollTo({top:0,behavior:"smooth"}); } });
 
 function applySearch(){
@@ -811,6 +848,7 @@ function applySearch(){
   filtered = items.filter(it => {
     if (activeCat && it.category !== activeCat) return false;
     if (activeSub && it.categoryDetail !== activeSub) return false;
+    if (activeCat === "Parsha" && activeSefer && !activeSub && seferOf(it.categoryDetail) !== activeSefer) return false;
     if (!v) return true;
     return (it.description||"").toLowerCase().includes(v) ||
       (it.date||"").toLowerCase().includes(v) ||
@@ -841,7 +879,7 @@ fetch(DATA_URL, { cache:"no-store" })
     sortBtn.textContent = "Latest ↓";
     try {
       const p = new URLSearchParams(location.search);
-      activeCat = p.get("cat") || ""; activeSub = p.get("sub") || "";
+      activeCat = p.get("cat") || ""; activeSub = p.get("sub") || ""; activeSefer = p.get("sefer") || "";
       if (activeCat && !items.some(it => it.category === activeCat)) { activeCat = ""; activeSub = ""; }
     } catch(e){}
     buildCats();
