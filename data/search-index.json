@@ -3957,7 +3957,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/122.mp3",
     "date": "2026-10-22T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "one curse: the chofetz chaim and acher"
+    "title_lc": "one curse: the chofetz chaim and acher",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "hal-98",
@@ -4044,7 +4045,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/countingjewsmp3.mp3",
     "date": "2020-08-20T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "counting jews"
+    "title_lc": "counting jews",
+    "cat_lc": "halacha"
   },
   {
     "id": "hal-106",
@@ -4054,7 +4056,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/nittel.mp3",
     "date": "2020-12-24T00:00:00.000Z",
     "page": "/halacha.html",
-    "title_lc": "nittel nacht"
+    "title_lc": "nittel nacht",
+    "cat_lc": "yomim tovim"
   },
   {
     "id": "hal-107",
