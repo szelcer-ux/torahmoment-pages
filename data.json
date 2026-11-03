@@ -1318,7 +1318,9 @@
     "date": "9/3/2025",
     "description": "What is your לולא?",
     "filename": "PTT-20250902-WA0007.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250902-WA0007.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250902-WA0007.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Elul/Tishrei"
   },
   {
     "id": 139,
@@ -1367,7 +1369,8 @@
     "date": "10/20/2025",
     "description": "A true \"working boy\"",
     "filename": "PTT-20251019-WA0032.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251019-WA0032.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251019-WA0032.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 146,
