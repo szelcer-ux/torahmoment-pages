@@ -59,7 +59,7 @@ function flattenHalacha(data) {
     if (!it||!it.url) return;
     const date = parseMmDdYyyy(it.note);
     if (!date) return;
-    out.push({ type:(it.type||"audio"), program:"Halacha", title:it.title||"Halacha", url:it.url, date });
+    out.push({ type:(it.type||"audio"), program:"Halacha", title:it.title||"Halacha", url:it.url, date, category:it.category||null, categoryDetail:it.categoryDetail||null });
   };
   for (const cat of data||[]) {
     for (const it of cat.items||[]) pushItem(it);
@@ -248,8 +248,8 @@ async function readHalachaTotalAllFromDom(page) {
   const allParshaOverviews = diskOverviews;
   console.log("Parsha overviews found:", allParshaOverviews.length);
 
-  const indexOneMin = (oneMinItems||[]).map((x,i)=>({ id:`one-${x.id??i}`, program:"One-Minute", type:"audio", title:x.description||x.filename||"One-Minute Audio", url:x.url, date:parseMmDdYyyy(x.date), page:"/one-minute-audio.html" })).filter(x=>x.url&&x.title);
-  const indexHalacha = (allHalacha||[]).map((x,i)=>({ id:`hal-${i}`, program:"Halacha", type:x.type||"audio", title:x.title||"Halacha", url:x.url, date:x.date, page:"/halacha.html" })).filter(x=>x.url&&x.title);
+  const indexOneMin = (oneMinItems||[]).map((x,i)=>({ id:`one-${x.id??i}`, program:"One-Minute", type:"audio", title:x.description||x.filename||"One-Minute Audio", url:x.url, date:parseMmDdYyyy(x.date), page:"/one-minute-audio.html", category:x.category||null, categoryDetail:x.categoryDetail||null })).filter(x=>x.url&&x.title);
+  const indexHalacha = (allHalacha||[]).map((x,i)=>({ id:`hal-${i}`, program:"Halacha", type:x.type||"audio", title:x.title||"Halacha", url:x.url, date:x.date, page:"/halacha.html", category:x.category||null, categoryDetail:x.categoryDetail||null })).filter(x=>x.url&&x.title);
   const indexParsha = youtubeSucceeded
     ? (allParshaVideos||[]).map(x=>({ id:`par-${x.url.split("v=")[1]||x.date||Math.random().toString(16).slice(2)}`, program:"Parsha", type:"video", title:x.title||"Parsha video", url:x.url, date:x.date, page:"/parsha.html" })).filter(x=>x.url&&x.title)
     : existingIndexParsha;
@@ -264,7 +264,7 @@ async function readHalachaTotalAllFromDom(page) {
     title_lc: norm(x.title),
   }));
 
-  const searchIndex = [...indexOneMin,...indexHalacha,...indexParsha,...indexOverviews].map(x=>({...x,title_lc:norm(x.title)}));
+  const searchIndex = [...indexOneMin,...indexHalacha,...indexParsha,...indexOverviews].map(x=>{const o={...x,title_lc:norm(x.title)};const cl=norm([x.category,x.categoryDetail].filter(Boolean).join(" "));if(cl)o.cat_lc=cl;delete o.category;delete o.categoryDetail;return o;});
   console.log("FOUND in searchIndex?", searchIndex.some(x=>x.title==="The risk of NOT saying Hallel on Yom Haatzmaut"));
   console.log("Parsha overviews in index:", indexOverviews.length);
   writeFileSync("./data/search-index.json", JSON.stringify(searchIndex,null,2)+"\n","utf8");
