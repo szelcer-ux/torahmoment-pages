@@ -436,7 +436,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240920-WA0019.mp3",
     "date": "2024-09-20T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "shouting \"thank you \""
+    "title_lc": "shouting \"thank you \"",
+    "cat_lc": "parsha ki savo"
   },
   {
     "id": "one-12",
@@ -446,7 +447,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240919-WA0050.mp3",
     "date": "2024-09-22T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "\"confusing\" the satan"
+    "title_lc": "\"confusing\" the satan",
+    "cat_lc": "yomim tovim rosh hashana"
   },
   {
     "id": "one-13",
@@ -456,7 +458,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240919-WA0053.mp3",
     "date": "2024-09-23T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "embracing our fins and scales"
+    "title_lc": "embracing our fins and scales",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-14",
@@ -466,7 +469,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240922-WA0043.mp3",
     "date": "2024-09-24T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "believing in and forgiving ourselves"
+    "title_lc": "believing in and forgiving ourselves",
+    "cat_lc": "yomim tovim elul/tishrei"
   },
   {
     "id": "one-15",
@@ -476,7 +480,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240906-WA0068.mp3",
     "date": "2024-09-25T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "קדש לי כל בכור - love every jew"
+    "title_lc": "קדש לי כל בכור - love every jew",
+    "cat_lc": "middos"
   },
   {
     "id": "one-16",
@@ -486,7 +491,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240922-WA0044.mp3",
     "date": "2024-09-26T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "fulfilling our purpose"
+    "title_lc": "fulfilling our purpose",
+    "cat_lc": "yomim tovim rosh hashana"
   },
   {
     "id": "one-17",
@@ -496,7 +502,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240927-WA0020.mp3",
     "date": "2024-09-27T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "powerful vort from the piacenza rebbe"
+    "title_lc": "powerful vort from the piacenza rebbe",
+    "cat_lc": "parsha nitzavim"
   },
   {
     "id": "one-18",
@@ -506,7 +513,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240921-WA0008.mp3",
     "date": "2024-11-04T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "our natural thirst for the torah"
+    "title_lc": "our natural thirst for the torah",
+    "cat_lc": "talmud torah"
   },
   {
     "id": "one-19",
@@ -516,7 +524,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241105-WA0034.mp3",
     "date": "2024-11-05T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "don't make life more difficult- make it more meaningful"
+    "title_lc": "don't make life more difficult- make it more meaningful",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-20",
@@ -526,7 +535,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241107-WA0024.mp3",
     "date": "2024-11-07T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "being our best self"
+    "title_lc": "being our best self",
+    "cat_lc": "parsha lech lecha"
   },
   {
     "id": "one-21",
@@ -536,7 +546,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241110-WA0023.mp3",
     "date": "2024-11-11T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the future is more important than the past"
+    "title_lc": "the future is more important than the past",
+    "cat_lc": "parsha lech lecha"
   },
   {
     "id": "one-22",
@@ -546,7 +557,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241110-WA0022.mp3",
     "date": "2024-11-12T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "attainable goals"
+    "title_lc": "attainable goals",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-23",
@@ -556,7 +568,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241110-WA0042.mp3",
     "date": "2024-11-14T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "don't be frum on someone else's cheshbon"
+    "title_lc": "don't be frum on someone else's cheshbon",
+    "cat_lc": "parsha vayeira"
   },
   {
     "id": "one-24",
@@ -566,7 +579,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241117-WA0030.mp3",
     "date": "2024-11-18T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "עשה לך רב"
+    "title_lc": "עשה לך רב",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-25",
