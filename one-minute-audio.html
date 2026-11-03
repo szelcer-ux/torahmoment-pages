@@ -525,6 +525,14 @@ html, body{
   transform: scale(.98);
 }
   
+
+.catbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.catbar button{border:1px solid var(--border);background:#fff;border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:600;color:#334155;cursor:pointer;font-family:inherit}
+.catbar button:hover{border-color:var(--accent);color:#0f766e}
+.catbar button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.catbar button small{opacity:.7;font-weight:600;margin-left:4px}
+.catbar.sub button{font-size:12.5px;padding:5px 11px;font-weight:500}
+.cattag{display:inline-block;margin-left:8px;font-size:11.5px;font-weight:700;background:#f0fdfa;color:#0f766e;border-radius:999px;padding:2px 9px;vertical-align:middle;cursor:pointer}
 </style>
 </head>
 
@@ -568,6 +576,9 @@ html, body{
   <button class="pill" id="sortBtn">Latest ↓</button>
   <div class="pill" id="count">0 items</div>
 </div>
+
+<div class="catbar" id="catBar" hidden></div>
+<div class="catbar sub" id="subBar" hidden></div>
 
 <div class="listCard">
   <div id="list"></div>
@@ -639,7 +650,7 @@ function render(){
 
   // ✅ Feed the site-wide counter (for the GitHub Action JSON build)
   if (window.SITE_COUNTS?.allShiurim?.breakdown) {
-    window.SITE_COUNTS.allShiurim.breakdown.oneMinute.audio = filtered.length;
+    window.SITE_COUNTS.allShiurim.breakdown.oneMinute.audio = items.length;
     window.SITE_COUNTS.allShiurim.updated = new Date().toISOString().slice(0, 10);
   }
 
@@ -653,7 +664,7 @@ function render(){
     row.innerHTML = `
       <div class="head">
         <div class="date">${esc(it.date)}</div>
-        <div class="title">${esc(it.description)}</div>
+        <div class="title">${esc(it.description)}${it.category?`<span class="cattag" data-cat="${esc(it.category)}">${esc(it.category)}${it.categoryDetail&&it.category!=="Parsha"?" · "+esc(it.categoryDetail):(it.categoryDetail?" · "+esc(it.categoryDetail):"")}</span>`:""}</div>
       </div>
 
       <div class="tmPlayer" data-id="${it.id}">
@@ -759,16 +770,53 @@ list.addEventListener("input", (e) => {
   audio.currentTime = pct * audio.duration;
 });
 
+let activeCat = "", activeSub = "";
+const catBar = document.getElementById("catBar"), subBar = document.getElementById("subBar");
+
+function buildCats(){
+  const m = new Map();
+  items.forEach(it => { if (it.category) m.set(it.category, (m.get(it.category)||0)+1); });
+  if (!m.size) { catBar.hidden = true; return; }
+  const cats = [...m.entries()].sort((a,b)=>b[1]-a[1]);
+  catBar.hidden = false;
+  catBar.innerHTML = `<button data-cat="" class="${activeCat?"":"on"}">All<small>${items.length}</small></button>` +
+    cats.map(([c,n])=>`<button data-cat="${esc(c)}" class="${c===activeCat?"on":""}">${esc(c)}<small>${n}</small></button>`).join("");
+  // sub-chips (e.g. which parsha / which yom tov)
+  const subs = new Map();
+  if (activeCat) items.filter(it=>it.category===activeCat && it.categoryDetail).forEach(it=>subs.set(it.categoryDetail,(subs.get(it.categoryDetail)||0)+1));
+  if (subs.size > 1) {
+    subBar.hidden = false;
+    subBar.innerHTML = `<button data-sub="" class="${activeSub?"":"on"}">All ${esc(activeCat)}</button>` +
+      [...subs.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([c,n])=>`<button data-sub="${esc(c)}" class="${c===activeSub?"on":""}">${esc(c)}<small>${n}</small></button>`).join("");
+  } else { subBar.hidden = true; subBar.innerHTML = ""; }
+}
+
+function setCat(c, sub){
+  activeCat = c || ""; activeSub = sub || "";
+  try {
+    const u = new URL(location.href);
+    if (activeCat) u.searchParams.set("cat", activeCat); else u.searchParams.delete("cat");
+    if (activeSub) u.searchParams.set("sub", activeSub); else u.searchParams.delete("sub");
+    history.replaceState(null, "", u);
+  } catch(e){}
+  buildCats(); applySearch();
+}
+
+catBar.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setCat(b.dataset.cat, ""); });
+subBar.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setCat(activeCat, b.dataset.sub); });
+list.addEventListener("click", e => { const t = e.target.closest(".cattag"); if (t) { setCat(t.dataset.cat, ""); window.scrollTo({top:0,behavior:"smooth"}); } });
+
 function applySearch(){
   const v = (q.value||"").toLowerCase().trim();
-  if(!v){
-    filtered = items.slice();
-  } else {
-    filtered = items.filter(it =>
-      (it.description||"").toLowerCase().includes(v) ||
-      (it.date||"").toLowerCase().includes(v)
-    );
-  }
+  filtered = items.filter(it => {
+    if (activeCat && it.category !== activeCat) return false;
+    if (activeSub && it.categoryDetail !== activeSub) return false;
+    if (!v) return true;
+    return (it.description||"").toLowerCase().includes(v) ||
+      (it.date||"").toLowerCase().includes(v) ||
+      (it.category||"").toLowerCase().includes(v) ||
+      (it.categoryDetail||"").toLowerCase().includes(v);
+  });
   render();
 }
 
@@ -791,7 +839,13 @@ fetch(DATA_URL, { cache:"no-store" })
     filtered = items.slice();
     sortLatestFirst = true;
     sortBtn.textContent = "Latest ↓";
-    render();
+    try {
+      const p = new URLSearchParams(location.search);
+      activeCat = p.get("cat") || ""; activeSub = p.get("sub") || "";
+      if (activeCat && !items.some(it => it.category === activeCat)) { activeCat = ""; activeSub = ""; }
+    } catch(e){}
+    buildCats();
+    applySearch();
   })
   .catch(err => {
     console.error("Failed to load data.json", err);

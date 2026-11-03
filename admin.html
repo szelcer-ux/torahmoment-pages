@@ -769,14 +769,45 @@ function populateCatSub(prefix) {
 }
 
 // ── CATEGORIZE TAB ──
-var catData=[], catIdx=0, catSource='oneMinute', catPending={};
+var catData=[], catIdx=0, catSource='oneMinute', catPending={}, catLoaded=false;
+// ── Safety net: keep unsaved categorizations in this browser + warn before leaving ──
+function persistCatDraft(){
+  if(!catLoaded) return;
+  try{
+    var key='tm_cat_draft_'+catSource, urls=Object.keys(catPending).filter(function(k){return k.indexOf('note:')!==0;});
+    if(!urls.length){ localStorage.removeItem(key); return; }
+    var byUrl={}; catData.forEach(function(it){ if(it&&it.url) byUrl[it.url]=it; });
+    var out={}; urls.forEach(function(u){ var it=byUrl[u]; if(it&&it.category) out[u]={category:it.category,categoryDetail:it.categoryDetail||null}; });
+    localStorage.setItem(key,JSON.stringify(out));
+  }catch(e){}
+}
+function restoreCatDraft(){
+  try{
+    var raw=localStorage.getItem('tm_cat_draft_'+catSource); if(!raw) return 0;
+    var d=JSON.parse(raw), byUrl={}, n=0; catData.forEach(function(it){ if(it&&it.url) byUrl[it.url]=it; });
+    Object.keys(d).forEach(function(u){
+      var it=byUrl[u], v=d[u]; if(!it||!v||!v.category) return;
+      if(it.category===v.category && (it.categoryDetail||null)===(v.categoryDetail||null)) return; // already committed
+      if(!CATEGORIES.hasOwnProperty(v.category)) CATEGORIES[v.category]=null;
+      it.category=v.category; if(v.categoryDetail) it.categoryDetail=v.categoryDetail; else delete it.categoryDetail;
+      catPending[u]=true; n++;
+    });
+    return n;
+  }catch(e){ return 0; }
+}
+setInterval(persistCatDraft,2000);
+document.addEventListener('visibilitychange',function(){ if(document.hidden) persistCatDraft(); });
+window.addEventListener('beforeunload',function(e){
+  persistCatDraft();
+  if(Object.keys(catPending).length){ e.preventDefault(); e.returnValue=''; return ''; }
+});
 var catPaths={oneMinute:'data.json',halacha:'data/halacha.json'};
 
 function setCatSource(src) {
   catSource=src;
   document.getElementById('catSrcBtn').className='btn '+(src==='oneMinute'?'btn-primary':'btn-outline');
   document.getElementById('catSrcBtnHal').className='btn '+(src==='halacha'?'btn-primary':'btn-outline');
-  catData=[]; catIdx=0; catPending={};
+  catLoaded=false; persistCatDraft(); catData=[]; catIdx=0; catPending={};
   initCategorize();
 }
 
@@ -802,8 +833,10 @@ function initCategorize() {
     } else { catData=parsed; catNotes=[]; }
     catIdx=0; catPending={};
     catData.forEach(function(x){ if (x && x.category && !CATEGORIES.hasOwnProperty(x.category)) CATEGORIES[x.category]=null; });
+    var restored=restoreCatDraft(); catLoaded=true;
     buildCatMainSel();
-    showCatStatus('','');
+    showCatStatus(restored?('Restored '+restored+' unsaved change'+(restored===1?'':'s')+' from this browser - click Commit to save them.'):'',restored?'#1e40af':'');
+    try{updateCommitBtn();}catch(e){}
     renderCatClip();
   }).catch(function(e){showCatStatus('Error: '+e.message,'#b42318');});
 }
@@ -1171,7 +1204,7 @@ function commitAllCats(){
     });
   }).then(function(r){if(!r.ok)return r.text().then(function(t){throw new Error(t);});return r.json();})
   .then(function(){
-    catPending={};
+    catPending={}; try{localStorage.removeItem('tm_cat_draft_'+catSource);}catch(e){}
     showCatStatus('Committed '+n+' change'+(n===1?'':'s')+' to GitHub!','#166534');
     updateCommitBtn();
     try{renderCatOverview();}catch(e){}
