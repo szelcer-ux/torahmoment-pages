@@ -1644,9 +1644,7 @@ async function setDefaultParshaOnEntry() {
   // Otherwise: Hebcal default
   try {
     const wk = await getThisWeeksParsha();
-    const opt = [...parshaSel.options].find(
-      o => normalizeParshaName(o.value) === normalizeParshaName(wk)
-    );
+    const opt = matchParshaOption(wk);
     if (opt) parshaSel.value = opt.value;
   } catch (e) {
     console.warn("Could not set default parsha:", e);
@@ -2292,7 +2290,8 @@ function updateParshaNav() {
   if (!isReal) return;
   getThisWeeksParsha().then(wk => {
     if (parshaSel.value === p && wk) {
-      badge.hidden = normalizeParshaName(wk) !== normalizeParshaName(p);
+      const m = matchParshaOption(wk);
+      badge.hidden = !(m && m.value === p);
     }
   }).catch(() => {});
 }
@@ -2483,6 +2482,8 @@ const PARSHA_ALIASES = {
   // Vezos / V’zos variations
   "vezos haberacha": "vezos haberacha",
   "vezot haberacha": "vezos haberacha",
+  "vezot haberakhah": "vezos haberacha",
+  "vezos haberakhah": "vezos haberacha",
   "vzos haberacha": "vezos haberacha",
 	
  "vzos habracha": "vezos haberacha",
@@ -2515,6 +2516,40 @@ const PARSHA_ALIASES = {
 function normalizeParshaName(name) {
   const n = normParsha(name); // already lowercase + cleaned
   return PARSHA_ALIASES[n] || n;
+}
+
+// Edit distance (tiny strings) - used so spelling differences between Hebcal
+// ("Chayei Sara") and our dropdown ("Chayei Sarah") never break the default.
+function _tmLev(a, b) {
+  const m = a.length, n = b.length;
+  if (!m) return n; if (!n) return m;
+  let prev = Array.from({ length: n + 1 }, (_, j) => j);
+  for (let i = 1; i <= m; i++) {
+    const cur = [i];
+    for (let j = 1; j <= n; j++) {
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    prev = cur;
+  }
+  return prev[n];
+}
+
+// Find the dropdown <option> for a parsha name from any source (Hebcal etc.).
+// 1) exact match after normalizing + aliases, 2) otherwise the single closest
+// spelling (distance <= 2, no ties).
+function matchParshaOption(name) {
+  const target = normalizeParshaName(name);
+  if (!target) return null;
+  const opts = [...parshaSel.options].filter(o => o.value && o.value !== "__ALL__");
+  const exact = opts.find(o => normalizeParshaName(o.value) === target);
+  if (exact) return exact;
+  let best = null, bestD = 99, tie = false;
+  for (const o of opts) {
+    const d = _tmLev(normalizeParshaName(o.value), target);
+    if (d < bestD) { best = o; bestD = d; tie = false; }
+    else if (d === bestD) { tie = true; }
+  }
+  return (best && !tie && bestD <= 2) ? best : null;
 }
 
 
@@ -2731,33 +2766,45 @@ function getThisWeeksParsha() {
 }
 
 async function _fetchThisWeeksParsha() {
-  // NYC / Diaspora (GeoNames ID 5128581)
-  const url = "https://www.hebcal.com/shabbat?cfg=json&geonameid=5128581";
-  const r = await fetch(url);
-  if (!r.ok) throw new Error("Hebcal fetch failed");
+  const pad = n => String(n).padStart(2, "0");
+  const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  const clean = t => String(t || "").replace(/^Parashat\s+/i, "").trim();
+  const todayStr = ymd(new Date());
 
-  const j = await r.json();
-  let item = (j.items || []).find(it => it.category === "parashat");
-
-  // Fallback: the /shabbat feed can return no parsha (e.g. around Yom Tov).
-  // Ask Hebcal's calendar for the next Shabbos' parsha by date range instead.
-  if (!item?.title) {
-    try {
-      const pad = n => String(n).padStart(2, "0");
-      const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
-      const start = new Date(), end = new Date(Date.now() + 14 * 86400000);
-      const u2 = "https://www.hebcal.com/hebcal?v=1&cfg=json&s=on&i=off&start=" + ymd(start) + "&end=" + ymd(end);
-      const r2 = await fetch(u2);
-      if (r2.ok) {
-        const j2 = await r2.json();
-        item = (j2.items || []).find(it => it.category === "parashat");
+  // 1) Primary: Hebcal's calendar for the next two weeks, picking the first
+  //    parsha dated today or later. Date-explicit, and never served from cache.
+  try {
+    const end = new Date(Date.now() + 14 * 86400000);
+    const u = "https://www.hebcal.com/hebcal?v=1&cfg=json&s=on&i=off&start=" + todayStr + "&end=" + ymd(end);
+    const r = await fetch(u, { cache: "no-store" });
+    if (r.ok) {
+      const j = await r.json();
+      const items = (j.items || [])
+        .filter(it => it.category === "parashat" && it.title && (!it.date || String(it.date).slice(0, 10) >= todayStr))
+        .sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")));
+      if (items.length) {
+        const name = clean(items[0].title);
+        console.info("This week's parsha from Hebcal:", name, items[0].date);
+        return name;
       }
-    } catch (e) { console.warn("Hebcal fallback failed:", e); }
-  }
-  if (!item?.title) return "";
+    }
+  } catch (e) { console.warn("Hebcal calendar lookup failed:", e); }
 
-  // "Parashat Beshalach" → "Beshalach"
-  return item.title.replace(/^Parashat\s+/i, "").trim();
+  // 2) Fallback: Hebcal's /shabbat feed (NYC / Diaspora, GeoNames 5128581)
+  try {
+    const r = await fetch("https://www.hebcal.com/shabbat?cfg=json&geonameid=5128581", { cache: "no-store" });
+    if (r.ok) {
+      const j = await r.json();
+      const item = (j.items || []).find(it => it.category === "parashat" && it.title);
+      if (item) {
+        const name = clean(item.title);
+        console.info("This week's parsha from Hebcal (shabbat feed):", name);
+        return name;
+      }
+    }
+  } catch (e) { console.warn("Hebcal shabbat feed failed:", e); }
+
+  return "";
 }
 
 	
@@ -2799,9 +2846,7 @@ if (fromUrl) {
     const wk = await getThisWeeksParsha();
 
     // Match against dropdown options (normalized)
-    const opt = [...parshaSel.options].find(
-      o => normalizeParshaName(o.value) === normalizeParshaName(wk)
-    );
+    const opt = matchParshaOption(wk);
 
     if (opt) {
       parshaSel.value = opt.value;
