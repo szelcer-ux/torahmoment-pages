@@ -873,7 +873,8 @@
         "type": "audio",
         "title": "Standing up for a chosson",
         "url": "https://www.buzzsprout.com/1899789/episodes/19486163-7-13-2026-shloimy-zelcer-standing-up-for-a-chosson.mp3",
-        "note": "7/13/2026"
+        "note": "7/13/2026",
+        "category": "Halacha"
       },
       {
         "type": "audio",
@@ -886,19 +887,22 @@
         "type": "audio",
         "title": "Jews with tattoos",
         "url": "https://www.buzzsprout.com/1899789/episodes/19253888-5-28-2026-shloimy-zelcer-jews-with-tattoos.mp3",
-        "note": "5/28/2026"
+        "note": "5/28/2026",
+        "category": "Halacha"
       },
       {
         "type": "audio",
         "title": "Can I tell my wife Lashon Harah?",
         "url": "https://www.buzzsprout.com/1899789/episodes/19026462-4-16-2026-shloimy-zelcer-can-i-tell-my-wife-lashon-harah.mp3",
-        "note": "4/16/2026"
+        "note": "4/16/2026",
+        "category": "Halacha"
       },
       {
         "type": "audio",
         "title": "Is Iced Coffee the answer?",
         "url": "https://www.buzzsprout.com/1899789/episodes/18836258-3-12-2026-shloimy-zelcer-is-iced-coffee-the-answer.mp3",
-        "note": "3/12/2026"
+        "note": "3/12/2026",
+        "category": "Halacha"
       },
       {
         "type": "audio",
@@ -911,7 +915,8 @@
         "type": "audio",
         "title": "A misconception regarding tevilas keilim",
         "url": "https://www.buzzsprout.com/1899789/episodes/11006941-7-21-2022-shloimy-zelcer.mp3",
-        "note": "7/21/2022"
+        "note": "7/21/2022",
+        "category": "Halacha"
       },
       {
         "type": "audio",
@@ -929,7 +934,8 @@
         "type": "audio",
         "title": "Kol Isha",
         "url": "https://2mishnasaday.com/wp-content/uploads/KOLISHA.mp3",
-        "note": "2/20/2020"
+        "note": "2/20/2020",
+        "category": "Halacha"
       }
     ]
   },
