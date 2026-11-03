@@ -590,7 +590,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241117-WA0047.mp3",
     "date": "2024-11-19T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the kindness of the camel"
+    "title_lc": "the kindness of the camel",
+    "cat_lc": "middos"
   },
   {
     "id": "one-26",
@@ -600,7 +601,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241117-WA0031.mp3",
     "date": "2024-11-21T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the importance of our words"
+    "title_lc": "the importance of our words",
+    "cat_lc": "parsha chayei sara"
   },
   {
     "id": "one-27",
@@ -610,7 +612,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241122-WA0030.mp3",
     "date": "2024-11-22T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "connecting with nature"
+    "title_lc": "connecting with nature",
+    "cat_lc": "parsha chayei sara"
   },
   {
     "id": "one-28",
@@ -620,7 +623,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241124-WA0022.mp3",
     "date": "2024-11-25T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "dovids harp"
+    "title_lc": "dovids harp",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-29",
@@ -630,7 +634,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241125-WA0024.mp3",
     "date": "2024-11-27T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "feeling other people's pain"
+    "title_lc": "feeling other people's pain",
+    "cat_lc": "parsha toldos"
   },
   {
     "id": "one-30",
@@ -640,7 +645,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241128-WA0014.mp3",
     "date": "2024-11-28T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "snow like wool"
+    "title_lc": "snow like wool",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-31",
@@ -650,7 +656,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241201-WA0035.mp3",
     "date": "2024-12-02T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "keep spinning that dreidel"
+    "title_lc": "keep spinning that dreidel",
+    "cat_lc": "yomim tovim chanukah"
   },
   {
     "id": "one-32",
@@ -660,7 +667,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241201-WA0017.mp3",
     "date": "2024-12-03T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "in g-d we trust"
+    "title_lc": "in g-d we trust",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-33",
@@ -670,7 +678,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241205-WA0016.mp3",
     "date": "2024-12-05T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the importance of sleep"
+    "title_lc": "the importance of sleep",
+    "cat_lc": "parsha vayeitzei"
   },
   {
     "id": "one-34",
@@ -680,7 +689,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241201-WA0016.mp3",
     "date": "2024-12-09T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "always strive to be a \"talmid\" chocham"
+    "title_lc": "always strive to be a \"talmid\" chocham",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-35",
@@ -690,7 +700,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241209-WA0026.mp3",
     "date": "2024-12-10T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "chumras at some one else's expense"
+    "title_lc": "chumras at some one else's expense",
+    "cat_lc": "parsha vayishlach"
   },
   {
     "id": "one-36",
@@ -700,7 +711,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241212-WA0014.mp3",
     "date": "2024-12-12T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the true miracle of chanukah"
+    "title_lc": "the true miracle of chanukah",
+    "cat_lc": "yomim tovim chanukah"
   },
   {
     "id": "one-37",
@@ -710,7 +722,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241216-WA0005.mp3",
     "date": "2024-12-16T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the menorah as a unifying force"
+    "title_lc": "the menorah as a unifying force",
+    "cat_lc": "yomim tovim chanukah"
   },
   {
     "id": "one-38",
@@ -720,7 +733,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241217-WA0007.mp3",
     "date": "2024-12-17T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "see the miracle in the dreidel"
+    "title_lc": "see the miracle in the dreidel",
+    "cat_lc": "yomim tovim chanukah"
   },
   {
     "id": "one-39",
@@ -730,7 +744,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241218-WA0017.mp3",
     "date": "2024-12-19T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the power of kindness"
+    "title_lc": "the power of kindness",
+    "cat_lc": "parsha vayeishev"
   },
   {
     "id": "one-40",
@@ -740,7 +755,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241223-WA0010.mp3",
     "date": "2024-12-23T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "inspiration as flash of lightning"
+    "title_lc": "inspiration as flash of lightning",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-41",
@@ -750,7 +766,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241215-WA0036.mp3",
     "date": "2024-12-25T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "first light of chanukah"
+    "title_lc": "first light of chanukah",
+    "cat_lc": "yomim tovim chanukah"
   },
   {
     "id": "one-42",
@@ -760,7 +777,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241225-WA0114.mp3",
     "date": "2024-12-26T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "focusing on the good"
+    "title_lc": "focusing on the good",
+    "cat_lc": "yomim tovim chanukah"
   },
   {
     "id": "one-43",
@@ -770,7 +788,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241230-WA0018.mp3",
     "date": "2024-12-30T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "serving hashem in our own way"
+    "title_lc": "serving hashem in our own way",
+    "cat_lc": "parsha vayigash"
   },
   {
     "id": "one-44",
@@ -780,7 +799,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241231-WA0032.mp3",
     "date": "2024-12-31T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "feeling anothers pain"
+    "title_lc": "feeling anothers pain",
+    "cat_lc": "parsha vayigash"
   },
   {
     "id": "one-45",
@@ -790,7 +810,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20241222-WA0022.mp3",
     "date": "2025-01-02T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "a shift in the balance of greatness"
+    "title_lc": "a shift in the balance of greatness",
+    "cat_lc": "yomim tovim chanukah"
   },
   {
     "id": "one-46",
@@ -800,7 +821,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250105-WA0046.mp3",
     "date": "2025-01-06T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "the uniqueness of ephraim and menashe"
+    "title_lc": "the uniqueness of ephraim and menashe",
+    "cat_lc": "parsha vayechi"
   },
   {
     "id": "one-47",
@@ -810,7 +832,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250107-WA0020.mp3",
     "date": "2025-01-07T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "was yosef liked or disliked?"
+    "title_lc": "was yosef liked or disliked?",
+    "cat_lc": "parsha vayechi"
   },
   {
     "id": "one-48",
@@ -820,7 +843,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250107-WA0012.mp3",
     "date": "2025-01-09T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "how long will hashem hide"
+    "title_lc": "how long will hashem hide",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-49",
