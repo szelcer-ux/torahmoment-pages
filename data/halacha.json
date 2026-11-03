@@ -44,8 +44,7 @@
             "type": "note",
             "text": "Article in Hakirah regarding Atifas Tallis",
             "linkText": "View article",
-            "url": "https://hakirah.org/Vol%207%20BergerZelcer.pdf",
-            "category": "Tefila"
+            "url": "https://hakirah.org/Vol%207%20BergerZelcer.pdf"
           }
         ]
       },
@@ -98,8 +97,7 @@
             "type": "note",
             "text": "For an explanation of each bracha of Shemoneh Esrei, see this playlist.",
             "linkText": "View playlist",
-            "url": "https://torahmoment.com/tefilah.html",
-            "category": "Tefila"
+            "url": "https://torahmoment.com/tefilah.html"
           }
         ]
       },
@@ -232,8 +230,7 @@
             "type": "note",
             "text": "Thoughts on Our Daily Prayers: A Commentary on the Siddur (Contributing author)",
             "linkText": "Link to book",
-            "url": "https://a.co/d/0adoS6rB",
-            "category": "Tefila"
+            "url": "https://a.co/d/0adoS6rB"
           }
         ]
       }
@@ -943,8 +940,7 @@
         "type": "note",
         "text": "Additional Parsha-related shiurim.",
         "linkText": "Main Parsha page",
-        "url": "/parsha.html",
-        "category": "Parsha"
+        "url": "/parsha.html"
       },
       {
         "type": "parsha-audio",
