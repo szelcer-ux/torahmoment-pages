@@ -199,41 +199,51 @@
     "date": "8/25/2026",
     "description": "Secret curses",
     "filename": "PTT-20260825-WA0012.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260825-WA0012.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260825-WA0012.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Ki Savo"
   },
   {
     "date": "8/19/2026",
     "description": "Helping is good for everyone",
     "filename": "PTT-20260819-WA0005.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260819-WA0005.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260819-WA0005.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Ki Seitzei"
   },
   {
     "id": 0,
     "date": "9/8/2024",
     "description": "Elul - removing the negative and adding the positive",
     "filename": "PTT-20240906-WA0064.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240906-WA0064.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240906-WA0064.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Elul/Tishrei"
   },
   {
     "id": 1,
     "date": "9/9/2024",
     "description": "שבתי בבית ה",
     "filename": "PTT-20240908-WA0046.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240908-WA0046.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240908-WA0046.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Elul/Tishrei"
   },
   {
     "id": 2,
     "date": "9/10/2024",
     "description": "Having the proper perspective",
     "filename": "PTT-20240910-WA0012.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0012.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0012.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 3,
     "date": "9/11/2024",
     "description": "Something to think about while saying שְׁמַע יִשְׂרָאֵל",
     "filename": "PTT-20240910-WA0059.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0059.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20240910-WA0059.mp3",
+    "category": "Tefila"
   },
   {
     "id": 4,
