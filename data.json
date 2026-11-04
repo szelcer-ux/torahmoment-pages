@@ -729,7 +729,8 @@
     "date": "2/6/2025",
     "description": "Creating zchus avos for the future",
     "filename": "PTT-20250206-WA0041.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250206-WA0041.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250206-WA0041.mp3",
+    "category": "Chinuch"
   },
   {
     "id": 61,
@@ -750,7 +751,9 @@
     "date": "2/13/2025",
     "description": "Just do it!",
     "filename": "PTT-20250213-WA0012.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250213-WA0012.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250213-WA0012.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Yisro"
   },
   {
     "id": 64,
@@ -870,7 +873,8 @@
     "date": "3/24/2025",
     "description": "A broad life not a double life",
     "filename": "PTT-20250318-WA0006.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250318-WA0006.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250318-WA0006.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 79,
@@ -1045,14 +1049,16 @@
     "date": "5/26/2025",
     "description": "לב חכם",
     "filename": "PTT-20250525-WA0114.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250525-WA0114.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250525-WA0114.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 100,
     "date": "5/28/2025",
     "description": "עושה שמים וארץ",
     "filename": "PTT-20250527-WA0116.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250527-WA0116.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250527-WA0116.mp3",
+    "category": "Tefila"
   },
   {
     "id": 101,
