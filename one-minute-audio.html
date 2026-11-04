@@ -874,6 +874,7 @@ fetch(DATA_URL, { cache:"no-store" })
     items = d.map((x, idx) => ({
       ...x,
       description: String(x.description||"").replace(/\s*<This message was edited>\s*/gi, "").trim(),
+      categoryDetail: (x.category==="Yomim Tovim" && /^(Rosh Hashana|Yom Kippur|Sukkos)$/.test(x.categoryDetail||"")) ? "Elul/Tishrei" : x.categoryDetail,
       id: x.id ?? idx,
       _sortKey: dateToKey(x.date)
     }));

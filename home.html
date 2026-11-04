@@ -104,10 +104,12 @@ const getJ=u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.jso
 let ITEMS=[],COUNTS=null,cats={},wp='',wps=[],booted=false;
 const fixCat=c=>({chinuch:'Chinuch',Tefilah:'Tefila','Yomim Tovim':'Shabbos and Yom Tov','Shabbos':'Shabbos and Yom Tov'}[c]||c);
 const HM=['Hashkafa','Middos','Chinuch'];
+const TISHREI={'Rosh Hashana':1,'Yom Kippur':1,'Sukkos':1};
 function add(k,t,u,d,c,s,extra){c=fixCat(c);s=s||'';
  if(HM.includes(c)){s=c;c='Hashkafa/Middos'}        // merged card: the old category becomes the filter chip
  else if(c==='Tzedakah'){s='Tzedakah';c='Halacha'}   // Tzedakah lives inside Halacha
  if(c==='Halacha'&&!s)s='General halacha';
+ if(c==='Shabbos and Yom Tov'&&TISHREI[s])s='Elul/Tishrei';   // Rosh Hashana, Yom Kippur and Sukkos all live under Elul/Tishrei
  ITEMS.push(Object.assign({k,t,u,d,c,s},extra||{}))}
 async function boot(){
  const [om,hal,si,sc,tf]=await Promise.allSettled([getJ('/data.json'),getJ('/data/halacha.json'),getJ('/data/search-index.json'),getJ('/data/site-counts.json'),getJ('/data/tefilah-extra.json')]);
