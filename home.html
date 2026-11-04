@@ -34,7 +34,7 @@ h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
 .wk-side{background:rgba(255,255,255,.12);border-radius:14px;padding:14px;font-size:14px}
 .wk-side .row{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.18)}.wk-side .row:last-child{border:0}
 .wk-side .row span{opacity:.85;font-size:12.5px}.wk-side audio{width:100%;height:34px;margin-top:6px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .tile{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:16px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:4px;text-align:left;color:inherit;font-size:inherit}
 .tile:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(15,23,42,.08);border-color:#99d5cf}
 .tile .ic{font-size:26px;width:46px;height:46px;border-radius:12px;background:#ecfdf5;display:grid;place-items:center;margin-bottom:6px}
@@ -80,9 +80,8 @@ const SEFARIM={"Bereishis":["Bereishis","Noach","Lech Lecha","Vayeira","Chayei S
 const ALLP=[].concat(...Object.values(SEFARIM));
 const FLAG='<svg width="30" height="22" viewBox="-15 -11 30 22"><rect x="-14" y="-10" width="28" height="20" rx="2" fill="#fff" stroke="#cbd5e1" stroke-width=".8"/><rect x="-14" y="-7.4" width="28" height="3" fill="#2563eb"/><rect x="-14" y="4.4" width="28" height="3" fill="#2563eb"/><g fill="none" stroke="#2563eb" stroke-width="1.1"><path d="M0-5.2 4.5 2.6H-4.5Z"/><path d="M0 5.2-4.5-2.6H4.5Z"/></g></svg>';
 const META={'Parsha':['📖','Videos, audio and overviews for every parsha'],'Shabbos and Yom Tov':['🕎','Shabbos, Yomim Tovim and the chagim'],'Tefila':['🙏','Davening, brachos and tefila videos'],
-'Hashkafa':['💡','Big ideas and perspective'],'Middos':['🌱','Character and growth'],'Israel':[FLAG,'Eretz Yisroel and Am Yisroel'],'Chinuch':['👨‍👩‍👧','Raising children'],
-'Talmud Torah':['📚','Learning Torah'],'Tzedakah':['🤲','Giving and chesed'],'Jewish Timeline':['⏳','Jewish history'],'Halacha':['⚖️','Halacha and minhagim'],'Mishna':['📜','2 Mishnas a Day']};
-const ORDER=['Parsha','Shabbos and Yom Tov','Tefila','Hashkafa','Middos','Chinuch','Israel','Talmud Torah','Halacha','Mishna','Tzedakah','Jewish Timeline'];
+'Hashkafa/Middos':['💡','Big ideas, character and raising children'],'Israel':[FLAG,'Eretz Yisroel and Am Yisroel'],'Talmud Torah':['📚','Learning Torah'],'Jewish Timeline':['⏳','Jewish history'],'Halacha':['⚖️','Halacha, minhagim and tzedakah'],'Mishna':['📜','2 Mishnas a Day']};
+const ORDER=['Parsha','Shabbos and Yom Tov','Tefila','Hashkafa/Middos','Israel','Talmud Torah','Halacha','Mishna','Jewish Timeline'];
 const IC_A='<svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5" fill="#fff" stroke="none"/><rect x="17" y="14" width="4" height="6" rx="1.5" fill="#fff" stroke="none"/></svg>';
 const IC_V='<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="#fff" stroke-width="2"/><path d="M10 9.2v5.6l5-2.8z"/></svg>';
 const IC_P='<svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1" fill="#fff" stroke="none"/><rect x="14" y="5" width="4" height="14" rx="1" fill="#fff" stroke="none"/></svg>';
@@ -104,7 +103,12 @@ const pretty=d=>d?MON[+d.slice(5,7)-1]+' '+(+d.slice(8,10))+', '+d.slice(0,4):''
 const getJ=u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
 let ITEMS=[],COUNTS=null,cats={},wp='',wps=[],booted=false;
 const fixCat=c=>({chinuch:'Chinuch',Tefilah:'Tefila','Yomim Tovim':'Shabbos and Yom Tov','Shabbos':'Shabbos and Yom Tov'}[c]||c);
-function add(k,t,u,d,c,s,extra){ITEMS.push(Object.assign({k,t,u,d,c:fixCat(c),s:s||''},extra||{}))}
+const HM=['Hashkafa','Middos','Chinuch'];
+function add(k,t,u,d,c,s,extra){c=fixCat(c);s=s||'';
+ if(HM.includes(c)){s=c;c='Hashkafa/Middos'}        // merged card: the old category becomes the filter chip
+ else if(c==='Tzedakah'){s='Tzedakah';c='Halacha'}   // Tzedakah lives inside Halacha
+ if(c==='Halacha'&&!s)s='General halacha';
+ ITEMS.push(Object.assign({k,t,u,d,c,s},extra||{}))}
 async function boot(){
  const [om,hal,si,sc,tf]=await Promise.allSettled([getJ('/data.json'),getJ('/data/halacha.json'),getJ('/data/search-index.json'),getJ('/data/site-counts.json'),getJ('/data/tefilah-extra.json')]);
  if(om.value)om.value.forEach(x=>add('a',String(x.description||'').replace(/\s*<This message was edited>\s*/gi,'').trim(),x.url,pd(x.date),x.category||'More One-Minute',x.category==='Parsha'?bestParsha(x.categoryDetail)||x.categoryDetail:x.categoryDetail,{om:1}));
@@ -120,7 +124,7 @@ const cnt=c=>c==='Mishna'?mishnaN():(cats[c]||[]).length;
 const topicList=()=>{const l=ORDER.filter(c=>cnt(c)>0);Object.keys(cats).filter(c=>c!=='More One-Minute'&&!ORDER.includes(c)).forEach(c=>l.push(c));return l};
 function tiles(){$('tiles').innerHTML=topicList().map(c=>{const m=META[c]||['📁',''];return`<button class="tile" data-c="${esc(c)}"><div class="ic">${m[0]}</div><b>${esc(c)}</b><span>${esc(m[1])}</span><em>${cnt(c)} shiurim</em></button>`}).join('')}
 $('tiles').onclick=e=>{const t=e.target.closest('.tile');if(!t)return;t.dataset.c==='Mishna'?location.href='/mishna.html':go(t.dataset.c)};
-function quick(){$('quick').innerHTML=['Parsha','Shabbos and Yom Tov','Tefila','Hashkafa','Middos','Mishna'].filter(c=>cnt(c)).map(c=>`<button class="chip" data-c="${c}">${META[c][0]} ${c}</button>`).join('')}
+function quick(){$('quick').innerHTML=['Parsha','Shabbos and Yom Tov','Tefila','Hashkafa/Middos','Mishna'].filter(c=>cnt(c)).map(c=>`<button class="chip" data-c="${c}">${META[c][0]} ${c}</button>`).join('')}
 $('quick').onclick=e=>{const c=e.target.closest('.chip');if(!c)return;c.dataset.c==='Mishna'?location.href='/mishna.html':go(c.dataset.c)};
 function row(i,showCat){const v=i.k==='v';return`<div class="it"><div class="h"><button class="pl ${v?'v':''}" data-u="${esc(i.u)}" data-v="${v?1:0}" aria-label="${v?'Watch video':'Play audio'}">${v?IC_V:IC_A}</button><div class="tt"><div>${esc(i.t)}</div><small>${pretty(i.d)}</small></div>${i.s&&i.s!=='Videos'&&showCat!==0?`<span class="tag" data-go="${esc(i.c)}|${esc(i.s)}">${esc(i.s)}</span>`:''}${showCat?`<span class="tag" data-go="${esc(i.c)}|">${esc(i.c)}</span>`:''}</div></div>`}
 function wire(root){root.querySelectorAll('.pl').forEach(b=>b.onclick=()=>{const it=b.closest('.it'),a=it.querySelector('audio');
