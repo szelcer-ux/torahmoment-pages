@@ -42,7 +42,7 @@ h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
 .list{display:flex;flex-direction:column;gap:8px}
 .it{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px}
 .it .h{display:flex;gap:12px;align-items:center}
-.pl{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:14px;cursor:pointer;display:grid;place-items:center}.pl.v{background:#dc2626}
+.pl{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:14px;cursor:pointer;display:grid;place-items:center}.pl svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.pl.v{background:#dc2626;border-radius:10px}.pl.v svg{fill:#fff;stroke:none}
 .it .tt{flex:1;min-width:0}.it .tt div{font-weight:600;font-size:15px;line-height:1.3}.it .tt small{color:var(--muted);font-size:12.5px}
 .tag{font-size:11.5px;background:#f0fdfa;color:var(--ink);border-radius:999px;padding:3px 9px;font-weight:700;white-space:nowrap;cursor:pointer}
 .it audio{width:100%;margin-top:10px}
@@ -68,7 +68,7 @@ h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
   <h2 class="sec">Newest <a href="/weekly.html">This week's digest →</a></h2><div class="list" id="newest"></div>
  </div>
  <div id="view" hidden></div>
- <div class="wa"><div class="ic">💬</div><div><b>Get a new idea every day</b><p>Join the TorahMoment WhatsApp group.</p></div><a href="https://chat.whatsapp.com/HBYk1DoPNuY10MT9PB4nfm">Join WhatsApp</a></div>
+ <div class="wa"><div class="ic">💬</div><div><b>Learn every day on WhatsApp</b><p>Daily Torah programs you can join.</p></div><a href="/torahprograms.html">See all WhatsApp programs</a></div>
  <div class="more"><a href="/halacha.html">Hilchos Shabbos</a><a href="/infographics.html">Visual Divrei Torah</a><a href="/one-minute-audio.html">All one-minute clips</a><a href="/published.html">Published</a><a href="/about.html">About</a></div>
 </div>
 <script>
@@ -78,23 +78,32 @@ const SEFARIM={"Bereishis":["Bereishis","Noach","Lech Lecha","Vayeira","Chayei S
 "Bamidbar":["Bamidbar","Nasso","Behaaloscha","Shelach","Korach","Chukas","Balak","Pinchas","Matos","Massei"],
 "Devarim":["Devarim","Vaeschanan","Eikev","Reeh","Shoftim","Ki Seitzei","Ki Savo","Nitzavim","Vayeilech","Haazinu","Vezos Haberacha"]};
 const ALLP=[].concat(...Object.values(SEFARIM));
-const META={'Parsha':['📖','Videos, audio and overviews for every parsha'],'Yomim Tovim':['🕎','Shiurim for the Yomim Tovim'],'Tefila':['🙏','Davening, brachos and tefila videos'],
-'Hashkafa':['💡','Big ideas and perspective'],'Middos':['🌱','Character and growth'],'Israel':['🇮🇱','Eretz Yisroel and Am Yisroel'],'Chinuch':['👨‍👩‍👧','Raising children'],
-'Talmud Torah':['📚','Learning Torah'],'Tzedakah':['🤲','Giving and chesed'],'Jewish Timeline':['⏳','Jewish history'],'Shabbos':['🕯️','Hilchos Shabbos'],
-'Halacha':['⚖️','Halacha and minhagim'],'Mishna':['📜','2 Mishnas a Day']};
-const ORDER=['Parsha','Yomim Tovim','Tefila','Hashkafa','Middos','Chinuch','Israel','Talmud Torah','Halacha','Shabbos','Mishna','Tzedakah','Jewish Timeline'];
+const FLAG='<svg width="30" height="22" viewBox="-15 -11 30 22"><rect x="-14" y="-10" width="28" height="20" rx="2" fill="#fff" stroke="#cbd5e1" stroke-width=".8"/><rect x="-14" y="-7.4" width="28" height="3" fill="#2563eb"/><rect x="-14" y="4.4" width="28" height="3" fill="#2563eb"/><g fill="none" stroke="#2563eb" stroke-width="1.1"><path d="M0-5.2 4.5 2.6H-4.5Z"/><path d="M0 5.2-4.5-2.6H4.5Z"/></g></svg>';
+const META={'Parsha':['📖','Videos, audio and overviews for every parsha'],'Shabbos and Yom Tov':['🕎','Shabbos, Yomim Tovim and the chagim'],'Tefila':['🙏','Davening, brachos and tefila videos'],
+'Hashkafa':['💡','Big ideas and perspective'],'Middos':['🌱','Character and growth'],'Israel':[FLAG,'Eretz Yisroel and Am Yisroel'],'Chinuch':['👨‍👩‍👧','Raising children'],
+'Talmud Torah':['📚','Learning Torah'],'Tzedakah':['🤲','Giving and chesed'],'Jewish Timeline':['⏳','Jewish history'],'Halacha':['⚖️','Halacha and minhagim'],'Mishna':['📜','2 Mishnas a Day']};
+const ORDER=['Parsha','Shabbos and Yom Tov','Tefila','Hashkafa','Middos','Chinuch','Israel','Talmud Torah','Halacha','Mishna','Tzedakah','Jewish Timeline'];
+const IC_A='<svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5" fill="#fff" stroke="none"/><rect x="17" y="14" width="4" height="6" rx="1.5" fill="#fff" stroke="none"/></svg>';
+const IC_V='<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="#fff" stroke-width="2"/><path d="M10 9.2v5.6l5-2.8z"/></svg>';
+const IC_P='<svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1" fill="#fff" stroke="none"/><rect x="14" y="5" width="4" height="14" rx="1" fill="#fff" stroke="none"/></svg>';
 const $=id=>document.getElementById(id),esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const nk=s=>String(s||'').toLowerCase().replace(/[^a-z]/g,'');
 function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let p=[];for(let j=0;j<=n;j++)p[j]=j;for(let i=1;i<=m;i++){let c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
 const PN=ALLP.map(nk);
-function bestParsha(name){const k=nk(String(name||'').replace(/^parshas\s+/i,''));if(!k)return'';let bi=-1,bd=99;PN.forEach((p,i)=>{const d=lev(k,p);if(d<bd){bd=d;bi=i}});return bd<=3?ALLP[bi]:''}
+const PAL={bereshit:'Bereishis',bereishit:'Bereishis',bereshis:'Bereishis',bereishis:'Bereishis',noach:'Noach',noah:'Noach',lechlecha:'Lech Lecha',lechlicha:'Lech Lecha',lechlcha:'Lech Lecha',vayera:'Vayeira',vayeira:'Vayeira',chayeisarah:'Chayei Sara',chayeisara:'Chayei Sara',chayesarah:'Chayei Sara',chayesara:'Chayei Sara',toldot:'Toldos',toldos:'Toldos',vayetzei:'Vayeitzei',vayetze:'Vayeitzei',vayeitzei:'Vayeitzei',vayeitze:'Vayeitzei',vayishlach:'Vayishlach',vayeshev:'Vayeishev',vayeishev:'Vayeishev',miketz:'Miketz',mikeitz:'Miketz',mikets:'Miketz',mekeitz:'Miketz',vayigash:'Vayigash',vayechi:'Vayechi',vayehi:'Vayechi',vayichi:'Vayechi',
+shemot:'Shemos',shemos:'Shemos',vaera:'Vaeira',vaeira:'Vaeira',bo:'Bo',beshalach:'Beshalach',beshalah:'Beshalach',bshalach:'Beshalach',yitro:'Yisro',yisro:'Yisro',mishpatim:'Mishpatim',terumah:'Terumah',truma:'Terumah',tetzaveh:'Tetzaveh',tetzave:'Tetzaveh',titzaveh:'Tetzaveh',kitisa:'Ki Sisa',kisisa:'Ki Sisa',kisissa:'Ki Sisa',kitissa:'Ki Sisa',vayakhel:'Vayakhel',vayakel:'Vayakhel',pekudei:'Pekudei',pekudey:'Pekudei',
+vayikra:'Vayikra',tzav:'Tzav',shmini:'Shemini',shemini:'Shemini',tazria:'Tazria',tazriya:'Tazria',metzora:'Metzora',metzorah:'Metzora',achreimot:'Achrei Mos',achareimot:'Achrei Mos',acharemot:'Achrei Mos',achreimos:'Achrei Mos',acharimos:'Achrei Mos',achrei:'Achrei Mos',acharei:'Achrei Mos',kedoshim:'Kedoshim',kedoshem:'Kedoshim',emor:'Emor',behar:'Behar',bechukotai:'Bechukosai',bechukosai:'Bechukosai',bechukotay:'Bechukosai',bechukosay:'Bechukosai',
+bamidbar:'Bamidbar',nasso:'Nasso',naso:'Nasso',behaalotcha:'Behaaloscha',behaaloscha:'Behaaloscha',behaalosecha:'Behaaloscha',behaalotecha:'Behaaloscha',shelach:'Shelach',shlach:'Shelach',shelachlecha:'Shelach',shlachlecha:'Shelach',korach:'Korach',korah:'Korach',chukat:'Chukas',chukas:'Chukas',chukkat:'Chukas',chukkas:'Chukas',balak:'Balak',pinchas:'Pinchas',pinchass:'Pinchas',matot:'Matos',matos:'Matos',mattot:'Matos',mattos:'Matos',masei:'Massei',massei:'Massei',maasei:'Massei',
+devarim:'Devarim',vaetchanan:'Vaeschanan',vaeschanan:'Vaeschanan',vaetchannan:'Vaeschanan',eikev:'Eikev',ekev:'Eikev',reeh:'Reeh',reeh2:'Reeh',shoftim:'Shoftim',kiteitzei:'Ki Seitzei',kiteitze:'Ki Seitzei',kiteizei:'Ki Seitzei',kiteze:'Ki Seitzei',kiseitzei:'Ki Seitzei',kiseitze:'Ki Seitzei',kitetzei:'Ki Seitzei',kitavo:'Ki Savo',kisavo:'Ki Savo',kitovo:'Ki Savo',nitzavim:'Nitzavim',nitzavim2:'Nitzavim',vayeilech:'Vayeilech',vayelech:'Vayeilech',haazinu:'Haazinu',haazenu:'Haazinu',vezotthaberakhah:'Vezos Haberacha',vezothaberakhah:'Vezos Haberacha',vezoshaberacha:'Vezos Haberacha',vezothaberachah:'Vezos Haberacha',vzothaberakhah:'Vezos Haberacha',vezotheberakhah:'Vezos Haberacha',vezoshabracha:'Vezos Haberacha'};
+// Hebcal/other spellings -> our names, then closest spelling as a fallback
+function bestParsha(name){const k=nk(String(name||'').replace(/^(parashat|parshas|parsha)\s+/i,''));if(!k)return'';if(PAL[k])return PAL[k];let bi=-1,bd=99;PN.forEach((p,i)=>{const d=lev(k,p);if(d<bd){bd=d;bi=i}});return bd<=3?ALLP[bi]:''}
 const bookOf=p=>Object.keys(SEFARIM).find(b=>SEFARIM[b].includes(p))||'';
 function pd(x){if(!x)return'';const t=String(x);let m=t.match(/^(\d{4})-(\d\d)-(\d\d)/);if(m)return m[1]+'-'+m[2]+'-'+m[3];m=t.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);if(m){const y=m[3].length==2?'20'+m[3]:m[3];return y+'-'+m[1].padStart(2,'0')+'-'+m[2].padStart(2,'0')}return''}
 const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const pretty=d=>d?MON[+d.slice(5,7)-1]+' '+(+d.slice(8,10))+', '+d.slice(0,4):'';
 const getJ=u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
-let ITEMS=[],COUNTS=null,cats={},wp='',booted=false;
-const fixCat=c=>({chinuch:'Chinuch',Tefilah:'Tefila'}[c]||c);
+let ITEMS=[],COUNTS=null,cats={},wp='',wps=[],booted=false;
+const fixCat=c=>({chinuch:'Chinuch',Tefilah:'Tefila','Yomim Tovim':'Shabbos and Yom Tov','Shabbos':'Shabbos and Yom Tov'}[c]||c);
 function add(k,t,u,d,c,s,extra){ITEMS.push(Object.assign({k,t,u,d,c:fixCat(c),s:s||''},extra||{}))}
 async function boot(){
  const [om,hal,si,sc,tf]=await Promise.allSettled([getJ('/data.json'),getJ('/data/halacha.json'),getJ('/data/search-index.json'),getJ('/data/site-counts.json'),getJ('/data/tefilah-extra.json')]);
@@ -111,24 +120,33 @@ const cnt=c=>c==='Mishna'?mishnaN():(cats[c]||[]).length;
 const topicList=()=>{const l=ORDER.filter(c=>cnt(c)>0);Object.keys(cats).filter(c=>c!=='More One-Minute'&&!ORDER.includes(c)).forEach(c=>l.push(c));return l};
 function tiles(){$('tiles').innerHTML=topicList().map(c=>{const m=META[c]||['📁',''];return`<button class="tile" data-c="${esc(c)}"><div class="ic">${m[0]}</div><b>${esc(c)}</b><span>${esc(m[1])}</span><em>${cnt(c)} shiurim</em></button>`}).join('')}
 $('tiles').onclick=e=>{const t=e.target.closest('.tile');if(!t)return;t.dataset.c==='Mishna'?location.href='/mishna.html':go(t.dataset.c)};
-function quick(){$('quick').innerHTML=['Parsha','Yomim Tovim','Tefila','Hashkafa','Middos','Mishna'].filter(c=>cnt(c)).map(c=>`<button class="chip" data-c="${c}">${META[c][0]} ${c}</button>`).join('')}
+function quick(){$('quick').innerHTML=['Parsha','Shabbos and Yom Tov','Tefila','Hashkafa','Middos','Mishna'].filter(c=>cnt(c)).map(c=>`<button class="chip" data-c="${c}">${META[c][0]} ${c}</button>`).join('')}
 $('quick').onclick=e=>{const c=e.target.closest('.chip');if(!c)return;c.dataset.c==='Mishna'?location.href='/mishna.html':go(c.dataset.c)};
-function row(i,showCat){const v=i.k==='v';return`<div class="it"><div class="h"><button class="pl ${v?'v':''}" data-u="${esc(i.u)}" data-v="${v?1:0}" aria-label="${v?'Watch':'Play'}">▶</button><div class="tt"><div>${esc(i.t)}</div><small>${pretty(i.d)}</small></div>${i.s&&i.s!=='Videos'&&showCat!==0?`<span class="tag" data-go="${esc(i.c)}|${esc(i.s)}">${esc(i.s)}</span>`:''}${showCat?`<span class="tag" data-go="${esc(i.c)}|">${esc(i.c)}</span>`:''}</div></div>`}
+function row(i,showCat){const v=i.k==='v';return`<div class="it"><div class="h"><button class="pl ${v?'v':''}" data-u="${esc(i.u)}" data-v="${v?1:0}" aria-label="${v?'Watch video':'Play audio'}">${v?IC_V:IC_A}</button><div class="tt"><div>${esc(i.t)}</div><small>${pretty(i.d)}</small></div>${i.s&&i.s!=='Videos'&&showCat!==0?`<span class="tag" data-go="${esc(i.c)}|${esc(i.s)}">${esc(i.s)}</span>`:''}${showCat?`<span class="tag" data-go="${esc(i.c)}|">${esc(i.c)}</span>`:''}</div></div>`}
 function wire(root){root.querySelectorAll('.pl').forEach(b=>b.onclick=()=>{const it=b.closest('.it'),a=it.querySelector('audio');
  if(b.dataset.v==='1'){window.open(b.dataset.u,'_blank','noopener');return}
- if(a){a.pause();a.remove();b.textContent='▶';return}
- document.querySelectorAll('.it audio').forEach(x=>{x.pause();x.closest('.it').querySelector('.pl').textContent='▶';x.remove()});
- const au=document.createElement('audio');au.controls=true;au.autoplay=true;au.src=b.dataset.u;it.appendChild(au);b.textContent='❚❚'});
+ if(a){a.pause();a.remove();b.innerHTML=IC_A;return}
+ document.querySelectorAll('.it audio').forEach(x=>{x.pause();x.closest('.it').querySelector('.pl').innerHTML=IC_A;x.remove()});
+ const au=document.createElement('audio');au.controls=true;au.autoplay=true;au.src=b.dataset.u;it.appendChild(au);b.innerHTML=IC_P});
  root.querySelectorAll('[data-go]').forEach(t=>t.onclick=()=>{const[c,s]=t.dataset.go.split('|');go(c,s)})}
 function newest(){const nw=ITEMS.filter(i=>i.d&&!i.ov).sort((a,b)=>b.d<a.d?-1:b.d>a.d?1:0).slice(0,6);$('newest').innerHTML=nw.map(i=>row(i,1)).join('')||'<div class="empty">Nothing yet.</div>';wire($('newest'))}
 // this week
-function weekCard(){if(!wp||!booted)return;const its=ITEMS.filter(i=>i.c==='Parsha'&&i.s===wp),ov=its.find(i=>i.ov),vids=its.filter(i=>i.vid).sort((a,b)=>b.d<a.d?-1:1),om=its.filter(i=>i.om);
+function weekCard(){if(!wp||!booted)return;const its=ITEMS.filter(i=>i.c==='Parsha'&&wps.includes(i.s)),ov=its.find(i=>i.ov),vids=its.filter(i=>i.vid).sort((a,b)=>b.d<a.d?-1:1),om=its.filter(i=>i.om);
  const url='/parsha.html?parsha='+encodeURIComponent(wp);const w=$('week');w.hidden=false;
- w.innerHTML=`<div><small>This week's parsha</small><h3>Parshas ${esc(wp)}</h3><p>Videos, audio shiurim, an overview and visual Divrei Torah — all in one place.</p><div class="btns"><a class="btn" href="${url}">Open the parsha →</a><a class="btn ghost" href="#Parsha/${encodeURIComponent(bookOf(wp))}/${encodeURIComponent(wp)}">Browse everything on it</a></div></div>
+ w.innerHTML=`<div><small>This week's parsha</small><h3>Parshas ${wps.map(esc).join(' &amp; ')}</h3><p>Videos, audio shiurim, an overview and visual Divrei Torah — all in one place.</p><div class="btns"><a class="btn" href="${url}">Open the parsha →</a><a class="btn ghost" href="#Parsha/${encodeURIComponent(bookOf(wp))}/${encodeURIComponent(wp)}">Browse everything on it</a></div></div>
  <div class="wk-side">${ov?`<div class="row">🎧<div style="flex:1"><b>Parsha overview</b><audio controls preload="none" src="${esc(ov.u)}"></audio></div></div>`:''}
  ${vids[0]?`<div class="row">▶️<div><b>${vids.length} video${vids.length>1?'s':''}</b><br><span>latest: ${esc(vids[0].t)}</span></div></div>`:''}
  ${om.length?`<div class="row">⏱️<div><b>${om.length} one-minute clip${om.length>1?'s':''}</b><br><span>on this parsha</span></div></div>`:''}</div>`}
-function hebcal(){fetch('https://www.hebcal.com/hebcal?v=1&cfg=json&s=on&i=off&start=today&end=+14d',{cache:'no-store'}).then(r=>r.json()).then(j=>{const t=new Date(),td=t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');const p=(j.items||[]).filter(x=>x.category==='parashat'&&x.date>=td).sort((a,b)=>a.date<b.date?-1:1)[0];if(p){const n=bestParsha(p.title.replace(/^Parashat\s+/,''));if(n){wp=n;weekCard();if(!$('view').hidden)route()}}}).catch(()=>{})}
+function hebcal(){
+ const t=new Date(),td=t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');
+ const names=title=>{const t=String(title).replace(/^Parashat\s+/i,'');const w=bestParsha(t);if(w&&(PAL[nk(t)]||lev(nk(t),nk(w))<=1))return[w];const parts=t.split(/\s*[-–\/]\s*/).map(x=>bestParsha(x)).filter(Boolean);return parts.length>1?[...new Set(parts)]:(w?[w]:[])};
+ const pick=j=>{const p=(j.items||[]).filter(x=>x.category==='parashat'&&x.date>=td).sort((a,b)=>a.date<b.date?-1:1)[0];return p?names(p.title):[]};
+ const done=n=>{if(!n||!n.length)return false;wps=n;wp=n[0];console.log("This week's parsha:",n.join(' & '));weekCard();if(!$('view').hidden)route();return true};
+ fetch('https://www.hebcal.com/hebcal?v=1&cfg=json&s=on&i=off&start=today&end='+encodeURIComponent('+14d'),{cache:'no-store'}).then(r=>r.json()).then(j=>{if(!done(pick(j)))throw new Error('no parsha in range feed')})
+ .catch(e=>{console.warn('Hebcal range feed failed, trying shabbat feed',e);
+  return fetch('https://www.hebcal.com/shabbat?cfg=json&geonameid=5128581',{cache:'no-store'}).then(r=>r.json()).then(j=>{const it=(j.items||[]).find(x=>x.category==='parashat');if(!(it&&done(names(it.title))))throw new Error('no parsha in shabbat feed')})})
+ .catch(e=>console.warn("Could not determine this week's parsha",e));
+}
 // routing: #Cat  or  #Parsha/Sefer/Parsha  or  #Cat/Sub
 function go(c,s,b){let h='#'+encodeURIComponent(c);if(c==='Parsha'){if(b)h+='/'+encodeURIComponent(b);if(s)h+='/'+encodeURIComponent(s)}else if(s)h+='/'+encodeURIComponent(s);if(location.hash===h)route();else location.hash=h;window.scrollTo(0,0)}
 addEventListener('hashchange',()=>{if(booted)route()});
