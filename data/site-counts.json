@@ -34,7 +34,8 @@
       "program": "Parsha",
       "title": "Before the chesed",
       "url": "https://www.youtube.com/watch?v=N56WTJKBG9c",
-      "date": "2026-10-30T01:35:00Z"
+      "date": "2026-10-30T01:35:00Z",
+      "parsha": "Vayeira"
     },
     {
       "type": "audio",
@@ -231,70 +232,80 @@
         "program": "Parsha",
         "title": "Before the chesed",
         "url": "https://www.youtube.com/watch?v=N56WTJKBG9c",
-        "date": "2026-10-30T01:35:00Z"
+        "date": "2026-10-30T01:35:00Z",
+        "parsha": "Vayeira"
       },
       {
         "type": "video",
         "program": "Parsha",
         "title": "What will success cost you?",
         "url": "https://www.youtube.com/watch?v=XzMZC-rWQiI",
-        "date": "2026-10-23T02:30:00Z"
+        "date": "2026-10-23T02:30:00Z",
+        "parsha": "Lech Licha"
       },
       {
         "type": "video",
         "program": "Parsha",
         "title": "The problem wasn't the wine",
         "url": "https://www.youtube.com/watch?v=N2CZKVfrdb8",
-        "date": "2026-10-16T00:21:08Z"
+        "date": "2026-10-16T00:21:08Z",
+        "parsha": "Noach"
       },
       {
         "type": "video",
         "program": "Parsha",
         "title": "Even in Gan Eden",
         "url": "https://www.youtube.com/watch?v=ZqiQBiaRh1s",
-        "date": "2026-10-09T01:54:08Z"
+        "date": "2026-10-09T01:54:08Z",
+        "parsha": "Bereishis"
       },
       {
         "type": "video",
         "program": "Parsha",
         "title": "What is the Torah really all about?",
         "url": "https://www.youtube.com/watch?v=2mcFMZ8bQv4",
-        "date": "2026-10-02T10:39:04Z"
+        "date": "2026-10-02T10:39:04Z",
+        "parsha": "Vzos Habracha"
       },
       {
         "type": "video",
         "program": "Parsha",
         "title": "Remember who you are",
         "url": "https://www.youtube.com/watch?v=InwwdxrYyyo",
-        "date": "2026-09-18T02:46:11Z"
+        "date": "2026-09-18T02:46:11Z",
+        "parsha": "Haazinu"
       },
       {
         "type": "video",
         "program": "Parsha",
         "title": "Always be growing",
         "url": "https://www.youtube.com/watch?v=yirY8s5pgUo",
-        "date": "2026-09-04T02:17:52Z"
+        "date": "2026-09-04T02:17:52Z",
+        "parsha": "Vayeilech"
       },
       {
         "type": "video",
         "program": "Parsha",
         "title": "More than just a thank you",
         "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs",
-        "date": "2026-08-28T02:21:19Z"
+        "date": "2026-08-28T02:21:19Z",
+        "parsha": "Ki Savo"
       },
       {
         "type": "video",
         "program": "Parsha",
         "title": "When piety becomes a chilul Hashem",
         "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM",
-        "date": "2026-08-21T02:30:11Z"
+        "date": "2026-08-21T02:30:11Z",
+        "parsha": "Ki Seitzei"
       },
       {
         "type": "video",
         "program": "Parsha",
         "title": "What's going to be?",
         "url": "https://www.youtube.com/watch?v=fr-25KmZbws",
-        "date": "2026-08-14T03:41:40Z"
+        "date": "2026-08-14T03:41:40Z",
+        "parsha": "Shoftim"
       }
     ]
   }

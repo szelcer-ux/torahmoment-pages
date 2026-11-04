@@ -4300,7 +4300,9 @@
     "url": "https://www.youtube.com/watch?v=N56WTJKBG9c",
     "date": "2026-10-30T01:35:00Z",
     "page": "/parsha.html",
-    "title_lc": "before the chesed"
+    "parsha": "Vayeira",
+    "title_lc": "before the chesed",
+    "cat_lc": "vayeira"
   },
   {
     "id": "par-XzMZC-rWQiI",
@@ -4310,7 +4312,9 @@
     "url": "https://www.youtube.com/watch?v=XzMZC-rWQiI",
     "date": "2026-10-23T02:30:00Z",
     "page": "/parsha.html",
-    "title_lc": "what will success cost you?"
+    "parsha": "Lech Licha",
+    "title_lc": "what will success cost you?",
+    "cat_lc": "lech licha"
   },
   {
     "id": "par-N2CZKVfrdb8",
@@ -4320,7 +4324,9 @@
     "url": "https://www.youtube.com/watch?v=N2CZKVfrdb8",
     "date": "2026-10-16T00:21:08Z",
     "page": "/parsha.html",
-    "title_lc": "the problem wasn't the wine"
+    "parsha": "Noach",
+    "title_lc": "the problem wasn't the wine",
+    "cat_lc": "noach"
   },
   {
     "id": "par-ZqiQBiaRh1s",
@@ -4330,7 +4336,9 @@
     "url": "https://www.youtube.com/watch?v=ZqiQBiaRh1s",
     "date": "2026-10-09T01:54:08Z",
     "page": "/parsha.html",
-    "title_lc": "even in gan eden"
+    "parsha": "Bereishis",
+    "title_lc": "even in gan eden",
+    "cat_lc": "bereishis"
   },
   {
     "id": "par-2mcFMZ8bQv4",
@@ -4340,7 +4348,9 @@
     "url": "https://www.youtube.com/watch?v=2mcFMZ8bQv4",
     "date": "2026-10-02T10:39:04Z",
     "page": "/parsha.html",
-    "title_lc": "what is the torah really all about?"
+    "parsha": "Vzos Habracha",
+    "title_lc": "what is the torah really all about?",
+    "cat_lc": "vzos habracha"
   },
   {
     "id": "par-InwwdxrYyyo",
@@ -4350,7 +4360,9 @@
     "url": "https://www.youtube.com/watch?v=InwwdxrYyyo",
     "date": "2026-09-18T02:46:11Z",
     "page": "/parsha.html",
-    "title_lc": "remember who you are"
+    "parsha": "Haazinu",
+    "title_lc": "remember who you are",
+    "cat_lc": "haazinu"
   },
   {
     "id": "par-yirY8s5pgUo",
@@ -4360,7 +4372,9 @@
     "url": "https://www.youtube.com/watch?v=yirY8s5pgUo",
     "date": "2026-09-04T02:17:52Z",
     "page": "/parsha.html",
-    "title_lc": "always be growing"
+    "parsha": "Vayeilech",
+    "title_lc": "always be growing",
+    "cat_lc": "vayeilech"
   },
   {
     "id": "par-4fGyqb7tUQs",
@@ -4370,7 +4384,9 @@
     "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs",
     "date": "2026-08-28T02:21:19Z",
     "page": "/parsha.html",
-    "title_lc": "more than just a thank you"
+    "parsha": "Ki Savo",
+    "title_lc": "more than just a thank you",
+    "cat_lc": "ki savo"
   },
   {
     "id": "par-9T-OCgnuGlM",
@@ -4380,7 +4396,9 @@
     "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM",
     "date": "2026-08-21T02:30:11Z",
     "page": "/parsha.html",
-    "title_lc": "when piety becomes a chilul hashem"
+    "parsha": "Ki Seitzei",
+    "title_lc": "when piety becomes a chilul hashem",
+    "cat_lc": "ki seitzei"
   },
   {
     "id": "par-fr-25KmZbws",
@@ -4390,7 +4408,9 @@
     "url": "https://www.youtube.com/watch?v=fr-25KmZbws",
     "date": "2026-08-14T03:41:40Z",
     "page": "/parsha.html",
-    "title_lc": "what's going to be?"
+    "parsha": "Shoftim",
+    "title_lc": "what's going to be?",
+    "cat_lc": "shoftim"
   },
   {
     "id": "par-fqlzgOT2FYU",
@@ -4400,7 +4420,9 @@
     "url": "https://www.youtube.com/watch?v=fqlzgOT2FYU",
     "date": "2026-08-07T01:56:05Z",
     "page": "/parsha.html",
-    "title_lc": "the search before the destination"
+    "parsha": "Reeh",
+    "title_lc": "the search before the destination",
+    "cat_lc": "reeh"
   },
   {
     "id": "par-5VkABmGakCg",
@@ -4410,7 +4432,9 @@
     "url": "https://www.youtube.com/watch?v=5VkABmGakCg",
     "date": "2026-07-31T03:04:23Z",
     "page": "/parsha.html",
-    "title_lc": "who gets the credit?"
+    "parsha": "Eikev",
+    "title_lc": "who gets the credit?",
+    "cat_lc": "eikev"
   },
   {
     "id": "par-RWV08AhDkvg",
@@ -4420,7 +4444,9 @@
     "url": "https://www.youtube.com/watch?v=RWV08AhDkvg",
     "date": "2026-07-24T01:44:21Z",
     "page": "/parsha.html",
-    "title_lc": "make him beloved"
+    "parsha": "Vaeschanan",
+    "title_lc": "make him beloved",
+    "cat_lc": "vaeschanan"
   },
   {
     "id": "par-I-CVzeHuA3w",
@@ -4430,7 +4456,9 @@
     "url": "https://www.youtube.com/watch?v=I-CVzeHuA3w",
     "date": "2026-07-17T02:02:17Z",
     "page": "/parsha.html",
-    "title_lc": "stop fighting!"
+    "parsha": "Devarim",
+    "title_lc": "stop fighting!",
+    "cat_lc": "devarim"
   },
   {
     "id": "par-q_Ly7ZdHEjA",
@@ -4440,7 +4468,9 @@
     "url": "https://www.youtube.com/watch?v=q_Ly7ZdHEjA",
     "date": "2026-07-10T11:18:20Z",
     "page": "/parsha.html",
-    "title_lc": "not one day more"
+    "parsha": "Masei",
+    "title_lc": "not one day more",
+    "cat_lc": "masei"
   },
   {
     "id": "par-lNPbQlOc3f8",
@@ -4450,7 +4480,9 @@
     "url": "https://www.youtube.com/watch?v=lNPbQlOc3f8",
     "date": "2026-07-03T02:56:34Z",
     "page": "/parsha.html",
-    "title_lc": "a way in, not a way out"
+    "parsha": "Pinchas",
+    "title_lc": "a way in, not a way out",
+    "cat_lc": "pinchas"
   },
   {
     "id": "par-1KQJB3zsnwY",
@@ -4460,7 +4492,9 @@
     "url": "https://www.youtube.com/watch?v=1KQJB3zsnwY",
     "date": "2026-06-26T02:42:24Z",
     "page": "/parsha.html",
-    "title_lc": "holiness begins with honesty"
+    "parsha": "Chukas",
+    "title_lc": "holiness begins with honesty",
+    "cat_lc": "chukas"
   },
   {
     "id": "par-Zi9qfNxwYlg",
@@ -4470,7 +4504,9 @@
     "url": "https://www.youtube.com/watch?v=Zi9qfNxwYlg",
     "date": "2026-06-19T02:21:55Z",
     "page": "/parsha.html",
-    "title_lc": "don't put out the spark"
+    "parsha": "Korach",
+    "title_lc": "don't put out the spark",
+    "cat_lc": "korach"
   },
   {
     "id": "par-97TN3FMjQF4",
@@ -4480,7 +4516,9 @@
     "url": "https://www.youtube.com/watch?v=97TN3FMjQF4",
     "date": "2026-06-12T02:36:59Z",
     "page": "/parsha.html",
-    "title_lc": "seeing the big picture"
+    "parsha": "Shelach",
+    "title_lc": "seeing the big picture",
+    "cat_lc": "shelach"
   },
   {
     "id": "par-ZHDWAaalxss",
@@ -4490,7 +4528,9 @@
     "url": "https://www.youtube.com/watch?v=ZHDWAaalxss",
     "date": "2026-06-05T02:14:55Z",
     "page": "/parsha.html",
-    "title_lc": "small acts big impact"
+    "parsha": "Behaaloscha",
+    "title_lc": "small acts big impact",
+    "cat_lc": "behaaloscha"
   },
   {
     "id": "par-OH_uWgnHWgA",
@@ -4500,7 +4540,9 @@
     "url": "https://www.youtube.com/watch?v=OH_uWgnHWgA",
     "date": "2026-05-29T03:24:23Z",
     "page": "/parsha.html",
-    "title_lc": "from inspiration to action"
+    "parsha": "Naso",
+    "title_lc": "from inspiration to action",
+    "cat_lc": "naso"
   },
   {
     "id": "par-fonWnyA-ibo",
@@ -4510,7 +4552,9 @@
     "url": "https://www.youtube.com/watch?v=fonWnyA-ibo",
     "date": "2026-05-15T02:08:46Z",
     "page": "/parsha.html",
-    "title_lc": "growing on the journey"
+    "parsha": "Bamidbar",
+    "title_lc": "growing on the journey",
+    "cat_lc": "bamidbar"
   },
   {
     "id": "par-BRM2S2tFWVg",
@@ -4520,7 +4564,9 @@
     "url": "https://www.youtube.com/watch?v=BRM2S2tFWVg",
     "date": "2026-05-08T02:28:47Z",
     "page": "/parsha.html",
-    "title_lc": "don't be too hard on yourself"
+    "parsha": "Behar",
+    "title_lc": "don't be too hard on yourself",
+    "cat_lc": "behar"
   },
   {
     "id": "par-U1E7OVBU3vQ",
@@ -4530,7 +4576,9 @@
     "url": "https://www.youtube.com/watch?v=U1E7OVBU3vQ",
     "date": "2026-05-01T03:10:57Z",
     "page": "/parsha.html",
-    "title_lc": "two components of chinuch"
+    "parsha": "Emor",
+    "title_lc": "two components of chinuch",
+    "cat_lc": "emor"
   },
   {
     "id": "par-ilfCNVU7AFg",
@@ -4540,7 +4588,9 @@
     "url": "https://www.youtube.com/watch?v=ilfCNVU7AFg",
     "date": "2026-04-24T02:25:53Z",
     "page": "/parsha.html",
-    "title_lc": "leading by example"
+    "parsha": "Achrei Mos",
+    "title_lc": "leading by example",
+    "cat_lc": "achrei mos"
   },
   {
     "id": "par-0E411EfFaqc",
@@ -4550,7 +4600,9 @@
     "url": "https://www.youtube.com/watch?v=0E411EfFaqc",
     "date": "2026-04-17T04:13:47Z",
     "page": "/parsha.html",
-    "title_lc": "real change takes time"
+    "parsha": "Metzora",
+    "title_lc": "real change takes time",
+    "cat_lc": "metzora"
   },
   {
     "id": "par-l5JhqBahhQg",
@@ -4560,7 +4612,9 @@
     "url": "https://www.youtube.com/watch?v=l5JhqBahhQg",
     "date": "2026-04-10T02:29:44Z",
     "page": "/parsha.html",
-    "title_lc": "listening when there are no words"
+    "parsha": "Shemini",
+    "title_lc": "listening when there are no words",
+    "cat_lc": "shemini"
   },
   {
     "id": "par-x17Kexo10FQ",
@@ -4570,7 +4624,9 @@
     "url": "https://www.youtube.com/watch?v=x17Kexo10FQ",
     "date": "2026-03-27T00:49:44Z",
     "page": "/parsha.html",
-    "title_lc": "dont stay in the past"
+    "parsha": "Tzav",
+    "title_lc": "dont stay in the past",
+    "cat_lc": "tzav"
   },
   {
     "id": "par-gDJEiUYevdo",
@@ -4580,7 +4636,9 @@
     "url": "https://www.youtube.com/watch?v=gDJEiUYevdo",
     "date": "2026-03-20T02:58:00Z",
     "page": "/parsha.html",
-    "title_lc": "the first step of change"
+    "parsha": "Vayikra",
+    "title_lc": "the first step of change",
+    "cat_lc": "vayikra"
   },
   {
     "id": "par-znuRPSkbOrY",
@@ -4590,7 +4648,9 @@
     "url": "https://www.youtube.com/watch?v=znuRPSkbOrY",
     "date": "2026-03-13T02:14:30Z",
     "page": "/parsha.html",
-    "title_lc": "the sanctity of normalcy"
+    "parsha": "Pekudei",
+    "title_lc": "the sanctity of normalcy",
+    "cat_lc": "pekudei"
   },
   {
     "id": "par-ztLxEczqcUU",
@@ -4600,7 +4660,9 @@
     "url": "https://www.youtube.com/watch?v=ztLxEczqcUU",
     "date": "2026-03-06T03:39:27Z",
     "page": "/parsha.html",
-    "title_lc": "keep trying"
+    "parsha": "Ki Sisa",
+    "title_lc": "keep trying",
+    "cat_lc": "ki sisa"
   },
   {
     "id": "par-aXyYwQeZ4zs",
@@ -4610,7 +4672,9 @@
     "url": "https://www.youtube.com/watch?v=aXyYwQeZ4zs",
     "date": "2026-02-27T03:59:02Z",
     "page": "/parsha.html",
-    "title_lc": "the power of consistency"
+    "parsha": "Tetzaveh",
+    "title_lc": "the power of consistency",
+    "cat_lc": "tetzaveh"
   },
   {
     "id": "par-GiYs0ntVDuI",
@@ -4620,7 +4684,9 @@
     "url": "https://www.youtube.com/watch?v=GiYs0ntVDuI",
     "date": "2026-02-20T02:49:14Z",
     "page": "/parsha.html",
-    "title_lc": "be youthful not childish"
+    "parsha": "Terumah",
+    "title_lc": "be youthful not childish",
+    "cat_lc": "terumah"
   },
   {
     "id": "par-E-K3nDaVWFQ",
@@ -4630,7 +4696,9 @@
     "url": "https://www.youtube.com/watch?v=E-K3nDaVWFQ",
     "date": "2026-02-13T03:38:21Z",
     "page": "/parsha.html",
-    "title_lc": "carry forward"
+    "parsha": "Mishpatim",
+    "title_lc": "carry forward",
+    "cat_lc": "mishpatim"
   },
   {
     "id": "par-qhs0gvRnUxk",
@@ -4640,7 +4708,9 @@
     "url": "https://www.youtube.com/watch?v=qhs0gvRnUxk",
     "date": "2026-02-06T03:57:18Z",
     "page": "/parsha.html",
-    "title_lc": "how do you serve hashem?"
+    "parsha": "Yisro",
+    "title_lc": "how do you serve hashem?",
+    "cat_lc": "yisro"
   },
   {
     "id": "par-g5Y84M_T21g",
@@ -4650,7 +4720,9 @@
     "url": "https://www.youtube.com/watch?v=g5Y84M_T21g",
     "date": "2026-01-30T04:26:06Z",
     "page": "/parsha.html",
-    "title_lc": "lasting impact"
+    "parsha": "Beshalach",
+    "title_lc": "lasting impact",
+    "cat_lc": "beshalach"
   },
   {
     "id": "par-BGKKQnGoLrY",
@@ -4660,7 +4732,9 @@
     "url": "https://www.youtube.com/watch?v=BGKKQnGoLrY",
     "date": "2026-01-23T03:21:56Z",
     "page": "/parsha.html",
-    "title_lc": "judaism is for everyone"
+    "parsha": "Bo",
+    "title_lc": "judaism is for everyone",
+    "cat_lc": "bo"
   },
   {
     "id": "par-myJ3x4yjbk4",
@@ -4670,7 +4744,9 @@
     "url": "https://www.youtube.com/watch?v=myJ3x4yjbk4",
     "date": "2026-01-16T02:44:45Z",
     "page": "/parsha.html",
-    "title_lc": "open your eyes!"
+    "parsha": "Vaeira",
+    "title_lc": "open your eyes!",
+    "cat_lc": "vaeira"
   },
   {
     "id": "par--dgBRtH-ei4",
@@ -4680,7 +4756,9 @@
     "url": "https://www.youtube.com/watch?v=-dgBRtH-ei4",
     "date": "2026-01-09T03:19:59Z",
     "page": "/parsha.html",
-    "title_lc": "us and them"
+    "parsha": "Shemos",
+    "title_lc": "us and them",
+    "cat_lc": "shemos"
   },
   {
     "id": "par-oVzvwj8y3iI",
@@ -4690,7 +4768,9 @@
     "url": "https://www.youtube.com/watch?v=oVzvwj8y3iI",
     "date": "2026-01-02T02:38:26Z",
     "page": "/parsha.html",
-    "title_lc": "when to not rely on hashem"
+    "parsha": "Vayichi",
+    "title_lc": "when to not rely on hashem",
+    "cat_lc": "vayichi"
   },
   {
     "id": "par-DYC0tB9Nc78",
@@ -4700,7 +4780,9 @@
     "url": "https://www.youtube.com/watch?v=DYC0tB9Nc78",
     "date": "2025-12-26T10:36:00Z",
     "page": "/parsha.html",
-    "title_lc": "being seen"
+    "parsha": "Vayigash",
+    "title_lc": "being seen",
+    "cat_lc": "vayigash"
   },
   {
     "id": "par-U8EKiu5afdo",
@@ -4710,7 +4792,9 @@
     "url": "https://www.youtube.com/watch?v=U8EKiu5afdo",
     "date": "2025-12-19T12:21:57Z",
     "page": "/parsha.html",
-    "title_lc": "the true meaning of modesty"
+    "parsha": "Mekeitz",
+    "title_lc": "the true meaning of modesty",
+    "cat_lc": "mekeitz"
   },
   {
     "id": "par-pF1KMPaOEkU",
@@ -4720,7 +4804,9 @@
     "url": "https://www.youtube.com/watch?v=pF1KMPaOEkU",
     "date": "2025-12-05T02:09:24Z",
     "page": "/parsha.html",
-    "title_lc": "alone time"
+    "parsha": "Vayishlach",
+    "title_lc": "alone time",
+    "cat_lc": "vayishlach"
   },
   {
     "id": "par-rkBWtb6sIDY",
@@ -4730,7 +4816,9 @@
     "url": "https://www.youtube.com/watch?v=rkBWtb6sIDY",
     "date": "2025-11-28T02:09:21Z",
     "page": "/parsha.html",
-    "title_lc": "appreciating the ordinary"
+    "parsha": "Vayeitzei",
+    "title_lc": "appreciating the ordinary",
+    "cat_lc": "vayeitzei"
   },
   {
     "id": "par-Xt2FwcOXax4",
@@ -4740,7 +4828,9 @@
     "url": "https://www.youtube.com/watch?v=Xt2FwcOXax4",
     "date": "2025-11-21T02:59:56Z",
     "page": "/parsha.html",
-    "title_lc": "sensitivity in prayer"
+    "parsha": "Toldos",
+    "title_lc": "sensitivity in prayer",
+    "cat_lc": "toldos"
   },
   {
     "id": "par-M-caq655Hnw",
@@ -4750,7 +4840,9 @@
     "url": "https://www.youtube.com/watch?v=M-caq655Hnw",
     "date": "2025-11-14T03:00:34Z",
     "page": "/parsha.html",
-    "title_lc": "serving hashem no matter what"
+    "parsha": "Chayei Sarah",
+    "title_lc": "serving hashem no matter what",
+    "cat_lc": "chayei sarah"
   },
   {
     "id": "par-ohPvEL84We8",
@@ -4760,7 +4852,9 @@
     "url": "https://www.youtube.com/watch?v=ohPvEL84We8",
     "date": "2025-11-07T03:00:56Z",
     "page": "/parsha.html",
-    "title_lc": "greatness through struggle"
+    "parsha": "Vayeira",
+    "title_lc": "greatness through struggle",
+    "cat_lc": "vayeira"
   },
   {
     "id": "par-exlH0D7iLMQ",
@@ -4770,7 +4864,9 @@
     "url": "https://www.youtube.com/watch?v=exlH0D7iLMQ",
     "date": "2025-10-31T10:01:51Z",
     "page": "/parsha.html",
-    "title_lc": "hearing the call"
+    "parsha": "Lech Licha",
+    "title_lc": "hearing the call",
+    "cat_lc": "lech licha"
   },
   {
     "id": "par-PNdu9Ja5VdY",
@@ -4780,7 +4876,9 @@
     "url": "https://www.youtube.com/watch?v=PNdu9Ja5VdY",
     "date": "2025-10-24T02:00:33Z",
     "page": "/parsha.html",
-    "title_lc": "be a mentch"
+    "parsha": "Noach",
+    "title_lc": "be a mentch",
+    "cat_lc": "noach"
   },
   {
     "id": "par-plIv1guivMg",
@@ -4790,7 +4888,9 @@
     "url": "https://www.youtube.com/watch?v=plIv1guivMg",
     "date": "2025-10-17T02:00:48Z",
     "page": "/parsha.html",
-    "title_lc": "this land is our land"
+    "parsha": "Bereishis",
+    "title_lc": "this land is our land",
+    "cat_lc": "bereishis"
   },
   {
     "id": "par-DQvhqLzPlHg",
@@ -4800,7 +4900,9 @@
     "url": "https://www.youtube.com/watch?v=DQvhqLzPlHg",
     "date": "2025-10-13T02:00:10Z",
     "page": "/parsha.html",
-    "title_lc": "the torah is for everyone"
+    "parsha": "Vzos Habracha",
+    "title_lc": "the torah is for everyone",
+    "cat_lc": "vzos habracha"
   },
   {
     "id": "par-7KeJy6rgf8Y",
@@ -4810,7 +4912,9 @@
     "url": "https://www.youtube.com/watch?v=7KeJy6rgf8Y",
     "date": "2025-10-03T02:00:11Z",
     "page": "/parsha.html",
-    "title_lc": "the danger of outside influence"
+    "parsha": "Haazinu",
+    "title_lc": "the danger of outside influence",
+    "cat_lc": "haazinu"
   },
   {
     "id": "par-wSJs2b4a6a8",
@@ -4820,7 +4924,9 @@
     "url": "https://www.youtube.com/watch?v=wSJs2b4a6a8",
     "date": "2025-09-26T02:01:03Z",
     "page": "/parsha.html",
-    "title_lc": "trust the process"
+    "parsha": "Vayeilech",
+    "title_lc": "trust the process",
+    "cat_lc": "vayeilech"
   },
   {
     "id": "par-QBI5r-wYogU",
@@ -4830,7 +4936,9 @@
     "url": "https://www.youtube.com/watch?v=QBI5r-wYogU",
     "date": "2025-09-19T02:00:34Z",
     "page": "/parsha.html",
-    "title_lc": "a life worth living"
+    "parsha": "Nitzavim",
+    "title_lc": "a life worth living",
+    "cat_lc": "nitzavim"
   },
   {
     "id": "par-EySpW-V4Dkw",
@@ -4840,7 +4948,9 @@
     "url": "https://www.youtube.com/watch?v=EySpW-V4Dkw",
     "date": "2025-09-12T02:43:20Z",
     "page": "/parsha.html",
-    "title_lc": "up or down"
+    "parsha": "Ki Savo",
+    "title_lc": "up or down",
+    "cat_lc": "ki savo"
   },
   {
     "id": "par-Eps5voqjhL4",
@@ -4850,7 +4960,9 @@
     "url": "https://www.youtube.com/watch?v=Eps5voqjhL4",
     "date": "2025-09-05T02:00:21Z",
     "page": "/parsha.html",
-    "title_lc": "keep pushing forward"
+    "parsha": "Ki Seitzei",
+    "title_lc": "keep pushing forward",
+    "cat_lc": "ki seitzei"
   },
   {
     "id": "par-L7rFtcRdUyY",
@@ -4860,7 +4972,9 @@
     "url": "https://www.youtube.com/watch?v=L7rFtcRdUyY",
     "date": "2025-08-29T01:00:33Z",
     "page": "/parsha.html",
-    "title_lc": "look in the mirror"
+    "parsha": "Shoftim",
+    "title_lc": "look in the mirror",
+    "cat_lc": "shoftim"
   },
   {
     "id": "par-rUDeqtm88W4",
@@ -4870,7 +4984,9 @@
     "url": "https://www.youtube.com/watch?v=rUDeqtm88W4",
     "date": "2025-08-22T01:01:00Z",
     "page": "/parsha.html",
-    "title_lc": "live in the now"
+    "parsha": "Reeh",
+    "title_lc": "live in the now",
+    "cat_lc": "reeh"
   },
   {
     "id": "par-F4elTeUdLhQ",
@@ -4880,7 +4996,9 @@
     "url": "https://www.youtube.com/watch?v=F4elTeUdLhQ",
     "date": "2025-08-15T02:00:23Z",
     "page": "/parsha.html",
-    "title_lc": "judaism is not a checklist"
+    "parsha": "Eikev",
+    "title_lc": "judaism is not a checklist",
+    "cat_lc": "eikev"
   },
   {
     "id": "par-vzfPyCREUbE",
@@ -4890,7 +5008,9 @@
     "url": "https://www.youtube.com/watch?v=vzfPyCREUbE",
     "date": "2025-08-08T01:01:06Z",
     "page": "/parsha.html",
-    "title_lc": "we all need each other"
+    "parsha": "Vaeschanan",
+    "title_lc": "we all need each other",
+    "cat_lc": "vaeschanan"
   },
   {
     "id": "par-seeZfD-VZwY",
@@ -4900,7 +5020,9 @@
     "url": "https://www.youtube.com/watch?v=seeZfD-VZwY",
     "date": "2025-08-01T01:00:51Z",
     "page": "/parsha.html",
-    "title_lc": "don't be such a cynic"
+    "parsha": "Devarim",
+    "title_lc": "don't be such a cynic",
+    "cat_lc": "devarim"
   },
   {
     "id": "par-y10e4WUC5RI",
@@ -4910,7 +5032,9 @@
     "url": "https://www.youtube.com/watch?v=y10e4WUC5RI",
     "date": "2025-07-25T02:01:00Z",
     "page": "/parsha.html",
-    "title_lc": "denying gratitude"
+    "parsha": "Matos",
+    "title_lc": "denying gratitude",
+    "cat_lc": "matos"
   },
   {
     "id": "par-oO6L3ENeDKU",
@@ -4920,7 +5044,9 @@
     "url": "https://www.youtube.com/watch?v=oO6L3ENeDKU",
     "date": "2025-07-18T02:00:43Z",
     "page": "/parsha.html",
-    "title_lc": "the right thing for the right reason"
+    "parsha": "Pinchas",
+    "title_lc": "the right thing for the right reason",
+    "cat_lc": "pinchas"
   },
   {
     "id": "par-ihlRQlk0PJA",
@@ -4930,7 +5056,9 @@
     "url": "https://www.youtube.com/watch?v=ihlRQlk0PJA",
     "date": "2025-07-11T02:00:39Z",
     "page": "/parsha.html",
-    "title_lc": "fake holiness"
+    "parsha": "Balak",
+    "title_lc": "fake holiness",
+    "cat_lc": "balak"
   },
   {
     "id": "par-WCzrqBujrgQ",
@@ -4940,7 +5068,9 @@
     "url": "https://www.youtube.com/watch?v=WCzrqBujrgQ",
     "date": "2025-07-04T02:00:23Z",
     "page": "/parsha.html",
-    "title_lc": "growing through the unknown"
+    "parsha": "Chukas",
+    "title_lc": "growing through the unknown",
+    "cat_lc": "chukas"
   },
   {
     "id": "par-0xg2kzi_9fI",
@@ -4950,7 +5080,9 @@
     "url": "https://www.youtube.com/watch?v=0xg2kzi_9fI",
     "date": "2025-06-27T02:00:01Z",
     "page": "/parsha.html",
-    "title_lc": "holiness in the small"
+    "parsha": "Korach",
+    "title_lc": "holiness in the small",
+    "cat_lc": "korach"
   },
   {
     "id": "par-kLgxz81KHKg",
@@ -4960,7 +5092,9 @@
     "url": "https://www.youtube.com/watch?v=kLgxz81KHKg",
     "date": "2025-06-20T09:51:25Z",
     "page": "/parsha.html",
-    "title_lc": "look for the good"
+    "parsha": "Shelach",
+    "title_lc": "look for the good",
+    "cat_lc": "shelach"
   },
   {
     "id": "par-R4IVm7lOjZU",
@@ -4970,7 +5104,9 @@
     "url": "https://www.youtube.com/watch?v=R4IVm7lOjZU",
     "date": "2025-06-13T02:04:21Z",
     "page": "/parsha.html",
-    "title_lc": "independently great"
+    "parsha": "Behaaloscha",
+    "title_lc": "independently great",
+    "cat_lc": "behaaloscha"
   },
   {
     "id": "par-S8wgg3AmYMo",
@@ -4980,7 +5116,9 @@
     "url": "https://www.youtube.com/watch?v=S8wgg3AmYMo",
     "date": "2025-06-06T09:59:01Z",
     "page": "/parsha.html",
-    "title_lc": "different paths to the same goal"
+    "parsha": "Naso",
+    "title_lc": "different paths to the same goal",
+    "cat_lc": "naso"
   },
   {
     "id": "par-_AMIe0YlTn4",
@@ -4990,7 +5128,9 @@
     "url": "https://www.youtube.com/watch?v=_AMIe0YlTn4",
     "date": "2025-05-30T02:47:15Z",
     "page": "/parsha.html",
-    "title_lc": "double duty"
+    "parsha": "Bamidbar",
+    "title_lc": "double duty",
+    "cat_lc": "bamidbar"
   },
   {
     "id": "par-p-F5TgRYMWo",
@@ -5000,7 +5140,9 @@
     "url": "https://www.youtube.com/watch?v=p-F5TgRYMWo",
     "date": "2025-05-16T12:42:30Z",
     "page": "/parsha.html",
-    "title_lc": "highs and lows"
+    "parsha": "Emor",
+    "title_lc": "highs and lows",
+    "cat_lc": "emor"
   },
   {
     "id": "par-uuUnyG_8TnQ",
@@ -5010,7 +5152,9 @@
     "url": "https://www.youtube.com/watch?v=uuUnyG_8TnQ",
     "date": "2025-05-09T02:00:48Z",
     "page": "/parsha.html",
-    "title_lc": "seeing the whole picture"
+    "parsha": "Kedoshim",
+    "title_lc": "seeing the whole picture",
+    "cat_lc": "kedoshim"
   },
   {
     "id": "par-fPFtI_etV88",
@@ -5020,7 +5164,9 @@
     "url": "https://www.youtube.com/watch?v=fPFtI_etV88",
     "date": "2025-05-02T11:25:11Z",
     "page": "/parsha.html",
-    "title_lc": "self reflection"
+    "parsha": "Tazria",
+    "title_lc": "self reflection",
+    "cat_lc": "tazria"
   },
   {
     "id": "par-YWJGGNyI6lE",
@@ -5030,7 +5176,9 @@
     "url": "https://www.youtube.com/watch?v=YWJGGNyI6lE",
     "date": "2025-04-25T03:07:38Z",
     "page": "/parsha.html",
-    "title_lc": "never be embarrassed to do the right thing"
+    "parsha": "Shemini",
+    "title_lc": "never be embarrassed to do the right thing",
+    "cat_lc": "shemini"
   },
   {
     "id": "par-HOkdzCJ8Uj4",
@@ -5040,7 +5188,9 @@
     "url": "https://www.youtube.com/watch?v=HOkdzCJ8Uj4",
     "date": "2025-04-04T02:00:11Z",
     "page": "/parsha.html",
-    "title_lc": "answer the call"
+    "parsha": "Vayikra",
+    "title_lc": "answer the call",
+    "cat_lc": "vayikra"
   },
   {
     "id": "par-pqkq1Q6UX4M",
@@ -5050,7 +5200,9 @@
     "url": "https://www.youtube.com/watch?v=pqkq1Q6UX4M",
     "date": "2025-03-28T01:45:58Z",
     "page": "/parsha.html",
-    "title_lc": "the true honor of hashem"
+    "parsha": "Pekudei",
+    "title_lc": "the true honor of hashem",
+    "cat_lc": "pekudei"
   },
   {
     "id": "par-C7R_QMvif7g",
@@ -5060,7 +5212,9 @@
     "url": "https://www.youtube.com/watch?v=C7R_QMvif7g",
     "date": "2025-03-21T02:00:07Z",
     "page": "/parsha.html",
-    "title_lc": "the skill of silence"
+    "parsha": "Vayakhel",
+    "title_lc": "the skill of silence",
+    "cat_lc": "vayakhel"
   },
   {
     "id": "par-PlkTQVHAIqM",
@@ -5070,7 +5224,9 @@
     "url": "https://www.youtube.com/watch?v=PlkTQVHAIqM",
     "date": "2025-03-13T02:42:47Z",
     "page": "/parsha.html",
-    "title_lc": "doing mitzvos with passion"
+    "parsha": "Ki Sisa",
+    "title_lc": "doing mitzvos with passion",
+    "cat_lc": "ki sisa"
   },
   {
     "id": "par-hAsqNaTYzqE",
@@ -5080,7 +5236,9 @@
     "url": "https://www.youtube.com/watch?v=hAsqNaTYzqE",
     "date": "2025-03-07T04:00:24Z",
     "page": "/parsha.html",
-    "title_lc": "pure on the inside"
+    "parsha": "Tetzaveh",
+    "title_lc": "pure on the inside",
+    "cat_lc": "tetzaveh"
   },
   {
     "id": "par-TTA-578v39E",
@@ -5090,7 +5248,9 @@
     "url": "https://www.youtube.com/watch?v=TTA-578v39E",
     "date": "2025-02-28T03:00:34Z",
     "page": "/parsha.html",
-    "title_lc": "talk is cheap"
+    "parsha": "Terumah",
+    "title_lc": "talk is cheap",
+    "cat_lc": "terumah"
   },
   {
     "id": "par-bpkoPXJ2Ams",
@@ -5100,7 +5260,9 @@
     "url": "https://www.youtube.com/watch?v=bpkoPXJ2Ams",
     "date": "2025-02-21T03:00:29Z",
     "page": "/parsha.html",
-    "title_lc": "a more meaningful shabbos"
+    "parsha": "Mishpatim",
+    "title_lc": "a more meaningful shabbos",
+    "cat_lc": "mishpatim"
   },
   {
     "id": "par-ViyERnnBxqw",
@@ -5110,7 +5272,9 @@
     "url": "https://www.youtube.com/watch?v=ViyERnnBxqw",
     "date": "2025-02-13T21:00:31Z",
     "page": "/parsha.html",
-    "title_lc": "hashem is always there to help"
+    "parsha": "Yisro",
+    "title_lc": "hashem is always there to help",
+    "cat_lc": "yisro"
   },
   {
     "id": "par-rWfb6q6NPlg",
@@ -5120,7 +5284,9 @@
     "url": "https://www.youtube.com/watch?v=rWfb6q6NPlg",
     "date": "2025-02-07T04:00:36Z",
     "page": "/parsha.html",
-    "title_lc": "when prayer is not enough"
+    "parsha": "Beshalach",
+    "title_lc": "when prayer is not enough",
+    "cat_lc": "beshalach"
   },
   {
     "id": "par-tLWYh8Or3jQ",
@@ -5130,7 +5296,9 @@
     "url": "https://www.youtube.com/watch?v=tLWYh8Or3jQ",
     "date": "2025-01-31T04:00:38Z",
     "page": "/parsha.html",
-    "title_lc": "who were the makkos really for?"
+    "parsha": "Bo",
+    "title_lc": "who were the makkos really for?",
+    "cat_lc": "bo"
   },
   {
     "id": "par-hWnLaF-1dOo",
@@ -5140,7 +5308,9 @@
     "url": "https://www.youtube.com/watch?v=hWnLaF-1dOo",
     "date": "2025-01-24T03:30:17Z",
     "page": "/parsha.html",
-    "title_lc": "no guts no glory"
+    "parsha": "Vaeira",
+    "title_lc": "no guts no glory",
+    "cat_lc": "vaeira"
   },
   {
     "id": "par-oY_NXm7SvbQ",
@@ -5150,7 +5320,9 @@
     "url": "https://www.youtube.com/watch?v=oY_NXm7SvbQ",
     "date": "2025-01-17T04:00:37Z",
     "page": "/parsha.html",
-    "title_lc": "beloved like the stars"
+    "parsha": "Shemos",
+    "title_lc": "beloved like the stars",
+    "cat_lc": "shemos"
   },
   {
     "id": "par-HzFdezProUs",
@@ -5160,7 +5332,9 @@
     "url": "https://www.youtube.com/watch?v=HzFdezProUs",
     "date": "2025-01-10T04:00:09Z",
     "page": "/parsha.html",
-    "title_lc": "the severity of embarrassing someone"
+    "parsha": "Vayichi",
+    "title_lc": "the severity of embarrassing someone",
+    "cat_lc": "vayichi"
   },
   {
     "id": "par-JMMaGR4DkJk",
@@ -5170,7 +5344,9 @@
     "url": "https://www.youtube.com/watch?v=JMMaGR4DkJk",
     "date": "2025-01-03T03:44:31Z",
     "page": "/parsha.html",
-    "title_lc": "growing from adversity"
+    "parsha": "Vayigash",
+    "title_lc": "growing from adversity",
+    "cat_lc": "vayigash"
   },
   {
     "id": "par-PsnZ4B2Am2w",
@@ -5180,7 +5356,9 @@
     "url": "https://www.youtube.com/watch?v=PsnZ4B2Am2w",
     "date": "2024-12-27T11:20:07Z",
     "page": "/parsha.html",
-    "title_lc": "hashem is always ready"
+    "parsha": "Mekeitz",
+    "title_lc": "hashem is always ready",
+    "cat_lc": "mekeitz"
   },
   {
     "id": "par-VKG0tzqBGhI",
@@ -5190,7 +5368,9 @@
     "url": "https://www.youtube.com/watch?v=VKG0tzqBGhI",
     "date": "2024-12-20T04:00:18Z",
     "page": "/parsha.html",
-    "title_lc": "seeing the good in everyone"
+    "parsha": "Vayeishev",
+    "title_lc": "seeing the good in everyone",
+    "cat_lc": "vayeishev"
   },
   {
     "id": "par-kkRrHY5PhIA",
@@ -5200,7 +5380,9 @@
     "url": "https://www.youtube.com/watch?v=kkRrHY5PhIA",
     "date": "2024-12-06T04:00:33Z",
     "page": "/parsha.html",
-    "title_lc": "feeling hated"
+    "parsha": "Vayeitzei",
+    "title_lc": "feeling hated",
+    "cat_lc": "vayeitzei"
   },
   {
     "id": "par-dZBof9-vFSc",
@@ -5210,7 +5392,9 @@
     "url": "https://www.youtube.com/watch?v=dZBof9-vFSc",
     "date": "2024-11-29T04:00:18Z",
     "page": "/parsha.html",
-    "title_lc": "sticking up for others"
+    "parsha": "Toldos",
+    "title_lc": "sticking up for others",
+    "cat_lc": "toldos"
   },
   {
     "id": "par-jmIfmVKyYoo",
@@ -5220,7 +5404,9 @@
     "url": "https://www.youtube.com/watch?v=jmIfmVKyYoo",
     "date": "2024-11-15T04:00:25Z",
     "page": "/parsha.html",
-    "title_lc": "goodness for goodness sake"
+    "parsha": "Vayeira",
+    "title_lc": "goodness for goodness sake",
+    "cat_lc": "vayeira"
   },
   {
     "id": "par-gfuoLcp5048",
@@ -5230,7 +5416,9 @@
     "url": "https://www.youtube.com/watch?v=gfuoLcp5048",
     "date": "2024-11-08T04:00:32Z",
     "page": "/parsha.html",
-    "title_lc": "one step at a time"
+    "parsha": "Lech Licha",
+    "title_lc": "one step at a time",
+    "cat_lc": "lech licha"
   },
   {
     "id": "par-PgPX9VaMszU",
@@ -5240,7 +5428,9 @@
     "url": "https://www.youtube.com/watch?v=PgPX9VaMszU",
     "date": "2024-11-01T11:34:40Z",
     "page": "/parsha.html",
-    "title_lc": "living mercifully"
+    "parsha": "Noach",
+    "title_lc": "living mercifully",
+    "cat_lc": "noach"
   },
   {
     "id": "par-J9o4lYplBTI",
@@ -5250,7 +5440,9 @@
     "url": "https://www.youtube.com/watch?v=J9o4lYplBTI",
     "date": "2024-09-27T11:35:38Z",
     "page": "/parsha.html",
-    "title_lc": "being an individual as part of a group"
+    "parsha": "Nitzavim",
+    "title_lc": "being an individual as part of a group",
+    "cat_lc": "nitzavim"
   },
   {
     "id": "par-nxTTRjYCPI0",
@@ -5260,7 +5452,9 @@
     "url": "https://www.youtube.com/watch?v=nxTTRjYCPI0",
     "date": "2024-09-20T12:55:21Z",
     "page": "/parsha.html",
-    "title_lc": "picturing a better self"
+    "parsha": "Ki Savo",
+    "title_lc": "picturing a better self",
+    "cat_lc": "ki savo"
   },
   {
     "id": "par-9Zxl3GpZhHg",
@@ -5270,7 +5464,9 @@
     "url": "https://www.youtube.com/watch?v=9Zxl3GpZhHg",
     "date": "2024-09-13T02:24:35Z",
     "page": "/parsha.html",
-    "title_lc": "helping those who help themselves"
+    "parsha": "Ki Seitzei",
+    "title_lc": "helping those who help themselves",
+    "cat_lc": "ki seitzei"
   },
   {
     "id": "par-o5YiN4X3Kz8",
@@ -5280,7 +5476,9 @@
     "url": "https://www.youtube.com/watch?v=o5YiN4X3Kz8",
     "date": "2024-09-06T02:57:15Z",
     "page": "/parsha.html",
-    "title_lc": "look to the future"
+    "parsha": "Shoftim",
+    "title_lc": "look to the future",
+    "cat_lc": "shoftim"
   },
   {
     "id": "par-JXkC9c7We3Q",
@@ -5290,7 +5488,9 @@
     "url": "https://www.youtube.com/watch?v=JXkC9c7We3Q",
     "date": "2024-08-30T12:08:10Z",
     "page": "/parsha.html",
-    "title_lc": "good thoughts"
+    "parsha": "Reeh",
+    "title_lc": "good thoughts",
+    "cat_lc": "reeh"
   },
   {
     "id": "par-RwKxbqEe-wo",
@@ -5300,7 +5500,9 @@
     "url": "https://www.youtube.com/watch?v=RwKxbqEe-wo",
     "date": "2024-08-23T02:51:56Z",
     "page": "/parsha.html",
-    "title_lc": "don't take things for granted"
+    "parsha": "Eikev",
+    "title_lc": "don't take things for granted",
+    "cat_lc": "eikev"
   },
   {
     "id": "par-B43duakzMPQ",
@@ -5310,7 +5512,9 @@
     "url": "https://www.youtube.com/watch?v=B43duakzMPQ",
     "date": "2024-08-16T03:00:08Z",
     "page": "/parsha.html",
-    "title_lc": "one step at a time"
+    "parsha": "Vaeschanan",
+    "title_lc": "one step at a time",
+    "cat_lc": "vaeschanan"
   },
   {
     "id": "par-sW0pddecVxA",
@@ -5320,7 +5524,9 @@
     "url": "https://www.youtube.com/watch?v=sW0pddecVxA",
     "date": "2024-08-09T03:00:41Z",
     "page": "/parsha.html",
-    "title_lc": "being ready for our emunah moment"
+    "parsha": "Devarim",
+    "title_lc": "being ready for our emunah moment",
+    "cat_lc": "devarim"
   },
   {
     "id": "par-XNJOzGa21d0",
@@ -5330,7 +5536,9 @@
     "url": "https://www.youtube.com/watch?v=XNJOzGa21d0",
     "date": "2024-08-02T04:11:59Z",
     "page": "/parsha.html",
-    "title_lc": "thinking and praying"
+    "parsha": "Matos",
+    "title_lc": "thinking and praying",
+    "cat_lc": "matos"
   },
   {
     "id": "par-DmdSmW6eIXM",
@@ -5340,7 +5548,9 @@
     "url": "https://www.youtube.com/watch?v=DmdSmW6eIXM",
     "date": "2024-07-26T03:00:16Z",
     "page": "/parsha.html",
-    "title_lc": "controlling our own destiny"
+    "parsha": "Pinchas",
+    "title_lc": "controlling our own destiny",
+    "cat_lc": "pinchas"
   },
   {
     "id": "par-w9pTcYzNqwI",
@@ -5350,7 +5560,9 @@
     "url": "https://www.youtube.com/watch?v=w9pTcYzNqwI",
     "date": "2024-07-12T02:00:32Z",
     "page": "/parsha.html",
-    "title_lc": "don't wait to get hit!"
+    "parsha": "Chukas",
+    "title_lc": "don't wait to get hit!",
+    "cat_lc": "chukas"
   },
   {
     "id": "par-EHPTJZDrTXI",
@@ -5360,7 +5572,9 @@
     "url": "https://www.youtube.com/watch?v=EHPTJZDrTXI",
     "date": "2024-07-05T02:07:40Z",
     "page": "/parsha.html",
-    "title_lc": "sleep on it"
+    "parsha": "Korach",
+    "title_lc": "sleep on it",
+    "cat_lc": "korach"
   },
   {
     "id": "par-KHviV9IPAT0",
@@ -5370,7 +5584,9 @@
     "url": "https://www.youtube.com/watch?v=KHviV9IPAT0",
     "date": "2024-06-28T03:00:11Z",
     "page": "/parsha.html",
-    "title_lc": "one step at a time"
+    "parsha": "Shelach",
+    "title_lc": "one step at a time",
+    "cat_lc": "shelach"
   },
   {
     "id": "par-NzAt8xvAx_4",
@@ -5380,7 +5596,9 @@
     "url": "https://www.youtube.com/watch?v=NzAt8xvAx_4",
     "date": "2024-06-21T04:00:15Z",
     "page": "/parsha.html",
-    "title_lc": "being sensitive and showing love"
+    "parsha": "Behaaloscha",
+    "title_lc": "being sensitive and showing love",
+    "cat_lc": "behaaloscha"
   },
   {
     "id": "par-ZcB4iron84I",
@@ -5390,7 +5608,9 @@
     "url": "https://www.youtube.com/watch?v=ZcB4iron84I",
     "date": "2024-05-31T02:45:47Z",
     "page": "/parsha.html",
-    "title_lc": "know your self worth"
+    "parsha": "Bechukosai",
+    "title_lc": "know your self worth",
+    "cat_lc": "bechukosai"
   },
   {
     "id": "par-IV5VKhZVQsg",
@@ -5400,7 +5620,9 @@
     "url": "https://www.youtube.com/watch?v=IV5VKhZVQsg",
     "date": "2024-05-24T03:00:14Z",
     "page": "/parsha.html",
-    "title_lc": "it's never too late"
+    "parsha": "Behar",
+    "title_lc": "it's never too late",
+    "cat_lc": "behar"
   },
   {
     "id": "par-VgoSymXs56g",
@@ -5410,7 +5632,9 @@
     "url": "https://www.youtube.com/watch?v=VgoSymXs56g",
     "date": "2024-05-17T04:00:19Z",
     "page": "/parsha.html",
-    "title_lc": "remember your old self!"
+    "parsha": "Emor",
+    "title_lc": "remember your old self!",
+    "cat_lc": "emor"
   },
   {
     "id": "par-wbdc0vCkSyE",
@@ -5420,7 +5644,9 @@
     "url": "https://www.youtube.com/watch?v=wbdc0vCkSyE",
     "date": "2024-05-10T03:59:50Z",
     "page": "/parsha.html",
-    "title_lc": "raising children to be responsible adults"
+    "parsha": "Kedoshim",
+    "title_lc": "raising children to be responsible adults",
+    "cat_lc": "kedoshim"
   },
   {
     "id": "par-Gk-vbNaMVwM",
@@ -5430,7 +5656,9 @@
     "url": "https://www.youtube.com/watch?v=Gk-vbNaMVwM",
     "date": "2024-04-19T02:13:32Z",
     "page": "/parsha.html",
-    "title_lc": "positive speech"
+    "parsha": "Metzora",
+    "title_lc": "positive speech",
+    "cat_lc": "metzora"
   },
   {
     "id": "par-AkwwmY31VCs",
@@ -5440,7 +5668,9 @@
     "url": "https://www.youtube.com/watch?v=AkwwmY31VCs",
     "date": "2024-04-12T02:55:35Z",
     "page": "/parsha.html",
-    "title_lc": "compassion and sensitivity"
+    "parsha": "Tazria",
+    "title_lc": "compassion and sensitivity",
+    "cat_lc": "tazria"
   },
   {
     "id": "par-bAVq_F5kUCA",
@@ -5450,7 +5680,9 @@
     "url": "https://www.youtube.com/watch?v=bAVq_F5kUCA",
     "date": "2024-04-05T03:02:25Z",
     "page": "/parsha.html",
-    "title_lc": "two halves of a whole"
+    "parsha": "Shemini",
+    "title_lc": "two halves of a whole",
+    "cat_lc": "shemini"
   },
   {
     "id": "par-23SWXHxOSQw",
@@ -5460,7 +5692,9 @@
     "url": "https://www.youtube.com/watch?v=23SWXHxOSQw",
     "date": "2024-03-29T01:08:33Z",
     "page": "/parsha.html",
-    "title_lc": "keep the flame burning"
+    "parsha": "Tzav",
+    "title_lc": "keep the flame burning",
+    "cat_lc": "tzav"
   },
   {
     "id": "par-aD2AidKGLMA",
@@ -5470,7 +5704,9 @@
     "url": "https://www.youtube.com/watch?v=aD2AidKGLMA",
     "date": "2024-03-22T01:38:02Z",
     "page": "/parsha.html",
-    "title_lc": "spice it up"
+    "parsha": "Vayikra",
+    "title_lc": "spice it up",
+    "cat_lc": "vayikra"
   },
   {
     "id": "par-hUdphNixufE",
@@ -5480,7 +5716,9 @@
     "url": "https://www.youtube.com/watch?v=hUdphNixufE",
     "date": "2024-03-15T02:12:59Z",
     "page": "/parsha.html",
-    "title_lc": "believe in yourself"
+    "parsha": "Pekudei",
+    "title_lc": "believe in yourself",
+    "cat_lc": "pekudei"
   },
   {
     "id": "par-1HX4P7-KABw",
@@ -5490,7 +5728,9 @@
     "url": "https://www.youtube.com/watch?v=1HX4P7-KABw",
     "date": "2024-02-23T12:32:06Z",
     "page": "/parsha.html",
-    "title_lc": "consistent service"
+    "parsha": "Tetzaveh",
+    "title_lc": "consistent service",
+    "cat_lc": "tetzaveh"
   },
   {
     "id": "par-RK9u7c0lVzM",
@@ -5500,7 +5740,9 @@
     "url": "https://www.youtube.com/watch?v=RK9u7c0lVzM",
     "date": "2024-02-16T12:29:48Z",
     "page": "/parsha.html",
-    "title_lc": "proper measurements"
+    "parsha": "Terumah",
+    "title_lc": "proper measurements",
+    "cat_lc": "terumah"
   },
   {
     "id": "par-E0sWl3Y5G3w",
@@ -5510,7 +5752,9 @@
     "url": "https://www.youtube.com/watch?v=E0sWl3Y5G3w",
     "date": "2024-02-02T04:39:45Z",
     "page": "/parsha.html",
-    "title_lc": "live in the now"
+    "parsha": "Yisro",
+    "title_lc": "live in the now",
+    "cat_lc": "yisro"
   },
   {
     "id": "par-SGdTp0RwfQA",
@@ -5520,7 +5764,9 @@
     "url": "https://www.youtube.com/watch?v=SGdTp0RwfQA",
     "date": "2024-01-26T03:00:29Z",
     "page": "/parsha.html",
-    "title_lc": "one day at a time"
+    "parsha": "Beshalach",
+    "title_lc": "one day at a time",
+    "cat_lc": "beshalach"
   },
   {
     "id": "par-srwcIlsdShA",
@@ -5530,7 +5776,9 @@
     "url": "https://www.youtube.com/watch?v=srwcIlsdShA",
     "date": "2024-01-19T03:05:56Z",
     "page": "/parsha.html",
-    "title_lc": "we are all beloved"
+    "parsha": "Bo",
+    "title_lc": "we are all beloved",
+    "cat_lc": "bo"
   },
   {
     "id": "par-8TodSIlo3LA",
@@ -5540,7 +5788,9 @@
     "url": "https://www.youtube.com/watch?v=8TodSIlo3LA",
     "date": "2024-01-05T12:34:06Z",
     "page": "/parsha.html",
-    "title_lc": "you are how you act"
+    "parsha": "Shemos",
+    "title_lc": "you are how you act",
+    "cat_lc": "shemos"
   },
   {
     "id": "par-HVLS2JhmdbU",
@@ -5550,7 +5800,9 @@
     "url": "https://www.youtube.com/watch?v=HVLS2JhmdbU",
     "date": "2023-12-29T13:56:50Z",
     "page": "/parsha.html",
-    "title_lc": "block out the noise"
+    "parsha": "Vayichi",
+    "title_lc": "block out the noise",
+    "cat_lc": "vayichi"
   },
   {
     "id": "par-16qxNXeiXqE",
@@ -5560,7 +5812,9 @@
     "url": "https://www.youtube.com/watch?v=16qxNXeiXqE",
     "date": "2023-12-22T03:54:27Z",
     "page": "/parsha.html",
-    "title_lc": "i'll be there for you...."
+    "parsha": "Vayigash",
+    "title_lc": "i'll be there for you....",
+    "cat_lc": "vayigash"
   },
   {
     "id": "par-O-nBfhztItY",
@@ -5570,7 +5824,9 @@
     "url": "https://www.youtube.com/watch?v=O-nBfhztItY",
     "date": "2023-11-17T04:11:38Z",
     "page": "/parsha.html",
-    "title_lc": "ignore the haters"
+    "parsha": "Toldos",
+    "title_lc": "ignore the haters",
+    "cat_lc": "toldos"
   },
   {
     "id": "par-jGUg6i5Mvsg",
@@ -5580,7 +5836,9 @@
     "url": "https://www.youtube.com/watch?v=jGUg6i5Mvsg",
     "date": "2023-11-03T12:55:07Z",
     "page": "/parsha.html",
-    "title_lc": "true kindness"
+    "parsha": "Vayeira",
+    "title_lc": "true kindness",
+    "cat_lc": "vayeira"
   },
   {
     "id": "par-HjAV7Ds1M04",
@@ -5590,7 +5848,9 @@
     "url": "https://www.youtube.com/watch?v=HjAV7Ds1M04",
     "date": "2023-10-27T00:41:38Z",
     "page": "/parsha.html",
-    "title_lc": "the best way we know how to"
+    "parsha": "Lech Licha",
+    "title_lc": "the best way we know how to",
+    "cat_lc": "lech licha"
   },
   {
     "id": "par-j5dj4Bx1IDE",
@@ -5600,7 +5860,9 @@
     "url": "https://www.youtube.com/watch?v=j5dj4Bx1IDE",
     "date": "2023-10-20T04:00:22Z",
     "page": "/parsha.html",
-    "title_lc": "everybody can do something"
+    "parsha": "Noach",
+    "title_lc": "everybody can do something",
+    "cat_lc": "noach"
   },
   {
     "id": "par-CK_OQQbEA88",
@@ -5610,7 +5872,9 @@
     "url": "https://www.youtube.com/watch?v=CK_OQQbEA88",
     "date": "2023-09-22T01:20:16Z",
     "page": "/parsha.html",
-    "title_lc": "how to speak to hashem"
+    "parsha": "Haazinu",
+    "title_lc": "how to speak to hashem",
+    "cat_lc": "haazinu"
   },
   {
     "id": "par-CsDHjcB2zjs",
@@ -5620,7 +5884,9 @@
     "url": "https://www.youtube.com/watch?v=CsDHjcB2zjs",
     "date": "2023-09-08T03:14:36Z",
     "page": "/parsha.html",
-    "title_lc": "so close!"
+    "parsha": "Nitzavim",
+    "title_lc": "so close!",
+    "cat_lc": "nitzavim"
   },
   {
     "id": "par-WOzs4fjvzho",
@@ -5630,7 +5896,9 @@
     "url": "https://www.youtube.com/watch?v=WOzs4fjvzho",
     "date": "2023-09-01T02:36:47Z",
     "page": "/parsha.html",
-    "title_lc": "greatness via adversity"
+    "parsha": "Ki Savo",
+    "title_lc": "greatness via adversity",
+    "cat_lc": "ki savo"
   },
   {
     "id": "par-MZhU8npeEzI",
@@ -5640,7 +5908,9 @@
     "url": "https://www.youtube.com/watch?v=MZhU8npeEzI",
     "date": "2023-08-18T15:23:21Z",
     "page": "/parsha.html",
-    "title_lc": "striving to be a complete person"
+    "parsha": "Shoftim",
+    "title_lc": "striving to be a complete person",
+    "cat_lc": "shoftim"
   },
   {
     "id": "par-610wjE0W3IA",
@@ -5650,7 +5920,9 @@
     "url": "https://www.youtube.com/watch?v=610wjE0W3IA",
     "date": "2023-08-10T20:24:24Z",
     "page": "/parsha.html",
-    "title_lc": "true happiness"
+    "parsha": "Reeh",
+    "title_lc": "true happiness",
+    "cat_lc": "reeh"
   },
   {
     "id": "par-hAzyoJuQ1f4",
@@ -5660,7 +5932,9 @@
     "url": "https://www.youtube.com/watch?v=hAzyoJuQ1f4",
     "date": "2023-07-14T17:26:32Z",
     "page": "/parsha.html",
-    "title_lc": "the challenges along the journey"
+    "parsha": "Masei",
+    "title_lc": "the challenges along the journey",
+    "cat_lc": "masei"
   },
   {
     "id": "par-h_z6ucDOzvg",
@@ -5670,7 +5944,9 @@
     "url": "https://www.youtube.com/watch?v=h_z6ucDOzvg",
     "date": "2023-06-29T21:02:52Z",
     "page": "/parsha.html",
-    "title_lc": "our challenges are part of our growth"
+    "parsha": "Chukas",
+    "title_lc": "our challenges are part of our growth",
+    "cat_lc": "chukas"
   },
   {
     "id": "par-c_0H1RUxsl4",
@@ -5680,7 +5956,9 @@
     "url": "https://www.youtube.com/watch?v=c_0H1RUxsl4",
     "date": "2023-06-16T11:29:38Z",
     "page": "/parsha.html",
-    "title_lc": "what doesn't kill you makes you stronger"
+    "parsha": "Shelach",
+    "title_lc": "what doesn't kill you makes you stronger",
+    "cat_lc": "shelach"
   },
   {
     "id": "par-op5hHIKaL4Q",
@@ -5690,7 +5968,9 @@
     "url": "https://www.youtube.com/watch?v=op5hHIKaL4Q",
     "date": "2023-06-09T11:44:34Z",
     "page": "/parsha.html",
-    "title_lc": "bending for a common goal"
+    "parsha": "Behaaloscha",
+    "title_lc": "bending for a common goal",
+    "cat_lc": "behaaloscha"
   },
   {
     "id": "par-gpDGzfeOj_g",
@@ -5700,7 +5980,9 @@
     "url": "https://www.youtube.com/watch?v=gpDGzfeOj_g",
     "date": "2023-06-02T12:16:45Z",
     "page": "/parsha.html",
-    "title_lc": "talk is cheap"
+    "parsha": "Naso",
+    "title_lc": "talk is cheap",
+    "cat_lc": "naso"
   },
   {
     "id": "par-lPafvoaZ7-g",
@@ -5710,7 +5992,9 @@
     "url": "https://www.youtube.com/watch?v=lPafvoaZ7-g",
     "date": "2023-04-21T11:49:43Z",
     "page": "/parsha.html",
-    "title_lc": "focus on today"
+    "parsha": "Metzora",
+    "title_lc": "focus on today",
+    "cat_lc": "metzora"
   },
   {
     "id": "par-1amXO9wMq-Y",
@@ -5720,7 +6004,9 @@
     "url": "https://www.youtube.com/watch?v=1amXO9wMq-Y",
     "date": "2023-03-31T12:55:01Z",
     "page": "/parsha.html",
-    "title_lc": "express your gratitude!"
+    "parsha": "Tzav",
+    "title_lc": "express your gratitude!",
+    "cat_lc": "tzav"
   },
   {
     "id": "par-AOjpA187q68",
@@ -5730,7 +6016,9 @@
     "url": "https://www.youtube.com/watch?v=AOjpA187q68",
     "date": "2023-03-24T12:08:15Z",
     "page": "/parsha.html",
-    "title_lc": "be normal!"
+    "parsha": "Vayikra",
+    "title_lc": "be normal!",
+    "cat_lc": "vayikra"
   },
   {
     "id": "par-Av1Bbf6TpjA",
@@ -5740,7 +6028,9 @@
     "url": "https://www.youtube.com/watch?v=Av1Bbf6TpjA",
     "date": "2023-03-10T13:39:49Z",
     "page": "/parsha.html",
-    "title_lc": "even on a cloudy day...."
+    "parsha": "Ki Sisa",
+    "title_lc": "even on a cloudy day....",
+    "cat_lc": "ki sisa"
   },
   {
     "id": "par-CbxAW990S4U",
@@ -5750,7 +6040,9 @@
     "url": "https://www.youtube.com/watch?v=CbxAW990S4U",
     "date": "2023-03-03T14:35:16Z",
     "page": "/parsha.html",
-    "title_lc": "positive reinforcement"
+    "parsha": "Tetzaveh",
+    "title_lc": "positive reinforcement",
+    "cat_lc": "tetzaveh"
   },
   {
     "id": "par-DiFnikvOQ1I",
@@ -5760,7 +6052,9 @@
     "url": "https://www.youtube.com/watch?v=DiFnikvOQ1I",
     "date": "2023-02-24T04:21:27Z",
     "page": "/parsha.html",
-    "title_lc": "inside and out"
+    "parsha": "Terumah",
+    "title_lc": "inside and out",
+    "cat_lc": "terumah"
   },
   {
     "id": "par-zUYqLTKu0Hk",
@@ -5770,7 +6064,9 @@
     "url": "https://www.youtube.com/watch?v=zUYqLTKu0Hk",
     "date": "2023-02-17T03:27:19Z",
     "page": "/parsha.html",
-    "title_lc": "the total package"
+    "parsha": "Mishpatim",
+    "title_lc": "the total package",
+    "cat_lc": "mishpatim"
   },
   {
     "id": "par-Uo5Kq3FbSMs",
@@ -5780,7 +6076,9 @@
     "url": "https://www.youtube.com/watch?v=Uo5Kq3FbSMs",
     "date": "2023-01-27T10:27:42Z",
     "page": "/parsha.html",
-    "title_lc": "stick together"
+    "parsha": "Bo",
+    "title_lc": "stick together",
+    "cat_lc": "bo"
   },
   {
     "id": "par-iTKPOrVBxL8",
@@ -5790,7 +6088,9 @@
     "url": "https://www.youtube.com/watch?v=iTKPOrVBxL8",
     "date": "2023-01-20T14:16:26Z",
     "page": "/parsha.html",
-    "title_lc": "gratitude for ourselves"
+    "parsha": "Vaeira",
+    "title_lc": "gratitude for ourselves",
+    "cat_lc": "vaeira"
   },
   {
     "id": "par-9ep0DlW6CKE",
@@ -5800,7 +6100,9 @@
     "url": "https://www.youtube.com/watch?v=9ep0DlW6CKE",
     "date": "2023-01-13T03:23:35Z",
     "page": "/parsha.html",
-    "title_lc": "don't get down - get up and fight!"
+    "parsha": "Shemos",
+    "title_lc": "don't get down - get up and fight!",
+    "cat_lc": "shemos"
   },
   {
     "id": "par-4PnR9rfXbio",
@@ -5810,7 +6112,9 @@
     "url": "https://www.youtube.com/watch?v=4PnR9rfXbio",
     "date": "2023-01-06T14:11:20Z",
     "page": "/parsha.html",
-    "title_lc": "don't get bogged down with the small things"
+    "parsha": "Vayichi",
+    "title_lc": "don't get bogged down with the small things",
+    "cat_lc": "vayichi"
   },
   {
     "id": "par-WvsO4GskzFQ",
@@ -5820,7 +6124,9 @@
     "url": "https://www.youtube.com/watch?v=WvsO4GskzFQ",
     "date": "2022-12-30T11:30:15Z",
     "page": "/parsha.html",
-    "title_lc": "approach with confidence"
+    "parsha": "Vayigash",
+    "title_lc": "approach with confidence",
+    "cat_lc": "vayigash"
   },
   {
     "id": "par-9oLj1BR0ojc",
@@ -5830,7 +6136,9 @@
     "url": "https://www.youtube.com/watch?v=9oLj1BR0ojc",
     "date": "2022-12-16T02:08:23Z",
     "page": "/parsha.html",
-    "title_lc": "ready to work"
+    "parsha": "Vayeishev",
+    "title_lc": "ready to work",
+    "cat_lc": "vayeishev"
   },
   {
     "id": "par-3hicr1m255c",
@@ -5840,7 +6148,9 @@
     "url": "https://www.youtube.com/watch?v=3hicr1m255c",
     "date": "2022-12-02T11:28:35Z",
     "page": "/parsha.html",
-    "title_lc": "wake up!"
+    "parsha": "Vayeitzei",
+    "title_lc": "wake up!",
+    "cat_lc": "vayeitzei"
   },
   {
     "id": "par-Z_FiybgxGiY",
@@ -5850,7 +6160,9 @@
     "url": "https://www.youtube.com/watch?v=Z_FiybgxGiY",
     "date": "2022-11-11T04:03:26Z",
     "page": "/parsha.html",
-    "title_lc": "keep going!"
+    "parsha": "Vayeira",
+    "title_lc": "keep going!",
+    "cat_lc": "vayeira"
   },
   {
     "id": "par-zxUIGSYbQIE",
@@ -5860,7 +6172,9 @@
     "url": "https://www.youtube.com/watch?v=zxUIGSYbQIE",
     "date": "2022-11-04T03:26:27Z",
     "page": "/parsha.html",
-    "title_lc": "try to do the impossible"
+    "parsha": "Lech Licha",
+    "title_lc": "try to do the impossible",
+    "cat_lc": "lech licha"
   },
   {
     "id": "par-raVktdwnksM",
@@ -5870,7 +6184,9 @@
     "url": "https://www.youtube.com/watch?v=raVktdwnksM",
     "date": "2022-10-28T03:20:36Z",
     "page": "/parsha.html",
-    "title_lc": "ya gotta believe!"
+    "parsha": "Noach",
+    "title_lc": "ya gotta believe!",
+    "cat_lc": "noach"
   },
   {
     "id": "par-tl4awDmgE3w",
@@ -5880,7 +6196,9 @@
     "url": "https://www.youtube.com/watch?v=tl4awDmgE3w",
     "date": "2022-10-16T16:30:13Z",
     "page": "/parsha.html",
-    "title_lc": "be strong be strong and let us be strengthened!"
+    "parsha": "Vzos Habracha",
+    "title_lc": "be strong be strong and let us be strengthened!",
+    "cat_lc": "vzos habracha"
   },
   {
     "id": "par-4GvAiTLz5GA",
@@ -5890,7 +6208,9 @@
     "url": "https://www.youtube.com/watch?v=4GvAiTLz5GA",
     "date": "2022-10-07T02:33:54Z",
     "page": "/parsha.html",
-    "title_lc": "from sin to repentance"
+    "parsha": "Haazinu",
+    "title_lc": "from sin to repentance",
+    "cat_lc": "haazinu"
   },
   {
     "id": "par-Ix71F80kkZI",
@@ -5900,7 +6220,9 @@
     "url": "https://www.youtube.com/watch?v=Ix71F80kkZI",
     "date": "2022-09-09T13:03:08Z",
     "page": "/parsha.html",
-    "title_lc": "true faith in hashem"
+    "parsha": "Ki Seitzei",
+    "title_lc": "true faith in hashem",
+    "cat_lc": "ki seitzei"
   },
   {
     "id": "par-KpS28PJg4co",
@@ -5910,7 +6232,9 @@
     "url": "https://www.youtube.com/watch?v=KpS28PJg4co",
     "date": "2022-08-26T11:40:00Z",
     "page": "/parsha.html",
-    "title_lc": "being truly rich"
+    "parsha": "Reeh",
+    "title_lc": "being truly rich",
+    "cat_lc": "reeh"
   },
   {
     "id": "par-u5CjS8aXXRs",
@@ -5920,7 +6244,9 @@
     "url": "https://www.youtube.com/watch?v=u5CjS8aXXRs",
     "date": "2022-08-19T03:35:03Z",
     "page": "/parsha.html",
-    "title_lc": "every step you take..."
+    "parsha": "Eikev",
+    "title_lc": "every step you take...",
+    "cat_lc": "eikev"
   },
   {
     "id": "par-088xSvGcZ9Y",
@@ -5930,7 +6256,9 @@
     "url": "https://www.youtube.com/watch?v=088xSvGcZ9Y",
     "date": "2022-08-05T02:48:23Z",
     "page": "/parsha.html",
-    "title_lc": "don't judge!"
+    "parsha": "Devarim",
+    "title_lc": "don't judge!",
+    "cat_lc": "devarim"
   },
   {
     "id": "par-yOhDNAJPZhk",
@@ -5940,7 +6268,9 @@
     "url": "https://www.youtube.com/watch?v=yOhDNAJPZhk",
     "date": "2022-07-29T01:54:32Z",
     "page": "/parsha.html",
-    "title_lc": "the importance of the right priorities"
+    "parsha": "Matos",
+    "title_lc": "the importance of the right priorities",
+    "cat_lc": "matos"
   },
   {
     "id": "par-aa0nHg8oI_s",
@@ -5950,7 +6280,9 @@
     "url": "https://www.youtube.com/watch?v=aa0nHg8oI_s",
     "date": "2022-04-01T03:37:35Z",
     "page": "/parsha.html",
-    "title_lc": "not too high and not too low"
+    "parsha": "Tazria",
+    "title_lc": "not too high and not too low",
+    "cat_lc": "tazria"
   },
   {
     "id": "par-Bp9bp09zeeA",
@@ -5960,7 +6292,9 @@
     "url": "https://www.youtube.com/watch?v=Bp9bp09zeeA",
     "date": "2022-03-11T02:52:09Z",
     "page": "/parsha.html",
-    "title_lc": "the real you"
+    "parsha": "Vayikra",
+    "title_lc": "the real you",
+    "cat_lc": "vayikra"
   },
   {
     "id": "par-Zn4J_XNmvXY",
@@ -5970,7 +6304,9 @@
     "url": "https://www.youtube.com/watch?v=Zn4J_XNmvXY",
     "date": "2022-02-25T03:57:01Z",
     "page": "/parsha.html",
-    "title_lc": "just do it"
+    "parsha": "Vayakhel",
+    "title_lc": "just do it",
+    "cat_lc": "vayakhel"
   },
   {
     "id": "par-kRK-HVAGIew",
@@ -5980,7 +6316,9 @@
     "url": "https://www.youtube.com/watch?v=kRK-HVAGIew",
     "date": "2022-02-18T11:56:00Z",
     "page": "/parsha.html",
-    "title_lc": "being happy for the right reasons"
+    "parsha": "Ki Sisa",
+    "title_lc": "being happy for the right reasons",
+    "cat_lc": "ki sisa"
   },
   {
     "id": "par-evVWjudUMz4",
@@ -5990,7 +6328,9 @@
     "url": "https://www.youtube.com/watch?v=evVWjudUMz4",
     "date": "2022-02-04T05:00:27Z",
     "page": "/parsha.html",
-    "title_lc": "what hashem truly desires"
+    "parsha": "Terumah",
+    "title_lc": "what hashem truly desires",
+    "cat_lc": "terumah"
   },
   {
     "id": "par-qu2AuDALMeg",
@@ -6000,7 +6340,9 @@
     "url": "https://www.youtube.com/watch?v=qu2AuDALMeg",
     "date": "2022-01-28T05:00:32Z",
     "page": "/parsha.html",
-    "title_lc": "relieving another's burden"
+    "parsha": "Mishpatim",
+    "title_lc": "relieving another's burden",
+    "cat_lc": "mishpatim"
   },
   {
     "id": "par-D2IYQbPiNHI",
@@ -6010,7 +6352,9 @@
     "url": "https://www.youtube.com/watch?v=D2IYQbPiNHI",
     "date": "2022-01-21T05:03:54Z",
     "page": "/parsha.html",
-    "title_lc": "the proper mindset"
+    "parsha": "Yisro",
+    "title_lc": "the proper mindset",
+    "cat_lc": "yisro"
   },
   {
     "id": "par-E7ZtWHymutA",
@@ -6020,7 +6364,9 @@
     "url": "https://www.youtube.com/watch?v=E7ZtWHymutA",
     "date": "2021-12-31T04:14:30Z",
     "page": "/parsha.html",
-    "title_lc": "we can all be great!"
+    "parsha": "Vaeira",
+    "title_lc": "we can all be great!",
+    "cat_lc": "vaeira"
   },
   {
     "id": "par-tn5Jazchl48",
@@ -6030,7 +6376,9 @@
     "url": "https://www.youtube.com/watch?v=tn5Jazchl48",
     "date": "2021-12-24T04:42:33Z",
     "page": "/parsha.html",
-    "title_lc": "speak softly and carry a big stick"
+    "parsha": "Shemos",
+    "title_lc": "speak softly and carry a big stick",
+    "cat_lc": "shemos"
   },
   {
     "id": "par-qUCI5qXssCM",
@@ -6040,7 +6388,9 @@
     "url": "https://www.youtube.com/watch?v=qUCI5qXssCM",
     "date": "2021-12-17T02:56:19Z",
     "page": "/parsha.html",
-    "title_lc": "each according to their own ability"
+    "parsha": "Vayichi",
+    "title_lc": "each according to their own ability",
+    "cat_lc": "vayichi"
   },
   {
     "id": "par-1yRdrSwMXAs",
@@ -6050,7 +6400,9 @@
     "url": "https://www.youtube.com/watch?v=1yRdrSwMXAs",
     "date": "2021-11-26T05:00:01Z",
     "page": "/parsha.html",
-    "title_lc": "looking at the entirety of a person"
+    "parsha": "Vayeishev",
+    "title_lc": "looking at the entirety of a person",
+    "cat_lc": "vayeishev"
   },
   {
     "id": "par-MQKlWh91JWE",
@@ -6060,7 +6412,9 @@
     "url": "https://www.youtube.com/watch?v=MQKlWh91JWE",
     "date": "2021-11-19T05:00:09Z",
     "page": "/parsha.html",
-    "title_lc": "show some passion!"
+    "parsha": "Vayishlach",
+    "title_lc": "show some passion!",
+    "cat_lc": "vayishlach"
   },
   {
     "id": "par-ZOzQfFEHvCk",
@@ -6070,7 +6424,9 @@
     "url": "https://www.youtube.com/watch?v=ZOzQfFEHvCk",
     "date": "2021-11-05T04:00:12Z",
     "page": "/parsha.html",
-    "title_lc": "taking our voices seriously"
+    "parsha": "Toldos",
+    "title_lc": "taking our voices seriously",
+    "cat_lc": "toldos"
   },
   {
     "id": "par-CAOsz2b7S3k",
@@ -6080,7 +6436,9 @@
     "url": "https://www.youtube.com/watch?v=CAOsz2b7S3k",
     "date": "2021-10-29T04:00:04Z",
     "page": "/parsha.html",
-    "title_lc": "coming prepared"
+    "parsha": "Chayei Sarah",
+    "title_lc": "coming prepared",
+    "cat_lc": "chayei sarah"
   },
   {
     "id": "par-VagZdn1gy70",
@@ -6090,7 +6448,9 @@
     "url": "https://www.youtube.com/watch?v=VagZdn1gy70",
     "date": "2021-10-15T04:00:19Z",
     "page": "/parsha.html",
-    "title_lc": "learning from each other"
+    "parsha": "Lech Licha",
+    "title_lc": "learning from each other",
+    "cat_lc": "lech licha"
   },
   {
     "id": "par-cJP_OYw6M_U",
@@ -6100,7 +6460,9 @@
     "url": "https://www.youtube.com/watch?v=cJP_OYw6M_U",
     "date": "2021-08-27T04:00:21Z",
     "page": "/parsha.html",
-    "title_lc": "act and think"
+    "parsha": "Ki Savo",
+    "title_lc": "act and think",
+    "cat_lc": "ki savo"
   },
   {
     "id": "par-uEvPhcQs-pY",
@@ -6110,7 +6472,9 @@
     "url": "https://www.youtube.com/watch?v=uEvPhcQs-pY",
     "date": "2021-08-20T04:00:37Z",
     "page": "/parsha.html",
-    "title_lc": "starting the battle"
+    "parsha": "Ki Seitzei",
+    "title_lc": "starting the battle",
+    "cat_lc": "ki seitzei"
   },
   {
     "id": "par-Q7wao_-GsEI",
@@ -6120,7 +6484,9 @@
     "url": "https://www.youtube.com/watch?v=Q7wao_-GsEI",
     "date": "2021-08-13T04:00:08Z",
     "page": "/parsha.html",
-    "title_lc": "internal disputes"
+    "parsha": "Shoftim",
+    "title_lc": "internal disputes",
+    "cat_lc": "shoftim"
   },
   {
     "id": "par-kNzziNGACko",
@@ -6130,7 +6496,9 @@
     "url": "https://www.youtube.com/watch?v=kNzziNGACko",
     "date": "2021-07-23T04:00:15Z",
     "page": "/parsha.html",
-    "title_lc": "bring it back home"
+    "parsha": "Vaeschanan",
+    "title_lc": "bring it back home",
+    "cat_lc": "vaeschanan"
   },
   {
     "id": "par-BDzS68wgQqE",
@@ -6140,7 +6508,9 @@
     "url": "https://www.youtube.com/watch?v=BDzS68wgQqE",
     "date": "2021-07-16T13:00:45Z",
     "page": "/parsha.html",
-    "title_lc": "not just stars .... sand"
+    "parsha": "Devarim",
+    "title_lc": "not just stars .... sand",
+    "cat_lc": "devarim"
   },
   {
     "id": "par-F1OHX0fN8cc",
@@ -6150,7 +6520,9 @@
     "url": "https://www.youtube.com/watch?v=F1OHX0fN8cc",
     "date": "2021-07-02T13:58:24Z",
     "page": "/parsha.html",
-    "title_lc": "consistent excitement"
+    "parsha": "Pinchas",
+    "title_lc": "consistent excitement",
+    "cat_lc": "pinchas"
   },
   {
     "id": "par-OlQjtVZuEK8",
@@ -6160,7 +6532,9 @@
     "url": "https://www.youtube.com/watch?v=OlQjtVZuEK8",
     "date": "2021-06-25T01:33:28Z",
     "page": "/parsha.html",
-    "title_lc": "all together"
+    "parsha": "Balak",
+    "title_lc": "all together",
+    "cat_lc": "balak"
   },
   {
     "id": "par-1BM5_BRuUW4",
@@ -6170,7 +6544,9 @@
     "url": "https://www.youtube.com/watch?v=1BM5_BRuUW4",
     "date": "2021-04-23T11:57:01Z",
     "page": "/parsha.html",
-    "title_lc": "love your friend ...."
+    "parsha": "Achrei Mos",
+    "title_lc": "love your friend ....",
+    "cat_lc": "achrei mos"
   },
   {
     "id": "par-Ypeq8l3KaKo",
@@ -6180,7 +6556,9 @@
     "url": "https://www.youtube.com/watch?v=Ypeq8l3KaKo",
     "date": "2021-03-19T10:24:27Z",
     "page": "/parsha.html",
-    "title_lc": "give yourself"
+    "parsha": "Vayikra",
+    "title_lc": "give yourself",
+    "cat_lc": "vayikra"
   },
   {
     "id": "par-TXpLcmS8Fdg",
@@ -6190,7 +6568,9 @@
     "url": "https://www.youtube.com/watch?v=TXpLcmS8Fdg",
     "date": "2021-03-05T11:46:41Z",
     "page": "/parsha.html",
-    "title_lc": "stand up for whats right"
+    "parsha": "Ki Sisa",
+    "title_lc": "stand up for whats right",
+    "cat_lc": "ki sisa"
   },
   {
     "id": "par-7QKNSlwwTR8",
@@ -6200,7 +6580,9 @@
     "url": "https://www.youtube.com/watch?v=7QKNSlwwTR8",
     "date": "2021-02-19T03:16:40Z",
     "page": "/parsha.html",
-    "title_lc": "look at each other"
+    "parsha": "Terumah",
+    "title_lc": "look at each other",
+    "cat_lc": "terumah"
   },
   {
     "id": "par-0DgWOcbCqSk",
@@ -6210,7 +6592,9 @@
     "url": "https://www.youtube.com/watch?v=0DgWOcbCqSk",
     "date": "2021-02-05T14:48:12Z",
     "page": "/parsha.html",
-    "title_lc": "importance of bein adam lchaveiro"
+    "parsha": "Yisro",
+    "title_lc": "importance of bein adam lchaveiro",
+    "cat_lc": "yisro"
   },
   {
     "id": "par-QJJ4Jsqp-c0",
@@ -6220,7 +6604,9 @@
     "url": "https://www.youtube.com/watch?v=QJJ4Jsqp-c0",
     "date": "2021-01-29T13:52:52Z",
     "page": "/parsha.html",
-    "title_lc": "take action!"
+    "parsha": "Beshalach",
+    "title_lc": "take action!",
+    "cat_lc": "beshalach"
   },
   {
     "id": "par-gOJlrWnMU-Y",
@@ -6230,7 +6616,9 @@
     "url": "https://www.youtube.com/watch?v=gOJlrWnMU-Y",
     "date": "2021-01-15T10:38:15Z",
     "page": "/parsha.html",
-    "title_lc": "knowing your surroundings"
+    "parsha": "Vaeira",
+    "title_lc": "knowing your surroundings",
+    "cat_lc": "vaeira"
   },
   {
     "id": "par-w-qtdqzWwLU",
@@ -6240,7 +6628,9 @@
     "url": "https://www.youtube.com/watch?v=w-qtdqzWwLU",
     "date": "2021-01-08T15:48:03Z",
     "page": "/parsha.html",
-    "title_lc": "moshes inner conflict"
+    "parsha": "Shemos",
+    "title_lc": "moshes inner conflict",
+    "cat_lc": "shemos"
   },
   {
     "id": "par-DbOSVXevWFY",
@@ -6250,7 +6640,9 @@
     "url": "https://www.youtube.com/watch?v=DbOSVXevWFY",
     "date": "2021-01-01T12:00:03Z",
     "page": "/parsha.html",
-    "title_lc": "sibling rivalry"
+    "parsha": "Vayichi",
+    "title_lc": "sibling rivalry",
+    "cat_lc": "vayichi"
   },
   {
     "id": "par-kFHe0VffS64",
@@ -6260,7 +6652,9 @@
     "url": "https://www.youtube.com/watch?v=kFHe0VffS64",
     "date": "2020-12-18T14:37:33Z",
     "page": "/parsha.html",
-    "title_lc": "mercy to a brother. going beyond the letter of the law"
+    "parsha": "Mekeitz",
+    "title_lc": "mercy to a brother. going beyond the letter of the law",
+    "cat_lc": "mekeitz"
   },
   {
     "id": "par-lqr70IKd6eQ",
@@ -6270,7 +6664,9 @@
     "url": "https://www.youtube.com/watch?v=lqr70IKd6eQ",
     "date": "2020-11-27T13:38:08Z",
     "page": "/parsha.html",
-    "title_lc": "respect before all else"
+    "parsha": "Vayeitzei",
+    "title_lc": "respect before all else",
+    "cat_lc": "vayeitzei"
   },
   {
     "id": "par-9JcWDmYjwRY",
@@ -6280,7 +6676,9 @@
     "url": "https://www.youtube.com/watch?v=9JcWDmYjwRY",
     "date": "2020-11-20T02:34:09Z",
     "page": "/parsha.html",
-    "title_lc": "love and kindness"
+    "parsha": "Toldos",
+    "title_lc": "love and kindness",
+    "cat_lc": "toldos"
   },
   {
     "id": "par-ISIfjAyMYJc",
@@ -6290,7 +6688,9 @@
     "url": "https://www.youtube.com/watch?v=ISIfjAyMYJc",
     "date": "2020-11-13T15:09:48Z",
     "page": "/parsha.html",
-    "title_lc": "beginning the journey"
+    "parsha": "Chayei Sarah",
+    "title_lc": "beginning the journey",
+    "cat_lc": "chayei sarah"
   },
   {
     "id": "par-FtVz06pQnJI",
@@ -6300,7 +6700,9 @@
     "url": "https://www.youtube.com/watch?v=FtVz06pQnJI",
     "date": "2020-11-06T17:00:50Z",
     "page": "/parsha.html",
-    "title_lc": "do the right thing"
+    "parsha": "Vayeira",
+    "title_lc": "do the right thing",
+    "cat_lc": "vayeira"
   },
   {
     "id": "par-AwfIq8K6WkY",
@@ -6310,7 +6712,9 @@
     "url": "https://www.youtube.com/watch?v=AwfIq8K6WkY",
     "date": "2020-10-30T02:56:31Z",
     "page": "/parsha.html",
-    "title_lc": "close connection"
+    "parsha": "Lech Licha",
+    "title_lc": "close connection",
+    "cat_lc": "lech licha"
   },
   {
     "id": "par-QTQ-pUV-mnE",
@@ -6320,7 +6724,9 @@
     "url": "https://www.youtube.com/watch?v=QTQ-pUV-mnE",
     "date": "2020-10-23T11:10:43Z",
     "page": "/parsha.html",
-    "title_lc": "see the other side"
+    "parsha": "Noach",
+    "title_lc": "see the other side",
+    "cat_lc": "noach"
   },
   {
     "id": "par-pa1CIYiwYQg",
@@ -6330,7 +6736,9 @@
     "url": "https://www.youtube.com/watch?v=pa1CIYiwYQg",
     "date": "2020-07-17T10:44:17Z",
     "page": "/parsha.html",
-    "title_lc": "self discovery"
+    "parsha": "Masei",
+    "title_lc": "self discovery",
+    "cat_lc": "masei"
   },
   {
     "id": "par-k8QRPPAX3Rw",
@@ -6340,7 +6748,9 @@
     "url": "https://www.youtube.com/watch?v=k8QRPPAX3Rw",
     "date": "2020-07-03T15:33:07Z",
     "page": "/parsha.html",
-    "title_lc": "dont (snake) bite the hand that feeds you"
+    "parsha": "Chukas",
+    "title_lc": "dont (snake) bite the hand that feeds you",
+    "cat_lc": "chukas"
   },
   {
     "id": "par-M9RVbgzdqrA",
@@ -6350,7 +6760,9 @@
     "url": "https://www.youtube.com/watch?v=M9RVbgzdqrA",
     "date": "2020-06-19T13:36:12Z",
     "page": "/parsha.html",
-    "title_lc": "be grateful"
+    "parsha": "Shelach",
+    "title_lc": "be grateful",
+    "cat_lc": "shelach"
   },
   {
     "id": "par-z7a1az1zt_Y",
@@ -6360,7 +6772,9 @@
     "url": "https://www.youtube.com/watch?v=z7a1az1zt_Y",
     "date": "2020-06-12T13:51:25Z",
     "page": "/parsha.html",
-    "title_lc": "to each their own"
+    "parsha": "Behaaloscha",
+    "title_lc": "to each their own",
+    "cat_lc": "behaaloscha"
   },
   {
     "id": "par-hrq21azCYJc",
@@ -6370,7 +6784,9 @@
     "url": "https://www.youtube.com/watch?v=hrq21azCYJc",
     "date": "2020-05-22T13:57:45Z",
     "page": "/parsha.html",
-    "title_lc": "stand alone"
+    "parsha": "Bamidbar",
+    "title_lc": "stand alone",
+    "cat_lc": "bamidbar"
   },
   {
     "id": "par-hlXmTDLarDs",
@@ -6380,7 +6796,9 @@
     "url": "https://www.youtube.com/watch?v=hlXmTDLarDs",
     "date": "2020-05-08T11:09:34Z",
     "page": "/parsha.html",
-    "title_lc": "teach them to shine"
+    "parsha": "Emor",
+    "title_lc": "teach them to shine",
+    "cat_lc": "emor"
   },
   {
     "id": "par-bnsC2DUabB4",
@@ -6390,7 +6808,9 @@
     "url": "https://www.youtube.com/watch?v=bnsC2DUabB4",
     "date": "2020-04-24T11:20:34Z",
     "page": "/parsha.html",
-    "title_lc": "work at it!"
+    "parsha": "Tazria",
+    "title_lc": "work at it!",
+    "cat_lc": "tazria"
   },
   {
     "id": "par-b5dbsut4bQo",
@@ -6400,7 +6820,9 @@
     "url": "https://www.youtube.com/watch?v=b5dbsut4bQo",
     "date": "2020-04-03T12:30:36Z",
     "page": "/parsha.html",
-    "title_lc": "a new day"
+    "parsha": "Tzav",
+    "title_lc": "a new day",
+    "cat_lc": "tzav"
   },
   {
     "id": "par-Zgcvz13hiyE",
@@ -6410,7 +6832,9 @@
     "url": "https://www.youtube.com/watch?v=Zgcvz13hiyE",
     "date": "2020-03-27T11:24:04Z",
     "page": "/parsha.html",
-    "title_lc": "all heart"
+    "parsha": "Vayikra",
+    "title_lc": "all heart",
+    "cat_lc": "vayikra"
   },
   {
     "id": "par-y28j-EnALJs",
@@ -6420,7 +6844,9 @@
     "url": "https://www.youtube.com/watch?v=y28j-EnALJs",
     "date": "2020-03-20T11:59:51Z",
     "page": "/parsha.html",
-    "title_lc": "pass it down"
+    "parsha": "Vayakhel",
+    "title_lc": "pass it down",
+    "cat_lc": "vayakhel"
   },
   {
     "id": "par-9oRovWttLxo",
@@ -6430,7 +6856,9 @@
     "url": "https://www.youtube.com/watch?v=9oRovWttLxo",
     "date": "2020-03-06T14:21:46Z",
     "page": "/parsha.html",
-    "title_lc": "return on investment"
+    "parsha": "Tetzaveh",
+    "title_lc": "return on investment",
+    "cat_lc": "tetzaveh"
   },
   {
     "id": "par-MUpiMNMBWhU",
@@ -6440,7 +6868,9 @@
     "url": "https://www.youtube.com/watch?v=MUpiMNMBWhU",
     "date": "2020-02-28T12:31:01Z",
     "page": "/parsha.html",
-    "title_lc": "hashem is here"
+    "parsha": "Terumah",
+    "title_lc": "hashem is here",
+    "cat_lc": "terumah"
   },
   {
     "id": "par-jVx6N2Ubxks",
@@ -6450,7 +6880,9 @@
     "url": "https://www.youtube.com/watch?v=jVx6N2Ubxks",
     "date": "2020-02-21T12:00:23Z",
     "page": "/parsha.html",
-    "title_lc": "a friend in need is a friend indeed"
+    "parsha": "Mishpatim",
+    "title_lc": "a friend in need is a friend indeed",
+    "cat_lc": "mishpatim"
   },
   {
     "id": "par-kO00bmmb0I0",
@@ -6460,7 +6892,9 @@
     "url": "https://www.youtube.com/watch?v=kO00bmmb0I0",
     "date": "2020-02-14T13:28:20Z",
     "page": "/parsha.html",
-    "title_lc": "if you hear something do something"
+    "parsha": "Yisro",
+    "title_lc": "if you hear something do something",
+    "cat_lc": "yisro"
   },
   {
     "id": "par-fcP81kdVkZk",
@@ -6470,7 +6904,9 @@
     "url": "https://www.youtube.com/watch?v=fcP81kdVkZk",
     "date": "2020-02-07T05:00:09Z",
     "page": "/parsha.html",
-    "title_lc": "if its worth having its worth fighting for"
+    "parsha": "Beshalach",
+    "title_lc": "if its worth having its worth fighting for",
+    "cat_lc": "beshalach"
   },
   {
     "id": "par-P4ColQWnl0g",
@@ -6480,7 +6916,9 @@
     "url": "https://www.youtube.com/watch?v=P4ColQWnl0g",
     "date": "2020-01-31T01:38:20Z",
     "page": "/parsha.html",
-    "title_lc": "time management"
+    "parsha": "Bo",
+    "title_lc": "time management",
+    "cat_lc": "bo"
   },
   {
     "id": "par-MOovQmcM5F0",
@@ -6490,7 +6928,9 @@
     "url": "https://www.youtube.com/watch?v=MOovQmcM5F0",
     "date": "2020-01-24T12:14:09Z",
     "page": "/parsha.html",
-    "title_lc": "dont judge"
+    "parsha": "Vaeira",
+    "title_lc": "dont judge",
+    "cat_lc": "vaeira"
   },
   {
     "id": "par-bY4aaMwuBGU",
@@ -6500,7 +6940,9 @@
     "url": "https://www.youtube.com/watch?v=bY4aaMwuBGU",
     "date": "2020-01-10T14:18:56Z",
     "page": "/parsha.html",
-    "title_lc": "different but together"
+    "parsha": "Vayichi",
+    "title_lc": "different but together",
+    "cat_lc": "vayichi"
   },
   {
     "id": "par-DRbO7xMhGTI",
@@ -6510,7 +6952,9 @@
     "url": "https://www.youtube.com/watch?v=DRbO7xMhGTI",
     "date": "2020-01-03T12:34:29Z",
     "page": "/parsha.html",
-    "title_lc": "don't settle"
+    "parsha": "Vayigash",
+    "title_lc": "don't settle",
+    "cat_lc": "vayigash"
   },
   {
     "id": "par-9km-Gk99UmM",
@@ -6520,7 +6964,9 @@
     "url": "https://www.youtube.com/watch?v=9km-Gk99UmM",
     "date": "2019-12-27T17:17:25Z",
     "page": "/parsha.html",
-    "title_lc": "a time for reflection"
+    "parsha": "Mekeitz",
+    "title_lc": "a time for reflection",
+    "cat_lc": "mekeitz"
   },
   {
     "id": "par-85vutb1ZKyA",
@@ -6530,7 +6976,9 @@
     "url": "https://www.youtube.com/watch?v=85vutb1ZKyA",
     "date": "2019-12-13T14:05:43Z",
     "page": "/parsha.html",
-    "title_lc": "the good fight"
+    "parsha": "Vayishlach",
+    "title_lc": "the good fight",
+    "cat_lc": "vayishlach"
   },
   {
     "id": "par-xTdYHpBquQE",
@@ -6540,7 +6988,9 @@
     "url": "https://www.youtube.com/watch?v=xTdYHpBquQE",
     "date": "2019-12-06T03:35:49Z",
     "page": "/parsha.html",
-    "title_lc": "real thanksgiving"
+    "parsha": "Vayeitzei",
+    "title_lc": "real thanksgiving",
+    "cat_lc": "vayeitzei"
   },
   {
     "id": "par-afPESRkN5Vg",
@@ -6550,7 +7000,9 @@
     "url": "https://www.youtube.com/watch?v=afPESRkN5Vg",
     "date": "2019-11-29T16:37:47Z",
     "page": "/parsha.html",
-    "title_lc": "a special bond"
+    "parsha": "Toldos",
+    "title_lc": "a special bond",
+    "cat_lc": "toldos"
   },
   {
     "id": "par-ndM0D6NN-rU",
@@ -6560,7 +7012,9 @@
     "url": "https://www.youtube.com/watch?v=ndM0D6NN-rU",
     "date": "2019-11-22T07:37:57Z",
     "page": "/parsha.html",
-    "title_lc": "hishtadlus and bitachon"
+    "parsha": "Chayei Sarah",
+    "title_lc": "hishtadlus and bitachon",
+    "cat_lc": "chayei sarah"
   },
   {
     "id": "par-BLJiHl7jdiw",
@@ -6570,7 +7024,9 @@
     "url": "https://www.youtube.com/watch?v=BLJiHl7jdiw",
     "date": "2019-11-15T12:24:57Z",
     "page": "/parsha.html",
-    "title_lc": "don't look back! look forward .."
+    "parsha": "Vayeira",
+    "title_lc": "don't look back! look forward ..",
+    "cat_lc": "vayeira"
   },
   {
     "id": "par--BsMEiEWE6s",
@@ -6580,7 +7036,9 @@
     "url": "https://www.youtube.com/watch?v=-BsMEiEWE6s",
     "date": "2019-11-08T14:14:49Z",
     "page": "/parsha.html",
-    "title_lc": "discover yourself"
+    "parsha": "Lech Licha",
+    "title_lc": "discover yourself",
+    "cat_lc": "lech licha"
   },
   {
     "id": "par-T6OSSlkNNcw",
@@ -6590,7 +7048,9 @@
     "url": "https://www.youtube.com/watch?v=T6OSSlkNNcw",
     "date": "2019-11-01T01:57:42Z",
     "page": "/parsha.html",
-    "title_lc": "rainbow in a cloud"
+    "parsha": "Noach",
+    "title_lc": "rainbow in a cloud",
+    "cat_lc": "noach"
   },
   {
     "id": "par-0A0VZKq1ktU",
@@ -6600,7 +7060,9 @@
     "url": "https://www.youtube.com/watch?v=0A0VZKq1ktU",
     "date": "2019-10-25T12:57:39Z",
     "page": "/parsha.html",
-    "title_lc": "from darkness to light"
+    "parsha": "Bereishis",
+    "title_lc": "from darkness to light",
+    "cat_lc": "bereishis"
   },
   {
     "id": "par-xUpZtWjUuGo",
@@ -6610,7 +7072,9 @@
     "url": "https://www.youtube.com/watch?v=xUpZtWjUuGo",
     "date": "2019-10-04T13:08:23Z",
     "page": "/parsha.html",
-    "title_lc": "harmony and renewal - the song of the torah"
+    "parsha": "Vayeilech",
+    "title_lc": "harmony and renewal - the song of the torah",
+    "cat_lc": "vayeilech"
   },
   {
     "id": "par-u63IUxpfEJ4",
@@ -6620,7 +7084,9 @@
     "url": "https://www.youtube.com/watch?v=u63IUxpfEJ4",
     "date": "2019-09-27T18:53:06Z",
     "page": "/parsha.html",
-    "title_lc": "it's not far away ..."
+    "parsha": "Nitzavim",
+    "title_lc": "it's not far away ...",
+    "cat_lc": "nitzavim"
   },
   {
     "id": "par-x1yCva_Gsb8",
@@ -6630,7 +7096,9 @@
     "url": "https://www.youtube.com/watch?v=x1yCva_Gsb8",
     "date": "2019-09-06T12:31:07Z",
     "page": "/parsha.html",
-    "title_lc": "elul - a time for introspection"
+    "parsha": "Shoftim",
+    "title_lc": "elul - a time for introspection",
+    "cat_lc": "shoftim"
   },
   {
     "id": "par-tg3Ax375Oh8",
@@ -6640,7 +7108,9 @@
     "url": "https://www.youtube.com/watch?v=tg3Ax375Oh8",
     "date": "2019-07-18T21:52:54Z",
     "page": "/parsha.html",
-    "title_lc": "the sanctity of family"
+    "parsha": "Balak",
+    "title_lc": "the sanctity of family",
+    "cat_lc": "balak"
   },
   {
     "id": "par-n8poRKMs9Tk",
@@ -6650,7 +7120,9 @@
     "url": "https://www.youtube.com/watch?v=n8poRKMs9Tk",
     "date": "2019-07-05T02:08:20Z",
     "page": "/parsha.html",
-    "title_lc": "listen, dont react"
+    "parsha": "Korach",
+    "title_lc": "listen, dont react",
+    "cat_lc": "korach"
   },
   {
     "id": "par-1jljqqjn7P0",
@@ -6660,7 +7132,9 @@
     "url": "https://www.youtube.com/watch?v=1jljqqjn7P0",
     "date": "2019-06-21T03:28:58Z",
     "page": "/parsha.html",
-    "title_lc": "a lasting flame"
+    "parsha": "Behaaloscha",
+    "title_lc": "a lasting flame",
+    "cat_lc": "behaaloscha"
   },
   {
     "id": "par-DeznY4r1jws",
@@ -6670,7 +7144,9 @@
     "url": "https://www.youtube.com/watch?v=DeznY4r1jws",
     "date": "2019-06-14T03:45:58Z",
     "page": "/parsha.html",
-    "title_lc": "all you need is love"
+    "parsha": "Naso",
+    "title_lc": "all you need is love",
+    "cat_lc": "naso"
   },
   {
     "id": "par--bfgTWTo2No",
@@ -6680,7 +7156,9 @@
     "url": "https://www.youtube.com/watch?v=-bfgTWTo2No",
     "date": "2019-05-31T12:16:07Z",
     "page": "/parsha.html",
-    "title_lc": "you do your best and hashem does the rest"
+    "parsha": "Bechukosai",
+    "title_lc": "you do your best and hashem does the rest",
+    "cat_lc": "bechukosai"
   },
   {
     "id": "par-76PErbjD75I",
@@ -6690,7 +7168,9 @@
     "url": "https://www.youtube.com/watch?v=76PErbjD75I",
     "date": "2019-05-24T14:22:38Z",
     "page": "/parsha.html",
-    "title_lc": "a brother in need"
+    "parsha": "Behar",
+    "title_lc": "a brother in need",
+    "cat_lc": "behar"
   },
   {
     "id": "par-rHKx2CY10CY",
@@ -6700,7 +7180,9 @@
     "url": "https://www.youtube.com/watch?v=rHKx2CY10CY",
     "date": "2019-05-10T11:38:19Z",
     "page": "/parsha.html",
-    "title_lc": "spirit of the law"
+    "parsha": "Kedoshim",
+    "title_lc": "spirit of the law",
+    "cat_lc": "kedoshim"
   },
   {
     "id": "par-3hjqHC-R52I",
@@ -6710,7 +7192,9 @@
     "url": "https://www.youtube.com/watch?v=3hjqHC-R52I",
     "date": "2019-05-03T11:01:21Z",
     "page": "/parsha.html",
-    "title_lc": "forever young"
+    "parsha": "Achrei Mos",
+    "title_lc": "forever young",
+    "cat_lc": "achrei mos"
   },
   {
     "id": "par-OV6EgDA2w3E",
@@ -6720,7 +7204,9 @@
     "url": "https://www.youtube.com/watch?v=OV6EgDA2w3E",
     "date": "2019-04-12T02:43:29Z",
     "page": "/parsha.html",
-    "title_lc": "your'e never alone"
+    "parsha": "Metzora",
+    "title_lc": "your'e never alone",
+    "cat_lc": "metzora"
   },
   {
     "id": "par-MXbaLQvmxKA",
@@ -6730,7 +7216,9 @@
     "url": "https://www.youtube.com/watch?v=MXbaLQvmxKA",
     "date": "2019-04-05T11:13:00Z",
     "page": "/parsha.html",
-    "title_lc": "birth and renewal"
+    "parsha": "Tazria",
+    "title_lc": "birth and renewal",
+    "cat_lc": "tazria"
   },
   {
     "id": "par-Us93IjHpNps",
@@ -6740,7 +7228,9 @@
     "url": "https://www.youtube.com/watch?v=Us93IjHpNps",
     "date": "2019-03-29T11:13:25Z",
     "page": "/parsha.html",
-    "title_lc": "true kindness"
+    "parsha": "Shemini",
+    "title_lc": "true kindness",
+    "cat_lc": "shemini"
   },
   {
     "id": "par-9vtK6lWQad4",
@@ -6750,7 +7240,9 @@
     "url": "https://www.youtube.com/watch?v=9vtK6lWQad4",
     "date": "2019-03-15T10:58:25Z",
     "page": "/parsha.html",
-    "title_lc": "direct conection"
+    "parsha": "Vayikra",
+    "title_lc": "direct conection",
+    "cat_lc": "vayikra"
   },
   {
     "id": "par-qLLxOFg69nQ",
@@ -6760,7 +7252,9 @@
     "url": "https://www.youtube.com/watch?v=qLLxOFg69nQ",
     "date": "2019-03-08T12:45:09Z",
     "page": "/parsha.html",
-    "title_lc": "shine like a star"
+    "parsha": "Pekudei",
+    "title_lc": "shine like a star",
+    "cat_lc": "pekudei"
   },
   {
     "id": "par-aW_Fvucpbow",
@@ -6770,7 +7264,9 @@
     "url": "https://www.youtube.com/watch?v=aW_Fvucpbow",
     "date": "2019-03-01T18:26:13Z",
     "page": "/parsha.html",
-    "title_lc": "we're all in this together"
+    "parsha": "Vayakhel",
+    "title_lc": "we're all in this together",
+    "cat_lc": "vayakhel"
   },
   {
     "id": "ov-devarim",
