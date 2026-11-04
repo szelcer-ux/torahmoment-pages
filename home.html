@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XEKR855EWG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XEKR855EWG');</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TorahMoment – What would you like to learn?</title>
+<meta name="description" content="Shiurim, divrei Torah and halacha by Shloimy Zelcer — browse by topic, parsha or search.">
+<style>
+:root{--accent:#0d9488;--ink:#0f766e;--bg:#f7f7f8;--text:#0f172a;--muted:#64748b;--border:#e5e7eb;--r:16px}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button{font-family:inherit}
+.top{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+.top div{max-width:1000px;margin:0 auto;padding:0 20px;height:48px;display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none}
+.top a{font-size:13.5px;color:var(--muted);padding:0 11px;white-space:nowrap;font-weight:500}.top a.on{color:var(--accent);font-weight:700}.top b{font-family:Georgia,serif;color:var(--ink);margin-right:10px;font-size:16px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px 60px}
+.hero{padding:34px 0 8px;text-align:center}
+.hero h1{margin:0;font-size:clamp(26px,5vw,38px);letter-spacing:-.02em}.hero p{margin:6px 0 18px;color:var(--muted);font-size:16px}
+.sw{position:relative;max-width:640px;margin:0 auto}
+.sw input{width:100%;font-size:17px;padding:16px 18px 16px 50px;border:1.5px solid var(--border);border-radius:999px;background:#fff;box-shadow:0 4px 18px rgba(15,23,42,.06);outline:none;font-family:inherit}
+.sw input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(13,148,136,.12)}
+.sw svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--muted);fill:none;stroke-width:2}
+.quick{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.chip{border:1px solid var(--border);background:#fff;border-radius:999px;padding:7px 14px;font-size:13.5px;cursor:pointer;color:#334155;font-weight:600}.chip:hover{border-color:var(--accent);color:var(--ink)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}.chip small{opacity:.7;margin-left:4px;font-weight:600}.chip.zero{opacity:.45}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+h2.sec{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:30px 0 12px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline}
+h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
+.week{background:linear-gradient(135deg,#0f766e,#0d9488 60%,#14b8a6);color:#fff;border-radius:22px;padding:26px;display:grid;grid-template-columns:1.3fr 1fr;gap:22px;box-shadow:0 10px 30px rgba(13,148,136,.25);margin-top:26px}
+.week small{opacity:.85;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+.week h3{margin:6px 0 4px;font-size:clamp(24px,4.5vw,34px);letter-spacing:-.01em}
+.week p{margin:0 0 16px;opacity:.9;font-size:14.5px}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{background:#fff;color:var(--ink);padding:10px 16px;border-radius:999px;font-weight:700;font-size:14px;border:0;cursor:pointer;display:inline-block}.btn.ghost{background:rgba(255,255,255,.16);color:#fff}
+.wk-side{background:rgba(255,255,255,.12);border-radius:14px;padding:14px;font-size:14px}
+.wk-side .row{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.18)}.wk-side .row:last-child{border:0}
+.wk-side .row span{opacity:.85;font-size:12.5px}.wk-side audio{width:100%;height:34px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.tile{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:16px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:4px;text-align:left;color:inherit;font-size:inherit}
+.tile:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(15,23,42,.08);border-color:#99d5cf}
+.tile .ic{font-size:26px;width:46px;height:46px;border-radius:12px;background:#ecfdf5;display:grid;place-items:center;margin-bottom:6px}
+.tile b{font-size:16px}.tile span{font-size:13px;color:var(--muted)}.tile em{font-style:normal;font-size:12px;color:var(--ink);font-weight:700;margin-top:4px}
+.list{display:flex;flex-direction:column;gap:8px}
+.it{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.it .h{display:flex;gap:12px;align-items:center}
+.pl{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:14px;cursor:pointer;display:grid;place-items:center}.pl.v{background:#dc2626}
+.it .tt{flex:1;min-width:0}.it .tt div{font-weight:600;font-size:15px;line-height:1.3}.it .tt small{color:var(--muted);font-size:12.5px}
+.tag{font-size:11.5px;background:#f0fdfa;color:var(--ink);border-radius:999px;padding:3px 9px;font-weight:700;white-space:nowrap;cursor:pointer}
+.it audio{width:100%;margin-top:10px}
+.back{background:none;border:0;color:var(--ink);font-weight:700;font-size:14px;cursor:pointer;padding:0;margin:26px 0 8px}
+.vh{display:flex;align-items:center;gap:14px;margin-bottom:8px}.vh .ic{font-size:30px}.vh h2{margin:0;font-size:26px}.vh p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.vh .btn{margin-left:auto;background:var(--accent);color:#fff;white-space:nowrap}
+.wa{margin-top:36px;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.wa .ic{font-size:30px}.wa div{flex:1;min-width:200px}.wa b{font-size:16px}.wa p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.wa a{background:#16a34a;color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;font-size:14px}
+.more{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px;justify-content:center}.more a{font-size:13.5px;color:var(--muted);border-bottom:1px solid var(--border)}
+.empty{color:var(--muted);padding:20px;text-align:center}
+.jump{display:block;background:#f0fdfa;border:1px solid #99d5cf;border-radius:12px;padding:12px 14px;font-weight:700;color:var(--ink);margin-bottom:10px}
+@media(max-width:720px){.week{grid-template-columns:1fr;padding:20px}.grid{grid-template-columns:repeat(2,1fr)}.vh{flex-wrap:wrap}.vh .btn{margin-left:0}}
+</style></head><body>
+<div class="top"><div><b>TorahMoment</b><a class="on" href="/home.html">Home</a><a href="/parsha.html">Parsha</a><a href="/halacha.html">Halacha</a><a href="/tefilah.html">Tefila</a><a href="/one-minute-audio.html">One-Minute</a><a href="/mishna.html">Mishna</a><a href="/weekly.html">This Week</a><a href="/about.html">About</a></div></div>
+<div class="wrap">
+ <div class="hero"><h1>What would you like to learn?</h1><p>Shiurim by Shloimy Zelcer<span id="tot"></span></p>
+  <div class="sw"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input id="q" type="search" placeholder="Search a topic, parsha, or idea…" autocomplete="off"></div>
+  <div class="quick" id="quick"></div></div>
+ <div id="home">
+  <div class="week" id="week" hidden></div>
+  <h2 class="sec">Browse by topic</h2><div class="grid" id="tiles"><div class="empty">Loading…</div></div>
+  <h2 class="sec">Newest <a href="/weekly.html">This week's digest →</a></h2><div class="list" id="newest"></div>
+ </div>
+ <div id="view" hidden></div>
+ <div class="wa"><div class="ic">💬</div><div><b>Get a new idea every day</b><p>Join the TorahMoment WhatsApp group.</p></div><a href="https://chat.whatsapp.com/HBYk1DoPNuY10MT9PB4nfm">Join WhatsApp</a></div>
+ <div class="more"><a href="/halacha.html">Hilchos Shabbos</a><a href="/infographics.html">Visual Divrei Torah</a><a href="/one-minute-audio.html">All one-minute clips</a><a href="/published.html">Published</a><a href="/about.html">About</a></div>
+</div>
+<script>
+const SEFARIM={"Bereishis":["Bereishis","Noach","Lech Lecha","Vayeira","Chayei Sara","Toldos","Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi"],
+"Shemos":["Shemos","Vaeira","Bo","Beshalach","Yisro","Mishpatim","Terumah","Tetzaveh","Ki Sisa","Vayakhel","Pekudei"],
+"Vayikra":["Vayikra","Tzav","Shemini","Tazria","Metzora","Achrei Mos","Kedoshim","Emor","Behar","Bechukosai"],
+"Bamidbar":["Bamidbar","Nasso","Behaaloscha","Shelach","Korach","Chukas","Balak","Pinchas","Matos","Massei"],
+"Devarim":["Devarim","Vaeschanan","Eikev","Reeh","Shoftim","Ki Seitzei","Ki Savo","Nitzavim","Vayeilech","Haazinu","Vezos Haberacha"]};
+const ALLP=[].concat(...Object.values(SEFARIM));
+const META={'Parsha':['📖','Videos, audio and overviews for every parsha'],'Yomim Tovim':['🕎','Shiurim for the Yomim Tovim'],'Tefila':['🙏','Davening, brachos and tefila videos'],
+'Hashkafa':['💡','Big ideas and perspective'],'Middos':['🌱','Character and growth'],'Israel':['🇮🇱','Eretz Yisroel and Am Yisroel'],'Chinuch':['👨‍👩‍👧','Raising children'],
+'Talmud Torah':['📚','Learning Torah'],'Tzedakah':['🤲','Giving and chesed'],'Jewish Timeline':['⏳','Jewish history'],'Shabbos':['🕯️','Hilchos Shabbos'],
+'Halacha':['⚖️','Halacha and minhagim'],'Mishna':['📜','2 Mishnas a Day']};
+const ORDER=['Parsha','Yomim Tovim','Tefila','Hashkafa','Middos','Chinuch','Israel','Talmud Torah','Halacha','Shabbos','Mishna','Tzedakah','Jewish Timeline'];
+const $=id=>document.getElementById(id),esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nk=s=>String(s||'').toLowerCase().replace(/[^a-z]/g,'');
+function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let p=[];for(let j=0;j<=n;j++)p[j]=j;for(let i=1;i<=m;i++){let c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
+const PN=ALLP.map(nk);
+function bestParsha(name){const k=nk(String(name||'').replace(/^parshas\s+/i,''));if(!k)return'';let bi=-1,bd=99;PN.forEach((p,i)=>{const d=lev(k,p);if(d<bd){bd=d;bi=i}});return bd<=3?ALLP[bi]:''}
+const bookOf=p=>Object.keys(SEFARIM).find(b=>SEFARIM[b].includes(p))||'';
+function pd(x){if(!x)return'';const t=String(x);let m=t.match(/^(\d{4})-(\d\d)-(\d\d)/);if(m)return m[1]+'-'+m[2]+'-'+m[3];m=t.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);if(m){const y=m[3].length==2?'20'+m[3]:m[3];return y+'-'+m[1].padStart(2,'0')+'-'+m[2].padStart(2,'0')}return''}
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const pretty=d=>d?MON[+d.slice(5,7)-1]+' '+(+d.slice(8,10))+', '+d.slice(0,4):'';
+const getJ=u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+let ITEMS=[],COUNTS=null,cats={},wp='',booted=false;
+const fixCat=c=>({chinuch:'Chinuch',Tefilah:'Tefila'}[c]||c);
+function add(k,t,u,d,c,s,extra){ITEMS.push(Object.assign({k,t,u,d,c:fixCat(c),s:s||''},extra||{}))}
+async function boot(){
+ const [om,hal,si,sc,tf]=await Promise.allSettled([getJ('/data.json'),getJ('/data/halacha.json'),getJ('/data/search-index.json'),getJ('/data/site-counts.json'),getJ('/data/tefilah-extra.json')]);
+ if(om.value)om.value.forEach(x=>add('a',String(x.description||'').replace(/\s*<This message was edited>\s*/gi,'').trim(),x.url,pd(x.date),x.category||'More One-Minute',x.category==='Parsha'?bestParsha(x.categoryDetail)||x.categoryDetail:x.categoryDetail,{om:1}));
+ if(hal.value)hal.value.forEach(sec=>{const walk=(sub,its)=>(its||[]).forEach(it=>{if(it.type==='note'||!it.url)return;const c=it.category||sec.category;let s=it.categoryDetail||sub||'';if(c==='Parsha')s=bestParsha(s)||bestParsha(it.title)||s;add(it.type==='youtube'?'v':'a',it.title,it.url,pd(it.note||''),c,s)});walk('',sec.items);(sec.subcategories||[]).forEach(sb=>walk(sb.name||sb.title||'',sb.items))});
+ if(si.value)si.value.forEach(x=>{if(x.program==='Parsha'&&x.type==='video')add('v',x.title,x.url,pd(x.date),'Parsha',x.parsha?bestParsha(x.parsha):'',{vid:1});else if(x.program==='Parsha Overview')add('a',x.title,x.url,pd(x.date),'Parsha',bestParsha(x.title),{ov:1})});
+ if(tf.value)tf.value.forEach(x=>add('v',x.title,x.url,'','Tefila','Videos',{vid:1}));
+ COUNTS=sc.value||null;ITEMS.forEach(i=>(cats[i.c]=cats[i.c]||[]).push(i));
+ const tot=COUNTS&&COUNTS.allShiurim&&COUNTS.allShiurim.total;$('tot').textContent=tot?' — '+tot+' and counting':'';
+ tiles();newest();quick();booted=true;route();hebcal();
+}
+const mishnaN=()=>COUNTS&&COUNTS.allShiurim&&COUNTS.allShiurim.breakdown&&COUNTS.allShiurim.breakdown.mishna&&COUNTS.allShiurim.breakdown.mishna.audio||0;
+const cnt=c=>c==='Mishna'?mishnaN():(cats[c]||[]).length;
+const topicList=()=>{const l=ORDER.filter(c=>cnt(c)>0);Object.keys(cats).filter(c=>c!=='More One-Minute'&&!ORDER.includes(c)).forEach(c=>l.push(c));return l};
+function tiles(){$('tiles').innerHTML=topicList().map(c=>{const m=META[c]||['📁',''];return`<button class="tile" data-c="${esc(c)}"><div class="ic">${m[0]}</div><b>${esc(c)}</b><span>${esc(m[1])}</span><em>${cnt(c)} shiurim</em></button>`}).join('')}
+$('tiles').onclick=e=>{const t=e.target.closest('.tile');if(!t)return;t.dataset.c==='Mishna'?location.href='/mishna.html':go(t.dataset.c)};
+function quick(){$('quick').innerHTML=['Parsha','Yomim Tovim','Tefila','Hashkafa','Middos','Mishna'].filter(c=>cnt(c)).map(c=>`<button class="chip" data-c="${c}">${META[c][0]} ${c}</button>`).join('')}
+$('quick').onclick=e=>{const c=e.target.closest('.chip');if(!c)return;c.dataset.c==='Mishna'?location.href='/mishna.html':go(c.dataset.c)};
+function row(i,showCat){const v=i.k==='v';return`<div class="it"><div class="h"><button class="pl ${v?'v':''}" data-u="${esc(i.u)}" data-v="${v?1:0}" aria-label="${v?'Watch':'Play'}">▶</button><div class="tt"><div>${esc(i.t)}</div><small>${pretty(i.d)}</small></div>${i.s&&i.s!=='Videos'&&showCat!==0?`<span class="tag" data-go="${esc(i.c)}|${esc(i.s)}">${esc(i.s)}</span>`:''}${showCat?`<span class="tag" data-go="${esc(i.c)}|">${esc(i.c)}</span>`:''}</div></div>`}
+function wire(root){root.querySelectorAll('.pl').forEach(b=>b.onclick=()=>{const it=b.closest('.it'),a=it.querySelector('audio');
+ if(b.dataset.v==='1'){window.open(b.dataset.u,'_blank','noopener');return}
+ if(a){a.pause();a.remove();b.textContent='▶';return}
+ document.querySelectorAll('.it audio').forEach(x=>{x.pause();x.closest('.it').querySelector('.pl').textContent='▶';x.remove()});
+ const au=document.createElement('audio');au.controls=true;au.autoplay=true;au.src=b.dataset.u;it.appendChild(au);b.textContent='❚❚'});
+ root.querySelectorAll('[data-go]').forEach(t=>t.onclick=()=>{const[c,s]=t.dataset.go.split('|');go(c,s)})}
+function newest(){const nw=ITEMS.filter(i=>i.d&&!i.ov).sort((a,b)=>b.d<a.d?-1:b.d>a.d?1:0).slice(0,6);$('newest').innerHTML=nw.map(i=>row(i,1)).join('')||'<div class="empty">Nothing yet.</div>';wire($('newest'))}
+// this week
+function weekCard(){if(!wp||!booted)return;const its=ITEMS.filter(i=>i.c==='Parsha'&&i.s===wp),ov=its.find(i=>i.ov),vids=its.filter(i=>i.vid).sort((a,b)=>b.d<a.d?-1:1),om=its.filter(i=>i.om);
+ const url='/parsha.html?parsha='+encodeURIComponent(wp);const w=$('week');w.hidden=false;
+ w.innerHTML=`<div><small>This week's parsha</small><h3>Parshas ${esc(wp)}</h3><p>Videos, audio shiurim, an overview and visual Divrei Torah — all in one place.</p><div class="btns"><a class="btn" href="${url}">Open the parsha →</a><a class="btn ghost" href="#Parsha/${encodeURIComponent(bookOf(wp))}/${encodeURIComponent(wp)}">Browse everything on it</a></div></div>
+ <div class="wk-side">${ov?`<div class="row">🎧<div style="flex:1"><b>Parsha overview</b><audio controls preload="none" src="${esc(ov.u)}"></audio></div></div>`:''}
+ ${vids[0]?`<div class="row">▶️<div><b>${vids.length} video${vids.length>1?'s':''}</b><br><span>latest: ${esc(vids[0].t)}</span></div></div>`:''}
+ ${om.length?`<div class="row">⏱️<div><b>${om.length} one-minute clip${om.length>1?'s':''}</b><br><span>on this parsha</span></div></div>`:''}</div>`}
+function hebcal(){fetch('https://www.hebcal.com/hebcal?v=1&cfg=json&s=on&i=off&start=today&end=+14d',{cache:'no-store'}).then(r=>r.json()).then(j=>{const t=new Date(),td=t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');const p=(j.items||[]).filter(x=>x.category==='parashat'&&x.date>=td).sort((a,b)=>a.date<b.date?-1:1)[0];if(p){const n=bestParsha(p.title.replace(/^Parashat\s+/,''));if(n){wp=n;weekCard();if(!$('view').hidden)route()}}}).catch(()=>{})}
+// routing: #Cat  or  #Parsha/Sefer/Parsha  or  #Cat/Sub
+function go(c,s,b){let h='#'+encodeURIComponent(c);if(c==='Parsha'){if(b)h+='/'+encodeURIComponent(b);if(s)h+='/'+encodeURIComponent(s)}else if(s)h+='/'+encodeURIComponent(s);if(location.hash===h)route();else location.hash=h;window.scrollTo(0,0)}
+addEventListener('hashchange',()=>{if(booted)route()});
+function route(){const parts=location.hash.slice(1).split('/').map(decodeURIComponent).filter(Boolean);if(!parts.length){$('view').hidden=true;$('home').hidden=false;return}
+ const c=parts[0];if(!(c in cats)&&c!=='Parsha'){$('view').hidden=true;$('home').hidden=false;return}
+ $('q').value='';$('home').hidden=true;$('view').hidden=false;
+ if(c==='Parsha')parshaView(parts[1]||'',parts[2]||'');else topicView(c,parts[1]||'')}
+const back='<button class="back" id="bk">← All topics</button>';
+function header(c,sub,btn){const m=META[c]||['📁',''];return`${back}<div class="vh"><div class="ic">${m[0]}</div><div><h2>${esc(c)}${sub?' · '+esc(sub):''}</h2><p>${sub?'':esc(m[1])}</p></div>${btn||''}</div>`}
+function bindBack(v){const b=v.querySelector('#bk');if(b)b.onclick=()=>{location.hash='';};}
+function topicView(c,sub){const its=(cats[c]||[]).slice().sort((a,b)=>b.d<a.d?-1:b.d>a.d?1:0);const subs={};its.forEach(i=>{if(i.s)subs[i.s]=(subs[i.s]||0)+1});const names=Object.keys(subs).sort();
+ const shown=sub?its.filter(i=>i.s===sub):its;const v=$('view');
+ v.innerHTML=header(c,'')+(names.length>1?`<div class="chips"><button class="chip ${sub?'':'on'}" data-s="">All<small>${its.length}</small></button>${names.map(n=>`<button class="chip ${n===sub?'on':''}" data-s="${esc(n)}">${esc(n)}<small>${subs[n]}</small></button>`).join('')}</div>`:'')+`<div class="list" style="margin-top:14px">${shown.map(i=>row(i,0)).join('')||'<div class="empty">Nothing here yet.</div>'}</div>`;
+ bindBack(v);wire(v);v.querySelectorAll('.chip[data-s]').forEach(b=>b.onclick=()=>go(c,b.dataset.s))}
+function parshaView(book,p){const its=cats['Parsha']||[],by={};its.forEach(i=>{if(i.s)by[i.s]=(by[i.s]||0)+1});
+ if(p&&!book)book=bookOf(p);const v=$('view');
+ const bc={};ALLP.forEach(x=>{if(by[x])bc[bookOf(x)]=(bc[bookOf(x)]||0)+by[x]});
+ let h=header('Parsha','')+`<div class="chips"><button class="chip ${book?'':'on'}" data-b="">All Parsha<small>${its.length}</small></button>${Object.keys(SEFARIM).map(b=>`<button class="chip ${b===book?'on':''}" data-b="${b}">${b}<small>${bc[b]||0}</small></button>`).join('')}</div>`;
+ if(book)h+=`<div class="chips">${SEFARIM[book].map(x=>`<button class="chip ${x===p?'on':''} ${by[x]?'':'zero'}" data-p="${esc(x)}">${esc(x)}<small>${by[x]||0}</small></button>`).join('')}</div>`;
+ let list;
+ if(p){const pi=its.filter(i=>i.s===p);const grp=[['🎧 Overview',pi.filter(i=>i.ov)],['▶️ Videos',pi.filter(i=>i.vid).sort((a,b)=>b.d<a.d?-1:1)],['⏱️ One-minute & shiurim',pi.filter(i=>!i.ov&&!i.vid)]];
+  h=h.replace('</div></div>',`</div><a class="btn" href="/parsha.html?parsha=${encodeURIComponent(p)}">Full page for Parshas ${esc(p)} →</a></div>`).replace(`<h2>Parsha</h2>`,`<h2>Parshas ${esc(p)}</h2>`);
+  list=grp.filter(g=>g[1].length).map(g=>`<h2 class="sec">${g[0]} <span>${g[1].length}</span></h2><div class="list">${g[1].map(i=>row(i,0)).join('')}</div>`).join('')||'<div class="empty">Nothing here yet — the full parsha page may have more.</div>';
+ } else {const pi=(book?its.filter(i=>i.s&&bookOf(i.s)===book):its).slice().sort((a,b)=>b.d<a.d?-1:b.d>a.d?1:0);
+  list=`<h2 class="sec">${book?book:'Latest'} shiurim</h2><div class="list">${pi.slice(0,60).map(i=>row(i,0)).join('')}</div>${pi.length>60?`<div class="empty">Showing 60 of ${pi.length} — pick a parsha above to narrow down.</div>`:''}`}
+ v.innerHTML=h+list;bindBack(v);wire(v);
+ v.querySelectorAll('[data-b]').forEach(b=>b.onclick=()=>go('Parsha','',b.dataset.b));
+ v.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>go('Parsha',b.dataset.p===p?'':b.dataset.p,bookOf(b.dataset.p)))}
+// search
+$('q').addEventListener('input',()=>{const t=$('q').value.trim().toLowerCase();if(!t){location.hash.length>1?route():(($('view').hidden=true),($('home').hidden=false));return}
+ const words=t.split(/\s+/);const res=ITEMS.filter(i=>{const h=(i.t+' '+i.c+' '+i.s).toLowerCase();return words.every(w=>h.includes(w))});
+ const pj=bestParshaExact(t);$('home').hidden=true;const v=$('view');v.hidden=false;
+ v.innerHTML=(pj?`<a class="jump" href="#Parsha/${encodeURIComponent(bookOf(pj))}/${encodeURIComponent(pj)}">📖 See everything on Parshas ${esc(pj)} →</a>`:'')+`<h2 class="sec">${res.length?res.length+' result'+(res.length>1?'s':''):'No results'} for “${esc(t)}”</h2><div class="list">${res.slice(0,80).map(i=>row(i,1)).join('')||'<div class="empty">Try a different word, or browse a topic.</div>'}</div>`+(res.length>80?`<div class="empty">Showing the first 80 — add a word to narrow it down.</div>`:'');wire(v)});
+function bestParshaExact(t){const k=nk(t);if(k.length<4)return'';const i=PN.findIndex(p=>p===k||(k.length>=5&&lev(p,k)<=1));return i>=0?ALLP[i]:''}
+boot().catch(e=>{$('tiles').innerHTML='<div class="empty">Could not load content. Please refresh.</div>'});
+</script></body></html>
