@@ -25,7 +25,9 @@ async function getAllAndRecentParshaVideosFromYouTube(apiKey, recentLimit = 10) 
       const videoId = item.contentDetails?.videoId || sn.resourceId?.videoId;
       const publishedAt = sn.publishedAt;
       if (!videoId || !publishedAt) continue;
-      const obj = { type: "video", program: "Parsha", title: sn.title || "Parsha video", url: `https://www.youtube.com/watch?v=${videoId}`, date: publishedAt };
+      const firstLine = String(sn.description || "").split("\n")[0].replace(/\s+/g," ").trim();
+      const pm = firstLine.match(/dvar torah parshas\s+(.+?)(?:\s+-\s+|$)/i);
+      const obj = { type: "video", program: "Parsha", title: sn.title || "Parsha video", url: `https://www.youtube.com/watch?v=${videoId}`, date: publishedAt, parsha: pm ? pm[1].trim() : null };
       all.push(obj);
       if (recent.length < recentLimit) recent.push(obj);
     }
@@ -251,7 +253,7 @@ async function readHalachaTotalAllFromDom(page) {
   const indexOneMin = (oneMinItems||[]).map((x,i)=>({ id:`one-${x.id??i}`, program:"One-Minute", type:"audio", title:String(x.description||x.filename||"One-Minute Audio").replace(/\s*<This message was edited>\s*/gi,"").trim(), url:x.url, date:parseMmDdYyyy(x.date), page:"/one-minute-audio.html", category:x.category||null, categoryDetail:x.categoryDetail||null })).filter(x=>x.url&&x.title);
   const indexHalacha = (allHalacha||[]).map((x,i)=>({ id:`hal-${i}`, program:"Halacha", type:x.type||"audio", title:x.title||"Halacha", url:x.url, date:x.date, page:"/halacha.html", category:x.category||null, categoryDetail:x.categoryDetail||null })).filter(x=>x.url&&x.title);
   const indexParsha = youtubeSucceeded
-    ? (allParshaVideos||[]).map(x=>({ id:`par-${x.url.split("v=")[1]||x.date||Math.random().toString(16).slice(2)}`, program:"Parsha", type:"video", title:x.title||"Parsha video", url:x.url, date:x.date, page:"/parsha.html" })).filter(x=>x.url&&x.title)
+    ? (allParshaVideos||[]).map(x=>({ id:`par-${x.url.split("v=")[1]||x.date||Math.random().toString(16).slice(2)}`, program:"Parsha", type:"video", title:x.title||"Parsha video", url:x.url, date:x.date, page:"/parsha.html", parsha:x.parsha||null })).filter(x=>x.url&&x.title)
     : existingIndexParsha;
   const indexOverviews = allParshaOverviews.map(x=>({
     id: `ov-${x.parsha.toLowerCase().replace(/[^a-z0-9]/g,"-")}`,
@@ -264,7 +266,7 @@ async function readHalachaTotalAllFromDom(page) {
     title_lc: norm(x.title),
   }));
 
-  const searchIndex = [...indexOneMin,...indexHalacha,...indexParsha,...indexOverviews].map(x=>{const o={...x,title_lc:norm(x.title)};const cl=norm([x.category,x.categoryDetail].filter(Boolean).join(" "));if(cl)o.cat_lc=cl;delete o.category;delete o.categoryDetail;return o;});
+  const searchIndex = [...indexOneMin,...indexHalacha,...indexParsha,...indexOverviews].map(x=>{const o={...x,title_lc:norm(x.title)};const cl=norm([x.category,x.categoryDetail,x.parsha].filter(Boolean).join(" "));if(cl)o.cat_lc=cl;delete o.category;delete o.categoryDetail;return o;});
   console.log("FOUND in searchIndex?", searchIndex.some(x=>x.title==="The risk of NOT saying Hallel on Yom Haatzmaut"));
   console.log("Parsha overviews in index:", indexOverviews.length);
   writeFileSync("./data/search-index.json", JSON.stringify(searchIndex,null,2)+"\n","utf8");
