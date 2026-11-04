@@ -973,7 +973,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250206-WA0041.mp3",
     "date": "2025-02-06T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "creating zchus avos for the future"
+    "title_lc": "creating zchus avos for the future",
+    "cat_lc": "chinuch"
   },
   {
     "id": "one-61",
@@ -1003,7 +1004,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250213-WA0012.mp3",
     "date": "2025-02-13T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "just do it!"
+    "title_lc": "just do it!",
+    "cat_lc": "parsha yisro"
   },
   {
     "id": "one-64",
@@ -1165,7 +1167,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250318-WA0006.mp3",
     "date": "2025-03-24T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "a broad life not a double life"
+    "title_lc": "a broad life not a double life",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-79",
@@ -1391,7 +1394,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250525-WA0114.mp3",
     "date": "2025-05-26T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "לב חכם"
+    "title_lc": "לב חכם",
+    "cat_lc": "hashkafa"
   },
   {
     "id": "one-100",
@@ -1401,7 +1405,8 @@
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250527-WA0116.mp3",
     "date": "2025-05-28T00:00:00.000Z",
     "page": "/one-minute-audio.html",
-    "title_lc": "עושה שמים וארץ"
+    "title_lc": "עושה שמים וארץ",
+    "cat_lc": "tefila"
   },
   {
     "id": "one-101",
