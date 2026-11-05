@@ -1269,28 +1269,34 @@
     "date": "7/25/2025",
     "description": "Being there in times of pain",
     "filename": "PTT-20250724-WA0036.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250724-WA0036.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250724-WA0036.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vayeira"
   },
   {
     "id": 122,
     "date": "7/30/2025",
     "description": "A man of words",
     "filename": "PTT-20250729-WA0105.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250729-WA0105.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250729-WA0105.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Devarim"
   },
   {
     "id": 123,
     "date": "7/31/2025",
     "description": "Take advantage",
     "filename": "PTT-20250731-WA0015.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250731-WA0015.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250731-WA0015.mp3",
+    "category": "Talmud Torah"
   },
   {
     "id": 124,
     "date": "8/5/2025",
     "description": "Seeing Hashem in history",
     "filename": "PTT-20250805-WA0010.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250805-WA0010.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250805-WA0010.mp3",
+    "category": "Israel"
   },
   {
     "id": 125,
@@ -1304,28 +1310,33 @@
     "date": "8/7/2025",
     "description": "Celebrate diversity",
     "filename": "PTT-20250806-WA0092.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250806-WA0092.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250806-WA0092.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 127,
     "date": "8/12/2025",
     "description": "Feeling the Land",
     "filename": "PTT-20250808-WA0121.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250808-WA0121.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250808-WA0121.mp3",
+    "category": "Israel"
   },
   {
     "id": 128,
     "date": "8/13/2025",
     "description": "Don't fall into a bad routine",
     "filename": "PTT-20250813-WA0023.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250813-WA0023.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250813-WA0023.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Eikev"
   },
   {
     "id": 129,
     "date": "8/14/2025",
     "description": "How to get your children to love torah",
     "filename": "PTT-20250813-WA0029.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250813-WA0029.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250813-WA0029.mp3",
+    "category": "Talmud Torah"
   },
   {
     "id": 130,
