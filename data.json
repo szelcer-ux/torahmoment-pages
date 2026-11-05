@@ -1303,7 +1303,9 @@
     "date": "8/6/2025",
     "description": "Don't force it",
     "filename": "PTT-20250806-WA0018.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250806-WA0018.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250806-WA0018.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vaeschanan"
   },
   {
     "id": 126,
@@ -1343,56 +1345,71 @@
     "date": "8/19/2025",
     "description": "Different paths to the same destination",
     "filename": "PTT-20250819-WA0006.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250819-WA0006.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250819-WA0006.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Reeh"
   },
   {
     "id": 131,
     "date": "8/20/2025",
     "description": "Tough beginings",
     "filename": "PTT-20250820-WA0010.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250820-WA0010.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250820-WA0010.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 132,
     "date": "8/21/2025",
     "description": "Blessings and \"curses\"",
     "filename": "PTT-20250821-WA0010.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250821-WA0010.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250821-WA0010.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Reeh"
   },
   {
     "id": 133,
     "date": "8/25/2025",
     "description": "Bringing spirituality into our lives",
     "filename": "PTT-20250825-WA0009.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250825-WA0009.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250825-WA0009.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Shoftim"
   },
   {
     "id": 134,
     "date": "8/26/2025",
     "description": "Return to self",
     "filename": "PTT-20250825-WA0041.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250825-WA0041.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250825-WA0041.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Elul/Tishrei"
   },
   {
     "id": 135,
     "date": "8/28/2025",
     "description": "Bending for friendship",
     "filename": "PTT-20250826-WA0081.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250826-WA0081.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250826-WA0081.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Shoftim"
   },
   {
     "id": 136,
     "date": "9/1/2025",
     "description": "Staying together",
     "filename": "PTT-20250901-WA0018.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250901-WA0018.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250901-WA0018.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Ki Seitzei"
   },
   {
     "id": 137,
     "date": "9/2/2025",
     "description": "Don't get fooled",
     "filename": "PTT-20250902-WA0006.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250902-WA0006.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250902-WA0006.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Ki Seitzei"
   },
   {
     "id": 138,
@@ -1408,14 +1425,18 @@
     "date": "9/8/2025",
     "description": "Never too late",
     "filename": "PTT-20250907-WA0063.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250907-WA0063.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250907-WA0063.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Ki Savo"
   },
   {
     "id": 140,
     "date": "9/9/2025",
     "description": "Remember to say thank you",
     "filename": "PTT-20250909-WA0018.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250909-WA0018.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250909-WA0018.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Ki Savo"
   },
   {
     "id": 141,
