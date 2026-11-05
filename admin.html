@@ -67,6 +67,7 @@
     #status.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
     #status.err { background: #fef2f2; border: 1px solid #fecaca; color: #b42318; }
     #status.loading { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+    .trk{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:14px}.trk .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}.trk b{font-size:14px}.trk .n{font-size:13px;color:var(--muted);font-weight:600}.trk .bar{height:10px;border-radius:99px;background:#e2e8f0;overflow:hidden;margin-top:8px}.trk .bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#0d9488,#14b8a6);transition:width .8s ease}.trk small{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
   </style>
 </head>
 <body>
@@ -96,6 +97,12 @@
         <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx" />
         <button id="saveTokenBtn">Save</button>
       </div>
+    </div>
+
+    <div class="trk" id="tracker" hidden>
+      <div class="top"><b id="trkTitle">📈 Shiurim tracker</b><span class="n" id="trkNum"></span></div>
+      <div class="bar"><i id="trkBar"></i></div>
+      <small id="trkSub"></small>
     </div>
 
     <div class="tabs">
@@ -1292,6 +1299,23 @@ function showCatStatus(msg,color){
   el.textContent=msg; el.style.color=color; el.style.display=msg?'block':'none';
 }
 
+(function loadTracker(){
+  fetch('/data/site-counts.json?_=' + Date.now(), { cache: 'no-store' })
+    .then(function(r){ return r.json(); })
+    .then(function(c){
+      var tot = c && c.allShiurim && c.allShiurim.total;
+      if (!tot) return;
+      var goal = 1000;
+      while (tot >= goal) goal += 250;
+      var left = goal - tot;
+      document.getElementById('trkNum').textContent = tot.toLocaleString() + ' shiurim';
+      document.getElementById('trkTitle').textContent = '📈 Next milestone: ' + goal.toLocaleString();
+      document.getElementById('trkSub').textContent = left + ' to go' + (goal > 1000 ? ' · 1,000 passed 🎉' : '');
+      document.getElementById('tracker').hidden = false;
+      requestAnimationFrame(function(){ document.getElementById('trkBar').style.width = Math.min(100, tot / goal * 100) + '%'; });
+    })
+    .catch(function(){});
+})();
 </script>
 </body>
 </html>
