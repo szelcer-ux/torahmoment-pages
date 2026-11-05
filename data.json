@@ -1527,14 +1527,18 @@
     "date": "11/4/2025",
     "description": "Sand and stars",
     "filename": "PTT-20251104-WA0033.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251104-WA0033.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251104-WA0033.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vayeira"
   },
   {
     "id": 152,
     "date": "11/5/2025",
     "description": "A true tzadik",
     "filename": "PTT-20251105-WA0033.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251105-WA0033.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251105-WA0033.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vayeira"
   },
   {
     "id": 153,
@@ -1699,70 +1703,86 @@
     "date": "12/31/2025",
     "description": "Live!",
     "filename": "PTT-20251231-WA0009.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251231-WA0009.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251231-WA0009.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vayechi"
   },
   {
     "id": 172,
     "date": "1/5/2026",
     "description": "Looking forward",
     "filename": "PTT-20260105-WA0019.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260105-WA0019.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260105-WA0019.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Shemos"
   },
   {
     "id": 173,
     "date": "1/7/2026",
     "description": "Go help!",
     "filename": "PTT-20260106-WA0136.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260106-WA0136.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260106-WA0136.mp3",
+    "category": "Tefila"
   },
   {
     "id": 174,
     "date": "1/8/2026",
     "description": "Potential",
     "filename": "PTT-20260108-WA0025.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260108-WA0025.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260108-WA0025.mp3",
+    "category": "Chinuch"
   },
   {
     "id": 175,
     "date": "1/12/2026",
     "description": "One small groove",
     "filename": "PTT-20260112-WA0035.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260112-WA0035.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260112-WA0035.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 176,
     "date": "1/13/2026",
     "description": "Giving = love",
     "filename": "PTT-20260113-WA0035.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260113-WA0035.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260113-WA0035.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 177,
     "date": "1/15/2026",
     "description": "Look at yourself",
     "filename": "PTT-20260115-WA0024.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260115-WA0024.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260115-WA0024.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vaeira"
   },
   {
     "id": 178,
     "date": "1/19/2026",
     "description": "New month/ new you",
     "filename": "PTT-20260118-WA0099.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260118-WA0099.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260118-WA0099.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Bo"
   },
   {
     "id": 179,
     "date": "1/20/2026",
     "description": "Unity",
     "filename": "PTT-20260120-WA0012.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260120-WA0012.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260120-WA0012.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vaeira"
   },
   {
     "id": 180,
     "date": "1/22/2026",
     "description": "Inspiration->action",
     "filename": "PTT-20260122-WA0013.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260122-WA0013.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260122-WA0013.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Bo"
   },
   {
     "id": 181,
