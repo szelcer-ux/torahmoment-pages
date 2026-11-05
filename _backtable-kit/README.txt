@@ -29,6 +29,14 @@ ADDING A NEW SHIUR
   4. publish.bat ends with a WhatsApp message for the new shiur, already copied.
      Paste it into the group once the page is live (a minute or two).
 
+HAVE ONLY THE SOURCE SHEET SO FAR?
+  1. Double-click new_shiur.bat, press Enter at the first question (no recording),
+     fill in the title, date, speaker, topics, and drag in the PDF.
+  2. publish.bat puts it up with its source sheet and "Recording coming soon".
+  3. When you have the recording: drag the Zoom folder onto new_shiur.bat and give
+     the same shiur number. It adds the recording and keeps everything else.
+  4. publish.bat - the WhatsApp message comes now, once the recording is up.
+
 
 ADDING YOUTUBE LINKS IN BULK (for the archive uploads)
   1. Open the playlist in Chrome, press F12 -> Console, paste this line, press Enter:

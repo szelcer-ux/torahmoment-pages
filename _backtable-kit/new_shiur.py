@@ -3,6 +3,9 @@
 Back Table Torah - add a new shiur from a Zoom recording folder.
 
 Easiest: drag the Zoom recording folder onto new_shiur.bat.
+Have only the source sheet so far? Double-click new_shiur.bat, press Enter at the first
+question, and fill in the details. Later, drag the Zoom folder onto it and give the same
+number: the recording is added to that shiur and everything else is kept.
 Or:      python new_shiur.py "C:\\Users\\you\\Documents\\Zoom\\2026-11-06 20.30.12 Back Table"
 
 It asks for the title, speaker and topics, then:
@@ -109,97 +112,130 @@ def main():
             sys.exit("Usage: python new_shiur.py --youtube 123 https://youtu.be/XXXXXXXXXXX")
         return set_youtube(int(args[1]), args[2:])
 
-    if not shutil.which("ffmpeg"):
-        sys.exit("ffmpeg was not found. Install it first:  winget install Gyan.FFmpeg")
     cfg = json.load(open(os.path.join(HERE, "config.json"), encoding="utf-8"))
     if os.path.exists(os.path.join(HERE, "config.local.json")):
         cfg.update(json.load(open(os.path.join(HERE, "config.local.json"), encoding="utf-8")))
     media = os.path.join(HERE, cfg.get("media_folder", "BackTable"))
     S = load()
 
-    folder = args[0] if args else ask("Drag the Zoom recording folder here and press Enter")
-    folder = folder.strip('"')
-    if not os.path.isdir(folder):
-        sys.exit(f"Not a folder: {folder}")
-    files = [os.path.join(folder, f) for f in os.listdir(folder)]
-    mp4 = [f for f in files if f.lower().endswith(".mp4")]
-    m4a = [f for f in files if f.lower().endswith((".m4a", ".mp3", ".wav"))]
-    video = largest(mp4)
-    audio_src = next((f for f in m4a if "audio_only" in os.path.basename(f).lower()), None) or largest(m4a) or video
-    if not audio_src:
-        sys.exit("No video or audio file found in that folder.")
-    print(f"\nVideo: {os.path.basename(video) if video else '(none)'}")
-    print(f"Audio from: {os.path.basename(audio_src)}")
+    # ---- the recording (optional: a shiur can start with just its source sheet)
+    folder = (args[0] if args else ask(
+        "Drag the Zoom recording folder here and press Enter\n"
+        "(or just press Enter to start with only the source sheet)", required=False)).strip('"')
+    files, video, audio_src = [], None, None
+    if folder:
+        if not os.path.isdir(folder):
+            sys.exit(f"Not a folder: {folder}")
+        if not shutil.which("ffmpeg"):
+            sys.exit("ffmpeg was not found. Install it first:  winget install Gyan.FFmpeg")
+        files = [os.path.join(folder, f) for f in os.listdir(folder)]
+        mp4 = [f for f in files if f.lower().endswith(".mp4")]
+        m4a = [f for f in files if f.lower().endswith((".m4a", ".mp3", ".wav"))]
+        video = largest(mp4)
+        audio_src = next((f for f in m4a if "audio_only" in os.path.basename(f).lower()), None) or largest(m4a) or video
+        if not audio_src:
+            sys.exit("No video or audio file found in that folder.")
+        print(f"\nVideo: {os.path.basename(video) if video else '(none)'}")
+        print(f"Audio from: {os.path.basename(audio_src)}")
+    else:
+        print("\nStarting a shiur with just its source sheet. When you have the recording,")
+        print("drag the Zoom folder onto new_shiur.bat and give the same shiur number.")
 
-    num = int(ask("\nShiur number", str(max(s["num"] or 0 for s in S) + 1)))
-    if any(s["num"] == num for s in S):
-        if ask(f"Shiur {num} already exists. Replace it? (y/n)", "n").lower() != "y":
+    # ---- which shiur
+    waiting = [x for x in S if x.get("pending")]
+    default = str(waiting[-1]["num"]) if (folder and waiting) else str(max(x["num"] or 0 for x in S) + 1)
+    if folder and waiting:
+        print("Waiting for a recording: " + ", ".join(f"Shiur {x['num']} ({x['title']})" for x in waiting))
+    num = int(ask("\nShiur number", default))
+    old = next((x for x in S if x["num"] == num), None)
+    attach = False
+    if old:
+        if folder and old.get("pending"):
+            attach = ask(f"Add this recording to Shiur {num} ({old['title']})? (y/n)", "y").lower() == "y"
+        if not attach and ask(f"Shiur {num} already exists. Replace it completely? (y/n)", "n").lower() != "y":
             sys.exit("Nothing changed.")
-    m = re.search(r"(\d{4}-\d{2}-\d{2})", os.path.basename(folder))
-    date = ask("Date (YYYY-MM-DD)", m.group(1) if m else datetime.date.today().isoformat())
-    title = ask("Title")
-    speakers = [k for k, _ in sorted({s["speaker"]: 0 for s in S if s["speaker"]}.items())]
-    counts = {}
-    for s in S:
-        counts[s["speaker"]] = counts.get(s["speaker"], 0) + 1
-    speakers.sort(key=lambda k: -counts.get(k, 0))
-    speaker = pick_one("Who gave it?", speakers)
-    all_tags = sorted({t for s in S for t in s["tags"]}, key=lambda t: -sum(t in s["tags"] for s in S))
-    tags = pick_many("Topics", all_tags)
-
-    pdfs = [f for f in files if f.lower().endswith(".pdf")]
-    pdf = pdfs[0] if len(pdfs) == 1 else ask("\nSource sheet PDF (drag it here, or Enter to skip)", required=False)
-    imgs = [f for f in files if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))]
-    img = imgs[0] if len(imgs) == 1 else ask("Picture for the shiur (drag it here, or Enter to skip)", required=False)
 
     key = f"shiur-{num:03d}"
     for d in ("audio", "youtube", "pdf", "images"):
         os.makedirs(os.path.join(media, d), exist_ok=True)
 
-    print("\nMaking the audio file...")
-    mp3 = os.path.join(media, "audio", key + ".mp3")
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", audio_src, "-vn", *SHRINK,
-                    "-metadata", f"title={title}", "-metadata", "artist=Back Table Torah",
-                    "-metadata", "album=Back Table Torah", "-metadata", f"track={num}", mp3], check=True)
-    print(f"  {mp3}  ({os.path.getsize(mp3) / 1e6:.1f} MB)")
+    # ---- details (kept as they are when adding a recording to an existing shiur)
+    if attach:
+        entry = old
+        title = old["title"]
+        print(f"\nKeeping the title, date, speaker and topics already entered for Shiur {num}.")
+    else:
+        m = re.search(r"(\d{4}-\d{2}-\d{2})", os.path.basename(folder)) if folder else None
+        date = ask("Date (YYYY-MM-DD)", m.group(1) if m else datetime.date.today().isoformat())
+        title = ask("Title")
+        counts = {}
+        for x in S:
+            if x["speaker"]:
+                counts[x["speaker"]] = counts.get(x["speaker"], 0) + 1
+        speakers = sorted(counts, key=lambda k: -counts[k])
+        speaker = pick_one("Who gave it?", speakers)
+        all_tags = sorted({t for x in S for t in x["tags"]}, key=lambda t: -sum(t in x["tags"] for x in S))
+        tags = pick_many("Topics", all_tags)
+        entry = {"num": num, "slug": f"shiur-{num}", "file_key": key, "date": date, "title": title,
+                 "speaker": speaker, "tags": tags, "runtime": "", "youtube": [], "video_parts": 0,
+                 "audio": [], "pdf": [], "images": [], "ext_links": [], "zoom_chat": [], "old_url": ""}
 
-    yt_file = None
-    if video:
-        yt_file = os.path.join(media, "youtube", safe_name(f"Shiur {num:03d} - {title}") + ".mp4")
-        print("Copying the video for YouTube...")
-        shutil.copy2(video, yt_file)
-        print(f"  {yt_file}")
-    pdf_list, img_list = [], []
-    if pdf and os.path.isfile(pdf):
-        shutil.copy2(pdf, os.path.join(media, "pdf", key + ".pdf"))
-        pdf_list = [key + ".pdf"]
-    if img and os.path.isfile(img):
-        ext = img.rsplit(".", 1)[-1].lower().replace("jpeg", "jpg")
-        shutil.copy2(img, os.path.join(media, "images", f"{key}.{ext}"))
-        img_list = [f"{key}.{ext}"]
+    # ---- source sheet and picture (asked only if the shiur doesn't have them yet)
+    if not entry["pdf"]:
+        pdfs = [f for f in files if f.lower().endswith(".pdf")]
+        pdf = pdfs[0] if len(pdfs) == 1 else ask("\nSource sheet PDF (drag it here, or Enter to skip)", required=False).strip('"')
+        if pdf and os.path.isfile(pdf):
+            shutil.copy2(pdf, os.path.join(media, "pdf", key + ".pdf"))
+            entry["pdf"] = [key + ".pdf"]
+    if not entry["images"]:
+        imgs = [f for f in files if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))]
+        img = imgs[0] if len(imgs) == 1 else ask("Picture for the shiur (drag it here, or Enter to skip)", required=False).strip('"')
+        if img and os.path.isfile(img):
+            ext = img.rsplit(".", 1)[-1].lower().replace("jpeg", "jpg")
+            shutil.copy2(img, os.path.join(media, "images", f"{key}.{ext}"))
+            entry["images"] = [f"{key}.{ext}"]
 
-    entry = {"num": num, "slug": f"shiur-{num}", "file_key": key, "date": date, "title": title,
-             "speaker": speaker, "tags": tags, "runtime": duration_text(audio_src),
-             "youtube": [], "video_parts": 1 if video else 0, "audio": [key + ".mp3"],
-             "pdf": pdf_list, "images": img_list, "ext_links": [], "zoom_chat": [], "old_url": ""}
+    # ---- the recording
+    link = ""
+    if folder:
+        print("\nMaking the audio file...")
+        mp3 = os.path.join(media, "audio", key + ".mp3")
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", audio_src, "-vn", *SHRINK,
+                        "-metadata", f"title={title}", "-metadata", "artist=Back Table Torah",
+                        "-metadata", "album=Back Table Torah", "-metadata", f"track={num}", mp3], check=True)
+        print(f"  {mp3}  ({os.path.getsize(mp3) / 1e6:.1f} MB)")
+        entry["audio"] = [key + ".mp3"]
+        entry["runtime"] = duration_text(audio_src)
+        if video:
+            yt_file = os.path.join(media, "youtube", safe_name(f"Shiur {num:03d} - {title}") + ".mp4")
+            print("Copying the video for YouTube...")
+            shutil.copy2(video, yt_file)
+            print(f"  {yt_file}")
+            entry["video_parts"] = 1
+        chat = next((f for f in files if os.path.basename(f).lower() in ("chat.txt", "meeting_saved_chat.txt")), None)
+        if chat:
+            with open(chat, encoding="utf-8", errors="replace") as f:
+                entry["zoom_chat"] = [ln.rstrip() for ln in f if ln.strip()]
+            print(f"Zoom chat found: {len(entry['zoom_chat'])} lines")
+        entry.pop("pending", None)
+        if video:
+            print("\nUpload the video to the Back Table YouTube channel (Unlisted).")
+            link = ask("Paste the YouTube link now, or press Enter to add it later", required=False)
+            if link:
+                entry["youtube"] = [link]
+    else:
+        entry["pending"] = True
 
-    chat = next((f for f in files if os.path.basename(f).lower() in ("chat.txt", "meeting_saved_chat.txt")), None)
-    if chat:
-        with open(chat, encoding="utf-8", errors="replace") as f:
-            entry["zoom_chat"] = [ln.rstrip() for ln in f if ln.strip()]
-        print(f"Zoom chat found: {len(entry['zoom_chat'])} lines")
-
-    print("\nUpload the video to the Back Table YouTube channel (Unlisted).")
-    link = ask("Paste the YouTube link now, or press Enter to add it later", required=False)
-    if link:
-        entry["youtube"] = [link]
-
-    S = [s for s in S if s["num"] != num] + [entry]
+    S = [x for x in S if x["num"] != num] + [entry]
     save(S)
-    print(f"\nShiur {num} added.")
-    print("Next: upload the video to YouTube, then double-click publish.bat.")
-    if not link:
-        print(f"When the video is up: double-click set_youtube.bat (shiur {num}).")
+    if not folder:
+        print(f"\nShiur {num} added with its source sheet; the page will say the recording is coming soon.")
+        print("Double-click publish.bat to put it up now.")
+    else:
+        print(f"\nShiur {num} {'recording added' if attach else 'added'}.")
+        print("Next: upload the video to YouTube, then double-click publish.bat.")
+        if video and not link:
+            print(f"When the video is up: double-click set_youtube.bat (shiur {num}).")
 
 
 if __name__ == "__main__":

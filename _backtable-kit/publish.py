@@ -161,10 +161,16 @@ def main():
     if run(["git", "diff", "--cached", "--quiet"], check=False, quiet=True).returncode == 0:
         print("   Nothing changed - the site is already up to date.")
         return
-    nums, new = [], []
+    nums, new, shells = [], [], []
     try:
-        st = run(["git", "diff", "--cached", "--name-status"], quiet=True).stdout.splitlines()
-        new = sorted({int(m.group(1)) for m in (re.match(r"A\s+backtable/shiur-(\d+)/index\.html$", ln) for ln in st) if m})
+        # announce a shiur when its recording first goes up (not when only the sheet is posted)
+        done = lambda x: bool(x.get("audio")) and not x.get("pending")
+        rel = os.path.join(kit, "shiurim.json").replace("\\", "/")
+        r = run(["git", "show", f"HEAD:{rel}"], check=False, quiet=True)
+        before = {x["num"]: x for x in json.loads(r.stdout)} if r.returncode == 0 else {}
+        now = {x["num"]: x for x in json.load(open(os.path.join(HERE, "shiurim.json"), encoding="utf-8"))}
+        new = sorted(n for n, x in now.items() if n and done(x) and not (n in before and done(before[n])))
+        shells = sorted(n for n, x in now.items() if n and x.get("pending") and n not in before)
         d = run(["git", "diff", "--cached", "--name-only"], quiet=True).stdout.split()
         nums = sorted({p.split("/")[1] for p in d if p.startswith("backtable/shiur-")})
     except Exception:
@@ -179,6 +185,9 @@ def main():
         announce(n, cfg)
     if new:
         print("   (Paste it once the page is live. For a different shiur: announce.bat)")
+    for n in shells:
+        print(f"   Shiur {n} is up with its source sheet. Its WhatsApp message comes when you add the recording")
+        print("   (or run announce.bat any time).")
 
 
 if __name__ == "__main__":

@@ -192,6 +192,8 @@ def build_archive(cfg, S, extras=()):
             media.append(f"<span>{ICON['audio']}Audio</span>")
         if s["pdf"]:
             media.append(f"<span>{ICON['pdf']}Sheet</span>")
+        if s.get("pending"):
+            media.append('<span class="bt-soon">Recording coming soon</span>')
         tagh = "".join(f'<span class="bt-tag" dir="auto">{E(t)}</span>' for t in s["tags"])
         text = " ".join([label, s["title"], s["speaker"]] + s["tags"]).lower()
         rows.append(f"""<li class="bt-item" data-tags="{E('|'.join(s['tags']))}" data-speaker="{E(s['speaker'])}" data-year="{s['date'][:4]}" data-text="{E(text)}">
@@ -267,6 +269,8 @@ def build_shiur(cfg, s, prev, nxt):
                     f'<p class="bt-yt-link"><a href="https://www.youtube.com/watch?v={i}" target="_blank" rel="noopener">Video not playing? Watch on YouTube</a></p>')
     if not ids and s["video_parts"]:
         vids.append(f'<div class="bt-video bt-pending">{ICON["play"]}<span>Video coming soon</span></div>')
+    if s.get("pending"):
+        vids.append(f'<div class="bt-audio bt-pending-row">{ICON["play"]}<span>The recording will be added here soon. The source sheet is below.</span></div>')
 
     # audio
     aud = []
