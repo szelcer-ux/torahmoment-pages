@@ -43,7 +43,7 @@ h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
 .it{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px}
 .it .h{display:flex;gap:12px;align-items:center}
 .pl{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:14px;cursor:pointer;display:grid;place-items:center}.pl svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.pl.v{background:#dc2626;border-radius:10px}.pl.v svg{fill:#fff;stroke:none}
-.it .tt{flex:1;min-width:0}.it .tt div{font-weight:600;font-size:15px;line-height:1.3}.it .tt small{color:var(--muted);font-size:12.5px}
+.it .tt{flex:1;min-width:0}.it .tt>div:first-child{font-weight:600;font-size:15px;line-height:1.3}.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:3px}.it .tt small{color:var(--muted);font-size:12.5px}
 .tag{font-size:11.5px;background:#f0fdfa;color:var(--ink);border-radius:999px;padding:3px 9px;font-weight:700;white-space:nowrap;cursor:pointer}
 .it audio{width:100%;margin-top:10px}
 .back{background:none;border:0;color:var(--ink);font-weight:700;font-size:14px;cursor:pointer;padding:0;margin:26px 0 8px}
@@ -55,7 +55,18 @@ h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
 .more{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px;justify-content:center}.more a{font-size:13.5px;color:var(--muted);border-bottom:1px solid var(--border)}
 .empty{color:var(--muted);padding:20px;text-align:center}
 .jump{display:block;background:#f0fdfa;border:1px solid #99d5cf;border-radius:12px;padding:12px 14px;font-weight:700;color:var(--ink);margin-bottom:10px}
-@media(max-width:720px){.week{grid-template-columns:1fr;padding:20px}.grid{grid-template-columns:repeat(2,1fr)}.vh{flex-wrap:wrap}.vh .btn{margin-left:0}}
+.btn.go{background:var(--accent);color:#fff;margin:4px 0 6px}
+@media(max-width:720px){
+ .in-view .hero h1,.in-view .hero p,.in-view .quick{display:none}.in-view .hero{padding:14px 0 0}
+ .wrap{padding:0 14px 50px}.hero{padding:22px 0 4px}.hero p{font-size:14px;margin-bottom:14px}.sw input{font-size:16px;padding:13px 16px 13px 44px}
+ .week{grid-template-columns:1fr;padding:18px;border-radius:18px}.week h3{font-size:24px}
+ .grid{grid-template-columns:repeat(2,1fr);gap:10px}.tile{padding:13px}.tile .ic{width:40px;height:40px;font-size:22px}.tile b{font-size:15px}.tile span{font-size:12px}
+ .vh{gap:10px;margin-bottom:6px}.vh .ic{font-size:24px}.vh h2{font-size:21px}.vh p{font-size:13px}
+ .btn.go{display:block;text-align:center;font-size:13.5px;padding:10px 14px}
+ .chip{font-size:13px;padding:6px 12px}.chips{gap:6px}
+ .chips.scroll{flex-wrap:nowrap;overflow-x:auto;margin-right:-14px;padding-right:14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.chips.scroll::-webkit-scrollbar{display:none}.chips.scroll .chip{flex:none}
+ .pl{width:36px;height:36px}.it{padding:10px 12px}.it .tt>div:first-child{font-size:14.5px}h2.sec{margin:24px 0 10px}
+}
 </style></head><body>
 <div class="top"><div><b>TorahMoment</b><a class="on" href="/home.html">Home</a><a href="/parsha.html">Parsha</a><a href="/halacha.html">Halacha</a><a href="/tefilah.html">Tefila</a><a href="/one-minute-audio.html">One-Minute</a><a href="/mishna.html">Mishna</a><a href="/weekly.html">This Week</a><a href="/about.html">About</a></div></div>
 <div class="wrap">
@@ -96,6 +107,9 @@ bamidbar:'Bamidbar',nasso:'Nasso',naso:'Nasso',behaalotcha:'Behaaloscha',behaalo
 devarim:'Devarim',vaetchanan:'Vaeschanan',vaeschanan:'Vaeschanan',vaetchannan:'Vaeschanan',eikev:'Eikev',ekev:'Eikev',reeh:'Reeh',reeh2:'Reeh',shoftim:'Shoftim',kiteitzei:'Ki Seitzei',kiteitze:'Ki Seitzei',kiteizei:'Ki Seitzei',kiteze:'Ki Seitzei',kiseitzei:'Ki Seitzei',kiseitze:'Ki Seitzei',kitetzei:'Ki Seitzei',kitavo:'Ki Savo',kisavo:'Ki Savo',kitovo:'Ki Savo',nitzavim:'Nitzavim',nitzavim2:'Nitzavim',vayeilech:'Vayeilech',vayelech:'Vayeilech',haazinu:'Haazinu',haazenu:'Haazinu',vezotthaberakhah:'Vezos Haberacha',vezothaberakhah:'Vezos Haberacha',vezoshaberacha:'Vezos Haberacha',vezothaberachah:'Vezos Haberacha',vzothaberakhah:'Vezos Haberacha',vezotheberakhah:'Vezos Haberacha',vezoshabracha:'Vezos Haberacha'};
 // Hebcal/other spellings -> our names, then closest spelling as a fallback
 function bestParsha(name){const k=nk(String(name||'').replace(/^(parashat|parshas|parsha)\s+/i,''));if(!k)return'';if(PAL[k])return PAL[k];let bi=-1,bd=99;PN.forEach((p,i)=>{const d=lev(k,p);if(d<bd){bd=d;bi=i}});return bd<=3?ALLP[bi]:''}
+function ovParshas(t){const x=String(t||'').replace(/^\s*Parsh(?:as|ios|a)\s+/i,'').replace(/\s*overview\s*$/i,'');
+ const whole=bestParsha(x);if(whole&&(PAL[nk(x)]||lev(nk(x),nk(whole))<=1))return[whole];
+ const parts=x.split(/\s*[\/&,–-]\s*|\s+and\s+/i).map(bestParsha).filter(Boolean);return[...new Set(parts.length?parts:(whole?[whole]:[]))]}
 const bookOf=p=>Object.keys(SEFARIM).find(b=>SEFARIM[b].includes(p))||'';
 function pd(x){if(!x)return'';const t=String(x);let m=t.match(/^(\d{4})-(\d\d)-(\d\d)/);if(m)return m[1]+'-'+m[2]+'-'+m[3];m=t.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);if(m){const y=m[3].length==2?'20'+m[3]:m[3];return y+'-'+m[1].padStart(2,'0')+'-'+m[2].padStart(2,'0')}return''}
 const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -115,7 +129,7 @@ async function boot(){
  const [om,hal,si,sc,tf]=await Promise.allSettled([getJ('/data.json'),getJ('/data/halacha.json'),getJ('/data/search-index.json'),getJ('/data/site-counts.json'),getJ('/data/tefilah-extra.json')]);
  if(om.value)om.value.forEach(x=>add('a',String(x.description||'').replace(/\s*<This message was edited>\s*/gi,'').trim(),x.url,pd(x.date),x.category||'More One-Minute',x.category==='Parsha'?bestParsha(x.categoryDetail)||x.categoryDetail:x.categoryDetail,{om:1}));
  if(hal.value)hal.value.forEach(sec=>{const walk=(sub,its)=>(its||[]).forEach(it=>{if(it.type==='note'||!it.url)return;const c=it.category||sec.category;let s=it.categoryDetail||sub||'';if(c==='Parsha')s=bestParsha(s)||bestParsha(it.title)||s;add(it.type==='youtube'?'v':'a',it.title,it.url,pd(it.note||''),c,s)});walk('',sec.items);(sec.subcategories||[]).forEach(sb=>walk(sb.name||sb.title||'',sb.items))});
- if(si.value)si.value.forEach(x=>{if(x.program==='Parsha'&&x.type==='video')add('v',x.title,x.url,pd(x.date),'Parsha',x.parsha?bestParsha(x.parsha):'',{vid:1});else if(x.program==='Parsha Overview')add('a',x.title,x.url,pd(x.date),'Parsha',bestParsha(x.title),{ov:1})});
+ if(si.value)si.value.forEach(x=>{if(x.program==='Parsha'&&x.type==='video')add('v',x.title,x.url,pd(x.date),'Parsha',x.parsha?bestParsha(x.parsha):'',{vid:1});else if(x.program==='Parsha Overview'){const ps=ovParshas(x.title);(ps.length?ps:['']).forEach(pp=>add('a',x.title,x.url,pd(x.date),'Parsha',pp,{ov:1}))}});
  if(tf.value)tf.value.forEach(x=>add('v',x.title,x.url,'','Tefila','Videos',{vid:1}));
  COUNTS=sc.value||null;ITEMS.forEach(i=>(cats[i.c]=cats[i.c]||[]).push(i));
  const tot=COUNTS&&COUNTS.allShiurim&&COUNTS.allShiurim.total;$('tot').textContent=tot?' — '+tot+' and counting':'';
@@ -128,7 +142,7 @@ function tiles(){$('tiles').innerHTML=topicList().map(c=>{const m=META[c]||['�
 $('tiles').onclick=e=>{const t=e.target.closest('.tile');if(!t)return;t.dataset.c==='Mishna'?location.href='/mishna.html':go(t.dataset.c)};
 function quick(){$('quick').innerHTML=['Parsha','Shabbos and Yom Tov','Tefila','Hashkafa/Middos','Mishna'].filter(c=>cnt(c)).map(c=>`<button class="chip" data-c="${c}">${META[c][0]} ${c}</button>`).join('')}
 $('quick').onclick=e=>{const c=e.target.closest('.chip');if(!c)return;c.dataset.c==='Mishna'?location.href='/mishna.html':go(c.dataset.c)};
-function row(i,showCat){const v=i.k==='v';return`<div class="it"><div class="h"><button class="pl ${v?'v':''}" data-u="${esc(i.u)}" data-v="${v?1:0}" aria-label="${v?'Watch video':'Play audio'}">${v?IC_V:IC_A}</button><div class="tt"><div>${esc(i.t)}</div><small>${pretty(i.d)}</small></div>${i.s&&i.s!=='Videos'&&showCat!==0?`<span class="tag" data-go="${esc(i.c)}|${esc(i.s)}">${esc(i.s)}</span>`:''}${showCat?`<span class="tag" data-go="${esc(i.c)}|">${esc(i.c)}</span>`:''}</div></div>`}
+function row(i,showCat){const v=i.k==='v';return`<div class="it"><div class="h"><button class="pl ${v?'v':''}" data-u="${esc(i.u)}" data-v="${v?1:0}" aria-label="${v?'Watch video':'Play audio'}">${v?IC_V:IC_A}</button><div class="tt"><div>${esc(i.t)}</div><div class="meta"><small>${pretty(i.d)}</small>${i.s&&i.s!=='Videos'&&showCat!==0?`<span class="tag" data-go="${esc(i.c)}|${esc(i.s)}">${esc(i.s)}</span>`:''}${showCat?`<span class="tag" data-go="${esc(i.c)}|">${esc(i.c)}</span>`:''}</div></div></div></div>`}
 function wire(root){root.querySelectorAll('.pl').forEach(b=>b.onclick=()=>{const it=b.closest('.it'),a=it.querySelector('audio');
  if(b.dataset.v==='1'){window.open(b.dataset.u,'_blank','noopener');return}
  if(a){a.pause();a.remove();b.innerHTML=IC_A;return}
@@ -161,7 +175,7 @@ function route(){const parts=location.hash.slice(1).split('/').map(decodeURIComp
  $('q').value='';$('home').hidden=true;$('view').hidden=false;
  if(c==='Parsha')parshaView(parts[1]||'',parts[2]||'');else topicView(c,parts[1]||'')}
 const back='<button class="back" id="bk">← All topics</button>';
-function header(c,sub,btn){const m=META[c]||['📁',''];return`${back}<div class="vh"><div class="ic">${m[0]}</div><div><h2>${esc(c)}${sub?' · '+esc(sub):''}</h2><p>${sub?'':esc(m[1])}</p></div>${btn||''}</div>`}
+function header(c,sub,note){const m=META[c]||['📁',''];return`${back}<div class="vh"><div class="ic">${m[0]}</div><div><h2>${esc(c)}${sub?' · '+esc(sub):''}</h2><p>${esc(note!=null?note:(sub?'':m[1]))}</p></div></div>`}
 function bindBack(v){const b=v.querySelector('#bk');if(b)b.onclick=()=>{location.hash='';};}
 function topicView(c,sub){const its=(cats[c]||[]).slice().sort((a,b)=>b.d<a.d?-1:b.d>a.d?1:0);const subs={};its.forEach(i=>{if(i.s)subs[i.s]=(subs[i.s]||0)+1});const names=Object.keys(subs).sort();
  const shown=sub?its.filter(i=>i.s===sub):its;const v=$('view');
@@ -170,15 +184,15 @@ function topicView(c,sub){const its=(cats[c]||[]).slice().sort((a,b)=>b.d<a.d?-1
 function parshaView(book,p){const its=cats['Parsha']||[],by={};its.forEach(i=>{if(i.s)by[i.s]=(by[i.s]||0)+1});
  if(p&&!book)book=bookOf(p);const v=$('view');
  const bc={};ALLP.forEach(x=>{if(by[x])bc[bookOf(x)]=(bc[bookOf(x)]||0)+by[x]});
- let h=header('Parsha','')+`<div class="chips"><button class="chip ${book?'':'on'}" data-b="">All Parsha<small>${its.length}</small></button>${Object.keys(SEFARIM).map(b=>`<button class="chip ${b===book?'on':''}" data-b="${b}">${b}<small>${bc[b]||0}</small></button>`).join('')}</div>`;
- if(book)h+=`<div class="chips">${SEFARIM[book].map(x=>`<button class="chip ${x===p?'on':''} ${by[x]?'':'zero'}" data-p="${esc(x)}">${esc(x)}<small>${by[x]||0}</small></button>`).join('')}</div>`;
+ let h=header('Parsha','')+`<div class="chips scroll"><button class="chip ${book?'':'on'}" data-b="">All Parsha<small>${its.length}</small></button>${Object.keys(SEFARIM).map(b=>`<button class="chip ${b===book?'on':''}" data-b="${b}">${b}<small>${bc[b]||0}</small></button>`).join('')}</div>`;
+ if(book)h+=`<div class="chips scroll" id="pRow">${SEFARIM[book].map(x=>`<button class="chip ${x===p?'on':''} ${by[x]?'':'zero'}" data-p="${esc(x)}">${esc(x)}<small>${by[x]||0}</small></button>`).join('')}</div>`;
  let list;
  if(p){const pi=its.filter(i=>i.s===p);const grp=[['🎧 Overview',pi.filter(i=>i.ov)],['▶️ Videos',pi.filter(i=>i.vid).sort((a,b)=>b.d<a.d?-1:1)],['⏱️ One-minute & shiurim',pi.filter(i=>!i.ov&&!i.vid)]];
-  h=h.replace('</div></div>',`</div><a class="btn" href="/parsha.html?parsha=${encodeURIComponent(p)}">Full page for Parshas ${esc(p)} →</a></div>`).replace(`<h2>Parsha</h2>`,`<h2>Parshas ${esc(p)}</h2>`);
+  h=h.replace(`<h2>Parsha</h2><p>${esc(META['Parsha'][1])}</p>`,`<h2>Parshas ${esc(p)}</h2><p>${pi.length} shiurim</p>`).replace('</div></div>','</div></div><a class="btn go" href="/parsha.html?parsha='+encodeURIComponent(p)+'">Open the full page for Parshas '+esc(p)+' →</a>');
   list=grp.filter(g=>g[1].length).map(g=>`<h2 class="sec">${g[0]} <span>${g[1].length}</span></h2><div class="list">${g[1].map(i=>row(i,0)).join('')}</div>`).join('')||'<div class="empty">Nothing here yet — the full parsha page may have more.</div>';
  } else {const pi=(book?its.filter(i=>i.s&&bookOf(i.s)===book):its).slice().sort((a,b)=>b.d<a.d?-1:b.d>a.d?1:0);
   list=`<h2 class="sec">${book?book:'Latest'} shiurim</h2><div class="list">${pi.slice(0,60).map(i=>row(i,0)).join('')}</div>${pi.length>60?`<div class="empty">Showing 60 of ${pi.length} — pick a parsha above to narrow down.</div>`:''}`}
- v.innerHTML=h+list;bindBack(v);wire(v);
+ v.innerHTML=h+list;bindBack(v);wire(v);const on=v.querySelector('#pRow .chip.on');if(on){try{on.scrollIntoView({inline:'center',block:'nearest'})}catch(e){}}
  v.querySelectorAll('[data-b]').forEach(b=>b.onclick=()=>go('Parsha','',b.dataset.b));
  v.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>go('Parsha',b.dataset.p===p?'':b.dataset.p,bookOf(b.dataset.p)))}
 // search
@@ -187,5 +201,6 @@ $('q').addEventListener('input',()=>{const t=$('q').value.trim().toLowerCase();i
  const pj=bestParshaExact(t);$('home').hidden=true;const v=$('view');v.hidden=false;
  v.innerHTML=(pj?`<a class="jump" href="#Parsha/${encodeURIComponent(bookOf(pj))}/${encodeURIComponent(pj)}">📖 See everything on Parshas ${esc(pj)} →</a>`:'')+`<h2 class="sec">${res.length?res.length+' result'+(res.length>1?'s':''):'No results'} for “${esc(t)}”</h2><div class="list">${res.slice(0,80).map(i=>row(i,1)).join('')||'<div class="empty">Try a different word, or browse a topic.</div>'}</div>`+(res.length>80?`<div class="empty">Showing the first 80 — add a word to narrow it down.</div>`:'');wire(v)});
 function bestParshaExact(t){const k=nk(t);if(k.length<4)return'';const i=PN.findIndex(p=>p===k||(k.length>=5&&lev(p,k)<=1));return i>=0?ALLP[i]:''}
+new MutationObserver(()=>document.body.classList.toggle('in-view',!$('view').hidden)).observe($('view'),{attributes:true,attributeFilter:['hidden']});
 boot().catch(e=>{$('tiles').innerHTML='<div class="empty">Could not load content. Please refresh.</div>'});
 </script></body></html>
