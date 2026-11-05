@@ -7448,5 +7448,15 @@
     "date": "2026-10-29T00:00:00.000Z",
     "page": "/parsha.html",
     "title_lc": "parshas vayeira overview"
+  },
+  {
+    "id": "ov-chayei-sarah",
+    "program": "Parsha Overview",
+    "type": "audio",
+    "title": "Parshas Chayei Sarah overview",
+    "url": "https://torahmoment.com/audio/ChayeiSaraoverview.mp3",
+    "date": "2026-11-04T00:00:00.000Z",
+    "page": "/parsha.html",
+    "title_lc": "parshas chayei sarah overview"
   }
 ]
