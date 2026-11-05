@@ -84,6 +84,7 @@
 <div id="mainScreen">
   <div class="topbar">
     <h1>TorahMoment Admin</h1>
+    <button id="tokenBtn" title="Replace the saved GitHub token">🔑 Token</button>
     <button id="logoutBtn">Sign out</button>
   </div>
   <div class="wrap">
@@ -294,6 +295,14 @@ document.getElementById('saveTokenBtn').addEventListener('click', function() {
 });
 
 function getToken() { return localStorage.getItem('tm_token') || ''; }
+// Show the token box again (used by the 🔑 Token button, and automatically when GitHub rejects the token)
+function askForToken(clear) {
+  if (clear) { try { localStorage.removeItem('tm_token'); } catch(e) {} }
+  var b = document.getElementById('tokenBanner'); b.style.display = '';
+  var i = document.getElementById('tokenInput'); i.value = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' }); setTimeout(function(){ i.focus(); }, 250);
+}
+document.getElementById('tokenBtn').addEventListener('click', function(){ askForToken(false); });
 
 // ── On login ──
 function onLogin() {
@@ -496,6 +505,7 @@ document.getElementById('commitBtn').addEventListener('click', function() {
     headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' }
   })
   .then(function(r) {
+    if (r.status === 401) { askForToken(true); throw new Error('GitHub rejected the saved token (401). Paste a new token in the box at the top and click Save.'); }
     if (!r.ok) throw new Error('GitHub API error ' + r.status + ' — check your token has repo scope.');
     return r.json();
   })
