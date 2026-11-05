@@ -205,6 +205,11 @@
             <span id="catNoteFixText"></span>
             <button class="btn btn-outline" id="catNoteFixBtn" style="font-size:12px;padding:5px 10px;margin-left:6px;">Remove</button>
           </div>
+          <div id="catDates" style="display:none;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
+            <div style="font-size:13px;font-weight:700;margin-bottom:4px;">📅 Shiurim with no date</div>
+            <div style="font-size:12px;color:#666;margin-bottom:8px;" id="catDatesHelp"></div>
+            <div id="catDatesList" style="border:1px solid var(--border);border-radius:10px;background:#fff;max-height:300px;overflow:auto;"></div>
+          </div>
         </div>
         <div id="catRenameBox" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
           <div style="font-size:13px;font-weight:700;margin-bottom:6px;">Rename a category</div>
@@ -791,7 +796,7 @@ function populateCatSub(prefix) {
 }
 
 // ── CATEGORIZE TAB ──
-var catData=[], catIdx=0, catSource='oneMinute', catPending={}, catLoaded=false;
+var catData=[], catIdx=0, catSource='oneMinute', catPending={}, catLoaded=false, dateEdits={};
 // ── Safety net: keep unsaved categorizations in this browser + warn before leaving ──
 function persistCatDraft(){
   if(!catLoaded) return;
@@ -799,7 +804,7 @@ function persistCatDraft(){
     var key='tm_cat_draft_'+catSource, urls=Object.keys(catPending).filter(function(k){return k.indexOf('note:')!==0;});
     if(!urls.length){ localStorage.removeItem(key); return; }
     var byUrl={}; catData.forEach(function(it){ if(it&&it.url) byUrl[it.url]=it; });
-    var out={}; urls.forEach(function(u){ var it=byUrl[u]; if(it&&it.category) out[u]={category:it.category,categoryDetail:it.categoryDetail||null}; });
+    var out={}; urls.forEach(function(u){ var it=byUrl[u]; if(it&&(it.category||dateEdits[u])) out[u]={category:it.category||null,categoryDetail:it.categoryDetail||null,note:dateEdits[u]||null}; });
     localStorage.setItem(key,JSON.stringify(out));
   }catch(e){}
 }
@@ -808,10 +813,11 @@ function restoreCatDraft(){
     var raw=localStorage.getItem('tm_cat_draft_'+catSource); if(!raw) return 0;
     var d=JSON.parse(raw), byUrl={}, n=0; catData.forEach(function(it){ if(it&&it.url) byUrl[it.url]=it; });
     Object.keys(d).forEach(function(u){
-      var it=byUrl[u], v=d[u]; if(!it||!v||!v.category) return;
-      if(it.category===v.category && (it.categoryDetail||null)===(v.categoryDetail||null)) return; // already committed
-      if(!CATEGORIES.hasOwnProperty(v.category)) CATEGORIES[v.category]=null;
-      it.category=v.category; if(v.categoryDetail) it.categoryDetail=v.categoryDetail; else delete it.categoryDetail;
+      var it=byUrl[u], v=d[u]; if(!it||!v) return;
+      var dateChanged=!!(v.note && (it.note||'')!==v.note), catChanged=!!(v.category && (it.category!==v.category || (it.categoryDetail||null)!==(v.categoryDetail||null)));
+      if(!dateChanged && !catChanged) return; // already committed
+      if(catChanged){ if(!CATEGORIES.hasOwnProperty(v.category)) CATEGORIES[v.category]=null; it.category=v.category; if(v.categoryDetail) it.categoryDetail=v.categoryDetail; else delete it.categoryDetail; }
+      if(dateChanged){ it.note=v.note; dateEdits[u]=v.note; }
       catPending[u]=true; n++;
     });
     return n;
@@ -853,7 +859,7 @@ function initCategorize() {
         });
       });
     } else { catData=parsed; catNotes=[]; }
-    catIdx=0; catPending={};
+    catIdx=0; catPending={}; dateEdits={};
     catData.forEach(function(x){ if (x && x.category && !CATEGORIES.hasOwnProperty(x.category)) CATEGORIES[x.category]=null; });
     var restored=restoreCatDraft(); catLoaded=true;
     buildCatMainSel();
@@ -990,7 +996,39 @@ function renameCategory(from,to){
   renderCatOverview();
 }
 
+// ── Add missing dates (Halacha items whose date field is empty) ──
+function renderDatesPanel(){
+  var box=document.getElementById('catDates'); if(!box) return;
+  var rows=(catSource==='halacha')?catData.filter(function(it){return it.url && (!String(it.note||'').trim() || dateEdits[it.url]);}):[];
+  if(!rows.length){ box.style.display='none'; return; }
+  box.style.display='block';
+  var left=rows.filter(function(it){return !dateEdits[it.url];}).length;
+  document.getElementById('catDatesHelp').textContent=(left?left+' still need'+(left===1?'s':'')+' a date. ':'All dates filled in. ')+'Pick the date each shiur was recorded or posted. Nothing is saved until you click Commit to GitHub below.';
+  var list=document.getElementById('catDatesList');
+  list.innerHTML=rows.map(function(it){
+    var v=dateEdits[it.url]||'', iso='';
+    var m=v.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); if(m) iso=m[3]+'-'+('0'+m[1]).slice(-2)+'-'+('0'+m[2]).slice(-2);
+    return '<div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-bottom:1px solid #eee;">'
+      +'<div style="flex:1;min-width:0;font-size:13px;line-height:1.3;">'+catEsc(it.title||it.url)+'<div style="font-size:11px;color:#888;">'+catEsc(it.categoryDetail||it.category||'')+'</div></div>'
+      +'<a href="'+catEsc(it.url)+'" target="_blank" rel="noopener" style="font-size:12px;color:#0d9488;white-space:nowrap;">▶ listen</a>'
+      +'<input type="date" data-u="'+catEsc(it.url)+'" value="'+iso+'" style="padding:6px;border:1px solid var(--border);border-radius:8px;font-size:13px;'+(v?'background:#ecfdf5;':'')+'">'
+      +'</div>';
+  }).join('');
+  Array.prototype.forEach.call(list.querySelectorAll('input[type=date]'),function(inp){
+    inp.addEventListener('change',function(){
+      var u=inp.getAttribute('data-u'); if(!inp.value) return;
+      var p=inp.value.split('-'); var mdy=(+p[1])+'/'+(+p[2])+'/'+p[0];
+      var it=catData.find(function(x){return x.url===u;}); if(!it) return;
+      it.note=mdy; dateEdits[u]=mdy; catPending[u]=true;
+      updateCommitBtn(); persistCatDraft();
+      showCatStatus('Date saved locally - click "Commit to GitHub" below to publish it.','#166534');
+      renderDatesPanel();
+    });
+  });
+}
+
 function refreshCatTools(){
+  renderDatesPanel();
   var hal=document.getElementById('catHalAuto'); if(hal) hal.style.display=(catSource==='halacha')?'block':'none';
   var nf=document.getElementById('catNoteFix');
   if(nf){
@@ -1214,7 +1252,7 @@ function commitAllCats(){
         var p=item._p,target;
         if(p.si===-1) target=full[p.ci].items[p.ii];
         else target=full[p.ci].subcategories[p.si].items[p.ii];
-        if(target){target.category=item.category;if(item.categoryDetail)target.categoryDetail=item.categoryDetail;else delete target.categoryDetail;}
+        if(target){target.category=item.category;if(item.categoryDetail)target.categoryDetail=item.categoryDetail;else delete target.categoryDetail; if(dateEdits[item.url]) target.note=dateEdits[item.url];}
       });
     }
     var jsonStr=JSON.stringify(full,null,2)+'\n';
@@ -1227,7 +1265,7 @@ function commitAllCats(){
     });
   }).then(function(r){if(!r.ok)return r.text().then(function(t){throw new Error(t);});return r.json();})
   .then(function(){
-    catPending={}; try{localStorage.removeItem('tm_cat_draft_'+catSource);}catch(e){}
+    catPending={}; dateEdits={}; try{localStorage.removeItem('tm_cat_draft_'+catSource);}catch(e){}
     showCatStatus('Committed '+n+' change'+(n===1?'':'s')+' to GitHub!','#166534');
     updateCommitBtn();
     try{renderCatOverview();}catch(e){}

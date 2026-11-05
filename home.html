@@ -46,6 +46,10 @@ h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
 .it .tt{flex:1;min-width:0}.it .tt>div:first-child{font-weight:600;font-size:15px;line-height:1.3}.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:3px}.it .tt small{color:var(--muted);font-size:12.5px}
 .tag{font-size:11.5px;background:#f0fdfa;color:var(--ink);border-radius:999px;padding:3px 9px;font-weight:700;white-space:nowrap;cursor:pointer}
 .it audio{width:100%;margin-top:10px}
+.sh{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;display:grid;place-items:center;padding:0}
+.wk-side .sh{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);color:#fff}.sh:hover{border-color:var(--accent);color:var(--ink)}.sh svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.2s;z-index:50}
+#toast.on{opacity:1;transform:translateX(-50%)}
 .back{background:none;border:0;color:var(--ink);font-weight:700;font-size:14px;cursor:pointer;padding:0;margin:26px 0 8px}
 .vh{display:flex;align-items:center;gap:14px;margin-bottom:8px}.vh .ic{font-size:30px}.vh h2{margin:0;font-size:26px}.vh p{margin:2px 0 0;color:var(--muted);font-size:14px}
 .vh .btn{margin-left:auto;background:var(--accent);color:#fff;white-space:nowrap}
@@ -59,7 +63,9 @@ h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
 @media(max-width:720px){
  .in-view .hero h1,.in-view .hero p,.in-view .quick{display:none}.in-view .hero{padding:14px 0 0}
  .wrap{padding:0 14px 50px}.hero{padding:22px 0 4px}.hero p{font-size:14px;margin-bottom:14px}.sw input{font-size:16px;padding:13px 16px 13px 44px}
- .week{grid-template-columns:1fr;padding:18px;border-radius:18px}.week h3{font-size:24px}
+ .week{grid-template-columns:1fr;gap:12px;padding:16px;border-radius:18px;margin-top:18px}.week small{font-size:11px}.week h3{font-size:21px;margin:3px 0 10px}.week p{display:none}
+ .week .btns{flex-wrap:nowrap;gap:6px}.week .btn{font-size:13px;padding:9px 12px;white-space:nowrap}
+ .wk-side{padding:8px 12px;font-size:13px;border-radius:12px}.wk-side .row{padding:6px 0;gap:8px}.wk-side .row span{font-size:12px}.wk-side audio{height:32px;margin-top:4px}
  .grid{grid-template-columns:repeat(2,1fr);gap:10px}.tile{padding:13px}.tile .ic{width:40px;height:40px;font-size:22px}.tile b{font-size:15px}.tile span{font-size:12px}
  .vh{gap:10px;margin-bottom:6px}.vh .ic{font-size:24px}.vh h2{font-size:21px}.vh p{font-size:13px}
  .btn.go{display:block;text-align:center;font-size:13.5px;padding:10px 14px}
@@ -82,6 +88,7 @@ h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
  <div class="wa"><div class="ic">💬</div><div><b>Learn every day on WhatsApp</b><p>Daily Torah programs you can join.</p></div><a href="/torahprograms.html">See all WhatsApp programs</a></div>
  <div class="more"><a href="/halacha.html">Hilchos Shabbos</a><a href="/infographics.html">Visual Divrei Torah</a><a href="/one-minute-audio.html">All one-minute clips</a><a href="/published.html">Published</a><a href="/about.html">About</a></div>
 </div>
+<div id="toast" role="status" aria-live="polite"></div>
 <script>
 const SEFARIM={"Bereishis":["Bereishis","Noach","Lech Lecha","Vayeira","Chayei Sara","Toldos","Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi"],
 "Shemos":["Shemos","Vaeira","Bo","Beshalach","Yisro","Mishpatim","Terumah","Tetzaveh","Ki Sisa","Vayakhel","Pekudei"],
@@ -114,6 +121,13 @@ const bookOf=p=>Object.keys(SEFARIM).find(b=>SEFARIM[b].includes(p))||'';
 function pd(x){if(!x)return'';const t=String(x);let m=t.match(/^(\d{4})-(\d\d)-(\d\d)/);if(m)return m[1]+'-'+m[2]+'-'+m[3];m=t.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);if(m){const y=m[3].length==2?'20'+m[3]:m[3];return y+'-'+m[1].padStart(2,'0')+'-'+m[2].padStart(2,'0')}return''}
 const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const pretty=d=>d?MON[+d.slice(5,7)-1]+' '+(+d.slice(8,10))+', '+d.slice(0,4):'';
+// Share links: audio shiurim get the nice /player/<file>.html page (same as all-audio.html); videos share their YouTube link
+const AUDIO_TYPES=['audio','audio-extra','parsha-audio','parsha'];let PLAYER_OK=new Set();
+const fileBase=u=>{try{return decodeURIComponent(new URL(u,location.origin).pathname.split('/').pop()||'').replace(/\.[^.]+$/,'')}catch(e){return''}};
+function shareUrl(i){if(i.k==='v')return i.u;const fb=fileBase(i.u);return fb&&PLAYER_OK.has(fb.toLowerCase())?location.origin+'/player/'+encodeURIComponent(fb)+'.html':new URL(i.u,location.origin).href}
+let toastT;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),1600)}
+async function copyText(t){try{await navigator.clipboard.writeText(t);return true}catch(e){try{const a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();return ok}catch(e2){return false}}}
+const SHARE_IC='<svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>';
 const getJ=u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
 let ITEMS=[],COUNTS=null,cats={},wp='',wps=[],booted=false;
 const fixCat=c=>({chinuch:'Chinuch',Tefilah:'Tefila','Yomim Tovim':'Shabbos and Yom Tov','Shabbos':'Shabbos and Yom Tov'}[c]||c);
@@ -131,6 +145,7 @@ async function boot(){
  if(hal.value)hal.value.forEach(sec=>{const walk=(sub,its)=>(its||[]).forEach(it=>{if(it.type==='note'||!it.url)return;const c=it.category||sec.category;let s=it.categoryDetail||sub||'';if(c==='Parsha')s=bestParsha(s)||bestParsha(it.title)||s;add(it.type==='youtube'?'v':'a',it.title,it.url,pd(it.note||''),c,s)});walk('',sec.items);(sec.subcategories||[]).forEach(sb=>walk(sb.name||sb.title||'',sb.items))});
  if(si.value)si.value.forEach(x=>{if(x.program==='Parsha'&&x.type==='video')add('v',x.title,x.url,pd(x.date),'Parsha',x.parsha?bestParsha(x.parsha):'',{vid:1});else if(x.program==='Parsha Overview'){const ps=ovParshas(x.title);(ps.length?ps:['']).forEach(pp=>add('a',x.title,x.url,pd(x.date),'Parsha',pp,{ov:1}))}});
  if(tf.value)tf.value.forEach(x=>add('v',x.title,x.url,'','Tefila','Videos',{vid:1}));
+ if(si.value)si.value.forEach(x=>{if(AUDIO_TYPES.includes(x.type)&&x.url)PLAYER_OK.add(fileBase(x.url).toLowerCase())});
  COUNTS=sc.value||null;ITEMS.forEach(i=>(cats[i.c]=cats[i.c]||[]).push(i));
  const tot=COUNTS&&COUNTS.allShiurim&&COUNTS.allShiurim.total;$('tot').textContent=tot?' — '+tot+' and counting':'';
  tiles();newest();quick();booted=true;route();hebcal();
@@ -142,21 +157,22 @@ function tiles(){$('tiles').innerHTML=topicList().map(c=>{const m=META[c]||['�
 $('tiles').onclick=e=>{const t=e.target.closest('.tile');if(!t)return;t.dataset.c==='Mishna'?location.href='/mishna.html':go(t.dataset.c)};
 function quick(){$('quick').innerHTML=['Parsha','Shabbos and Yom Tov','Tefila','Hashkafa/Middos','Mishna'].filter(c=>cnt(c)).map(c=>`<button class="chip" data-c="${c}">${META[c][0]} ${c}</button>`).join('')}
 $('quick').onclick=e=>{const c=e.target.closest('.chip');if(!c)return;c.dataset.c==='Mishna'?location.href='/mishna.html':go(c.dataset.c)};
-function row(i,showCat){const v=i.k==='v';return`<div class="it"><div class="h"><button class="pl ${v?'v':''}" data-u="${esc(i.u)}" data-v="${v?1:0}" aria-label="${v?'Watch video':'Play audio'}">${v?IC_V:IC_A}</button><div class="tt"><div>${esc(i.t)}</div><div class="meta"><small>${pretty(i.d)}</small>${i.s&&i.s!=='Videos'&&showCat!==0?`<span class="tag" data-go="${esc(i.c)}|${esc(i.s)}">${esc(i.s)}</span>`:''}${showCat?`<span class="tag" data-go="${esc(i.c)}|">${esc(i.c)}</span>`:''}</div></div></div></div>`}
+function row(i,showCat){const v=i.k==='v';return`<div class="it"><div class="h"><button class="pl ${v?'v':''}" data-u="${esc(i.u)}" data-v="${v?1:0}" aria-label="${v?'Watch video':'Play audio'}">${v?IC_V:IC_A}</button><div class="tt"><div>${esc(i.t)}</div><div class="meta"><small>${pretty(i.d)}</small>${i.s&&i.s!=='Videos'&&showCat!==0?`<span class="tag" data-go="${esc(i.c)}|${esc(i.s)}">${esc(i.s)}</span>`:''}${showCat?`<span class="tag" data-go="${esc(i.c)}|">${esc(i.c)}</span>`:''}</div></div><button class="sh" data-share="${esc(shareUrl(i))}" title="Copy share link" aria-label="Copy share link">${SHARE_IC}</button></div></div>`}
 function wire(root){root.querySelectorAll('.pl').forEach(b=>b.onclick=()=>{const it=b.closest('.it'),a=it.querySelector('audio');
  if(b.dataset.v==='1'){window.open(b.dataset.u,'_blank','noopener');return}
  if(a){a.pause();a.remove();b.innerHTML=IC_A;return}
  document.querySelectorAll('.it audio').forEach(x=>{x.pause();x.closest('.it').querySelector('.pl').innerHTML=IC_A;x.remove()});
  const au=document.createElement('audio');au.controls=true;au.autoplay=true;au.src=b.dataset.u;it.appendChild(au);b.innerHTML=IC_P});
+ root.querySelectorAll('.sh').forEach(b=>b.onclick=async()=>{const u=b.dataset.share;if(await copyText(u))toast('Link copied');else prompt('Copy this link:',u)});
  root.querySelectorAll('[data-go]').forEach(t=>t.onclick=()=>{const[c,s]=t.dataset.go.split('|');go(c,s)})}
 function newest(){const nw=ITEMS.filter(i=>i.d&&!i.ov).sort((a,b)=>b.d<a.d?-1:b.d>a.d?1:0).slice(0,6);$('newest').innerHTML=nw.map(i=>row(i,1)).join('')||'<div class="empty">Nothing yet.</div>';wire($('newest'))}
 // this week
 function weekCard(){if(!wp||!booted)return;const its=ITEMS.filter(i=>i.c==='Parsha'&&wps.includes(i.s)),ov=its.find(i=>i.ov),vids=its.filter(i=>i.vid).sort((a,b)=>b.d<a.d?-1:1),om=its.filter(i=>i.om);
  const url='/parsha.html?parsha='+encodeURIComponent(wp);const w=$('week');w.hidden=false;
  w.innerHTML=`<div><small>This week's parsha</small><h3>Parshas ${wps.map(esc).join(' &amp; ')}</h3><p>Videos, audio shiurim, an overview and visual Divrei Torah — all in one place.</p><div class="btns"><a class="btn" href="${url}">Open the parsha →</a><a class="btn ghost" href="#Parsha/${encodeURIComponent(bookOf(wp))}/${encodeURIComponent(wp)}">Browse everything on it</a></div></div>
- <div class="wk-side">${ov?`<div class="row">🎧<div style="flex:1"><b>Parsha overview</b><audio controls preload="none" src="${esc(ov.u)}"></audio></div></div>`:''}
+ <div class="wk-side">${ov?`<div class="row">🎧<div style="flex:1"><b>Parsha overview</b><audio controls preload="none" src="${esc(ov.u)}"></audio></div><button class="sh" data-share="${esc(shareUrl(ov))}" title="Copy share link" aria-label="Share the overview">${SHARE_IC}</button></div>`:''}
  ${vids[0]?`<div class="row">▶️<div><b>${vids.length} video${vids.length>1?'s':''}</b><br><span>latest: ${esc(vids[0].t)}</span></div></div>`:''}
- ${om.length?`<div class="row">⏱️<div><b>${om.length} one-minute clip${om.length>1?'s':''}</b><br><span>on this parsha</span></div></div>`:''}</div>`}
+ ${om.length?`<div class="row">⏱️<div><b>${om.length} one-minute clip${om.length>1?'s':''}</b><br><span>on this parsha</span></div></div>`:''}</div>`;wire(w)}
 function hebcal(){
  const t=new Date(),td=t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');
  const names=title=>{const t=String(title).replace(/^Parashat\s+/i,'');const w=bestParsha(t);if(w&&(PAL[nk(t)]||lev(nk(t),nk(w))<=1))return[w];const parts=t.split(/\s*[-–\/]\s*/).map(x=>bestParsha(x)).filter(Boolean);return parts.length>1?[...new Set(parts)]:(w?[w]:[])};

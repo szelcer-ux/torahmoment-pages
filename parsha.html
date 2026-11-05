@@ -665,6 +665,11 @@ button{
   flex-shrink:0;
 }
 .audioSpeedBtn:hover{background:var(--bg);}
+.audioShareBtn{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;display:grid;place-items:center;padding:0;flex-shrink:0}
+.audioShareBtn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.audioShareBtn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#tmToast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.2s;z-index:9999}
+#tmToast.on{opacity:1;transform:translateX(-50%)}
 
 .audioLink + .audioLink{
   border-top:1px solid rgba(17,24,39,.08);
@@ -1787,6 +1792,7 @@ function renderAudioList(containerId, items){
       </span>
 
       <span class="audioMeta">
+        <button class="audioShareBtn" type="button" data-share-btn data-url="${escapeAttr(it.url)}" title="Copy share link" aria-label="Copy share link"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
         <button class="audioSpeedBtn" type="button" data-speed-btn>1×</button>
         ${it.duration ? `<span class="audioDuration">${escapeHtml(it.duration)}</span>` : ``}
         <span class="audioBadge">Audio</span>
@@ -3128,6 +3134,36 @@ document.addEventListener("input", (e) => {
   audioEl.currentTime = pct * d;
 });
 
+// Share button — copies the /player/<file>.html link (same style as all-audio.html), or the direct file if no player page exists yet
+let _playerOK = null;
+async function playerPages(){
+  if (_playerOK) return _playerOK;
+  _playerOK = new Set();
+  try {
+    const r = await fetch("/data/search-index.json", { cache: "no-store" });
+    (await r.json()).forEach(x => { if (["audio","audio-extra","parsha-audio","parsha"].includes(x.type) && x.url) _playerOK.add(fileBaseOf(x.url).toLowerCase()); });
+  } catch (e) { console.warn("share: could not load search index", e); }
+  return _playerOK;
+}
+function fileBaseOf(u){ try { return decodeURIComponent(new URL(u, location.origin).pathname.split("/").pop() || "").replace(/\.[^.]+$/, ""); } catch (e) { return ""; } }
+let _toastT;
+function tmToast(msg){
+  let t = document.getElementById("tmToast");
+  if (!t) { t = document.createElement("div"); t.id = "tmToast"; t.setAttribute("role","status"); document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add("on"); clearTimeout(_toastT); _toastT = setTimeout(() => t.classList.remove("on"), 1600);
+}
+document.addEventListener("click", async (e) => {
+  const btn = e.target.closest("[data-share-btn]");
+  if (!btn) return;
+  e.preventDefault(); e.stopPropagation();
+  const url = btn.dataset.url || "";
+  const ok = await playerPages();
+  const fb = fileBaseOf(url);
+  const link = (fb && ok.has(fb.toLowerCase())) ? location.origin + "/player/" + encodeURIComponent(fb) + ".html" : new URL(url, location.origin).href;
+  try { await navigator.clipboard.writeText(link); tmToast("Link copied"); }
+  catch (err) { window.prompt("Copy this link:", link); }
+});
+
 // Speed button — delegate clicks on all audioSpeedBtn buttons
 const AUDIO_SPEEDS = [1, 1.25, 1.5, 1.75, 2];
 document.addEventListener("click", (e) => {
@@ -3172,7 +3208,7 @@ document.addEventListener("mousedown", (e) => {
 
 	
 document.addEventListener("click", (e) => {
-	if (e.target.closest(".audioProgress")) return; // don't treat slider drag like a play click
+	if (e.target.closest(".audioProgress, [data-share-btn]")) return; // slider drags and the share button are not play clicks
  const a = e.target.closest(".audioLink");
 if (!a) return;
 
