@@ -147,3 +147,4 @@ div.bt-pdf.bt-pending{color:var(--bt-muted);height:220px}
 .bt-yt-link{margin:-8px 0 0;font-size:13px;text-align:end}
 .bt-yt-link a{color:var(--bt-muted)}
 .bt-note{margin:0;padding:14px 16px;border-radius:10px;background:var(--bt-amber-bg);color:#5c3a05;font-size:15px}
+.bt-soon{padding:2px 8px;border-radius:999px;background:var(--bt-amber-bg);color:#7a4b05;font-weight:600;font-size:12px}
