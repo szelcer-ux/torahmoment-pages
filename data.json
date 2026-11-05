@@ -1443,28 +1443,35 @@
     "date": "9/11/2025",
     "description": "Break through the mountain",
     "filename": "PTT-20250907-WA0050.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250907-WA0050.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250907-WA0050.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 142,
     "date": "9/15/2025",
     "description": "Between you and Hashem",
     "filename": "PTT-20250915-WA0022.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250915-WA0022.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250915-WA0022.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Nitzavim"
   },
   {
     "id": 143,
     "date": "9/16/2025",
     "description": "Be תמים",
     "filename": "PTT-20250907-WA0051.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250907-WA0051.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250907-WA0051.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Nitzavim"
   },
   {
     "id": 144,
     "date": "9/18/2025",
     "description": "Its not far..if you want it",
     "filename": "PTT-20250917-WA0082.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250917-WA0082.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20250917-WA0082.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Nitzavim"
   },
   {
     "id": 145,
@@ -1479,35 +1486,41 @@
     "date": "10/21/2025",
     "description": "Be a בן אברהם not a בן נח",
     "filename": "PTT-20251019-WA0037.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251019-WA0037.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251019-WA0037.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 147,
     "date": "10/22/2025",
     "description": "Bricks not stones",
     "filename": "PTT-20251022-WA0026.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251022-WA0026.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251022-WA0026.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Noach"
   },
   {
     "id": 148,
     "date": "10/23/2025",
     "description": "Four stages of responsibility",
     "filename": "PTT-20251019-WA0034.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251019-WA0034.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251019-WA0034.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 149,
     "date": "10/27/2025",
     "description": "Ups and downs",
     "filename": "PTT-20251026-WA0061.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251026-WA0061.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251026-WA0061.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 150,
     "date": "10/28/2025",
     "description": "Whos boring?",
     "filename": "PTT-20251026-WA0060.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251026-WA0060.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251026-WA0060.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 151,
