@@ -3,6 +3,17 @@
     "id": "one-0",
     "program": "One-Minute",
     "type": "audio",
+    "title": "Sara's lasting legacy",
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261104-WA0014.mp3",
+    "date": "2026-11-05T00:00:00.000Z",
+    "page": "/one-minute-audio.html",
+    "title_lc": "sara's lasting legacy",
+    "cat_lc": "parsha chayei sara"
+  },
+  {
+    "id": "one-1",
+    "program": "One-Minute",
+    "type": "audio",
     "title": "The essence of marriage",
     "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261104-WA0016.mp3",
     "date": "2026-11-04T00:00:00.000Z",
@@ -11,7 +22,7 @@
     "cat_lc": "parsha chayei sara"
   },
   {
-    "id": "one-1",
+    "id": "one-2",
     "program": "One-Minute",
     "type": "audio",
     "title": "The first question",
@@ -22,7 +33,7 @@
     "cat_lc": "hashkafa"
   },
   {
-    "id": "one-2",
+    "id": "one-3",
     "program": "One-Minute",
     "type": "audio",
     "title": "The quiet mitzvah",
@@ -33,7 +44,7 @@
     "cat_lc": "middos"
   },
   {
-    "id": "one-3",
+    "id": "one-4",
     "program": "One-Minute",
     "type": "audio",
     "title": "Just 5 minutes",
@@ -44,7 +55,7 @@
     "cat_lc": "hashkafa"
   },
   {
-    "id": "one-4",
+    "id": "one-5",
     "program": "One-Minute",
     "type": "audio",
     "title": "Afraid of the wrong one",
@@ -55,7 +66,7 @@
     "cat_lc": "hashkafa"
   },
   {
-    "id": "one-5",
+    "id": "one-6",
     "program": "One-Minute",
     "type": "audio",
     "title": "Time's up?",
@@ -66,7 +77,7 @@
     "cat_lc": "parsha lech lecha"
   },
   {
-    "id": "one-6",
+    "id": "one-7",
     "program": "One-Minute",
     "type": "audio",
     "title": "Be like Avrohom - just do it!",
@@ -77,7 +88,7 @@
     "cat_lc": "parsha lech lecha"
   },
   {
-    "id": "one-7",
+    "id": "one-8",
     "program": "One-Minute",
     "type": "audio",
     "title": "Say hello!",
@@ -88,7 +99,7 @@
     "cat_lc": "middos"
   },
   {
-    "id": "one-8",
+    "id": "one-9",
     "program": "One-Minute",
     "type": "audio",
     "title": "The company we keep",
@@ -99,7 +110,7 @@
     "cat_lc": "parsha lech lecha"
   },
   {
-    "id": "one-9",
+    "id": "one-10",
     "program": "One-Minute",
     "type": "audio",
     "title": "The last guy",
@@ -110,7 +121,7 @@
     "cat_lc": "middos"
   },
   {
-    "id": "one-10",
+    "id": "one-11",
     "program": "One-Minute",
     "type": "audio",
     "title": "Doing right because it's right",
@@ -121,7 +132,7 @@
     "cat_lc": "parsha noach"
   },
   {
-    "id": "one-11",
+    "id": "one-12",
     "program": "One-Minute",
     "type": "audio",
     "title": "Believing - but not quite",
@@ -132,7 +143,7 @@
     "cat_lc": "parsha noach"
   },
   {
-    "id": "one-12",
+    "id": "one-13",
     "program": "One-Minute",
     "type": "audio",
     "title": "Do your best",
@@ -143,7 +154,7 @@
     "cat_lc": "parsha bereishis"
   },
   {
-    "id": "one-13",
+    "id": "one-14",
     "program": "One-Minute",
     "type": "audio",
     "title": "Form good habits",
@@ -154,7 +165,7 @@
     "cat_lc": "hashkafa"
   },
   {
-    "id": "one-14",
+    "id": "one-15",
     "program": "One-Minute",
     "type": "audio",
     "title": "We need protecting",
@@ -165,7 +176,7 @@
     "cat_lc": "parsha bereishis"
   },
   {
-    "id": "one-15",
+    "id": "one-16",
     "program": "One-Minute",
     "type": "audio",
     "title": "Step out",
@@ -176,7 +187,7 @@
     "cat_lc": "yomim tovim sukkos"
   },
   {
-    "id": "one-16",
+    "id": "one-17",
     "program": "One-Minute",
     "type": "audio",
     "title": "Gott's Nomen",
@@ -187,7 +198,7 @@
     "cat_lc": "yomim tovim yom kippur"
   },
   {
-    "id": "one-17",
+    "id": "one-18",
     "program": "One-Minute",
     "type": "audio",
     "title": "An honest heart",
@@ -198,7 +209,7 @@
     "cat_lc": "yomim tovim elul/tishrei"
   },
   {
-    "id": "one-18",
+    "id": "one-19",
     "program": "One-Minute",
     "type": "audio",
     "title": "Where are you?",
@@ -209,7 +220,7 @@
     "cat_lc": "yomim tovim elul/tishrei"
   },
   {
-    "id": "one-19",
+    "id": "one-20",
     "program": "One-Minute",
     "type": "audio",
     "title": "The right Ana Hashem",
@@ -220,7 +231,7 @@
     "cat_lc": "tefila"
   },
   {
-    "id": "one-20",
+    "id": "one-21",
     "program": "One-Minute",
     "type": "audio",
     "title": "Wake up",
@@ -231,7 +242,7 @@
     "cat_lc": "yomim tovim elul/tishrei"
   },
   {
-    "id": "one-21",
+    "id": "one-22",
     "program": "One-Minute",
     "type": "audio",
     "title": "Mitzvah momentum",
@@ -242,7 +253,7 @@
     "cat_lc": "hashkafa"
   },
   {
-    "id": "one-22",
+    "id": "one-23",
     "program": "One-Minute",
     "type": "audio",
     "title": "In memory of my rebbi on his 2nd yahrtzeit",
@@ -253,7 +264,7 @@
     "cat_lc": "hashkafa"
   },
   {
-    "id": "one-23",
+    "id": "one-24",
     "program": "One-Minute",
     "type": "audio",
     "title": "Clean slate",
@@ -264,7 +275,7 @@
     "cat_lc": "yomim tovim elul/tishrei"
   },
   {
-    "id": "one-24",
+    "id": "one-25",
     "program": "One-Minute",
     "type": "audio",
     "title": "The small things add up",
@@ -275,7 +286,7 @@
     "cat_lc": "hashkafa"
   },
   {
-    "id": "one-25",
+    "id": "one-26",
     "program": "One-Minute",
     "type": "audio",
     "title": "The shofar is not magic",
@@ -286,7 +297,7 @@
     "cat_lc": "yomim tovim elul/tishrei"
   },
   {
-    "id": "one-26",
+    "id": "one-27",
     "program": "One-Minute",
     "type": "audio",
     "title": "Acknowledge the good people",
@@ -297,7 +308,7 @@
     "cat_lc": "middos"
   },
   {
-    "id": "one-27",
+    "id": "one-28",
     "program": "One-Minute",
     "type": "audio",
     "title": "Secret curses",
@@ -308,7 +319,7 @@
     "cat_lc": "parsha ki savo"
   },
   {
-    "id": "one-28",
+    "id": "one-29",
     "program": "One-Minute",
     "type": "audio",
     "title": "Helping is good for everyone",
