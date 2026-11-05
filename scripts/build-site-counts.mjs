@@ -55,19 +55,20 @@ function sortByDateDesc(arr) {
 function safeNum(x) { return typeof x==="number"&&Number.isFinite(x)?x:0; }
 function norm(s) { return String(s||"").toLowerCase().trim(); }
 
-function flattenHalacha(data) {
+// keepUndated: the search index / player pages need EVERY item; the "recent" lists still need dates
+function flattenHalacha(data, keepUndated=false) {
   const out = [];
   const pushItem = (it) => {
     if (!it||!it.url) return;
     const date = parseMmDdYyyy(it.note);
-    if (!date) return;
+    if (!date && !keepUndated) return;
     out.push({ type:(it.type||"audio"), program:"Halacha", title:it.title||"Halacha", url:it.url, date, category:it.category||null, categoryDetail:it.categoryDetail||null });
   };
   for (const cat of data||[]) {
     for (const it of cat.items||[]) pushItem(it);
     for (const sub of cat.subcategories||[]) for (const it of sub.items||[]) pushItem(it);
   }
-  return out.filter(x=>x.url&&x.date);
+  return out.filter(x=>x.url&&(keepUndated||x.date));
 }
 
 function startServer() {
@@ -242,7 +243,7 @@ async function readHalachaTotalAllFromDom(page) {
   try {
     const { readFileSync } = await import("node:fs");
     const halachaData = JSON.parse(readFileSync("./data/halacha.json","utf8"));
-    allHalacha=flattenHalacha(halachaData);
+    allHalacha=flattenHalacha(halachaData, true);
     console.log("Halacha items loaded from file:", allHalacha.length);
   } catch(e) { console.warn("Halacha index build failed:", String(e)); }
 
