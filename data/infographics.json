@@ -298,7 +298,14 @@
     "parsha": "Vayeira",
     "image": "/images/infographics/parsha/Vayeira_The_True_Beginning_of_Kindness.png",
     "youtube": "https://www.youtube.com/watch?v=N56WTJKBG9c",
-    "description": "The True Beginning of Kindness",
+    "description": "The True Beginning of Kindness"
+  },
+  "64ALLJQknbQ": {
+    "title": "When the miracles end",
+    "parsha": "Chayei Sarah",
+    "image": "/images/infographics/parsha/Chayei_Sarah_Effort_Over_Miracles.png",
+    "youtube": "https://www.youtube.com/watch?v=64ALLJQknbQ",
+    "description": "Effort Over Miracles",
     "featured": true
   }
 }
