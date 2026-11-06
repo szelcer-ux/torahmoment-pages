@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 837,
+    "total": 838,
     "breakdown": {
       "parsha": {
         "audio": 39,
-        "video": 248
+        "video": 249
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,17 @@
         "audio": 137
       }
     },
-    "updated": "2026-11-05"
+    "updated": "2026-11-06"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "When the miracles end",
+      "url": "https://www.youtube.com/watch?v=64ALLJQknbQ",
+      "date": "2026-11-06T02:57:19Z",
+      "parsha": "Chayei Sarah"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -50,13 +58,6 @@
       "url": "https://www.youtube.com/watch?v=N56WTJKBG9c",
       "date": "2026-10-30T01:35:00Z",
       "parsha": "Vayeira"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "The quiet mitzvah",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261029-WA0020.mp3",
-      "date": "2026-10-29T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -228,6 +229,14 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "When the miracles end",
+        "url": "https://www.youtube.com/watch?v=64ALLJQknbQ",
+        "date": "2026-11-06T02:57:19Z",
+        "parsha": "Chayei Sarah"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Before the chesed",
         "url": "https://www.youtube.com/watch?v=N56WTJKBG9c",
         "date": "2026-10-30T01:35:00Z",
@@ -296,14 +305,6 @@
         "url": "https://www.youtube.com/watch?v=9T-OCgnuGlM",
         "date": "2026-08-21T02:30:11Z",
         "parsha": "Ki Seitzei"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "What's going to be?",
-        "url": "https://www.youtube.com/watch?v=fr-25KmZbws",
-        "date": "2026-08-14T03:41:40Z",
-        "parsha": "Shoftim"
       }
     ]
   }
