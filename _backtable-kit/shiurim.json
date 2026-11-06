@@ -4313,10 +4313,14 @@
    "History",
    "הלכה"
   ],
-  "runtime": "",
-  "youtube": [],
-  "video_parts": 0,
-  "audio": [],
+  "runtime": "54 min",
+  "youtube": [
+   "https://youtu.be/UUXasAps--A"
+  ],
+  "video_parts": 1,
+  "audio": [
+   "shiur-123.mp3"
+  ],
   "pdf": [
    "shiur-123.pdf"
   ],
@@ -4324,8 +4328,9 @@
    "shiur-123.jpg"
   ],
   "ext_links": [],
-  "zoom_chat": [],
-  "old_url": "",
-  "pending": true
+  "zoom_chat": [
+   "20:42:22\t From 5 Minutes of Torah : Maharam Schick (1 March 1807 – 25 January 1879"
+  ],
+  "old_url": ""
  }
 ]
