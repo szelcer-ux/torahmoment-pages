@@ -1789,28 +1789,35 @@
     "date": "1/26/2026",
     "description": "In Hashem we trust",
     "filename": "PTT-20260126-WA0028.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260126-WA0028.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260126-WA0028.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Beshalach"
   },
   {
     "id": 182,
     "date": "1/28/2026",
     "description": "True emunah",
     "filename": "PTT-20260128-WA0014.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260128-WA0014.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260128-WA0014.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 183,
     "date": "1/29/2026",
     "description": "Appreciation through struggle",
     "filename": "PTT-20260129-WA0017.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260129-WA0017.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260129-WA0017.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Beshalach"
   },
   {
     "id": 184,
     "date": "2/2/2026",
     "description": "No Torah without achdus",
     "filename": "PTT-20260202-WA0030.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0030.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0030.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Yisro"
   },
   {
     "id": 185,
