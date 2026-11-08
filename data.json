@@ -1696,7 +1696,8 @@
     "date": "12/29/2025",
     "description": "Walk bravely",
     "filename": "PTT-20251214-WA0106.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251214-WA0106.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20251214-WA0106.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 171,
@@ -1824,182 +1825,227 @@
     "date": "2/3/2026",
     "description": "Always think about others",
     "filename": "PTT-20260202-WA0029.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0029.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260202-WA0029.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Yisro"
   },
   {
     "id": 186,
     "date": "2/5/2026",
     "description": "Who runs the world",
     "filename": "PTT-20260205-WA0029.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260205-WA0029.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260205-WA0029.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Yisro"
   },
   {
     "id": 187,
     "date": "2/9/2026",
     "description": "Beis Yaakov first",
     "filename": "PTT-20260209-WA0012.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260209-WA0012.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260209-WA0012.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Yisro"
   },
   {
     "id": 188,
     "date": "2/10/2026",
     "description": "Dont wait to start your life",
     "filename": "PTT-20260210-WA0040.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260210-WA0040.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260210-WA0040.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 189,
     "date": "2/13/2026",
     "description": "The purpose of mitzvos",
     "filename": "PTT-20260213-WA0048.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260213-WA0048.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260213-WA0048.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 190,
     "date": "2/16/2026",
     "description": "True love?",
     "filename": "PTT-20260215-WA0079.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0079.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0079.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 191,
     "date": "2/17/2026",
     "description": "Inside and out",
     "filename": "PTT-20260217-WA0015.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260217-WA0015.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260217-WA0015.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Purim"
   },
   {
     "id": 192,
     "date": "2/18/2026",
     "description": "Burning desire",
     "filename": "PTT-20260215-WA0077.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0077.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260215-WA0077.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Terumah"
   },
   {
     "id": 193,
     "date": "2/23/2026",
     "description": "Snow day lesson",
     "filename": "PTT-20260223-WA0079.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260223-WA0079.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260223-WA0079.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 194,
     "date": "2/25/2026",
     "description": "Real chinuch",
     "filename": "PTT-20260225-WA0033.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260225-WA0033.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260225-WA0033.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Tetzaveh"
   },
   {
     "id": 195,
     "date": "2/26/2026",
     "description": "Be happy for others",
     "filename": "PTT-20260226-WA0033.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260226-WA0033.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260226-WA0033.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Tetzaveh"
   },
   {
     "id": 196,
     "date": "3/2/2026",
     "description": "Lessons from the half shekel",
     "filename": "PTT-20260301-WA0145.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0145.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0145.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Ki Sisa"
   },
   {
     "id": 197,
     "date": "3/4/2026",
     "description": "Do your part",
     "filename": "PTT-20260301-WA0173.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0173.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260301-WA0173.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Ki Sisa"
   },
   {
     "id": 198,
     "date": "3/6/2026",
     "description": "Remember the fix",
     "filename": "PTT-20260306-WA0036.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260306-WA0036.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260306-WA0036.mp3",
+    "category": "Yomim Tovim"
   },
   {
     "id": 199,
     "date": "3/9/2026",
     "description": "True freedom",
     "filename": "PTT-20260308-WA0053.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260308-WA0053.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260308-WA0053.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 200,
     "date": "3/10/2026",
     "description": "Only Hashem",
     "filename": "PTT-20260308-WA0054.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260308-WA0054.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260308-WA0054.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 201,
     "date": "3/12/2026",
     "description": "Let it go",
     "filename": "PTT-20260312-WA0015.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260312-WA0015.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260312-WA0015.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 202,
     "date": "3/16/2026",
     "description": "Self sacrifice",
     "filename": "PTT-20260315-WA0104.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0104.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0104.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vayikra"
   },
   {
     "id": 203,
     "date": "3/17/2026",
     "description": "Stay humble",
     "filename": "PTT-20260315-WA0114.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0114.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260315-WA0114.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vayikra"
   },
   {
     "id": 204,
     "date": "3/19/2026",
     "description": "Keep it simple",
     "filename": "PTT-20260319-WA0022.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260319-WA0022.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260319-WA0022.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vayikra"
   },
   {
     "id": 205,
     "date": "3/23/2026",
     "description": "Davening distraction free",
     "filename": "PTT-20260322-WA0108.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0108.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0108.mp3",
+    "category": "Tefila"
   },
   {
     "id": 206,
     "date": "3/24/2026",
     "description": "Keep the pesach inspiration",
     "filename": "PTT-20260322-WA0115.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0115.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260322-WA0115.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 207,
     "date": "3/26/2026",
     "description": "Unexciting Mitzvos",
     "filename": "PTT-20260325-WA0147.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260325-WA0147.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260325-WA0147.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Tzav"
   },
   {
     "id": 208,
     "date": "3/30/2026",
     "description": "Why burn the candle?",
     "filename": "PTT-20260329-WA0028.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0028.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0028.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 209,
     "date": "3/31/2026",
     "description": "Erev Yom Tov thought",
     "filename": "PTT-20260329-WA0030.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0030.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260329-WA0030.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Pesach"
   },
   {
     "id": 210,
     "date": "4/13/2026",
     "description": "Use your words wisely",
     "filename": "PTT-20260413-WA0012.mp3",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260413-WA0012.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260413-WA0012.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Tazria"
   },
   {
     "id": 211,
