@@ -2267,132 +2267,167 @@
     "date": "6/24/2026",
     "description": "Never too late",
     "filename": "PTT-20260624-WA0011",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260624-WA0011.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260624-WA0011.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 237,
     "date": "6/30/2026",
     "description": "Seeing only part of the story",
     "filename": "PTT-20260629-WA0099",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260629-WA0099.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260629-WA0099.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 238,
     "date": "7/1/2026",
     "description": "The leader Moshe asked for",
     "filename": "PTT-20260630-WA0001",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260630-WA0001.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260630-WA0001.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Pinchas"
   },
   {
     "id": 239,
     "date": "7/7/2026",
     "description": "Breaking generational trauma",
     "filename": "PTT-20260706-WA0071",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0071.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0071.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Shelach"
   },
   {
     "id": 240,
     "date": "7/8/2026",
     "description": "Hashem is keeping track",
     "filename": "PTT-20260706-WA0072",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0072.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260706-WA0072.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Massei"
   },
   {
     "id": 241,
     "date": "7/14/2026",
     "description": "Where life and growth begin",
     "filename": "PTT-20260713-WA0116",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260713-WA0116.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260713-WA0116.mp3",
+    "category": "Hashkafa"
   },
   {
     "id": 242,
     "date": "7/15/2026",
     "description": "Trust in your Father",
     "filename": "PTT-20260715-WA0034",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260715-WA0034.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260715-WA0034.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Tisha B'Av"
   },
   {
     "id": 243,
     "date": "7/16/2026",
     "description": "Holding two things at once",
     "filename": "PTT-20260716-WA0014",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260716-WA0014.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260716-WA0014.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Devarim"
   },
   {
     "id": 244,
     "date": "7/21/2026",
     "description": "Move on",
     "filename": "PTT-20260721-WA0017",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260721-WA0017.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260721-WA0017.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vaeschanan"
   },
   {
     "id": 245,
     "date": "7/22/2026",
     "description": "2 journeys 1 road",
     "filename": "PTT-20260722-WA0016",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0016.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0016.mp3",
+    "category": "Yomim Tovim",
+    "categoryDetail": "Tisha B'Av"
   },
   {
     "id": 246,
     "date": "7/27/2026",
     "description": "The closest nation",
     "filename": "PTT-20260722-WA0017",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0017.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260722-WA0017.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Vaeschanan"
   },
   {
     "id": 247,
     "date": "7/29/2026",
     "description": "The real test of the maan",
     "filename": "PTT-20260727-WA0008",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260727-WA0008.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260727-WA0008.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Eikev"
   },
   {
     "id": 248,
     "date": "8/4/2026",
     "description": "Today is a new day",
     "filename": "PTT-20260804-WA0017",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0017.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0017.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Reeh"
   },
   {
     "id": 249,
     "date": "8/5/2026",
     "description": "A little light",
     "filename": "PTT-20260804-WA0019",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0019.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260804-WA0019.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Reeh"
   },
   {
     "id": 250,
     "date": "8/10/2026",
     "description": "Communal responsibility",
     "filename": "PTT-20260809-WA0024",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260809-WA0024.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260809-WA0024.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Shoftim"
   },
   {
     "id": 251,
     "date": "8/11/2026",
     "description": "Dont be so stubborn",
     "filename": "PTT-20260811-WA0010",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0010.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0010.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Shoftim"
   },
   {
     "id": 252,
     "date": "8/12/2026",
     "description": "You're not the exception",
     "filename": "PTT-20260811-WA0009",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0009.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260811-WA0009.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Shoftim"
   },
   {
     "id": 253,
     "date": "8/17/2026",
     "description": "Pay on time",
     "filename": "PTT-20260817-WA0037",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260817-WA0037.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260817-WA0037.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Ki Seitzei"
   },
   {
     "id": 254,
     "date": "8/18/2026",
     "description": "Individual accountability",
     "filename": "PTT-20260818-WA0017",
-    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260818-WA0017.mp3"
+    "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20260818-WA0017.mp3",
+    "category": "Parsha",
+    "categoryDetail": "Ki Seitzei"
   }
 ]
