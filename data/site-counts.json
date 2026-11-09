@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 838,
+    "total": 839,
     "breakdown": {
       "parsha": {
         "audio": 39,
@@ -13,7 +13,7 @@
         "totalAll": 108
       },
       "oneMinute": {
-        "audio": 285
+        "audio": 286
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-11-09"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Counted for Maaser",
+      "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261109-WA0028.mp3",
+      "date": "2026-11-09T00:00:00.000Z"
+    },
     {
       "type": "video",
       "program": "Parsha",
@@ -50,18 +57,17 @@
       "title": "The first question",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261102-WA0015.mp3",
       "date": "2026-11-02T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Before the chesed",
-      "url": "https://www.youtube.com/watch?v=N56WTJKBG9c",
-      "date": "2026-10-30T01:35:00Z",
-      "parsha": "Vayeira"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Counted for Maaser",
+        "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261109-WA0028.mp3",
+        "date": "2026-11-09T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -124,13 +130,6 @@
         "title": "Say hello!",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0049.mp3",
         "date": "2026-10-20T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "The company we keep",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0047.mp3",
-        "date": "2026-10-19T00:00:00.000Z"
       }
     ],
     "halacha": [
