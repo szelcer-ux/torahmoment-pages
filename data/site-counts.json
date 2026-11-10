@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 839,
+    "total": 840,
     "breakdown": {
       "parsha": {
         "audio": 39,
@@ -13,7 +13,7 @@
         "totalAll": 108
       },
       "oneMinute": {
-        "audio": 286
+        "audio": 287
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-11-10"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Long enough",
+      "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261110-WA0071.mp3",
+      "date": "2026-11-10T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -50,17 +57,17 @@
       "title": "The essence of marriage",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261104-WA0016.mp3",
       "date": "2026-11-04T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "The first question",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261102-WA0015.mp3",
-      "date": "2026-11-02T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Long enough",
+        "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261110-WA0071.mp3",
+        "date": "2026-11-10T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -123,13 +130,6 @@
         "title": "Be like Avrohom - just do it!",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261021-WA0028.mp3",
         "date": "2026-10-21T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Say hello!",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0049.mp3",
-        "date": "2026-10-20T00:00:00.000Z"
       }
     ],
     "halacha": [
