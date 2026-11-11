@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 842,
+    "total": 843,
     "breakdown": {
       "parsha": {
         "audio": 40,
@@ -13,7 +13,7 @@
         "totalAll": 109
       },
       "oneMinute": {
-        "audio": 287
+        "audio": 288
       },
       "mishna": {
         "audio": 137
@@ -30,6 +30,13 @@
       "date": "2026-11-11T00:00:00.000Z",
       "category": "Israel",
       "categoryDetail": null
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Words can give you away",
+      "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261111-WA0140.mp3",
+      "date": "2026-11-11T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -52,17 +59,17 @@
       "url": "https://www.youtube.com/watch?v=64ALLJQknbQ",
       "date": "2026-11-06T02:57:19Z",
       "parsha": "Chayei Sarah"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Sara's lasting legacy",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261104-WA0014.mp3",
-      "date": "2026-11-05T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Words can give you away",
+        "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261111-WA0140.mp3",
+        "date": "2026-11-11T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -125,13 +132,6 @@
         "title": "Time's up?",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0048.mp3",
         "date": "2026-10-22T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Be like Avrohom - just do it!",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261021-WA0028.mp3",
-        "date": "2026-10-21T00:00:00.000Z"
       }
     ],
     "halacha": [
