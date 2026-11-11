@@ -431,13 +431,19 @@ function toSlashDate(iso) {
   return parseInt(p[1]) + '/' + parseInt(p[2]) + '/' + p[0];
 }
 
+function needFields(pairs) {
+  var miss = pairs.filter(function(p) { return !p[1]; }).map(function(p) { return p[0]; });
+  if (!miss.length) return;
+  throw new Error(miss.join(miss.length > 2 ? ', ' : ' and ').replace(/, ([^,]+)$/, ', and $1') + (miss.length === 1 ? ' is required.' : ' are required.'));
+}
+
 function buildEntry() {
   if (currentTab === 'halacha') {
     var title = document.getElementById('hal-title').value.trim();
     var url   = document.getElementById('hal-url').value.trim();
     var date  = toSlashDate(document.getElementById('hal-date').value);
     var type  = document.getElementById('hal-type').value;
-    if (!title || !url || !date) throw new Error('Title, URL and Date are required.');
+    needFields([['Title', title], ['URL', url], ['Date', date]]);
     var entry = { type: type, title: title, url: url, note: date };
     var halCat = document.getElementById('hal-cat-main').value;
     var halSub = halCat === 'Parsha' ? document.getElementById('hal-cat-parsha').value : document.getElementById('hal-cat-sub').value;
@@ -448,7 +454,7 @@ function buildEntry() {
     var desc = document.getElementById('om-desc').value.trim();
     var url  = document.getElementById('om-url').value.trim();
     var date = toSlashDate(document.getElementById('om-date').value);
-    if (!desc || !url || !date) throw new Error('Description, URL and Date are required.');
+    needFields([['Description', desc], ['URL', url], ['Date', date]]);
     var fname = document.getElementById('om-file').value.trim() || url.split('/').pop();
     var entry = { date: date, description: desc, filename: fname, url: url };
     var omCat = document.getElementById('om-cat-main').value;
@@ -464,7 +470,7 @@ function buildEntry() {
     else if (ovUrl.charAt(0) === '/') ovUrl = 'https://torahmoment.com' + ovUrl;
     var ovDate = toSlashDate(document.getElementById('ov-date').value);
     var ovDur = document.getElementById('ov-duration').value.trim();
-    if (!ovParsha || !ovUrl || !ovDate) throw new Error('Parsha, Audio URL and Date are required.');
+    needFields([['Parsha', ovParsha], ['Audio file name', ovUrl], ['Date', ovDate]]);
     if (ovDur && !/^\d{1,2}:\d{2}$/.test(ovDur)) throw new Error('Duration should look like 9:05.');
     var ovLabel = document.getElementById('ov-label').value.trim() || ('Parshas ' + ovParsha + ' overview');
     return { _key: ovParsha, entry: { label: ovLabel, url: ovUrl, duration: ovDur, date: ovDate } };
@@ -473,7 +479,7 @@ function buildEntry() {
     var id    = document.getElementById('ig-id').value.trim();
     var title = document.getElementById('ig-title').value.trim();
     var parsha = document.getElementById('ig-parsha').value.trim();
-    if (!id || !title || !parsha) throw new Error('Video ID, Title and Parsha are required.');
+    needFields([['Video ID', id], ['Title', title], ['Parsha', parsha]]);
     var entry = {
       title: title,
       parsha: parsha,
