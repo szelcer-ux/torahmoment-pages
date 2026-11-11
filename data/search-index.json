@@ -7785,5 +7785,15 @@
     "date": "2026-11-04T00:00:00.000Z",
     "page": "/parsha.html",
     "title_lc": "parshas chayei sarah overview"
+  },
+  {
+    "id": "ov-toldos",
+    "program": "Parsha Overview",
+    "type": "audio",
+    "title": "Parshas Toldos overview",
+    "url": "https://torahmoment.com/audio/ToldosOverview.mp3",
+    "date": "2026-11-11T00:00:00.000Z",
+    "page": "/parsha.html",
+    "title_lc": "parshas toldos overview"
   }
 ]
