@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 841,
+    "total": 842,
     "breakdown": {
       "parsha": {
         "audio": 40,
@@ -10,7 +10,7 @@
         "video": 20
       },
       "halacha": {
-        "totalAll": 108
+        "totalAll": 109
       },
       "oneMinute": {
         "audio": 287
@@ -22,6 +22,15 @@
     "updated": "2026-11-11"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "Halacha",
+      "title": "Do we all have to move to Israel?",
+      "url": "https://www.buzzsprout.com/1899789/episodes/20101961-11-11-2026-shloimy-zelcer-do-we-all-have-to-move-to-israel.mp3",
+      "date": "2026-11-11T00:00:00.000Z",
+      "category": "Israel",
+      "categoryDetail": null
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -50,13 +59,6 @@
       "title": "Sara's lasting legacy",
       "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261104-WA0014.mp3",
       "date": "2026-11-05T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "The essence of marriage",
-      "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261104-WA0016.mp3",
-      "date": "2026-11-04T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -136,6 +138,15 @@
       {
         "type": "audio",
         "program": "Halacha",
+        "title": "Do we all have to move to Israel?",
+        "url": "https://www.buzzsprout.com/1899789/episodes/20101961-11-11-2026-shloimy-zelcer-do-we-all-have-to-move-to-israel.mp3",
+        "date": "2026-11-11T00:00:00.000Z",
+        "category": "Israel",
+        "categoryDetail": null
+      },
+      {
+        "type": "audio",
+        "program": "Halacha",
         "title": "Where to read the Haftorah from",
         "url": "https://www.buzzsprout.com/1899789/episodes/20021232-10-26-2026-shloimy-zelcer-where-to-read-haftorah-from.mp3",
         "date": "2026-10-26T00:00:00.000Z",
@@ -211,15 +222,6 @@
         "title": "Whispering the Tochecha",
         "url": "https://www.buzzsprout.com/1899789/episodes/19706343-8-26-2026-shloimy-zelcer-whispering-the-tochecha.mp3",
         "date": "2026-08-26T00:00:00.000Z",
-        "category": "Tefila",
-        "categoryDetail": null
-      },
-      {
-        "type": "audio",
-        "program": "Halacha",
-        "title": "Learning during Chazaras Hashatz",
-        "url": "https://www.buzzsprout.com/1899789/episodes/19676739-8-20-2026-shloimy-zelcer-learning-during-chazaras-hashatz.mp3",
-        "date": "2026-08-20T00:00:00.000Z",
         "category": "Tefila",
         "categoryDetail": null
       }
