@@ -305,7 +305,14 @@
     "parsha": "Chayei Sarah",
     "image": "/images/infographics/parsha/Chayei_Sarah_Effort_Over_Miracles.png",
     "youtube": "https://www.youtube.com/watch?v=64ALLJQknbQ",
-    "description": "Effort Over Miracles",
+    "description": "Effort Over Miracles"
+  },
+  "P_yhORNErGU": {
+    "title": "Maybe it was me",
+    "parsha": "Toldos",
+    "image": "/images/infographics/parsha/The_Art_of_True_Accountability.png",
+    "youtube": "https://www.youtube.com/watch?v=P_yhORNErGU",
+    "description": "The art of accountability",
     "featured": true
   }
 }
