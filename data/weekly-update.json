@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "October 31, 2026–November 6, 2026",
-  "generatedAt": "2026-11-06T17:20:34.304Z",
-  "totalItems": 5,
+  "rangeLabel": "November 7–13, 2026",
+  "generatedAt": "2026-11-13T17:37:12.508Z",
+  "totalItems": 6,
   "featured": {
-    "id": "par-64ALLJQknbQ",
-    "title": "When the miracles end",
+    "id": "par-P_yhORNErGU",
+    "title": "Maybe it was me",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-11-06T02:57:19Z",
+    "date": "2026-11-13T05:16:08Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=64ALLJQknbQ"
+    "url": "https://www.youtube.com/watch?v=P_yhORNErGU"
   },
   "groups": [
     {
@@ -17,22 +17,37 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-64ALLJQknbQ",
-          "title": "When the miracles end",
+          "id": "par-P_yhORNErGU",
+          "title": "Maybe it was me",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-11-06T02:57:19Z",
+          "date": "2026-11-13T05:16:08Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=64ALLJQknbQ"
+          "url": "https://www.youtube.com/watch?v=P_yhORNErGU"
         },
         {
-          "id": "ov-chayei-sarah",
-          "title": "Parshas Chayei Sarah overview",
+          "id": "ov-toldos",
+          "title": "Parshas Toldos overview",
           "program": "Parsha Overview",
           "type": "audio",
-          "date": "2026-11-04T00:00:00.000Z",
+          "date": "2026-11-11T00:00:00.000Z",
           "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/ChayeiSaraoverview.mp3"
+          "url": "https://torahmoment.com/audio/ToldosOverview.mp3"
+        }
+      ]
+    },
+    {
+      "key": "halacha",
+      "label": "Halacha / Hashkafa",
+      "items": [
+        {
+          "id": "hal-93",
+          "title": "Do we all have to move to Israel?",
+          "program": "Halacha",
+          "type": "audio",
+          "date": "2026-11-11T00:00:00.000Z",
+          "page": "/halacha.html",
+          "url": "https://www.buzzsprout.com/1899789/episodes/20101961-11-11-2026-shloimy-zelcer-do-we-all-have-to-move-to-israel.mp3"
         }
       ]
     },
@@ -42,30 +57,30 @@
       "items": [
         {
           "id": "one-0",
-          "title": "Sara's lasting legacy",
+          "title": "Words can give you away",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-11-05T00:00:00.000Z",
+          "date": "2026-11-11T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261104-WA0014.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261111-WA0140.mp3"
         },
         {
           "id": "one-1",
-          "title": "The essence of marriage",
+          "title": "Long enough",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-11-04T00:00:00.000Z",
+          "date": "2026-11-10T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261104-WA0016.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261110-WA0071.mp3"
         },
         {
           "id": "one-2",
-          "title": "The first question",
+          "title": "Counted for Maaser",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-11-02T00:00:00.000Z",
+          "date": "2026-11-09T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261102-WA0015.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261109-WA0028.mp3"
         }
       ]
     }
