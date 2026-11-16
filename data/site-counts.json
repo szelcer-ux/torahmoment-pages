@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 844,
+    "total": 845,
     "breakdown": {
       "parsha": {
         "audio": 40,
@@ -13,7 +13,7 @@
         "totalAll": 109
       },
       "oneMinute": {
-        "audio": 288
+        "audio": 289
       },
       "mishna": {
         "audio": 137
@@ -23,12 +23,11 @@
   },
   "recent": [
     {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Maybe it was me",
-      "url": "https://www.youtube.com/watch?v=P_yhORNErGU",
-      "date": "2026-11-13T05:16:08Z",
-      "parsha": "Toldos"
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "your face is a reshus harabim",
+      "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261116-WA0060.mp3",
+      "date": "2026-11-16T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -63,6 +62,13 @@
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "your face is a reshus harabim",
+        "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261116-WA0060.mp3",
+        "date": "2026-11-16T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -125,13 +131,6 @@
         "title": "Afraid of the wrong one",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261026-WA0010.mp3",
         "date": "2026-10-26T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Time's up?",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261018-WA0048.mp3",
-        "date": "2026-10-22T00:00:00.000Z"
       }
     ],
     "halacha": [
