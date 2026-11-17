@@ -31,7 +31,7 @@ h1{margin:0 0 6px;font-size:clamp(1.5rem,4vw,2rem)}
 .title{font-weight:650;font-size:1rem}
 .tag{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.03em}
 .tag.a{background:#ecfdf5;color:#0f766e}.tag.v{background:#fef2f2;color:#b91c1c}
-.row audio{width:100%;margin-top:8px;height:38px}
+.pl{display:flex;align-items:center;gap:8px;margin-top:8px}.pl audio{flex:1 1 auto;min-width:0;height:38px}.pl select{flex:0 0 auto;padding:7px 6px;border:1px solid var(--border);border-radius:999px;background:#fff;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
 .watch{display:inline-block;margin-top:8px;font-size:.88rem;font-weight:600;color:var(--accent);text-decoration:none}
 .watch:hover{text-decoration:underline}
 .note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:8px 12px;font-size:.85rem;margin-bottom:12px}
@@ -43,18 +43,13 @@ h1{margin:0 0 6px;font-size:clamp(1.5rem,4vw,2rem)}
   <a class="home" href="/">← TorahMoment home</a>
   <div class="hero">
     <h1>5 Minutes of Torah</h1>
-    <p class="sub">Every audio shiur and Tefilah video, in date order.</p>
   </div>
   <div class="bar">
   <div class="tools" style="margin:0">
     <input id="q" type="search" placeholder="Search…" aria-label="Search">
-    <button class="chip on" data-f="all">All</button>
-    <button class="chip" data-f="audio">Audio</button>
-    <button class="chip" data-f="video">Videos</button>
     <button class="chip" id="sort" title="Switch the date order">Newest first ↓</button>
   </div>
   <div class="cats" id="cats" aria-label="Category"></div>
-  <div class="speed" id="speed"><span class="lbl">Speed</span></div>
   </div>
   <div id="note" class="note" hidden>Video dates couldn't be loaded right now, so the videos are listed at the end.</div>
   <p class="count" id="count"></p>
@@ -125,14 +120,10 @@ h1{margin:0 0 6px;font-size:clamp(1.5rem,4vw,2rem)}
     $('cats').innerHTML=h;
   }
   $('cats').addEventListener('click',function(e){var b=e.target.closest('[data-c]');if(!b)return;cat=b.dataset.c;draw()});
-  function drawSpeed(){
-    $('speed').innerHTML='<span class="lbl">Speed</span>'+RATES.map(function(r){return '<button class="chip sm'+(r===rate?' on':'')+'" data-r="'+r+'">'+r+'\u00d7</button>'}).join('');
-  }
-  function applyRate(){document.querySelectorAll('audio').forEach(function(a){a.playbackRate=rate})}
-  $('speed').addEventListener('click',function(e){var b=e.target.closest('[data-r]');if(!b)return;rate=parseFloat(b.dataset.r);
-    try{localStorage.setItem('tm_rate',rate)}catch(x){} drawSpeed();applyRate()});
+  function applyRate(){document.querySelectorAll('audio').forEach(function(a){a.playbackRate=rate});document.querySelectorAll('select.spd').forEach(function(d){d.value=String(rate)})}
+  $('list').addEventListener('change',function(e){if(!e.target.classList.contains('spd'))return;rate=parseFloat(e.target.value);
+    try{localStorage.setItem('tm_rate',rate)}catch(x){} applyRate()});
   document.addEventListener('loadedmetadata',function(e){if(e.target.tagName==='AUDIO')e.target.playbackRate=rate},true);
-  drawSpeed();
   function draw(){
     var s=q.trim().toLowerCase();
     var base=all.filter(function(x){return (filter==='all'||x.kind===filter)&&(!s||(x.title||'').toLowerCase().indexOf(s)>-1)});
@@ -146,7 +137,7 @@ h1{margin:0 0 6px;font-size:clamp(1.5rem,4vw,2rem)}
     $('count').textContent=rows.length+' shown · '+na+' audio, '+nv+' video'+(nv===1?'':'s');
     $('list').innerHTML=rows.length?rows.map(function(x){
       var tag=x.kind==='audio'?'<span class="tag a">AUDIO</span>':'<span class="tag v">VIDEO</span>';
-      var body=x.kind==='audio'?'<audio controls preload="none" src="'+esc(x.url)+'"></audio>'
+      var body=x.kind==='audio'?'<div class="pl"><audio controls preload="none" src="'+esc(x.url)+'"></audio><select class="spd" aria-label="Playback speed">'+RATES.map(function(r){return '<option value="'+r+'"'+(r===rate?' selected':'')+'>'+r+'\u00d7</option>'}).join('')+'</select></div>'
         :'<a class="watch" href="'+esc(x.url)+'" target="_blank" rel="noopener">▶ Watch on YouTube</a>';
       return '<div class="row"><div class="top">'+(x.t?'<span class="date">'+fmt(x.t)+'</span>':'')+'<span class="title" dir="auto">'+esc(x.title)+'</span>'+tag+'<span class="cat">'+esc(x.cat)+'</span></div>'+body+'</div>';
     }).join(''):'<p class="empty">Nothing matches.</p>';
