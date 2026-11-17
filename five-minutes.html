@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XEKR855EWG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XEKR855EWG');</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>5 Minutes of Torah | TorahMoment</title>
+<meta property="og:title" content="5 Minutes of Torah">
+<meta property="og:description" content="Every 5 Minutes of Torah audio shiur and Tefilah video, in date order.">
+<style>
+:root{--bg:#f7f7f8;--card:#fff;--text:#111;--muted:#666;--border:#e7e7ee;--accent:#0d9488;--radius:14px}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:860px;margin:0 auto;padding:20px 16px 48px}
+.home{display:inline-block;margin-bottom:12px;font-size:.85rem;font-weight:600;color:var(--accent);text-decoration:none}
+.hero{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:0 6px 22px rgba(0,0,0,.06);padding:20px;margin-bottom:16px}
+h1{margin:0 0 6px;font-size:clamp(1.5rem,4vw,2rem)}
+.sub{margin:0;color:var(--muted);font-size:.95rem}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px}
+.tools input{flex:1 1 220px;padding:10px 14px;border:1px solid var(--border);border-radius:999px;font-size:15px;background:#fff}
+.chip{padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:#fff;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0 6px;margin:0 0 8px;border-bottom:1px solid var(--border)}.bar .lbl{font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin:0 8px 0 0}.cats,.speed{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}.chip.sm{padding:6px 11px;font-size:12.5px}.chip small{opacity:.7;font-weight:600;margin-left:3px}.cat{font-size:.72rem;font-weight:600;color:var(--accent)}
+@media(max-width:700px){.bar{position:static}}
+.count{color:var(--muted);font-size:.85rem;margin:0 0 10px}
+.row{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;margin-bottom:10px}
+.top{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.date{font-size:.8rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.title{font-weight:650;font-size:1rem}
+.tag{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.03em}
+.tag.a{background:#ecfdf5;color:#0f766e}.tag.v{background:#fef2f2;color:#b91c1c}
+.row audio{width:100%;margin-top:8px;height:38px}
+.watch{display:inline-block;margin-top:8px;font-size:.88rem;font-weight:600;color:var(--accent);text-decoration:none}
+.watch:hover{text-decoration:underline}
+.note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:8px 12px;font-size:.85rem;margin-bottom:12px}
+.empty{color:var(--muted);text-align:center;padding:30px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="home" href="/">← TorahMoment home</a>
+  <div class="hero">
+    <h1>5 Minutes of Torah</h1>
+    <p class="sub">Every audio shiur and Tefilah video, in date order.</p>
+  </div>
+  <div class="bar">
+  <div class="tools" style="margin:0">
+    <input id="q" type="search" placeholder="Search…" aria-label="Search">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="audio">Audio</button>
+    <button class="chip" data-f="video">Videos</button>
+    <button class="chip" id="sort" title="Switch the date order">Newest first ↓</button>
+  </div>
+  <div class="cats" id="cats" aria-label="Category"></div>
+  <div class="speed" id="speed"><span class="lbl">Speed</span></div>
+  </div>
+  <div id="note" class="note" hidden>Video dates couldn't be loaded right now, so the videos are listed at the end.</div>
+  <p class="count" id="count"></p>
+  <div id="list"><p class="empty">Loading…</p></div>
+</div>
+<script>
+(function(){
+  var YT_KEY="AIzaSyDbJnY2cPtyyVya7YNzxG0hCju7ikBUWsU", PLAYLIST="PLTG2oZQPntE6FFUBou7ie49LLnRoqScnt";
+  var all=[], filter='all', cat='all', newest=true, q='', rate=1;
+  try{var sv=parseFloat(localStorage.getItem('tm_rate'));if(sv>=.5&&sv<=3)rate=sv}catch(e){}
+  var RATES=[0.75,1,1.25,1.5,1.75,2];
+  function catOf(c){c=(c||'').toLowerCase();
+    if(/^parsha/.test(c))return 'Parsha';
+    if(/^yomim tovim|^shabbos/.test(c))return 'Shabbos and Yom Tov';
+    if(/^(hashkafa|middos|chinuch)/.test(c))return 'Hashkafa/Middos';
+    if(/^(halacha|tzedakah)/.test(c))return 'Halacha';
+    if(/^tefil/.test(c))return 'Tefila';
+    if(/^israel/.test(c))return 'Israel';
+    if(/^talmud torah/.test(c))return 'Talmud Torah';
+    if(/^jewish timeline/.test(c))return 'Jewish Timeline';
+    return 'Other';}
+  var $=function(id){return document.getElementById(id)};
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function fmt(t){return new Date(t).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric',timeZone:'UTC'})}
+  function ytId(u){var m=/[?&]v=([\w-]{11})/.exec(u||'');return m&&m[1]}
+  function getJSON(u){return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})}
+
+  // Buzzsprout audio comes from the site's search index
+  var pAudio=getJSON('/data/search-index.json').then(function(ix){
+    return (ix||[]).filter(function(x){return /buzzsprout\.com/i.test(x.url||'')}).map(function(x){
+      return {kind:'audio',title:x.title,url:x.url,t:Date.parse(x.date)||null,cat:catOf(x.cat_lc)};
+    });
+  });
+  // Tefilah videos: the 20 listed on tefilah.html; dates come from the YouTube playlist
+  var pVideo=getJSON('/data/tefilah-extra.json').then(function(list){
+    var vids=(list||[]).map(function(x){return {kind:'video',title:x.title,url:x.url,vid:ytId(x.url),t:x.date?Date.parse(x.date):null,cat:'Tefila'}});
+    return fetchPlaylistDates().then(function(map){
+      vids.forEach(function(v){if(map[v.vid])v.t=map[v.vid].t; if(map[v.vid]&&map[v.vid].title&&!v.title)v.title=map[v.vid].title});
+      if(vids.some(function(v){return !v.t}))$('note').hidden=false;
+      return vids;
+    });
+  });
+  function fetchPlaylistDates(){
+    var map={};
+    function page(tok){
+      var u='https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=50&playlistId='+PLAYLIST+'&key='+YT_KEY+(tok?'&pageToken='+tok:'');
+      return getJSON(u).then(function(d){
+        (d.items||[]).forEach(function(it){
+          var id=it.contentDetails&&it.contentDetails.videoId; if(!id)return;
+          var iso=(it.contentDetails&&it.contentDetails.videoPublishedAt)||(it.snippet&&it.snippet.publishedAt);
+          map[id]={t:Date.parse(iso)||null,title:it.snippet&&it.snippet.title};
+        });
+        return d.nextPageToken?page(d.nextPageToken):map;
+      });
+    }
+    return page('').catch(function(){return map});
+  }
+
+  Promise.all([pAudio,pVideo.catch(function(){return []})]).then(function(r){all=r[0].concat(r[1]);draw()})
+   .catch(function(){$('list').innerHTML='<p class="empty">Couldn’t load the list. Please refresh.</p>'});
+
+  var CAT_ORDER=['Parsha','Shabbos and Yom Tov','Tefila','Hashkafa/Middos','Israel','Talmud Torah','Halacha','Jewish Timeline','Other'];
+  function drawCats(base){
+    var n={};base.forEach(function(x){n[x.cat]=(n[x.cat]||0)+1});
+    if(cat!=='all'&&!n[cat])cat='all';
+    var h='<button class="chip sm'+(cat==='all'?' on':'')+'" data-c="all">All categories<small>'+base.length+'</small></button>';
+    CAT_ORDER.forEach(function(c){if(n[c])h+='<button class="chip sm'+(cat===c?' on':'')+'" data-c="'+esc(c)+'">'+esc(c)+'<small>'+n[c]+'</small></button>'});
+    $('cats').innerHTML=h;
+  }
+  $('cats').addEventListener('click',function(e){var b=e.target.closest('[data-c]');if(!b)return;cat=b.dataset.c;draw()});
+  function drawSpeed(){
+    $('speed').innerHTML='<span class="lbl">Speed</span>'+RATES.map(function(r){return '<button class="chip sm'+(r===rate?' on':'')+'" data-r="'+r+'">'+r+'\u00d7</button>'}).join('');
+  }
+  function applyRate(){document.querySelectorAll('audio').forEach(function(a){a.playbackRate=rate})}
+  $('speed').addEventListener('click',function(e){var b=e.target.closest('[data-r]');if(!b)return;rate=parseFloat(b.dataset.r);
+    try{localStorage.setItem('tm_rate',rate)}catch(x){} drawSpeed();applyRate()});
+  document.addEventListener('loadedmetadata',function(e){if(e.target.tagName==='AUDIO')e.target.playbackRate=rate},true);
+  drawSpeed();
+  function draw(){
+    var s=q.trim().toLowerCase();
+    var base=all.filter(function(x){return (filter==='all'||x.kind===filter)&&(!s||(x.title||'').toLowerCase().indexOf(s)>-1)});
+    drawCats(base);
+    var rows=base.filter(function(x){return cat==='all'||x.cat===cat});
+    rows.sort(function(a,b){
+      if(!a.t&&!b.t)return 0; if(!a.t)return 1; if(!b.t)return -1;
+      return newest?b.t-a.t:a.t-b.t;
+    });
+    var na=rows.filter(function(x){return x.kind==='audio'}).length, nv=rows.length-na;
+    $('count').textContent=rows.length+' shown · '+na+' audio, '+nv+' video'+(nv===1?'':'s');
+    $('list').innerHTML=rows.length?rows.map(function(x){
+      var tag=x.kind==='audio'?'<span class="tag a">AUDIO</span>':'<span class="tag v">VIDEO</span>';
+      var body=x.kind==='audio'?'<audio controls preload="none" src="'+esc(x.url)+'"></audio>'
+        :'<a class="watch" href="'+esc(x.url)+'" target="_blank" rel="noopener">▶ Watch on YouTube</a>';
+      return '<div class="row"><div class="top">'+(x.t?'<span class="date">'+fmt(x.t)+'</span>':'')+'<span class="title" dir="auto">'+esc(x.title)+'</span>'+tag+'<span class="cat">'+esc(x.cat)+'</span></div>'+body+'</div>';
+    }).join(''):'<p class="empty">Nothing matches.</p>';
+  }
+  document.addEventListener('play',function(e){if(e.target.tagName==='AUDIO')e.target.playbackRate=rate;document.querySelectorAll('audio').forEach(function(a){if(a!==e.target)a.pause()})},true);
+  $('q').addEventListener('input',function(){q=this.value;draw()});
+  document.querySelectorAll('.chip[data-f]').forEach(function(b){b.addEventListener('click',function(){
+    filter=b.dataset.f;document.querySelectorAll('.chip[data-f]').forEach(function(c){c.classList.toggle('on',c===b)});draw()})});
+  $('sort').addEventListener('click',function(){newest=!newest;this.textContent=newest?'Newest first ↓':'Oldest first ↑';draw()});
+})();
+</script>
+</body>
+</html>
