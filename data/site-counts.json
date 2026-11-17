@@ -19,7 +19,7 @@
         "audio": 137
       }
     },
-    "updated": "2026-11-16"
+    "updated": "2026-11-17"
   },
   "recent": [
     {
@@ -28,6 +28,14 @@
       "title": "your face is a reshus harabim",
       "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261116-WA0060.mp3",
       "date": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Maybe it was me",
+      "url": "https://www.youtube.com/watch?v=P_yhORNErGU",
+      "date": "2026-11-13T05:16:08Z",
+      "parsha": "Toldos"
     },
     {
       "type": "audio",
@@ -51,13 +59,6 @@
       "title": "Long enough",
       "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261110-WA0071.mp3",
       "date": "2026-11-10T00:00:00.000Z"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Counted for Maaser",
-      "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261109-WA0028.mp3",
-      "date": "2026-11-09T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
