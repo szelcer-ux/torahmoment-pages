@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 846,
+    "total": 847,
     "breakdown": {
       "parsha": {
         "audio": 40,
@@ -13,7 +13,7 @@
         "totalAll": 110
       },
       "oneMinute": {
-        "audio": 289
+        "audio": 290
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-11-18"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "Brother in trickery",
+      "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261118-WA0057.mp3",
+      "date": "2026-11-18T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "Halacha",
@@ -54,17 +61,17 @@
       "date": "2026-11-11T00:00:00.000Z",
       "category": "Israel",
       "categoryDetail": null
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "Words can give you away",
-      "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261111-WA0140.mp3",
-      "date": "2026-11-11T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "Brother in trickery",
+        "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261118-WA0057.mp3",
+        "date": "2026-11-18T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -127,13 +134,6 @@
         "title": "Just 5 minutes",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261027-WA0042.mp3",
         "date": "2026-10-27T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Afraid of the wrong one",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261026-WA0010.mp3",
-        "date": "2026-10-26T00:00:00.000Z"
       }
     ],
     "halacha": [
