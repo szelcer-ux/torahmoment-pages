@@ -111,6 +111,7 @@
       <button class="tab" id="tab-infographics">🖼️ Infographics</button>
       <button class="tab" id="tab-overviews">🎧 Overviews</button>
       <button class="tab" id="tab-categorize">🏷️ Categorize</button>
+      <button class="tab" id="tab-stats">📊 Stats</button>
     </div>
 
     <!-- HALACHA -->
@@ -178,6 +179,17 @@
     <div id="status"></div>
 
     <!-- CATEGORIZE PANEL -->
+    <!-- STATS -->
+    <div id="form-stats" style="display:none;">
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);">
+          <b style="font-size:14px;">📊 Site stats</b>
+          <a href="/dashboard.html" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;">Open full page ↗</a>
+        </div>
+        <iframe id="statsFrame" title="Site stats" style="display:block;width:100%;height:calc(100vh - 260px);min-height:560px;border:0;background:#f7f7f8;"></iframe>
+      </div>
+    </div>
+
     <div id="form-categorize" style="display:none;">
       <div class="card" style="margin-bottom:12px;">
         <h2 style="margin-bottom:12px;">Categorize Clips</h2>
@@ -389,7 +401,7 @@ function updateSections() {
 }
 
 // ── Tabs ──
-var ALL_TABS = ['halacha','oneMinute','infographics','overviews','categorize'];
+var ALL_TABS = ['halacha','oneMinute','infographics','overviews','categorize','stats'];
 ALL_TABS.forEach(function(key) {
   document.getElementById('tab-' + key).addEventListener('click', function() {
     currentTab = key;
@@ -398,10 +410,12 @@ ALL_TABS.forEach(function(key) {
       var f = document.getElementById('form-' + k); if (f) f.style.display = k === key ? 'block' : 'none';
     });
     var isCat = key === 'categorize';
+    var noSave = isCat || key === 'stats';
+    if (key === 'stats') { var sf = document.getElementById('statsFrame'); if (!sf.getAttribute('src')) sf.setAttribute('src', '/dashboard.html'); }
     document.getElementById('preview').style.display = 'none';
     document.getElementById('status').style.display = 'none';
     var brow = document.querySelector('.btn-row');
-    if (brow) brow.style.display = isCat ? 'none' : '';
+    if (brow) brow.style.display = noSave ? 'none' : '';
     if (isCat) initCategorize();
   });
 });
