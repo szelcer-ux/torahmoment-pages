@@ -7862,5 +7862,15 @@
     "date": "2026-11-11T00:00:00.000Z",
     "page": "/parsha.html",
     "title_lc": "parshas toldos overview"
+  },
+  {
+    "id": "ov-vayeitzei",
+    "program": "Parsha Overview",
+    "type": "audio",
+    "title": "Parshas Vayeitzei overview",
+    "url": "https://torahmoment.com/audio/VayeitzeiOverview.mp3",
+    "date": "2026-11-19T00:00:00.000Z",
+    "page": "/parsha.html",
+    "title_lc": "parshas vayeitzei overview"
   }
 ]
