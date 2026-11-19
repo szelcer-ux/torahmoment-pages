@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 848,
+    "total": 849,
     "breakdown": {
       "parsha": {
         "audio": 41,
@@ -13,7 +13,7 @@
         "totalAll": 110
       },
       "oneMinute": {
-        "audio": 290
+        "audio": 291
       },
       "mishna": {
         "audio": 137
@@ -22,6 +22,13 @@
     "updated": "2026-11-19"
   },
   "recent": [
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "He went back",
+      "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-a382eb49.mp3",
+      "date": "2026-11-19T00:00:00.000Z"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -52,19 +59,17 @@
       "url": "https://www.youtube.com/watch?v=P_yhORNErGU",
       "date": "2026-11-13T05:16:08Z",
       "parsha": "Toldos"
-    },
-    {
-      "type": "audio",
-      "program": "Halacha",
-      "title": "Do we all have to move to Israel?",
-      "url": "https://www.buzzsprout.com/1899789/episodes/20101961-11-11-2026-shloimy-zelcer-do-we-all-have-to-move-to-israel.mp3",
-      "date": "2026-11-11T00:00:00.000Z",
-      "category": "Israel",
-      "categoryDetail": null
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "He went back",
+        "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-a382eb49.mp3",
+        "date": "2026-11-19T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -127,13 +132,6 @@
         "title": "The quiet mitzvah",
         "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261029-WA0020.mp3",
         "date": "2026-10-29T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Just 5 minutes",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261027-WA0042.mp3",
-        "date": "2026-10-27T00:00:00.000Z"
       }
     ],
     "halacha": [
