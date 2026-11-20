@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "November 7–13, 2026",
-  "generatedAt": "2026-11-13T17:37:12.508Z",
+  "rangeLabel": "November 14–20, 2026",
+  "generatedAt": "2026-11-20T18:28:29.365Z",
   "totalItems": 6,
   "featured": {
-    "id": "par-P_yhORNErGU",
-    "title": "Maybe it was me",
+    "id": "par-ObeH7cXk6BU",
+    "title": "Lavan's problem, Yaakov's standard",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-11-13T05:16:08Z",
+    "date": "2026-11-20T02:31:47Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=P_yhORNErGU"
+    "url": "https://www.youtube.com/watch?v=ObeH7cXk6BU"
   },
   "groups": [
     {
@@ -17,22 +17,22 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-P_yhORNErGU",
-          "title": "Maybe it was me",
+          "id": "par-ObeH7cXk6BU",
+          "title": "Lavan's problem, Yaakov's standard",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-11-13T05:16:08Z",
+          "date": "2026-11-20T02:31:47Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=P_yhORNErGU"
+          "url": "https://www.youtube.com/watch?v=ObeH7cXk6BU"
         },
         {
-          "id": "ov-toldos",
-          "title": "Parshas Toldos overview",
+          "id": "ov-vayeitzei",
+          "title": "Parshas Vayeitzei overview",
           "program": "Parsha Overview",
           "type": "audio",
-          "date": "2026-11-11T00:00:00.000Z",
+          "date": "2026-11-19T00:00:00.000Z",
           "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/ToldosOverview.mp3"
+          "url": "https://torahmoment.com/audio/VayeitzeiOverview.mp3"
         }
       ]
     },
@@ -42,12 +42,12 @@
       "items": [
         {
           "id": "hal-93",
-          "title": "Do we all have to move to Israel?",
+          "title": "Is visiting Israel a mitzvah?",
           "program": "Halacha",
           "type": "audio",
-          "date": "2026-11-11T00:00:00.000Z",
+          "date": "2026-11-17T00:00:00.000Z",
           "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/20101961-11-11-2026-shloimy-zelcer-do-we-all-have-to-move-to-israel.mp3"
+          "url": "https://www.buzzsprout.com/1899789/episodes/20139366-11-17-2026-shloimy-zelcer-is-visiting-israel-a-mitzvah.mp3"
         }
       ]
     },
@@ -57,30 +57,30 @@
       "items": [
         {
           "id": "one-0",
-          "title": "Words can give you away",
+          "title": "He went back",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-11-11T00:00:00.000Z",
+          "date": "2026-11-19T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261111-WA0140.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-a382eb49.mp3"
         },
         {
           "id": "one-1",
-          "title": "Long enough",
+          "title": "Brother in trickery",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-11-10T00:00:00.000Z",
+          "date": "2026-11-18T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261110-WA0071.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261118-WA0057.mp3"
         },
         {
           "id": "one-2",
-          "title": "Counted for Maaser",
+          "title": "your face is a reshus harabim",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-11-09T00:00:00.000Z",
+          "date": "2026-11-16T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261109-WA0028.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261116-WA0060.mp3"
         }
       ]
     }
