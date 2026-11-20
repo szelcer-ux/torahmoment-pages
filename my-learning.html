@@ -51,7 +51,8 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .dot.on{background:var(--c);color:#fff}
 
 /* view tabs */
-.views{display:flex;gap:4px;background:var(--paper2);border-radius:999px;padding:4px;width:max-content;margin:0 0 14px}
+.views{display:flex;gap:4px;background:var(--paper2);border-radius:999px;padding:4px;width:max-content;max-width:100%;overflow-x:auto;margin:0 0 14px}
+.views button{white-space:nowrap}
 .views button{border:0;background:none;font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:999px}
 .views button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(34,28,21,.15)}
 
@@ -79,6 +80,44 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .rmsq i.d,.rmkey i.d{background:var(--gold)}
 .rmsq i.p,.rmkey i.p{background:#fff;box-shadow:inset 0 0 0 1.5px var(--gold2)}
 .rmsq i.n,.rmkey i.n{background:#fff;box-shadow:inset 0 0 0 2px var(--red)}
+
+/* gemara notes */
+.qn{display:flex;gap:6px;margin-top:14px;align-items:stretch}
+.qnw{border:1px solid var(--line);background:#fff;border-radius:10px;padding:0 8px;font:inherit;font-size:13px;font-weight:600;color:var(--c);max-width:118px}
+.qni{flex:1;min-width:0;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font-family:var(--serif);font-size:16px;color:var(--ink)}
+.qni:focus,.qnw:focus{outline:2px solid color-mix(in srgb,var(--c) 45%,transparent);border-color:transparent}
+.qnx{border:1px solid var(--line);background:#fff;border-radius:10px;width:38px;color:var(--ink2);font-size:15px}
+.nhere{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.nh{display:block;text-align:left;border:1px solid var(--line);background:#fffdf8;border-left:3px solid var(--c);border-radius:10px;padding:8px 11px;font-family:inherit;width:100%}
+.nh .np{display:block;font-size:11px;font-weight:700;color:var(--c);letter-spacing:.02em}
+.nh .nt{font-family:var(--serif);font-size:15.5px;line-height:1.35;color:var(--ink);margin-top:2px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.nall{align-self:flex-start;border:0;background:none;color:var(--c);font-size:12px;font-weight:600;padding:2px 0}
+.nbar{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.nbar input{flex:1;min-width:200px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;font-size:14px;background:var(--card)}
+.nbar input:focus{outline:2px solid var(--gold2);border-color:transparent}
+.seg2{display:flex;background:var(--paper2);border-radius:999px;padding:3px}
+.seg2 button{border:0;background:none;font-size:12.5px;font-weight:600;color:var(--ink2);padding:7px 13px;border-radius:999px}
+.seg2 button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(34,28,21,.15)}
+.fchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.fchip{border:1px solid var(--line);background:var(--card);color:var(--ink2);font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px}
+.fchip.on{background:var(--ink);color:#f3ecdf;border-color:var(--ink)}
+.ngroup{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px 6px;margin-bottom:14px;border-top:3px solid #3b4a6b}
+.ngh{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.ngh b{font-family:var(--serif);font-size:24px;font-weight:600}.ngh .n{margin-left:auto;font-size:12px;color:var(--muted)}
+.note{padding:12px 0;border-top:1px dashed var(--line)}
+.ngroup > .note:first-child{border-top:0}
+.note .nl{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.note .nl b{font-size:13px;font-weight:700;color:#3b4a6b}
+.note .nl .he{font-family:var(--heb);font-size:13px;color:var(--muted)}
+.note .ntext{font-family:var(--serif);font-size:18px;line-height:1.45;margin-top:4px}
+.note.q{background:linear-gradient(90deg,rgba(140,59,42,.07),transparent 70%);margin:0 -20px;padding:12px 20px}
+.note.ans .ntext{color:var(--ink2)}
+.nmeta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin-top:6px}
+.lnk{border:0;background:none;color:var(--ink2);font-size:12px;font-weight:600;text-decoration:underline;text-underline-offset:3px;margin-left:10px}
+.rnotes{margin-top:8px;padding-top:12px;border-top:1px dashed var(--line);position:relative;z-index:1}
+.rnotes .nm{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+.rnote{display:block;width:100%;text-align:left;margin-top:6px;border:0;background:#fffdf8;border-left:3px solid #3b4a6b;border-radius:6px;padding:7px 10px;font-size:13.5px;color:var(--ink2);line-height:1.4}
+.rnote b{color:#3b4a6b;font-weight:700}
 
 /* goals */
 .goalgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
@@ -278,7 +317,7 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
     <div class="stat"><div class="k">Streak</div><div class="v" id="sStreak">0<small>days</small></div></div>
   </section>
 
-  <div class="views" id="views"><button data-v="overview" class="on">Overview</button><button data-v="report">Daily report</button><button data-v="rambam">Rambam</button><button data-v="goals">Goals</button></div>
+  <div class="views" id="views"><button data-v="overview" class="on">Overview</button><button data-v="report">Daily report</button><button data-v="rambam">Rambam</button><button data-v="goals">Goals</button><button data-v="notes">Notes</button></div>
 
   <div class="logbar" id="logbar">
     <span>Logging for</span>
@@ -294,6 +333,7 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
   <div id="viewReport" hidden></div>
   <div id="viewRambam" hidden></div>
   <div id="viewGoals" hidden></div>
+  <div id="viewNotes" hidden></div>
   <div id="viewOverview">
   <section class="grid" id="grid"></section>
 
@@ -452,6 +492,9 @@ var MISHNA_SEDER=[[0,10],[11,22],[23,29],[30,39],[40,50],[51,62]];
 var TORAH=[['Bereishis','בראשית',50],['Shemos','שמות',40],['Vayikra','ויקרא',27],['Bamidbar','במדבר',36],['Devarim','דברים',34]];
 // Tanach groups: Torah, Nevi'im = NACH 0–20, Kesuvim = NACH 21–33
 
+// Your Gemara notes list, imported Nov 20 2026, in the order you wrote them: [masechta, amud # (0 = 2a), note]
+var NOTES_IMPORT=[["Kiddushin", 41, "“doresh kmin chomer” - what category is this?"], ["Kiddushin", 41, "R Yehudah “Hindua” - where was he from? India? Ethiopia ?"], ["Kiddushin", 42, "“Would one rather be a free Jew or a non Jew slave”"], ["Kiddushin", 43, "R Meir and opinion on women ??? because of his wife ???"], ["Kiddushin", 45, "top Tosfos - “medresh chachomim”"], ["Kiddushin", 50, "R Akiva was gabbai tzedakah"], ["Kiddushin", 56, "Pesukim in the Torah and Tehilim - Why is the count SO off?"], ["Kiddushin", 59, "top rashi. Being annoyed is a bad middah"], ["Beitzah", 45, "Rashi on bottom (Rashis rabbeim etc.)"], ["Kiddushin", 78, "Rashi mitzvah bo... Is the reason really because of schar?"], ["Kiddushin", 82, "Shammai quoting Chaggai????"], ["Sanhedrin", 213, "The people of the dor hamabul really did have an answer they didnt do nothing! (10ish lines down)"], ["Kiddushin", 102, "Stam sifra k’rav yehudah"], ["Kiddushin", 102, "“mishmei d’gemarah” - and Rashi"], ["Kiddushin", 107, "“וְכִי אוֹמְרִים לוֹ לָאָדָם עֲמוֹד וַחֲטָא בִּשְׁבִיל שֶׁתִּזְכֶּה “"], ["Pesachim", 220, "don't have a government of talmidei chachamim"], ["Pesachim", 220, "if you want to be taken seriously say something in an Adam gadols name"], ["Kiddushin", 127, "Bei Dina Rabbah = Rav or Rebbi"], ["Gittin", 0, "Rashi R Yehuda - Rashi believed the world was flat"], ["Gittin", 7, "וְכִי תֵּימָא אֶעֱבֵיד לְחוּמְרָא נִמְצָא אַתָּה מוֹצִיא לַעַז עַל גִּיטִּין הָרִאשׁוֹנִים"], ["Sukkah", 62, "bottom of amud - rabbeinu hagadol = rav according to r chisdah"], ["Gittin", 9, "בְּנֵי אָדָם הָעוֹלִין מִשָּׁם לְכָאן הֵן קִיְּימוּ בְּעַצְמָן וַיִּתְּנוּ (אֶת) הַיֶּלֶד בַּזּוֹנָה וְהַיַּלְדָּה מָכְרוּ בַיַּיִן וַיִּשְׁתּוּ = not a good thing to leave your family"], ["Gittin", 9, "לְעוֹלָם אַל יָטִיל אָדָם אֵימָה יְתֵירָה בְּתוֹךְ בֵּיתוֹ"], ["Gittin", 10, "כָּל הַגּוֹזֵז מִנְּכָסָיו וְעוֹשֶׂה מֵהֶן צְדָקָה נִיצָּל מִדִּינָהּ שֶׁל גֵּיהִנָּם - the money you leave over in this world weighs you down in the next world"], ["Gittin", 12, "Rashi - אוקיינוס למערב שהוא בסוף העולם - The Atlantic was the end of the world."], ["Gittin", 13, "כיבוש יחיד - דדוד שלא היו כל ישראל ביחד כדרך שהיו בכבוש יהושע שהיו כולם וכבשוה לצורך כל ישראל קודם חלוקה אבל דוד לא כבש אלא לצורכ - compare to modern day Israel"], ["Gittin", 13, "וְאַף עַל גַּב דַּאֲמִירָה לְגוֹי שְׁבוּת מִשּׁוּם יִשּׁוּב אֶרֶץ יִשְׂרָאֵל לָא גְּזוּר רַבָּנַן . Yishuv Eretz Yisroel pushes off a drabanan of amira lakom"], ["Gittin", 19, "דִּשְׁכִיחִי יִשְׂרָאֵל דְּמַסְּקִי בִּשְׁמָהָתַיְיהוּ - It was common for Jewish people to have non-Jewish names (also מִפְּנֵי שֶׁרוֹב יִשְׂרָאֵל שֶׁבְּחוּצָה לָאָרֶץ שְׁמוֹתֵיהֶן כִּשְׁמוֹת גּוֹיִם)"], ["Gittin", 21, "” מזונות: כדי חייו” - “פרנסה: היינו כל שאר צרכיו” difference between mezonos and parnasah"], ["Gittin", 35, "רַבִּי אֶלְעָזָר מָרָא דְּאֶרֶץ יִשְׂרָאֵל  - בקי מכל חביריו"], ["Gittin", 72, "חביבה להן בהמתן של ישראל יותר מנשותיהן! הני מילי בצינעא, אבל בפרהסיא זילא בהו מילתא — The non Jews of the world hold the Jews in high regard but only in private..."], ["Gittin", 88, "R Meir and opinion on women ??? because of his wife ???"], ["Gittin", 89, "לודאי - why does rashi call them cannibals???"], ["Gittin", 114, "who was עירא ?"], ["Gittin", 115, "Rashi DH Nifparda Chavila - Rashi quoting is rebbi R Yitzchok ben yehuda ?"], ["Gittin", 116, "Was Torah written down in pieces or complete"], ["Gittin", 117, "Rashi quoting R Shreria Goan"], ["Gittin", 120, "Tosfos - Gineivas Daas from a Goy"], ["Gittin", 149, "אסור לצאת מארץ לחוצה לארץ"], ["Gittin", 156, "“מלכות שאינה הוגנת”"], ["Gittin", 165, "דילכון refrers to R Kahana (Rashi)"], ["Gittin", 169, "ורבותינו הבקיאין בדבר הלכה = רב חמא בר גוריא"], ["Sotah", 0, "זוג שני - לפי מעשיו וקשה לזווגן - Only the second marriage is as hard as krias yam sof (Rashi)"], ["Sotah", 22, "Rashi - הא דא\"ר יצחק לאו מלתא דעשו היא - Interesting that Rashi felt the need to tell us this ..."], ["Sotah", 55, "Rashi - טעם בריבי uses the term גדול הדור"], ["Sotah", 61, "Does the word “Vayan” really just mean to say in a loud voice?"], ["Sotah", 61, "Should we tell people about our tzar or not? (also see nedarim 40a)"], ["Sotah", 70, "ללמוד וללמד לשמור ולעשות - four mitzvos for every mitzvah"], ["Sotah", 90, "חֵן מָקוֹם עַל יוֹשְׁבָיו"], ["Nazir", 35, "Queen Hilni was a nazir for either 14 or 21 years"], ["Nazir", 52, "אשה מנוולת - שאינה שותה יין:"], ["Nazir", 61, "People did not realize that the Beis Hamikdash was destroyed!"], ["Nazir", 87, "Tosfos - Lo nisfaresh minalan"], ["Nazir", 102, "Quoting from Chagai Zecharia and Malachai ??"], ["Sanhedrin", 9, "Talmid can say something in front of rebbi if hes making a mistake in din"]];
+
 /* ───────────── Hebrew helpers ───────────── */
 function gem(n){
   if(!n||n<1) return '';
@@ -543,7 +586,7 @@ function defaults(){
       {id:'rambam', name:'Rambam', heb:'רמב״ם', kind:'rambam', color:'#9a6a1e',
        pos:{g:0}, goal:{per:'week', min:4, max:5}}
     ],
-    log:[], siyumim:[], rmb:rmbStart(), fin:{gemara:{}, mishna:{}, tanach:{}}
+    log:[], siyumim:[], rmb:rmbStart(), fin:{gemara:{}, mishna:{}, tanach:{}}, notes:importedNotes()
   };
 }
 
@@ -555,7 +598,9 @@ function load(){
   migrate();
 }
 function rmbStart(){ var d={}; RAMBAM_DONE_START.forEach(function(g){ d[g]='before'; }); return {done:d}; }
+function importedNotes(){ return NOTES_IMPORT.map(function(x,k){ return {id:'imp'+k, ts:0, seq:k, date:'list', sefer:x[0], u:x[1], text:x[2], done:false}; }); }
 function migrate(){
+  if(!S.notes) S.notes=importedNotes();
   if(!S.fin) S.fin={gemara:{}, mishna:{}, tanach:{}};
   if(!S.rmb){ S.rmb=rmbStart(); var r=S.limudim.find(function(l){return l.id==='rambam';}); if(r) r.pos={g:0};
     S.log.forEach(function(e){ if(e.id==='rambam'){ e.from={g:0}; e.to={g:0}; e.keys=e.keys||[]; } }); }
@@ -804,7 +849,7 @@ function cardHTML(l){
     '<div class="pos"><span class="en">'+esc(posEn(l))+'</span><span class="he">'+esc(posHe(l))+'</span></div>'+
     '<div class="bar"><i style="width:'+(pr.frac*100).toFixed(1)+'%"></i></div>'+
     '<div class="meta"><span><b>'+Math.round(pr.frac*100)+'%</b> · '+(K.tiered&&!K.counts(l.pos)?pr.label:pr.done+' '+pr.label)+'</span><span>'+e+'</span></div>'+
-    paceBlock(l)+
+    paceBlock(l)+ (l.kind==='gemara' ? notesHere(l)+quickNote(l) : '')+
     '<div class="actions">'+btns+'<button class="undo" data-a="undo" '+(hasLog?'':'disabled')+'>undo last</button></div>'+
   '</article>';
 }
@@ -893,6 +938,7 @@ function reportText(date){
   var d=parse(date), items=dayItems(date), done=items.filter(function(x){return x.en;});
   var out=['My learning · '+d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})+' · '+hebDate(d),''];
   items.forEach(function(x){ out.push((x.en?'✓ ':'· ')+x.l.name+': '+(x.en? x.en+(x.amt?' ('+x.amt+')':'') : '—')); });
+  var ns=dayNotes(date); if(ns.length){ out.push('','Notes:'); ns.forEach(function(n){ out.push((isOpen(n)?'❓ ':'📝 ')+amudLabel(n.sefer,n.u)+' - '+n.text); }); }
   out.push('', done.length+' of '+items.length+' limudim');
   return out.join('\n');
 }
@@ -915,7 +961,7 @@ function renderReport(){
   el.innerHTML='<div class="report"><div class="rtop"><button class="rnav" data-step="-1" title="Previous day">‹</button>'+
     '<div class="rhead"><div class="k">'+(date===t?'Today’s learning':'Daily report')+'</div><h2>'+d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})+'</h2><div class="hd">'+hebDate(d)+'</div></div>'+
     '<button class="rnav" data-step="1" title="Next day" '+(date>=t?'disabled':'')+'>›</button></div>'+
-    '<div class="rrule"></div>'+rows+
+    '<div class="rrule"></div>'+rows+dayNotesHTML(date)+
     '<div class="rfoot"><span class="sum">'+line+'</span><button class="mbtn" id="copyRep">Copy as text</button></div></div>'+
     '<div class="rwk">'+wk+'</div>';
 }
@@ -923,6 +969,7 @@ document.getElementById('viewReport').addEventListener('click', function(ev){
   var b=ev.target.closest('button'); if(!b||b.disabled) return;
   if(b.dataset.step) setLogDate(ymd(addDays(parse(logDate),+b.dataset.step)));
   else if(b.dataset.d) setLogDate(b.dataset.d);
+  else if(b.dataset.edit) noteModal(b.dataset.edit);
   else if(b.id==='copyRep'){
     var txt=reportText(logDate);
     (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ toast('Copied, ready to paste'); }).catch(function(){ prompt('Copy this:',txt); });
@@ -938,8 +985,9 @@ function setView(v){
   document.getElementById('viewReport').hidden = v!=='report';
   document.getElementById('viewRambam').hidden = v!=='rambam';
   document.getElementById('viewGoals').hidden = v!=='goals';
-  document.getElementById('logbar').style.display = (v==='rambam'||v==='goals') ? 'none' : '';
-  renderReport(); renderRambam(); renderGoals();
+  document.getElementById('viewNotes').hidden = v!=='notes';
+  document.getElementById('logbar').style.display = (v==='rambam'||v==='goals'||v==='notes') ? 'none' : '';
+  renderReport(); renderRambam(); renderGoals(); renderNotes();
 }
 function renderRambam(){
   if(view!=='rambam') return;
@@ -1030,7 +1078,7 @@ document.getElementById('viewGoals').addEventListener('click', function(ev){
   if(S.fin[t][k]) delete S.fin[t][k]; else S.fin[t][k]='before';
   save(); renderAll(); toast(S.fin[t][k]?k+' marked as finished':k+' unmarked');
 });
-function renderAll(){ renderSummary(); renderCards(); renderHeat(); renderFeed(); renderSiyumim(); renderReport(); renderRambam(); renderGoals(); }
+function renderAll(){ renderSummary(); renderCards(); renderHeat(); renderFeed(); renderSiyumim(); renderReport(); renderRambam(); renderGoals(); renderNotes(); }
 
 /* ───────────── Events ───────────── */
 document.getElementById('grid').addEventListener('click', function(ev){
@@ -1044,7 +1092,20 @@ document.getElementById('grid').addEventListener('click', function(ev){
   else if(a==='undo') undo(id);
   else if(a==='custom') customModal(id);
   else if(a==='map') setView('rambam');
+  else if(a==='noteFull'){ var c=b.closest('.card'), sel=c.querySelector('.qnw'), inp=c.querySelector('.qni'); noteModal(null, sel.value==='other'?null:sel.value, inp.value, id); }
+  else if(a==='noteEdit') noteModal(b.dataset.n);
+  else if(a==='notesIn'){ notesFilter={sefer:b.dataset.s, q:'', open:false}; setView('notes'); }
   else if(a==='edit') editModal(id);
+});
+document.getElementById('grid').addEventListener('keydown', function(ev){
+  if(ev.key!=='Enter' || !ev.target.classList.contains('qni')) return;
+  ev.preventDefault(); var c=ev.target.closest('.card'), sel=c.querySelector('.qnw'), t=ev.target.value.trim(); if(!t) return;
+  if(sel.value==='other'){ noteModal(null,null,t,c.dataset.id); return; }
+  addNote(sel.value, t, c.dataset.id);
+});
+document.getElementById('grid').addEventListener('change', function(ev){
+  if(!ev.target.classList.contains('qnw') || ev.target.value!=='other') return;
+  var c=ev.target.closest('.card'); noteModal(null,null,c.querySelector('.qni').value,c.dataset.id);
 });
 document.getElementById('seg').addEventListener('click', function(ev){
   var b=ev.target.closest('button'); if(!b) return;
@@ -1167,6 +1228,131 @@ function finishFlow(l){
     '<div class="mrow" style="justify-content:center"><button class="mbtn" onclick="TM.close()">Later</button><button class="mbtn p" id="fNext">Choose what’s next →</button></div>');
   $('fNext').onclick=function(){ editModal(l.id,{fresh:true}); };
 }
+
+/* ───────────── Gemara notes ───────────── */
+var notesFilter={sefer:'', q:'', open:false}, notesOrder='daf';
+function amudLabel(sefer,u){ return sefer+' '+(Math.floor(u/2)+2)+(u%2?'b':'a'); }
+function amudHe(sefer,u){ var m=KIND.gemara.find(sefer); return (m?m[1]+' ':'')+gem(Math.floor(u/2)+2)+(u%2?' ע״ב':' ע״א'); }
+function isQ(n){ return /[?？]/.test(n.text); }
+function isOpen(n){ return isQ(n) && !n.done; }
+function noteDateLabel(n){ return n.date==='list' ? 'from your notes list' : fmtShort(n.date)+', '+parse(n.date).getFullYear()+' · '+hebDate(parse(n.date)); }
+function shasIdx(sefer){ var i=BAVLI.findIndex(function(m){return m[0]===sefer;}); return i<0?99:i; }
+function hebMonthYear(date){ try{ return new Intl.DateTimeFormat('en-u-ca-hebrew',{month:'long',year:'numeric'}).format(parse(date)); }catch(e){ return fmtShort(date); } }
+function writtenOrder(a,b){ return (a.ts-b.ts) || (a.seq-b.seq); }
+
+// amudim learned on this card on the logging date, latest first
+function gemUnitsToday(l){
+  var out=[];
+  S.log.filter(function(e){ return e.id===l.id && e.date===logDate && e.units; }).sort(function(a,b){return a.ts-b.ts;}).forEach(function(e){
+    if(e.from.sefer!==e.to.sefer){ for(var i=e.from.i;i<KIND.gemara.total(e.from);i++) out.push([e.from.sefer,i]); }
+    else for(var j=e.from.i;j<e.to.i;j++) out.push([e.from.sefer,j]);
+  });
+  return out.reverse();
+}
+function quickNote(l){
+  var opts=gemUnitsToday(l), seen={};
+  if(l.pos.i<KIND.gemara.total(l.pos)) opts.push([l.pos.sefer,l.pos.i]);
+  opts=opts.filter(function(o){ var k=o[0]+'|'+o[1]; if(seen[k]) return false; seen[k]=1; return true; });
+  return '<div class="qn"><select class="qnw" title="Which amud this note is on">'+opts.map(function(o){ return '<option value="'+esc(o[0])+'|'+o[1]+'">'+esc(amudLabel(o[0],o[1]).replace(o[0]+' ',''))+'</option>'; }).join('')+
+    '<option value="other">Other daf…</option></select><input class="qni" dir="auto" placeholder="Note on this daf…" enterkeyhint="done"><button class="qnx" data-a="noteFull" title="Write a longer note">⤢</button></div>';
+}
+// notes on the daf the card is sitting on (or just finished)
+function notesHere(l){
+  var spots=[[l.pos.sefer,Math.floor(l.pos.i/2)]], b=before('gemara',l.pos); spots.push([b.sefer,Math.floor(b.i/2)]);
+  var here=S.notes.filter(function(n){ return spots.some(function(s2){ return n.sefer===s2[0] && Math.floor(n.u/2)===s2[1]; }); })
+    .sort(function(a,b2){ return b2.ts-a.ts || b2.seq-a.seq; });
+  var inSefer=S.notes.filter(function(n){ return n.sefer===l.pos.sefer; }).length;
+  if(!here.length && !inSefer) return '';
+  var h='<div class="nhere">';
+  here.slice(0,3).forEach(function(n){
+    h+='<button class="nh" data-a="noteEdit" data-n="'+n.id+'"><span class="np">'+(isOpen(n)?'❓ ':'📝 ')+esc(amudLabel(n.sefer,n.u).replace(n.sefer+' ',''))+' · '+esc(n.date==='list'?'from your list':hebMonthYear(n.date))+'</span><span class="nt" dir="auto">'+esc(n.text)+'</span></button>';
+  });
+  if(here.length>3) h+='<span class="hint">+'+(here.length-3)+' more on this daf</span>';
+  if(inSefer) h+='<button class="nall" data-a="notesIn" data-s="'+esc(l.pos.sefer)+'">'+inSefer+' note'+(inSefer===1?'':'s')+' in '+esc(l.pos.sefer)+' →</button>';
+  return h+'</div>';
+}
+function addNote(where, text, lid){
+  var w=where.split('|'), u=+w.pop(), sefer=w.join('|');
+  S.notes.push({id:'n'+Date.now().toString(36), ts:Date.now(), seq:S.notes.length, date:logDate, sefer:sefer, u:u, text:text, done:false, lid:lid||null});
+  save(); renderAll(); toast('Note saved on '+amudLabel(sefer,u));
+  var c=document.querySelector('[data-id="'+lid+'"] .qni'); if(c) c.focus();
+}
+function noteModal(nid, where, text, lid){
+  var n=nid?S.notes.find(function(x){return x.id===nid;}):null, sefer, u;
+  if(n){ sefer=n.sefer; u=n.u; }
+  else if(where){ var w=where.split('|'); u=+w.pop(); sefer=w.join('|'); }
+  else { var l=L(lid)||L('main'); sefer=l.pos.sefer; u=Math.min(l.pos.i, KIND.gemara.total(l.pos)-1); }
+  openModal('<h3>'+(n?'Edit note':'Gemara note')+'</h3><div class="sub">'+(n?esc(noteDateLabel(n)):'For '+fmtLong(parse(logDate)))+'</div>'+
+    '<div class="f2" style="grid-template-columns:2fr 1fr 1fr"><div class="f"><label>Masechta</label><select id="nS">'+seferOptions(BAVLI,sefer)+'</select></div>'+
+    '<div class="f"><label>Daf</label><input id="nD" type="number" min="2" value="'+(Math.floor(u/2)+2)+'"></div>'+
+    '<div class="f"><label>Amud</label><select id="nA"><option value="0"'+(u%2?'':' selected')+'>a</option><option value="1"'+(u%2?' selected':'')+'>b</option></select></div></div>'+
+    '<div class="f"><label>Note</label><textarea id="nText" rows="6" dir="auto" placeholder="Rashi, Tosafos, a question, a line you want to remember…">'+esc(n?n.text:(text||''))+'</textarea></div>'+
+    '<p class="hint">Anything with a “?” is listed as an open question.</p>'+
+    (n&&isQ(n)?'<label class="check"><input type="checkbox" id="nDone" '+(n.done?'checked':'')+'> ✓ Answered</label>':'')+
+    '<div class="mrow">'+(n?'<button class="mbtn danger" id="nDel">Delete</button>':'')+'<button class="mbtn" onclick="TM.close()">Cancel</button><button class="mbtn p" id="nGo">Save</button></div>');
+  setTimeout(function(){ var t=$('nText'); t.focus(); t.setSelectionRange(t.value.length,t.value.length); },60);
+  $('nGo').onclick=function(){
+    var txt=$('nText').value.trim(); if(!txt){ $('nText').focus(); return; }
+    var sf=$('nS').value, uu=Math.max(0,(parseInt($('nD').value,10)-2)*2+(+$('nA').value)); uu=Math.min(uu, KIND.gemara.total({sefer:sf})-1);
+    if(n){ n.text=txt; n.sefer=sf; n.u=uu; if($('nDone')) n.done=$('nDone').checked; }
+    else S.notes.push({id:'n'+Date.now().toString(36), ts:Date.now(), seq:S.notes.length, date:logDate, sefer:sf, u:uu, text:txt, done:false, lid:lid||null});
+    save(); closeModal(); renderAll(); toast(n?'Note updated':'Note saved on '+amudLabel(sf,uu));
+  };
+  if(n) $('nDel').onclick=function(){ if(!confirm('Delete this note?')) return; S.notes=S.notes.filter(function(x){return x!==n;}); save(); closeModal(); renderAll(); toast('Note deleted'); };
+}
+function notesAsText(list){ return list.map(function(n){ return amudLabel(n.sefer,n.u)+' - '+n.text; }).join('\n'); }
+function dayNotes(date){ return S.notes.filter(function(n){ return n.date===date; }).sort(writtenOrder); }
+function dayNotesHTML(date){
+  var ns=dayNotes(date); if(!ns.length) return '';
+  return '<div class="rnotes"><div class="nm" style="color:var(--gold)">Gemara notes</div>'+ns.map(function(n){
+    return '<button class="rnote" data-edit="'+n.id+'"><b>'+(isOpen(n)?'❓ ':'📝 ')+esc(amudLabel(n.sefer,n.u))+'</b> <span dir="auto">'+esc(n.text)+'</span></button>'; }).join('')+'</div>';
+}
+function renderNotes(){
+  if(view!=='notes') return;
+  var el=document.getElementById('viewNotes'), f=notesFilter, q=f.q.trim().toLowerCase();
+  var list=S.notes.filter(function(n){
+    if(f.open && !isOpen(n)) return false;
+    if(f.sefer && n.sefer!==f.sefer) return false;
+    if(q && (n.text+' '+amudLabel(n.sefer,n.u)).toLowerCase().indexOf(q)<0) return false;
+    return true;
+  });
+  var counts={}; S.notes.forEach(function(n){ counts[n.sefer]=(counts[n.sefer]||0)+1; });
+  var seferChips=Object.keys(counts).sort(function(a,b){return shasIdx(a)-shasIdx(b);}).map(function(sf){
+    return '<button class="fchip'+(f.sefer===sf?' on':'')+'" data-s="'+esc(sf)+'">'+esc(sf)+' · '+counts[sf]+'</button>'; }).join('');
+  var open=S.notes.filter(isOpen).length;
+  function item(n, showSefer){
+    return '<article class="note'+(isOpen(n)?' q':'')+(isQ(n)&&n.done?' ans':'')+'"><div class="nl"><b>'+esc(showSefer?amudLabel(n.sefer,n.u):amudLabel(n.sefer,n.u).replace(n.sefer+' ',''))+'</b><span class="he">'+esc(amudHe(n.sefer,n.u))+'</span></div>'+
+      '<div class="ntext" dir="auto">'+esc(n.text).replace(/\n/g,'<br>')+'</div>'+
+      '<div class="nmeta"><span>'+(isQ(n)?(n.done?'✓ Answered · ':'❓ Open question · '):'')+esc(noteDateLabel(n))+'</span>'+
+      '<span>'+(isOpen(n)?'<button class="lnk" data-ans="'+n.id+'">Mark answered</button>':'')+'<button class="lnk" data-edit="'+n.id+'">Edit</button></span></div></article>';
+  }
+  var body='';
+  if(notesOrder==='daf'){
+    var groups={}; list.forEach(function(n){ (groups[n.sefer]=groups[n.sefer]||[]).push(n); });
+    body=Object.keys(groups).sort(function(a,b){return shasIdx(a)-shasIdx(b);}).map(function(sf){
+      var ns=groups[sf].sort(function(a,b){ return a.u-b.u || writtenOrder(a,b); }), m=KIND.gemara.find(sf);
+      return '<section class="ngroup"><div class="ngh"><b>'+esc(sf)+'</b><span class="hebl">'+esc(m?m[1]:'')+'</span><span class="n">'+ns.length+'</span></div>'+ns.map(function(n){return item(n,false);}).join('')+'</section>';
+    }).join('');
+  } else {
+    body='<section class="ngroup">'+list.slice().sort(writtenOrder).map(function(n){return item(n,true);}).join('')+'</section>';
+  }
+  el.innerHTML='<div class="nbar"><input id="nSearch" type="search" placeholder="Search your Gemara notes…" value="'+esc(f.q)+'" dir="auto">'+
+    '<div class="seg2"><button data-o="daf" class="'+(notesOrder==='daf'?'on':'')+'">By daf</button><button data-o="written" class="'+(notesOrder==='written'?'on':'')+'">As written</button></div>'+
+    '<button class="mbtn" id="nCopy" title="Copy as a plain list">Copy list</button></div>'+
+    '<div class="fchips"><button class="fchip'+(!f.sefer&&!f.open?' on':'')+'" data-s="">All · '+S.notes.length+'</button><button class="fchip'+(f.open?' on':'')+'" data-open="1">❓ Open questions · '+open+'</button>'+seferChips+'</div>'+
+    (list.length ? body : '<p class="empty" style="margin-top:20px">'+(S.notes.length?'No notes match.':'No notes yet.')+'</p>');
+  $('nSearch').oninput=function(){ notesFilter.q=this.value; var pos=this.selectionStart; renderNotes(); var i2=$('nSearch'); i2.focus(); i2.setSelectionRange(pos,pos); };
+  $('nCopy').onclick=function(){ var txt=notesAsText(list.slice().sort(writtenOrder));
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ toast('Copied '+list.length+' notes'); }).catch(function(){ prompt('Copy this:',txt); }); };
+}
+document.getElementById('viewNotes').addEventListener('click', function(ev){
+  var b=ev.target.closest('button'); if(!b) return;
+  if(b.dataset.o){ notesOrder=b.dataset.o; renderNotes(); }
+  else if(b.dataset.open){ notesFilter.open=!notesFilter.open; notesFilter.sefer=''; renderNotes(); }
+  else if(b.dataset.s!==undefined && b.classList.contains('fchip')){ notesFilter.sefer=b.dataset.s; notesFilter.open=false; renderNotes(); }
+  else if(b.dataset.edit) noteModal(b.dataset.edit);
+  else if(b.dataset.ans){ var m=S.notes.find(function(x){return x.id===b.dataset.ans;}); if(m){ m.done=true; save(); renderAll(); toast('Marked answered'); } }
+});
 
 /* ───────────── Settings / backup / sync ─────────────
    Every change is saved in this browser right away, and (when the Admin GitHub
