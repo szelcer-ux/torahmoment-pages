@@ -502,6 +502,9 @@ var HS=[['Bishul','בישול',16,0],['Shehiya, Chazara & Hatmana','שהייה �
  ['Lechem Mishneh','לחם משנה',4,3],['Havdala','הבדלה',10,3],['Tefillos of Shabbos','תפילות שבת',3,3]];
 var HS_FLAT=[]; HS.forEach(function(t,ti){ for(var k=1;k<=t[2];k++) HS_FLAT.push([ti,k]); }); // 211 shiurim
 var HS_START=[]; (function(){ var a=0; HS.forEach(function(t){ HS_START.push(a); a+=t[2]; }); })();
+// Talmud Yerushalmi: 39 masechtos — all of Zeraim, Moed, Nashim, Nezikin (no Avos/Eduyos) and Niddah (3 perakim). [index into MISHNA]
+var YERUSHALMI_SEDER=[[0,1,2,3,4,5,6,7,8,9,10],[11,12,13,14,15,16,17,18,19,20,21,22],[23,24,25,26,27,28,29],[30,31,32,33,34,35,37,39],[],[57]];
+var YER_START={'Berachos':'before','Shekalim':'before','Megillah':'before','Moed Katan':'before','Makkos':'before'};
 var TORAH=[['Bereishis','בראשית',50],['Shemos','שמות',40],['Vayikra','ויקרא',27],['Bamidbar','במדבר',36],['Devarim','דברים',34]];
 // Tanach groups: Torah, Nevi'im = NACH 0–20, Kesuvim = NACH 21–33
 
@@ -607,7 +610,7 @@ function defaults(){
        pos:{g:0}, goal:{per:'week', min:4, max:5}},
       HS_LIMUD()
     ],
-    log:[], siyumim:[], rmb:rmbStart(), fin:{gemara:{}, mishna:{}, tanach:{}, ketanos:{'Avos D’Rabbi Nosson':'before'}}, notes:importedNotes()
+    log:[], siyumim:[], rmb:rmbStart(), fin:{gemara:{}, mishna:{}, tanach:{}, ketanos:{'Avos D’Rabbi Nosson':'before'}, yerushalmi:JSON.parse(JSON.stringify(YER_START))}, notes:importedNotes()
   };
 }
 
@@ -625,6 +628,7 @@ function migrate(){
   if(!S.notes) S.notes=importedNotes();
   if(!S.fin) S.fin={gemara:{}, mishna:{}, tanach:{}};
   if(!S.limudim.some(function(l){return l.id==='hs';})) S.limudim.push(HS_LIMUD());
+  if(!S.fin.yerushalmi) S.fin.yerushalmi=JSON.parse(JSON.stringify(YER_START));
   if(!S.fin.ketanos) S.fin.ketanos={'Avos D’Rabbi Nosson':'before'};
   if(!S.rmb){ S.rmb=rmbStart(); var r=S.limudim.find(function(l){return l.id==='rambam';}); if(r) r.pos={g:0};
     S.log.forEach(function(e){ if(e.id==='rambam'){ e.from={g:0}; e.to={g:0}; e.keys=e.keys||[]; } }); }
@@ -1093,6 +1097,10 @@ function renderGoals(){
     groups:[{name:'Torah', he:'תורה', items:TORAH.map(function(m){ var f=S.fin.tanach[m[0]]; return {type:'tanach',key:m[0],he:m[1],total:m[2],done:f?m[2]:0,fin:!!f}; })},
             {name:'Nevi’im', he:'נביאים', items:goalItems('tanach',NACH,0,20,nachTotal)},
             {name:'Kesuvim', he:'כתובים', items:goalItems('tanach',NACH,21,33,nachTotal)}]});
+  var yer=goalCard({kicker:'Someday', title:'Talmud Yerushalmi', he:'תלמוד ירושלמי', color:'#5b6b3b', unitName:'masechtos', wide:true,
+    groups:SEDARIM.map(function(sd,k){ return {name:'Seder '+sd[0]+(k===5?' (Niddah, 3 perakim)':''), he:sd[1], items:YERUSHALMI_SEDER[k].map(function(i){ var m=MISHNA[i], f=S.fin.yerushalmi[m[0]]; return {type:'yerushalmi',key:m[0],he:m[1],total:1,done:f?1:0,fin:!!f}; })}; })
+      .filter(function(g){ return g.items.length; }),
+    note:'Counted by masechta. When this becomes a real limud, it can track by perek and halacha, which is the same in every edition.'});
   var ket=goalCard({kicker:'Long-term goal', title:'Mesechtos Ketanos', he:'מסכתות קטנות', color:'#6b5a3b', unitName:'masechtos', wide:true,
     groups:[{name:'Masechtos', items:KETANOS.map(function(m){ var f=S.fin.ketanos[m[0]]; return {type:'ketanos',key:m[0],he:m[1],total:1,done:f?1:0,fin:!!f}; })}]});
   var shas=goalCard({kicker:'Maybe someday', title:'All of Shas', he:'ש״ס בבלי', color:'#3b4a6b', unitName:'masechtos', wide:true,
@@ -1102,7 +1110,7 @@ function renderGoals(){
     groups:SEDARIM.map(function(sd,k){ return {name:'Seder '+sd[0], he:sd[1], items:goalItems('mishna',MISHNA,MISHNA_SEDER[k][0],MISHNA_SEDER[k][1],misTotal)}; }),
     note:'Mark the masechtos you’ve already finished so the tracker knows when you complete a seder.'});
   el.innerHTML='<p class="hint" style="margin:0 0 14px">Tap a masechta or sefer to mark it as one you’ve <b>already finished</b> (tap again to unmark). Anything you finish from now on is marked for you.</p>'+
-    '<div class="goalgrid">'+mt+moed+hsc+tan+mis+shas+ket+'</div>';
+    '<div class="goalgrid">'+mt+moed+hsc+tan+mis+shas+ket+yer+'</div>';
   $('gMap').onclick=function(){ setView('rambam'); };
 }
 document.getElementById('viewGoals').addEventListener('click', function(ev){
