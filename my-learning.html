@@ -45,9 +45,46 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .stat .k{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
 .stat .v{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.05;margin-top:4px}
 .stat .v small{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:500;margin-left:4px}
+.summary{grid-template-columns:repeat(3,1fr)}
 .dots{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
 .dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--c);display:grid;place-items:center;font-size:10px;font-weight:700;color:var(--c)}
 .dot.on{background:var(--c);color:#fff}
+
+/* view tabs */
+.views{display:flex;gap:4px;background:var(--paper2);border-radius:999px;padding:4px;width:max-content;margin:0 0 14px}
+.views button{border:0;background:none;font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:999px}
+.views button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(34,28,21,.15)}
+
+/* daily report */
+.report{max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 32px 24px;box-shadow:0 18px 40px -28px rgba(34,28,21,.45);position:relative}
+.report::after{content:"";position:absolute;inset:10px;border:1px solid rgba(168,132,58,.28);border-radius:14px;pointer-events:none}
+.rtop{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rnav{border:1px solid var(--line);background:#fff;width:34px;height:34px;border-radius:50%;font-size:16px;color:var(--ink2);position:relative;z-index:1}
+.rnav:disabled{opacity:.3;cursor:default}
+.rhead{text-align:center}
+.rhead .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.rhead h2{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.1;margin-top:4px}
+.rhead .hd{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink2)}
+.rrule{height:1px;background:linear-gradient(90deg,transparent,var(--gold2),transparent);margin:20px 0 6px}
+.rrow{display:grid;grid-template-columns:14px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--line)}
+.rrow:last-of-type{border-bottom:0}
+.rrow .sw{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.rrow .nm{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--c)}
+.rrow .what{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.15;margin-top:2px}
+.rrow .heb{font-family:var(--heb);font-size:15px;color:var(--ink2);direction:rtl;text-align:left}
+.rrow .amt{font-size:13px;font-weight:600;color:var(--ink2);text-align:right;white-space:nowrap}
+.rrow.no .sw{background:transparent;border:1.5px solid var(--c)}
+.rrow.no .what{font-family:var(--sans);font-size:14px;font-weight:500;color:var(--muted);font-style:italic}
+.rfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);position:relative;z-index:1}
+.rfoot .sum{font-family:var(--serif);font-size:19px}
+.rfoot .sum b{color:var(--red)}
+.rwk{max-width:720px;margin:14px auto 0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.rwk button{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 4px;text-align:center;font-size:11px;color:var(--muted)}
+.rwk button b{display:block;font-family:var(--serif);font-size:20px;color:var(--ink);font-weight:600}
+.rwk button.sel{border-color:var(--ink);background:#fff}
+.rwk button .bars{display:flex;gap:2px;justify-content:center;margin-top:5px;height:6px}
+.rwk button .bars i{width:5px;height:6px;border-radius:2px;background:var(--paper2)}
+.rwk button:disabled{opacity:.35;cursor:default}
 
 /* log-date bar */
 .logbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--ink);color:#f3ecdf;border-radius:999px;padding:7px 8px 7px 18px;margin-bottom:22px;font-size:13px}
@@ -158,8 +195,11 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
 .confetti{position:fixed;inset:0;pointer-events:none;z-index:70}
 
 @media (max-width:820px){
+  .summary{grid-template-columns:repeat(2,1fr)}.summary .stat:first-child{grid-column:1/-1}
+  .stat .v{font-size:28px}.rwk{gap:4px}.rwk button{padding:7px 2px;font-size:10px}.rwk button b{font-size:17px}
+  .ghost{white-space:nowrap}.toplinks{flex-wrap:wrap}
+  .report{padding:24px 18px 18px}.rhead h2{font-size:27px}.rrow .what{font-size:19px}
   .grid,.panels{grid-template-columns:1fr}
-  .summary{grid-template-columns:repeat(2,1fr)}
   .brand h1{font-size:36px}
   .dates{text-align:left}.toplinks{justify-content:flex-start}
   .logbar{border-radius:16px}.logbar .note{margin-left:0;width:100%}
@@ -189,8 +229,9 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
     <div class="stat"><div class="k">Today</div><div class="v" id="sToday">0<small>of 6</small></div><div class="dots" id="sDots"></div></div>
     <div class="stat"><div class="k">This week</div><div class="v" id="sWeek">0<small>days</small></div></div>
     <div class="stat"><div class="k">Streak</div><div class="v" id="sStreak">0<small>days</small></div></div>
-    <div class="stat"><div class="k">Siyumim</div><div class="v" id="sSiyum">0</div></div>
   </section>
+
+  <div class="views" id="views"><button data-v="overview" class="on">Overview</button><button data-v="report">Daily report</button></div>
 
   <div class="logbar" id="logbar">
     <span>Logging for</span>
@@ -203,6 +244,8 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
     <span class="note" id="logNote"></span>
   </div>
 
+  <div id="viewReport" hidden></div>
+  <div id="viewOverview">
   <section class="grid" id="grid"></section>
 
   <section class="panels">
@@ -225,10 +268,12 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
   <section class="panels" style="grid-template-columns:1fr">
     <div class="panel">
       <h2>Siyumim</h2>
-      <div class="sub">Sefarim and masechtos you’ve finished since you started tracking</div>
+      <div class="sub">Masechtos of Gemara and sefarim of Rambam you’ve finished</div>
       <div id="siyumim"></div>
     </div>
   </section>
+
+  </div>
 
   <footer>
     <span id="syncState"><i></i><span>Saved on this device</span></span>
@@ -640,7 +685,6 @@ function renderSummary(){
   var day=new Date(), s=0; if(!daysActive(ymd(day))) day=addDays(day,-1);
   while(daysActive(ymd(day))){ s++; day=addDays(day,-1); }
   document.getElementById('sStreak').innerHTML=s+'<small>'+(s===1?'day':'days')+'</small>';
-  document.getElementById('sSiyum').textContent=S.siyumim.length;
 }
 function renderHeat(){
   var end=new Date(), start=weekStart(addDays(end,-7*25)), h='';
@@ -662,12 +706,93 @@ function renderFeed(){
 }
 function renderSiyumim(){
   var el=document.getElementById('siyumim');
-  if(!S.siyumim.length){ el.innerHTML='<p class="empty">Your first one is coming — Kiddush HaChodesh and Bava Metzia are both in sight.</p>'; return; }
-  el.innerHTML=S.siyumim.slice().reverse().map(function(s){
+  var list=S.siyumim.filter(function(s){ var l=L(s.id); return l && (l.kind==='gemara'||l.kind==='rambam'); });
+  if(!list.length){ el.innerHTML='<p class="empty">None yet since you started tracking.</p>'; return; }
+  el.innerHTML=list.slice().reverse().map(function(s){
     var l=L(s.id); return '<div class="siyum"><span style="font-size:22px">📜</span><div><div class="s">'+esc(s.title)+'</div><div class="hint">'+esc(l?l.name:'')+' · '+fmtLong(parse(s.date))+' · '+hebDate(parse(s.date))+'</div></div></div>';
   }).join('');
 }
-function renderAll(){ renderSummary(); renderCards(); renderHeat(); renderFeed(); renderSiyumim(); }
+var SHORT={main:'Main Gemara', gem2:'2nd Gemara', mishna:'Mishnayos', nach:'Nach', ksa:'Kitzur', rambam:'Rambam'};
+var view='overview';
+
+// the unit just before a position (= the last thing actually learned)
+function before(kind,p){
+  var K=KIND[kind], q=JSON.parse(JSON.stringify(p));
+  if(!K.tiered){ q.i=Math.max(0,q.i-1); return q; }
+  if(q.minor>1){ q.minor--; return q; }
+  var c=K.counts(q); if(q.major>1){ q.major--; q.minor=c?c[q.major-1]:1; } return q;
+}
+function commonTrim(a,b){ // "Sanhedrin 16a","Sanhedrin 16b" -> "16b"
+  var aw=a.split(' '), bw=b.split(' '), k=0;
+  while(k<aw.length-1 && k<bw.length-1 && aw[k]===bw[k]) k++;
+  return bw.slice(k).join(' ');
+}
+function dayItems(date){
+  return S.limudim.map(function(l){
+    var es=S.log.filter(function(e){ return e.id===l.id && e.date===date; }).sort(function(a,b){return a.ts-b.ts;});
+    if(!es.length) return {l:l};
+    var K=KIND[l.kind], units=0; es.forEach(function(e){ units+=e.units||0; });
+    var first=es[0].from, last=es[es.length-1].to, en, he;
+    if(units>0){
+      var end=before(l.kind,last);
+      var a=K.en(first), b=K.en(end), ah=K.he(first), bh=K.he(end);
+      if(first.sefer!==end.sefer){ en=a+' – '+b; he=ah+' – '+bh; }
+      else if(a===b){ en=a; he=ah; }
+      else { en=a+'–'+commonTrim(a,b); he=ah+' – '+commonTrim(ah,bh); }
+    } else { en='Learned'; he=''; }
+    return {l:l, en:en, he:he, amt: units?K.fmtAmt(units):''};
+  });
+}
+function reportText(date){
+  var d=parse(date), items=dayItems(date), done=items.filter(function(x){return x.en;});
+  var out=['My learning · '+d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})+' · '+hebDate(d),''];
+  items.forEach(function(x){ out.push((x.en?'✓ ':'· ')+x.l.name+': '+(x.en? x.en+(x.amt?' ('+x.amt+')':'') : '—')); });
+  out.push('', done.length+' of '+items.length+' limudim');
+  return out.join('\n');
+}
+function renderReport(){
+  var el=document.getElementById('viewReport'); if(view!=='report') return;
+  var date=logDate, d=parse(date), items=dayItems(date), done=items.filter(function(x){return x.en;}).length, t=todayStr();
+  var rows=items.map(function(x){
+    var l=x.l;
+    if(!x.en) return '<div class="rrow no" style="--c:'+l.color+'"><span class="sw"></span><div><div class="nm">'+esc(l.name)+'</div><div class="what">Not logged</div></div><div class="amt"></div></div>';
+    return '<div class="rrow" style="--c:'+l.color+'"><span class="sw"></span><div><div class="nm">'+esc(l.name)+'</div><div class="what">'+esc(x.en)+'</div>'+(x.he?'<div class="heb">'+esc(x.he)+'</div>':'')+'</div><div class="amt">'+esc(x.amt)+'</div></div>';
+  }).join('');
+  var line = done===items.length ? 'Every limud today. <b>Ashrecha.</b>' : done ? '<b>'+done+'</b> of '+items.length+' limudim' : 'Nothing logged for this day yet';
+  // week strip
+  var ws=weekStart(d), wk='';
+  for(var k=0;k<7;k++){
+    var dd=addDays(ws,k), s=ymd(dd), fut=s>t, bars='';
+    S.limudim.forEach(function(l){ bars+='<i style="'+(activeOn(l.id,s)?'background:'+l.color:'')+'"></i>'; });
+    wk+='<button data-d="'+s+'" class="'+(s===date?'sel':'')+'" '+(fut?'disabled':'')+'>'+['Sun','Mon','Tue','Wed','Thu','Fri','Shab.'][k]+'<b>'+dd.getDate()+'</b><span class="bars">'+bars+'</span></button>';
+  }
+  el.innerHTML='<div class="report"><div class="rtop"><button class="rnav" data-step="-1" title="Previous day">‹</button>'+
+    '<div class="rhead"><div class="k">'+(date===t?'Today’s learning':'Daily report')+'</div><h2>'+d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})+'</h2><div class="hd">'+hebDate(d)+'</div></div>'+
+    '<button class="rnav" data-step="1" title="Next day" '+(date>=t?'disabled':'')+'>›</button></div>'+
+    '<div class="rrule"></div>'+rows+
+    '<div class="rfoot"><span class="sum">'+line+'</span><button class="mbtn" id="copyRep">Copy as text</button></div></div>'+
+    '<div class="rwk">'+wk+'</div>';
+}
+document.getElementById('viewReport').addEventListener('click', function(ev){
+  var b=ev.target.closest('button'); if(!b||b.disabled) return;
+  if(b.dataset.step) setLogDate(ymd(addDays(parse(logDate),+b.dataset.step)));
+  else if(b.dataset.d) setLogDate(b.dataset.d);
+  else if(b.id==='copyRep'){
+    var txt=reportText(logDate);
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ toast('Copied, ready to paste'); }).catch(function(){ prompt('Copy this:',txt); });
+  }
+});
+document.getElementById('views').addEventListener('click', function(ev){
+  var b=ev.target.closest('button'); if(!b) return; setView(b.dataset.v);
+});
+function setView(v){
+  view=v; try{ localStorage.setItem('tm_my_learning_view',v); }catch(e){}
+  document.querySelectorAll('#views button').forEach(function(b){ b.classList.toggle('on',b.dataset.v===v); });
+  document.getElementById('viewOverview').hidden = v!=='overview';
+  document.getElementById('viewReport').hidden = v!=='report';
+  renderReport();
+}
+function renderAll(){ renderSummary(); renderCards(); renderHeat(); renderFeed(); renderSiyumim(); renderReport(); }
 
 /* ───────────── Events ───────────── */
 document.getElementById('grid').addEventListener('click', function(ev){
@@ -727,7 +852,8 @@ function editModal(id, opts){
   } else if(l.kind==='rambam'){
     body='<div class="f"><label>Hilchos (English)</label><input id="eS" value="'+esc(opts.fresh?'':p.sefer)+'" placeholder="e.g. Ishus"></div>'+
       '<div class="f"><label>Hebrew name</label><input id="eH" dir="rtl" value="'+esc(opts.fresh?'':p.heb||'')+'" placeholder="הלכות אישות"></div>'+
-      '<div class="f2"><div class="f"><label>Perek</label><input id="eP" type="number" min="1" value="'+(opts.fresh?1:p.i+1)+'"></div><div class="f"><label>Total perakim</label><input id="eT" type="number" min="1" value="'+(opts.fresh?'':p.total)+'"></div></div>';
+      '<div class="f2"><div class="f"><label>Perek</label><input id="eP" type="number" min="1" value="'+(opts.fresh?1:p.i+1)+'"></div><div class="f"><label>Total perakim</label><input id="eT" type="number" min="1" value="'+(opts.fresh?'':p.total)+'"></div></div>'+
+      '<div class="f"><label>Last hilchos of a sefer? (siyum)</label><input id="eE" value="'+esc(opts.fresh?'':p.endsSefer||'')+'" placeholder="Leave empty, or e.g. Sefer Zemanim"></div>';
   } else if(l.kind==='mishna'){
     body='<div class="f"><label>Masechta</label><select id="eS">'+seferOptions(MISHNA,p.sefer)+'</select></div>'+
       '<div class="f2"><div class="f"><label>Perek</label><input id="eP" type="number" min="1" value="'+(opts.fresh?1:p.major)+'"></div><div class="f"><label>Mishna</label><input id="eM" type="number" min="1" value="'+(opts.fresh?1:p.minor)+'"></div></div>';
@@ -748,7 +874,7 @@ function editModal(id, opts){
     var np={sefer:p.sefer};
     if(l.kind==='gemara'){ np.sefer=$('eS').value; np.i=Math.max(0,(parseInt($('eD').value,10)-2)*2+(+$('eA').value)); np.i=Math.min(np.i,KIND.gemara.total(np)-1); }
     else if(l.kind==='nach'){ np.sefer=$('eS').value; np.i=Math.max(0,parseInt($('eP').value,10)-1); np.i=Math.min(np.i,KIND.nach.total(np)-1); }
-    else if(l.kind==='rambam'){ np.sefer=$('eS').value.trim()||'—'; np.heb=$('eH').value.trim(); np.total=Math.max(1,parseInt($('eT').value,10)||1); np.i=Math.min(np.total-1,Math.max(0,parseInt($('eP').value,10)-1)); }
+    else if(l.kind==='rambam'){ np.sefer=$('eS').value.trim()||'—'; np.heb=$('eH').value.trim(); np.endsSefer=$('eE').value.trim(); np.total=Math.max(1,parseInt($('eT').value,10)||1); np.i=Math.min(np.total-1,Math.max(0,parseInt($('eP').value,10)-1)); }
     else { if(l.kind==='mishna') np.sefer=$('eS').value; else np.sefer='Kitzur'; np.major=Math.max(1,parseInt($('eP').value,10)||1); np.minor=Math.max(1,parseInt($('eM').value,10)||1); var KK=KIND[l.kind], cc=KK.counts(np), mm=KK.majors(np); np.major=Math.min(np.major,mm); if(cc) np.minor=Math.min(np.minor,cc[np.major-1]); }
     l.pos=np;
     if(!opts.fresh){
@@ -760,7 +886,15 @@ function editModal(id, opts){
 }
 
 function finishFlow(l){
-  var title = l.kind==='gemara'?'Maseches '+l.pos.sefer : l.kind==='mishna'?'Mishnayos '+l.pos.sefer : l.kind==='rambam'?'Hilchos '+l.pos.sefer : l.kind==='ksa'?'Kitzur Shulchan Aruch':l.pos.sefer;
+  var isSiyum = l.kind==='gemara' || (l.kind==='rambam' && l.pos.endsSefer);
+  if(!isSiyum){
+    var what = l.kind==='mishna'?'Mishnayos '+l.pos.sefer : l.kind==='rambam'?'Hilchos '+l.pos.sefer : l.kind==='ksa'?'Kitzur Shulchan Aruch':l.pos.sefer;
+    openModal('<h3>Finished '+esc(what)+'</h3><div class="sub">What are you starting next in '+esc(l.name)+'?</div>'+
+      '<div class="mrow"><button class="mbtn" onclick="TM.close()">Later</button><button class="mbtn p" id="fNext">Choose what’s next →</button></div>');
+    $('fNext').onclick=function(){ editModal(l.id,{fresh:true}); };
+    return;
+  }
+  var title = l.kind==='gemara'?'Maseches '+l.pos.sefer : l.pos.endsSefer;
   var ts=Date.now();
   S.siyumim.push({ts:ts, date:logDate, id:l.id, title:title});
   var last=S.log[S.log.length-1]; if(last && last.id===l.id) last.siyum=ts;
@@ -874,12 +1008,12 @@ function scheduleSync(now){
 function syncBadge(state,msg){
   var c=syncCfg(), cls, txt;
   if(state){ cls=state; txt=msg; }
-  else if(!token()){ cls='err'; txt='Not backed up: open Admin & save token'; }
+  else if(!token()){ cls='err'; txt='Not backed up'; }
   else if(c.on===false){ cls=''; txt='Only on this device'; }
-  else if(c.err){ cls='err'; txt='Backup failed: tap for details'; }
-  else if(c.last){ cls='on'; txt='Backed up '+new Date(c.last).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}); }
+  else if(c.err){ cls='err'; txt='Backup failed'; }
+  else if(c.last){ cls='on'; txt='Saved '+new Date(c.last).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}); }
   else { cls=''; txt='Not backed up yet'; }
-  ['syncState','hdrSync'].forEach(function(id){ var el=$(id); if(!el) return; el.className=cls; el.querySelector('span').textContent=txt; });
+  ['syncState','hdrSync'].forEach(function(id){ var el=$(id); if(!el) return; el.className=(id==='hdrSync'?'ghost sync ':'')+cls; el.querySelector('span').textContent=txt; });
 }
 window.addEventListener('beforeunload', function(){ if(syncTimer){ clearTimeout(syncTimer); push(); } });
 document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='hidden' && syncTimer){ clearTimeout(syncTimer); syncTimer=null; push(); } else if(document.visibilityState==='visible') pull(true); });
