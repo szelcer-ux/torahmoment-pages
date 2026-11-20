@@ -139,6 +139,8 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .chip.fin::before{content:"✓ "}
 .chip.part{border-color:var(--gold2)}
 .chip.ro{cursor:default}
+.yer{color:var(--red);font-weight:700;margin-left:1px}
+.chip.fin .yer{color:var(--gold2)}
 
 /* daily report */
 .report{max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 32px 24px;box-shadow:0 18px 40px -28px rgba(34,28,21,.45);position:relative}
@@ -1066,7 +1068,7 @@ function goalCard(o){
     return '<div class="gg"><div class="ggh">'+esc(g.name)+(g.he?' <span>'+esc(g.he)+'</span>':'')+(gf?' <em>✓ complete</em>':'')+'</div><div class="chips">'+g.items.map(function(x){
       var part=!x.fin && x.done>0;
       return '<button class="chip'+(x.fin?' fin':'')+(part?' part':'')+'" data-t="'+x.type+'" data-k="'+esc(x.key)+'" title="'+esc(x.key)+(x.fin?' · finished'+((S.fin[x.type]||{})[x.key] && S.fin[x.type][x.key]!=='before'?' '+fmtShort(S.fin[x.type][x.key]):''):part?' · in progress':' · tap if you’ve already finished it')+'" style="--p:'+(x.done/x.total*100)+'%">'+
-        esc(x.key)+(part?' <small>'+Math.round(x.done/x.total*100)+'%</small>':'')+'</button>';
+        esc(x.key)+(x.type==='gemara'&&x.key==='Shekalim'?'<sup class="yer" title="Talmud Yerushalmi">*</sup>':'')+(part?' <small>'+Math.round(x.done/x.total*100)+'%</small>':'')+'</button>';
     }).join('')+'</div></div>';
   }).join('');
   return '<section class="goal'+(o.wide?' wide':'')+'"><div class="gh"><div><div class="label" style="color:'+o.color+'">'+esc(o.kicker)+'</div><h3>'+esc(o.title)+'</h3><div class="hebl">'+esc(o.he)+'</div></div>'+
@@ -1082,7 +1084,7 @@ function renderGoals(){
       return '<span class="chip ro'+(d===t?' fin':d?' part':'')+'" style="--p:'+(d/t*100)+'%">'+esc(sf[0].replace('Sefer ',''))+(d&&d<t?' <small>'+Math.round(d/t*100)+'%</small>':'')+'</span>'; }).join('')+'</div>'+
     '<div class="mrow" style="justify-content:flex-start"><button class="mbtn" id="gMap">Open the Rambam map →</button></div></section>';
   var moed=goalCard({kicker:'Gemara goal', title:'Seder Moed', he:'סדר מועד', color:'#8c3b2a', unitName:'masechtos',
-    groups:[{name:'Masechtos', items:goalItems('gemara',BAVLI,1,12,gemTotal)}], note:'Progress counts amudim, including the masechtos you’re in the middle of.'});
+    groups:[{name:'Masechtos', items:goalItems('gemara',BAVLI,1,12,gemTotal)}], note:'Progress counts amudim, including the masechtos you’re in the middle of.<br><span class="yer">*</span> Shekalim is Talmud Yerushalmi, counted as in the Vilna Shas and the Daf Yomi cycle.'});
   var hsl=L('hs'), hsi=hsl?hsl.pos.i:0, PART=['Bishul – Amira L’Yisrael','Kavana U’Maaseh – Me’abed','Muktza – Boneh','Shabbos & its mitzvos'];
   var hsc=goalCard({kicker:'In progress', title:'Hilchos Shabbos', he:'הלכות שבת', color:'#4f4a8a', unitName:'topics', wide:true,
     groups:[0,1,2,3].map(function(g){ return {name:PART[g], items:HS.map(function(t,ti){ return [t,ti]; }).filter(function(x){return x[0][3]===g;}).map(function(x){
@@ -1094,7 +1096,8 @@ function renderGoals(){
   var ket=goalCard({kicker:'Long-term goal', title:'Mesechtos Ketanos', he:'מסכתות קטנות', color:'#6b5a3b', unitName:'masechtos', wide:true,
     groups:[{name:'Masechtos', items:KETANOS.map(function(m){ var f=S.fin.ketanos[m[0]]; return {type:'ketanos',key:m[0],he:m[1],total:1,done:f?1:0,fin:!!f}; })}]});
   var shas=goalCard({kicker:'Maybe someday', title:'All of Shas', he:'ש״ס בבלי', color:'#3b4a6b', unitName:'masechtos', wide:true,
-    groups:SEDARIM.map(function(sd,k){ return {name:'Seder '+sd[0], he:sd[1], items:goalItems('gemara',BAVLI,BAVLI_SEDER[k][0],BAVLI_SEDER[k][1],gemTotal)}; })});
+    groups:SEDARIM.map(function(sd,k){ return {name:'Seder '+sd[0], he:sd[1], items:goalItems('gemara',BAVLI,BAVLI_SEDER[k][0],BAVLI_SEDER[k][1],gemTotal)}; }),
+    note:'<span class="yer">*</span> Shekalim is Talmud Yerushalmi, included as in the Vilna Shas and the Daf Yomi cycle.'});
   var mis=goalCard({kicker:'Siyum on every seder', title:'Mishnayos', he:'ששה סדרי משנה', color:'#4f6b3e', unitName:'masechtos', wide:true,
     groups:SEDARIM.map(function(sd,k){ return {name:'Seder '+sd[0], he:sd[1], items:goalItems('mishna',MISHNA,MISHNA_SEDER[k][0],MISHNA_SEDER[k][1],misTotal)}; }),
     note:'Mark the masechtos you’ve already finished so the tracker knows when you complete a seder.'});
