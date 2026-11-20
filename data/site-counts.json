@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 849,
+    "total": 850,
     "breakdown": {
       "parsha": {
         "audio": 41,
-        "video": 250
+        "video": 251
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,17 @@
         "audio": 137
       }
     },
-    "updated": "2026-11-19"
+    "updated": "2026-11-20"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Lavan's problem, Yaakov's standard",
+      "url": "https://www.youtube.com/watch?v=ObeH7cXk6BU",
+      "date": "2026-11-20T02:31:47Z",
+      "parsha": "Vayeitzei"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -51,14 +59,6 @@
       "title": "your face is a reshus harabim",
       "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261116-WA0060.mp3",
       "date": "2026-11-16T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Maybe it was me",
-      "url": "https://www.youtube.com/watch?v=P_yhORNErGU",
-      "date": "2026-11-13T05:16:08Z",
-      "parsha": "Toldos"
     }
   ],
   "recentByProgram": {
@@ -230,6 +230,14 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Lavan's problem, Yaakov's standard",
+        "url": "https://www.youtube.com/watch?v=ObeH7cXk6BU",
+        "date": "2026-11-20T02:31:47Z",
+        "parsha": "Vayeitzei"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Maybe it was me",
         "url": "https://www.youtube.com/watch?v=P_yhORNErGU",
         "date": "2026-11-13T05:16:08Z",
@@ -298,14 +306,6 @@
         "url": "https://www.youtube.com/watch?v=yirY8s5pgUo",
         "date": "2026-09-04T02:17:52Z",
         "parsha": "Vayeilech"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "More than just a thank you",
-        "url": "https://www.youtube.com/watch?v=4fGyqb7tUQs",
-        "date": "2026-08-28T02:21:19Z",
-        "parsha": "Ki Savo"
       }
     ]
   }
