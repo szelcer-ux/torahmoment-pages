@@ -160,6 +160,9 @@
     }
 
     /* ── Card ── */
+    .about-photo { float: left; width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 4px 20px 8px 0; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+    .about-section { display: flow-root; }
+    @media (max-width: 520px) { .about-photo { float: none; display: block; width: 104px; height: 104px; margin: 8px auto 14px; } }
     .card {
       background: var(--card);
       border-radius: var(--radius);
@@ -300,6 +303,7 @@
     <div class="about-section">
       <div class="section-label">The Person Behind It</div>
       <h2>About Shloimy Zelcer</h2>
+      <img class="about-photo" src="/shloimy-zelcer.jpg" alt="Shloimy Zelcer" width="120" height="120">
       <p>TorahMoment is the personal project of Shloimy Zelcer — a Torah-committed Jew raised in Brooklyn with a lifelong love of learning and teaching. The site reflects a commitment to bringing substantive, honest Torah content to a broader audience.</p>
       <p>The shiurim shared here draw on years of learning under distinguished rebbeim, personal study, and a belief that every Jew deserves access to Torah ideas that are both rigorous and alive.</p>
       <p>The goal is simple: to make each learning experience feel like a genuine <em>moment</em> — one that stays with you.</p>
