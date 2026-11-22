@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#f3ecdf">
+<link rel="manifest" href="/my-learning.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="/ml-icon-192.png">
+<link rel="apple-touch-icon" href="/ml-apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="My Learning">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Seder HaLimud · My Learning</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +32,7 @@ body{font-family:var(--sans);color:var(--ink);background:var(--paper);min-height
     radial-gradient(circle at 1px 1px, rgba(34,28,21,.035) 1px, transparent 0);
   background-size:auto,auto,4px 4px; background-attachment:fixed;}
 button{font-family:inherit;cursor:pointer}
-.wrap{overflow-x:hidden;max-width:1080px;margin:0 auto;padding:28px 20px 80px}
+.wrap{overflow-x:hidden;max-width:1080px;margin:0 auto;padding:calc(28px + env(safe-area-inset-top)) calc(20px + env(safe-area-inset-right)) calc(80px + env(safe-area-inset-bottom)) calc(20px + env(safe-area-inset-left))}
 
 /* header */
 header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:22px}
@@ -118,6 +125,33 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .rnotes .nm{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
 .rnote{display:block;width:100%;text-align:left;margin-top:6px;border:0;background:#fffdf8;border-left:3px solid #3b4a6b;border-radius:6px;padding:7px 10px;font-size:13.5px;color:var(--ink2);line-height:1.4}
 .rnote b{color:#3b4a6b;font-weight:700}
+
+/* year in review */
+.year{max-width:760px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 32px 24px;box-shadow:0 18px 40px -28px rgba(34,28,21,.45);position:relative}
+.year::after{content:"";position:absolute;inset:10px;border:1px solid rgba(168,132,58,.28);border-radius:14px;pointer-events:none}
+.ytop{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.year .rhead h2{font-size:40px}
+.ynote{text-align:center;margin-top:10px}
+.ystats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px;text-align:center}
+.ystats b{display:block;font-family:var(--serif);font-size:40px;font-weight:600;line-height:1}
+.ystats span{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.yh{font-family:var(--serif);font-size:22px;font-weight:600;margin:6px 0 6px}
+.yh small{font-family:var(--sans);font-size:11px;color:var(--muted);font-weight:500;margin-left:6px}
+.yrow{display:grid;grid-template-columns:14px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px dashed var(--line)}
+.yrow:last-of-type{border-bottom:0}
+.yrow .sw{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.yrow .nm{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--c)}
+.yrow .sp{font-size:13px;color:var(--ink2);margin-top:2px}
+.ya{text-align:right}.ya b{display:block;font-family:var(--serif);font-size:21px;font-weight:600}.ya span{font-size:11.5px;color:var(--muted)}
+.ymonths{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:6px;align-items:end;margin-top:6px}
+.ym{text-align:center;font-size:10px;color:var(--muted)}
+.ym .ymb{height:80px;background:var(--paper2);border-radius:6px;display:flex;align-items:flex-end;overflow:hidden}
+.ym .ymb i{display:block;width:100%;background:linear-gradient(180deg,var(--gold2),var(--gold));border-radius:6px 6px 0 0}
+.ym span{display:block;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ym b{display:block;font-size:11px;color:var(--ink2)}
+.ym.fut .ymb{background:transparent;border:1px dashed var(--line)}
+.ybig{font-size:15px}.ybig b{font-family:var(--serif);font-size:24px}
+@media (max-width:820px){ .year{padding:24px 16px 18px}.year .rhead h2{font-size:30px}.ystats{grid-template-columns:repeat(2,1fr);row-gap:16px}.ystats b{font-size:32px}.ymonths{grid-template-columns:repeat(7,minmax(0,1fr));row-gap:12px} }
 
 /* goals */
 .goalgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
@@ -319,7 +353,7 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
     <div class="stat"><div class="k">Streak</div><div class="v" id="sStreak">0<small>days</small></div></div>
   </section>
 
-  <div class="views" id="views"><button data-v="overview" class="on">Overview</button><button data-v="report">Daily report</button><button data-v="rambam">Rambam</button><button data-v="goals">Goals</button><button data-v="notes">Notes</button></div>
+  <div class="views" id="views"><button data-v="overview" class="on">Overview</button><button data-v="report">Daily report</button><button data-v="rambam">Rambam</button><button data-v="goals">Goals</button><button data-v="notes">Notes</button><button data-v="year" id="yearTab">Year</button></div>
 
   <div class="logbar" id="logbar">
     <span>Logging for</span>
@@ -336,6 +370,7 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
   <div id="viewRambam" hidden></div>
   <div id="viewGoals" hidden></div>
   <div id="viewNotes" hidden></div>
+  <div id="viewYear" hidden></div>
   <div id="viewOverview">
   <section class="grid" id="grid"></section>
 
@@ -610,7 +645,7 @@ function defaults(){
        pos:{g:0}, goal:{per:'week', min:4, max:5}},
       HS_LIMUD()
     ],
-    log:[], siyumim:[], rmb:rmbStart(), fin:{gemara:{}, mishna:{}, tanach:{}, ketanos:{'Avos D’Rabbi Nosson':'before'}, yerushalmi:JSON.parse(JSON.stringify(YER_START))}, notes:importedNotes()
+    log:[], siyumim:[], rmb:rmbStart(), fin:{gemara:{}, mishna:{'Bava Kamma':'before'}, tanach:{'Koheles':'before'}, ketanos:{'Avos D’Rabbi Nosson':'before'}, yerushalmi:JSON.parse(JSON.stringify(YER_START))}, notes:importedNotes()
   };
 }
 
@@ -629,6 +664,8 @@ function migrate(){
   if(!S.fin) S.fin={gemara:{}, mishna:{}, tanach:{}};
   if(!S.limudim.some(function(l){return l.id==='hs';})) S.limudim.push(HS_LIMUD());
   if(!S.fin.yerushalmi) S.fin.yerushalmi=JSON.parse(JSON.stringify(YER_START));
+  if(!S.fin.mishna['Bava Kamma']) S.fin.mishna['Bava Kamma']='before';
+  if(!S.fin.tanach['Koheles']) S.fin.tanach['Koheles']='before';
   if(!S.fin.ketanos) S.fin.ketanos={'Avos D’Rabbi Nosson':'before'};
   if(!S.rmb){ S.rmb=rmbStart(); var r=S.limudim.find(function(l){return l.id==='rambam';}); if(r) r.pos={g:0};
     S.log.forEach(function(e){ if(e.id==='rambam'){ e.from={g:0}; e.to={g:0}; e.keys=e.keys||[]; } }); }
@@ -1016,8 +1053,9 @@ function setView(v){
   document.getElementById('viewRambam').hidden = v!=='rambam';
   document.getElementById('viewGoals').hidden = v!=='goals';
   document.getElementById('viewNotes').hidden = v!=='notes';
-  document.getElementById('logbar').style.display = (v==='rambam'||v==='goals'||v==='notes') ? 'none' : '';
-  renderReport(); renderRambam(); renderGoals(); renderNotes();
+  document.getElementById('viewYear').hidden = v!=='year';
+  document.getElementById('logbar').style.display = (v==='rambam'||v==='goals'||v==='notes'||v==='year') ? 'none' : '';
+  renderReport(); renderRambam(); renderGoals(); renderNotes(); renderYear();
 }
 function renderRambam(){
   if(view!=='rambam') return;
@@ -1119,7 +1157,7 @@ document.getElementById('viewGoals').addEventListener('click', function(ev){
   if(S.fin[t][k]) delete S.fin[t][k]; else S.fin[t][k]='before';
   save(); renderAll(); toast(S.fin[t][k]?k+' marked as finished':k+' unmarked');
 });
-function renderAll(){ renderSummary(); renderCards(); renderHeat(); renderFeed(); renderSiyumim(); renderReport(); renderRambam(); renderGoals(); renderNotes(); }
+function renderAll(){ renderSummary(); renderCards(); renderHeat(); renderFeed(); renderSiyumim(); renderReport(); renderRambam(); renderGoals(); renderNotes(); renderYear(); }
 
 /* ───────────── Events ───────────── */
 document.getElementById('grid').addEventListener('click', function(ev){
@@ -1399,6 +1437,119 @@ document.getElementById('viewNotes').addEventListener('click', function(ev){
   else if(b.dataset.s!==undefined && b.classList.contains('fchip')){ notesFilter.sefer=b.dataset.s; notesFilter.open=false; renderNotes(); }
   else if(b.dataset.edit) noteModal(b.dataset.edit);
   else if(b.dataset.ans){ var m=S.notes.find(function(x){return x.id===b.dataset.ans;}); if(m){ m.done=true; save(); renderAll(); toast('Marked answered'); } }
+});
+
+/* ───────────── Year in review (Hebrew year) ───────────── */
+// Rough amounts learned before tracking began, per Hebrew year: {limud id: [units, where you started]}
+var BASELINE={5787:{main:[23,'Sanhedrin 4b'], gem2:[55,'Pesachim 9a'], mishna:[138,'Bava Kamma 2:5'], nach:[21,'Koheles 8:14'], ksa:[207,'Siman 7:3'], rambam:[48,'Rosh Hashana']}};
+var yearShown=null;
+function hebYearOf(d){
+  try{ var p=new Intl.DateTimeFormat('en-u-ca-hebrew',{year:'numeric'}).formatToParts(d); var y=p.find(function(x){return x.type==='year';}); return +y.value; }catch(e){ return 0; }
+}
+function hebMonthOf(d){ try{ return new Intl.DateTimeFormat('en-u-ca-hebrew',{month:'long'}).format(d); }catch(e){ return ''; } }
+function hebYearRange(hy){ // [first day, last day] of Hebrew year hy, as Date objects
+  var g=hy-3761, d=new Date(g,7,20), guard=0;
+  while(hebYearOf(d)!==hy && guard++<80) d=addDays(d,1);
+  var start=new Date(d), e=new Date(g+1,7,20); guard=0;
+  while(hebYearOf(e)!==hy+1 && guard++<80) e=addDays(e,1);
+  return [start, addDays(e,-1)];
+}
+function yearStats(hy){
+  var r=hebYearRange(hy), from=ymd(r[0]), end=ymd(r[1]), t=todayStr(), to=end<t?end:t;
+  var ents=S.log.filter(function(e){ return e.date>=from && e.date<=to; });
+  var days={}; ents.forEach(function(e){ days[e.date]=1; });
+  // longest streak in range
+  var best=0, cur=0;
+  for(var d=new Date(r[0]); ymd(d)<=to; d=addDays(d,1)){ if(days[ymd(d)]){ cur++; best=Math.max(best,cur); } else cur=0; }
+  var per=S.limudim.map(function(l){
+    var es=ents.filter(function(e){ return e.id===l.id; }).sort(function(a,b){ return a.date<b.date?-1:a.date>b.date?1:a.ts-b.ts; });
+    var units=es.reduce(function(a,e){ return a+(e.units||0); },0), dset={}; es.forEach(function(e){ dset[e.date]=1; });
+    var B=(BASELINE[hy]||{})[l.id];
+    return {l:l, units:units+(B?B[0]:0), pre:B?B[0]:0, preFrom:B?B[1]:'', days:Object.keys(dset).length, first:es.length?es[0].from:null};
+  });
+  // months (Hebrew), days learned in each
+  var months=[], mi={};
+  for(var d2=new Date(r[0]); d2<=r[1]; d2=addDays(d2,1)){
+    var m=hebMonthOf(d2), s2=ymd(d2);
+    if(!(m in mi)){ mi[m]=months.length; months.push({name:m, total:0, learned:0, future:true, untracked:true}); }
+    var M=months[mi[m]], tracked=!S.started || s2>=S.started; if(tracked) M.total++;
+    if(s2<=t && tracked){ M.future=false; M.untracked=false; if(days[s2]) M.learned++; }
+    if(s2>t) M.untracked=false;
+  }
+  var started = S.started && S.started>from ? S.started : null;
+  return {hy:hy, from:from, to:to, end:end, days:Object.keys(days).length, elapsed:Math.max(0,Math.round((parse(to)-parse(from))/864e5)+1),
+    best:best, per:per, months:months, started:started,
+    siyumim:S.siyumim.filter(function(x){ return x.date>=from && x.date<=to; }),
+    notes:(S.notes||[]).filter(function(n){ return n.date!=='list' && n.date>=from && n.date<=to; })};
+}
+function yearAmount(x){
+  var l=x.l, n=x.units; if(!n) return '—';
+  if(l.kind==='gemara') return n===1?'1 amud' : n===2?'1 daf' : (n%2?(n/2).toFixed(1):n/2)+' blatt';
+  return KIND[l.kind].fmtAmt(n);
+}
+function yearSpan(x){
+  var l=x.l;
+  if(x.preFrom) return esc(x.preFrom)+' → '+esc(KIND[l.kind].en(l.pos));
+  if(!x.first || !x.units) return '';
+  if(l.kind==='rambam'){ var nx=rmbNext(todayStr()); return 'Hil. '+esc(rmbLabel([x.first.g]))+(nx!=null?' → '+esc(rmbLabel([nx])):''); }
+  return esc(KIND[l.kind].en(x.first))+' → '+esc(KIND[l.kind].en(l.pos));
+}
+function yearText(st){
+  var out=['My learning · '+st.hy+' (so far)', ''];
+  out.push(st.days+' days learned · longest streak '+st.best+' days','');
+  st.per.forEach(function(x){ out.push(x.l.name+': '+(x.pre?'≈ ':'')+yearAmount(x)+(yearSpan(x)?' ('+yearSpan(x).replace(/&amp;/g,'&')+')':'')); });
+  if(st.siyumim.length){ out.push('','Siyumim:'); st.siyumim.forEach(function(s3){ out.push('• '+s3.title+' ('+fmtShort(s3.date)+')'); }); }
+  out.push('','Mishneh Torah: '+rmbCount()+' of 1,000 perakim');
+  return out.join('\n');
+}
+function renderYear(){
+  var tab=document.getElementById('yearTab'), hyNow=hebYearOf(new Date());
+  if(tab) tab.textContent=hyNow||'Year';
+  if(view!=='year') return;
+  var hy=yearShown||hyNow, st=yearStats(hy), el=document.getElementById('viewYear');
+  var first=S.log.length ? S.log.reduce(function(a,e){ return e.date<a?e.date:a; }, S.log[0].date) : todayStr();
+  var canPrev = hebYearOf(parse(first)) < hy, canNext = hy < hyNow;
+  var gem=function(n){ return gemYear(n); };
+  var maxM=Math.max.apply(null, st.months.map(function(m){ return m.total; }));
+  var monthsHtml=st.months.map(function(m){
+    if(m.untracked) return '<div class="ym fut" title="Before you started tracking"><div class="ymb"></div><span>'+esc(m.name)+'</span><b>–</b></div>';
+    var h=m.future?0:Math.round(m.learned/m.total*100);
+    return '<div class="ym'+(m.future?' fut':'')+'"><div class="ymb"><i style="height:'+h+'%"></i></div><span>'+esc(m.name)+'</span><b>'+(m.future?'':m.learned)+'</b></div>';
+  }).join('');
+  var rows=st.per.map(function(x){
+    var sp=yearSpan(x);
+    return '<div class="yrow" style="--c:'+x.l.color+'"><span class="sw"></span><div><div class="nm">'+esc(x.l.name)+'</div>'+(sp?'<div class="sp">'+sp+'</div>':'')+'</div>'+
+      '<div class="ya"><b>'+(x.pre?'≈ ':'')+yearAmount(x)+'</b><span>'+(x.pre?'incl. ~'+yearAmount({l:x.l,units:x.pre})+' before tracking':(x.days?x.days+' day'+(x.days===1?'':'s'):''))+'</span></div></div>';
+  }).join('');
+  var pd=rmbPlanDone();
+  var siy=st.siyumim.length ? st.siyumim.map(function(s3){ return '<div class="siyum"><span style="font-size:20px">📜</span><div><div class="s">'+esc(s3.title)+'</div><div class="hint">'+fmtLong(parse(s3.date))+' · '+hebDate(parse(s3.date))+'</div></div></div>'; }).join('')
+    : '<p class="empty">No siyumim yet this year.</p>';
+  var openQ=(S.notes||[]).filter(isOpen).length;
+  el.innerHTML='<div class="year">'+
+    '<div class="ytop"><button class="rnav" data-y="-1" '+(canPrev?'':'disabled')+'>‹</button><div class="rhead"><div class="k">Year in review</div><h2>'+hy+' · '+gem(hy)+'</h2>'+
+      '<div class="hd">'+fmtShort(st.from)+', '+parse(st.from).getFullYear()+' – '+fmtShort(st.end)+', '+parse(st.end).getFullYear()+(st.to<st.end?' · so far':'')+'</div></div>'+
+      '<button class="rnav" data-y="1" '+(canNext?'':'disabled')+'>›</button></div>'+
+    (st.started?'<p class="hint ynote">Tracking began '+fmtShort(st.started)+' ('+esc(hebDate(parse(st.started)))+'). '+(BASELINE[hy]?'Amounts marked ≈ include your rough count from Rosh Hashana until then.':'Earlier learning this year isn’t counted.')+'</p>':'')+
+    '<div class="ystats"><div><b>'+st.days+'</b><span>days learned</span></div><div><b>'+st.best+'</b><span>longest streak</span></div><div><b>'+st.siyumim.length+'</b><span>siyumim</span></div><div><b>'+st.notes.length+'</b><span>Gemara notes</span></div></div>'+
+    '<div class="rrule"></div><h3 class="yh">By limud</h3>'+rows+
+    '<div class="rrule"></div><h3 class="yh">Month by month <small>days learned</small></h3><div class="ymonths">'+monthsHtml+'</div>'+
+    (st.started?'<p class="hint" style="margin-top:8px">“–” = before tracking. That learning is counted in the totals above, just not by day.</p>':'')+
+    '<div class="rrule"></div><h3 class="yh">Mishneh Torah</h3><p class="ybig"><b>'+rmbCount()+'</b> of 1,000 perakim'+(hy===5787?' · <b>'+pd+'</b> of '+RAMBAM_PLAN.length+' in this year’s plan':'')+'</p>'+
+    '<div class="rrule"></div><h3 class="yh">Siyumim</h3>'+siy+
+    (openQ?'<p class="hint" style="margin-top:12px">❓ '+openQ+' open question'+(openQ===1?'':'s')+' in your Gemara notes.</p>':'')+
+    '<div class="rfoot"><span class="sum">'+(st.days?'<b>'+st.days+'</b> days of learning'+(st.to<st.end?' so far':''):'Nothing logged this year yet')+'</span><button class="mbtn" id="copyYear">Copy as text</button></div>'+
+  '</div>';
+  $('copyYear').onclick=function(){ var txt=yearText(st); (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ toast('Copied'); }).catch(function(){ prompt('Copy this:',txt); }); };
+}
+function gemYear(hy){ // 5787 → תשפ״ז
+  var n=hy%1000, H=['','ק','ר','ש','ת','תק','תר','תש','תת','תתק'], T=['','י','כ','ל','מ','נ','ס','ע','פ','צ'], O=['','א','ב','ג','ד','ה','ו','ז','ח','ט'];
+  var out=H[Math.floor(n/100)]; n%=100;
+  if(n===15) out+='טו'; else if(n===16) out+='טז'; else out+=T[Math.floor(n/10)]+O[n%10];
+  return out.length>1 ? out.slice(0,-1)+'״'+out.slice(-1) : out+'׳';
+}
+document.getElementById('viewYear').addEventListener('click', function(ev){
+  var b=ev.target.closest('button[data-y]'); if(!b||b.disabled) return;
+  yearShown=(yearShown||hebYearOf(new Date()))+(+b.dataset.y); renderYear();
 });
 
 /* ───────────── Settings / backup / sync ─────────────
