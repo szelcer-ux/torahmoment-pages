@@ -153,6 +153,17 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .ybig{font-size:15px}.ybig b{font-family:var(--serif);font-size:24px}
 @media (max-width:820px){ .year{padding:24px 16px 18px}.year .rhead h2{font-size:30px}.ystats{grid-template-columns:repeat(2,1fr);row-gap:16px}.ystats b{font-size:32px}.ymonths{grid-template-columns:repeat(7,minmax(0,1fr));row-gap:12px} }
 
+/* coming up */
+.coming-panel{margin-top:24px}
+.coming{list-style:none}
+.coming li{display:grid;grid-template-columns:12px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line)}
+.coming li:last-child{border-bottom:0}
+.coming .sw{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.coming .ct b{display:block;font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.15}
+.coming .ct span{font-size:12px;color:var(--muted)}
+.coming .ce{text-align:right;font-size:14px;font-weight:600;color:var(--ink2);white-space:nowrap}
+.coming .ce small{display:block;font-size:10.5px;font-weight:500;color:var(--muted)}
+
 /* goals */
 .goalgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
 .goal{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
@@ -374,6 +385,12 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
   <div id="viewOverview">
   <section class="grid" id="grid"></section>
 
+  <section class="panel coming-panel">
+    <h2>Coming up</h2>
+    <div class="sub">Your next siyum in each limud</div>
+    <ul class="coming" id="coming"></ul>
+  </section>
+
   <section class="panels">
     <div class="panel">
       <h2>The year so far</h2>
@@ -394,7 +411,7 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
   <section class="panels" style="grid-template-columns:1fr">
     <div class="panel">
       <h2>Siyumim</h2>
-      <div class="sub">Masechtos and sedarim of Gemara, sefarim of Rambam, and sedarim of Mishnayos</div>
+      <div class="sub">Each masechta of Gemara, each seder of Mishnayos, each sefer of Rambam, all of Nach, and the Kitzur</div>
       <div id="siyumim"></div>
     </div>
   </section>
@@ -962,7 +979,7 @@ function renderFeed(){
 }
 function renderSiyumim(){
   var el=document.getElementById('siyumim');
-  var list=S.siyumim.filter(function(s){ var l=L(s.id); return l && (l.kind==='gemara'||l.kind==='rambam'||l.kind==='hs'||s.seder); });
+  var list=S.siyumim.filter(function(s){ var l=L(s.id); return l && l.kind!=='hs' && !(l.kind==='mishna' && !s.seder); });
   if(!list.length){ el.innerHTML='<p class="empty">None yet since you started tracking.</p>'; return; }
   el.innerHTML=list.slice().reverse().map(function(s){
     var l=L(s.id); return '<div class="siyum"><span style="font-size:22px">📜</span><div><div class="s">'+esc(s.title)+'</div><div class="hint">'+esc(l?l.name:'')+' · '+fmtLong(parse(s.date))+' · '+hebDate(parse(s.date))+'</div></div></div>';
@@ -1157,7 +1174,7 @@ document.getElementById('viewGoals').addEventListener('click', function(ev){
   if(S.fin[t][k]) delete S.fin[t][k]; else S.fin[t][k]='before';
   save(); renderAll(); toast(S.fin[t][k]?k+' marked as finished':k+' unmarked');
 });
-function renderAll(){ renderSummary(); renderCards(); renderHeat(); renderFeed(); renderSiyumim(); renderReport(); renderRambam(); renderGoals(); renderNotes(); renderYear(); }
+function renderAll(){ renderSummary(); renderCards(); renderComing(); renderHeat(); renderFeed(); renderSiyumim(); renderReport(); renderRambam(); renderGoals(); renderNotes(); renderYear(); }
 
 /* ───────────── Events ───────────── */
 document.getElementById('grid').addEventListener('click', function(ev){
@@ -1283,35 +1300,107 @@ function sederComplete(type, k){
   var R=(type==='gemara'?BAVLI_SEDER:MISHNA_SEDER)[k], L2=(type==='gemara'?BAVLI:MISHNA);
   for(var i=R[0];i<=R[1];i++) if(!S.fin[type][L2[i][0]]) return false; return true;
 }
+// Siyum rules: Gemara = each masechta · Mishnayos = each seder · Rambam = each sefer · Nach = all of Nach · Kitzur = the whole Kitzur · Hilchos Shabbos = none
+function nachComplete(){ return NACH.every(function(m){ return S.fin.tanach[m[0]]; }); }
 function finishFlow(l){
   var last=S.log[S.log.length-1], mine = last && last.id===l.id ? last : null;
   var type = l.kind==='gemara'?'gemara' : l.kind==='mishna'?'mishna' : l.kind==='nach'?'tanach' : null;
   if(type){ S.fin[type][l.pos.sefer]=logDate; if(mine) mine.fin=[type,l.pos.sefer]; }
-  var sederMsg='', sederSiyum=null;
-  if(type==='gemara'||type==='mishna'){
-    var list=type==='gemara'?BAVLI:MISHNA, idx=list.findIndex(function(m){return m[0]===l.pos.sefer;}), k=sederOf(type==='gemara'?BAVLI_SEDER:MISHNA_SEDER, idx);
-    if(k>=0 && sederComplete(type,k)){ sederSiyum='Seder '+SEDARIM[k][0]+(type==='mishna'?' (Mishnayos)':''); sederMsg=' That completes <b>Seder '+SEDARIM[k][0]+'</b> ('+SEDARIM[k][1]+')!'; }
+  var title=null, sub='', extra=null;
+  if(l.kind==='gemara'){
+    title='Maseches '+l.pos.sefer;
+    var gi=BAVLI.findIndex(function(m){return m[0]===l.pos.sefer;}), gk=sederOf(BAVLI_SEDER, gi);
+    if(gk>=0 && sederComplete('gemara',gk)){ extra='Seder '+SEDARIM[gk][0]; sub=' That completes <b>Seder '+SEDARIM[gk][0]+'</b> ('+SEDARIM[gk][1]+')!'; }
+  } else if(l.kind==='mishna'){
+    var mi=MISHNA.findIndex(function(m){return m[0]===l.pos.sefer;}), mk=sederOf(MISHNA_SEDER, mi);
+    if(mk>=0 && sederComplete('mishna',mk)){ title='Seder '+SEDARIM[mk][0]+' (Mishnayos)'; sub='With Mishnayos '+esc(l.pos.sefer)+', that completes <b>Seder '+SEDARIM[mk][0]+'</b> ('+SEDARIM[mk][1]+')!'; }
+  } else if(l.kind==='nach'){
+    if(nachComplete()){ title='All of Nach'; sub='With '+esc(l.pos.sefer)+', you’ve finished <b>all of Nach</b> (נביאים וכתובים)!'; }
+  } else if(l.kind==='ksa'){
+    title='Kitzur Shulchan Aruch';
   }
-  var isSiyum = l.kind==='gemara' || l.kind==='hs' || sederSiyum;
-  if(!isSiyum){
+  if(!title){
     save(); renderAll();
-    var what = l.kind==='mishna'?'Mishnayos '+l.pos.sefer : l.kind==='ksa'?'Kitzur Shulchan Aruch':l.pos.sefer;
+    var what = l.kind==='mishna'?'Mishnayos '+l.pos.sefer : l.kind==='hs'?'Hilchos Shabbos' : l.pos.sefer;
+    if(l.kind==='hs'){
+      openModal('<h3>Finished Hilchos Shabbos</h3><div class="sub">All 211 shiurim. Mazel tov!</div><div class="mrow"><button class="mbtn p" onclick="TM.close()">Thank you</button></div>');
+      return;
+    }
     openModal('<h3>Finished '+esc(what)+'</h3><div class="sub">What are you starting next in '+esc(l.name)+'?</div>'+
       '<div class="mrow"><button class="mbtn" onclick="TM.close()">Later</button><button class="mbtn p" id="fNext">Choose what’s next →</button></div>');
     $('fNext').onclick=function(){ editModal(l.id,{fresh:true}); };
     return;
   }
-  var title = l.kind==='gemara' ? 'Maseches '+l.pos.sefer : l.kind==='hs' ? 'Hilchos Shabbos' : sederSiyum;
   var ts=Date.now();
-  S.siyumim.push({ts:ts, date:logDate, id:l.id, title:title, seder:!!sederSiyum});
-  if(l.kind==='gemara' && sederSiyum) S.siyumim.push({ts:ts+1, date:logDate, id:l.id, title:sederSiyum, seder:true});
+  S.siyumim.push({ts:ts, date:logDate, id:l.id, title:title, seder:l.kind==='mishna'});
+  if(extra) S.siyumim.push({ts:ts+1, date:logDate, id:l.id, title:extra, seder:true});
   if(mine) mine.siyum=ts;
   save(); renderAll(); confetti();
+  var done = (l.kind==='mishna'||l.kind==='nach') ? '' : 'You finished <b>'+esc(title)+'</b>.';
   openModal('<div style="text-align:center"><div style="font-size:44px">📜</div><h3>Siyum!</h3><div class="hebl" style="font-family:var(--heb);font-size:22px;margin:4px 0 6px">הדרן עלך</div>'+
-    '<p class="hint" style="margin-bottom:14px">You finished <b>'+esc(l.kind==='gemara'?title:(l.kind==='mishna'?'Mishnayos '+l.pos.sefer:title))+'</b>.'+sederMsg+' Mazel tov!</p></div>'+
-    (l.kind==='hs' ? '<div class="mrow" style="justify-content:center"><button class="mbtn p" onclick="TM.close()">Thank you</button></div>' :
+    '<p class="hint" style="margin-bottom:14px">'+done+sub+' Mazel tov!</p></div>'+
+    (l.kind==='ksa' ? '<div class="mrow" style="justify-content:center"><button class="mbtn p" onclick="TM.close()">Thank you</button></div>' :
     '<div class="mrow" style="justify-content:center"><button class="mbtn" onclick="TM.close()">Later</button><button class="mbtn p" id="fNext">Choose what’s next →</button></div>'));
   if($('fNext')) $('fNext').onclick=function(){ editModal(l.id,{fresh:true}); };
+}
+
+/* ───────────── Coming up: the next siyum in each limud ───────────── */
+function recentRate(id){ // units per day over the last 4 weeks of tracking (null if under a week of data)
+  var t=todayStr(), from=ymd(addDays(new Date(),-27)), st=S.started||t; if(st>from) from=st;
+  var days=Math.round((parse(t)-parse(from))/864e5)+1; if(days<7) return null;
+  var n=S.log.filter(function(e){ return e.id===id && e.date>=from && e.date<=t; }).reduce(function(a,e){ return a+(e.units||0); },0);
+  return n>0 ? n/days : null;
+}
+function etaFrom(left, perDay){ return perDay ? addDays(new Date(), Math.ceil(left/perDay)) : null; }
+function comingUp(){
+  var out=[];
+  S.limudim.forEach(function(l){
+    if(l.kind==='gemara'){
+      var left=KIND.gemara.total(l.pos)-l.pos.i; if(left<=0) return;
+      var rate=l.goal?(l.goal.min+l.goal.max)/2/7:recentRate(l.id);
+      out.push({l:l, title:'Maseches '+l.pos.sefer, left:(left===1?'1 amud':(left%2?(left/2).toFixed(1):left/2)+' blatt')+' left', eta:etaFrom(left,rate), paced:!l.goal});
+    }
+    if(l.kind==='mishna'){
+      var mi=MISHNA.findIndex(function(m){return m[0]===l.pos.sefer;}), k=sederOf(MISHNA_SEDER, mi); if(k<0) return;
+      var R=MISHNA_SEDER[k], left2=0;
+      for(var i=R[0];i<=R[1];i++){ var m=MISHNA[i]; if(S.fin.mishna[m[0]]) continue; left2+=misTotal(m); if(m[0]===l.pos.sefer) left2-=progress(l).done; }
+      if(left2<=0) return;
+      out.push({l:l, title:'Seder '+SEDARIM[k][0]+' (Mishnayos)', left:left2+' mishnayos left', eta:etaFrom(left2, l.goal?l.goal.min:recentRate(l.id))});
+    }
+    if(l.kind==='rambam'){ // every sefer your plan finishes, plus the one you're in if the plan doesn't finish it
+      var plan={}; RAMBAM_PLAN.forEach(function(it){ plan[it[1]]=it[0]; });
+      var nx=rmbNext(todayStr()), curSi=nx!=null?RMB_FLAT[nx].si:-1;
+      RAMBAM.forEach(function(sf,si){
+        var r=RMB_SEFER_RANGE[si], undone=[];
+        for(var g=r[0];g<=r[1];g++) if(!rmbDone(g)) undone.push(g);
+        if(!undone.length) return;
+        var planned=undone.every(function(g2){ return plan[g2]; });
+        if(planned) out.push({l:l, title:sf[0], left:undone.length+' perakim left', eta:parse(undone.map(function(g2){ return plan[g2]; }).sort().pop()), byPlan:true});
+        else if(si===curSi) out.push({l:l, title:sf[0], left:undone.length+' perakim left', eta:etaFrom(undone.length, (l.goal.min+l.goal.max)/2/7)});
+      });
+    }
+    if(l.kind==='nach'){
+      var left3=0; NACH.forEach(function(m){ if(!S.fin.tanach[m[0]]) left3+=m[2]; });
+      if(!S.fin.tanach[l.pos.sefer]) left3-=Math.min(l.pos.i, KIND.nach.total(l.pos));
+      if(left3<=0) return;
+      out.push({l:l, title:'All of Nach', left:left3+' perakim left', eta:etaFrom(left3, recentRate(l.id)), paced:true});
+    }
+    if(l.kind==='ksa'){
+      var pr=progress(l), left4=pr.total-pr.done; if(left4<=0) return;
+      out.push({l:l, title:'Kitzur Shulchan Aruch', left:left4+' halachos left', eta:etaFrom(left4, l.goal?l.goal.min:recentRate(l.id))});
+    }
+  });
+  out.sort(function(a,b){ if(!a.eta) return 1; if(!b.eta) return -1; return a.eta-b.eta; });
+  return out;
+}
+function renderComing(){
+  var el=document.getElementById('coming'); if(!el) return;
+  var items=comingUp();
+  el.innerHTML=items.map(function(x){
+    var when = x.eta ? '≈ '+x.eta.toLocaleDateString('en-US',{month:'short',day:'numeric',year:(x.eta.getFullYear()!==new Date().getFullYear()?'numeric':undefined)})+(x.byPlan?' <small>on your plan</small>':x.paced?' <small>at your recent pace</small>':'')
+      : '<small>pace shows after a week of logging</small>';
+    return '<li style="--c:'+x.l.color+'"><span class="sw"></span><div class="ct"><b>'+esc(x.title)+'</b><span>'+(x.l.name!==x.title?esc(x.l.name)+' · ':'')+esc(x.left)+'</span></div><div class="ce">'+when+'</div></li>';
+  }).join('') || '<li class="empty">Nothing in progress.</li>';
 }
 
 /* ───────────── Gemara notes ───────────── */
