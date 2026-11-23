@@ -1465,12 +1465,13 @@ function renderComing(){
 
 /* ───────────── Gemara notes ───────────── */
 var notesFilter={sefer:'', q:'', open:false}, notesOrder='daf';
-function amudLabel(sefer,u){ return sefer+' '+(Math.floor(u/2)+2)+(u%2?'b':'a'); }
-function amudHe(sefer,u){ var m=KIND.gemara.find(sefer); return (m?m[1]+' ':'')+gem(Math.floor(u/2)+2)+(u%2?' ע״ב':' ע״א'); }
+function isKet(sefer){ return KETANOS.some(function(m){ return m[0]===sefer; }); }
+function amudLabel(sefer,u){ if(isKet(sefer)) return sefer+' '+Math.floor(u/1000)+':'+(u%1000); return sefer+' '+(Math.floor(u/2)+2)+(u%2?'b':'a'); }
+function amudHe(sefer,u){ if(isKet(sefer)){ var k=KETANOS.find(function(x){return x[0]===sefer;}); return k[1]+' פרק '+gem(Math.floor(u/1000))+' הלכה '+gem(u%1000); } var m=KIND.gemara.find(sefer); return (m?m[1]+' ':'')+gem(Math.floor(u/2)+2)+(u%2?' ע״ב':' ע״א'); }
 function isQ(n){ return /[?？]/.test(n.text); }
 function isOpen(n){ return isQ(n) && !n.done; }
 function noteDateLabel(n){ return n.date==='list' ? 'from your notes list' : fmtShort(n.date)+', '+parse(n.date).getFullYear()+' · '+hebDate(parse(n.date)); }
-function shasIdx(sefer){ var i=BAVLI.findIndex(function(m){return m[0]===sefer;}); return i<0?99:i; }
+function shasIdx(sefer){ var i=BAVLI.findIndex(function(m){return m[0]===sefer;}); if(i>=0) return i; var k=KETANOS.findIndex(function(m){return m[0]===sefer;}); return k<0?999:100+k; }
 function hebMonthYear(date){ try{ return new Intl.DateTimeFormat('en-u-ca-hebrew',{month:'long',year:'numeric'}).format(parse(date)); }catch(e){ return fmtShort(date); } }
 function writtenOrder(a,b){ return (a.ts-b.ts) || (a.seq-b.seq); }
 
@@ -1516,18 +1517,24 @@ function noteModal(nid, where, text, lid){
   if(n){ sefer=n.sefer; u=n.u; }
   else if(where){ var w=where.split('|'); u=+w.pop(); sefer=w.join('|'); }
   else { var l=L(lid)||L('main'); sefer=l.pos.sefer; u=Math.min(l.pos.i, KIND.gemara.total(l.pos)-1); }
-  openModal('<h3>'+(n?'Edit note':'Gemara note')+'</h3><div class="sub">'+(n?esc(noteDateLabel(n)):'For '+fmtLong(parse(logDate)))+'</div>'+
-    '<div class="f2" style="grid-template-columns:2fr 1fr 1fr"><div class="f"><label>Masechta</label><select id="nS">'+seferOptions(BAVLI,sefer)+'</select></div>'+
-    '<div class="f"><label>Daf</label><input id="nD" type="number" min="2" value="'+(Math.floor(u/2)+2)+'"></div>'+
-    '<div class="f"><label>Amud</label><select id="nA"><option value="0"'+(u%2?'':' selected')+'>a</option><option value="1"'+(u%2?' selected':'')+'>b</option></select></div></div>'+
+  openModal('<h3>'+(n?'Edit note':'Note')+'</h3><div class="sub">'+(n?esc(noteDateLabel(n)):'For '+fmtLong(parse(logDate)))+'</div>'+
+    '<div class="f2" style="grid-template-columns:2fr 1fr 1fr"><div class="f"><label>Masechta</label><select id="nS"><optgroup label="Shas">'+seferOptions(BAVLI,sefer)+'</optgroup><optgroup label="Mesechtos Ketanos">'+seferOptions(KETANOS,sefer)+'</optgroup></select></div>'+
+    '<div class="f gpos"><label>Daf</label><input id="nD" type="number" min="2" value="'+(isKet(sefer)?2:Math.floor(u/2)+2)+'"></div>'+
+    '<div class="f gpos"><label>Amud</label><select id="nA"><option value="0"'+(u%2?'':' selected')+'>a</option><option value="1"'+(u%2&&!isKet(sefer)?' selected':'')+'>b</option></select></div>'+
+    '<div class="f kpos"><label>Perek</label><input id="nP" type="number" min="1" value="'+(isKet(sefer)?Math.floor(u/1000):1)+'"></div>'+
+    '<div class="f kpos"><label>Halacha</label><input id="nH" type="number" min="1" value="'+(isKet(sefer)?u%1000:1)+'"></div></div>'+
     '<div class="f"><label>Note</label><textarea id="nText" rows="6" dir="auto" placeholder="Rashi, Tosafos, a question, a line you want to remember…">'+esc(n?n.text:(text||''))+'</textarea></div>'+
     '<p class="hint">Anything with a “?” is listed as an open question.</p>'+
     (n&&isQ(n)?'<label class="check"><input type="checkbox" id="nDone" '+(n.done?'checked':'')+'> ✓ Answered</label>':'')+
     '<div class="mrow">'+(n?'<button class="mbtn danger" id="nDel">Delete</button>':'')+'<button class="mbtn" onclick="TM.close()">Cancel</button><button class="mbtn p" id="nGo">Save</button></div>');
+  var swap=function(){ var k=isKet($('nS').value); document.querySelectorAll('#modal .gpos').forEach(function(e){ e.style.display=k?'none':''; }); document.querySelectorAll('#modal .kpos').forEach(function(e){ e.style.display=k?'':'none'; }); };
+  $('nS').onchange=swap; swap();
   setTimeout(function(){ var t=$('nText'); t.focus(); t.setSelectionRange(t.value.length,t.value.length); },60);
   $('nGo').onclick=function(){
     var txt=$('nText').value.trim(); if(!txt){ $('nText').focus(); return; }
-    var sf=$('nS').value, uu=Math.max(0,(parseInt($('nD').value,10)-2)*2+(+$('nA').value)); uu=Math.min(uu, KIND.gemara.total({sefer:sf})-1);
+    var sf=$('nS').value, uu;
+    if(isKet(sf)) uu=Math.max(1,parseInt($('nP').value,10)||1)*1000+Math.max(1,parseInt($('nH').value,10)||1);
+    else { uu=Math.max(0,(parseInt($('nD').value,10)-2)*2+(+$('nA').value)); uu=Math.min(uu, KIND.gemara.total({sefer:sf})-1); }
     if(n){ n.text=txt; n.sefer=sf; n.u=uu; if($('nDone')) n.done=$('nDone').checked; }
     else S.notes.push({id:'n'+Date.now().toString(36), ts:Date.now(), seq:S.notes.length, date:logDate, sefer:sf, u:uu, text:txt, done:false, lid:lid||null});
     save(); closeModal(); renderAll(); toast(n?'Note updated':'Note saved on '+amudLabel(sf,uu));
@@ -1538,7 +1545,7 @@ function notesAsText(list){ return list.map(function(n){ return amudLabel(n.sefe
 function dayNotes(date){ return S.notes.filter(function(n){ return n.date===date; }).sort(writtenOrder); }
 function dayNotesHTML(date){
   var ns=dayNotes(date); if(!ns.length) return '';
-  return '<div class="rnotes"><div class="nm" style="color:var(--gold)">Gemara notes</div>'+ns.map(function(n){
+  return '<div class="rnotes"><div class="nm" style="color:var(--gold)">Notes</div>'+ns.map(function(n){
     return '<button class="rnote" data-edit="'+n.id+'"><b>'+(isOpen(n)?'❓ ':'📝 ')+esc(amudLabel(n.sefer,n.u))+'</b> <span dir="auto">'+esc(n.text)+'</span></button>'; }).join('')+'</div>';
 }
 function renderNotes(){
@@ -1564,18 +1571,20 @@ function renderNotes(){
   if(notesOrder==='daf'){
     var groups={}; list.forEach(function(n){ (groups[n.sefer]=groups[n.sefer]||[]).push(n); });
     body=Object.keys(groups).sort(function(a,b){return shasIdx(a)-shasIdx(b);}).map(function(sf){
-      var ns=groups[sf].sort(function(a,b){ return a.u-b.u || writtenOrder(a,b); }), m=KIND.gemara.find(sf);
+      var ns=groups[sf].sort(function(a,b){ return a.u-b.u || writtenOrder(a,b); }), m=KIND.gemara.find(sf)||KETANOS.find(function(x){return x[0]===sf;});
       return '<section class="ngroup"><div class="ngh"><b>'+esc(sf)+'</b><span class="hebl">'+esc(m?m[1]:'')+'</span><span class="n">'+ns.length+'</span></div>'+ns.map(function(n){return item(n,false);}).join('')+'</section>';
     }).join('');
   } else {
     body='<section class="ngroup">'+list.slice().sort(writtenOrder).map(function(n){return item(n,true);}).join('')+'</section>';
   }
-  el.innerHTML='<div class="nbar"><input id="nSearch" type="search" placeholder="Search your Gemara notes…" value="'+esc(f.q)+'" dir="auto">'+
+  el.innerHTML='<div class="nbar"><input id="nSearch" type="search" placeholder="Search your notes…" value="'+esc(f.q)+'" dir="auto">'+
+    '<button class="mbtn p" id="nAdd">+ Add note</button>'+
     '<div class="seg2"><button data-o="daf" class="'+(notesOrder==='daf'?'on':'')+'">By daf</button><button data-o="written" class="'+(notesOrder==='written'?'on':'')+'">As written</button></div>'+
     '<button class="mbtn" id="nCopy" title="Copy as a plain list">Copy list</button></div>'+
     '<div class="fchips"><button class="fchip'+(!f.sefer&&!f.open?' on':'')+'" data-s="">All · '+S.notes.length+'</button><button class="fchip'+(f.open?' on':'')+'" data-open="1">❓ Open questions · '+open+'</button>'+seferChips+'</div>'+
     (list.length ? body : '<p class="empty" style="margin-top:20px">'+(S.notes.length?'No notes match.':'No notes yet.')+'</p>');
   $('nSearch').oninput=function(){ notesFilter.q=this.value; var pos=this.selectionStart; renderNotes(); var i2=$('nSearch'); i2.focus(); i2.setSelectionRange(pos,pos); };
+  $('nAdd').onclick=function(){ noteModal(null,null,'',null); };
   $('nCopy').onclick=function(){ var txt=notesAsText(list.slice().sort(writtenOrder));
     (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ toast('Copied '+list.length+' notes'); }).catch(function(){ prompt('Copy this:',txt); }); };
 }
