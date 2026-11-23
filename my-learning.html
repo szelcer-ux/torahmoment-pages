@@ -164,6 +164,21 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .coming .ce{text-align:right;font-size:14px;font-weight:600;color:var(--ink2);white-space:nowrap}
 .coming .ce small{display:block;font-size:10.5px;font-weight:500;color:var(--muted)}
 
+/* finished summary */
+.fin{background:var(--ink);color:#f3ecdf;border-radius:var(--r);padding:16px 18px;margin-bottom:16px}
+.finh{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.finh h3{font-family:var(--serif);font-size:24px;font-weight:600}
+.finh .hint{color:#cbbd9f}
+.fint{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.ft{border:1px solid rgba(243,236,223,.15);background:rgba(255,255,255,.04);color:#f3ecdf;border-radius:12px;padding:10px 8px;text-align:center}
+.ft b{display:block;font-family:var(--serif);font-size:32px;font-weight:600;line-height:1;color:var(--gold2)}
+.ft span{display:block;font-size:12px;font-weight:600;margin-top:4px}
+.ft small{display:block;font-size:10.5px;color:#b8aa8e}
+.ft.on{background:rgba(201,167,90,.18);border-color:var(--gold2)}
+.finl{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(243,236,223,.15)}
+.finl span{font-size:12.5px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.07)}
+@media (max-width:820px){ .fint{grid-template-columns:repeat(3,minmax(0,1fr))} }
+
 /* goals */
 .goalgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
 .goal{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
@@ -1153,6 +1168,31 @@ function goalCard(o){
     '<div class="gp"><b>'+(pct>=1?'100':pct<0.1?(Math.floor(pct*1000)/10).toFixed(1):Math.floor(pct*100))+'%</b><span>'+nf+' of '+all.length+' '+o.unitName+'</span></div></div>'+
     '<div class="bar" style="--c:'+o.color+'"><i style="width:'+(pct*100)+'%"></i></div>'+(o.note?'<p class="hint" style="margin-top:8px">'+o.note+'</p>':'')+groups+'</section>';
 }
+var finOpen=null;
+function finishedLists(){
+  var f=S.fin, pick=function(list,type){ return list.filter(function(m){ return (f[type]||{})[m[0]]; }).map(function(m){ return m[0]; }); };
+  var rmbSef=RAMBAM.filter(function(sf,si){ return rmbSeferDone(si); }).map(function(sf){ return sf[0]; });
+  var yer=[]; YERUSHALMI_SEDER.forEach(function(ix){ ix.forEach(function(i){ if((f.yerushalmi||{})[MISHNA[i][0]]) yer.push(MISHNA[i][0]); }); });
+  return [
+    {k:'gemara', label:'Gemara', unit:'masechtos', of:BAVLI.length, items:pick(BAVLI,'gemara')},
+    {k:'mishna', label:'Mishnayos', unit:'masechtos', of:MISHNA.length, items:pick(MISHNA,'mishna')},
+    {k:'tanach', label:'Tanach', unit:'sefarim', of:TORAH.length+NACH.length, items:pick(TORAH,'tanach').concat(pick(NACH,'tanach'))},
+    {k:'rambam', label:'Rambam', unit:'sefarim', of:14, items:rmbSef},
+    {k:'yer', label:'Yerushalmi', unit:'masechtos', of:39, items:yer},
+    {k:'ket', label:'Mesechtos Ketanos', unit:'masechtos', of:KETANOS.length, items:pick(KETANOS,'ketanos')}
+  ];
+}
+function finishedHTML(){
+  var L2=finishedLists(), open=L2.find(function(x){ return x.k===finOpen; });
+  return '<section class="fin"><div class="finh"><h3>Finished</h3><span class="hint">Tap one to see the list</span></div><div class="fint">'+
+    L2.map(function(x){ return '<button class="ft'+(x.k===finOpen?' on':'')+'" data-fin="'+x.k+'"><b>'+x.items.length+'</b><span>'+esc(x.label)+'</span><small>of '+x.of+' '+x.unit+'</small></button>'; }).join('')+'</div>'+
+    (open ? '<div class="finl">'+(open.items.length ? open.items.map(function(n){ return '<span>'+esc(n)+'</span>'; }).join('') : '<em class="hint">None marked yet</em>')+'</div>' : '')+
+  '</section>';
+}
+document.getElementById('viewGoals').addEventListener('click', function(ev){
+  var b=ev.target.closest('button[data-fin]'); if(!b) return;
+  finOpen = finOpen===b.dataset.fin ? null : b.dataset.fin; renderGoals();
+});
 function renderGoals(){
   if(view!=='goals') return;
   var el=document.getElementById('viewGoals'), c=rmbCount();
@@ -1183,7 +1223,7 @@ function renderGoals(){
   var mis=goalCard({kicker:'Siyum on every seder', title:'Mishnayos', he:'ששה סדרי משנה', color:'#4f6b3e', unitName:'masechtos', wide:true,
     groups:SEDARIM.map(function(sd,k){ return {name:'Seder '+sd[0], he:sd[1], items:goalItems('mishna',MISHNA,MISHNA_SEDER[k][0],MISHNA_SEDER[k][1],misTotal)}; }),
     note:'Mark the masechtos you’ve already finished so the tracker knows when you complete a seder.'});
-  el.innerHTML='<p class="hint" style="margin:0 0 14px">Tap a masechta or sefer to mark it as one you’ve <b>already finished</b> (tap again to unmark). Anything you finish from now on is marked for you.</p>'+
+  el.innerHTML=finishedHTML()+'<p class="hint" style="margin:0 0 14px">Tap a masechta or sefer to mark it as one you’ve <b>already finished</b> (tap again to unmark). Anything you finish from now on is marked for you.</p>'+
     '<div class="goalgrid">'+mt+moed+hsc+tan+mis+shas+ket+yer+'</div>';
   $('gMap').onclick=function(){ setView('rambam'); };
 }
