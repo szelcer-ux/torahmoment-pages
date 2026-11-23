@@ -254,6 +254,7 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .meta b{color:var(--ink2);font-weight:600}
 
 .pace{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pace.sess{margin-top:10px;padding-top:10px}
 .pace .p .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
 .pace .p .v{font-size:14px;font-weight:600;margin-top:3px}
 .mini{height:5px;background:var(--paper2);border-radius:9px;margin-top:6px;overflow:hidden;position:relative}
@@ -674,7 +675,8 @@ function load(){
   migrate();
 }
 function rmbStart(){ var d={}; RAMBAM_DONE_START.forEach(function(g){ d[g]='before'; }); return {done:d}; }
-function HS_LIMUD(){ return {id:'hs', name:'Hilchos Shabbos', heb:'הלכות שבת', kind:'hs', color:'#4f4a8a', pos:{sefer:'Hilchos Shabbos', i:HS_START[22]}, goal:null, note:''}; } // up to The Shabbos Meals 1
+var SESS={main:{min:5,max:5,days:'Mon–Fri'}, gem2:{min:4,max:5,days:''}, nach:{min:6,max:6,days:'not Shabbos'}, hs:{min:2,max:2,days:'Shabbos & Sunday'}};
+function HS_LIMUD(){ return {id:'hs', name:'Hilchos Shabbos', heb:'הלכות שבת', kind:'hs', color:'#4f4a8a', pos:{sefer:'Hilchos Shabbos', i:HS_START[22]}, goal:{per:'week', min:2, max:2}, note:''}; } // up to The Shabbos Meals 1
 function importedNotes(){ return NOTES_IMPORT.map(function(x,k){ return {id:'imp'+k, ts:0, seq:k, date:'list', sefer:x[0], u:x[1], text:x[2], done:false}; }); }
 function migrate(){
   if(!S.notes) S.notes=importedNotes();
@@ -683,6 +685,7 @@ function migrate(){
   if(!S.fin.yerushalmi) S.fin.yerushalmi=JSON.parse(JSON.stringify(YER_START));
   if(!S.fin.mishna['Bava Kamma']) S.fin.mishna['Bava Kamma']='before';
   if(!S.fin.tanach['Koheles']) S.fin.tanach['Koheles']='before';
+  S.limudim.forEach(function(l){ if(!l.sess && SESS[l.id]) l.sess=JSON.parse(JSON.stringify(SESS[l.id])); if(l.id==='hs' && !l.goal) l.goal={per:'week', min:2, max:2}; });
   if(!S.fin.ketanos) S.fin.ketanos={'Avos D’Rabbi Nosson':'before'};
   if(!S.rmb){ S.rmb=rmbStart(); var r=S.limudim.find(function(l){return l.id==='rambam';}); if(r) r.pos={g:0};
     S.log.forEach(function(e){ if(e.id==='rambam'){ e.from={g:0}; e.to={g:0}; e.keys=e.keys||[]; } }); }
@@ -863,7 +866,23 @@ function undo(id){
 /* ───────────── Rendering ───────────── */
 function pulse(id){ var c=document.querySelector('[data-id="'+id+'"]'); if(!c) return; c.animate([{transform:'scale(1)'},{transform:'scale(1.012)'},{transform:'scale(1)'}],{duration:280}); }
 
-function paceBlock(l){
+function logSession(id){
+  var l=L(id), d=logDate===todayStr()?'today':fmtShort(logDate);
+  if(activeOn(id,logDate)){ toast(l.name+' is already counted for '+d); return; }
+  S.log.push({ts:Date.now(), date:logDate, id:id, units:0, session:true, from:l.pos, to:l.pos});
+  save(); renderAll(); pulse(id); toast(l.name+' ✓ learned '+d+' · still at '+posEn(l));
+}
+function sessionsIn(id, from, to){ var d={}; S.log.forEach(function(e){ if(e.id===id && e.date>=from && e.date<=to) d[e.date]=1; }); return Object.keys(d).length; }
+function sessBlock(l){
+  if(!l.sess) return '';
+  var ld=parse(logDate), ws=weekStart(ld), t=ymd(ld), n=sessionsIn(l.id, ymd(ws), t), lw=sessionsIn(l.id, ymd(addDays(ws,-7)), ymd(addDays(ws,-1)));
+  var tgt=l.sess.min===l.sess.max?l.sess.min:l.sess.min+'–'+l.sess.max;
+  return '<div class="pace sess"><div class="p"><div class="k">Sessions this week'+(l.sess.days?' · '+esc(l.sess.days):'')+'</div><div class="v '+(n>=l.sess.min?'ok':'')+'">'+n+' / '+tgt+'</div>'+
+    '<div class="mini"><i style="width:'+Math.min(100,n/l.sess.max*100)+'%"></i></div></div>'+
+    '<div class="p"><div class="k">Last week</div><div class="v">'+lw+' session'+(lw===1?'':'s')+'</div></div></div>';
+}
+function paceBlock(l){ return paceCore(l)+sessBlock(l); }
+function paceCore(l){
   var g=l.goal, ld=parse(logDate);
   if(!g){
     var t=ymd(ld), m30=ymd(addDays(ld,-29)), n=sumFor(l.id,m30,t), wk=sumFor(l.id,ymd(weekStart(ld)),t), F=KIND[l.kind].fmtAmt;
@@ -882,7 +901,7 @@ function paceBlock(l){
       '<div class="mini"><i style="width:'+Math.min(100,week/(g.min*7)*100)+'%"></i><u style="left:'+(dayN/7*100)+'%"></u></div></div>';
   } else {
     var w=sumFor(l.id,ws,t), lo=g.min, hi=g.max, exp=lo*dayN/7;
-    var label = l.kind==='gemara' ? (w/2)+' / '+(lo/2)+'–'+(hi/2)+' blatt' : w+' / '+lo+'–'+hi+' '+KIND[l.kind].units;
+    var rng=function(x,y){ return x===y?''+x:x+'–'+y; }, label = l.kind==='gemara' ? (w/2)+' / '+rng(lo/2,hi/2)+' blatt' : w+' / '+rng(lo,hi)+' '+KIND[l.kind].units;
     html+='<div class="p"><div class="k">This week</div><div class="v '+(w>=lo?'ok':(w+0.01>=exp?'':'behind'))+'">'+label+'</div>'+
       '<div class="mini"><i style="width:'+Math.min(100,w/hi*100)+'%"></i><u style="left:'+(lo/hi*100)+'%"></u></div></div>';
     var lw=sumFor(l.id,ymd(addDays(weekStart(ld),-7)),ymd(addDays(weekStart(ld),-1)));
@@ -911,16 +930,16 @@ function cardHTML(l){
   var K=KIND[l.kind], pr=progress(l), done=activeOn(l.id,logDate);
   var btns='';
   if(l.kind==='gemara'){
-    btns='<button class="btn" data-a="u" data-n="1">+1 amud</button><button class="btn o" data-a="u" data-n="2">+1 daf</button><button class="btn o s" data-a="custom">+…</button>';
+    btns='<button class="btn" data-a="u" data-n="1">+1 amud</button><button class="btn o" data-a="u" data-n="2">+1 daf</button><button class="btn o" data-a="sess" title="Learned, but didn’t finish an amud">✓ Learned</button><button class="btn o s" data-a="custom">+…</button>';
   } else if(l.kind==='mishna'){
     btns='<button class="btn" data-a="u" data-n="2">+2 mishnayos</button><button class="btn o" data-a="u" data-n="1">+1</button>'+
       (K.counts(l.pos)?'':'<button class="btn o" data-a="major">Next perek →</button>')+'<button class="btn o s" data-a="custom">+…</button>';
   } else if(l.kind==='ksa'){
     btns='<button class="btn" data-a="u" data-n="3">+3 halachos</button><button class="btn o" data-a="u" data-n="1">+1</button><button class="btn o s" data-a="custom">+…</button>';
   } else if(l.kind==='nach'){
-    btns='<button class="btn" data-a="u" data-n="1">+1 perek</button><button class="btn o" data-a="u" data-n="2">+2</button><button class="btn o s" data-a="custom">+…</button>';
+    btns='<button class="btn" data-a="u" data-n="1">+1 perek</button><button class="btn o" data-a="u" data-n="2">+2</button><button class="btn o" data-a="sess" title="Learned some pesukim, didn’t finish the perek">✓ Learned</button><button class="btn o s" data-a="custom">+…</button>';
   } else if(l.kind==='hs'){
-    btns='<button class="btn" data-a="u" data-n="1">+1 shiur</button><button class="btn o" data-a="u" data-n="2">+2</button><button class="btn o s" data-a="custom">+…</button>';
+    btns='<button class="btn" data-a="u" data-n="1">+1 shiur</button><button class="btn o" data-a="u" data-n="2">+2</button><button class="btn o" data-a="sess" title="Learned, but didn’t finish the shiur">✓ Learned</button><button class="btn o s" data-a="custom">+…</button>';
   } else if(l.kind==='rambam'){
     btns='<button class="btn" data-a="u" data-n="1">+1 perek</button><button class="btn o" data-a="u" data-n="2">+2</button><button class="btn o" data-a="map">Open map →</button>';
   }
@@ -972,7 +991,7 @@ function renderFeed(){
   if(!items.length){ document.getElementById('feed').innerHTML='<li class="empty">Nothing logged yet — tap a button on any card to start.</li>'; return; }
   document.getElementById('feed').innerHTML=items.map(function(e){
     var l=L(e.id); if(!l) return '';
-    var what=[]; if(e.min) what.push(e.min+' min'); if(e.units) what.push(e.jump?('finished '+KIND[l.kind].majorName+' '+e.from.major):KIND[l.kind].fmtAmt(e.units));
+    var what=[]; if(e.session) what.push('learned · still at '+KIND[l.kind].en(e.to)); if(e.min) what.push(e.min+' min'); if(e.units) what.push(e.jump?('finished '+KIND[l.kind].majorName+' '+e.from.major):KIND[l.kind].fmtAmt(e.units));
     var where = e.keys ? ' <span style="color:var(--muted)">· '+esc(rmbLabel(e.keys))+'</span>' : e.units ? ' <span style="color:var(--muted)">→ '+esc(KIND[l.kind].en(e.to))+'</span>' : '';
     return '<li><span class="sw" style="background:'+l.color+'"></span><span class="d">'+fmtShort(e.date)+'</span><span class="t"><b>'+esc(l.name)+'</b> · '+what.join(' + ')+where+'</span></li>';
   }).join('');
@@ -1014,7 +1033,7 @@ function dayItems(date){
       if(first.sefer!==end.sefer){ en=a+' – '+b; he=ah+' – '+bh; }
       else if(a===b){ en=a; he=ah; }
       else { en=a+'–'+commonTrim(a,b); he=ah+' – '+commonTrim(ah,bh); }
-    } else { en='Learned'; he=''; }
+    } else { en='Learned · at '+K.en(last); he=''; }
     return {l:l, en:en, he:he, amt: units?K.fmtAmt(units):''};
   });
 }
@@ -1188,6 +1207,7 @@ document.getElementById('grid').addEventListener('click', function(ev){
   else if(a==='undo') undo(id);
   else if(a==='custom') customModal(id);
   else if(a==='map') setView('rambam');
+  else if(a==='sess') logSession(id);
   else if(a==='noteFull'){ var c=b.closest('.card'), sel=c.querySelector('.qnw'), inp=c.querySelector('.qni'); noteModal(null, sel.value==='other'?null:sel.value, inp.value, id); }
   else if(a==='noteEdit') noteModal(b.dataset.n);
   else if(a==='notesIn'){ notesFilter={sefer:b.dataset.s, q:'', open:false}; setView('notes'); }
