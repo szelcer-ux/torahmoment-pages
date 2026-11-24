@@ -93,6 +93,8 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .qnw{border:1px solid var(--line);background:#fff;border-radius:10px;padding:0 8px;font:inherit;font-size:13px;font-weight:600;color:var(--c);max-width:118px}
 .qni{flex:1;min-width:0;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font-family:var(--serif);font-size:16px;color:var(--ink)}
 .qni:focus,.qnw:focus{outline:2px solid color-mix(in srgb,var(--c) 45%,transparent);border-color:transparent}
+.qni.glow{animation:qglow 2.2s ease-out}
+@keyframes qglow{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 0%,transparent)}25%{box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 30%,transparent)}100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 0%,transparent)}}
 .qnx{border:1px solid var(--line);background:#fff;border-radius:10px;width:38px;color:var(--ink2);font-size:15px}
 .nhere{margin-top:12px;display:flex;flex-direction:column;gap:6px}
 .nh{display:block;text-align:left;border:1px solid var(--line);background:#fffdf8;border-left:3px solid var(--c);border-radius:10px;padding:8px 11px;font-family:inherit;width:100%}
@@ -178,6 +180,52 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .finl{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(243,236,223,.15)}
 .finl span{font-size:12.5px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.07)}
 @media (max-width:820px){ .fint{grid-template-columns:repeat(3,minmax(0,1fr))} }
+
+/* booklet */
+#bookletWrap{display:none}
+#bookletWrap.open{display:block;position:fixed;inset:0;z-index:80;background:#5a5148;overflow:auto;padding-bottom:40px}
+body.bk-on{overflow:hidden}
+.bk-bar{position:sticky;top:0;z-index:2;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:var(--ink);color:#f3ecdf;padding:10px 16px;font-size:13px}
+.bk-bar label{display:flex;gap:6px;align-items:center;color:#d9ccb2}
+.bk-bar input:not([type=checkbox]),.bk-bar select{border:0;border-radius:8px;padding:6px 8px;font:inherit;font-size:13px}
+.bk-bar .sp{flex:1}
+.bk-bar .mbtn.p{background:var(--gold2);border-color:var(--gold2);color:var(--ink)}
+.bk-paper{background:#fffdf8;color:#1f1a14;margin:24px auto;box-shadow:0 20px 50px rgba(0,0,0,.35);font-family:var(--serif)}
+.bk-paper.half{width:5.5in;padding:.55in .6in}
+.bk-paper.letter{width:8.5in;padding:.8in .9in}
+.bk-title{min-height:6.6in;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;break-after:page;page-break-after:always}
+.bk-paper.letter .bk-title{min-height:8.8in}
+.bk-orn{color:#a8843a;font-size:22px;margin:10px 0}
+.bk-heb{font-family:var(--heb);font-size:40px;font-weight:700;direction:rtl}
+.bk-heb.small{font-size:20px;font-weight:500}
+.bk-en{font-size:22px;font-style:italic;color:#5b5044}
+.bk-rule{width:90px;height:1px;background:#a8843a;margin:14px 0}
+.bk-sub{font-family:var(--heb);font-size:18px;color:#8c3b2a}
+.bk-name{font-size:18px;margin-top:22px}
+.bk-date{font-size:14px;color:#8a7d6c}
+.bk-perek{margin-bottom:18px}
+.bk-ph{font-family:var(--heb);font-size:20px;font-weight:700;direction:rtl;text-align:center;margin-top:8px;break-after:avoid;page-break-after:avoid}
+.bk-pe{font-size:13px;font-style:italic;color:#8a7d6c;text-align:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #d9c9a8;break-after:avoid;page-break-after:avoid}
+.bk-note{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:7px 0;border-bottom:1px dotted #e3d7c0;break-inside:avoid;page-break-inside:avoid}
+.bk-paper.letter .bk-note{grid-template-columns:70px 1fr}
+.bk-pl b{display:block;font-family:var(--sans);font-size:12px;font-weight:700;color:#3b4a6b}
+.bk-pl span{display:block;font-family:var(--heb);font-size:10px;color:#8a7d6c;direction:rtl;text-align:left}
+.bk-tx{font-size:14.5px;line-height:1.45}
+.bk-paper.letter .bk-tx{font-size:16px}
+.bk-q{display:inline-block;width:16px;height:16px;border-radius:50%;border:1.2px solid #8c3b2a;color:#8c3b2a;font-style:normal;font-family:var(--sans);font-size:10px;font-weight:700;text-align:center;line-height:14px;vertical-align:1px}
+.bk-qs,.bk-blank{break-before:page;page-break-before:always}
+.bk-qi{padding:6px 0;border-bottom:1px dotted #e3d7c0;font-size:14px;break-inside:avoid}
+.bk-qi b{font-family:var(--sans);font-size:12px;color:#8c3b2a;margin-right:6px}
+.bk-line{height:26px;border-bottom:1px solid #e3d7c0}
+.bk-end{text-align:center;margin-top:26px;color:#5b5044}
+@media print{
+  body.bk-on{overflow:visible;background:#fff}
+  body.bk-on > *:not(#bookletWrap){display:none !important}
+  body.bk-on #bookletWrap{position:static;display:block;background:#fff;overflow:visible;padding:0}
+  body.bk-on .bk-bar{display:none}
+  body.bk-on .bk-paper{margin:0;box-shadow:none;width:auto;padding:0;background:#fff}
+  body.bk-on .bk-title{min-height:0;height:calc(100vh - 2px)}
+}
 
 /* goals */
 .goalgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
@@ -442,6 +490,7 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
 
 <div class="scrim" id="scrim"><div class="modal" id="modal"></div></div>
 <div class="toast" id="toast"></div>
+<div id="bookletWrap"></div>
 <canvas class="confetti" id="confetti"></canvas>
 
 <script>
@@ -848,7 +897,18 @@ function logUnits(id, n){
   S.log.push({ts:Date.now(), date:logDate, id:id, units:n, from:from, to:r.pos});
   save(); renderAll(); pulse(id);
   toast(KIND[l.kind].fmtAmt(n)+' · now at '+posEn(l));
-  if(r.finished) finishFlow(l);
+  if(r.finished) finishFlow(l); else nudgeNote(id);
+}
+// quiet nudge to jot a note: cursor in the note box on a computer, a soft glow on a phone
+function nudgeNote(id){
+  var l=L(id); if(!l || l.kind!=='gemara') return;
+  setTimeout(function(){
+    if(document.getElementById('scrim').classList.contains('open')) return;
+    var box=document.querySelector('[data-id="'+id+'"] .qni'); if(!box) return;
+    var fine=window.matchMedia && window.matchMedia('(pointer:fine)').matches;
+    if(fine) box.focus({preventScroll:true});
+    else { box.classList.remove('glow'); void box.offsetWidth; box.classList.add('glow'); }
+  }, 120);
 }
 function logMinutes(id, m, perek){
   var l=L(id), from=l.pos, to=from, units=0;
@@ -885,7 +945,7 @@ function logSession(id){
   var l=L(id), d=logDate===todayStr()?'today':fmtShort(logDate);
   if(activeOn(id,logDate)){ toast(l.name+' is already counted for '+d); return; }
   S.log.push({ts:Date.now(), date:logDate, id:id, units:0, session:true, from:l.pos, to:l.pos});
-  save(); renderAll(); pulse(id); toast(l.name+' ✓ learned '+d+' · still at '+posEn(l));
+  save(); renderAll(); pulse(id); toast(l.name+' ✓ learned '+d+' · still at '+posEn(l)); nudgeNote(id);
 }
 function sessionsIn(id, from, to){ var d={}; S.log.forEach(function(e){ if(e.id===id && e.date>=from && e.date<=to) d[e.date]=1; }); return Object.keys(d).length; }
 function sessBlock(l){
@@ -1272,7 +1332,7 @@ document.getElementById('heat').addEventListener('click', function(ev){ var s=ev
 document.getElementById('settingsBtn').addEventListener('click', settingsModal);
 document.getElementById('hdrSync').addEventListener('click', settingsModal);
 document.getElementById('scrim').addEventListener('click', function(ev){ if(ev.target===this) closeModal(); });
-document.addEventListener('keydown', function(ev){ if(ev.key==='Escape') closeModal(); });
+document.addEventListener('keydown', function(ev){ if(ev.key==='Escape'){ if(document.body.classList.contains('bk-on')) closeBooklet(); else closeModal(); } });
 
 /* ───────────── Modals ───────────── */
 function openModal(html){ document.getElementById('modal').innerHTML=html; document.getElementById('scrim').classList.add('open'); var f=document.querySelector('#modal input,#modal select'); if(f) setTimeout(function(){f.focus();},50); }
@@ -1573,7 +1633,7 @@ function renderNotes(){
     var groups={}; list.forEach(function(n){ (groups[n.sefer]=groups[n.sefer]||[]).push(n); });
     body=Object.keys(groups).sort(function(a,b){return shasIdx(a)-shasIdx(b);}).map(function(sf){
       var ns=groups[sf].sort(function(a,b){ return a.u-b.u || writtenOrder(a,b); }), m=KIND.gemara.find(sf)||KETANOS.find(function(x){return x[0]===sf;});
-      return '<section class="ngroup"><div class="ngh"><b>'+esc(sf)+'</b><span class="hebl">'+esc(m?m[1]:'')+'</span><span class="n">'+ns.length+'</span></div>'+ns.map(function(n){return item(n,false);}).join('')+'</section>';
+      return '<section class="ngroup"><div class="ngh"><b>'+esc(sf)+'</b><span class="hebl">'+esc(m?m[1]:'')+'</span><span class="n">'+ns.length+'</span><button class="lnk" data-book="'+esc(sf)+'">📖 Booklet</button></div>'+ns.map(function(n){return item(n,false);}).join('')+'</section>';
     }).join('');
   } else {
     body='<section class="ngroup">'+writtenSorted(list).map(function(n){return item(n,true);}).join('')+'</section>';
@@ -1596,6 +1656,7 @@ document.getElementById('viewNotes').addEventListener('click', function(ev){
   if(b.dataset.o){ notesOrder=b.dataset.o; renderNotes(); }
   else if(b.dataset.open){ notesFilter.open=!notesFilter.open; notesFilter.sefer=''; renderNotes(); }
   else if(b.dataset.s!==undefined && b.classList.contains('fchip')){ notesFilter.sefer=b.dataset.s; notesFilter.open=false; renderNotes(); }
+  else if(b.dataset.book) openBooklet(b.dataset.book);
   else if(b.dataset.edit) noteModal(b.dataset.edit);
   else if(b.dataset.ans){ var m=S.notes.find(function(x){return x.id===b.dataset.ans;}); if(m){ m.done=true; save(); renderAll(); toast('Marked answered'); } }
 });
@@ -1712,6 +1773,89 @@ document.getElementById('viewYear').addEventListener('click', function(ev){
   var b=ev.target.closest('button[data-y]'); if(!b||b.disabled) return;
   yearShown=(yearShown||hebYearOf(new Date()))+(+b.dataset.y); renderYear();
 });
+
+/* ───────────── Booklet: your notes on a masechta, printable ───────────── */
+// Perakim (from Sefaria): [first amud, name, Hebrew name]. Amud # as in notes: (daf-2)*2 + (b?1:0)
+function A(d,ab){ return (d-2)*2+(ab==='b'?1:0); }
+var PERAKIM={
+  'Sanhedrin':[[A(2,'a'),'Dinei Mamonos','דיני ממונות'],[A(18,'a'),'Kohen Gadol','כהן גדול'],[A(23,'a'),'Zeh Borer','זה בורר'],[A(32,'a'),'Echad Dinei Mamonos','אחד דיני ממונות'],[A(40,'a'),'Hayu Bodkin','היו בודקין'],[A(42,'b'),'Nigmar HaDin','נגמר הדין'],[A(49,'b'),'Arba Misos','ארבע מיתות'],[A(68,'b'),'Ben Sorer U’Moreh','בן סורר ומורה'],[A(75,'a'),'HaNisrafin','הנשרפין'],[A(84,'b'),'Elu Hen HaNechnakin','אלו הן הנחנקין'],[A(90,'a'),'Chelek','חלק']],
+  'Kiddushin':[[A(2,'a'),'HaIsha Nikneis','האשה נקנית'],[A(41,'a'),'HaIsh Mekadesh','האיש מקדש'],[A(58,'b'),'HaOmer L’Chavero','האומר לחברו'],[A(69,'a'),'Asara Yuchsin','עשרה יוחסין']],
+  'Gittin':[[A(2,'a'),'HaMeivi Kamma','המביא קמא'],[A(15,'a'),'HaMeivi Basra','המביא בתרא'],[A(24,'a'),'Kol HaGet','כל הגט'],[A(32,'a'),'HaSholeiach','השולח'],[A(48,'b'),'HaNizakin','הניזקין'],[A(62,'b'),'HaOmer Hiskabel','האומר התקבל'],[A(67,'b'),'Mi She’achazo','מי שאחזו'],[A(77,'a'),'HaZorek Get','הזורק גט'],[A(82,'a'),'HaMegaresh','המגרש']],
+  'Sotah':[[A(2,'a'),'HaMekanei','המקנא'],[A(14,'a'),'Haya Meivi','היה מביא'],[A(19,'a'),'Haya Notel','היה נוטל'],[A(23,'b'),'Arusa','ארוסה'],[A(27,'b'),'K’sheim SheHamayim','כשם שהמים'],[A(31,'a'),'Mi SheKinei','מי שקינא'],[A(32,'a'),'Elu Ne’emarin','אלו נאמרין'],[A(42,'a'),'Meshuach Milchama','משוח מלחמה'],[A(44,'b'),'Egla Arufa','עגלה ערופה']],
+  'Nazir':[[A(2,'a'),'Kol Kinuyei Nezirus','כל כנויי נזירות'],[A(9,'a'),'Hareini Nazir','הריני נזיר'],[A(16,'a'),'Mi She’amar Kamma','מי שאמר קמא'],[A(20,'b'),'Mi She’amar Basra','מי שאמר בתרא'],[A(30,'b'),'Beis Shammai','בית שמאי'],[A(34,'a'),'Shelosha Minim','שלשה מינין'],[A(47,'a'),'Kohen Gadol','כהן גדול'],[A(57,'a'),'Shnei Nezirim','שני נזירים'],[A(61,'a'),'HaKusim','הכותים']],
+  'Pesachim':[[A(2,'a'),'Ohr L’Arba’a Asar','אור לארבעה עשר'],[A(21,'a'),'Kol Sha’ah','כל שעה'],[A(42,'a'),'Elu Ovrin','אלו עוברין'],[A(50,'a'),'Makom SheNahagu','מקום שנהגו'],[A(58,'a'),'Tamid Nishchat','תמיד נשחט'],[A(65,'b'),'Elu Devarim','אלו דברים'],[A(74,'a'),'Keitzad Tzolin','כיצד צולין'],[A(87,'a'),'HaIsha','האשה'],[A(92,'b'),'Mi SheHaya Tamei','מי שהיה טמא'],[A(99,'b'),'Arvei Pesachim','ערבי פסחים']],
+  'Sukkah':[[A(2,'a'),'Sukkah','סוכה'],[A(20,'b'),'HaYashen','הישן'],[A(29,'b'),'Lulav HaGazul','לולב הגזול'],[A(42,'b'),'Lulav VaAravah','לולב וערבה'],[A(50,'a'),'HaChalil','החליל']],
+  'Beitzah':[[A(2,'a'),'Beitzah','ביצה'],[A(15,'b'),'Yom Tov','יום טוב'],[A(23,'b'),'Ein Tzadin','אין צדין'],[A(29,'b'),'HaMeivi Kadei Yayin','המביא כדי יין'],[A(35,'b'),'Mashilin','משילין']]
+};
+var PEREK_ORD=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שביעי','שמיני','תשיעי','עשירי','אחד עשר','שנים עשר','שלשה עשר','ארבעה עשר','חמשה עשר','ששה עשר','שבעה עשר','שמונה עשר','תשעה עשר','עשרים','עשרים ואחד','עשרים ושנים','עשרים ושלשה','עשרים וארבעה'];
+var bookletSefer=null;
+function bookletPrefs(){ S.prefs=S.prefs||{}; if(S.prefs.bookletName===undefined) S.prefs.bookletName='Shloimy Zelcer'; if(!S.prefs.bookletPaper) S.prefs.bookletPaper='half'; return S.prefs; }
+function perekGroups(sefer, notes){
+  var ket=isKet(sefer), P=PERAKIM[sefer], g=[], idx={};
+  notes.forEach(function(n){
+    var k, name='', he='';
+    if(ket){ k=Math.floor(n.u/1000); }
+    else if(P){ k=0; for(var i=0;i<P.length;i++) if(n.u>=P[i][0]) k=i; name=P[k][1]; he=P[k][2]; k=k+1; }
+    else k=0;
+    if(!(k in idx)){ idx[k]=g.length; g.push({k:k, name:name, he:he, notes:[]}); }
+    g[idx[k]].notes.push(n);
+  });
+  g.sort(function(a,b){ return a.k-b.k; });
+  g.forEach(function(x){ x.notes.sort(function(a,b){ return a.u-b.u || writtenOrder(a,b); }); });
+  return g;
+}
+function bookletHTML(sefer){
+  var pr=bookletPrefs(), notes=S.notes.filter(function(n){ return n.sefer===sefer; });
+  var heName = isKet(sefer) ? KETANOS.find(function(x){return x[0]===sefer;})[1] : (KIND.gemara.find(sefer)||[0,''])[1];
+  var dated=notes.filter(function(n){ return n.date!=='list'; }).map(function(n){ return n.date; }).sort();
+  var span = dated.length ? hebMonthYear(dated[0])+(hebMonthYear(dated[0])!==hebMonthYear(dated[dated.length-1])?' – '+hebMonthYear(dated[dated.length-1]):'') : '';
+  var groups=perekGroups(sefer, notes), qs=notes.filter(isOpen).sort(function(a,b){ return a.u-b.u; });
+  var place=function(n){ return isKet(sefer) ? Math.floor(n.u/1000)+':'+(n.u%1000) : (Math.floor(n.u/2)+2)+(n.u%2?'b':'a'); };
+  var placeHe=function(n){ return isKet(sefer) ? 'פרק '+gem(Math.floor(n.u/1000))+' הלכה '+gem(n.u%1000) : 'דף '+gem(Math.floor(n.u/2)+2)+(n.u%2?' ע״ב':' ע״א'); };
+  var h='<section class="bk-title"><div class="bk-orn">❦</div><div class="bk-heb">'+(isKet(sefer)?'מסכת ':'מסכת ')+esc(heName)+'</div>'+
+    '<div class="bk-en">Maseches '+esc(sefer)+'</div><div class="bk-rule"></div><div class="bk-sub">הערות · Notes</div>'+
+    (pr.bookletName?'<div class="bk-name">'+esc(pr.bookletName)+'</div>':'')+(span?'<div class="bk-date">'+esc(span)+'</div>':'')+'<div class="bk-orn">❦</div></section>';
+  groups.forEach(function(g){
+    var head = isKet(sefer) ? '<div class="bk-ph">פרק '+(PEREK_ORD[g.k-1]||gem(g.k))+'</div><div class="bk-pe">Perek '+g.k+'</div>'
+      : g.k ? '<div class="bk-ph">פרק '+(PEREK_ORD[g.k-1]||'')+' · '+esc(g.he)+'</div><div class="bk-pe">Perek '+g.k+' · '+esc(g.name)+'</div>'
+      : '';
+    h+='<section class="bk-perek">'+head+g.notes.map(function(n){
+      return '<div class="bk-note"><div class="bk-pl"><b>'+place(n)+'</b><span>'+placeHe(n)+'</span></div><div class="bk-tx" dir="auto">'+(isOpen(n)?'<i class="bk-q">?</i> ':'')+esc(n.text).replace(/\n/g,'<br>')+'</div></div>';
+    }).join('')+'</section>';
+  });
+  if(pr.bookletQs!==false && qs.length) h+='<section class="bk-qs"><div class="bk-ph">שאלות</div><div class="bk-pe">Questions I’m still thinking about</div>'+
+    qs.map(function(n){ return '<div class="bk-qi"><b>'+place(n)+'</b> <span dir="auto">'+esc(n.text)+'</span></div>'; }).join('')+'</section>';
+  if(pr.bookletBlank) h+='<section class="bk-blank"><div class="bk-pe">Notes</div>'+new Array(22).join('<div class="bk-line"></div>')+'</section>';
+  h+='<section class="bk-end"><div class="bk-heb small">הדרן עלך מסכת '+esc(heName)+'</div></section>';
+  return h;
+}
+function setPageCss(paper){
+  var st=document.getElementById('bkPage'); if(!st){ st=document.createElement('style'); st.id='bkPage'; document.head.appendChild(st); }
+  st.textContent = paper==='half'
+    ? '@page{size:5.5in 8.5in;margin:.55in .6in .6in}@page{@bottom-center{content:counter(page);font:10px Georgia,serif;color:#8a7d6c}}'
+    : '@page{size:8.5in 11in;margin:.8in .9in .8in}@page{@bottom-center{content:counter(page);font:11px Georgia,serif;color:#8a7d6c}}';
+}
+function openBooklet(sefer){
+  bookletSefer=sefer; var pr=bookletPrefs();
+  var el=document.getElementById('bookletWrap');
+  el.innerHTML='<div class="bk-bar"><b>Booklet · '+esc(sefer)+'</b>'+
+    '<label>Name <input id="bkName" value="'+esc(pr.bookletName)+'"></label>'+
+    '<label>Paper <select id="bkPaper"><option value="half"'+(pr.bookletPaper==='half'?' selected':'')+'>Half letter (5½×8½)</option><option value="letter"'+(pr.bookletPaper==='letter'?' selected':'')+'>Letter</option></select></label>'+
+    '<label class="ck"><input type="checkbox" id="bkQs" '+(pr.bookletQs!==false?'checked':'')+'> Questions page</label>'+
+    '<label class="ck"><input type="checkbox" id="bkBlank" '+(pr.bookletBlank?'checked':'')+'> Blank lined page</label>'+
+    '<span class="sp"></span><button class="mbtn" id="bkClose">Close</button><button class="mbtn p" id="bkPrint">Print / Save PDF</button></div>'+
+    '<div class="bk-paper '+pr.bookletPaper+'" id="booklet">'+bookletHTML(sefer)+'</div>';
+  el.classList.add('open'); document.body.classList.add('bk-on'); setPageCss(pr.bookletPaper);
+  var rerender=function(){ $('booklet').className='bk-paper '+pr.bookletPaper; setPageCss(pr.bookletPaper); $('booklet').innerHTML=bookletHTML(sefer); save(true); };
+  $('bkName').oninput=function(){ pr.bookletName=this.value; rerender(); };
+  $('bkPaper').onchange=function(){ pr.bookletPaper=this.value; rerender(); };
+  $('bkQs').onchange=function(){ pr.bookletQs=this.checked; rerender(); };
+  $('bkBlank').onchange=function(){ pr.bookletBlank=this.checked; rerender(); };
+  $('bkClose').onclick=closeBooklet;
+  $('bkPrint').onclick=function(){ var old=document.title; document.title='Maseches '+sefer+' – Notes'; window.print(); setTimeout(function(){ document.title=old; },500); };
+  window.scrollTo(0,0);
+}
+function closeBooklet(){ var el=document.getElementById('bookletWrap'); el.classList.remove('open'); el.innerHTML=''; document.body.classList.remove('bk-on'); scheduleSync(); }
 
 /* ───────────── Settings / backup / sync ─────────────
    Every change is saved in this browser right away, and (when the Admin GitHub
