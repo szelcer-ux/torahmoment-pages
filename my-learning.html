@@ -1464,7 +1464,8 @@ function renderComing(){
 }
 
 /* ───────────── Gemara notes ───────────── */
-var notesFilter={sefer:'', q:'', open:false}, notesOrder='daf';
+var notesFilter={sefer:'', q:'', open:false}, notesOrder='daf', notesNewest=true;
+function writtenSorted(list){ var l=list.slice().sort(writtenOrder); return notesNewest?l.reverse():l; }
 function isKet(sefer){ return KETANOS.some(function(m){ return m[0]===sefer; }); }
 function amudLabel(sefer,u){ if(isKet(sefer)) return sefer+' '+Math.floor(u/1000)+':'+(u%1000); return sefer+' '+(Math.floor(u/2)+2)+(u%2?'b':'a'); }
 function amudHe(sefer,u){ if(isKet(sefer)){ var k=KETANOS.find(function(x){return x[0]===sefer;}); return k[1]+' פרק '+gem(Math.floor(u/1000))+' הלכה '+gem(u%1000); } var m=KIND.gemara.find(sefer); return (m?m[1]+' ':'')+gem(Math.floor(u/2)+2)+(u%2?' ע״ב':' ע״א'); }
@@ -1575,17 +1576,19 @@ function renderNotes(){
       return '<section class="ngroup"><div class="ngh"><b>'+esc(sf)+'</b><span class="hebl">'+esc(m?m[1]:'')+'</span><span class="n">'+ns.length+'</span></div>'+ns.map(function(n){return item(n,false);}).join('')+'</section>';
     }).join('');
   } else {
-    body='<section class="ngroup">'+list.slice().sort(writtenOrder).map(function(n){return item(n,true);}).join('')+'</section>';
+    body='<section class="ngroup">'+writtenSorted(list).map(function(n){return item(n,true);}).join('')+'</section>';
   }
   el.innerHTML='<div class="nbar"><input id="nSearch" type="search" placeholder="Search your notes…" value="'+esc(f.q)+'" dir="auto">'+
     '<button class="mbtn p" id="nAdd">+ Add note</button>'+
     '<div class="seg2"><button data-o="daf" class="'+(notesOrder==='daf'?'on':'')+'">By daf</button><button data-o="written" class="'+(notesOrder==='written'?'on':'')+'">As written</button></div>'+
+    (notesOrder==='written'?'<button class="mbtn" id="nFlip" title="Flip the order">'+(notesNewest?'↓ Newest first':'↑ Oldest first')+'</button>':'')+
     '<button class="mbtn" id="nCopy" title="Copy as a plain list">Copy list</button></div>'+
     '<div class="fchips"><button class="fchip'+(!f.sefer&&!f.open?' on':'')+'" data-s="">All · '+S.notes.length+'</button><button class="fchip'+(f.open?' on':'')+'" data-open="1">❓ Open questions · '+open+'</button>'+seferChips+'</div>'+
     (list.length ? body : '<p class="empty" style="margin-top:20px">'+(S.notes.length?'No notes match.':'No notes yet.')+'</p>');
   $('nSearch').oninput=function(){ notesFilter.q=this.value; var pos=this.selectionStart; renderNotes(); var i2=$('nSearch'); i2.focus(); i2.setSelectionRange(pos,pos); };
   $('nAdd').onclick=function(){ noteModal(null,null,'',null); };
-  $('nCopy').onclick=function(){ var txt=notesAsText(list.slice().sort(writtenOrder));
+  if($('nFlip')) $('nFlip').onclick=function(){ notesNewest=!notesNewest; renderNotes(); };
+  $('nCopy').onclick=function(){ var txt=notesAsText(notesOrder==='written'?writtenSorted(list):list.slice().sort(writtenOrder));
     (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ toast('Copied '+list.length+' notes'); }).catch(function(){ prompt('Copy this:',txt); }); };
 }
 document.getElementById('viewNotes').addEventListener('click', function(ev){
