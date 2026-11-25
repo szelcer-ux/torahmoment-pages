@@ -227,6 +227,26 @@ body.bk-on{overflow:hidden}
   body.bk-on .bk-title{min-height:0;height:calc(100vh - 2px)}
 }
 
+/* reports */
+.rseg{display:flex;gap:4px;background:var(--paper2);border-radius:999px;padding:4px;width:max-content;margin:0 auto 14px}
+.rseg button{border:0;background:none;font-size:13px;font-weight:600;color:var(--ink2);padding:7px 16px;border-radius:999px}
+.rseg button.on{background:var(--ink);color:#f3ecdf}
+.report.wide{max-width:860px}
+.rtab{overflow-x:auto;margin-top:6px;position:relative;z-index:1}
+.rtab table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+.rtab th{font-size:11px;font-weight:700;color:var(--ink2);padding:6px 4px;text-align:center;border-bottom:1px solid var(--line)}
+.rtab th small{display:block;font-weight:500;color:var(--muted)}
+.rtab th.fut,.rtab td.fut{opacity:.35}
+.rtab td{text-align:center;padding:7px 4px;border-bottom:1px dashed var(--line);color:var(--muted)}
+.rtab td.on{color:var(--ink);font-weight:600;font-family:var(--serif);font-size:16px}
+.rtab td.ln{text-align:left;white-space:nowrap;color:var(--ink);font-weight:600;font-size:12.5px}
+.rtab td.ln i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:7px}
+.rtab td.ln small{display:block;font-weight:500;color:var(--muted);font-size:10.5px;margin-left:15px}
+.rtab .tot{background:rgba(201,167,90,.12);font-weight:700;color:var(--ink);font-family:var(--serif);font-size:16px}
+.rtab tr.dl td{border-bottom:0;font-size:12px}
+.rtab td.ln,.rtab th:first-child{position:sticky;left:0;background:#fbf7ef;z-index:1}
+.rx{padding:5px 0;font-size:14px}.rx span{color:var(--muted);font-size:12px;margin-left:6px}
+
 /* goals */
 .goalgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
 .goal{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
@@ -428,7 +448,7 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
     <div class="stat"><div class="k">Streak</div><div class="v" id="sStreak">0<small>days</small></div></div>
   </section>
 
-  <div class="views" id="views"><button data-v="overview" class="on">Overview</button><button data-v="report">Daily report</button><button data-v="rambam">Rambam</button><button data-v="goals">Goals</button><button data-v="notes">Notes</button><button data-v="year" id="yearTab">Year</button></div>
+  <div class="views" id="views"><button data-v="overview" class="on">Overview</button><button data-v="report">Reports</button><button data-v="rambam">Rambam</button><button data-v="goals">Goals</button><button data-v="notes">Notes</button></div>
 
   <div class="logbar" id="logbar">
     <span>Logging for</span>
@@ -750,6 +770,7 @@ function migrate(){
   if(!S.fin.mishna['Bava Kamma']) S.fin.mishna['Bava Kamma']='before';
   if(!S.fin.tanach['Koheles']) S.fin.tanach['Koheles']='before';
   S.limudim.forEach(function(l){ if(!l.sess && SESS[l.id]) l.sess=JSON.parse(JSON.stringify(SESS[l.id])); if(l.id==='hs' && !l.goal) l.goal={per:'week', min:2, max:2}; });
+  if(!S.seedKet1){ S.fin.ketanos=S.fin.ketanos||{}; S.fin.ketanos['Tefillin']='2026-11-23'; S.fin.ketanos['Tzitzis']='2026-11-23'; S.fin.ketanos['Mezuzah']='2026-11-24'; S.seedKet1=true; }
   if(!S.fin.ketanos) S.fin.ketanos={'Avos D’Rabbi Nosson':'before'};
   if(!S.rmb){ S.rmb=rmbStart(); var r=S.limudim.find(function(l){return l.id==='rambam';}); if(r) r.pos={g:0};
     S.log.forEach(function(e){ if(e.id==='rambam'){ e.from={g:0}; e.to={g:0}; e.keys=e.keys||[]; } }); }
@@ -1117,11 +1138,17 @@ function reportText(date){
   var out=['My learning · '+d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})+' · '+hebDate(d),''];
   items.forEach(function(x){ out.push((x.en?'✓ ':'· ')+x.l.name+': '+(x.en? x.en+(x.amt?' ('+x.amt+')':'') : '—')); });
   var ns=dayNotes(date); if(ns.length){ out.push('','Notes:'); ns.forEach(function(n){ out.push((isOpen(n)?'❓ ':'📝 ')+amudLabel(n.sefer,n.u)+' - '+n.text); }); }
+  var ff=finishedOn(date,date); if(ff.length){ out.push('','Finished:'); ff.forEach(function(f){ out.push('✓ '+finLabel(f)); }); }
   out.push('', done.length+' of '+items.length+' limudim');
   return out.join('\n');
 }
 function renderReport(){
   var el=document.getElementById('viewReport'); if(view!=='report') return;
+  var yv=document.getElementById('viewYear');
+  if(reportMode==='year'){ el.innerHTML=repSeg(); yv.hidden=false; renderYear(); return; }
+  yv.hidden=true;
+  if(reportMode==='week'){ renderWeekReport(el); return; }
+  if(reportMode==='month'){ renderMonthReport(el); return; }
   var date=logDate, d=parse(date), items=dayItems(date), done=items.filter(function(x){return x.en;}).length, t=todayStr();
   var rows=items.map(function(x){
     var l=x.l;
@@ -1136,15 +1163,19 @@ function renderReport(){
     S.limudim.forEach(function(l){ bars+='<i style="'+(activeOn(l.id,s)?'background:'+l.color:'')+'"></i>'; });
     wk+='<button data-d="'+s+'" class="'+(s===date?'sel':'')+'" '+(fut?'disabled':'')+'>'+['Sun','Mon','Tue','Wed','Thu','Fri','Shab.'][k]+'<b>'+dd.getDate()+'</b><span class="bars">'+bars+'</span></button>';
   }
-  el.innerHTML='<div class="report"><div class="rtop"><button class="rnav" data-step="-1" title="Previous day">‹</button>'+
+  el.innerHTML=repSeg()+'<div class="report"><div class="rtop"><button class="rnav" data-step="-1" title="Previous day">‹</button>'+
     '<div class="rhead"><div class="k">'+(date===t?'Today’s learning':'Daily report')+'</div><h2>'+d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})+'</h2><div class="hd">'+hebDate(d)+'</div></div>'+
     '<button class="rnav" data-step="1" title="Next day" '+(date>=t?'disabled':'')+'>›</button></div>'+
-    '<div class="rrule"></div>'+rows+dayNotesHTML(date)+
+    '<div class="rrule"></div>'+rows+dayExtrasHTML(date)+dayNotesHTML(date)+
     '<div class="rfoot"><span class="sum">'+line+'</span><button class="mbtn" id="copyRep">Copy as text</button></div></div>'+
     '<div class="rwk">'+wk+'</div>';
 }
 document.getElementById('viewReport').addEventListener('click', function(ev){
   var b=ev.target.closest('button'); if(!b||b.disabled) return;
+  if(b.dataset.mode){ reportMode=b.dataset.mode; repAnchor=null; setView('report'); return; }
+  if(b.dataset.wk){ repAnchor=ymd(addDays(repAnchor?parse(repAnchor):parse(logDate), 7*(+b.dataset.wk))); renderReport(); return; }
+  if(b.dataset.mo){ var r0=hebMonthRange(repAnchor?parse(repAnchor):parse(logDate)); repAnchor=ymd(+b.dataset.mo<0?addDays(r0[0],-1):addDays(r0[1],1)); renderReport(); return; }
+  if(b.id==='copyPeriod'){ var tx=document.getElementById('viewReport').dataset.text; (navigator.clipboard?navigator.clipboard.writeText(tx):Promise.reject()).then(function(){ toast('Copied, ready to paste'); }).catch(function(){ prompt('Copy this:',tx); }); return; }
   if(b.dataset.step) setLogDate(ymd(addDays(parse(logDate),+b.dataset.step)));
   else if(b.dataset.d) setLogDate(b.dataset.d);
   else if(b.dataset.edit) noteModal(b.dataset.edit);
@@ -1164,8 +1195,8 @@ function setView(v){
   document.getElementById('viewRambam').hidden = v!=='rambam';
   document.getElementById('viewGoals').hidden = v!=='goals';
   document.getElementById('viewNotes').hidden = v!=='notes';
-  document.getElementById('viewYear').hidden = v!=='year';
-  document.getElementById('logbar').style.display = (v==='rambam'||v==='goals'||v==='notes'||v==='year') ? 'none' : '';
+  document.getElementById('viewYear').hidden = !(v==='report' && reportMode==='year');
+  document.getElementById('logbar').style.display = (v==='rambam'||v==='goals'||v==='notes'||(v==='report' && reportMode!=='day')) ? 'none' : '';
   renderReport(); renderRambam(); renderGoals(); renderNotes(); renderYear();
 }
 function renderRambam(){
@@ -1290,7 +1321,7 @@ function renderGoals(){
 document.getElementById('viewGoals').addEventListener('click', function(ev){
   var b=ev.target.closest('button.chip'); if(!b) return;
   var t=b.dataset.t, k=b.dataset.k; if(t==='hsro'){ toast('Hilchos Shabbos follows the card on Overview'); return; }
-  if(S.fin[t][k]) delete S.fin[t][k]; else S.fin[t][k]='before';
+  if(S.fin[t][k]) delete S.fin[t][k]; else S.fin[t][k]=todayStr();
   save(); renderAll(); toast(S.fin[t][k]?k+' marked as finished':k+' unmarked');
 });
 function renderAll(){ renderSummary(); renderCards(); renderComing(); renderHeat(); renderFeed(); renderSiyumim(); renderReport(); renderRambam(); renderGoals(); renderNotes(); renderYear(); }
@@ -1727,7 +1758,7 @@ function yearText(st){
 function renderYear(){
   var tab=document.getElementById('yearTab'), hyNow=hebYearOf(new Date());
   if(tab) tab.textContent=hyNow||'Year';
-  if(view!=='year') return;
+  if(!(view==='report' && reportMode==='year')) return;
   var hy=yearShown||hyNow, st=yearStats(hy), el=document.getElementById('viewYear');
   var first=S.log.length ? S.log.reduce(function(a,e){ return e.date<a?e.date:a; }, S.log[0].date) : todayStr();
   var canPrev = hebYearOf(parse(first)) < hy, canNext = hy < hyNow;
@@ -1856,6 +1887,113 @@ function openBooklet(sefer){
   window.scrollTo(0,0);
 }
 function closeBooklet(){ var el=document.getElementById('bookletWrap'); el.classList.remove('open'); el.innerHTML=''; document.body.classList.remove('bk-on'); scheduleSync(); }
+
+/* ───────────── Reports: Day · Week · Month · Year ───────────── */
+var reportMode='day', repAnchor=null; // repAnchor: a date inside the week/month being shown
+var FIN_LABEL={gemara:'Gemara', mishna:'Mishnayos', tanach:'Tanach', yerushalmi:'Yerushalmi', ketanos:'Mesechtos Ketanos'};
+function finishedOn(from, to){ // goals marked finished between two dates (inclusive)
+  var out=[];
+  Object.keys(S.fin||{}).forEach(function(t){ var m=S.fin[t]||{};
+    Object.keys(m).forEach(function(k){ var d=m[k]; if(d && d!=='before' && d>=from && d<=to) out.push({type:t, key:k, date:d}); }); });
+  return out.sort(function(a,b){ return a.date<b.date?-1:1; });
+}
+function finLabel(f){ return (f.type==='tanach'?'Sefer ':f.type==='mishna'?'Mishnayos ':f.type==='yerushalmi'?'Yerushalmi ':'Maseches ')+f.key; }
+function unitWord(l){ return l.kind==='gemara'?'daf':l.kind==='mishna'?'mishnayos':l.kind==='ksa'?'halachos':l.kind==='hs'?'shiurim':'perakim'; }
+function fracDaf(n){ var w=Math.floor(n/2), h=n%2; return (w?w:'')+(h?'½':'')||'0'; }
+function cellAmt(l, units, sess){
+  if(units) return l.kind==='gemara' ? fracDaf(units) : ''+units;
+  return sess ? '✓' : '';
+}
+function periodStats(from, to){
+  var t=todayStr(), end=to<t?to:t;
+  var ents=S.log.filter(function(e){ return e.date>=from && e.date<=end; });
+  var byDay={}; ents.forEach(function(e){ (byDay[e.date]=byDay[e.date]||[]).push(e); });
+  var notes=(S.notes||[]).filter(function(n){ return n.date!=='list' && n.date>=from && n.date<=end; });
+  notes.forEach(function(n){ byDay[n.date]=byDay[n.date]||[]; });
+  var fins=finishedOn(from,end); fins.forEach(function(f){ byDay[f.date]=byDay[f.date]||[]; });
+  return {from:from, to:to, end:end, ents:ents, days:Object.keys(byDay).length, notes:notes, fins:fins,
+    siyumim:S.siyumim.filter(function(x){ return x.date>=from && x.date<=end; })};
+}
+function unitsFor(ents, id, from, to){ var u=0, s=false; ents.forEach(function(e){ if(e.id===id && e.date>=from && e.date<=to){ u+=e.units||0; s=true; } }); return {u:u, s:s}; }
+function repSeg(){
+  var hy=hebYearOf(new Date());
+  return '<div class="rseg">'+[['day','Day'],['week','Week'],['month','Month'],['year',''+hy]].map(function(m){
+    return '<button data-mode="'+m[0]+'" class="'+(reportMode===m[0]?'on':'')+'">'+m[1]+'</button>'; }).join('')+'</div>';
+}
+function weekRange(d){ var s=weekStart(d); return [s, addDays(s,6)]; }
+function hebMonthRange(d){
+  var key=hebMonthYear(ymd(d)), s=new Date(d), e=new Date(d);
+  while(hebMonthYear(ymd(addDays(s,-1)))===key) s=addDays(s,-1);
+  while(hebMonthYear(ymd(addDays(e,1)))===key) e=addDays(e,1);
+  return [s,e,key];
+}
+function tableHTML(cols, st){ // cols: [{label, sub, from, to, fut}]
+  var head='<tr><th></th>'+cols.map(function(c){ return '<th class="'+(c.fut?'fut':'')+'">'+c.label+(c.sub?'<small>'+c.sub+'</small>':'')+'</th>'; }).join('')+'<th class="tot">Total</th></tr>';
+  var rows=S.limudim.map(function(l){
+    var tot=unitsFor(st.ents, l.id, st.from, st.end);
+    return '<tr style="--c:'+l.color+'"><td class="ln"><i></i>'+esc(SHORT[l.id]||l.name)+'<small>'+unitWord(l)+'</small></td>'+cols.map(function(c){
+      if(c.fut) return '<td class="fut"></td>';
+      var x=unitsFor(st.ents, l.id, c.from, c.to), v=cellAmt(l,x.u,x.s);
+      return '<td class="'+(v?'on':'')+'">'+v+'</td>'; }).join('')+
+      '<td class="tot">'+(tot.u?cellAmt(l,tot.u,true):tot.s?'✓':'–')+'</td></tr>';
+  }).join('');
+  var dayRow='<tr class="dl"><td class="ln">Days learned</td>'+cols.map(function(c){
+    if(c.fut) return '<td class="fut"></td>';
+    var n=periodStats(c.from,c.to).days, span=Math.round((parse(c.to<st.end?c.to:st.end)-parse(c.from))/864e5)+1;
+    return '<td>'+(span>1?n+'/'+span:(n?'●':''))+'</td>'; }).join('')+'<td class="tot">'+st.days+'</td></tr>';
+  return '<div class="rtab"><table>'+head+rows+dayRow+'</table></div>'+
+    '<p class="hint" style="margin-top:6px">Gemara in dafim (½ = one amud) · ✓ = learned, didn’t finish a unit</p>';
+}
+function extrasHTML(st){
+  var h='';
+  if(st.fins.length) h+='<h3 class="yh">Finished</h3>'+st.fins.map(function(f){ return '<div class="rx">✓ <b>'+esc(finLabel(f))+'</b> <span>'+fmtShort(f.date)+'</span></div>'; }).join('');
+  if(st.siyumim.length) h+='<h3 class="yh">Siyumim</h3>'+st.siyumim.map(function(s3){ return '<div class="rx">📜 <b>'+esc(s3.title)+'</b> <span>'+fmtShort(s3.date)+'</span></div>'; }).join('');
+  if(st.notes.length) h+='<h3 class="yh">Notes <small>'+st.notes.length+'</small></h3>'+st.notes.slice().sort(writtenOrder).map(function(n){ return '<button class="rnote" data-edit="'+n.id+'"><b>'+(isOpen(n)?'❓ ':'📝 ')+esc(amudLabel(n.sefer,n.u))+'</b> <span dir="auto">'+esc(n.text)+'</span></button>'; }).join('');
+  return h?'<div class="rrule"></div>'+h:'';
+}
+function periodText(title, cols, st){
+  var out=[title,''];
+  cols.forEach(function(c){ if(c.fut) return;
+    var parts=S.limudim.map(function(l){ var x=unitsFor(st.ents,l.id,c.from,c.to); if(!x.s) return null; return (SHORT[l.id]||l.name)+' '+(x.u?cellAmt(l,x.u,true)+(l.kind==='gemara'?' daf':''):'✓'); }).filter(Boolean);
+    out.push(c.plain+': '+(parts.length?parts.join(' · '):'—')); });
+  out.push('','Totals:');
+  S.limudim.forEach(function(l){ var x=unitsFor(st.ents,l.id,st.from,st.end); out.push('• '+l.name+': '+(x.u?cellAmt(l,x.u,true)+' '+unitWord(l):x.s?'learned':'—')); });
+  if(st.fins.length){ out.push('','Finished:'); st.fins.forEach(function(f){ out.push('• '+finLabel(f)); }); }
+  if(st.siyumim.length){ out.push('','Siyumim:'); st.siyumim.forEach(function(s3){ out.push('• '+s3.title); }); }
+  out.push('', st.days+' days of learning'+(st.notes.length?' · '+st.notes.length+' notes':''));
+  return out.join('\n');
+}
+function renderWeekReport(el){
+  var a=repAnchor?parse(repAnchor):parse(logDate), r=weekRange(a), from=ymd(r[0]), to=ymd(r[1]), t=todayStr(), st=periodStats(from,to);
+  var DN=['Sun','Mon','Tue','Wed','Thu','Fri','Shabbos'];
+  var cols=[0,1,2,3,4,5,6].map(function(k){ var d=addDays(r[0],k), s=ymd(d); return {label:DN[k], sub:d.getDate()+'', from:s, to:s, fut:s>t, plain:DN[k]+' '+fmtShort(s)}; });
+  var heb=hebDate(r[0])+' – '+hebDate(r[1]);
+  el.innerHTML=repSeg()+'<div class="report wide"><div class="rtop"><button class="rnav" data-wk="-1">‹</button>'+
+    '<div class="rhead"><div class="k">Weekly summary</div><h2>'+fmtShort(from)+' – '+fmtShort(to)+'</h2><div class="hd">'+esc(heb)+'</div></div>'+
+    '<button class="rnav" data-wk="1" '+(to>=t?'disabled':'')+'>›</button></div><div class="rrule"></div>'+
+    tableHTML(cols, st)+extrasHTML(st)+
+    '<div class="rfoot"><span class="sum"><b>'+st.days+'</b> of '+Math.min(7,Math.round((parse(st.end)-parse(from))/864e5)+1)+' days</span><button class="mbtn" id="copyPeriod">Copy as text</button></div></div>';
+  el.dataset.text=periodText('My learning · week of '+fmtShort(from)+' – '+fmtShort(to)+' · '+heb, cols, st);
+}
+function renderMonthReport(el){
+  var a=repAnchor?parse(repAnchor):parse(logDate), r=hebMonthRange(a), from=ymd(r[0]), to=ymd(r[1]), t=todayStr(), st=periodStats(from,to);
+  var cols=[], d=new Date(r[0]), w=1;
+  while(ymd(d)<=to){ var ws=weekStart(d), we=addDays(ws,6), cf=ymd(d)>ymd(ws)?ymd(d):ymd(ws), ct=ymd(we)<to?ymd(we):to;
+    cols.push({label:'Week '+w, sub:parse(cf).getDate()+'–'+parse(ct).getDate(), from:cf, to:ct, fut:cf>t, plain:'Week '+w+' ('+fmtShort(cf)+'–'+fmtShort(ct)+')'});
+    d=addDays(we,1); w++; }
+  var started=S.started&&S.started>from&&S.started<=to?S.started:null;
+  el.innerHTML=repSeg()+'<div class="report wide"><div class="rtop"><button class="rnav" data-mo="-1">‹</button>'+
+    '<div class="rhead"><div class="k">Monthly summary</div><h2>'+esc(r[2])+'</h2><div class="hd">'+fmtShort(from)+' – '+fmtShort(to)+', '+parse(to).getFullYear()+'</div></div>'+
+    '<button class="rnav" data-mo="1" '+(to>=t?'disabled':'')+'>›</button></div>'+
+    (started?'<p class="hint ynote">Tracking began '+fmtShort(started)+'.</p>':'')+'<div class="rrule"></div>'+
+    tableHTML(cols, st)+extrasHTML(st)+
+    '<div class="rfoot"><span class="sum"><b>'+st.days+'</b> days of learning'+(st.end<to?' so far':'')+'</span><button class="mbtn" id="copyPeriod">Copy as text</button></div></div>';
+  el.dataset.text=periodText('My learning · '+r[2], cols, st);
+}
+function dayExtrasHTML(date){
+  var f=finishedOn(date,date); if(!f.length) return '';
+  return '<div class="rnotes"><div class="nm" style="color:var(--gold)">Finished</div>'+f.map(function(x){ return '<div class="rx">✓ <b>'+esc(finLabel(x))+'</b></div>'; }).join('')+'</div>';
+}
 
 /* ───────────── Settings / backup / sync ─────────────
    Every change is saved in this browser right away, and (when the Admin GitHub
