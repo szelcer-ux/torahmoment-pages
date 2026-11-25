@@ -52,7 +52,7 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
 .stat .k{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
 .stat .v{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.05;margin-top:4px}
 .stat .v small{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:500;margin-left:4px}
-.summary{grid-template-columns:repeat(3,1fr)}
+.summary{grid-template-columns:2fr 1fr}
 .dots{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
 .dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--c);display:grid;place-items:center;font-size:10px;font-weight:700;color:var(--c)}
 .dot.on{background:var(--c);color:#fff}
@@ -412,7 +412,7 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
 
 @media (max-width:820px){
   .rmgrid{grid-template-columns:1fr}.goalgrid{grid-template-columns:1fr}.rmhead{flex-direction:column;align-items:flex-start;gap:12px}.rmrow{grid-template-columns:110px 1fr}
-  .summary{grid-template-columns:repeat(2,1fr)}.summary .stat:first-child{grid-column:1/-1}
+  .summary{grid-template-columns:1.5fr 1fr}
   .stat .v{font-size:28px}.rwk{gap:4px}.rwk button{padding:7px 2px;font-size:10px}.rwk button b{font-size:17px}
   .ghost{white-space:nowrap}.toplinks{flex-wrap:wrap}
   .report{padding:24px 18px 18px}.rhead h2{font-size:27px}.rrow .what{font-size:19px}
@@ -445,7 +445,6 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
   <section class="summary">
     <div class="stat"><div class="k">Today</div><div class="v" id="sToday">0<small>of 6</small></div><div class="dots" id="sDots"></div></div>
     <div class="stat"><div class="k">This week</div><div class="v" id="sWeek">0<small>days</small></div></div>
-    <div class="stat"><div class="k">Streak</div><div class="v" id="sStreak">0<small>days</small></div></div>
   </section>
 
   <div class="views" id="views"><button data-v="overview" class="on">Overview</button><button data-v="report">Reports</button><button data-v="rambam">Rambam</button><button data-v="goals">Goals</button><button data-v="notes">Notes</button></div>
@@ -455,7 +454,6 @@ footer{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;j
     <div class="seg" id="seg">
       <button data-d="0" class="on">Today</button>
       <button data-d="1">Yesterday</button>
-      <button data-d="shabbos">Shabbos</button>
     </div>
     <input type="date" id="logDate">
     <span class="note" id="logNote"></span>
@@ -1072,7 +1070,7 @@ function renderSummary(){
   // streak: ending today (or yesterday if today empty)
   var day=new Date(), s=0; if(!daysActive(ymd(day))) day=addDays(day,-1);
   while(daysActive(ymd(day))){ s++; day=addDays(day,-1); }
-  document.getElementById('sStreak').innerHTML=s+'<small>'+(s===1?'day':'days')+'</small>';
+
 }
 function renderHeat(){
   var end=new Date(), start=weekStart(addDays(end,-7*25)), h='';
