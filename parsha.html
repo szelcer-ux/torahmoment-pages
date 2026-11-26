@@ -3208,7 +3208,7 @@ document.addEventListener("mousedown", (e) => {
 
 	
 document.addEventListener("click", (e) => {
-	if (e.target.closest(".audioProgress, [data-share-btn]")) return; // slider drags and the share button are not play clicks
+	if (e.target.closest(".audioProgress, [data-share-btn], [data-speed-btn]")) return; // slider drags, share and speed buttons are not play clicks
  const a = e.target.closest(".audioLink");
 if (!a) return;
 
