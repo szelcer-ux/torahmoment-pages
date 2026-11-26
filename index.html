@@ -57,6 +57,7 @@ h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
 .it audio{width:100%;margin-top:10px}
 .sh{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;display:grid;place-items:center;padding:0}
 .wk-side .sh{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);color:#fff}.sh:hover{border-color:var(--accent);color:var(--ink)}.sh svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.adminbtn{position:fixed;right:14px;bottom:14px;z-index:30;display:inline-flex;align-items:center;gap:6px;font:600 12px system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#475569;background:rgba(255,255,255,.92);border:1px solid #d5dbe3;border-radius:999px;padding:7px 12px;text-decoration:none;box-shadow:0 2px 8px rgba(15,23,42,.08);opacity:.85}.adminbtn:hover{opacity:1;color:#0f766e;border-color:#0d9488}@media print{.adminbtn{display:none}}
 #toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.2s;z-index:50}
 #toast.on{opacity:1;transform:translateX(-50%)}
 .back{background:none;border:0;color:var(--ink);font-weight:700;font-size:14px;cursor:pointer;padding:0;margin:26px 0 8px}
@@ -127,6 +128,7 @@ h2.sec a{text-transform:none;letter-spacing:0;color:var(--ink);font-size:13.5px}
  <div class="wa"><div class="ic">💬</div><div><b>Learn every day on WhatsApp</b><p>Daily Torah programs you can join.</p></div><a href="/torahprograms.html">See all WhatsApp programs</a></div>
  <div class="more"><a href="/Practical_Cases_Index.html">Hilchos Shabbos</a><a href="/infographics.html">Visual Divrei Torah</a><a href="/one-minute-audio.html">All one-minute clips</a><a href="/published.html">Published</a><a href="/about.html">About</a></div>
 </div>
+<a class="adminbtn" href="/admin.html" aria-label="Admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Admin</a>
 <div id="toast" role="status" aria-live="polite"></div>
 <script>
 const SEFARIM={"Bereishis":["Bereishis","Noach","Lech Lecha","Vayeira","Chayei Sara","Toldos","Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi"],
