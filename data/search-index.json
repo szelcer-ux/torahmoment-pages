@@ -7928,5 +7928,15 @@
     "date": "2026-11-19T00:00:00.000Z",
     "page": "/parsha.html",
     "title_lc": "parshas vayeitzei overview"
+  },
+  {
+    "id": "ov-vayishlach",
+    "program": "Parsha Overview",
+    "type": "audio",
+    "title": "Parshas Vayishlach overview",
+    "url": "https://torahmoment.com/audio/VayishlachOverview.mp3",
+    "date": "2026-11-26T00:00:00.000Z",
+    "page": "/parsha.html",
+    "title_lc": "parshas vayishlach overview"
   }
 ]
