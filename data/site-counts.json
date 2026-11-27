@@ -1,6 +1,6 @@
 {
   "allShiurim": {
-    "total": 855,
+    "total": 856,
     "breakdown": {
       "parsha": {
         "audio": 42,
@@ -13,7 +13,7 @@
         "totalAll": 110
       },
       "oneMinute": {
-        "audio": 294
+        "audio": 295
       },
       "mishna": {
         "audio": 137
@@ -29,6 +29,13 @@
       "url": "https://www.youtube.com/watch?v=qb2fU5q_ZnU",
       "date": "2026-11-27T03:01:45Z",
       "parsha": "Vayishlach"
+    },
+    {
+      "type": "audio",
+      "program": "One-Minute",
+      "title": "A taste of Olam Haba",
+      "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-d03880f8.mp3",
+      "date": "2026-11-27T00:00:00.000Z"
     },
     {
       "type": "audio",
@@ -50,18 +57,17 @@
       "title": "Two jesters",
       "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-dc30bff1-e07ca73a.mp3",
       "date": "2026-11-23T00:00:00.000Z"
-    },
-    {
-      "type": "video",
-      "program": "Parsha",
-      "title": "Lavan's problem, Yaakov's standard",
-      "url": "https://www.youtube.com/watch?v=ObeH7cXk6BU",
-      "date": "2026-11-20T02:31:47Z",
-      "parsha": "Vayeitzei"
     }
   ],
   "recentByProgram": {
     "oneMinute": [
+      {
+        "type": "audio",
+        "program": "One-Minute",
+        "title": "A taste of Olam Haba",
+        "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-d03880f8.mp3",
+        "date": "2026-11-27T00:00:00.000Z"
+      },
       {
         "type": "audio",
         "program": "One-Minute",
@@ -124,13 +130,6 @@
         "title": "Counted for Maaser",
         "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261109-WA0028.mp3",
         "date": "2026-11-09T00:00:00.000Z"
-      },
-      {
-        "type": "audio",
-        "program": "One-Minute",
-        "title": "Sara's lasting legacy",
-        "url": "https://2mishnasaday.com/wp-content/uploads/PTT-20261104-WA0014.mp3",
-        "date": "2026-11-05T00:00:00.000Z"
       }
     ],
     "halacha": [
