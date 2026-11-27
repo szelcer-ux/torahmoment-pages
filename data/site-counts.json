@@ -1,10 +1,10 @@
 {
   "allShiurim": {
-    "total": 854,
+    "total": 855,
     "breakdown": {
       "parsha": {
         "audio": 42,
-        "video": 251
+        "video": 252
       },
       "tefila": {
         "video": 20
@@ -19,9 +19,17 @@
         "audio": 137
       }
     },
-    "updated": "2026-11-26"
+    "updated": "2026-11-27"
   },
   "recent": [
+    {
+      "type": "video",
+      "program": "Parsha",
+      "title": "Promises don't expire",
+      "url": "https://www.youtube.com/watch?v=qb2fU5q_ZnU",
+      "date": "2026-11-27T03:01:45Z",
+      "parsha": "Vayishlach"
+    },
     {
       "type": "audio",
       "program": "One-Minute",
@@ -50,13 +58,6 @@
       "url": "https://www.youtube.com/watch?v=ObeH7cXk6BU",
       "date": "2026-11-20T02:31:47Z",
       "parsha": "Vayeitzei"
-    },
-    {
-      "type": "audio",
-      "program": "One-Minute",
-      "title": "He went back",
-      "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-a382eb49.mp3",
-      "date": "2026-11-19T00:00:00.000Z"
     }
   ],
   "recentByProgram": {
@@ -228,6 +229,14 @@
       {
         "type": "video",
         "program": "Parsha",
+        "title": "Promises don't expire",
+        "url": "https://www.youtube.com/watch?v=qb2fU5q_ZnU",
+        "date": "2026-11-27T03:01:45Z",
+        "parsha": "Vayishlach"
+      },
+      {
+        "type": "video",
+        "program": "Parsha",
         "title": "Lavan's problem, Yaakov's standard",
         "url": "https://www.youtube.com/watch?v=ObeH7cXk6BU",
         "date": "2026-11-20T02:31:47Z",
@@ -296,14 +305,6 @@
         "url": "https://www.youtube.com/watch?v=InwwdxrYyyo",
         "date": "2026-09-18T02:46:11Z",
         "parsha": "Haazinu"
-      },
-      {
-        "type": "video",
-        "program": "Parsha",
-        "title": "Always be growing",
-        "url": "https://www.youtube.com/watch?v=yirY8s5pgUo",
-        "date": "2026-09-04T02:17:52Z",
-        "parsha": "Vayeilech"
       }
     ]
   }
