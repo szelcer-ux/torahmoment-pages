@@ -1,15 +1,15 @@
 {
-  "rangeLabel": "November 14–20, 2026",
-  "generatedAt": "2026-11-20T18:28:29.365Z",
+  "rangeLabel": "November 21–27, 2026",
+  "generatedAt": "2026-11-27T14:45:30.915Z",
   "totalItems": 6,
   "featured": {
-    "id": "par-ObeH7cXk6BU",
-    "title": "Lavan's problem, Yaakov's standard",
+    "id": "par-qb2fU5q_ZnU",
+    "title": "Promises don't expire",
     "program": "Parsha",
     "type": "video",
-    "date": "2026-11-20T02:31:47Z",
+    "date": "2026-11-27T03:01:45Z",
     "page": "/parsha.html",
-    "url": "https://www.youtube.com/watch?v=ObeH7cXk6BU"
+    "url": "https://www.youtube.com/watch?v=qb2fU5q_ZnU"
   },
   "groups": [
     {
@@ -17,37 +17,22 @@
       "label": "Parsha",
       "items": [
         {
-          "id": "par-ObeH7cXk6BU",
-          "title": "Lavan's problem, Yaakov's standard",
+          "id": "par-qb2fU5q_ZnU",
+          "title": "Promises don't expire",
           "program": "Parsha",
           "type": "video",
-          "date": "2026-11-20T02:31:47Z",
+          "date": "2026-11-27T03:01:45Z",
           "page": "/parsha.html",
-          "url": "https://www.youtube.com/watch?v=ObeH7cXk6BU"
+          "url": "https://www.youtube.com/watch?v=qb2fU5q_ZnU"
         },
         {
-          "id": "ov-vayeitzei",
-          "title": "Parshas Vayeitzei overview",
+          "id": "ov-vayishlach",
+          "title": "Parshas Vayishlach overview",
           "program": "Parsha Overview",
           "type": "audio",
-          "date": "2026-11-19T00:00:00.000Z",
+          "date": "2026-11-26T00:00:00.000Z",
           "page": "/parsha.html",
-          "url": "https://torahmoment.com/audio/VayeitzeiOverview.mp3"
-        }
-      ]
-    },
-    {
-      "key": "halacha",
-      "label": "Halacha / Hashkafa",
-      "items": [
-        {
-          "id": "hal-93",
-          "title": "Is visiting Israel a mitzvah?",
-          "program": "Halacha",
-          "type": "audio",
-          "date": "2026-11-17T00:00:00.000Z",
-          "page": "/halacha.html",
-          "url": "https://www.buzzsprout.com/1899789/episodes/20139366-11-17-2026-shloimy-zelcer-is-visiting-israel-a-mitzvah.mp3"
+          "url": "https://torahmoment.com/audio/VayishlachOverview.mp3"
         }
       ]
     },
@@ -57,30 +42,39 @@
       "items": [
         {
           "id": "one-0",
-          "title": "He went back",
+          "title": "A taste of Olam Haba",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-11-19T00:00:00.000Z",
+          "date": "2026-11-27T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-a382eb49.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-d03880f8.mp3"
         },
         {
           "id": "one-1",
-          "title": "Brother in trickery",
+          "title": "Holy cycle",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-11-18T00:00:00.000Z",
+          "date": "2026-11-25T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261118-WA0057.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-f96e012b.mp3"
         },
         {
           "id": "one-2",
-          "title": "your face is a reshus harabim",
+          "title": "In front of his mother",
           "program": "One-Minute",
           "type": "audio",
-          "date": "2026-11-16T00:00:00.000Z",
+          "date": "2026-11-24T00:00:00.000Z",
           "page": "/one-minute-audio.html",
-          "url": "https://2mishnasaday.com/wp-content/uploads/AUD-20261116-WA0060.mp3"
+          "url": "https://2mishnasaday.com/wp-content/uploads/2-audio-24ce6396-2d436c92.mp3"
+        },
+        {
+          "id": "one-3",
+          "title": "Two jesters",
+          "program": "One-Minute",
+          "type": "audio",
+          "date": "2026-11-23T00:00:00.000Z",
+          "page": "/one-minute-audio.html",
+          "url": "https://2mishnasaday.com/wp-content/uploads/1-audio-dc30bff1-e07ca73a.mp3"
         }
       ]
     }
