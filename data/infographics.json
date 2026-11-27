@@ -319,7 +319,14 @@
     "parsha": "Vayeitzei",
     "image": "/images/infographics/parsha/Integrity_Beyond_Circumstance.png",
     "youtube": "https://www.youtube.com/watch?v=ObeH7cXk6BU",
-    "description": "Integrity Beyond Circumstance",
+    "description": "Integrity Beyond Circumstance"
+  },
+  "qb2fU5q_ZnU": {
+    "title": "Promises don't expire",
+    "parsha": "Vayishlach",
+    "image": "/images/infographics/parsha/Vayishlach_Promises_Don_t_Expire.png",
+    "youtube": "https://www.youtube.com/watch?v=qb2fU5q_ZnU",
+    "description": "Promises don't expire",
     "featured": true
   }
 }
