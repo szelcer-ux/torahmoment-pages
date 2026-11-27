@@ -1613,20 +1613,29 @@ function noteModal(nid, where, text, lid){
     '<div class="f gpos"><label>Amud</label><select id="nA"><option value="0"'+(u%2?'':' selected')+'>a</option><option value="1"'+(u%2&&!isKet(sefer)?' selected':'')+'>b</option></select></div>'+
     '<div class="f kpos"><label>Perek</label><input id="nP" type="number" min="1" value="'+(isKet(sefer)?Math.floor(u/1000):1)+'"></div>'+
     '<div class="f kpos"><label>Halacha</label><input id="nH" type="number" min="1" value="'+(isKet(sefer)?u%1000:1)+'"></div></div>'+
+    '<div class="f" id="nPkWrap" style="display:none"><label>Perek <span style="text-transform:none;letter-spacing:0;font-weight:500">· a new perek starts on this amud</span></label><select id="nPk"></select></div>'+
     '<div class="f"><label>Note</label><textarea id="nText" rows="6" dir="auto" placeholder="Rashi, Tosafos, a question, a line you want to remember…">'+esc(n?n.text:(text||''))+'</textarea></div>'+
     '<p class="hint">Anything with a “?” is listed as an open question.</p>'+
     (n&&isQ(n)?'<label class="check"><input type="checkbox" id="nDone" '+(n.done?'checked':'')+'> ✓ Answered</label>':'')+
     '<div class="mrow">'+(n?'<button class="mbtn danger" id="nDel">Delete</button>':'')+'<button class="mbtn" onclick="TM.close()">Cancel</button><button class="mbtn p" id="nGo">Save</button></div>');
   var swap=function(){ var k=isKet($('nS').value); document.querySelectorAll('#modal .gpos').forEach(function(e){ e.style.display=k?'none':''; }); document.querySelectorAll('#modal .kpos').forEach(function(e){ e.style.display=k?'':'none'; }); };
-  $('nS').onchange=swap; swap();
+  var cur=function(){ var sf=$('nS').value; if(isKet(sf)) return {sf:sf,u:-1}; return {sf:sf, u:Math.max(0,(parseInt($('nD').value,10)-2)*2+(+$('nA').value))}; };
+  var updPk=function(){ var c=cur(), sp=c.u<0?-1:perekSplit(c.sf,c.u), w=$('nPkWrap');
+    if(sp<0){ w.style.display='none'; return; }
+    var P=PERAKIM[c.sf], keep=$('nPk').value, def=(n&&n.sefer===c.sf&&n.u===c.u&&n.perek===sp+1)?sp+1:sp;
+    $('nPk').innerHTML=[sp,sp+1].map(function(k){ return '<option value="'+k+'">Perek '+k+' · '+esc(P[k-1][1])+(k===sp?' (ending)':' (starting)')+'</option>'; }).join('');
+    $('nPk').value = keep && (+keep===sp||+keep===sp+1) ? keep : def; w.style.display=''; };
+  $('nS').onchange=function(){ swap(); updPk(); }; $('nD').oninput=updPk; $('nA').onchange=updPk;
+  swap(); updPk();
   setTimeout(function(){ var t=$('nText'); t.focus(); t.setSelectionRange(t.value.length,t.value.length); },60);
   $('nGo').onclick=function(){
     var txt=$('nText').value.trim(); if(!txt){ $('nText').focus(); return; }
     var sf=$('nS').value, uu;
     if(isKet(sf)) uu=Math.max(1,parseInt($('nP').value,10)||1)*1000+Math.max(1,parseInt($('nH').value,10)||1);
     else { uu=Math.max(0,(parseInt($('nD').value,10)-2)*2+(+$('nA').value)); uu=Math.min(uu, KIND.gemara.total({sefer:sf})-1); }
-    if(n){ n.text=txt; n.sefer=sf; n.u=uu; if($('nDone')) n.done=$('nDone').checked; }
-    else S.notes.push({id:'n'+Date.now().toString(36), ts:Date.now(), seq:S.notes.length, date:logDate, sefer:sf, u:uu, text:txt, done:false, lid:lid||null});
+    var pk = (!isKet(sf) && perekSplit(sf,uu)>0) ? +$('nPk').value : null;
+    if(n){ n.text=txt; n.sefer=sf; n.u=uu; if($('nDone')) n.done=$('nDone').checked; if(pk) n.perek=pk; else delete n.perek; }
+    else { var nn={id:'n'+Date.now().toString(36), ts:Date.now(), seq:S.notes.length, date:logDate, sefer:sf, u:uu, text:txt, done:false, lid:lid||null}; if(pk) nn.perek=pk; S.notes.push(nn); }
     save(); closeModal(); renderAll(); toast(n?'Note updated':'Note saved on '+amudLabel(sf,uu));
   };
   if(n) $('nDel').onclick=function(){ if(!confirm('Delete this note?')) return; S.notes=S.notes.filter(function(x){return x!==n;}); save(); closeModal(); renderAll(); toast('Note deleted'); };
@@ -1816,6 +1825,14 @@ var PERAKIM={
   'Sukkah':[[A(2,'a'),'Sukkah','סוכה'],[A(20,'b'),'HaYashen','הישן'],[A(29,'b'),'Lulav HaGazul','לולב הגזול'],[A(42,'b'),'Lulav VaAravah','לולב וערבה'],[A(50,'a'),'HaChalil','החליל']],
   'Beitzah':[[A(2,'a'),'Beitzah','ביצה'],[A(15,'b'),'Yom Tov','יום טוב'],[A(23,'b'),'Ein Tzadin','אין צדין'],[A(29,'b'),'HaMeivi Kadei Yayin','המביא כדי יין'],[A(35,'b'),'Mashilin','משילין']]
 };
+// A perek usually starts partway down an amud. Notes on that amud go with the perek that's ending,
+// unless the note was set to the new one (n.perek = 1-based perek number).
+function perekSplit(sefer,u){ var P=PERAKIM[sefer]; if(!P) return -1; for(var i=1;i<P.length;i++) if(P[i][0]===u) return i; return -1; }
+function perekIndex(sefer,n){
+  var P=PERAKIM[sefer], k=0; for(var i=0;i<P.length;i++) if(n.u>=P[i][0]) k=i;
+  var sp=perekSplit(sefer,n.u); if(sp>0) k = (n.perek===sp+1) ? sp : sp-1;
+  return k;
+}
 var PEREK_ORD=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שביעי','שמיני','תשיעי','עשירי','אחד עשר','שנים עשר','שלשה עשר','ארבעה עשר','חמשה עשר','ששה עשר','שבעה עשר','שמונה עשר','תשעה עשר','עשרים','עשרים ואחד','עשרים ושנים','עשרים ושלשה','עשרים וארבעה'];
 var bookletSefer=null;
 function bookletPrefs(){ S.prefs=S.prefs||{}; if(S.prefs.bookletName===undefined) S.prefs.bookletName='Shloimy Zelcer'; if(!S.prefs.bookletPaper) S.prefs.bookletPaper='half'; return S.prefs; }
@@ -1824,7 +1841,7 @@ function perekGroups(sefer, notes){
   notes.forEach(function(n){
     var k, name='', he='';
     if(ket){ k=Math.floor(n.u/1000); }
-    else if(P){ k=0; for(var i=0;i<P.length;i++) if(n.u>=P[i][0]) k=i; name=P[k][1]; he=P[k][2]; k=k+1; }
+    else if(P){ k=perekIndex(sefer, n); name=P[k][1]; he=P[k][2]; k=k+1; }
     else k=0;
     if(!(k in idx)){ idx[k]=g.length; g.push({k:k, name:name, he:he, notes:[]}); }
     g[idx[k]].notes.push(n);
